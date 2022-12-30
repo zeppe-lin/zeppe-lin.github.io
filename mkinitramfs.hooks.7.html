@@ -1,0 +1,235 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>mkinitramfs.hooks - mkinitramfs hooks and related stuff</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#MAN-PAGE-SYNTAX">MAN PAGE SYNTAX</a></li>
+    </ul>
+  </li>
+  <li><a href="#EXTENSIONS">EXTENSIONS</a></li>
+  <li><a href="#VARIABLES">VARIABLES</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>mkinitramfs.hooks - mkinitramfs hooks and related stuff</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Hooks can be located in <i>/usr/share/mkinitramfs/hooks</i> (system path) and <i>/etc/mkinitramfs/hooks</i> (user path). mkinitramfs also allows you to specify custom location via <b>-H</b> option. See <a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a> for more information.</p>
+
+<p>Hooks provides a way to extend build and init process. Hooks must be written in POSIX shell. Bashisms and other non-portable extensions are prohibited. In order to write hooks you must know about hook structure.</p>
+
+<p>Example:</p>
+
+  <pre>
+  hooks/
+  └── <hook>               -> directory of hook scripts
+      ├── <hook>           -> invoked in build process
+      ├── <hook>.init      -> invoked in init process
+      └── <hook>.init.late -> invoked after root filesystem was mounted
+  </pre>
+
+<h2 id="MAN-PAGE-SYNTAX">MAN PAGE SYNTAX</h2>
+
+<dl>
+
+<dt id="B"><b>B:</b></dt>
+<dd>
+
+<p>Extension/Variable can be used in build process.</p>
+
+</dd>
+<dt id="I"><b>I:</b></dt>
+<dd>
+
+<p>Extension/Variable can be used in init process.</p>
+
+</dd>
+<dt id="BI"><b>BI:</b></dt>
+<dd>
+
+<p>Extension/Variable can be used in both processes.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXTENSIONS">EXTENSIONS</h1>
+
+<p>mkinitramfs also provides some extensions and environment variables to easily interact with build and init system.</p>
+
+<dl>
+
+<dt id="BI:-print-MESSAGE"><b>BI: print</b> <i>MESSAGE</i></dt>
+<dd>
+
+<p>Print message to stdout.</p>
+
+</dd>
+<dt id="BI:-panic-MESSAGE"><b>BI: panic</b> [<i>MESSAGE</i>]</dt>
+<dd>
+
+<p>If message was not specified, then mkinitramfs will print default error message. Otherwise, message will be printed.</p>
+
+</dd>
+<dt id="B:-copy_module-PATH"><b>B: copy_module</b> <i>PATH</i></dt>
+<dd>
+
+<p>Copy kernel module by <i>PATH</i> (full path to kernel module) to mkinitramfs working directory.</p>
+
+</dd>
+<dt id="B:-copy_binary-NAME-PATH"><b>B: copy_binary</b> <i>NAME</i>|<i>PATH</i></dt>
+<dd>
+
+<p>If <i>PATH</i> (full path to binary) was specified and it has executable bit, then it will be copied to <i>/bin</i> location of mkinitramfs working directory.</p>
+
+<p>If <i>NAME</i> was specified, the mkinitramfs will try to find command by name in <code>PATH</code>. If success, command will be copied to <i>/bin</i> location of mkinitramfs working directory. Otherwise error message will appear.</p>
+
+</dd>
+<dt id="B:-copy_file-FILE-DEST-MODE-STRIP"><b>B: copy_file</b> <i>FILE</i> <i>DEST</i> <i>MODE</i> <i>STRIP</i></dt>
+<dd>
+
+<dl>
+
+<dt id="FILE"><i>FILE</i></dt>
+<dd>
+
+<p>Must be full path to file.</p>
+
+</dd>
+<dt id="DEST"><i>DEST</i></dt>
+<dd>
+
+<p>Must be full path where <i>FILE</i> should be stored. mkinitramfs will automatically create all leading directories if they aren&#39;t exist already. Also no need to prepend path of mkinitramfs working directory.</p>
+
+</dd>
+<dt id="MODE"><i>MODE</i></dt>
+<dd>
+
+<p>Permissions in octal format.</p>
+
+</dd>
+<dt id="STRIP"><i>STRIP</i></dt>
+<dd>
+
+<p>If was set to <b>1</b>, then mkinitramfs will attempt to run <a href="https://www.mankier.com/1p/strip">strip(1p)</a> on file. mkinitramfs will silently ignore errors if strip doesn&#39;t exists or failed to strip binary.</p>
+
+</dd>
+</dl>
+
+</dd>
+<dt id="I:-resolve_device-UUID-LABEL-dev-PARTUUID"><b>I: resolve_device</b> <i>UUID</i>|<i>LABEL</i>|<i>/dev/*</i>|<i>PARTUUID</i></dt>
+<dd>
+
+<p>Sets <b>device</b> variable to full path of resolved <i>UUID</i>|<i>LABEL</i>|<i>/dev/*</i>|<i>PARTUUID</i>.</p>
+
+</dd>
+</dl>
+
+<h1 id="VARIABLES">VARIABLES</h1>
+
+<dl>
+
+<dt id="BI:-debug"><b>BI: debug</b></dt>
+<dd>
+
+<p>1 if debug mode enabled</p>
+
+</dd>
+<dt id="I:-break"><b>I: break</b></dt>
+<dd>
+
+<p>Breakpoint for debugging.</p>
+
+</dd>
+<dt id="B:-tmpdir"><b>B: tmpdir</b></dt>
+<dd>
+
+<p>Full path of mkinitramfs working directory (initramfs rootfs in future).</p>
+
+</dd>
+<dt id="B:-kernel"><b>B: kernel</b></dt>
+<dd>
+
+<p>Kernel version.</p>
+
+</dd>
+<dt id="B:-moddir"><b>B: moddir</b></dt>
+<dd>
+
+<p>Modules directory.</p>
+
+</dd>
+<dt id="B:-init"><b>B: init</b></dt>
+<dd>
+
+<p>Path to init script.</p>
+
+</dd>
+<dt id="B:-helper"><b>B: helper</b></dt>
+<dd>
+
+<p>Path to device-helper script.</p>
+
+</dd>
+<dt id="B:-config"><b>B: config</b></dt>
+<dd>
+
+<p>Config location.</p>
+
+</dd>
+<dt id="B:-output"><b>B: output</b></dt>
+<dd>
+
+<p>Output path.</p>
+
+</dd>
+<dt id="BI1"><b>BI: ...</b></dt>
+<dd>
+
+<p>See <a href="https://zeppe-lin.github.io/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>This example will show how to handle soft dependencies of <b>ext4</b> module. Create <i>/etc/mkinitramfs/hooks/ext4</i> directory and copy below scripts with appropriate names to that directory. After that, prepend <b>ext4</b> to <b>hooks</b> option in mkinitramfs&#39; config (<i>/etc/mkinitramfs/config</i>).</p>
+
+<p><i>ext4</i></p>
+
+<pre><code>print &quot;Copying ext4 dependencies&quot;
+
+for _mod in crc32c libcrc32c; do
+    copy_module &quot;$_mod&quot;
+done</code></pre>
+
+<p><i>ext4.init</i></p>
+
+<pre><code>modprobe -a crc32c libcrc32c</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a>, <a href="https://zeppe-lin.github.io/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>, <a href="https://zeppe-lin.github.io/mkinitramfs.cmdline.7.html">mkinitramfs.cmdline(7)</a></p>
+
+
+</body>
+
+</html>
+
+

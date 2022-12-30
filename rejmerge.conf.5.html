@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>rejmerge.conf - configuration file for rejmerge</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#rejmerge_diff">rejmerge_diff</a></li>
+      <li><a href="#rejmerge_merge">rejmerge_merge</a></li>
+      <li><a href="#EDITOR">EDITOR</a></li>
+      <li><a href="#PAGER">PAGER</a></li>
+    </ul>
+  </li>
+  <li><a href="#EXAMPLE">EXAMPLE</a></li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>rejmerge.conf - configuration file for rejmerge</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>/etc/rejmerge.conf</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This manual page describes the format of the <i>rejmerge.conf</i> file. This file can be used to alter the way <a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a> displays file differences and performs file merges. Changing the default behaviour is done by re-defining the shell functions <i>rejmerge_diff</i>, <i>rejmerge_merge</i> and shell variables <i>EDITOR</i>, <i>PAGER</i>.</p>
+
+<h2 id="rejmerge_diff"><i>rejmerge_diff</i></h2>
+
+<p>This function is executed once for each rejected file. Arguments <i>$1</i> and <i>$2</i> contains the path to a temporary file where this function should write its result. The contents of the temporary file will later be presented to the user as the difference between the two files.</p>
+
+<h2 id="rejmerge_merge"><i>rejmerge_merge</i></h2>
+
+<p>This function is executed when the user chooses to merge two files. Argument <i>$1</i> and <i>$2</i> contains the paths to the installed and rejected files. Argument <i>$3</i> contains the path to a temporary file where this function should write its result. The contents of the temporary file will later be presented to the user as the merge result.</p>
+
+<p>This function also has the option to set the variable <i>REJMERGE_MERGE_INFO</i>. The contents of this variable will be displayed as informational text after a merge has been performed. Its purpose is to provide information about the merge, e.g. &quot;5 merge conflicts found&quot;.</p>
+
+<h2 id="EDITOR"><i>EDITOR</i></h2>
+
+<p>This variable defines the editor used in merge operation.</p>
+
+<p><i>/bin/vi</i> if unset.</p>
+
+<h2 id="PAGER"><i>PAGER</i></h2>
+
+<p>This variable defines the pager used in <code>diff</code> and <code>merge</code> operations.</p>
+
+<p><i>/bin/more</i> if unset.</p>
+
+<h1 id="EXAMPLE">EXAMPLE</h1>
+
+<pre><code>#
+# /etc/rejmerge.conf: rejmerge(8) configuration
+#
+# See rejmerge.conf(5) for more information.
+#
+
+# Use diff(1) to produce side-by-side output.
+rejmerge_diff() { diff -y $1 $2 &gt; $3 ; }
+# or ...
+# Use diff(1) to produce unified and colorized output.
+rejmerge_diff() { diff -u --color=always $1 $2 &gt; $3 ; }
+
+# Use sdiff(1) to merge instead of the default diff(1).
+rejmerge_merge() { sdiff -o $3 $1 $2 ; }
+
+# Use vim(1) as editor instead of the default vi(1).
+EDITOR=&quot;/usr/bin/vim&quot;
+
+# Use less(1) as pager instead of the default more(1).
+# -R option is required if diffs above produces raw control chars.
+PAGER=&quot;/usr/bin/less -R&quot;
+
+# End of file.</code></pre>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-rejmerge.conf"><i>/etc/rejmerge.conf</i></dt>
+<dd>
+
+<p>Configuration file for <a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a></p>
+
+
+</body>
+
+</html>
+
+

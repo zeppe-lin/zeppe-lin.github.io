@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>revdep - check for missing libraries of installed packages</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#EXAMPLE">EXAMPLE</a></li>
+  <li><a href="#ADDITIONAL-LIBRARY-DIRECTORIES">ADDITIONAL LIBRARY DIRECTORIES</a></li>
+  <li><a href="#EXIT-STATUS">EXIT STATUS</a></li>
+  <li><a href="#NOTES">NOTES</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>revdep - check for missing libraries of installed packages</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>revdep</b> [<i>OPTION</i>]... [<i>PKGNAME</i>]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>revdep</b> checks for missing libraries of installed packages using elfutils&#39; libelf and the same algorithm that <a href="https://www.mankier.com/8/ld.so">ld.so(8)</a> uses.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>Mandatory arguments to long options are mandatory for short options too.</p>
+
+<dl>
+
+<dt id="L---ldsoconf-PATH"><b>-L</b>, <b>--ldsoconf</b>=<i>PATH</i></dt>
+<dd>
+
+<p>Specify an alternate location for <i>ld.so.conf</i>.</p>
+
+<p>Default location is <i>/etc/ld.so.conf</i>.</p>
+
+</dd>
+<dt id="D---pkgdb-PATH"><b>-D</b>, <b>--pkgdb</b>=<i>PATH</i></dt>
+<dd>
+
+<p>Specify an alternate location for the package database.</p>
+
+<p>Default location is <i>/var/lib/pkg/db</i>.</p>
+
+</dd>
+<dt id="R---revdepdir-PATH"><b>-R</b>, <b>--revdepdir</b>=<i>PATH</i></dt>
+<dd>
+
+<p>Specify an alternate location for <b>revdep</b> package configuration.</p>
+
+<p>Default location is <i>/etc/revdep.d</i>.</p>
+
+</dd>
+<dt id="I---ignore-PKGNAME"><b>-I</b>, <b>--ignore</b>=<i>PKGNAME</i>,...</dt>
+<dd>
+
+<p>Comma-separated list of packages to ignore.</p>
+
+</dd>
+<dt id="V---verbose"><b>-V</b>, <b>--verbose</b></dt>
+<dd>
+
+<p>Formatted listing.</p>
+
+</dd>
+<dt id="E---erroneous"><b>-E</b>, <b>--erroneous</b></dt>
+<dd>
+
+<p>Include erroneous files in the output.</p>
+
+</dd>
+<dt id="P---precise"><b>-P</b>, <b>--precise</b></dt>
+<dd>
+
+<p>Include precise file errors in the output.</p>
+
+</dd>
+<dt id="T---trace"><b>-T</b>, <b>--trace</b></dt>
+<dd>
+
+<p>Show debug/trace.</p>
+
+</dd>
+<dt id="v---version"><b>-v</b>, <b>--version</b></dt>
+<dd>
+
+<p>Print version and exit.</p>
+
+</dd>
+<dt id="h---help"><b>-h</b>, <b>--help</b></dt>
+<dd>
+
+<p>Print help and exit.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXAMPLE">EXAMPLE</h1>
+
+<p>Try this command to list broken packages:</p>
+
+<pre><code>revdep</code></pre>
+
+<p>Use this command to rebuild packages on your system:</p>
+
+<pre><code>pkgman update -fr `revdep`</code></pre>
+
+<h1 id="ADDITIONAL-LIBRARY-DIRECTORIES">ADDITIONAL LIBRARY DIRECTORIES</h1>
+
+<p>Upon startup, <b>revdep</b> searches the <i>/etc/revdep.d</i> directory for files named after packages. If any are found, any directories (assumed to be absolute paths and delimited by newlines) within the file are added to a list of package specific directories to search if a library dependency is not found in one of the many standard locations (as specified by <a href="https://www.mankier.com/8/ld.so">ld.so(8)</a>).</p>
+
+<p>If a package is discovered to have a library dependencies that are in a non-standard directory <i>/usr/lib/firefox</i> then a file named <i>firefox</i> should be created under <i>/etc/revdep.d</i> with a single line containing <i>/usr/lib/firefox</i>. This will tell <b>revdep</b> where to find firefox&#39;s <i>libxul.so</i> when looking for its library dependencies, reducing one source of false positives. Ideally, this file would be included with the package&#39;s own packaging as well.</p>
+
+<h1 id="EXIT-STATUS">EXIT STATUS</h1>
+
+<dl>
+
+<dt id="pod0"><code>0</code></dt>
+<dd>
+
+<p>There are no missing libraries found. All is ok.</p>
+
+</dd>
+<dt id="pod1"><code>1</code></dt>
+<dd>
+
+<p>Failed to parse command-line arguments.</p>
+
+</dd>
+<dt id="pod2"><code>2</code></dt>
+<dd>
+
+<p>Failed to read package database.</p>
+
+</dd>
+<dt id="pod3"><code>3</code></dt>
+<dd>
+
+<p>Failed to read ld.so.conf.</p>
+
+</dd>
+<dt id="pod4"><code>4</code></dt>
+<dd>
+
+<p>Found at least one missing library.</p>
+
+</dd>
+</dl>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p>C++ rewrite inspired by Johannes Winkelmann&#39;s <a>jw@tks6.net</a> shell <b>revdep</b>.</p>
+
+<p>Contributed to design Danny Rawlins <a>contact@romster.me</a>.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>James Buren, <a>ryuo@freenode</a></p>
+
+
+</body>
+
+</html>
+
+

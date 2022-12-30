@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>mkrootfs - make root filesystem for chroot installation</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#COMMANDS">COMMANDS</a></li>
+      <li><a href="#OPTIONS">OPTIONS</a></li>
+    </ul>
+  </li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#EXIT-STATUS">EXIT STATUS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>mkrootfs - make root filesystem for chroot installation</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>mkrootfs</b> [<i>COMMAND</i>] [<i>OPTIONS</i>]...</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>mkrootfs builds customized root filesystem for chroot installation.</p>
+
+<h2 id="COMMANDS">COMMANDS</h2>
+
+<dl>
+
+<dt id="rootfs"><b>rootfs</b></dt>
+<dd>
+
+<p>Prepare rootfs directory.</p>
+
+</dd>
+<dt id="revdep"><b>revdep</b></dt>
+<dd>
+
+<p>Check rootfs directory for missing libraries.</p>
+
+</dd>
+<dt id="tar"><b>tar</b></dt>
+<dd>
+
+<p>Compress rootfs directory (prepare tarball).</p>
+
+</dd>
+<dt id="sign"><b>sign</b></dt>
+<dd>
+
+<p>Sign prepared tarball.</p>
+
+</dd>
+</dl>
+
+<h2 id="OPTIONS">OPTIONS</h2>
+
+<p>Mandatory arguments to long options are mandatory for short options too.</p>
+
+<dl>
+
+<dt id="r---rootfs-PATH"><b>-r</b>, <b>--rootfs</b>=<i>PATH</i></dt>
+<dd>
+
+<p>Set path to rootfs directory.</p>
+
+</dd>
+<dt id="t---tar-FILE"><b>-t</b>, <b>--tar</b>=<i>FILE</i></dt>
+<dd>
+
+<p>Set path to compressed rootfs tarball.</p>
+
+</dd>
+<dt id="l---log-FILE"><b>-l</b>, <b>--log</b>=<i>FILE</i></dt>
+<dd>
+
+<p>Set path to log file for <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a>.</p>
+
+</dd>
+<dt id="p---packages-PKG1-PKG2"><b>-p</b>, <b>--packages</b>=&quot;<i>PKG1</i> <i>PKG2</i>...&quot;</dt>
+<dd>
+
+<p>Set default packages to extract into the rootfs directory.</p>
+
+</dd>
+<dt id="c---config-FILE"><b>-c</b>, <b>--config</b>=<i>FILE</i></dt>
+<dd>
+
+<p>Use alternative configuration file (default is <i>/etc/mkrootfs/config</i>).</p>
+
+</dd>
+<dt id="x---pkgmk-config-FILE"><b>-x</b>, <b>--pkgmk-config</b>=<i>FILE</i></dt>
+<dd>
+
+<p>Use alternative <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>&#39;s configuration file (default is <i>/etc/pkgmk.conf</i>).</p>
+
+</dd>
+<dt id="y---pkgman-config-FILE"><b>-y</b>, <b>--pkgman-config</b>=<i>FILE</i></dt>
+<dd>
+
+<p>Use alternative <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a>&#39;s configuration file (default is <i>/etc/pkgman.conf</i>).</p>
+
+</dd>
+</dl>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-mkrootfs-config"><i>/etc/mkrootfs/config</i></dt>
+<dd>
+
+<p>Global mkrootfs&#39; configuration. See <a href="https://zeppe-lin.github.io/mkrootfs.config.5">mkrootfs.config(5)</a> for more information.</p>
+
+</dd>
+<dt id="etc-pkgmk.conf"><i>/etc/pkgmk.conf</i></dt>
+<dd>
+
+<p>Configuration file for invocated pkgmk.</p>
+
+</dd>
+<dt id="etc-pkgman.conf"><i>/etc/pkgman.conf</i></dt>
+<dd>
+
+<p>Configuration file for invocated pkgman.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXIT-STATUS">EXIT STATUS</h1>
+
+<dl>
+
+<dt id="pod0">&quot;0&quot;</dt>
+<dd>
+
+<p>No error occurred.</p>
+
+</dd>
+<dt id="pod1">&quot;1&quot;</dt>
+<dd>
+
+<p>A general error has occurred.</p>
+
+</dd>
+<dt id="pod2">&quot;2&quot;</dt>
+<dd>
+
+<p>An error occurred during building rootfs directory.</p>
+
+</dd>
+<dt id="pod3">&quot;3&quot;</dt>
+<dd>
+
+<p>An error occurred during checking rootfs directory for missing libraries.</p>
+
+</dd>
+<dt id="pod4">&quot;4&quot;</dt>
+<dd>
+
+<p>An error occurred during compressing rootfs directory (preparing the tarball).</p>
+
+</dd>
+<dt id="pod5">&quot;5&quot;</dt>
+<dd>
+
+<p>An error occurred during signing prepared tarball.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/mkrootfs.config.5.html">mkrootfs.config(5)</a>, <a href="https://zeppe-lin.github.io/mkrootfs.release.7.html">mkrootfs.release(7)</a></p>
+
+
+</body>
+
+</html>
+
+

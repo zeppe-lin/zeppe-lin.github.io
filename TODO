@@ -1,0 +1,3 @@
+add missing man pages:
+ - zcat /usr/share/man/man1/man.1.gz  | groff -mandoc -Thtml
+ - adjust css to zeppe-lin style

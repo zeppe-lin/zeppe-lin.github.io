@@ -1,0 +1,351 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>pkgman - advanced package management tool</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#COMMANDS">COMMANDS</a>
+    <ul>
+      <li><a href="#INFORMATIONAL">INFORMATIONAL</a></li>
+      <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+      <li><a href="#SEARCHING">SEARCHING</a></li>
+      <li><a href="#INSTALL-UPDATE-REMOVE">INSTALL / UPDATE / REMOVE</a></li>
+      <li><a href="#SYSTEM-UPDATE">SYSTEM UPDATE</a></li>
+      <li><a href="#FILE-OPERATIONS">FILE OPERATIONS</a></li>
+    </ul>
+  </li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>pkgman - advanced package management tool</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>pkgman</b> [<i>COMMAND</i>] [<i>OPTION</i>]... [<i>ARGS</i>]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>pkgman</b> is a package management tool that provides additional functionality to basic package management utilities, like <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>, <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a>, <a href="https://zeppe-lin.github.io/pkgrm.8.html">pkgrm(8)</a>, and <a href="https://zeppe-lin.github.io/pkginfo.8.html">pkginfo(8)</a>.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>The following options are common to all commands. Note that each command has its own set of specific options and arguments.</p>
+
+<dl>
+
+<dt id="no-std-config"><b>--no-std-config</b></dt>
+<dd>
+
+<p>Ignore <i>/etc/pkgman.conf</i>.</p>
+
+</dd>
+<dt id="config-FILE"><b>--config</b>=&quot;<i>FILE</i>&quot;</dt>
+<dd>
+
+<p>Use alternate configuration file.</p>
+
+</dd>
+<dt id="config-set-STRING"><b>--config-set</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Set <i>STRING</i> in configuration, overriding configuration file.</p>
+
+</dd>
+<dt id="config-append-STRING"><b>--config-append</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Append <i>STRING</i> to configuration.</p>
+
+</dd>
+<dt id="config-prepend-STRING"><b>--config-prepend</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Prepend <i>STRING</i> to configuration.</p>
+
+</dd>
+<dt id="root-PATH"><b>--root</b>=&quot;<i>PATH</i>&quot;</dt>
+<dd>
+
+<p>Use <i>PATH</i> as root directory.</p>
+
+</dd>
+<dt id="V---version"><b>-V</b>, <b>--version</b></dt>
+<dd>
+
+<p>Print program version and exit.</p>
+
+</dd>
+<dt id="h---help"><b>-h</b>, <b>--help</b></dt>
+<dd>
+
+<p>Print the <i>COMMAND</i>&#39;s help if <i>COMMAND</i> specified. Otherwise, print this help message.</p>
+
+</dd>
+<dt id="pod"><b>--</b></dt>
+<dd>
+
+<p>A <b>--</b> signals the end of options and disables further option processing. Any arguments after the <b>--</b> are treated as <i>COMMAND</i> and its arguments. It helps to specify <i>COMMAND</i> arguments that starts with <b>-</b> and <b>pkgman</b> won&#39;t confuse it with an option. Example:</p>
+
+<pre><code>pkgman search -- -lib
+-- search ([i] = installed)
+[i] alsa-lib
+[i] p5-libwww
+...</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="COMMANDS">COMMANDS</h1>
+
+<p><b>pkgman</b> uses so-called commands, which always have to be the first non-option argument passed. The commands can be divided into the following self-explanatory categories.</p>
+
+<h2 id="INFORMATIONAL">INFORMATIONAL</h2>
+
+<dl>
+
+<dt id="pkgman-dumpconfig-1"><a href="https://zeppe-lin.github.io/pkgman-dumpconfig.1.html">pkgman-dumpconfig(1)</a></dt>
+<dd>
+
+<p>dump the configuration</p>
+
+</dd>
+<dt id="pkgman-list-1"><a href="https://zeppe-lin.github.io/pkgman-list.1.html">pkgman-list(1)</a></dt>
+<dd>
+
+<p>print list of available packages</p>
+
+</dd>
+<dt id="pkgman-list-dup-1"><a href="https://zeppe-lin.github.io/pkgman-list-dup.1.html">pkgman-list-dup(1)</a></dt>
+<dd>
+
+<p>print list of duplicate packages</p>
+
+</dd>
+<dt id="pkgman-list-nodependents-1"><a href="https://zeppe-lin.github.io/pkgman-list-nodependents.1.html">pkgman-list-nodependents(1)</a></dt>
+<dd>
+
+<p>print list of packages that no other depends on them</p>
+
+</dd>
+<dt id="pkgman-list-locked-1"><a href="https://zeppe-lin.github.io/pkgman-list-locked.1.html">pkgman-list-locked(1)</a></dt>
+<dd>
+
+<p>print list of locked packages</p>
+
+</dd>
+<dt id="pkgman-list-orphans-1"><a href="https://zeppe-lin.github.io/pkgman-list-orphans.1.html">pkgman-list-orphans(1)</a></dt>
+<dd>
+
+<p>print list of orphaned packages</p>
+
+</dd>
+<dt id="pkgman-printf-1"><a href="https://zeppe-lin.github.io/pkgman-printf.1.html">pkgman-printf(1)</a></dt>
+<dd>
+
+<p>print formatted list of available packages</p>
+
+</dd>
+<dt id="pkgman-info-1"><a href="https://zeppe-lin.github.io/pkgman-info.1.html">pkgman-info(1)</a></dt>
+<dd>
+
+<p>print package info</p>
+
+</dd>
+<dt id="pkgman-readme-1"><a href="https://zeppe-lin.github.io/pkgman-readme.1.html">pkgman-readme(1)</a></dt>
+<dd>
+
+<p>print the package&#39;s README</p>
+
+</dd>
+<dt id="pkgman-path-1"><a href="https://zeppe-lin.github.io/pkgman-path.1.html">pkgman-path(1)</a></dt>
+<dd>
+
+<p>print path to package source</p>
+
+</dd>
+<dt id="pkgman-isinst-1"><a href="https://zeppe-lin.github.io/pkgman-isinst.1.html">pkgman-isinst(1)</a></dt>
+<dd>
+
+<p>print whether packages are installed or not</p>
+
+</dd>
+<dt id="pkgman-current-1"><a href="https://zeppe-lin.github.io/pkgman-current.1.html">pkgman-current(1)</a></dt>
+<dd>
+
+<p>print installed package version</p>
+
+</dd>
+<dt id="pkgman-diff-1"><a href="https://zeppe-lin.github.io/pkgman-diff.1.html">pkgman-diff(1)</a></dt>
+<dd>
+
+<p>print the differences between installed and available packages</p>
+
+</dd>
+</dl>
+
+<h2 id="DEPENDENCIES">DEPENDENCIES</h2>
+
+<dl>
+
+<dt id="pkgman-dep-1"><a href="https://zeppe-lin.github.io/pkgman-dep.1.html">pkgman-dep(1)</a></dt>
+<dd>
+
+<p>print dependencies for a package</p>
+
+</dd>
+<dt id="pkgman-rdep-1"><a href="https://zeppe-lin.github.io/pkgman-rdep.1.html">pkgman-rdep(1)</a></dt>
+<dd>
+
+<p>print reverse dependencies for a package</p>
+
+</dd>
+</dl>
+
+<h2 id="SEARCHING">SEARCHING</h2>
+
+<dl>
+
+<dt id="pkgman-search-1"><a href="https://zeppe-lin.github.io/pkgman-search.1.html">pkgman-search(1)</a></dt>
+<dd>
+
+<p>search the packages sources directories for package name</p>
+
+</dd>
+<dt id="pkgman-dsearch-1"><a href="https://zeppe-lin.github.io/pkgman-dsearch.1.html">pkgman-dsearch(1)</a></dt>
+<dd>
+
+<p>search the packages sources directories for package name/description</p>
+
+</dd>
+<dt id="pkgman-fsearch-1"><a href="https://zeppe-lin.github.io/pkgman-fsearch.1.html">pkgman-fsearch(1)</a></dt>
+<dd>
+
+<p>search the packages sources directories for a file in package footprint</p>
+
+</dd>
+</dl>
+
+<h2 id="INSTALL-UPDATE-REMOVE">INSTALL / UPDATE / REMOVE</h2>
+
+<dl>
+
+<dt id="pkgman-install-8"><a href="https://zeppe-lin.github.io/pkgman-install.8.html">pkgman-install(8)</a></dt>
+<dd>
+
+<p>install package(s)</p>
+
+</dd>
+<dt id="pkgman-update-8"><a href="https://zeppe-lin.github.io/pkgman-update.8.html">pkgman-update(8)</a></dt>
+<dd>
+
+<p>update installed package(s)</p>
+
+</dd>
+<dt id="pkgman-remove-8"><a href="https://zeppe-lin.github.io/pkgman-remove.8.html">pkgman-remove(8)</a></dt>
+<dd>
+
+<p>remove installed package(s)</p>
+
+</dd>
+</dl>
+
+<h2 id="SYSTEM-UPDATE">SYSTEM UPDATE</h2>
+
+<dl>
+
+<dt id="pkgman-sysup-8"><a href="https://zeppe-lin.github.io/pkgman-sysup.8.html">pkgman-sysup(8)</a></dt>
+<dd>
+
+<p>update all outdated packages</p>
+
+</dd>
+<dt id="pkgman-lock-8"><a href="https://zeppe-lin.github.io/pkgman-lock.8.html">pkgman-lock(8)</a></dt>
+<dd>
+
+<p>lock the package(s)</p>
+
+</dd>
+<dt id="pkgman-unlock-8"><a href="https://zeppe-lin.github.io/pkgman-unlock.8.html">pkgman-unlock(8)</a></dt>
+<dd>
+
+<p>unlock the package(s)</p>
+
+</dd>
+</dl>
+
+<h2 id="FILE-OPERATIONS">FILE OPERATIONS</h2>
+
+<dl>
+
+<dt id="pkgman-ls-1"><a href="https://zeppe-lin.github.io/pkgman-ls.1.html">pkgman-ls(1)</a></dt>
+<dd>
+
+<p>print out a listing of the package&#39;s directory</p>
+
+</dd>
+<dt id="pkgman-cat-1"><a href="https://zeppe-lin.github.io/pkgman-cat.1.html">pkgman-cat(1)</a></dt>
+<dd>
+
+<p>print out the package&#39;s file</p>
+
+</dd>
+<dt id="pkgman-edit-8"><a href="https://zeppe-lin.github.io/pkgman-edit.8.html">pkgman-edit(8)</a></dt>
+<dd>
+
+<p>edit the package&#39;s file</p>
+
+</dd>
+</dl>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-pkgman.conf"><i>/etc/pkgman.conf</i></dt>
+<dd>
+
+<p>Configuration file. See <a href="https://zeppe-lin.github.io/pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
+
+</dd>
+<dt id="var-lib-pkg-db"><i>/var/lib/pkg/db</i></dt>
+<dd>
+
+<p>Database of currently installed packages.</p>
+
+</dd>
+<dt id="var-lib-pkg-locked"><i>/var/lib/pkg/locked</i></dt>
+<dd>
+
+<p>Database of currently locked packages. Used by <a href="https://zeppe-lin.github.io/pkgman-lock.8.html">pkgman-lock(8)</a>, <a href="https://zeppe-lin.github.io/pkgman-unlock.8.html">pkgman-unlock(8)</a> and <a href="https://zeppe-lin.github.io/pkgman-list-locked.1.html">pkgman-list-locked(1)</a>.</p>
+
+</dd>
+</dl>
+
+<p><b>NOTE!</b> When the <b>--root</b>=<i>PATH</i> option is specified, both databases location changes to <i>PATH/var/lib/pkg/...</i>.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/pkgman.conf.5.html">pkgman.conf(5)</a></p>
+
+
+</body>
+
+</html>
+
+

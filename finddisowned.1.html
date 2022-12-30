@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>finddisowned - find files that are disowned by package manager</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>finddisowned - find files that are disowned by package manager</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>finddisowned</b> [<i>OPTION</i>]...</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>finddisowned</b> lists the files that are disowned by package manager.</p>
+
+<p>In particular, finddisowned compares the package database with contents of the directories described in <i>/etc/finddisowned.conf</i>.</p>
+
+<p><b>finddisowned</b> does not compare the package database with the entire file system, but only with files from directories described in <i>/etc/finddisowned.conf</i> because the entire file system contains directories such as <i>/home</i>, <i>/mnt</i> and even dynamic directories like <i>/proc</i>, <i>/dev</i>, etc, the contents of which are definitely not taken into account (and should not be) by package manager.</p>
+
+<p>Feel free to adjust the configuration file (<i>/etc/finddisowned.conf</i>) conform your needs.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>Mandatory arguments to long options are mandatory for short options too.</p>
+
+<dl>
+
+<dt id="c---config-FILE"><b>-c</b>, <b>--config</b> <i>FILE</i></dt>
+<dd>
+
+<p>Specify alternate configuration file.</p>
+
+</dd>
+<dt id="r---root-PATH"><b>-r</b>, <b>--root</b> <i>PATH</i></dt>
+<dd>
+
+<p>Specify alternate root directory.</p>
+
+</dd>
+<dt id="v---version"><b>-v</b>, <b>--version</b></dt>
+<dd>
+
+<p>Print version and exit.</p>
+
+</dd>
+<dt id="h---help"><b>-h</b>, <b>--help</b></dt>
+<dd>
+
+<p>Print help and exit.</p>
+
+</dd>
+</dl>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="var-lib-pkg-db"><i>/var/lib/pkg/db</i></dt>
+<dd>
+
+<p>System package database.</p>
+
+</dd>
+<dt id="etc-finddisowned.conf"><i>/etc/finddisowned.conf</i></dt>
+<dd>
+
+<p>Contains a list of directories, the contents of which will be compared with package database.</p>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright (C) 2021-2022 Alexandr Savca &lt;alexandr.savca89@gmail.com&gt;</p>
+
+<p>License GPLv3+: GNU GPL version 3 or later <a href="https://gnu.org/licenses/gpl.html">https://gnu.org/licenses/gpl.html</a>.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/finddeps-distmeta.1.html">finddeps-distmeta(1)</a>, <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>, <a href="https://zeppe-lin.github.io/findredundantdeps.1.html">findredundantdeps(1)</a>, <a href="https://zeppe-lin.github.io/finddisappeared.1.html">finddisappeared(1)</a></p>
+
+
+</body>
+
+</html>
+
+

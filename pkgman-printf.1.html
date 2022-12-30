@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>pkgman-printf - print formatted list of available packages</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>pkgman-printf - print formatted list of available packages</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>pkgman</b> printf [<b>--sort</b>=<i>FORMAT</i>] [<b>--regex</b>] [<b>--filter</b>=<i>PKGNAME</i>] <i>FORMAT</i></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Print formatted list of available packages. It looks in all packages sources directories specified in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code> directories.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<dl>
+
+<dt id="sort-FORMAT"><b>--sort</b>=<i>FORMAT</i></dt>
+<dd>
+
+<p>The <i>FORMAT</i> string (see below) that is used to sort the output.</p>
+
+</dd>
+<dt id="regex"><b>--regex</b></dt>
+<dd>
+
+<p>Interpret filter argument as a regular expression.</p>
+
+</dd>
+<dt id="filter-PKGNAME"><b>--filter</b>=<i>PKGNAME</i></dt>
+<dd>
+
+<p>Filter listing packages by name. The filter option argument may be the string, wildcard or regex.</p>
+
+</dd>
+<dt id="FORMAT"><i>FORMAT</i></dt>
+<dd>
+
+<p>The string that contains variables, which are replaced like this:</p>
+
+<dl>
+
+<dt id="n"><code>%n</code></dt>
+<dd>
+
+<p>name</p>
+
+</dd>
+<dt id="p"><code>%p</code></dt>
+<dd>
+
+<p>path</p>
+
+</dd>
+<dt id="v"><code>%v</code></dt>
+<dd>
+
+<p>version</p>
+
+</dd>
+<dt id="r"><code>%r</code></dt>
+<dd>
+
+<p>release number</p>
+
+</dd>
+<dt id="d"><code>%d</code></dt>
+<dd>
+
+<p>description</p>
+
+</dd>
+<dt id="e"><code>%e</code></dt>
+<dd>
+
+<p>dependencies</p>
+
+</dd>
+<dt id="u"><code>%u</code></dt>
+<dd>
+
+<p>url</p>
+
+</dd>
+<dt id="P"><code>%P</code></dt>
+<dd>
+
+<p>packager</p>
+
+</dd>
+<dt id="M"><code>%M</code></dt>
+<dd>
+
+<p>maintainer</p>
+
+</dd>
+<dt id="R"><code>%R</code></dt>
+<dd>
+
+<p>has readme (yes/no)</p>
+
+</dd>
+<dt id="A"><code>%A</code></dt>
+<dd>
+
+<p>has pre-install script (yes/no)</p>
+
+</dd>
+<dt id="B"><code>%B</code></dt>
+<dd>
+
+<p>has post-install script (yes/no)</p>
+
+</dd>
+<dt id="C"><code>%C</code></dt>
+<dd>
+
+<p>has pre-remove script (yes/no)</p>
+
+</dd>
+<dt id="D"><code>%D</code></dt>
+<dd>
+
+<p>has post-remove script (yes/no)</p>
+
+</dd>
+<dt id="l"><code>%l</code></dt>
+<dd>
+
+<p>is locked (yes/no)</p>
+
+</dd>
+<dt id="i"><code>%i</code></dt>
+<dd>
+
+<p>is installed (yes/no/diff); &quot;diff&quot; means the package is installed and different package version is available in the packages sources directories.</p>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+
+</body>
+
+</html>
+
+

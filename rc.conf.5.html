@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>rc.conf - system configuration file</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#EXAMPLE">EXAMPLE</a></li>
+  <li><a href="#FILES">FILES</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>rc.conf - system configuration file</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>/etc/rc.conf</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This manual page describes the format of the <i>/etc/rc.conf</i> file. This file is a simple POSIX <a href="https://www.mankier.com/1/dash">sh(1)</a> script that defines font, timezone, hostname and services which are used on system initialization and shutdown.</p>
+
+<p>The file consists of a number of variable assignments of the form <code>variable=value</code>. Comments can be specified by putting a hash (<code>#</code>) symbol as the first character on the line.</p>
+
+<p>The different configuration variables are:</p>
+
+<dl>
+
+<dt id="FONT-STRING"><b>FONT</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Specifies which console font to load at system startup. The contents of this variable will be passed as argument to <a href="https://www.mankier.com/8/setfont">setfont(8)</a>. The available fonts are located in <i>/usr/share/kbd/consolefonts/</i>.</p>
+
+<p>Example: <code>FONT=default</code></p>
+
+</dd>
+<dt id="KEYMAP-STRING"><b>KEYMAP</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Specifies which console keyboard map to load at system startup. The contents of this variable will be passed as argument to <a href="https://www.mankier.com/1/loadkeys">loadkeys(1)</a>. The available keyboard maps are located in <i>/usr/share/kbd/keymaps/</i>.</p>
+
+<p>Example: <code>KEYMAP=default</code></p>
+
+</dd>
+<dt id="TIMEZONE-STRING"><b>TIMEZONE</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Specifies the timezone used by the system. The available zone description files are located in <i>/usr/share/zoneinfo/</i>.</p>
+
+<p>Example: <code>TIMEZONE=Europe/Stockholm</code></p>
+
+</dd>
+<dt id="HOSTNAME-STRING"><b>HOSTNAME</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Specifies the hostname.</p>
+
+<p>Example: <code>HOSTNAME=pluto</code></p>
+
+</dd>
+<dt id="SYSLOG-STRING"><b>SYSLOG</b>=&quot;<i>STRING</i>&quot;</dt>
+<dd>
+
+<p>Specifies the system logging daemon to run at startup.</p>
+
+<p>Example: <code>SYSLOG=sysklogd</code></p>
+
+</dd>
+<dt id="SERVICES-STRING"><b>SERVICES</b>=&quot;<i>STRING</i>...&quot;</dt>
+<dd>
+
+<p>Specifies which services to start at system startup. The services specified in this string must be separated by space and have a matching start/stop script in <i>/etc/rc.d/</i>. When entering multi-user mode the specified scripts will be called in the specified order with the argument <code>start</code>. At system shutdown or when entering single-user mode these scripts will be called in the reverse order with the argument <code>stop</code>.</p>
+
+<p>Example: <code>SERVICES=&#39;lo crond net sshd&#39;</code></p>
+
+</dd>
+</dl>
+
+<h1 id="EXAMPLE">EXAMPLE</h1>
+
+<pre><code>#
+# /etc/rc.conf: system configuration
+#
+# See rc.conf(5) for more information.
+#
+
+FONT=default
+KEYMAP=us
+TIMEZONE=UTC
+HOSTNAME=host
+SYSLOG=sysklogd
+SERVICES=&#39;lo crond net&#39;
+
+# End of file.</code></pre>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-rc.conf"><i>/etc/rc.conf</i></dt>
+<dd>
+
+<p>System configuration file.</p>
+
+</dd>
+</dl>
+
+
+</body>
+
+</html>
+
+

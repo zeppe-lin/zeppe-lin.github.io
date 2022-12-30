@@ -1,0 +1,239 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>pkgmk.conf - configuration file for pkgmk</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#EXAMPLE">EXAMPLE</a></li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>pkgmk.conf - configuration file for pkgmk</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>/etc/pkgmk.conf</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This manual page describes the format of the <i>pkgmk.conf</i> file. This file is a simple shell file that configures <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>. The file consists of a number of variable assignments of the form <code>option=value</code>. Comments can be specified by putting a hash (<code>#</code>) symbol as the first character on the line.</p>
+
+<p>If some option is not used (commented out or not included in the configuration file at all) <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will take a default action.</p>
+
+<p>The different configuration options are:</p>
+
+<dl>
+
+<dt id="export-CFLAGS-STRING"><b>export CFLAGS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set C compiler options.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="export-CXXFLAGS-STRING"><b>export CXXFLAGS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set C++ compiler options.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="export-JOBS-NUMBER"><b>export JOBS=&#39;NUMBER&#39;</b></dt>
+<dd>
+
+<p>Set the number of commands to run simultaneously when building a package.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="export-MAKEFLAGS-STRING"><b>export MAKEFLAGS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set <a href="https://www.mankier.com/1/make">make(1)</a> options.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="PKGMK_SOURCE_MIRRORS-STRING"><b>PKGMK_SOURCE_MIRRORS=&quot;STRING...&quot;</b></dt>
+<dd>
+
+<p>Set mirrors to check and download source archives from.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="PKGMK_SOURCE_DIR-STRING"><b>PKGMK_SOURCE_DIR=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set directory for downloaded source archives.</p>
+
+<p>Default: directory of Pkgfile.</p>
+
+</dd>
+<dt id="PKGMK_PACKAGE_DIR-STRING"><b>PKGMK_PACKAGE_DIR=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set directory for built packages.</p>
+
+<p>Default: directory of Pkgfile.</p>
+
+</dd>
+<dt id="PKGMK_WORK_DIR-STRING"><b>PKGMK_WORK_DIR=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Set directory for building packages.</p>
+
+<p>Default: &#39;\fBfoo\fP/work&#39;, where \fBfoo\fP is the directory of the Pkgfile.</p>
+
+</dd>
+<dt id="PKGMK_DOWNLOAD-STRING"><b>PKGMK_DOWNLOAD=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will download the source archives if necessary. Valid strings are <code>yes</code> and <code>no</code>.</p>
+
+<p>Default: no.</p>
+
+</dd>
+<dt id="PKGMK_DOWNLOAD_PROG-STRING"><b>PKGMK_DOWNLOAD_PROG=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Use specified program to download source archives. Valid strings are <code>aria2c</code>, <code>curl</code> and <code>wget</code>.</p>
+
+<p>Default: <code>curl</code>.</p>
+
+</dd>
+<dt id="PKGMK_ARIA2C_OPTS-STRING"><b>PKGMK_ARIA2C_OPTS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Additional options for <a href="https://www.mankier.com/1/aria2c">aria2c(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="PKGMK_CURL_OPTS-STRING"><b>PKGMK_CURL_OPTS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Additional options for <a href="https://www.mankier.com/1/curl">curl(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="PKGMK_WGET_OPTS-STRING"><b>PKGMK_WGET_OPTS=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Additional options for <a href="https://www.mankier.com/1/wget">wget(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
+
+<p>Default: none.</p>
+
+</dd>
+<dt id="PKGMK_IGNORE_FOOTPRINT-STRING"><b>PKGMK_IGNORE_FOOTPRINT=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will not perform a footprint check of the built package. Valid string are <code>yes</code> and <code>no</code>.</p>
+
+<p>Default: <code>no</code>.</p>
+
+</dd>
+<dt id="PKGMK_IGNORE_MD5SUM-STRING"><b>PKGMK_IGNORE_MD5SUM=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will not perform a md5sum check of the source archives. Valid string are <code>yes</code> and <code>no</code>.</p>
+
+<p>Default: <code>no</code>.</p>
+
+</dd>
+<dt id="PKGMK_IGNORE_NEW-STRING"><b>PKGMK_IGNORE_NEW=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will ignore new files in a footprint mismatch. Valid string are <code>yes</code> and <code>no</code>.</p>
+
+<p>Default: <code>no</code>.</p>
+
+</dd>
+<dt id="PKGMK_NO_STRIP-STRING"><b>PKGMK_NO_STRIP=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>If set to <code>no</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will strip built binaries. Valid string are <code>yes</code> and <code>no</code>.</p>
+
+<p>Default: <code>no</code>.</p>
+
+</dd>
+<dt id="PKGMK_COMPRESSION_MODE-STRING"><b>PKGMK_COMPRESSION_MODE=&quot;STRING&quot;</b></dt>
+<dd>
+
+<p>Option to select the mode used to compress the packages. Valid strings are <code>gz</code>, <code>bz2</code>, <code>xz</code> and <code>lz</code>.</p>
+
+<p>Default: <code>gz</code>.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXAMPLE">EXAMPLE</h1>
+
+<pre><code>#
+# /etc/pkgmk.conf: pkgmk(8) configuration
+#
+# See pkgmk.conf(5) for more information.
+#
+
+export CFLAGS=&quot;-O2 -march=x86-64 -pipe -fdiagnostics-color=always&quot;
+export CXXFLAGS=&quot;$CFLAGS&quot;
+export JOBS=$(getconf _NPROCESSORS_ONLN)
+export MAKEFLAGS=&quot;-j $JOBS&quot;
+
+case $PKGMK_ARCH in
+&quot;64&quot;|&quot;&quot;)
+        ;;
+&quot;32&quot;)
+        export CFLAGS=&quot;$CFLAGS -m32&quot;
+        export CXXFLAGS=&quot;$CXXFLAGS -m32&quot;
+        export LDFLAGS=&quot;$LDFLAGS -m32&quot;
+        export PKG_CONFIG_LIBDIR=&quot;/usr/lib32/pkgconfig&quot;
+        ;;
+*)
+        echo &quot;Unknown architecture selected! Exiting.&quot;
+        exit 1
+        ;;
+esac
+
+# End of file.</code></pre>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-pkgmk.conf"><i>/etc/pkgmk.conf</i></dt>
+<dd>
+
+<p>Configuration file for <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>, <a href="https://zeppe-lin.github.io/Pkgfile.5.html">Pkgfile(5)</a></p>
+
+
+</body>
+
+</html>
+
+

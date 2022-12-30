@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>pkgadd.conf - configuration file for pkgadd</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#EXAMPLE">EXAMPLE</a></li>
+  <li><a href="#FILES">FILES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>pkgadd.conf - configuration file for pkgadd</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>/etc/pkgadd.conf</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This manual page describes the format of the <i>pkgadd.conf</i> file. This file can be used to alter the way <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a> upgrade and/or install the package.</p>
+
+<p><b>pkgadd.conf</b> file contain rules, that are built out of three fragments: <i>EVENT</i>, <i>PATTERN</i> and <i>ACTION</i>. The <i>EVENT</i> describes in what kind of situation this rule applies. Currently there are two types of events: <b>UPGRADE</b> and <b>INSTALL</b>. <b>UPGRADE</b> rules are applied when a package is installed over an existing version, and <b>INSTALL</b> rules are applied in any case. The <i>PATTERN</i> is a regular expression. The <i>ACTION</i> applicable to both the <b>UPGRADE</b> and <b>INSTALL</b> event is <b>YES</b> and <b>NO</b>. More than one rule of the same <i>EVENT</i> type is allowed, in which case the first rule will have the lowest priority and the last rule will have the highest priority.</p>
+
+<p>For example:</p>
+
+<pre><code>UPGRADE  ^etc/.*$              NO
+UPGRADE  ^var/log/.*$          NO
+UPGRADE  ^etc/X11/.*$          YES
+UPGRADE  ^etc/X11/XF86Config$  NO</code></pre>
+
+<p>The above example will cause <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a> to never upgrade anything in <i>/etc</i> or <i>/var/log</i> (subdirectories included), except files in <i>/etc/X11</i> (subdirectories included), unless it is the files <i>/etc/X11/XF86Config</i>. The default rule is to upgrade/install everything, rules in this file are exceptions to that rule.</p>
+
+<p><b>NOTE!</b> The <i>PATTERN</i> should never contain an initial <code>/</code> since you are referring to the files in the package, not the files on the disk.</p>
+
+<p>If <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a> finds that a specific file should not be upgraded it will install it under <i>/var/lib/pkg/rejected/</i>. The user is then free to examine/use/remove that file manually or use <a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a> to manage rejected files.</p>
+
+<h1 id="EXAMPLE">EXAMPLE</h1>
+
+<pre><code>#
+# /etc/pkgadd.conf: pkgadd(8) configuration
+#
+# See pkgadd.conf(5) for more information.
+#
+
+# Default rule (implicit)
+#UPGRADE    ^.*$                       YES
+
+UPGRADE     ^var/log/.*$               NO
+UPGRADE     ^var/spool/\w*cron/.*$     NO
+UPGRADE     ^var/run/utmp$             NO
+
+UPGRADE     ^etc/rc.*$                 YES
+UPGRADE     ^etc/rc\.conf$             NO
+
+# End of file.</code></pre>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="etc-pkgadd.conf"><i>/etc/pkgadd.conf</i></dt>
+<dd>
+
+<p>Configuration file for <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a>.</p>
+
+</dd>
+<dt id="var-lib-pkg-rejected"><i>/var/lib/pkg/rejected/</i></dt>
+<dd>
+
+<p>Directory where rejected files are stored.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a></p>
+
+
+</body>
+
+</html>
+
+
