@@ -39,10 +39,10 @@
 
   <pre>
   hooks/
-  └── <hook>               -> directory of hook scripts
-      ├── <hook>           -> invoked in build process
-      ├── <hook>.init      -> invoked in init process
-      └── <hook>.init.late -> invoked after root filesystem was mounted
+  └── &lt;hook&gt;               -> directory of hook scripts
+      ├── &lt;hook&gt;           -> invoked in build process
+      ├── &lt;hook&gt;.init      -> invoked in init process
+      └── &lt;hook&gt;.init.late -> invoked after root filesystem was mounted
   </pre>
 
 <h2 id="MAN-PAGE-SYNTAX">MAN PAGE SYNTAX</h2>
@@ -84,7 +84,7 @@
 <dt id="BI:-panic-MESSAGE"><b>BI: panic</b> [<i>MESSAGE</i>]</dt>
 <dd>
 
-<p>If message was not specified, then mkinitramfs will print default error message. Otherwise, message will be printed.</p>
+<p>If message was not specified, then mkinitramfs will print default error message. Otherwise, <i>MESSAGE</i> will be printed.</p>
 
 </dd>
 <dt id="B:-copy_module-PATH"><b>B: copy_module</b> <i>PATH</i></dt>
