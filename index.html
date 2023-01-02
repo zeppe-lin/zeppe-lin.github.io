@@ -140,7 +140,7 @@
       <li><a href="#Using-The-Pkgsrc">Using The Pkgsrc</a>
         <ul>
           <li><a href="#Synchronizing-your-local-pkgsrc-repository">Synchronizing your local pkgsrc repository</a></li>
-          <li><a href="#Listing-local-zeppe-lin-repository">Listing local zeppe-lin repository</a></li>
+          <li><a href="#Listing-local-pkgsrc-repository">Listing local pkgsrc repository</a></li>
           <li><a href="#Listing-version-differences">Listing version differences</a></li>
           <li><a href="#Building-and-installing-packages">Building and installing packages</a></li>
           <li><a href="#Build-packages-as-an-unprivileged-user">Build packages as an unprivileged user</a></li>
@@ -178,7 +178,8 @@
 
 <p>This handbook (as a whole Zeppe-Lin) is inspired and based on the <a href="https://crux.nu/Main/Documentation">CRUX Handbook</a>.</p>
 
-It's also available on the Zeppe-Lin system as B<handbook(7)>
+It's also available on the Zeppe-Lin system as
+<a href="https://github.com/zeppe-lin/handbook">handbook(7)</a>
 manual page.
 
 <p>Zeppe-Lin is a lightweight GNU/Linux distribution for the x86-64 architecture targeted at experienced users. It is forked from CRUX and the primary focus of this distribution is &quot;keep it simple&quot; too.</p>
@@ -326,7 +327,7 @@ manual page.
 <h3 id="Download-rootfs-tarball">Download rootfs tarball</h3>
 
 <pre><code># cd /mnt
-# wget -c https://github.com/zeppe-lin/zeppe-lin/releases/download/2022-12-08/rootfs-2022-12-08-x86_64.tar.xz{,.sig}</code></pre>
+# wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2022-12-08/rootfs-2022-12-08-x86_64.tar.xz{,.sig}</code></pre>
 
 <h4 id="Signature-verification">Signature verification</h4>
 
@@ -405,7 +406,7 @@ manual page.
 <h3 id="Prepare-the-package-sources">Prepare the package sources</h3>
 
 <pre><code>(chrooted) # cd /usr/src/
-(chrooted) # git clone https://github.com/zeppe-lin/zeppe-lin</code></pre>
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc</code></pre>
 
 <h4 id="Update-the-core-packages-and-configuration-files">Update the core packages and configuration files</h4>
 
@@ -787,7 +788,7 @@ autoconf 2.71-1: Generates automatic source code configuration scripts</code></p
 
 <pre><code>$ pkgman info acl
 Name:         acl
-Path:         /usr/src/zeppe-lin/core
+Path:         /usr/src/pkgsrc/core
 Version:      2.3.1
 Release:      1
 Description:  Access Control List filesystem support
@@ -854,7 +855,7 @@ $ pkgman dep bash --recursive -vv --tree
 
 <p>Since the packages sources for Zeppe-Lin is distributed via <a href="https://www.mankier.com/1/git">git(1)</a>, the first thing to do is to update the sources:</p>
 
-<pre><code>$ cd /usr/src/zeppe-lin
+<pre><code>$ cd /usr/src/pkgsrc
 $ git pull</code></pre>
 
 <p>Listing installed packages which are out of date (including their new dependencies):</p>
@@ -1063,7 +1064,7 @@ build() {
 
 <p>This collection contains packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
-<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/zeppe-lin/blob/master/Makefile">Makefile</a> in zeppe-lin repository, <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="https://zeppe-lin.github.io/revdep.1.html">revdep(1)</a>.</p>
+<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/lint.mk">lint.mk</a> in pkgsrc repository, <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="https://zeppe-lin.github.io/revdep.1.html">revdep(1)</a>.</p>
 
 <h4 id="system">system</h4>
 
@@ -1085,21 +1086,21 @@ build() {
 
 <h3 id="Synchronizing-your-local-pkgsrc-repository">Synchronizing your local pkgsrc repository</h3>
 
-<p>When Zeppe-Lin is installed for the first time the local pkgsrc structure (<i>/usr/src/zeppe-lin/*</i>) is empty. To obtains the sources at first time, use <code>git clone</code>. Example:</p>
+<p>When Zeppe-Lin is installed for the first time the local pkgsrc structure (<i>/usr/src/pkgsrc/*</i>) is empty. To obtains the sources at first time, use <code>git clone</code>. Example:</p>
 
 <pre><code># cd /usr/src/
-# git clone https://github.com/zeppe-lin/zeppe-lin</code></pre>
+# git clone https://github.com/zeppe-lin/pkgsrc</code></pre>
 
-<p>To bring your local zeppe-lin up to date use <code>git pull</code>. Example:</p>
+<p>To bring your local pkgsrc up to date use <code>git pull</code>. Example:</p>
 
-<pre><code># cd /usr/src/zeppe-lin
+<pre><code># cd /usr/src/pkgsrc
 # git pull</code></pre>
 
-<h3 id="Listing-local-zeppe-lin-repository">Listing local zeppe-lin repository</h3>
+<h3 id="Listing-local-pkgsrc-repository">Listing local pkgsrc repository</h3>
 
-<p>When the local zeppe-lin repository has been updated the directory <code>/usr/src/zeppe-lin/</code> will contain some package categories, <code>core</code>, <code>system</code>, <code>xorg</code>, <code>desktop</code> and <code>stuff</code>. Under each of these directories you will find packages&#39; sources. You can simply browse around in the directory structure to find out which packages&#39; sources are available.</p>
+<p>When the local pkgsrc repository has been updated the directory <code>/usr/src/pkgsrc/</code> will contain some package categories, <code>core</code>, <code>system</code>, <code>xorg</code>, <code>desktop</code> and <code>stuff</code>. Under each of these directories you will find packages&#39; sources. You can simply browse around in the directory structure to find out which packages&#39; sources are available.</p>
 
-<pre><code>$ cd /usr/src/zeppe-lin/core
+<pre><code>$ cd /usr/src/pkgsrc/core
 $ ls
 acl              gettext-tiny  libtirpc         python3-setuptools
 asciidoctor      git           libtool          rc
@@ -1133,6 +1134,15 @@ gawk             libpcre       procps           zstd
 gcc              libpcre2      psmisc
 gdbm             libpipeline   python3</code></pre>
 
+<p>Pay attention to the files <code>lint.mk</code> and <code>rootfs.mk</code> file in the root directory:</p>
+
+<pre><code>$ cd /usr/src/pkgsrc
+$ ls
+COPYING    core/     lint.mk    README.rootfs.md  stuff/   xorg/
+COPYRIGHT  desktop/  README.md  rootfs.mk         system/</code></pre>
+
+<p><i>lint.mk</i> will check packages&#39; sources for some typical errors. Type <code>make -f lint.mk help</code> for more information. <i>rootfs.mk</i> will allow you to build Zeppe-Lin rootfs archive. See <i>README.rootfs.mk</i> for more information.</p>
+
 <p>You can also use <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
 <pre><code>$ pkgman list --all
@@ -1147,22 +1157,22 @@ gdbm             libpipeline   python3</code></pre>
 
 <pre><code>$ pkgman list --all --path
 -- list ([i] = installed)
-[i] /usr/src/zeppe-lin/core/acl
-[i] /usr/src/zeppe-lin/system/alsa-lib
-[ ] /usr/src/zeppe-lin/system/alsa-ucm-conf
-[i] /usr/src/zeppe-lin/system/alsa-utils</code></pre>
+[i] /usr/src/pkgsrc/core/acl
+[i] /usr/src/pkgsrc/system/alsa-lib
+[ ] /usr/src/pkgsrc/system/alsa-ucm-conf
+[i] /usr/src/pkgsrc/system/alsa-utils</code></pre>
 
 <p>If you are looking for a specific package source, it might be easier to use <b>search</b> command instead of <code>list | grep</code>:</p>
 
 <pre><code>$ pkgman search --path alsa
 -- search ([i] = installed)
-[i] /usr/src/zeppe-lin/system/alsa-lib
-[ ] /usr/src/zeppe-lin/system/alsa-ucm-conf
-[i] /usr/src/zeppe-lin/system/alsa-utils</code></pre>
+[i] /usr/src/pkgsrc/system/alsa-lib
+[ ] /usr/src/pkgsrc/system/alsa-ucm-conf
+[i] /usr/src/pkgsrc/system/alsa-utils</code></pre>
 
 <h3 id="Listing-version-differences">Listing version differences</h3>
 
-<p>To find out if the zeppe-lin repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="https://zeppe-lin.github.io/pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
+<p>To find out if the pkgsrc repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="https://zeppe-lin.github.io/pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
 
 <pre><code>$ pkgman diff --deps --full
 
@@ -1195,11 +1205,11 @@ No differences found</code></pre>
 
 <h3 id="Building-and-installing-packages">Building and installing packages</h3>
 
-<p><b>NOTE</b> that the recommended way is to use <a href="https://zeppe-lin.github.io/pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
+<p><b>Note</b> that the recommended way is to use <a href="https://zeppe-lin.github.io/pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
 
 <p>Once you have found a package that you want to build and install you simply go into the desired package source directory and use <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to build it. Example:</p>
 
-<pre><code># cd /usr/src/zeppe-lin/core/gawk
+<pre><code># cd /usr/src/pkgsrc/core/gawk
 # pkgmk -d</code></pre>
 
 <p>The <b>-d</b> option means download missing source files and tells <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download the source(s) specified in <i>Pkgfile</i> (in case the source are already downloaded this option is ignored). When the download is completed the package will be built.</p>
@@ -1457,7 +1467,7 @@ nameserver &lt;your DNS server&gt;
 
 <h1 id="REPORTING-BUGS">REPORTING BUGS</h1>
 
-<p>The source code for this site is available at: <a href="https://github.com/zeppe-lin/zeppe-lin.github.io">https://github.com/zeppe-lin/zeppe-lin.github.io</a>. Please note that it is generated (by <a href="https://www.mankier.com/1/pod2html">pod2html(1)</a>) from the handbook, that is available at <a href="https://github.com/zeppe-lin/zeppe-lin">https://github.com/zeppe-lin/zeppe-lin</a>. If you&#39;d like to fix some <code>CSS</code> bugs and build files, refer to the source code of the site, otherwise to the handbook source.</p>
+<p>The source code for this site is available at: <a href="https://github.com/zeppe-lin/zeppe-lin.github.io">https://github.com/zeppe-lin/zeppe-lin.github.io</a>. Please note that it is generated (by <a href="https://www.mankier.com/1/pod2html">pod2html(1)</a>) from the handbook, that is available at <a href="https://github.com/zeppe-lin/handbook">https://github.com/zeppe-lin/handbook</a>. If you&#39;d like to fix some <code>CSS</code> bugs and build files, refer to the source code of the site, otherwise to the handbook source.</p>
 
 <p>Also, note that almost everything in Zeppe-Lin is distributed as a package, so if you found any bug in the documentation and code, refer to the Zeppe-Lin source code: <a href="https://github.com/zeppe-lin">https://github.com/zeppe-lin</a>.</p>
 

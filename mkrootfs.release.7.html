@@ -135,9 +135,9 @@ ROOTFS_LOG=...</code></pre>
 
 <h2 id="PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</h2>
 
-<p>First, you need to prepare rootfs tarball as described above. Next, create a tag in <code>zeppe-lin</code> repository (<i>/usr/src/zeppe-lin</i>). Example:</p>
+<p>First, you need to prepare rootfs tarball as described above. Next, create a tag in <code>pkgsrc</code> repository (<i>/usr/src/pkgsrc</i>). Example:</p>
 
-<pre><code>cd /usr/src/zeppe-lin
+<pre><code>cd /usr/src/pkgsrc
 
 PREVTAG=$(git describe --tags --abbrev=0)
 CURTAG=$(date +%F)
@@ -146,7 +146,7 @@ git tag -a $CURTAG -m $CURTAG
 git push
 git push --tags</code></pre>
 
-<p>Secondly, go to zeppe-lin repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/zeppe-lin/release/new">https://github.com/zeppe-lin/zeppe-lin/release/new</a>).</p>
+<p>Secondly, go to zeppe-lin&#39;s <code>pkgsrc</code> repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/pkgsrc/release/new">https://github.com/zeppe-lin/pkgsrc/release/new</a>).</p>
 
 <ul>
 
@@ -156,7 +156,7 @@ git push --tags</code></pre>
 <li><p>Set <b>Release title</b> the same as the tag. To describe this release, prepare the git log for the rootfs tarball:</p>
 
 <pre><code>$ git log --oneline $PREVTAG..$CURTAG core/ |
-            xclip -selection clipboard</code></pre>
+    xclip -selection clipboard</code></pre>
 
 <p>Next, paste the clipboard content into the <code>Describe</code> section on GitHub.</p>
 
@@ -167,7 +167,7 @@ git push --tags</code></pre>
 <li><p>Publish the release.</p>
 
 </li>
-<li><p><b>REMEMBER</b> to update the rootfs&#39; URL in the <code>Zeppe-Lin Handbook</code>, typically located at <i>/usr/src/zeppe-lin/system/handbook/src</i>.</p>
+<li><p><b>REMEMBER</b> to update the rootfs&#39; URL in the <code>Zeppe-Lin Handbook</code> (<a href="https://github.com/zeppe-lin/handbook">https://github.com/zeppe-lin/handbook</a>).</p>
 
 <p>Also, after that, regenerate the website:</p>
 
