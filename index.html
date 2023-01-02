@@ -327,17 +327,16 @@ manual page.
 <h3 id="Download-rootfs-tarball">Download rootfs tarball</h3>
 
 <pre><code># cd /mnt
-# wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2022-12-08/rootfs-2022-12-08-x86_64.tar.xz{,.sig}</code></pre>
+# wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2023-01-02/rootfs-2023-01-02-x86_64.tar.xz{,.sig}</code></pre>
 
 <h4 id="Signature-verification">Signature verification</h4>
 
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-2022-12-08-x86_64.tar.xz.sig \
-  rootfs-2022-12-08-x86_64.tar.xz</code></pre>
+# gpg --verify rootfs-2023-01-02-x86_64.tar.xz.sig rootfs-2023-01-02-x86_64.tar.xz</code></pre>
 
 <h3 id="Extract-rootfs-tarball">Extract rootfs tarball</h3>
 
-<pre><code># tar -xvf rootfs-2022-12-08-x86_64.tar.xz -C .</code></pre>
+<pre><code># tar -xvf rootfs-2023-01-02-x86_64.tar.xz -C .</code></pre>
 
 <h3 id="Chroot">Chroot</h3>
 
