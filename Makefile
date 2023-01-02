@@ -1,16 +1,16 @@
 .POSIX:
 
-PODS += $(wildcard /usr/src/zeppe-lin/core/pkgman/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/pkgmk/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/pkgutils/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/rc/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/rejmerge/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/revdep/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/core/start-stop-daemon/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/system/handbook/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/system/mkinitramfs/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/system/mkrootfs/src/*.pod)
-PODS += $(wildcard /usr/src/zeppe-lin/system/pkgmaint/src/*.pod)
+PODS += $(wildcard ${CURDIR}/../pkgman/*.pod)
+PODS += $(wildcard ${CURDIR}/../pkgmk/*.pod)
+PODS += $(wildcard ${CURDIR}/../pkgutils/*.pod)
+PODS += $(wildcard ${CURDIR}/../rc/*.pod)
+PODS += $(wildcard ${CURDIR}/../rejmerge/*.pod)
+PODS += $(wildcard ${CURDIR}/../revdep/*.pod)
+PODS += $(wildcard ${CURDIR}/../start-stop-daemon/*.pod)
+PODS += $(wildcard ${CURDIR}/../handbook/*.pod)
+PODS += $(wildcard ${CURDIR}/../mkinitramfs/*.pod)
+PODS += $(wildcard ${CURDIR}/../mkrootfs/*.pod)
+PODS += $(wildcard ${CURDIR}/../pkgmaint/*.pod)
 
 HTML  = $(PODS:.pod=.html)
 
@@ -21,7 +21,7 @@ all: index.html $(HTML)
 
 $(filter %.html,$(HTML)): %.html: %.pod
 
-index.html: /usr/src/zeppe-lin/system/handbook/src/handbook.7.html
+index.html: ${CURDIR}/../handbook/handbook.7.html
 	cp -f $(notdir $^) $@
 
 update:
