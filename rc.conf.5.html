@@ -73,7 +73,7 @@
 <dt id="SYSLOG-STRING"><b>SYSLOG</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
-<p>Specifies the system logging daemon to run at startup.</p>
+<p>Specifies the system logging daemon to run at startup. The daemon specified in this string must have a matching start/stop script in <code>/etc/rc.d</code>.</p>
 
 <p>Example: <code>SYSLOG=sysklogd</code></p>
 
@@ -87,6 +87,8 @@
 
 </dd>
 </dl>
+
+<p>The reason why the <b>SYSLOG</b> is specified separately from the <b>SERVICE</b> variable is as follows: firstly, the syslog daemon also starts in the single-user mode, and secondly, it is needed before the start of any services, so that the services can log the result if their work.</p>
 
 <h1 id="EXAMPLE">EXAMPLE</h1>
 
