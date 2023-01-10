@@ -16,16 +16,7 @@
   <li><a href="#NAME">NAME</a></li>
   <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
   <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#GENERAL-OPTIONS">GENERAL OPTIONS</a>
-    <ul>
-      <li><a href="#ROOTFS_DIR-PATH">ROOTFS_DIR=&quot;PATH&quot;</a></li>
-      <li><a href="#ROOTFS_TAR-FILE">ROOTFS_TAR=&quot;FILE&quot;</a></li>
-      <li><a href="#ROOTFS_PKG-PKG1-PKG2">ROOTFS_PKG=&quot;PKG1 PKG2...&quot;</a></li>
-      <li><a href="#ROOTFS_LOG-FILE">ROOTFS_LOG=&quot;FILE&quot;</a></li>
-      <li><a href="#ROOTFS_PKGMK_CONF-FILE">ROOTFS_PKGMK_CONF=&quot;FILE&quot;</a></li>
-      <li><a href="#ROOTFS_PKGMAN_CONF-FILE">ROOTFS_PKGMAN_CONF=&quot;FILE&quot;</a></li>
-    </ul>
-  </li>
+  <li><a href="#GENERAL-OPTIONS">GENERAL OPTIONS</a></li>
   <li><a href="#EXAMPLE">EXAMPLE</a></li>
   <li><a href="#FILES">FILES</a></li>
   <li><a href="#SEE-ALSO">SEE ALSO</a></li>
@@ -69,39 +60,55 @@ key=&quot;${key}value&quot;</code></pre>
 
 <h1 id="GENERAL-OPTIONS">GENERAL OPTIONS</h1>
 
-<h2 id="ROOTFS_DIR-PATH"><b>ROOTFS_DIR</b>=&quot;<i>PATH</i>&quot;</h2>
+<dl>
+
+<dt id="ROOTFS_DIR-PATH"><b>ROOTFS_DIR</b>=&quot;<i>PATH</i>&quot;</dt>
+<dd>
 
 <p>Set directory for root filesystem.</p>
 
 <p>Default: <code>/tmp/rootfs-{DATE}-{ARCH}</code>, where <code>{DATE}</code> is the output of <code>date +%F</code>, and the <code>{ARCH}</code> is the output of <code>uname -m</code> commands.</p>
 
-<h2 id="ROOTFS_TAR-FILE"><b>ROOTFS_TAR</b>=&quot;<i>FILE</i>&quot;</h2>
+</dd>
+<dt id="ROOTFS_TAR-FILE"><b>ROOTFS_TAR</b>=&quot;<i>FILE</i>&quot;</dt>
+<dd>
 
 <p>Set filename for compressed root filesystem.</p>
 
 <p>Default: <code>ROOTFS_DIR</code>.tar.xz</p>
 
-<h2 id="ROOTFS_PKG-PKG1-PKG2"><b>ROOTFS_PKG</b>=&quot;<i>PKG1</i> <i>PKG2</i>...&quot;</h2>
+</dd>
+<dt id="ROOTFS_PKG-PKG1-PKG2"><b>ROOTFS_PKG</b>=&quot;<i>PKG1</i> <i>PKG2</i>...&quot;</dt>
+<dd>
 
 <p>Packages that will be extracted into the <code>ROOTFS_DIR</code>.</p>
 
 <p>Default: all packages from core.</p>
 
-<h2 id="ROOTFS_LOG-FILE"><b>ROOTFS_LOG</b>=&quot;<i>FILE</i>&quot;</h2>
+</dd>
+<dt id="ROOTFS_LOG-FILE"><b>ROOTFS_LOG</b>=&quot;<i>FILE</i>&quot;</dt>
+<dd>
 
 <p>The log file for <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a>&#39;s invocations.</p>
 
 <p>Default: <code>ROOTFS_DIR</code>.log</p>
 
-<h2 id="ROOTFS_PKGMK_CONF-FILE"><b>ROOTFS_PKGMK_CONF</b>=&quot;<i>FILE</i>&quot;</h2>
+</dd>
+<dt id="ROOTFS_PKGMK_CONF-FILE"><b>ROOTFS_PKGMK_CONF</b>=&quot;<i>FILE</i>&quot;</dt>
+<dd>
 
 <p>The configuration file for <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>&#39;s invocations.</p>
 
 <p>Default: <code>/etc/pkgmk.conf</code>.</p>
 
-<h2 id="ROOTFS_PKGMAN_CONF-FILE"><b>ROOTFS_PKGMAN_CONF</b>=&quot;<i>FILE</i>&quot;</h2>
+</dd>
+<dt id="ROOTFS_PKGMAN_CONF-FILE"><b>ROOTFS_PKGMAN_CONF</b>=&quot;<i>FILE</i>&quot;</dt>
+<dd>
 
 <p>The configuration file for <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a>&#39;s invocations.</p>
+
+</dd>
+</dl>
 
 <h1 id="EXAMPLE">EXAMPLE</h1>
 
@@ -121,7 +128,7 @@ ROOTFS_TAR=&quot;$ROOTFS_DIR.tar.xz&quot;
 ROOTFS_LOG=&quot;$ROOTFS_DIR.log&quot;
 
 # build and install all core packages into rootfs dir
-ROOTFS_PKG=&quot;$(pkgman printf &quot;%p %n\n&quot; | awk &#39;/core /{print $NF}&#39;)&quot;
+ROOTFS_PKG=&quot;$(ls -1 /usr/src/pkgsrc/core)&quot;
 
 # configuration file for pkgmk&#39;s invocations
 ROOTFS_PKGMK_CONF=/etc/pkgmk.conf

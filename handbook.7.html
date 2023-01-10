@@ -685,20 +685,28 @@ profile</code></pre>
       <td>List installed packages and their version.</td>
     </tr>
     <tr>
-      <td>-l, --list PACKAGE|FILE</td>
+      <td>-l, --list=PACKAGE|FILE</td>
       <td>List files in PACKAGE or FILE.</td>
     </tr>
     <tr>
-      <td>-o, --owner PATTERN</td>
+      <td>-o, --owner=PATTERN</td>
       <td>List owner(s) of file(s) matching PATTERN.</td>
     </tr>
     <tr>
-      <td>-f, --footprint FILE</td>
+      <td>-f, --footprint=FILE</td>
       <td>Print footprint for FILE.</td>
     </tr>
     <tr>
-      <td>-r, --root PATH</td>
+      <td>-r, --root=PATH</td>
       <td>Specify alternative installation root.</td>
+    </tr>
+    <tr>
+      <td>-v, --version</td>
+      <td>Print version and exit.</td>
+    </tr>
+    <tr>
+      <td>-h, --help</td>
+      <td>Print help and exit.</td>
     </tr>
   </table>
 
@@ -762,7 +770,7 @@ drwxr-xr-x      root/root       usr/share/man/man1/
 
 <h2 id="Package-Management-Frontend:-pkgman">Package Management Frontend: pkgman</h2>
 
-<p>In its current form <b>pkgutils</b> does not have a concept of dependency handling. To address this, a frontend utility called <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a> exists.</p>
+<p>In its current form <b>pkgutils</b> does not have a concept of dependency handling. To address this, a front-end utility called <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a> exists.</p>
 
 <p><a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a> supports dependency handling (with the caveat mentioned below) as well as some overlap with <b>pkgutils</b> features.</p>
 
@@ -1133,14 +1141,14 @@ gawk             libpcre       procps           zstd
 gcc              libpcre2      psmisc
 gdbm             libpipeline   python3</code></pre>
 
-<p>Pay attention to the files <code>lint.mk</code> and <code>rootfs.mk</code> file in the root directory:</p>
+<p>Pay attention to the file <i>Makefile</i> in the root directory:</p>
 
 <pre><code>$ cd /usr/src/pkgsrc
 $ ls
-COPYING    core/     lint.mk    README.rootfs.md  stuff/   xorg/
-COPYRIGHT  desktop/  README.md  rootfs.mk         system/</code></pre>
+COPYING    core/     Makefile   stuff/   xorg/
+COPYRIGHT  desktop/  README.md  system/</code></pre>
 
-<p><i>lint.mk</i> will check packages&#39; sources for some typical errors. Type <code>make -f lint.mk help</code> for more information. <i>rootfs.mk</i> will allow you to build Zeppe-Lin rootfs archive. See <i>README.rootfs.mk</i> for more information.</p>
+<p><i>Makefile</i> will check packages&#39; sources for some typical errors. Type <code>make</code> for more information.</p>
 
 <p>You can also use <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
@@ -1386,7 +1394,7 @@ No differences found</code></pre>
 # /etc/rc.d/net: start/stop network interface
 #
 
-IFACE=enp11s0
+DEV=enp11s0
 
 ADDR=192.168.1.100
 MASK=24
@@ -1394,22 +1402,22 @@ GW=192.168.1.1
 
 case $1 in
 start)
-      /sbin/ip addr add $ADDR/$MASK dev $IFACE broadcast +
-      /sbin/ip link set $IFACE up
-      /sbin/ip route add default via $GW
-      ;;
+        /sbin/ip addr add $ADDR/$MASK dev $DEV broadcast +
+        /sbin/ip link set $DEV up
+        /sbin/ip route add default via $GW
+        ;;
 stop)
-      /sbin/ip route del default
-      /sbin/ip link set $IFACE down
-      /sbin/ip addr del $ADDR/$MASK dev $IFACE
-      ;;
+        /sbin/ip route del default
+        /sbin/ip link set $DEV down
+        /sbin/ip addr del $ADDR/$MASK dev $DEV
+        ;;
 restart)
-      $0 stop
-      $0 start
-      ;;
+        $0 stop
+        $0 start
+        ;;
 *)
-      echo &quot;Usage: $0 [start|stop|restart]&quot;
-      ;;
+        echo &quot;Usage: $0 [start|stop|restart]&quot;
+        ;;
 esac
 
 # End of file.</code></pre>

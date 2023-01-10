@@ -14,14 +14,11 @@
 
 <ul id="index">
   <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#CONFIGURATION">CONFIGURATION</a></li>
-      <li><a href="#MAKE-TARBALL">MAKE TARBALL</a></li>
-      <li><a href="#PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</a></li>
-      <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-    </ul>
-  </li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#CONFIGURATION">CONFIGURATION</a></li>
+  <li><a href="#MAKE-TARBALL">MAKE TARBALL</a></li>
+  <li><a href="#PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
 </ul>
 
 <h1 id="NAME">NAME</h1>
@@ -32,7 +29,7 @@
 
 <p>This manual page describes the how to build zeppe-lin root filesystem tarball and prepare the release on github.</p>
 
-<h2 id="CONFIGURATION">CONFIGURATION</h2>
+<h1 id="CONFIGURATION">CONFIGURATION</h1>
 
 <p>By default, <a href="https://zeppe-lin.github.io/mkrootfs.8.html">mkrootfs(8)</a> uses <i>/etc/mkrootfs/config</i>, <i>/etc/pkgmk.conf</i> and <i>/etc/pkgman.conf</i> configuration files. These files (if you haven&#39;t edited them in your zeppe-lin installation) contain reasonable defaults and can be used to create a root filesystem with your current built system packages.</p>
 
@@ -57,7 +54,7 @@ ROOTFS_LOG=...</code></pre>
 
 <p>See <a href="https://zeppe-lin.github.io/mkrootfs.config.5.html">mkrootfs.config(5)</a> for more information.</p>
 
-<h2 id="MAKE-TARBALL">MAKE TARBALL</h2>
+<h1 id="MAKE-TARBALL">MAKE TARBALL</h1>
 
 <dl>
 
@@ -133,7 +130,7 @@ ROOTFS_LOG=...</code></pre>
 </dd>
 </dl>
 
-<h2 id="PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</h2>
+<h1 id="PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</h1>
 
 <p>First, you need to prepare rootfs tarball as described above. Next, create a tag in <code>pkgsrc</code> repository (<i>/usr/src/pkgsrc</i>). Example:</p>
 
@@ -179,7 +176,7 @@ $ git push</code></pre>
 </li>
 </ul>
 
-<h2 id="SEE-ALSO">SEE ALSO</h2>
+<h1 id="SEE-ALSO">SEE ALSO</h1>
 
 <p><a href="https://zeppe-lin.github.io/mkrootfs.8.html">mkrootfs(8)</a>, <a href="https://zeppe-lin.github.io/mkrootfs.config.5.html">mkrootfs.config(5)</a></p>
 
