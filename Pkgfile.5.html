@@ -47,7 +47,7 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>This manual page describes the format of the <i>Pkgfile</i> file. The file is a <a href="https://www.mankier.com/1p/sh">sh(1)</a> script, which defines a number of variables (<i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>) and a function (<i>build</i>) that should be executed in order to compile a package.</p>
+<p>This manual page describes the format of the <i>Pkgfile</i> file. The file is a <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (<i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>) and a function (<i>build</i>) that should be executed in order to compile a package.</p>
 
 <h2 id="General-guidelines">General guidelines</h2>
 
@@ -178,7 +178,7 @@
 
 <ul>
 
-<li><p>We list all linked runtime dependencies except for gcc (libstdc++), glibc, binutils and the package itself (to prevent cyclic dependencies).</p>
+<li><p>We list all linked runtime dependencies except for <code>gcc</code> (<code>libstdc++</code>), <code>glibc</code>, <code>binutils</code> and the package itself (to prevent cyclic dependencies).</p>
 
 </li>
 <li><p><b>core</b> contains essential packages for a system, and our scripts and source packages expect the programs provided by <b>core</b> to be installed. This means that:</p>
@@ -212,7 +212,7 @@
 <p><b>Does</b> list readline, because bc is linked to readline.</p>
 
 </dd>
-<dt id="core-python3-setuptools"><i>core/python3-setuptools</i></dt>
+<dt id="core-py3-setuptools"><i>core/py3-setuptools</i></dt>
 <dd>
 
 <p><b>Does</b> list python3, because the package contains the specific interpreter version in its <i>.footprint</i>.</p>
@@ -276,13 +276,13 @@ build() {
 
 <pre><code>#!/bin/sh
 #
-# /etc/rc.d/example: start/stop example(8) daemon
+# /etc/rc.d/daemon: start/stop daemon(8) daemon
 #
 
 SSD=/sbin/start-stop-daemon
-PROG=/usr/sbin/exampled
-PID=/var/run/exampled.pid
-OPTS=&quot;--exampled-opts&quot;
+PROG=/usr/sbin/daemon
+PID=/run/daemon.pid
+OPTS=&quot;--some-opts&quot;
 
 case $1 in
 start)
