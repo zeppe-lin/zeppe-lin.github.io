@@ -4,7 +4,7 @@ TODO
       - zcat /usr/share/man/man1/man.1.gz  | groff -mandoc -Thtml
       - adjust css to zeppe-lin style
 
-    * add LICENSE file
+    [x] add LICENSE file
 
     * add README file
 
