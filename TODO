@@ -1,12 +1,12 @@
 TODO
 
-    * add missing man pages:
-      - zcat /usr/share/man/man1/man.1.gz  | groff -mandoc -Thtml
-      - adjust css to zeppe-lin style
+    [ ] add missing man pages:
+      [ ] add make target to find non-Zeppe-Lin man references
+      [ ] zcat /usr/share/man/man?/???.gz | groff -mandoc -Thtml
+      [ ] adjust css to zeppe-lin style
 
     [x] add LICENSE file
-
-    * add README file
+    [ ] add README file
 
 
 vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
