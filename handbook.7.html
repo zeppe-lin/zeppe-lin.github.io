@@ -463,7 +463,7 @@ manual page.
 <p>Or you can use the <code>all-inclusive</code> config from the package:</p>
 
 <pre><code>(chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
-(chrooted) # make oldconfig</code></pre>
+(chrooted) # make olddefconfig</code></pre>
 
 <p>Build the kernel and modules:</p>
 
@@ -800,8 +800,7 @@ Version:      2.3.1
 Release:      1
 Description:  Access Control List filesystem support
 URL:          http://savannah.nongnu.org/projects/acl
-Dependencies: attr
-Files:        ABOUT</code></pre>
+Dependencies: attr</code></pre>
 
 <h4 id="Searching-for-packages-sources-by-name">Searching for packages sources by name</h4>
 
