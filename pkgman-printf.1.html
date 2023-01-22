@@ -58,105 +58,95 @@
 
 <p>The string that contains variables, which are replaced like this:</p>
 
-<dl>
+  <table>
+    <tr>
+      <th>Format</th>
+      <th>Description</th>
+      <th>Replacement</th>
+    </tr>
+    <tr>
+      <td>&percnt;n</td>
+      <td>name</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;p</td>
+      <td>path</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;v</td>
+      <td>version</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;r</td>
+      <td>release number</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;d</td>
+      <td>description</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;e</td>
+      <td>dependencies</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;u</td>
+      <td>url</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;P</td>
+      <td>packager</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;M</td>
+      <td>maintainer</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&percnt;R</td>
+      <td>has readme</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;A</td>
+      <td>has pre-install script</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;B</td>
+      <td>has post-install script</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;C</td>
+      <td>has pre-remove script</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;D</td>
+      <td>has post-remove script</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;l</td>
+      <td>is locked</td>
+      <td>yes/no</td>
+    </tr>
+    <tr>
+      <td>&percnt;i</td>
+      <td>is installed</td>
+      <td>yes/no/diff</td>
+    </tr>
+  </table>
 
-<dt id="n"><code>%n</code></dt>
-<dd>
-
-<p>name</p>
-
-</dd>
-<dt id="p"><code>%p</code></dt>
-<dd>
-
-<p>path</p>
-
-</dd>
-<dt id="v"><code>%v</code></dt>
-<dd>
-
-<p>version</p>
-
-</dd>
-<dt id="r"><code>%r</code></dt>
-<dd>
-
-<p>release number</p>
-
-</dd>
-<dt id="d"><code>%d</code></dt>
-<dd>
-
-<p>description</p>
-
-</dd>
-<dt id="e"><code>%e</code></dt>
-<dd>
-
-<p>dependencies</p>
-
-</dd>
-<dt id="u"><code>%u</code></dt>
-<dd>
-
-<p>url</p>
-
-</dd>
-<dt id="P"><code>%P</code></dt>
-<dd>
-
-<p>packager</p>
-
-</dd>
-<dt id="M"><code>%M</code></dt>
-<dd>
-
-<p>maintainer</p>
-
-</dd>
-<dt id="R"><code>%R</code></dt>
-<dd>
-
-<p>has readme (yes/no)</p>
-
-</dd>
-<dt id="A"><code>%A</code></dt>
-<dd>
-
-<p>has pre-install script (yes/no)</p>
-
-</dd>
-<dt id="B"><code>%B</code></dt>
-<dd>
-
-<p>has post-install script (yes/no)</p>
-
-</dd>
-<dt id="C"><code>%C</code></dt>
-<dd>
-
-<p>has pre-remove script (yes/no)</p>
-
-</dd>
-<dt id="D"><code>%D</code></dt>
-<dd>
-
-<p>has post-remove script (yes/no)</p>
-
-</dd>
-<dt id="l"><code>%l</code></dt>
-<dd>
-
-<p>is locked (yes/no)</p>
-
-</dd>
-<dt id="i"><code>%i</code></dt>
-<dd>
-
-<p>is installed (yes/no/diff); &quot;diff&quot; means the package is installed and different package version is available in the packages sources directories.</p>
-
-</dd>
-</dl>
+<p>&quot;diff&quot; for &quot;%i&quot; (is installed) format means the package is installed and different package version is available in the packages sources directories.</p>
 
 </dd>
 </dl>
