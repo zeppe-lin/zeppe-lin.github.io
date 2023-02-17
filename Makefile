@@ -24,6 +24,12 @@ $(filter %.html,$(HTML)): %.html: %.pod
 index.html: ${CURDIR}/../handbook/handbook.7.html
 	cp -f $(notdir $^) $@
 
+check:
+	@echo "=======> Check URLs for response code"
+	@grep -Eiho "https?://[^\"\\'>< ]+" *.* \
+	| xargs -P10 -I{} curl -o /dev/null -sw "[%{http_code}] %{url}\n" '{}' \
+	| sort -u
+
 update:
 	git add .
 	git commit -m "update $(shell date)" .
