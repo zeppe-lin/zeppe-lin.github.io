@@ -39,7 +39,7 @@
 
 <p><b>start-stop-daemon</b> is used to control the creation and termination of system-level processes. Using one of the matching options, <b>start-stop-daemon</b> can be configured to find existing instances of a running process.</p>
 
-<p><b>Note:</b> Unless <b>--pid</b> or <b>--pidfile</b> are specified, <b>start-stop-daemon</b> behaves similar to <b>killall</b>(1). <b>start-stop-daemon</b> will scan the process table looking for any processes which match the process name, parent pid, uid, and/or gid (if specified). Any matching process will prevent <b>--start</b> from starting the daemon. All matching processes will be sent the TERM signal (or the one specified via <b>--signal</b> or <b>--retry</b>) if <b>--stop</b> is specified. For daemons which have long-lived children which need to live through a <b>--stop</b>, you must specify a pidfile.</p>
+<p><b>Note:</b> Unless <b>--pid</b> or <b>--pidfile</b> are specified, <b>start-stop-daemon</b> behaves similar to <a href="https://www.mankier.com/1/killall">killall(1)</a>. <b>start-stop-daemon</b> will scan the process table looking for any processes which match the process name, parent pid, uid, and/or gid (if specified). Any matching process will prevent <b>--start</b> from starting the daemon. All matching processes will be sent the TERM signal (or the one specified via <b>--signal</b> or <b>--retry</b>) if <b>--stop</b> is specified. For daemons which have long-lived children which need to live through a <b>--stop</b>, you must specify a pidfile.</p>
 
 <h1 id="COMMANDS">COMMANDS</h1>
 
@@ -186,7 +186,7 @@
 <dt id="c---chuid-username-uid-:group-gid"><b>-c</b>, <b>--chuid</b> <i>username</i>|<i>uid</i>[<b>:</b><i>group</i>|<i>gid</i>]</dt>
 <dd>
 
-<p>Change to this username/uid before starting the process. You can also specify a group by appending a <b>:</b>, then the group or gid in the same way as you would for the <b>chown</b>(1) command (<i>user</i><b>:</b><i>group</i>). If a user is specified without a group, the primary GID for that user is used. When using this option you must realize that the primary and supplemental groups are set as well, even if the <b>--group</b> option is not specified. The <b>--group</b> option is only for groups that the user isn&#39;t normally a member of (like adding per process group membership for generic users like <b>nobody</b>).</p>
+<p>Change to this username/uid before starting the process. You can also specify a group by appending a <b>:</b>, then the group or gid in the same way as you would for the <a href="https://www.mankier.com/1/chown">chown(1)</a> command (<i>user</i><b>:</b><i>group</i>). If a user is specified without a group, the primary GID for that user is used. When using this option you must realize that the primary and supplemental groups are set as well, even if the <b>--group</b> option is not specified. The <b>--group</b> option is only for groups that the user isn&#39;t normally a member of (like adding per process group membership for generic users like <b>nobody</b>).</p>
 
 </dd>
 <dt id="r---chroot-root"><b>-r</b>, <b>--chroot</b> <i>root</i></dt>

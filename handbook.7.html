@@ -587,7 +587,7 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <pre><code># pkgadd bash#5.0.18-1.pkg.tar.gz
 bin/sh
-usr/man/man1/sh.1.gz
+usr/share/man/man1/sh.1.gz
 pkgadd error: listed file(s) already installed (use -f to ignore and overwrite)</code></pre>
 
 <p>To force the installation and overwrite the conflicting files, you can use the option <b>-f</b> (or <b>--force</b>). Example:</p>
@@ -726,25 +726,23 @@ zlib 1.1.4-1</code></pre>
 <pre><code>$ pkginfo -l bash
 bin/
 bin/bash
-bin/sh
 etc/
 etc/profile
 usr/
-usr/man/
-usr/man/man1/
-usr/man/man1/bash.1.gz
-usr/man/man1/sh.1.gz
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/bash.1.gz
 $ pkginfo -l grep#2.5-1.pkg.tar.gz
 usr/
 usr/bin/
 usr/bin/egrep
 usr/bin/fgrep
 usr/bin/grep
-usr/man/
-usr/man/man1/
-usr/man/man1/egrep.1.gz
-usr/man/man1/fgrep.1.gz
-usr/man/man1/grep.1.gz</code></pre>
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/egrep.1.gz
+usr/share/man/man1/fgrep.1.gz
+usr/share/man/man1/grep.1.gz</code></pre>
 
 <h4 id="List-owners-of-files-matching-bin-ls">List owners of files matching <i>bin/ls</i></h4>
 
