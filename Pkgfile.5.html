@@ -17,13 +17,13 @@
   <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
   <li><a href="#DESCRIPTION">DESCRIPTION</a>
     <ul>
-      <li><a href="#General-guidelines">General guidelines</a></li>
+      <li><a href="#General-Guidelines">General Guidelines</a></li>
       <li><a href="#Directories">Directories</a></li>
-      <li><a href="#Junk-files">Junk files</a></li>
-      <li><a href="#Variable-names">Variable names</a></li>
+      <li><a href="#Junk-Files">Junk Files</a></li>
+      <li><a href="#Variable-Names">Variable Names</a></li>
       <li><a href="#Header">Header</a></li>
       <li><a href="#Dependencies">Dependencies</a></li>
-      <li><a href="#The-rc.d-scripts">The rc.d scripts</a></li>
+      <li><a href="#RC-Scripts">RC Scripts</a></li>
     </ul>
   </li>
   <li><a href="#ENVIRONMENT">ENVIRONMENT</a></li>
@@ -31,7 +31,7 @@
   <li><a href="#EXAMPLES">EXAMPLES</a>
     <ul>
       <li><a href="#Pkgfile">Pkgfile</a></li>
-      <li><a href="#rc.d-script">rc.d script</a></li>
+      <li><a href="#RC-Script">RC Script</a></li>
     </ul>
   </li>
   <li><a href="#SEE-ALSO">SEE ALSO</a></li>
@@ -49,7 +49,7 @@
 
 <p>This manual page describes the format of the <i>Pkgfile</i> file. The file is a <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (<i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>) and a function (<i>build</i>) that should be executed in order to compile a package.</p>
 
-<h2 id="General-guidelines">General guidelines</h2>
+<h2 id="General-Guidelines">General Guidelines</h2>
 
 <p>The name of a package should always be lowercase (e.g. <b>name=eterm</b> and not <b>name=Eterm</b>. Dashes are also allowed.</p>
 
@@ -67,7 +67,7 @@
    <th style="text-align:left;">Description</th>
   </tr>
   <tr>
-   <td>/usr/bin/</td>
+   <td>/usr/bin</td>
    <td>User command/application binaries</td>
   </tr>
   <tr>
@@ -75,40 +75,40 @@
    <td>System binaries</td>
   </tr>
   <tr>
-   <td>/usr/lib/</td>
+   <td>/usr/lib</td>
    <td>Libraries</td>
   </tr>
   <tr>
-   <td>/usr/include/</td>
+   <td>/usr/include</td>
    <td>Header files</td>
   </tr>
   <tr>
-   <td>/usr/lib/&lt;prog&gt;/</td>
-   <td>Plug-ins, addons, etc</td>
+   <td>/usr/lib/&lt;prog&gt;</td>
+   <td>Plug-ins, add-ons, etc</td>
   </tr>
   <tr>
-   <td>/usr/share/man/</td>
+   <td>/usr/share/man</td>
    <td>Man pages</td>
   </tr>
   <tr>
-   <td>/usr/share/&lt;prog&gt;/</td>
+   <td>/usr/share/&lt;prog&gt;</td>
    <td>Data files</td>
   </tr>
   <tr>
-   <td>/usr/etc/&lt;prog&gt;/</td>
+   <td>/usr/etc/&lt;prog&gt;</td>
    <td>Configuration files</td>
   </tr>
   <tr>
-   <td>/etc/</td>
+   <td>/etc</td>
    <td>Configuration files for system software (daemons)</td>
   </tr>
  </table>
 
 <p><i>/opt</i> directory is reserved for manually compiled/installed applications, or binary distributable packages. Good packages (built from sources) should never place anything there.</p>
 
-<p><i>/usr/libexec/</i> is not used, thus packages should never install anything there. Use <i>/usr/lib/&lt;prog&gt;/</i> instead.</p>
+<p><i>/usr/libexec/</i> is not used, thus packages should never install anything there. Use <i>/usr/lib/&lt;prog&gt;</i> instead.</p>
 
-<h2 id="Junk-files">Junk files</h2>
+<h2 id="Junk-Files">Junk Files</h2>
 
 <p>Packages should not contain &quot;junk files&quot;. This includes info pages and other online documentation, man pages excluded (e.g. <i>/usr/doc/*</i>, <i>README</i>, <i>*.info</i>, <i>*.html</i>, etc).</p>
 
@@ -124,7 +124,7 @@
 </li>
 </ul>
 
-<h2 id="Variable-names">Variable names</h2>
+<h2 id="Variable-Names">Variable Names</h2>
 
 <p>Do not add new variables to the <i>Pkgfile</i>. Only in very few cases does this actually improve the readability or the quality of the package. Further, the only variables that are guaranteed to work with future versions of <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> are <i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>. Other names could be in conflict with internal variables in <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>.</p>
 
@@ -224,7 +224,7 @@
 
 <p>Also, in the case of updating the major version of Perl/Python, it will be useful that the libraries or programs that create Perl/Python bindings have a dependency on them. We will have to rebuild everything that depends on Perl/Python with one command (see <a href="https://zeppe-lin.github.io/pkgman-rdep.1.html">pkgman-rdep(1)</a>).</p>
 
-<h2 id="The-rc.d-scripts">The rc.d scripts</h2>
+<h2 id="RC-Scripts">RC Scripts</h2>
 
 <p>The actual scripts that control services should be named <code>rc.&lt;prog&gt;</code>, and installed to <i>/etc/rc.d/&lt;prog&gt;</i>.</p>
 
@@ -272,7 +272,7 @@ build() {
         rm -rf $PKG/usr/info
 }</code></pre>
 
-<h2 id="rc.d-script">rc.d script</h2>
+<h2 id="RC-Script">RC Script</h2>
 
 <pre><code>#!/bin/sh
 #
