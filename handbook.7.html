@@ -418,7 +418,7 @@ manual page.
   cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg lvm2 \
   pinentry wireless-tools wpa-supplicant dhcpcd iputils</code></pre>
 
-<p>Edit <i>/etc/rc.d/dhcpcd</i> and <i>/etc/rc.d/wpa_supplicant</i> if needed. If you configured the networking bridge, don&#39;t forget to specify the bridge interface to dhcpcd and/or wpa_supplicant rc files.</p>
+<p>Edit <i>/etc/rc.d/dhcpcd</i> and <i>/etc/rc.d/wpa_supplicant</i> if needed. If you configured the networking bridge, don&#39;t forget to specify the bridge interface to <b>dhcpcd</b> and/or <b>wpa_supplicant</b> RC files.</p>
 
 <h3 id="Install-the-kernel">Install the kernel</h3>
 
@@ -429,7 +429,7 @@ manual page.
 <pre><code>(chrooted) # pkgman install --deps --group \
   --config-append=&quot;runscripts no&quot; linux linux-firmware</code></pre>
 
-<p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a> and updates the grub config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
+<p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
 
 <p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <b>Install mkinitramfs</b>.</p>
 
@@ -439,7 +439,7 @@ manual page.
 
 <p>In this case, it is recommended to use the kernel from package sources.</p>
 
-<p>So, let&#39;s download the linux source:</p>
+<p>So, let&#39;s download the <b>linux</b> source:</p>
 
 <pre><code>(chrooted) # pkgman install -do linux</code></pre>
 
@@ -486,7 +486,7 @@ manual page.
 
 <pre><code>(chrooted) # pkgman install --deps mkinitramfs</code></pre>
 
-<p>Add the mkinitramfs configuration file (<i>/etc/mkinitramfs/config</i>) with the following content:</p>
+<p>Add the <b>mkinitramfs</b> configuration file (<i>/etc/mkinitramfs/config</i>) with the following content:</p>
 
 <pre><code>#
 # /etc/mkinitramfs/config: mkinitramfs(8) configuration
@@ -525,12 +525,12 @@ luks_root=/dev/sda2
 GRUB_DISTRIBUTOR=ZPLN
 GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
-<p>Next, install GRUB:</p>
+<p>Next, install <b>GRUB</b>:</p>
 
 <pre><code>(chrooted) # grub-install --target=x86_64-efi \
   --efi-directory=/boot /dev/sda</code></pre>
 
-<p>Update GRUB configuration file:</p>
+<p>Update <b>GRUB</b> configuration file:</p>
 
 <pre><code>(chrooted) # grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
 
@@ -549,7 +549,7 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <pre><code># pkgman search -vv xf86-</code></pre>
 
-<p>Next, install xorg and the drivers you wish:</p>
+<p>Next, install <b>xorg</b> and the drivers you wish:</p>
 
 <pre><code># pkgman install --deps --group xorg ...</code></pre>
 
