@@ -39,7 +39,7 @@
 
 <dl>
 
-<dt id="export-CFLAGS-STRING"><b>export CFLAGS=&quot;STRING&quot;</b></dt>
+<dt id="export-CFLAGS-STRING"><b>export CFLAGS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set C compiler options.</p>
@@ -47,7 +47,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="export-CXXFLAGS-STRING"><b>export CXXFLAGS=&quot;STRING&quot;</b></dt>
+<dt id="export-CXXFLAGS-STRING"><b>export CXXFLAGS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set C++ compiler options.</p>
@@ -55,7 +55,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="export-JOBS-NUMBER"><b>export JOBS=&quot;NUMBER&quot;</b></dt>
+<dt id="export-JOBS-NUMBER"><b>export JOBS</b>=&quot;<i>NUMBER</i>&quot;</dt>
 <dd>
 
 <p>Set the number of commands to run simultaneously when building a package.</p>
@@ -63,7 +63,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="export-MAKEFLAGS-STRING"><b>export MAKEFLAGS=&quot;STRING&quot;</b></dt>
+<dt id="export-MAKEFLAGS-STRING"><b>export MAKEFLAGS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set <a href="https://www.mankier.com/1/make">make(1)</a> options.</p>
@@ -71,7 +71,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="PKGMK_SOURCE_MIRRORS-STRING"><b>PKGMK_SOURCE_MIRRORS=&quot;STRING...&quot;</b></dt>
+<dt id="PKGMK_SOURCE_MIRRORS-STRING"><b>PKGMK_SOURCE_MIRRORS</b>=&quot;<i>STRING</i> ...&quot;</dt>
 <dd>
 
 <p>Set mirrors to check and download source archives from.</p>
@@ -79,7 +79,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="PKGMK_SOURCE_DIR-STRING"><b>PKGMK_SOURCE_DIR=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_SOURCE_DIR-STRING"><b>PKGMK_SOURCE_DIR</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set directory for downloaded source archives.</p>
@@ -87,7 +87,7 @@
 <p>Default: directory of Pkgfile.</p>
 
 </dd>
-<dt id="PKGMK_PACKAGE_DIR-STRING"><b>PKGMK_PACKAGE_DIR=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_PACKAGE_DIR-STRING"><b>PKGMK_PACKAGE_DIR</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set directory for built packages.</p>
@@ -95,7 +95,7 @@
 <p>Default: directory of Pkgfile.</p>
 
 </dd>
-<dt id="PKGMK_WORK_DIR-STRING"><b>PKGMK_WORK_DIR=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_WORK_DIR-STRING"><b>PKGMK_WORK_DIR</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Set directory for building packages.</p>
@@ -103,7 +103,7 @@
 <p>Default: &#39;<b>foo</b>/work&#39;, where <b>foo</b> is the directory of the Pkgfile.</p>
 
 </dd>
-<dt id="PKGMK_DOWNLOAD-STRING"><b>PKGMK_DOWNLOAD=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_DOWNLOAD-STRING"><b>PKGMK_DOWNLOAD</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will download the source archives if necessary. Valid strings are <code>yes</code> and <code>no</code>.</p>
@@ -111,7 +111,7 @@
 <p>Default: no.</p>
 
 </dd>
-<dt id="PKGMK_DOWNLOAD_PROG-STRING"><b>PKGMK_DOWNLOAD_PROG=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_DOWNLOAD_PROG-STRING"><b>PKGMK_DOWNLOAD_PROG</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Use specified program to download source archives. Valid strings are <code>aria2c</code>, <code>curl</code> and <code>wget</code>.</p>
@@ -119,7 +119,7 @@
 <p>Default: <code>curl</code>.</p>
 
 </dd>
-<dt id="PKGMK_ARIA2C_OPTS-STRING"><b>PKGMK_ARIA2C_OPTS=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_ARIA2C_OPTS-STRING"><b>PKGMK_ARIA2C_OPTS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Additional options for <a href="https://www.mankier.com/1/aria2c">aria2c(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
@@ -127,7 +127,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="PKGMK_CURL_OPTS-STRING"><b>PKGMK_CURL_OPTS=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_CURL_OPTS-STRING"><b>PKGMK_CURL_OPTS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Additional options for <a href="https://www.mankier.com/1/curl">curl(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
@@ -135,7 +135,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="PKGMK_WGET_OPTS-STRING"><b>PKGMK_WGET_OPTS=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_WGET_OPTS-STRING"><b>PKGMK_WGET_OPTS</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Additional options for <a href="https://www.mankier.com/1/wget">wget(1)</a>, which is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> to download all files.</p>
@@ -143,7 +143,7 @@
 <p>Default: none.</p>
 
 </dd>
-<dt id="PKGMK_IGNORE_FOOTPRINT-STRING"><b>PKGMK_IGNORE_FOOTPRINT=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_IGNORE_FOOTPRINT-STRING"><b>PKGMK_IGNORE_FOOTPRINT</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will not perform a footprint check of the built package. Valid string are <code>yes</code> and <code>no</code>.</p>
@@ -151,7 +151,7 @@
 <p>Default: <code>no</code>.</p>
 
 </dd>
-<dt id="PKGMK_IGNORE_MD5SUM-STRING"><b>PKGMK_IGNORE_MD5SUM=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_IGNORE_MD5SUM-STRING"><b>PKGMK_IGNORE_MD5SUM</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will not perform a md5sum check of the source archives. Valid string are <code>yes</code> and <code>no</code>.</p>
@@ -159,7 +159,7 @@
 <p>Default: <code>no</code>.</p>
 
 </dd>
-<dt id="PKGMK_IGNORE_NEW-STRING"><b>PKGMK_IGNORE_NEW=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_IGNORE_NEW-STRING"><b>PKGMK_IGNORE_NEW</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>If set to <code>yes</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will ignore new files in a footprint mismatch. Valid string are <code>yes</code> and <code>no</code>.</p>
@@ -167,7 +167,7 @@
 <p>Default: <code>no</code>.</p>
 
 </dd>
-<dt id="PKGMK_NO_STRIP-STRING"><b>PKGMK_NO_STRIP=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_NO_STRIP-STRING"><b>PKGMK_NO_STRIP</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>If set to <code>no</code>, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will strip built binaries. Valid string are <code>yes</code> and <code>no</code>.</p>
@@ -175,7 +175,7 @@
 <p>Default: <code>no</code>.</p>
 
 </dd>
-<dt id="PKGMK_COMPRESSION_MODE-STRING"><b>PKGMK_COMPRESSION_MODE=&quot;STRING&quot;</b></dt>
+<dt id="PKGMK_COMPRESSION_MODE-STRING"><b>PKGMK_COMPRESSION_MODE</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
 <p>Option to select the mode used to compress the packages. Valid strings are <code>gz</code>, <code>bz2</code>, <code>xz</code> and <code>lz</code>.</p>
