@@ -17,7 +17,8 @@ HTML  = $(PODS:.pod=.html)
 all: index.html $(HTML)
 
 %.html: %.pod
-	pod2html --css=css/pod2html.css --cachedir=/tmp $^ > $(notdir $@)
+	./fixmanurls.sh $^ | pod2html --css=css/pod2html.css --cachedir=/tmp - \
+		> $(notdir $@)
 
 $(filter %.html,$(HTML)): %.html: %.pod
 
