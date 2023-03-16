@@ -639,6 +639,8 @@ UPGRADE         ^etc/X11/xorg.conf$     NO
 
 <p><b>NOTE:</b> A pattern should never contain an initial &quot;/&quot; since you are referring to the files in the package, not the files on the disk.</p>
 
+<p>See <a href="https://zeppe-lin.github.io/pkgadd.conf.5.html">pkgadd.conf(5)</a> for more information.</p>
+
 <h4 id="rejmerge">rejmerge</h4>
 
 <p>If <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a> finds that a specific file should not be upgraded, it will install it under <i>/var/lib/pkg/rejected/</i>. Files in this directory are never added to the package database. The user is then free to examine, use and/or remove that file manually. Another option is to use <a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a>. For each rejected file found in <i>/var/lib/pkg/rejected/</i>, <a href="https://zeppe-lin.github.io/rejmerge.8.html">rejmerge(8)</a> will display the difference between the installed version and the rejected version. The user can then choose to keep the installed version, upgrade to the rejected version or perform a merge of the two. Example (using the above <i>/etc/pkgadd.conf</i>):</p>
@@ -987,7 +989,7 @@ build() {
 
 <p>Note that the build() function in the example above is just an example of how grep is built. The contents of the function can differ significantly if the program is built in some other way, e.g. does not use <b>autoconf</b>.</p>
 
-<p>When the build() function has been executed, the $PKG directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in $PKG (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
+<p>When the build() function has been executed, the <code>$PKG</code> directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in <code>$PKG</code> (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
 
 <p>If the package is built without errors it&#39;s time to install it by using <a href="https://zeppe-lin.github.io/pkgadd.8.html">pkgadd(8)</a> and try it out. It&#39;s highly recommended to look at the Pkgfile in another package(s), since looking at examples is a great way to learn.</p>
 
@@ -1073,7 +1075,7 @@ build() {
 
 <p>This collection contains packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
-<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile">Makefile</a> in pkgsrc repository, <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="https://zeppe-lin.github.io/revdep.1.html">revdep(1)</a>.</p>
+<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile">Makefile</a> in <b>pkgsrc</b> repository, <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="https://zeppe-lin.github.io/revdep.1.html">revdep(1)</a>.</p>
 
 <h4 id="system">system</h4>
 
@@ -1181,7 +1183,7 @@ COPYRIGHT  desktop/  README.md  system/</code></pre>
 
 <h3 id="Listing-version-differences">Listing version differences</h3>
 
-<p>To find out if the pkgsrc repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="https://zeppe-lin.github.io/pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
+<p>To find out if the <b>pkgsrc</b> repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="https://zeppe-lin.github.io/pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
 
 <pre><code>$ pkgman diff --deps --full
 
@@ -1476,7 +1478,7 @@ nameserver &lt;your DNS server&gt;
 
 <h1 id="REPORTING-BUGS">REPORTING BUGS</h1>
 
-<p>The source code for this site is available at: <a href="https://github.com/zeppe-lin/zeppe-lin.github.io">https://github.com/zeppe-lin/zeppe-lin.github.io</a>. Please note that it is generated (by <a href="https://www.mankier.com/1/pod2html">pod2html(1)</a>) from the handbook, that is available at <a href="https://github.com/zeppe-lin/handbook">https://github.com/zeppe-lin/handbook</a>. If you&#39;d like to fix some <code>CSS</code> bugs and build files, refer to the source code of the site, otherwise to the handbook source.</p>
+<p>The source code for this site is available at: <a href="https://github.com/zeppe-lin/zeppe-lin.github.io">https://github.com/zeppe-lin/zeppe-lin.github.io</a>. Please note that it is generated (by <a href="https://www.mankier.com/1/pod2html">pod2html(1pm)</a>) from the handbook, that is available at <a href="https://github.com/zeppe-lin/handbook">https://github.com/zeppe-lin/handbook</a>. If you&#39;d like to fix some <code>CSS</code> bugs and build files, refer to the source code of the site, otherwise to the handbook source.</p>
 
 <p>Also, note that almost everything in Zeppe-Lin is distributed as a package, so if you found any bug in the documentation and code, refer to the Zeppe-Lin source code: <a href="https://github.com/zeppe-lin">https://github.com/zeppe-lin</a>.</p>
 
