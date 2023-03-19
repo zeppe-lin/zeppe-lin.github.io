@@ -31,11 +31,11 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>Hooks can be located in <i>/usr/share/mkinitramfs/hooks</i> (system path) and <i>/etc/mkinitramfs/hooks</i> (user path). <b>mkinitramfs</b> also allows you to specify custom location via <b>-H</b> option. See <a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a> for more information.</p>
+<p><b>mkinitramfs</b> hooks provides a way to extend initramfs&#39; build and init process. Hooks must be written in POSIX shell. Bashisms and other non-portable extensions are prohibited.</p>
 
-<p>Hooks provides a way to extend build and init process. Hooks must be written in POSIX shell. Bashisms and other non-portable extensions are prohibited. In order to write hooks you must know about hook structure.</p>
+<p>Hooks can be located in <i>/usr/share/mkinitramfs/hooks</i> (system path) and <i>/etc/mkinitramfs/hooks</i> (user path). It is also allowed to specify custom location via <a href="http:/mkinitramfs.8.html">mkinitramfs(8)</a>&#39; <b>-H</b> option.</p>
 
-<p>Example:</p>
+<p>In order to write hooks you must know about hook structure. Example:</p>
 
   <pre>
   hooks/
@@ -202,7 +202,7 @@
 <dt id="BI1"><b>BI: ...</b></dt>
 <dd>
 
-<p>See <a href="https://zeppe-lin.github.io/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>.</p>
+<p>See <a href="http:/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>.</p>
 
 </dd>
 </dl>
@@ -225,7 +225,7 @@ done</code></pre>
 
 <h1 id="SEE-ALSO">SEE ALSO</h1>
 
-<p><a href="https://zeppe-lin.github.io/mkinitramfs.8.html">mkinitramfs(8)</a>, <a href="https://zeppe-lin.github.io/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>, <a href="https://zeppe-lin.github.io/mkinitramfs.cmdline.7.html">mkinitramfs.cmdline(7)</a></p>
+<p><a href="http:/mkinitramfs.8.html">mkinitramfs(8)</a>, <a href="http:/mkinitramfs.config.5.html">mkinitramfs.config(5)</a>, <a href="http:/mkinitramfs.cmdline.7.html">mkinitramfs.cmdline(7)</a></p>
 
 
 </body>
