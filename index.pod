@@ -1,0 +1,47 @@
+=pod
+
+=encoding utf-8
+
+=head1 INTRODUCTION
+
+=begin html
+
+<img src="/images/logo.png" alt="Zeppe-Lin Logo" class="logo">
+
+=end html
+
+Zeppe-Lin is a lightweight Linux distribution for the x86-64
+architecture targeted at experienced Linux users.  The primary focus
+of this distribution is keep it simple, which is reflected in a
+straightforward tar.gz-based package system, BSD-style initscripts,
+and a relatively small collection of trimmed packages.  The secondary
+focus is utilization of new Linux features and recent tools and
+libraries.  Zeppe-Lin also has a B<pkgsrc> system which makes it easy
+to install and upgrade applications.
+
+Current release is B<L<Zeppe-Lin current release>>.
+
+=head1 DOCUMENTATION
+
+=head2 Handbook
+
+The L<Zeppe-Lin handbook> covers the installation, configuration, and
+administration of Zeppe-Lin.
+
+=head2 Release Notes and Errata
+
+L<Zeppe-Lin release notes> contains important information about the
+current Zeppe-Lin release.
+
+=head1 DOWNLOAD
+
+Before downloading Zeppe-Lin please read the L<Zeppe-Lin handbook> to
+make sure your hardware is supported and to make sure you know how to
+install it.
+
+Check L<Current rootfs tarball>, and if needed L<Previous releases>.
+
+=cut
+
+# vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+# End of file.
