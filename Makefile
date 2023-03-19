@@ -17,14 +17,18 @@ HTML  = $(PODS:.pod=.html)
 all: index.html $(HTML)
 
 %.html: %.pod
-	./fixmanurls.sh $^ | pod2html --css=css/pod2html.css --cachedir=/tmp - \
+	./fixmanurls.sh $^ \
+		| pod2html --css=css/pod2html.css --cachedir=/tmp - \
+		| sed 's|http:///HACK4RELURL\/||g' \
 		> $(notdir $@)
 
 $(filter %.html,$(HTML)): %.html: %.pod
 
 index.html:
-	./fixmanurls.sh index.pod | pod2html --noindex --css=css/pod2html_min.css \
-		--cachedir=/tmp - > $@
+	./fixmanurls.sh index.pod \
+		| pod2html --noindex --css=css/pod2html_min.css --cachedir=/tmp - \
+		| sed 's|http:///HACK4RELURL/||g' \
+		> $@
 
 check:
 	@echo "=======> Check URLs for response code"

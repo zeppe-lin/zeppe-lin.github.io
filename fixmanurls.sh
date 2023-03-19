@@ -3,8 +3,8 @@
 # Convert pod links without urls to pod links with urls.
 #
 
-# The Zeppe-Lin website URL.
-WEBSITE="https://zeppe-lin.github.io"
+# Hack for relative urls.
+WEBSITE="http:///HACK4RELURL/"
 # The site that provides a man-pages which is not shipped by Zeppe-Lin website.
 MANKIER="https://www.mankier.com"
 # The Zeppe-Lin current release.
