@@ -22,8 +22,9 @@ all: index.html $(HTML)
 
 $(filter %.html,$(HTML)): %.html: %.pod
 
-index.html: ${CURDIR}/../handbook/handbook.7.html
-	cp -f $(notdir $^) $@
+index.html:
+	./fixmanurls.sh index.pod | pod2html --noindex --css=css/pod2html_min.css \
+		--cachedir=/tmp - > $@
 
 check:
 	@echo "=======> Check URLs for response code"
