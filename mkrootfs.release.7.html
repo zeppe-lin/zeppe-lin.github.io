@@ -31,9 +31,9 @@
 
 <h1 id="CONFIGURATION">CONFIGURATION</h1>
 
-<p>By default, <a href="http:/mkrootfs.8.html">mkrootfs(8)</a> uses <i>/etc/mkrootfs/config</i>, <i>/etc/pkgmk.conf</i> and <i>/etc/pkgman.conf</i> configuration files. These files (if you haven&#39;t edited them in your zeppe-lin installation) contain reasonable defaults and can be used to create a root filesystem with your current built system packages.</p>
+<p>By default, <a href="https:///mkrootfs.8.html">mkrootfs(8)</a> uses <i>/etc/mkrootfs/config</i>, <i>/etc/pkgmk.conf</i> and <i>/etc/pkgman.conf</i> configuration files. These files (if you haven&#39;t edited them in your zeppe-lin installation) contain reasonable defaults and can be used to create a root filesystem with your current built system packages.</p>
 
-<p>If you changed configuration files mentioned above, for example changed <code>CFLAGS</code> in <i>/etc/pkgmk.conf</i> from <code>-march=x86_64</code> to <code>-march=native</code>, but want to build rootfs for generic x86_64, then make a copy of <i>pkgmk.conf</i> with your settings and tell <a href="http:/mkrootfs.8.html">mkrootfs(8)</a> to use it by using <code>-x</code>/<code>--pkgmk-config</code> command-line options:</p>
+<p>If you changed configuration files mentioned above, for example changed <code>CFLAGS</code> in <i>/etc/pkgmk.conf</i> from <code>-march=x86_64</code> to <code>-march=native</code>, but want to build rootfs for generic x86_64, then make a copy of <i>pkgmk.conf</i> with your settings and tell <a href="https:///mkrootfs.8.html">mkrootfs(8)</a> to use it by using <code>-x</code>/<code>--pkgmk-config</code> command-line options:</p>
 
 <pre><code>$ sudo mkrootfs -x /etc/mkrootfs/pkgmk.conf ...</code></pre>
 
@@ -45,14 +45,14 @@
 
 <pre><code>ROOTFS_PKGMAN_CONF=/etc/mkrootfs/pkgman.conf</code></pre>
 
-<p>By default, <a href="http:/mkrootfs.8.html">mkrootfs(8)</a> builds the rootfs in the <i>/tmp/rootfs-{DATE}-{ARCH}</i> directory, and saves build+installation logs in <i>/tmp/rootfs-{DATE}-{ARCH}.log</i>. This can be changed by <code>-r</code>/<code>--rootfs</code> and <code>-l</code>/<code>--log</code> command-line options. Also, default location can be changed by editing <i>/etc/mkrootfs/config</i> as showed above:</p>
+<p>By default, <a href="https:///mkrootfs.8.html">mkrootfs(8)</a> builds the rootfs in the <i>/tmp/rootfs-{DATE}-{ARCH}</i> directory, and saves build+installation logs in <i>/tmp/rootfs-{DATE}-{ARCH}.log</i>. This can be changed by <code>-r</code>/<code>--rootfs</code> and <code>-l</code>/<code>--log</code> command-line options. Also, default location can be changed by editing <i>/etc/mkrootfs/config</i> as showed above:</p>
 
 <pre><code>ROOTFS_DIR=...
 ROOTFS_LOG=...</code></pre>
 
-<p>Also, by default <a href="http:/mkrootfs.8.html">mkrootfs(8)</a> builds and installs only <i>core</i> packages. This can be changed by <code>-p</code>/<code>--packages</code> command-line option or by declaring <code>ROOTFS_PKG</code> variable in <i>/etc/mkrootfs/config</i>.</p>
+<p>Also, by default <a href="https:///mkrootfs.8.html">mkrootfs(8)</a> builds and installs only <i>core</i> packages. This can be changed by <code>-p</code>/<code>--packages</code> command-line option or by declaring <code>ROOTFS_PKG</code> variable in <i>/etc/mkrootfs/config</i>.</p>
 
-<p>See <a href="http:/mkrootfs.config.5.html">mkrootfs.config(5)</a> for more information.</p>
+<p>See <a href="https:///mkrootfs.config.5.html">mkrootfs.config(5)</a> for more information.</p>
 
 <h1 id="MAKE-TARBALL">MAKE TARBALL</h1>
 
@@ -178,7 +178,7 @@ $ git push</code></pre>
 
 <h1 id="SEE-ALSO">SEE ALSO</h1>
 
-<p><a href="http:/mkrootfs.8.html">mkrootfs(8)</a>, <a href="http:/mkrootfs.config.5.html">mkrootfs.config(5)</a></p>
+<p><a href="https:///mkrootfs.8.html">mkrootfs(8)</a>, <a href="https:///mkrootfs.config.5.html">mkrootfs.config(5)</a></p>
 
 
 </body>

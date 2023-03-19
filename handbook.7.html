@@ -391,7 +391,7 @@ manual page.
 (chrooted) # mount /sys/firmware/efi/efivars
 (chrooted) # mount /tmp</code></pre>
 
-<p>Edit <i>/etc/rc.conf</i> to configure font, keyboard, timezone, hostname, and services. See <a href="http:/rc.conf.5.html">rc.conf(5)</a> for more info.</p>
+<p>Edit <i>/etc/rc.conf</i> to configure font, keyboard, timezone, hostname, and services. See <a href="https:///rc.conf.5.html">rc.conf(5)</a> for more info.</p>
 
 <p>Edit <i>/etc/rc.d/net</i>, <i>/etc/hosts</i>, and <i>/etc/resolv.conf</i> to configure your network (IP address/Gateway/Hostname/Domain/DNS). If you want to configure the networking bridge, see <i>/etc/rc.d/bridge</i>.</p>
 
@@ -429,13 +429,13 @@ manual page.
 <pre><code>(chrooted) # pkgman install --deps --group \
   --config-append=&quot;runscripts no&quot; linux linux-firmware</code></pre>
 
-<p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="http:/mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
+<p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="https:///mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
 
 <p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <b>Install mkinitramfs</b>.</p>
 
 <h4 id="Install-the-kernel-manually">Install the kernel manually</h4>
 
-<p>Since the <a href="http:/pkgman.1.html">pkgman(1)</a> build the package that contains only the binaries (kernel and modules), you may want to build your own kernel. For example, you do not need such a fat kernel, which goes by default, or you need the sources of the running kernel because you want to build the nvidia driver and/or virtualbox.</p>
+<p>Since the <a href="https:///pkgman.1.html">pkgman(1)</a> build the package that contains only the binaries (kernel and modules), you may want to build your own kernel. For example, you do not need such a fat kernel, which goes by default, or you need the sources of the running kernel because you want to build the nvidia driver and/or virtualbox.</p>
 
 <p>In this case, it is recommended to use the kernel from package sources.</p>
 
@@ -505,7 +505,7 @@ luks_root=/dev/sda2
 
 # End of file.</code></pre>
 
-<p>See <a href="http:/mkinitramfs.config.5.html">mkinitramfs.config(5)</a> for more information.</p>
+<p>See <a href="https:///mkinitramfs.config.5.html">mkinitramfs.config(5)</a> for more information.</p>
 
 <p>Note that you can use <code>/dev/disk/by-uuid/*</code> instead of <code>/dev/*</code> paths to prevent boot hanging in case you have multiple drives on the machine. Use <a href="https://www.mankier.com/8/blkid">blkid(8)</a> to obtain <code>UUID</code>.</p>
 
@@ -563,15 +563,15 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <p>Packages follow the naming convention <i>name#version-release.pkg.tar.gz</i>, where <i>name</i> is the name of the program, <i>version</i> is the version number of the program, and <i>release</i> is the version number of the package.</p>
 
-<p>The <i>pkg.tar.gz</i> extension is used (instead of just <i>tar.gz</i>) to indicate that this is not just any <i>tar.gz</i> file, but a <i>tar.gz</i> that is meant to be installed using <a href="http:/pkgadd.8.html">pkgadd(8)</a>. This helps distinguish packages from other <i>tar.gz</i> files. Note that <a href="http:/pkgmk.8.html">pkgmk(8)</a> supports additional compression schemes like <b>bzip2</b> with the <i>tar.bz2</i> extension or <b>XZ</b> ending with <i>tar.xz</i>.</p>
+<p>The <i>pkg.tar.gz</i> extension is used (instead of just <i>tar.gz</i>) to indicate that this is not just any <i>tar.gz</i> file, but a <i>tar.gz</i> that is meant to be installed using <a href="https:///pkgadd.8.html">pkgadd(8)</a>. This helps distinguish packages from other <i>tar.gz</i> files. Note that <a href="https:///pkgmk.8.html">pkgmk(8)</a> supports additional compression schemes like <b>bzip2</b> with the <i>tar.bz2</i> extension or <b>XZ</b> ending with <i>tar.xz</i>.</p>
 
-<p><a href="http:/pkgadd.8.html">pkgadd(8)</a>, <a href="http:/pkgrm.8.html">pkgrm(8)</a>, and <a href="http:/pkginfo.1.html">pkginfo(1)</a> are the basic package management utilities and are part of the package <b>pkgutils</b>. In addition to them, package management includes utilities such as <a href="http:/pkgmk.8.html">pkgmk(8)</a>, <a href="http:/rejmerge.8.html">rejmerge(8)</a>, and <a href="http:/revdep.1.html">revdep(1)</a>.</p>
+<p><a href="https:///pkgadd.8.html">pkgadd(8)</a>, <a href="https:///pkgrm.8.html">pkgrm(8)</a>, and <a href="https:///pkginfo.1.html">pkginfo(1)</a> are the basic package management utilities and are part of the package <b>pkgutils</b>. In addition to them, package management includes utilities such as <a href="https:///pkgmk.8.html">pkgmk(8)</a>, <a href="https:///rejmerge.8.html">rejmerge(8)</a>, and <a href="https:///revdep.1.html">revdep(1)</a>.</p>
 
 <p>They could also be considered basic, but they are placed in separate packages so that changes in one utility do not require rebuilding all of them.</p>
 
 <p>With these utilities, you can install, uninstall, inspect, make packages, query the package database, merge files that were rejected during package upgrades, and check for missing libraries of installed packages.</p>
 
-<p>When a new package is installed using <a href="http:/pkgadd.8.html">pkgadd(8)</a>, a new record is added to the package database (stored in <i>/var/lib/pkg/db</i>). The basic package system does not have any kind of dependency checking, this will not warn you if you install a package that requires other packages to be installed. The included <a href="http:/pkgman.1.html">pkgman(1)</a> tool (<b>pkgman</b>), however, does support dependencies.</p>
+<p>When a new package is installed using <a href="https:///pkgadd.8.html">pkgadd(8)</a>, a new record is added to the package database (stored in <i>/var/lib/pkg/db</i>). The basic package system does not have any kind of dependency checking, this will not warn you if you install a package that requires other packages to be installed. The included <a href="https:///pkgman.1.html">pkgman(1)</a> tool (<b>pkgman</b>), however, does support dependencies.</p>
 
 <p>The following sections will in describe in short how to use the package utilities. Additional information about these utilities can be found on their respective manpage.</p>
 
@@ -579,11 +579,11 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <h3 id="Installing-a-package">Installing a package</h3>
 
-<p>Installing a package is done by using <a href="http:/pkgadd.8.html">pkgadd(8)</a>. This utility requires at least one argument, the package you want to install. Example:</p>
+<p>Installing a package is done by using <a href="https:///pkgadd.8.html">pkgadd(8)</a>. This utility requires at least one argument, the package you want to install. Example:</p>
 
 <pre><code># pkgadd bash#5.0.18-1.pkg.tar.gz</code></pre>
 
-<p>When installing a package the package manager will ensure that no previously installed files are overwritten. If conflicts are found, an error message will be printed and <a href="http:/pkgadd.8.html">pkgadd(8)</a> will abort without installing the package. The error message will contain the names of the conflicting files. Example:</p>
+<p>When installing a package the package manager will ensure that no previously installed files are overwritten. If conflicts are found, an error message will be printed and <a href="https:///pkgadd.8.html">pkgadd(8)</a> will abort without installing the package. The error message will contain the names of the conflicting files. Example:</p>
 
 <pre><code># pkgadd bash#5.0.18-1.pkg.tar.gz
 bin/sh
@@ -610,19 +610,19 @@ pkgadd error: listed file(s) already installed (use -f to ignore and overwrite)<
     </tr>
   </table>
 
-<p>As earlier, the package file itself does not contain any metadata. Instead, the <a href="http:/pkgadd.8.html">pkgadd(8)</a> uses the package filename to determine the package name and version. Thus, when installing a package file named <i>bash#5.0.18-1.pkg.tar.gz</i>, <a href="http:/pkgadd.8.html">pkgadd(8)</a> will interpret this as a package named <i>bash</i> at version <i>5.0.18-1</i>. If <a href="http:/pkgadd.8.html">pkgadd(8)</a> is unable to interpret the filename (e.g. <b>#</b> is missing or the filename does not end with .pkg.tar.gz) an error message will be printed and <a href="http:/pkgadd.8.html">pkgadd(8)</a> will abort without installing the package.</p>
+<p>As earlier, the package file itself does not contain any metadata. Instead, the <a href="https:///pkgadd.8.html">pkgadd(8)</a> uses the package filename to determine the package name and version. Thus, when installing a package file named <i>bash#5.0.18-1.pkg.tar.gz</i>, <a href="https:///pkgadd.8.html">pkgadd(8)</a> will interpret this as a package named <i>bash</i> at version <i>5.0.18-1</i>. If <a href="https:///pkgadd.8.html">pkgadd(8)</a> is unable to interpret the filename (e.g. <b>#</b> is missing or the filename does not end with .pkg.tar.gz) an error message will be printed and <a href="https:///pkgadd.8.html">pkgadd(8)</a> will abort without installing the package.</p>
 
 <h3 id="Upgrading-a-package">Upgrading a package</h3>
 
-<p>Upgrading a package is done using <a href="http:/pkgadd.8.html">pkgadd(8)</a> with the <b>-u</b> option. Example:</p>
+<p>Upgrading a package is done using <a href="https:///pkgadd.8.html">pkgadd(8)</a> with the <b>-u</b> option. Example:</p>
 
 <pre><code># pkgadd -u bash#5.0.18-1.pkg.tar.gz</code></pre>
 
-<p>This will replace the previously installed bash package with the new one. If you have not previously installed bash, <a href="http:/pkgadd.8.html">pkgadd(8)</a> will print an error message. <a href="http:/pkgadd.8.html">pkgadd(8)</a> does not care about the version number of the package in that you can &quot;upgrade&quot; version 2.05-1 with version 2.04-1 (or even with version 2.05-1 itself). The installed package will be replaced with the specified package.</p>
+<p>This will replace the previously installed bash package with the new one. If you have not previously installed bash, <a href="https:///pkgadd.8.html">pkgadd(8)</a> will print an error message. <a href="https:///pkgadd.8.html">pkgadd(8)</a> does not care about the version number of the package in that you can &quot;upgrade&quot; version 2.05-1 with version 2.04-1 (or even with version 2.05-1 itself). The installed package will be replaced with the specified package.</p>
 
-<p>Upgrading a package is equivalent to executing <a href="http:/pkgrm.8.html">pkgrm(8)</a> followed by <a href="http:/pkgadd.8.html">pkgadd(8)</a> with one (big) exception. When upgrading a package (with <code>pkgadd -u</code>) you have the option to prevent some of the already installed files from getting replaced. This is typically useful when you want to preserve configuration and log files.</p>
+<p>Upgrading a package is equivalent to executing <a href="https:///pkgrm.8.html">pkgrm(8)</a> followed by <a href="https:///pkgadd.8.html">pkgadd(8)</a> with one (big) exception. When upgrading a package (with <code>pkgadd -u</code>) you have the option to prevent some of the already installed files from getting replaced. This is typically useful when you want to preserve configuration and log files.</p>
 
-<p>When executing <a href="http:/pkgadd.8.html">pkgadd(8)</a> the file <i>/etc/pkgadd.conf</i> will be read. This file can contain rules describing how <a href="http:/pkgadd.8.html">pkgadd(8)</a> should behave when doing upgrades. A rule is built out of three fragments: <i>event</i>, <i>pattern</i> and <i>action</i>. The <i>event</i> describes in what kind of situation this rule applies. Currently only one type of event is supported, that is UPGRADE. The <i>pattern</i> is a filename pattern expressed as a regular expression and the <i>action</i> applicable to the UPGRADE event is YES or NO. More than one rule of the same event type is allowed, in which case the first rule will have the lowest priority and the last rule will have the highest priority. Example:</p>
+<p>When executing <a href="https:///pkgadd.8.html">pkgadd(8)</a> the file <i>/etc/pkgadd.conf</i> will be read. This file can contain rules describing how <a href="https:///pkgadd.8.html">pkgadd(8)</a> should behave when doing upgrades. A rule is built out of three fragments: <i>event</i>, <i>pattern</i> and <i>action</i>. The <i>event</i> describes in what kind of situation this rule applies. Currently only one type of event is supported, that is UPGRADE. The <i>pattern</i> is a filename pattern expressed as a regular expression and the <i>action</i> applicable to the UPGRADE event is YES or NO. More than one rule of the same event type is allowed, in which case the first rule will have the lowest priority and the last rule will have the highest priority. Example:</p>
 
 <pre><code>#
 # /etc/pkgadd.conf: pkgadd(8) configuration
@@ -635,15 +635,15 @@ UPGRADE         ^etc/X11/xorg.conf$     NO
 
 # End of file.</code></pre>
 
-<p>The above example will cause <a href="http:/pkgadd.8.html">pkgadd(8)</a> to never upgrade anything in <i>/etc/</i> or <i>/var/log/</i> (subdirectories included), except files in <i>/etc/X11/</i> (subdirectories included), unless it&#39;s the file <i>/etc/X11/xorg.conf</i>. The default rule is to upgrade everything, rules in this file are exceptions to that rule.</p>
+<p>The above example will cause <a href="https:///pkgadd.8.html">pkgadd(8)</a> to never upgrade anything in <i>/etc/</i> or <i>/var/log/</i> (subdirectories included), except files in <i>/etc/X11/</i> (subdirectories included), unless it&#39;s the file <i>/etc/X11/xorg.conf</i>. The default rule is to upgrade everything, rules in this file are exceptions to that rule.</p>
 
 <p><b>NOTE:</b> A pattern should never contain an initial &quot;/&quot; since you are referring to the files in the package, not the files on the disk.</p>
 
-<p>See <a href="http:/pkgadd.conf.5.html">pkgadd.conf(5)</a> for more information.</p>
+<p>See <a href="https:///pkgadd.conf.5.html">pkgadd.conf(5)</a> for more information.</p>
 
 <h4 id="rejmerge">rejmerge</h4>
 
-<p>If <a href="http:/pkgadd.8.html">pkgadd(8)</a> finds that a specific file should not be upgraded, it will install it under <i>/var/lib/pkg/rejected/</i>. Files in this directory are never added to the package database. The user is then free to examine, use and/or remove that file manually. Another option is to use <a href="http:/rejmerge.8.html">rejmerge(8)</a>. For each rejected file found in <i>/var/lib/pkg/rejected/</i>, <a href="http:/rejmerge.8.html">rejmerge(8)</a> will display the difference between the installed version and the rejected version. The user can then choose to keep the installed version, upgrade to the rejected version or perform a merge of the two. Example (using the above <i>/etc/pkgadd.conf</i>):</p>
+<p>If <a href="https:///pkgadd.8.html">pkgadd(8)</a> finds that a specific file should not be upgraded, it will install it under <i>/var/lib/pkg/rejected/</i>. Files in this directory are never added to the package database. The user is then free to examine, use and/or remove that file manually. Another option is to use <a href="https:///rejmerge.8.html">rejmerge(8)</a>. For each rejected file found in <i>/var/lib/pkg/rejected/</i>, <a href="https:///rejmerge.8.html">rejmerge(8)</a> will display the difference between the installed version and the rejected version. The user can then choose to keep the installed version, upgrade to the rejected version or perform a merge of the two. Example (using the above <i>/etc/pkgadd.conf</i>):</p>
 
 <pre><code># pkgadd -u bash#5.0.18-1.pkg.tar.gz
 pkgadd: rejecting etc/profile, keeping existing version
@@ -654,7 +654,7 @@ profile</code></pre>
 
 <h3 id="Removing-a-package">Removing a package</h3>
 
-<p>Removing a package is done by using <a href="http:/pkgrm.8.html">pkgrm(8)</a>. This utility requires one argument, the name of the package you want to remove. Example:</p>
+<p>Removing a package is done by using <a href="https:///pkgrm.8.html">pkgrm(8)</a>. This utility requires one argument, the name of the package you want to remove. Example:</p>
 
 <pre><code># pkgrm bash</code></pre>
 
@@ -675,7 +675,7 @@ profile</code></pre>
 
 <h3 id="Querying-the-package-database">Querying the package database</h3>
 
-<p>Querying the package database is done using <a href="http:/pkginfo.1.html">pkginfo(1)</a>. This utility has a few options to answer different queries.</p>
+<p>Querying the package database is done using <a href="https:///pkginfo.1.html">pkginfo(1)</a>. This utility has a few options to answer different queries.</p>
 
   <table>
     <tr>
@@ -764,15 +764,15 @@ drwxr-xr-x      root/root       usr/share/man/
 drwxr-xr-x      root/root       usr/share/man/man1/
 -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz</code></pre>
 
-<p>This feature is mainly used by <a href="http:/pkgmk.8.html">pkgmk(8)</a> for creating and comparing footprints.</p>
+<p>This feature is mainly used by <a href="https:///pkgmk.8.html">pkgmk(8)</a> for creating and comparing footprints.</p>
 
 <p>The <b>-r</b> (<b>--root</b>) option should be used if you want to display information about a package that is installed on a temporary mounted partition, which is &quot;owned&quot; by another system. By using this option you specify which database to use.</p>
 
 <h2 id="Package-Management-Frontend:-pkgman">Package Management Frontend: pkgman</h2>
 
-<p>In its current form <b>pkgutils</b> does not have a concept of dependency handling. To address this, a front-end utility called <a href="http:/pkgman.1.html">pkgman(1)</a> exists.</p>
+<p>In its current form <b>pkgutils</b> does not have a concept of dependency handling. To address this, a front-end utility called <a href="https:///pkgman.1.html">pkgman(1)</a> exists.</p>
 
-<p><a href="http:/pkgman.1.html">pkgman(1)</a> supports dependency handling (with the caveat mentioned below) as well as some overlap with <b>pkgutils</b> features.</p>
+<p><a href="https:///pkgman.1.html">pkgman(1)</a> supports dependency handling (with the caveat mentioned below) as well as some overlap with <b>pkgutils</b> features.</p>
 
 <h3 id="Functionality">Functionality</h3>
 
@@ -848,9 +848,9 @@ $ pkgman dep bash --recursive -vv --tree
 
 <pre><code>$ pkgman install xterm</code></pre>
 
-<p>Note, that the <code>install</code> command <b>DOES NOT</b> process dependencies without <b>--deps</b> option, and it&#39;s usually recommended to use <b>--deps</b> with <code>install</code>. It is also worth noting that <a href="http:/pkgman.1.html">pkgman(1)</a> by default tries to install all the packages specified in the dependencies, and if one of the dependencies does not build, it will skip it, and go further. In the end, it will show the <code>build-failed packages</code> in the report. This behavior can have unexpected consequences if you install many programs with many dependencies at a time. Because, one dependency may not build, and affect the building of another dependency, and thereby affect the third, etc.</p>
+<p>Note, that the <code>install</code> command <b>DOES NOT</b> process dependencies without <b>--deps</b> option, and it&#39;s usually recommended to use <b>--deps</b> with <code>install</code>. It is also worth noting that <a href="https:///pkgman.1.html">pkgman(1)</a> by default tries to install all the packages specified in the dependencies, and if one of the dependencies does not build, it will skip it, and go further. In the end, it will show the <code>build-failed packages</code> in the report. This behavior can have unexpected consequences if you install many programs with many dependencies at a time. Because, one dependency may not build, and affect the building of another dependency, and thereby affect the third, etc.</p>
 
-<p>We can tell <a href="http:/pkgman.1.html">pkgman(1)</a> not to skip the <code>fails</code>, but to stop. Then we can fix the package build and start installation further.</p>
+<p>We can tell <a href="https:///pkgman.1.html">pkgman(1)</a> not to skip the <code>fails</code>, but to stop. Then we can fix the package build and start installation further.</p>
 
 <p>There is an option <b>--group</b> for this. In this handbook, it is recommended to use it always, unless you know what you are doing.</p>
 
@@ -860,7 +860,7 @@ $ pkgman dep bash --recursive -vv --tree
 
 <pre><code>$ pkgman install --deps --group --force xterm</code></pre>
 
-<p>The option <b>--force</b> tell to <a href="http:/pkgman.1.html">pkgman(1)</a> to skip installation of already installed package(s). It just ignores the package and installing next in the listed order. At the end of installation procedure, all skipped packages will be in the report.</p>
+<p>The option <b>--force</b> tell to <a href="https:///pkgman.1.html">pkgman(1)</a> to skip installation of already installed package(s). It just ignores the package and installing next in the listed order. At the end of installation procedure, all skipped packages will be in the report.</p>
 
 <h4 id="Viewing-and-updating-outdated-packages">Viewing and updating outdated packages</h4>
 
@@ -899,13 +899,13 @@ bindutils                                           9.16.8-1
 <dt id="pkgsrcdir"><b>pkgsrcdir</b></dt>
 <dd>
 
-<p>This option can occur multiple times and specifies a directory with a packages&#39; sources &quot;collection&quot; which <a href="http:/pkgman.1.html">pkgman(1)</a> should check in its operation. By default, the <i>core</i>, <i>system</i>, <i>xorg</i>, <i>desktop</i>, and <i>stuff</i> collections are enabled.</p>
+<p>This option can occur multiple times and specifies a directory with a packages&#39; sources &quot;collection&quot; which <a href="https:///pkgman.1.html">pkgman(1)</a> should check in its operation. By default, the <i>core</i>, <i>system</i>, <i>xorg</i>, <i>desktop</i>, and <i>stuff</i> collections are enabled.</p>
 
 </dd>
 <dt id="runscripts"><b>runscripts</b></dt>
 <dd>
 
-<p>This option configures <a href="http:/pkgman.1.html">pkgman(1)</a> to run <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and <code>post-remove</code> scripts if they exist in the package source directory. These scripts are run during <i>install</i>, <i>update</i>, <i>sysup</i>, and <i>remove</i> operations.</p>
+<p>This option configures <a href="https:///pkgman.1.html">pkgman(1)</a> to run <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and <code>post-remove</code> scripts if they exist in the package source directory. These scripts are run during <i>install</i>, <i>update</i>, <i>sysup</i>, and <i>remove</i> operations.</p>
 
 <p>It is recommended that this be enabled as in many cases if these scripts exist in a package source directory, it is required to be run for proper operation.</p>
 
@@ -918,11 +918,11 @@ bindutils                                           9.16.8-1
 </dd>
 </dl>
 
-<p>This is <b>NOT</b> an exhaustive list of all of pkgman&#39;s commands, features, and configuration options, merely a starting point. More information can be found in <a href="http:/pkgman.1.html">pkgman(1)</a> and <a href="http:/pkgman.conf.5.html">pkgman.conf(5)</a>.</p>
+<p>This is <b>NOT</b> an exhaustive list of all of pkgman&#39;s commands, features, and configuration options, merely a starting point. More information can be found in <a href="https:///pkgman.1.html">pkgman(1)</a> and <a href="https:///pkgman.conf.5.html">pkgman.conf(5)</a>.</p>
 
 <h2 id="Creating-Packages">Creating Packages</h2>
 
-<p>Creating a package is done using <a href="http:/pkgmk.8.html">pkgmk(8)</a>. This utility uses a file called Pkgfile (see <a href="http:/Pkgfile.5.html">Pkgfile(5)</a> for more info), which contains information about the package (such as name, version, etc) and the commands that should be executed in order to compile the package in question. To be more specific, the Pkgfile file is actually a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (name, version, release and source) and a function (build). Below is an example of what a Pkgfile file might look like. The example shows how to package the <a href="https://www.mankier.com/1/grep">grep(1)</a> utility. Some comments are inserted for explanation.</p>
+<p>Creating a package is done using <a href="https:///pkgmk.8.html">pkgmk(8)</a>. This utility uses a file called Pkgfile (see <a href="https:///Pkgfile.5.html">Pkgfile(5)</a> for more info), which contains information about the package (such as name, version, etc) and the commands that should be executed in order to compile the package in question. To be more specific, the Pkgfile file is actually a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (name, version, release and source) and a function (build). Below is an example of what a Pkgfile file might look like. The example shows how to package the <a href="https://www.mankier.com/1/grep">grep(1)</a> utility. Some comments are inserted for explanation.</p>
 
 <pre><code># Specify the name of the package.
 name=grep
@@ -989,15 +989,15 @@ build() {
 
 <p>Note that the build() function in the example above is just an example of how grep is built. The contents of the function can differ significantly if the program is built in some other way, e.g. does not use <b>autoconf</b>.</p>
 
-<p>When the build() function has been executed, the <code>$PKG</code> directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="http:/pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in <code>$PKG</code> (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
+<p>When the build() function has been executed, the <code>$PKG</code> directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="https:///pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in <code>$PKG</code> (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
 
-<p>If the package is built without errors it&#39;s time to install it by using <a href="http:/pkgadd.8.html">pkgadd(8)</a> and try it out. It&#39;s highly recommended to look at the Pkgfile in another package(s), since looking at examples is a great way to learn.</p>
+<p>If the package is built without errors it&#39;s time to install it by using <a href="https:///pkgadd.8.html">pkgadd(8)</a> and try it out. It&#39;s highly recommended to look at the Pkgfile in another package(s), since looking at examples is a great way to learn.</p>
 
-<p>See <a href="http:/Pkgfile.5.html">Pkgfile(5)</a> for additional information.</p>
+<p>See <a href="https:///Pkgfile.5.html">Pkgfile(5)</a> for additional information.</p>
 
 <h2 id="Adjusting-Configuring-the-Package-Build-Process">Adjusting/Configuring the Package Build Process</h2>
 
-<p>Many settings of to the package build process can be adjusted by editing the <a href="http:/pkgmk.8.html">pkgmk(8)</a> configuration file <i>/etc/pkgmk.conf</i>. Some of these configurable settings include:</p>
+<p>Many settings of to the package build process can be adjusted by editing the <a href="https:///pkgmk.8.html">pkgmk(8)</a> configuration file <i>/etc/pkgmk.conf</i>. Some of these configurable settings include:</p>
 
 <dl>
 
@@ -1016,19 +1016,19 @@ build() {
 <dt id="PKGMK_SOURCE_DIR">PKGMK_SOURCE_DIR</dt>
 <dd>
 
-<p>This setting defines where <a href="http:/pkgmk.8.html">pkgmk(8)</a> will store (if downloading) and use source archives when building.</p>
+<p>This setting defines where <a href="https:///pkgmk.8.html">pkgmk(8)</a> will store (if downloading) and use source archives when building.</p>
 
 </dd>
 <dt id="PKGMK_PACKAGE_DIR">PKGMK_PACKAGE_DIR</dt>
 <dd>
 
-<p>This setting defines where <a href="http:/pkgmk.8.html">pkgmk(8)</a> will create package files once the build process is complete.</p>
+<p>This setting defines where <a href="https:///pkgmk.8.html">pkgmk(8)</a> will create package files once the build process is complete.</p>
 
 </dd>
 <dt id="PKGMK_WORK_DIR">PKGMK_WORK_DIR</dt>
 <dd>
 
-<p>This setting defines a work area that <a href="http:/pkgmk.8.html">pkgmk(8)</a> will use to build the package.</p>
+<p>This setting defines a work area that <a href="https:///pkgmk.8.html">pkgmk(8)</a> will use to build the package.</p>
 
 </dd>
 </dl>
@@ -1037,21 +1037,21 @@ build() {
 
 <pre><code>PKGMK_SOURCE_MIRRORS=&quot;http://fileserver.intranet/crux/sources/&quot;</code></pre>
 
-<p>This setting instructs <a href="http:/pkgmk.8.html">pkgmk(8)</a> to attempt to fetch all source archives from <i>http://fileserver.intranet/zeppe-lin/sources/</i> before falling back to the source URL specified in the Pkgfile. Multiple URLs can be separated by spaces (the spaces in URL replace by <code>%20</code>).</p>
+<p>This setting instructs <a href="https:///pkgmk.8.html">pkgmk(8)</a> to attempt to fetch all source archives from <i>http://fileserver.intranet/zeppe-lin/sources/</i> before falling back to the source URL specified in the Pkgfile. Multiple URLs can be separated by spaces (the spaces in URL replace by <code>%20</code>).</p>
 
 <pre><code>PKGMK_SOURCE_DIR=&quot;/var/cache/pkgmk/sources&quot;</code></pre>
 
-<p>This setting instructs <a href="http:/pkgmk.8.html">pkgmk(8)</a> to store and find source archives in <code>/var/cache/pkgmk/sources</code>. An example benefit of this setup would be the ability to store <code>/var/cache/pkgmk/sources</code> on an NFS server on your local network for use by multiple Zeppe-Lin installations. <code>PKGMK_PACKAGE_DIR</code> can be set and used the same way.</p>
+<p>This setting instructs <a href="https:///pkgmk.8.html">pkgmk(8)</a> to store and find source archives in <code>/var/cache/pkgmk/sources</code>. An example benefit of this setup would be the ability to store <code>/var/cache/pkgmk/sources</code> on an NFS server on your local network for use by multiple Zeppe-Lin installations. <code>PKGMK_PACKAGE_DIR</code> can be set and used the same way.</p>
 
 <pre><code>PKGMK_WORK_DIR=&quot;/var/cache/pkgmk/work/$name&quot;</code></pre>
 
-<p>This setting instructs <a href="http:/pkgmk.8.html">pkgmk(8)</a> to use <code>/var/cache/pkgmk/work/$name</code> as a work area for building the specified package. Building the <b>grep</b> package would result in the work area being <code>/var/cache/pkgmk/work/grep</code>. An alternative would be to use a <a href="https://www.mankier.com/5/tmpfs">tmpfs(5)</a> as your work directory.</p>
+<p>This setting instructs <a href="https:///pkgmk.8.html">pkgmk(8)</a> to use <code>/var/cache/pkgmk/work/$name</code> as a work area for building the specified package. Building the <b>grep</b> package would result in the work area being <code>/var/cache/pkgmk/work/grep</code>. An alternative would be to use a <a href="https://www.mankier.com/5/tmpfs">tmpfs(5)</a> as your work directory.</p>
 
-<p>There are a few more settings which can be found in the <a href="http:/pkgmk.conf.5.html">pkgmk.conf(5)</a> manual page.</p>
+<p>There are a few more settings which can be found in the <a href="https:///pkgmk.conf.5.html">pkgmk.conf(5)</a> manual page.</p>
 
 <h2 id="Package-Guidelines">Package Guidelines</h2>
 
-<p>A detailed guideline is described in <a href="http:/Pkgfile.5.html">Pkgfile(5)</a> manual page.</p>
+<p>A detailed guideline is described in <a href="https:///Pkgfile.5.html">Pkgfile(5)</a> manual page.</p>
 
 <h1 id="THE-PACKAGES-SOURCES-SYSTEM">THE PACKAGES&#39; SOURCES SYSTEM</h1>
 
@@ -1059,7 +1059,7 @@ build() {
 
 <h3 id="What-is-a-package-source">What is a package source?</h3>
 
-<p>A package source is a directory containing the files needed for building a package using <a href="http:/pkgmk.8.html">pkgmk(8)</a>. This means that this directory at least has the files <i>Pkgfile</i> (which is the package build description) and <i>.footprint</i> (which is used for regression testing and contains a list of files this package is expected to contain once it is built). Further, a package source directory can contain patches and/or other files needed for building the package, even software sources. It is important to understand that the actual source code for the package is not necessarily present in package source directory. Instead the <i>Pkgfile</i> contains an URL which points to a location where the source can be downloaded.</p>
+<p>A package source is a directory containing the files needed for building a package using <a href="https:///pkgmk.8.html">pkgmk(8)</a>. This means that this directory at least has the files <i>Pkgfile</i> (which is the package build description) and <i>.footprint</i> (which is used for regression testing and contains a list of files this package is expected to contain once it is built). Further, a package source directory can contain patches and/or other files needed for building the package, even software sources. It is important to understand that the actual source code for the package is not necessarily present in package source directory. Instead the <i>Pkgfile</i> contains an URL which points to a location where the source can be downloaded.</p>
 
 <p>The use of the words &quot;package source&quot; in this context is borrowed from the NetBSD world, where a package refers to a set of files and building instructions that describe what&#39;s necessary to build a certain piece of software.</p>
 
@@ -1075,7 +1075,7 @@ build() {
 
 <p>This collection contains packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
-<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile">Makefile</a> in <b>pkgsrc</b> repository, <a href="http:/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="http:/revdep.1.html">revdep(1)</a>.</p>
+<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile">Makefile</a> in <b>pkgsrc</b> repository, <a href="https:///finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="https:///revdep.1.html">revdep(1)</a>.</p>
 
 <h4 id="system">system</h4>
 
@@ -1154,7 +1154,7 @@ COPYRIGHT  desktop/  README     system/</code></pre>
 
 <p><i>Makefile</i> will check packages&#39; sources for some typical errors. Type <code>make</code> for more information.</p>
 
-<p>You can also use <a href="http:/pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
+<p>You can also use <a href="https:///pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
 <pre><code>$ pkgman list --all
 -- list ([i] = installed)
@@ -1183,7 +1183,7 @@ COPYRIGHT  desktop/  README     system/</code></pre>
 
 <h3 id="Listing-version-differences">Listing version differences</h3>
 
-<p>To find out if the <b>pkgsrc</b> repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="http:/pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
+<p>To find out if the <b>pkgsrc</b> repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="https:///pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
 
 <pre><code>$ pkgman diff --deps --full
 
@@ -1216,14 +1216,14 @@ No differences found</code></pre>
 
 <h3 id="Building-and-installing-packages">Building and installing packages</h3>
 
-<p><b>Note</b> that the recommended way is to use <a href="http:/pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
+<p><b>Note</b> that the recommended way is to use <a href="https:///pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
 
-<p>Once you have found a package that you want to build and install you simply go into the desired package source directory and use <a href="http:/pkgmk.8.html">pkgmk(8)</a> to build it. Example:</p>
+<p>Once you have found a package that you want to build and install you simply go into the desired package source directory and use <a href="https:///pkgmk.8.html">pkgmk(8)</a> to build it. Example:</p>
 
 <pre><code># cd /usr/src/pkgsrc/core/gawk
 # pkgmk -d</code></pre>
 
-<p>The <b>-d</b> option means download missing source files and tells <a href="http:/pkgmk.8.html">pkgmk(8)</a> to download the source(s) specified in <i>Pkgfile</i> (in case the source are already downloaded this option is ignored). When the download is completed the package will be built.</p>
+<p>The <b>-d</b> option means download missing source files and tells <a href="https:///pkgmk.8.html">pkgmk(8)</a> to download the source(s) specified in <i>Pkgfile</i> (in case the source are already downloaded this option is ignored). When the download is completed the package will be built.</p>
 
   <table>
     <tr>
@@ -1238,13 +1238,13 @@ No differences found</code></pre>
     </tr>
   </table>
 
-<p>If you will build packages with non-root privileges, the installed files will have user permissions. This is wrong, both in terms of security and distribution of these packages. It is better to use <a href="https://www.mankier.com/1/fakeroot">fakeroot(1)</a>, to run <a href="http:/pkgmk.8.html">pkgmk(8)</a> in an environment faking root privileges. Example:</p>
+<p>If you will build packages with non-root privileges, the installed files will have user permissions. This is wrong, both in terms of security and distribution of these packages. It is better to use <a href="https://www.mankier.com/1/fakeroot">fakeroot(1)</a>, to run <a href="https:///pkgmk.8.html">pkgmk(8)</a> in an environment faking root privileges. Example:</p>
 
 <pre><code>$ fakeroot pkgmk -d</code></pre>
 
-<p>The <a href="http:/pkgman.1.html">pkgman(1)</a> already uses it by default in Zeppe-Lin installation.</p>
+<p>The <a href="https:///pkgman.1.html">pkgman(1)</a> already uses it by default in Zeppe-Lin installation.</p>
 
-<p>If the package was built successfully you can use <a href="http:/pkgadd.8.html">pkgadd(8)</a> to install or upgrade it. Example:</p>
+<p>If the package was built successfully you can use <a href="https:///pkgadd.8.html">pkgadd(8)</a> to install or upgrade it. Example:</p>
 
 <pre><code># pkgadd gawk#3.1.5-3.pkg.tar.gz</code></pre>
 
@@ -1275,7 +1275,7 @@ No differences found</code></pre>
 
 <h3 id="Renice-pkgmks-child-process">Renice pkgmk&#39;s child process</h3>
 
-<p>If you keep using your computer while compiling packages you will notice that your box is much less responsive as usual. This is caused by having two <code>groups</code> of processes with the same nice priority: your usual running tasks on one side, and <a href="http:/pkgman.1.html">pkgman(1)</a> (and its child processes) on other. Now, if you could renice <a href="http:/pkgman.1.html">pkgman(1)</a> and its children to a higher nice (i.e. lower priority!) value (default is 0), compiling would inevitably take somewhat longer, but you could use your workstation without noticing much difference to its usual performance.</p>
+<p>If you keep using your computer while compiling packages you will notice that your box is much less responsive as usual. This is caused by having two <code>groups</code> of processes with the same nice priority: your usual running tasks on one side, and <a href="https:///pkgman.1.html">pkgman(1)</a> (and its child processes) on other. Now, if you could renice <a href="https:///pkgman.1.html">pkgman(1)</a> and its children to a higher nice (i.e. lower priority!) value (default is 0), compiling would inevitably take somewhat longer, but you could use your workstation without noticing much difference to its usual performance.</p>
 
 <p>Just set up the <code>makecommand</code> in the <i>/etc/pkgman.conf</i> to something like this:</p>
 
@@ -1377,7 +1377,7 @@ No differences found</code></pre>
 
 <p><code>/etc/rc.local</code> is empty by default.</p>
 
-<p>Modify <i>/etc/rc.modules</i>, <i>/etc/rc.local</i> and <i>/etc/rc.conf</i> according to your needs. See <a href="http:/rc.conf.5.html">rc.conf(5)</a> for more information about <i>rc.conf</i> configuration file.</p>
+<p>Modify <i>/etc/rc.modules</i>, <i>/etc/rc.local</i> and <i>/etc/rc.conf</i> according to your needs. See <a href="https:///rc.conf.5.html">rc.conf(5)</a> for more information about <i>rc.conf</i> configuration file.</p>
 
 <h3 id="Generating-locales">Generating locales</h3>
 
