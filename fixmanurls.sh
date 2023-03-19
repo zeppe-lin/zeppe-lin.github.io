@@ -4,7 +4,7 @@
 #
 
 # The Zeppe-Lin website URL.
-WEBSITE="https://"
+WEBSITE="https://zeppe-lin.github.io"
 # The site that provides a man-pages which is not shipped by Zeppe-Lin website.
 MANKIER="https://www.mankier.com"
 # The Zeppe-Lin current release.

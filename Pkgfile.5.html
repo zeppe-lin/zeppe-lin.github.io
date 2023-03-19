@@ -126,7 +126,7 @@
 
 <h2 id="Variable-Names">Variable Names</h2>
 
-<p>Do not add new variables to the <i>Pkgfile</i>. Only in very few cases does this actually improve the readability or the quality of the package. Further, the only variables that are guaranteed to work with future versions of <a href="https:///pkgmk.8.html">pkgmk(8)</a> are <i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>. Other names could be in conflict with internal variables in <a href="https:///pkgmk.8.html">pkgmk(8)</a>.</p>
+<p>Do not add new variables to the <i>Pkgfile</i>. Only in very few cases does this actually improve the readability or the quality of the package. Further, the only variables that are guaranteed to work with future versions of <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> are <i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>. Other names could be in conflict with internal variables in <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>.</p>
 
 <p>Use the <i>$name</i> and <i>$version</i> variables to make the package easier to update/maintain. For example,</p>
 
@@ -174,7 +174,7 @@
 
 <h2 id="Dependencies">Dependencies</h2>
 
-<p>Dependencies are supported by <a href="https:///pkgman.1.html">pkgman(1)</a>. The following rules should be respected:</p>
+<p>Dependencies are supported by <a href="https://zeppe-lin.github.io/pkgman.1.html">pkgman(1)</a>. The following rules should be respected:</p>
 
 <ul>
 
@@ -220,9 +220,9 @@
 </dd>
 </dl>
 
-<p>The reasoning for this policy is that you can use <a href="https:///revdep.1.html">revdep(1)</a> to find packages that need to be updated if one of the dependent libraries has become binary incompatible. To find out what libraries a binary is linked to, use <a href="https://www.mankier.com/1/ldd">ldd(1)</a> or <a href="https:///finddeps-linked.1.html">finddeps-linked(1)</a>.</p>
+<p>The reasoning for this policy is that you can use <a href="https://zeppe-lin.github.io/revdep.1.html">revdep(1)</a> to find packages that need to be updated if one of the dependent libraries has become binary incompatible. To find out what libraries a binary is linked to, use <a href="https://www.mankier.com/1/ldd">ldd(1)</a> or <a href="https://zeppe-lin.github.io/finddeps-linked.1.html">finddeps-linked(1)</a>.</p>
 
-<p>Also, in the case of updating the major version of Perl/Python, it will be useful that the libraries or programs that create Perl/Python bindings have a dependency on them. We will have to rebuild everything that depends on Perl/Python with one command (see <a href="https:///pkgman-rdep.1.html">pkgman-rdep(1)</a>).</p>
+<p>Also, in the case of updating the major version of Perl/Python, it will be useful that the libraries or programs that create Perl/Python bindings have a dependency on them. We will have to rebuild everything that depends on Perl/Python with one command (see <a href="https://zeppe-lin.github.io/pkgman-rdep.1.html">pkgman-rdep(1)</a>).</p>
 
 <h2 id="RC-Scripts">RC Scripts</h2>
 
@@ -234,7 +234,7 @@
 
 <p>The <i>build</i> function should use the <code>$SRC</code> variable whenever it needs to access the files listed in the <code>source</code> variable, and the <code>$PKG</code> variable as the root destination of the output files.</p>
 
-<p>Being a shell script executed in the context of <a href="https:///pkgmk.8.html">pkgmk(8)</a>, the entire <i>Pkgfile</i> file has access to the variables initialized in <i>pkgmk.conf</i> and the default values set by <a href="https:///pkgmk.8.html">pkgmk(8)</a>. Also, as an undocumented side effect of how it is used by <a href="https:///pkgmk.8.html">pkgmk(8)</a>, it can also change the behaviour of <a href="https:///pkgmk.8.html">pkgmk(8)</a> by rewriting some of its functions and variables while the current package is built. However, the <i>build</i> function has only read access to these mentioned above.</p>
+<p>Being a shell script executed in the context of <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>, the entire <i>Pkgfile</i> file has access to the variables initialized in <i>pkgmk.conf</i> and the default values set by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>. Also, as an undocumented side effect of how it is used by <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>, it can also change the behaviour of <a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a> by rewriting some of its functions and variables while the current package is built. However, the <i>build</i> function has only read access to these mentioned above.</p>
 
 <h1 id="ERROR-HANDLING">ERROR HANDLING</h1>
 
@@ -312,7 +312,7 @@ esac
 
 <h1 id="SEE-ALSO">SEE ALSO</h1>
 
-<p><a href="https:///pkgmk.8.html">pkgmk(8)</a>, <a href="https:///pkgmk.conf.5.html">pkgmk.conf(5)</a></p>
+<p><a href="https://zeppe-lin.github.io/pkgmk.8.html">pkgmk(8)</a>, <a href="https://zeppe-lin.github.io/pkgmk.conf.5.html">pkgmk.conf(5)</a></p>
 
 
 </body>
