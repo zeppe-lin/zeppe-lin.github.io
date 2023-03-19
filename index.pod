@@ -4,12 +4,6 @@
 
 =head1 INTRODUCTION
 
-=begin html
-
-<img src="/images/logo.png" alt="Zeppe-Lin Logo" class="logo">
-
-=end html
-
 Zeppe-Lin is a lightweight Linux distribution for the x86-64
 architecture targeted at experienced Linux users.  The primary focus
 of this distribution is keep it simple, which is reflected in a
