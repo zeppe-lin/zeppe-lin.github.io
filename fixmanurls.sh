@@ -15,6 +15,9 @@ RELNOTES="https://github.com/zeppe-lin/pkgsrc/releases/tag/"
 DOWNLOAD="https://github.com/zeppe-lin/pkgsrc/releases"
 
 sed	\
+	-e "s,L<cryptmount(8)>,L<cryptmount(8)|${WEBSITE}/cryptmount.8.html>,g" \
+	-e "s,L<crypttab(5)>,L<crypttab(5)|${WEBSITE}/crypttab.5.html>,g" \
+	\
 	-e "s,L<rc.conf(5)>,L<rc.conf(5)|${WEBSITE}/rc.conf.5.html>,g" \
 	\
 	-e "s,L<rejmerge(8)>,L<rejmerge(8)|${WEBSITE}/rejmerge.8.html>,g" \
