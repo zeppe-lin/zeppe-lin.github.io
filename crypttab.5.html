@@ -31,7 +31,7 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>The file <i>crypttab</i> contains information about encrypted volumes. <i>crypttab</i> is intended to be read by <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>, and only written to by human administrators. Each <code>volume</code> is described on a separate line by four fields. Fields are separated by whitespace. Empty lines and lines beginning with a <code>#</code> are ignored.</p>
+<p>The file <i>crypttab</i> contains information about encrypted volumes. <i>crypttab</i> is intended to be read by <a href="/cryptmount.8.html">cryptmount(8)</a>, and only written to by human administrators. Each <code>volume</code> is described on a separate line by four fields. Fields are separated by whitespace. Empty lines and lines beginning with a <code>#</code> are ignored.</p>
 
 <p>The fields are</p>
 
@@ -79,7 +79,7 @@
 
 <p>Most options have a one-to-one correspondence to <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a> command line options and are simply reformatted. For example to use <b>cryptsetup --cipher/-c</b> <code>cipher</code> the options <b>cipher</b>=<code>cipher</code> or <b>c</b>=<code>cipher</code> may be used.</p>
 
-<p>Other options which are used by <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a> are:</p>
+<p>Other options which are used by <a href="/cryptmount.8.html">cryptmount(8)</a> are:</p>
 
 <dl>
 
@@ -116,14 +116,14 @@
 <dt id="tag"><b>%</b><i>tag</i></dt>
 <dd>
 
-<p>Tags can be used to include or exclude a group of volumes when running <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>. Additionally, <b>cryptmount</b> automatically adds to <code>volumes</code>, with a key of <b>/dev/urandom</b>, a <b>%random</b> tag. This tag may be used by the initscripts to delay the mapping of these volumes until after the random seed has been restored during boot.</p>
+<p>Tags can be used to include or exclude a group of volumes when running <a href="/cryptmount.8.html">cryptmount(8)</a>. Additionally, <b>cryptmount</b> automatically adds to <code>volumes</code>, with a key of <b>/dev/urandom</b>, a <b>%random</b> tag. This tag may be used by the initscripts to delay the mapping of these volumes until after the random seed has been restored during boot.</p>
 
 </dd>
 </dl>
 
 <h1 id="SEE-ALSO">SEE ALSO</h1>
 
-<p><a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>, <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a></p>
+<p><a href="/cryptmount.8.html">cryptmount(8)</a>, <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a></p>
 
 <h1 id="AUTHORS">AUTHORS</h1>
 
