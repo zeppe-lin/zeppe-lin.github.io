@@ -1,6 +1,10 @@
 .POSIX:
 
 PODS += $(wildcard ${CURDIR}/../cryptmount/*.pod)
+PODS += $(wildcard ${CURDIR}/../handbook/*.pod)
+PODS += $(wildcard ${CURDIR}/../mkinitramfs/*.pod)
+PODS += $(wildcard ${CURDIR}/../mkrootfs/*.pod)
+PODS += $(wildcard ${CURDIR}/../pkgmaint/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgman/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgmk/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgutils/*.pod)
@@ -8,10 +12,6 @@ PODS += $(wildcard ${CURDIR}/../rc/*.pod)
 PODS += $(wildcard ${CURDIR}/../rejmerge/*.pod)
 PODS += $(wildcard ${CURDIR}/../revdep/*.pod)
 PODS += $(wildcard ${CURDIR}/../start-stop-daemon/*.pod)
-PODS += $(wildcard ${CURDIR}/../handbook/*.pod)
-PODS += $(wildcard ${CURDIR}/../mkinitramfs/*.pod)
-PODS += $(wildcard ${CURDIR}/../mkrootfs/*.pod)
-PODS += $(wildcard ${CURDIR}/../pkgmaint/*.pod)
 
 HTML  = $(PODS:.pod=.html)
 
