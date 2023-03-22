@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#ACTIONS">ACTIONS</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>cryptmount - parse <i>crypttab</i> for use by <b>cryptsetup</b></p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>cryptmount</b> [<i>options</i>] [<b>-L</b>]</p>
+
+<p><b>cryptmount</b> [<i>options</i>] <b>-M</b> [<i>name</i>|<i>device</i>]</p>
+
+<p><b>cryptmount</b> [<i>options</i>] <b>-M</b> <i>name</i> <i>device</i> [<i>key</i>]</p>
+
+<p><b>cryptmount</b> [<i>options</i>] <b>-U</b> [<i>name</i>[,...]]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>cryptmount</b> uses <a href="http://man.he.net/man5/crypttab">crypttab(5)</a> for calling <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a>; it can also be used to define a <i>volume</i> on the command line without <b>crypttab</b>.</p>
+
+<h1 id="ACTIONS">ACTIONS</h1>
+
+<dl>
+
+<dt id="L"><b>-L</b></dt>
+<dd>
+
+<p>List the <i>names</i> (first column) of <i>volumes</i> from <b>crypttab</b>. Use with <b>-O</b> to manipulate which <i>names</i> are listed.</p>
+
+</dd>
+<dt id="M"><b>-M</b></dt>
+<dd>
+
+<p>Perform a mapping. The first form of this command finds a <i>volume</i> from <b>crypttab</b> either by its <i>name</i> or <i>device</i>, or if nothing is given then map all <i>volumes</i> (use with <b>-O</b> to manipulate which <i>volumes</i> are mapped). The second form defines a <i>volume</i> entirely on the command line, <b>crypttab</b> is not used.</p>
+
+</dd>
+<dt id="U"><b>-U</b></dt>
+<dd>
+
+<p>Unmap <i>volume(s)</i>. If a list of <i>names</i> is given, unmap them. Otherwise unmap all <i>volumes</i> from <b>crypttab</b> (with <b>-O</b> to manipulate which <i>volumes</i> are unmapped).</p>
+
+</dd>
+</dl>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<dl>
+
+<dt id="c-file"><b>-c</b> <i>file</i></dt>
+<dd>
+
+<p>Override the default <b>crypttab</b> location.</p>
+
+</dd>
+<dt id="f"><b>-f</b></dt>
+<dd>
+
+<p>Force potentially destructive mappings. For plain mappings (which are used with the <b>swap</b> and <b>tmp</b> options), there is a lot of potential to accidentally lose data. Because of this, <b>cryptmount</b> performs a check with <a href="https://www.mankier.com/8/blkid">blkid(8)</a> to see if there is anything identifiable on <i>device</i>. Use <b>-f</b> to bypass this check.</p>
+
+</dd>
+<dt id="w-num"><b>-w</b> <i>num</i></dt>
+<dd>
+
+<p>Time (in seconds) to wait for <i>device</i> if it is not already available. If <a href="http://man.he.net/man8/udevd">udevd(8)</a> is not running, then <b>cryptmount</b> does not bother to wait and this option is a no-op. This also affects the wait time for <i>keydevice</i> if your key is a block device or a file on a block device.</p>
+
+</dd>
+<dt id="n"><b>-n</b></dt>
+<dd>
+
+<p>Dry run, useful with <b>-v</b> to see how <b>cryptsetup</b> will be called.</p>
+
+</dd>
+<dt id="v"><b>-v</b></dt>
+<dd>
+
+<p>Increase verbosity. This prints the commands which are being called (eg: <b>cryptsetup</b>, <b>mkswap</b>).</p>
+
+</dd>
+<dt id="q"><b>-q</b></dt>
+<dd>
+
+<p>Decrease verbosity.</p>
+
+</dd>
+<dt id="h"><b>-h</b></dt>
+<dd>
+
+<p>Print a short usage message and exit.</p>
+
+</dd>
+<dt id="o-options"><b>-o</b> <i>options</i></dt>
+<dd>
+
+<p>An options list with items such as <b>swap</b>, <b>cipher</b>, etc. This may be given multiple times with a cumulative effect. See <a href="http://man.he.net/man5/crypttab">crypttab(5)</a> for the full syntax <i>options</i>.</p>
+
+</dd>
+<dt id="O-filters"><b>-O</b> <i>filters</i></dt>
+<dd>
+
+<p>Similar to <i>options</i>, this is used to manipulate which <i>volumes</i> are used with <i>-L</i> and with <i>-M/-U</i> without arguments. If an option is present in <i>filters</i>, then the <i>volume</i> in <b>crypttab</b> must contain the option. For example <b>-O swap,size</b> matches all <i>volumes</i> with the <b>swap</b> option and any <b>size</b>=size option; or <b>-O swap,size=512</b> matches only those <i>volumes</i> with the <b>swap</b> option and specifically <b>size=512</b>.</p>
+
+<p>A filter option may also be negated by prefixing it with a <b>!</b>. For example, <b>-O swap,!size</b> includes all <i>volumes</i> with the <b>swap</b> option but <b>without</b> the <i>size</i> option. There is a built-in filter <b>!noauto</b>.</p>
+
+<p>Filters are especially useful with <b>%</b>tag options. For example, <b>-O !%random</b> can be used to map all <i>volumes</i> which don&rsquo;t use <b>/dev/urandom</b> for a password and <b>-O %random</b> to map the remainder once your system&rsquo;s random seed has been restored.</p>
+
+<p>The <b>-O</b> option has <b>no effect</b> when calling <b>cryptmount</b> in a way that does not use <b>crypttab</b>.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="http://man.he.net/man5/crypttab">crypttab(5)</a>, <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a></p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p>Matt Monaco &lt;dgbaley27@0x01b.net&gt;</p>
+
+
+</body>
+
+</html>
+
+

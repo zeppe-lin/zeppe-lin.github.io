@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>crypttab - static information about dm-crypt filesystems</title>
+<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>crypttab - static information about dm-crypt filesystems</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>/etc/crypttab</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The file <i>crypttab</i> contains information about encrypted volumes. <i>crypttab</i> is intended to be read by <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>, and only written to by human administrators. Each <code>volume</code> is described on a separate line by four fields. Fields are separated by whitespace. Empty lines and lines beginning with a <code>#</code> are ignored.</p>
+
+<p>The fields are</p>
+
+<pre><code>name device [key [options]]</code></pre>
+
+<dl>
+
+<dt id="The-first-field-name"><b>The first field</b> (<i>name</i>).</dt>
+<dd>
+
+<p>This field describes the name of the <code>volume</code> which will appear at <b>/dev/mapper/</b><i>name</i>. This must be a plain filename without any directory components.</p>
+
+</dd>
+<dt id="The-second-field-device"><b>The second field</b> (<i>device</i>).</dt>
+<dd>
+
+<p>The field describes an absolute path, UUID, PARTUUID, or LABEL to a device or file which will be mapped to <b>/dev/mapper/</b><i>name</i>.</p>
+
+</dd>
+<dt id="The-third-field-key"><b>The third field</b> (<i>key</i>).</dt>
+<dd>
+
+<pre><code>key := - | keydevice[[:fstype] :keyfile]</code></pre>
+
+<p>This field may be blank or a <b>-</b> for interactive passwords. <i>keydevice</i> may be an absolute path, UUID, PARTUUID, or LABEL to a device or file which contains the passphrase. If <i>keyfile</i> (and <i>fstype</i>) are given, <i>keydevice</i> will be mounted if it isn&#39;t already. <i>keyfile</i> is an absolute path relative to the root of the file system on <i>keydevice</i>.</p>
+
+<p>For compatibility with other formats, <b>ASK</b> and <b>none</b> may be used in place of <b>-</b> and <b>SWAP</b> is an idiom for <b>/dev/urandom</b> and the <b>swap</b> option. See <a>OPTIONS</a>.</p>
+
+<p><b>Note:</b> A literal password in this field is <b>not</b> supported.</p>
+
+</dd>
+<dt id="The-fourth-field-options"><b>The fourth field</b> (<i>options</i>)</dt>
+<dd>
+
+<pre><code>options := key[=value] | %tag | options,options</code></pre>
+
+<p>The <i>options</i> field is a comma separated list. It is described in detail below.</p>
+
+<p>For compatibility with other formats, if the first character is <b>-</b> then the entire field is interpretted as a literal command line for <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>Most options have a one-to-one correspondence to <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a> command line options and are simply reformatted. For example to use <b>cryptsetup --cipher/-c</b> <code>cipher</code> the options <b>cipher</b>=<code>cipher</code> or <b>c</b>=<code>cipher</code> may be used.</p>
+
+<p>Other options which are used by <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a> are:</p>
+
+<dl>
+
+<dt id="swap"><b>swap</b></dt>
+<dd>
+
+<p>Run <a href="http://man.he.net/man8/mkswap">mkswap(8)</a> on <b>/dev/mapper/</b><i>name</i>.</p>
+
+</dd>
+<dt id="tmp-fs"><b>tmp</b>[=<i>fs</i>]</dt>
+<dd>
+
+<p>Run <a href="http://man.he.net/man8/mkfs">mkfs(8)</a> with the file system type of <i>fs</i> on <b>/dev/mapper/</b><i>name</i>. The default <i>fs</i> is <b>ext4</b>.</p>
+
+</dd>
+<dt id="noauto"><b>noauto</b></dt>
+<dd>
+
+<p>Do not automatically map this <code>volume</code>.</p>
+
+</dd>
+<dt id="size-size"><b>size</b>=<i>size</i></dt>
+<dd>
+
+<p>See <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a>&#39;s <b>--key-size</b>. Other formats for <i>crypttab</i> use <i>size</i> for the amount of bytes to read from <i>key</i>.</p>
+
+</dd>
+<dt id="device-size-size"><b>device-size</b>=<i>size</i></dt>
+<dd>
+
+<p>See <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a>&#39;s <b>--size</b>. This accounts for the quirk with <i>size</i>.</p>
+
+</dd>
+<dt id="tag"><b>%</b><i>tag</i></dt>
+<dd>
+
+<p>Tags can be used to include or exclude a group of volumes when running <a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>. Additionally, <b>cryptmount</b> automatically adds to <code>volumes</code>, with a key of <b>/dev/urandom</b>, a <b>%random</b> tag. This tag may be used by the initscripts to delay the mapping of these volumes until after the random seed has been restored during boot.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="http://man.he.net/man8/cryptmount">cryptmount(8)</a>, <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a></p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p>Matt Monaco &lt;<a>dgbaley27@0x01b.net</a>&gt;</p>
+
+
+</body>
+
+</html>
+
+
