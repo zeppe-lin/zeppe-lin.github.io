@@ -1,5 +1,6 @@
 .POSIX:
 
+PODS += $(wildcard ${CURDIR}/../cryptmount/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgman/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgmk/*.pod)
 PODS += $(wildcard ${CURDIR}/../pkgutils/*.pod)
