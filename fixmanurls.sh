@@ -108,7 +108,8 @@ sed	\
 	-e "s,L<wget(1)>,L<wget(1)|${MANKIER}/1/wget>,g" \
 	-e "s,L<wpa_passphrase(8)>,L<wpa_passphrase(8)|${MANKIER}/8/wpa_passphrase>,g" \
 	-e "s,L<mkswap(8)>,L<mkswap(8)|${MANKIER}/8/mkswap>,g" \
-	-e "s,L<mkfs(8),L<mkfs(8)|${MANKIER}/8/mkfs>,g" \
+	-e "s,L<mkfs(8)>,L<mkfs(8)|${MANKIER}/8/mkfs>,g" \
+	-e "s,L<udevd(8)>,L<udevd(8)|${MANKIER}/8/udevd>,g" \
 	\
 	-e "s,L<inittab(5)>,L<inittab(5)|https://manpages.debian.org/unstable/sysvinit-core/inittab.5.en.html>,g" \
 	\
