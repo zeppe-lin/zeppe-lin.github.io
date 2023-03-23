@@ -15,7 +15,14 @@
 <ul id="index">
   <li><a href="#NAME">NAME</a></li>
   <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#The-first-field-name">The first field (name).</a></li>
+      <li><a href="#The-second-field-device">The second field (device).</a></li>
+      <li><a href="#The-third-field-key">The third field (key).</a></li>
+      <li><a href="#The-fourth-field-options">The fourth field (options)</a></li>
+    </ul>
+  </li>
   <li><a href="#OPTIONS">OPTIONS</a></li>
   <li><a href="#SEE-ALSO">SEE ALSO</a></li>
   <li><a href="#AUTHORS">AUTHORS</a></li>
@@ -31,28 +38,17 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>The file <i>crypttab</i> contains information about encrypted volumes. <i>crypttab</i> is intended to be read by <a href="/cryptmount.8.html">cryptmount(8)</a>, and only written to by human administrators. Each <code>volume</code> is described on a separate line by four fields. Fields are separated by whitespace. Empty lines and lines beginning with a <code>#</code> are ignored.</p>
+<p>The file <i>crypttab</i> contains descriptive information about the encrypted volumes the system can mount. <i>crypttab</i> is intended to be read by <a href="/cryptmount.8.html">cryptmount(8)</a>, and only written to by human administrators. Each <code>volume</code> is described on a separate line by four fields. Fields are separated by whitespace. Empty lines and lines beginning with a <code>#</code> are ignored.</p>
 
-<p>The fields are</p>
-
-<pre><code>name device [key [options]]</code></pre>
-
-<dl>
-
-<dt id="The-first-field-name"><b>The first field</b> (<i>name</i>).</dt>
-<dd>
+<h2 id="The-first-field-name"><b>The first field</b> (<i>name</i>).</h2>
 
 <p>This field describes the name of the <code>volume</code> which will appear at <b>/dev/mapper/</b><i>name</i>. This must be a plain filename without any directory components.</p>
 
-</dd>
-<dt id="The-second-field-device"><b>The second field</b> (<i>device</i>).</dt>
-<dd>
+<h2 id="The-second-field-device"><b>The second field</b> (<i>device</i>).</h2>
 
 <p>The field describes an absolute path, UUID, PARTUUID, or LABEL to a device or file which will be mapped to <b>/dev/mapper/</b><i>name</i>.</p>
 
-</dd>
-<dt id="The-third-field-key"><b>The third field</b> (<i>key</i>).</dt>
-<dd>
+<h2 id="The-third-field-key"><b>The third field</b> (<i>key</i>).</h2>
 
 <pre><code>key := - | keydevice[[:fstype] :keyfile]</code></pre>
 
@@ -60,20 +56,15 @@
 
 <p>For compatibility with other formats, <b>ASK</b> and <b>none</b> may be used in place of <b>-</b> and <b>SWAP</b> is an idiom for <b>/dev/urandom</b> and the <b>swap</b> option. See <a>OPTIONS</a>.</p>
 
-<p><b>Note:</b> A literal password in this field is <b>not</b> supported.</p>
+<p><b>NOTE!</b> A literal password in this field is <b>not</b> supported.</p>
 
-</dd>
-<dt id="The-fourth-field-options"><b>The fourth field</b> (<i>options</i>)</dt>
-<dd>
+<h2 id="The-fourth-field-options"><b>The fourth field</b> (<i>options</i>)</h2>
 
 <pre><code>options := key[=value] | %tag | options,options</code></pre>
 
 <p>The <i>options</i> field is a comma separated list. It is described in detail below.</p>
 
 <p>For compatibility with other formats, if the first character is <b>-</b> then the entire field is interpretted as a literal command line for <a href="https://www.mankier.com/8/cryptsetup">cryptsetup(8)</a>.</p>
-
-</dd>
-</dl>
 
 <h1 id="OPTIONS">OPTIONS</h1>
 

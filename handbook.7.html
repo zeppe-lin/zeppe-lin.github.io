@@ -92,7 +92,7 @@
           <li><a href="#Querying-the-package-database">Querying the package database</a>
             <ul>
               <li><a href="#List-installed-packages-and-their-version">List installed packages and their version</a></li>
-              <li><a href="#List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE:</a></li>
+              <li><a href="#List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE</a></li>
               <li><a href="#List-owners-of-files-matching-bin-ls">List owners of files matching bin/ls</a></li>
               <li><a href="#Print-footprint-for-file">Print footprint for file</a></li>
             </ul>
@@ -174,7 +174,7 @@
 
 <h1 id="INTRODUCTION">INTRODUCTION</h1>
 
-<img src="/images/logo.png" alt="Zeppe-Lin Logo" class="logo">
+<img alt="Zeppe-Lin Logo" class="logo">
 
 <p>This handbook (as a whole Zeppe-Lin) is inspired and based on the <a href="https://crux.nu/Main/Documentation">CRUX Handbook</a>.</p>
 
@@ -431,7 +431,7 @@ manual page.
 
 <p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="/mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
 
-<p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <b>Install mkinitramfs</b>.</p>
+<p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <a href="#Install-mkinitramfs">&quot;Install mkinitramfs&quot;</a>.</p>
 
 <h4 id="Install-the-kernel-manually">Install the kernel manually</h4>
 
@@ -723,7 +723,7 @@ xmms 1.2.7-1
 zip 2.3-1
 zlib 1.1.4-1</code></pre>
 
-<h4 id="List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE:</h4>
+<h4 id="List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE</h4>
 
 <pre><code>$ pkginfo -l bash
 bin/
