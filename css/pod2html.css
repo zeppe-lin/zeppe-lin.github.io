@@ -50,6 +50,7 @@ body {
 }
 
 body img.logo {
+  content: url("/images/logo.png");
   float: left;
   width: 10em;
   height: 10em;
@@ -71,6 +72,9 @@ body img.logo {
     background-color: #f6f5f4;
     border: 1px solid hsl(140, 51%, 51%);
     color: #002b36;
+  }
+  body img.logo {
+    content: url("/images/logo-light.png");
   }
 }
 
