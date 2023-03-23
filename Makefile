@@ -39,7 +39,7 @@ check:
 
 update:
 	git add .
-	git commit -m "update $(shell date)" .
+	git commit -m "Regenerate HTML from PODs: $(shell date)" .
 
 clean:
 	rm -f $(notdir $(HTML)) index.html
