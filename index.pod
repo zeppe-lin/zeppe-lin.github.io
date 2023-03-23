@@ -2,6 +2,14 @@
 
 =encoding utf-8
 
+=begin html
+
+<header>
+<img class="logo"></img>
+</header>
+
+=end html
+
 =head1 INTRODUCTION
 
 Zeppe-Lin is a lightweight Linux distribution for the x86-64
