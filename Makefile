@@ -1,7 +1,7 @@
 .POSIX:
 
 CURRENT_RELEASE_VERSION = $(shell git -C /usr/src/pkgsrc describe --tags --abbrev=0)
-CURRENT_RELEASE_LURL = https://github.com/zeppe-lin/pkgsrc/releases/latest
+CURRENT_RELEASE_URL = https://github.com/zeppe-lin/pkgsrc/releases/latest
 
 PODS += $(wildcard ${CURDIR}/../cryptmount/*.pod)
 PODS += $(wildcard ${CURDIR}/../handbook/*.pod)
@@ -30,10 +30,10 @@ $(filter %.html,$(HTML)): %.html: %.pod
 
 index.html:
 	./fixmanurls.sh index.pod \
+		| sed -e "s|@CURRENT_RELEASE_VERSION@|${CURRENT_RELEASE_VERSION}|g" \
+		      -e "s|@CURRENT_RELEASE_URL@|${CURRENT_RELEASE_URL}|g" \
 		| pod2html --noindex --css=css/pod2html_min.css --cachedir=/tmp - \
 		| sed 's|http:///HACK4RELURL/||g' \
-		| sed "s|@CURRENT_RELEASE_VERSION@|${CURRENT_RELEASE_VERSION}|g" \
-		| sed "s|@CURRENT_RELEASE_URL@|${CURRENT_RELEASE_URL}|g" \
 		> $@
 
 check:
