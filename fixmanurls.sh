@@ -7,18 +7,14 @@
 WEBSITE="http:///HACK4RELURL/"
 # The site that provides a man-pages which is not shipped by Zeppe-Lin website.
 MANKIER="https://www.mankier.com"
-# The Zeppe-Lin current release.
-CURRENT_REL="$(git -C /usr/src/pkgsrc describe --tags --abbrev=0)"
-# The Zeppe-Lin release notes url.
-RELNOTES="https://github.com/zeppe-lin/pkgsrc/releases/tag/"
-# The Zeppe-Lin download url.
-DOWNLOAD="https://github.com/zeppe-lin/pkgsrc/releases"
 
 sed	\
 	-e "s,L<cryptmount(8)>,L<cryptmount(8)|${WEBSITE}/cryptmount.8.html>,g" \
 	-e "s,L<crypttab(5)>,L<crypttab(5)|${WEBSITE}/crypttab.5.html>,g" \
 	\
 	-e "s,L<rc.conf(5)>,L<rc.conf(5)|${WEBSITE}/rc.conf.5.html>,g" \
+	\
+	-e "s,L<handbook(7)>,L<handbook(7)|${WEBSITE}/handbook.7.html>,g" \
 	\
 	-e "s,L<rejmerge(8)>,L<rejmerge(8)|${WEBSITE}/rejmerge.8.html>,g" \
 	-e "s,L<rejmerge.conf(5)>,L<rejmerge.conf(5)|${WEBSITE}/rejmerge.conf.5.html>,g" \
@@ -113,11 +109,6 @@ sed	\
 	\
 	-e "s,L<inittab(5)>,L<inittab(5)|https://manpages.debian.org/unstable/sysvinit-core/inittab.5.en.html>,g" \
 	\
-	-e "s,L<Zeppe-Lin handbook>,L<Zeppe-Lin handbook|${WEBSITE}/handbook.7.html>,g" \
-	-e "s,L<Zeppe-Lin release notes>,L<Zeppe-Lin release notes|${RELNOTES}${CURRENT_REL}>,g" \
-	-e "s,L<Zeppe-Lin current release>,${CURRENT_REL},g" \
-	-e "s,L<Current rootfs tarball>,L<current rootfs tarball|${DOWNLOAD}/${CURRENT_REL}>,g" \
-	-e "s,L<Previous releases>,L<previous releases|${DOWNLOAD}>,g" \
 $@
 
 # End of file.
