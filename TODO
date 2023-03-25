@@ -1,5 +1,6 @@
 TODO zeppe-lin.github.io
 
+	[ ] fix dead udevd(8) link reference
 	[ ] add missing man pages:
 		[ ] add make target to find non-Zeppe-Lin man references
 		[ ] zcat /usr/share/man/man?/???.gz | groff -mandoc -Thtml
