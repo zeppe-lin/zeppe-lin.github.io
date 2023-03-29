@@ -169,7 +169,7 @@ git push --tags</code></pre>
 <p>Also, after that, regenerate the website:</p>
 
 <pre><code>$ cd /usr/src/zeppe-lin.github.io
-$ make
+$ make -j$(nproc)
 $ make update
 $ git push</code></pre>
 
