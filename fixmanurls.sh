@@ -82,6 +82,7 @@ sed	\
 	-e "s,L<cryptsetup(8)>,L<cryptsetup(8)|${MANKIER}/8/cryptsetup>,g" \
 	-e "s,L<curl(1)>,L<curl(1)|${MANKIER}/1/curl>,g" \
 	-e "s,L<fakeroot(1)>,L<fakeroot(1)|${MANKIER}/1/fakeroot>,g" \
+	-e "s,L<fnmatch(3)>,L<fnmatch(3)|${MANKIER}/3/fnmatch>,g" \
 	-e "s,L<fstab(5)>,L<fstab(5)|${MANKIER}/5/fstab#Description-The_fourth_field_(fs_mntops).>,g" \
 	-e "s,L<git(1)>,L<git(1)|${MANKIER}/1/git>,g" \
 	-e "s,L<gpg(1)>,L<gpg(1)|${MANKIER}/1/gpg>,g" \
@@ -91,8 +92,11 @@ sed	\
 	-e "s,L<ldd(1)>,L<ldd(1)|${MANKIER}/1/ldd>,g" \
 	-e "s,L<loadkeys(1)>,L<loadkeys(1)|${MANKIER}/1/loadkeys>,g" \
 	-e "s,L<make(1)>,L<make(1)|${MANKIER}/1/make>,g" \
+	-e "s,L<mkfs(8)>,L<mkfs(8)|${MANKIER}/8/mkfs>,g" \
+	-e "s,L<mkswap(8)>,L<mkswap(8)|${MANKIER}/8/mkswap>,g" \
 	-e "s,L<parted(8)>,L<parted(8)|${MANKIER}/8/parted>,g" \
 	-e "s,L<pod2html(1pm)>,L<pod2html(1pm)|${MANKIER}/1/pod2html>,g" \
+	-e "s,L<regex(3)>,L<regex(3)|${MANKIER}/3/regex>,g" \
 	-e "s,L<rfkill(8)>,L<rfkill(8)|${MANKIER}/8/rfkill>,g" \
 	-e "s,L<setfont(8)>,L<setfont(8)|${MANKIER}/8/setfont>,g" \
 	-e "s,L<sh(1)>,L<sh(1)|${MANKIER}/1/dash>,g" \
@@ -101,11 +105,9 @@ sed	\
 	-e "s,L<sudo(8)>,L<sudo(8)|${MANKIER}/8/sudo>,g" \
 	-e "s,L<sysfs(5)>,L<sysfs(5)|${MANKIER}/5/sysfs>,g" \
 	-e "s,L<tmpfs(5)>,L<tmpfs(5)|${MANKIER}/5/tmpfs>,g" \
+	-e "s,L<udevd(8)>,L<udevd(8)|${MANKIER}/8/udevd>,g" \
 	-e "s,L<wget(1)>,L<wget(1)|${MANKIER}/1/wget>,g" \
 	-e "s,L<wpa_passphrase(8)>,L<wpa_passphrase(8)|${MANKIER}/8/wpa_passphrase>,g" \
-	-e "s,L<mkswap(8)>,L<mkswap(8)|${MANKIER}/8/mkswap>,g" \
-	-e "s,L<mkfs(8)>,L<mkfs(8)|${MANKIER}/8/mkfs>,g" \
-	-e "s,L<udevd(8)>,L<udevd(8)|${MANKIER}/8/udevd>,g" \
 	\
 	-e "s,L<inittab(5)>,L<inittab(5)|https://manpages.debian.org/unstable/sysvinit-core/inittab.5.en.html>,g" \
 	\
