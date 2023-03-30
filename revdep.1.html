@@ -124,7 +124,7 @@
 
 <p>Upon startup, <b>revdep</b> searches the <i>/etc/revdep.d</i> directory for files named after packages. If any are found, any directories (assumed to be absolute paths and delimited by newlines) within the file are added to a list of package specific directories to search if a library dependency is not found in one of the many standard locations (as specified by <a href="https://www.mankier.com/8/ld.so">ld.so(8)</a>).</p>
 
-<p>If a package is discovered to have a library dependencies that are in a non-standard directory <i>/usr/lib/firefox</i> then a file named <i>firefox</i> should be created under <i>/etc/revdep.d</i> with a single line containing <i>/usr/lib/firefox</i>. This will tell <b>revdep</b> where to find firefox&#39;s <i>libxul.so</i> when looking for its library dependencies, reducing one source of false positives. Ideally, this file would be included with the package&#39;s own packaging as well.</p>
+<p>If a package is discovered to have a library dependencies that are in a non-standard directory <i>/usr/lib/firefox</i> then a file named <i>firefox</i> should be created under <i>/etc/revdep.d</i> with a single line containing <i>/usr/lib/firefox</i>. This will tell <b>revdep</b> where to find Firefox&#39;s <i>libxul.so</i> when looking for its library dependencies, reducing one source of false positives. Ideally, this file would be included with the package&#39;s own packaging as well.</p>
 
 <h1 id="EXIT-STATUS">EXIT STATUS</h1>
 
@@ -151,7 +151,7 @@
 <dt id="pod3"><code>3</code></dt>
 <dd>
 
-<p>Failed to read ld.so.conf.</p>
+<p>Failed to read <i>ld.so.conf</i>.</p>
 
 </dd>
 <dt id="pod4"><code>4</code></dt>

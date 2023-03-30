@@ -27,11 +27,11 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>This manual page describes the how to build zeppe-lin root filesystem tarball and prepare the release on github.</p>
+<p>This manual page describes the how to build Zeppe-Lin root filesystem tarball and prepare the release on GitHub.</p>
 
 <h1 id="CONFIGURATION">CONFIGURATION</h1>
 
-<p>By default, <a href="/mkrootfs.8.html">mkrootfs(8)</a> uses <i>/etc/mkrootfs/config</i>, <i>/etc/pkgmk.conf</i> and <i>/etc/pkgman.conf</i> configuration files. These files (if you haven&#39;t edited them in your zeppe-lin installation) contain reasonable defaults and can be used to create a root filesystem with your current built system packages.</p>
+<p>By default, <a href="/mkrootfs.8.html">mkrootfs(8)</a> uses <i>/etc/mkrootfs/config</i>, <i>/etc/pkgmk.conf</i> and <i>/etc/pkgman.conf</i> configuration files. These files (if you haven&#39;t edited them in your Zeppe-Lin installation) contain reasonable defaults and can be used to create a root filesystem with your current built system packages.</p>
 
 <p>If you changed configuration files mentioned above, for example changed <code>CFLAGS</code> in <i>/etc/pkgmk.conf</i> from <code>-march=x86_64</code> to <code>-march=native</code>, but want to build rootfs for generic x86_64, then make a copy of <i>pkgmk.conf</i> with your settings and tell <a href="/mkrootfs.8.html">mkrootfs(8)</a> to use it by using <code>-x</code>/<code>--pkgmk-config</code> command-line options:</p>
 
@@ -143,7 +143,7 @@ git tag -a $CURTAG -m $CURTAG
 git push
 git push --tags</code></pre>
 
-<p>Secondly, go to zeppe-lin&#39;s <code>pkgsrc</code> repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/pkgsrc/release/new">https://github.com/zeppe-lin/pkgsrc/release/new</a>).</p>
+<p>Secondly, go to Zeppe-Lin&#39;s <code>pkgsrc</code> repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/pkgsrc/release/new">https://github.com/zeppe-lin/pkgsrc/release/new</a>).</p>
 
 <ul>
 
