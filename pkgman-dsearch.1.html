@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>pkgman-dsearch - search the packages sources directories for package name/description</title>
+<title>pkgman-dsearch - search the packages sources directories for package name and description</title>
 <link rel="stylesheet" href="css/pod2html.css" type="text/css" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:root@k4v3r1.nonet" />
@@ -21,7 +21,7 @@
 
 <h1 id="NAME">NAME</h1>
 
-<p>pkgman-dsearch - search the packages sources directories for package name/description</p>
+<p>pkgman-dsearch - search the packages sources directories for package name and description</p>
 
 <h1 id="SYNOPSIS">SYNOPSIS</h1>
 
@@ -29,7 +29,7 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>Search the packages sources directories for <i>EXPR</i> in packages&#39; name/description. It looks in all directories specified in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code> directories.</p>
+<p>Search the packages sources directories for <i>EXPR</i> in packages&#39; name <b>and</b> description. It looks in all directories specified in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code> directories.</p>
 
 <h1 id="OPTIONS">OPTIONS</h1>
 
@@ -38,13 +38,13 @@
 <dt id="v"><b>-v</b></dt>
 <dd>
 
-<p>Show version in the listing.</p>
+<p>Show package version in the listing.</p>
 
 </dd>
 <dt id="vv"><b>-vv</b></dt>
 <dd>
 
-<p>Show version and description in the listing.</p>
+<p>Show package version and description in the listing.</p>
 
 </dd>
 <dt id="path"><b>--path</b></dt>
@@ -62,7 +62,7 @@
 <dt id="EXPR"><i>EXPR</i></dt>
 <dd>
 
-<p>Search names/descriptions for <i>EXPR</i>, where the expression may be the string or regex in <a href="https://www.mankier.com/3/regex">regex(3)</a> format.</p>
+<p>Search names and descriptions for <i>EXPR</i>, where the expression may be the string or regex in <a href="https://www.mankier.com/3/regex">regex(3)</a> format.</p>
 
 </dd>
 </dl>

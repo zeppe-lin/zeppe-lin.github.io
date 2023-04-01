@@ -16,7 +16,6 @@
   <li><a href="#NAME">NAME</a></li>
   <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
   <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#CONFIGURATION">CONFIGURATION</a></li>
   <li><a href="#EXAMPLE">EXAMPLE</a></li>
   <li><a href="#SEE-ALSO">SEE ALSO</a></li>
 </ul>
@@ -31,11 +30,9 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>This file is read by <a href="/pkgman.1.html">pkgman(1)</a>.</p>
+<p>This manual page describes the format of the <i>pkgman.conf</i> file, that contains information for <a href="/pkgman.1.html">pkgman(1)</a>.</p>
 
-<h1 id="CONFIGURATION">CONFIGURATION</h1>
-
-<p>Every line can contain one configuration option. The format of the lines is <code>key value</code>.</p>
+<p>Every line can contain one configuration option. The format of the lines is <code>key value</code>. Any line <b>beginning</b> with a hash (<b>#</b>) is ignored, as are lines containing only whitespace.</p>
 
 <p>The valid keys are:</p>
 
@@ -48,9 +45,21 @@
 
 <p>If you want to restrict the packages used from one <code>pkgsrcdir</code>, you can append a comma-separated list of packages to be used after the path, using a colon <code>:</code> character to separate the two components.</p>
 
-<p><i>path</i> The directory.</p>
+<dl>
 
-<p><i>pkg1,pkg2</i> The final directory in the path.</p>
+<dt id="path"><i>path</i></dt>
+<dd>
+
+<p>The directory.</p>
+
+</dd>
+<dt id="pkg1-pkg2"><i>pkg1,pkg2</i></dt>
+<dd>
+
+<p>The final directory in the path.</p>
+
+</dd>
+</dl>
 
 <p>Example:</p>
 
