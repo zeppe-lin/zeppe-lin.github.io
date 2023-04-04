@@ -1250,26 +1250,28 @@ No differences found</code></pre>
 
 <h3 id="Build-packages-as-an-unprivileged-user">Build packages as an unprivileged user</h3>
 
-<p>This is already done in default Zeppe-Lin installation. The following describes how to achieve this, so that you now how it is done in Zeppe-Lin.</p>
+<p>It is already done in the default Zeppe-Lin distribution. The packages <code>core/filesystem</code>, <code>core/pkgmk</code> and <code>core/pkgman</code> have corresponding configuration. However, it does not hurt to describe how to achieve this, so that you will know how it is done in Zeppe-Lin or if you would like to adjust default settings.</p>
 
-<p>First, add the new user:</p>
+<p>First, add a new user (<code>pkgmk</code> for example):</p>
 
 <pre><code># useradd -b /var/cache/ -m -s /bin/false -U pkgmk</code></pre>
 
-<p>This will create the user <code>pkgmk</code> and the group with the same name as the user. Also, the <i>/var/cache/pkgmk</i> home directory will be created. Default shell for this user is <i>/bin/false</i>.</p>
+<p>This command will create the user <code>pkgmk</code> and the group with the same name, with <i>/var/cache/pkgmk</i> as the home directory and <i>/bin/false</i> as the default shell.</p>
 
-<p>Second, add directories required for pkgmk:</p>
+<p>Second, add the directories required for <a href="/pkgmk.8.html">pkgmk(8)</a> to build the packages and set user <code>pkgmk</code> (which we created previously) as their owner:</p>
 
 <pre><code># mkdir -p /var/cache/pkgmk/{sources,packages,work}
 # chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}</code></pre>
 
-<p>Third, add pkgmk directories to <i>pkgmk.conf</i>:</p>
+<p>Third, specify these directories in <i>/etc/pkgmk.conf</i>, so that when you call <a href="/pkgmk.8.html">pkgmk(8)</a>, these directories will be used.</p>
 
-<p>Edit <i>/etc/pkgmk.conf</i>&#39;s variables <code>PKGMK_SOURCE_DIR</code>, <code>PKGMK_PACKAGE_DIR</code> and <code>PKGMK_WORK_DIR</code> to refer to previously created directories in <i>/var/cache/pkgmk</i>.</p>
+<pre><code>... skipped
+PKGMK_SOURCE_DIR=/var/cache/pkgmk/sources
+PKGMK_PACKAGE_DIR=/var/cache/pkgmk/packages
+PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$
+... skipped</code></pre>
 
-<p>Fourth, set up the <code>makecommand</code> in <i>pkgman.conf</i>:</p>
-
-<p>Edit <i>/etc/pkgman.conf</i>&#39;s <code>makecommand</code> to build as a regular user:</p>
+<p>Fourth, tell <a href="/pkgman.1.html">pkgman(1)</a> to call <a href="/pkgmk.8.html">pkgmk(8)</a> on behalf of <code>pkgmk</code> user. To do that, edit variable <code>makecommand</code> in the <i>/etc/pkgman.conf</i> file as the following:</p>
 
 <pre><code>makecommand sudo -H -u pkgmk fakeroot pkgmk</code></pre>
 
