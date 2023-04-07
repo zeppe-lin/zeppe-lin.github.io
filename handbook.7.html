@@ -128,11 +128,11 @@
           <li><a href="#What-is-the-pkgsrc-repository">What is the pkgsrc repository?</a></li>
           <li><a href="#pkgsrc-collections">pkgsrc collections</a>
             <ul>
-              <li><a href="#core">core</a></li>
-              <li><a href="#system">system</a></li>
-              <li><a href="#xorg">xorg</a></li>
-              <li><a href="#desktop">desktop</a></li>
-              <li><a href="#stuff">stuff</a></li>
+              <li><a href="#core1">core</a></li>
+              <li><a href="#system1">system</a></li>
+              <li><a href="#xorg1">xorg</a></li>
+              <li><a href="#desktop1">desktop</a></li>
+              <li><a href="#stuff1">stuff</a></li>
             </ul>
           </li>
         </ul>
@@ -140,7 +140,7 @@
       <li><a href="#Using-The-Pkgsrc">Using The Pkgsrc</a>
         <ul>
           <li><a href="#Synchronizing-your-local-pkgsrc-repository">Synchronizing your local pkgsrc repository</a></li>
-          <li><a href="#Listing-local-pkgsrc-repository">Listing local pkgsrc repository</a></li>
+          <li><a href="#Listing-local-pkgsrc-repositories">Listing local pkgsrc repositories</a></li>
           <li><a href="#Listing-version-differences">Listing version differences</a></li>
           <li><a href="#Building-and-installing-packages">Building and installing packages</a></li>
           <li><a href="#Build-packages-as-an-unprivileged-user">Build packages as an unprivileged user</a></li>
@@ -404,8 +404,51 @@ manual page.
 
 <h3 id="Prepare-the-package-sources">Prepare the package sources</h3>
 
+<p>Packages&#39; sources are organized in so called collections. There are five official pkgsrc repositories (collections):</p>
+
+<dl>
+
+<dt id="core"><code>core</code></dt>
+<dd>
+
+<p>This collection contains build scripts and files for the packages required to create a basic Zeppe-Lin system. Most likely you need it.</p>
+
+</dd>
+<dt id="system"><code>system</code></dt>
+<dd>
+
+<p>This collection contains build scripts and files for the packages required for minimal Zeppe-Lin installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. <code>system</code> depends on the <code>core</code> collection.</p>
+
+</dd>
+<dt id="xorg"><code>xorg</code></dt>
+<dd>
+
+<p>This collection contains build scripts and files for the packages required for X Window System applications. <code>xorg</code> depends on the <code>system</code> collection.</p>
+
+</dd>
+<dt id="desktop"><code>desktop</code></dt>
+<dd>
+
+<p>This collection contains build scripts and files for the packages typically used on a desktop: web-browser, music/video player, file manager, chat messenger, etc. <code>desktop</code> depends on the <code>xorg</code> collection.</p>
+
+</dd>
+<dt id="stuff"><code>stuff</code></dt>
+<dd>
+
+<p>This collection contains build scripts and files for the packages that <b>do not</b> fit into any of the collections above.</p>
+
+</dd>
+</dl>
+
+<p>Clone the collections you need, but note that one collection depends on another. Example:</p>
+
 <pre><code>(chrooted) # cd /usr/src/
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc</code></pre>
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
+
+<p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default only <code>core</code> collection is enabled. See <a href="/pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
 
 <h4 id="Update-the-core-packages-and-configuration-files">Update the core packages and configuration files</h4>
 
@@ -424,7 +467,7 @@ manual page.
 
 <h4 id="Install-the-kernel-package">Install the kernel package</h4>
 
-<p>Zeppe-Lin provides a package with the kernel and non-free firmware:</p>
+<p><code>system</code> pkgsrc collection provides a package with the kernel and non-free firmware:</p>
 
 <pre><code>(chrooted) # pkgman install --deps --group \
   --config-append=&quot;runscripts no&quot; linux linux-firmware</code></pre>
@@ -800,7 +843,7 @@ autoconf 2.71-1: Generates automatic source code configuration scripts</code></p
 
 <pre><code>$ pkgman info acl
 Name:         acl
-Path:         /usr/src/pkgsrc/core
+Path:         /usr/src/pkgsrc-core
 Version:      2.3.1
 Release:      1
 Description:  Access Control List filesystem support
@@ -864,10 +907,14 @@ $ pkgman dep bash --recursive -vv --tree
 
 <h4 id="Viewing-and-updating-outdated-packages">Viewing and updating outdated packages</h4>
 
-<p>Since the packages sources for Zeppe-Lin is distributed via <a href="https://www.mankier.com/1/git">git(1)</a>, the first thing to do is to update the sources:</p>
+<p>Since the packages sources for Zeppe-Lin is distributed via <a href="https://www.mankier.com/1/git">git(1)</a>, the first thing to do is to update the <code>pkgsrc</code> collection:</p>
 
-<pre><code>$ cd /usr/src/pkgsrc
-$ git pull</code></pre>
+<pre><code>$ cd /usr/src/pkgsrc-core     &amp;&amp;  git pull
+$ cd /usr/src/pkgsrc-system   &amp;&amp;  git pull
+$ cd /usr/src/pkgsrc-xorg     &amp;&amp;  git pull
+$ cd /usr/src/pkgsrc-desktop  &amp;&amp;  git pull</code></pre>
+
+<p>It&#39;s may be annoying to do this few steps every time you want to synchronize <code>pkgsrc</code> repositories. If so, just add these steps to your <a href="http://man.he.net/man8/crond">crond(8)</a> daemon and synchronize your local repos once a week, for example.</p>
 
 <p>Listing installed packages which are out of date (including their new dependencies):</p>
 
@@ -899,7 +946,7 @@ bindutils                                           9.16.8-1
 <dt id="pkgsrcdir"><b>pkgsrcdir</b></dt>
 <dd>
 
-<p>This option can occur multiple times and specifies a directory with a packages&#39; sources &quot;collection&quot; which <a href="/pkgman.1.html">pkgman(1)</a> should check in its operation. By default, the <i>core</i>, <i>system</i>, <i>xorg</i>, <i>desktop</i>, and <i>stuff</i> collections are enabled.</p>
+<p>This option can occur multiple times and specifies a directory with a packages&#39; sources &quot;collection&quot; which <a href="/pkgman.1.html">pkgman(1)</a> should check in its operation. By default, the <i>core</i> collection is enabled, and <i>system</i>, <i>xorg</i>, <i>desktop</i>, and <i>stuff</i> collections are commented.</p>
 
 </dd>
 <dt id="runscripts"><b>runscripts</b></dt>
@@ -1065,94 +1112,106 @@ build() {
 
 <h3 id="What-is-the-pkgsrc-repository">What is the pkgsrc repository?</h3>
 
-<p>The term <i>pkgsrc repository</i> refers to a remote repository containing packages&#39; sources.</p>
+<p>The term <i>pkgsrc repository</i> refers to a remote repository containing packages&#39; sources: build scripts and files for building binary packages.</p>
 
 <h3 id="pkgsrc-collections">pkgsrc collections</h3>
 
-<p>Packages&#39; sources are organized in so called collections. There are five different layer of packages.</p>
+<p>Packages&#39; sources are organized in so called collections. There are five different layer (or five categories) of packages.</p>
 
-<h4 id="core">core</h4>
+<h4 id="core1">core</h4>
 
-<p>This collection contains packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
+<p>This collection contains build scripts and files for the packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
-<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile">Makefile</a> in <b>pkgsrc</b> repository, <a href="/finddeps-linked.1.html">finddeps-linked(1)</a>, and <a href="/revdep.1.html">revdep(1)</a>.</p>
+<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding package. It contains various package maintaining utilities. Also, see <a href="/revdep.1.html">revdep(1)</a>.</p>
 
-<h4 id="system">system</h4>
+<h4 id="system1">system</h4>
 
-<p>This collection contains packages required for minimal installation on real hardware. It contains loaders, filesystems, servers, and so on. Packages in this collection depend <b>ONLY</b> on the core.</p>
+<p>This collection contains build scripts and files for the packages required for minimal installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. Packages in this collection depends <b>only</b> on the <code>core</code> pkgsrc collection.</p>
 
-<h4 id="xorg">xorg</h4>
+<h4 id="xorg1">xorg</h4>
 
-<p>This collection contains packages required for X Window System. These packages depend on the system and core.</p>
+<p>This collection contains build scripts and files for the packages required for X Window System applications. Packages in this collection depends on the <code>system</code> collection.</p>
 
-<h4 id="desktop">desktop</h4>
+<h4 id="desktop1">desktop</h4>
 
-<p>This collection contains packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. These packages depend on the system, core, and xorg.</p>
+<p>This collection contains build scripts and files for the packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. Packages in this collection depends on the <code>xorg</code> collection.</p>
 
-<h4 id="stuff">stuff</h4>
+<h4 id="stuff1">stuff</h4>
 
-<p>This collection contains packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above.</p>
+<p>This collection contains build scripts and files for the packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above.</p>
 
 <h2 id="Using-The-Pkgsrc">Using The Pkgsrc</h2>
 
 <h3 id="Synchronizing-your-local-pkgsrc-repository">Synchronizing your local pkgsrc repository</h3>
 
-<p>When Zeppe-Lin is installed for the first time the local pkgsrc structure (<i>/usr/src/pkgsrc/*</i>) is empty. To obtains the sources at first time, use <code>git clone</code>. Example:</p>
+<p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtains the collection you need at first time, use <code>git clone</code>. Example:</p>
 
 <pre><code># cd /usr/src/
-# git clone https://github.com/zeppe-lin/pkgsrc</code></pre>
+# git clone https://github.com/zeppe-lin/pkgsrc-core</code></pre>
 
-<p>To bring your local pkgsrc up to date use <code>git pull</code>. Example:</p>
+<p>The same for other collections from the list:</p>
 
-<pre><code># cd /usr/src/pkgsrc
-# git pull</code></pre>
+<pre><code># cd /usr/src
+# git clone https://github.com/zeppe-lin/pkgsrc-system
+...</code></pre>
 
-<h3 id="Listing-local-pkgsrc-repository">Listing local pkgsrc repository</h3>
+<p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default only <code>core</code> collection is enabled. See <a href="/pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
 
-<p>When the local pkgsrc repository has been updated the directory <code>/usr/src/pkgsrc/</code> will contain some package categories, <code>core</code>, <code>system</code>, <code>xorg</code>, <code>desktop</code> and <code>stuff</code>. Under each of these directories you will find packages&#39; sources. You can simply browse around in the directory structure to find out which packages&#39; sources are available.</p>
+<p>To bring your local <code>core</code> collection up to date use <code>git pull</code>. Example:</p>
 
-<pre><code>$ cd /usr/src/pkgsrc/core
+<pre><code># cd /usr/src/pkgsrc-core     &amp;&amp;  git pull</code></pre>
+
+<p>The same for other collections from the list:</p>
+
+<pre><code># cd /usr/src/pkgsrc-system   &amp;&amp;  git pull
+# cd /usr/src/pkgsrc-xorg     &amp;&amp;  git pull
+# cd /usr/src/pkgsrc-desktop  &amp;&amp;  git pull
+# cd /usr/src/pkgsrc-stuff    &amp;&amp;  git pull</code></pre>
+
+<p>Depending on what collections you already have.</p>
+
+<p>It&#39;s may be annoying to do this few steps every time you want to synchronize <code>pkgsrc</code> repositories. If so, just add these steps to your <a href="http://man.he.net/man8/crond">crond(8)</a> daemon and sync your local repos once a week, for example.</p>
+
+<h3 id="Listing-local-pkgsrc-repositories">Listing local pkgsrc repositories</h3>
+
+<p>When the local pkgsrc repositories has been cloned/updated the directory <code>/usr/src/</code> will contain some <code>pkgsrc-???</code> directories.</p>
+
+<p>Under each of these directories you will find packages&#39; sources: build scripts and files for building binary package. You can simply browse around in the directory structure to find out which packages&#39; sources are available. Let&#39;s take <code>pkgsrc-core</code> as an example:</p>
+
+<pre><code>$ cd /usr/src/pkgsrc-core
 $ ls
-acl              gettext-tiny  libtirpc         python3-setuptools
-asciidoctor      git           libtool          rc
-attr             glibc         libunistring     rdate
-autoconf         glibc-32      libusb           readline
-automake         gperf         libyaml          rejmerge
-bash             grep          libnftnl         revdep
-bash-completion  groff         linux-pam        ruby
-bc               gzip          lz4              samurai
-binutils         hdparm        lzo              sed
-bison            iana-etc      m4               shadow
-bzip2            inetutils     make             sqlite3
-ca-certificates  iproute2      man-db           start-stop-daemon
-cmake            iptables      man-pages        sudo
-coreutils        kbd           man-pages-posix  sysfsutils
-cpio             kmod          meson            sysklogd
-curl             less          mlocate          sysvinit
-db               libarchive    mpdecimal        tar
-dcron            libbsd        nasm             tcl
-diffutils        libcap        ncurses          time
-ed               libdevmapper  openssh          tzdata
-elfutils         libffi        openssl          usbutils
-eudev            libgmp        patch            util-linux
-expat            libmd         pciutils         vim
-fakeroot         libmnl        perl             wget
-file             libmpc        pkg-config       which
-filesystem       libmpfr       pkgman           xz
-findutils        libnfnetlink  pkgmk            zhandbook
-flex             libnsl        pkgutils         zlib
-gawk             libpcre       procps           zstd
-gcc              libpcre2      psmisc
-gdbm             libpipeline   python3</code></pre>
-
-<p>Pay attention to the file <i>Makefile</i> in the root directory:</p>
-
-<pre><code>$ cd /usr/src/pkgsrc
-$ ls
-COPYING    core/     Makefile   stuff/   xorg/
-COPYRIGHT  desktop/  README     system/</code></pre>
-
-<p><i>Makefile</i> will check packages&#39; sources for some typical errors. Type <code>make</code> for more information.</p>
+acl              gawk          libnftnl         pkgutils
+asciidoctor      gcc           libnsl           procps
+attr             gdbm          libpcre          psmisc
+autoconf         gettext-tiny  libpcre2         py3-setuptools
+automake         git           libpipeline      python3
+bash             glibc         libtirpc         rc
+bash-completion  glibc-32      libtool          rdate
+bc               gperf         libunistring     readline
+binutils         grep          libusb           README.md
+bison            groff         libyaml          rejmerge
+bzip2            gzip          linux-pam        revdep
+ca-certificates  hdparm        lz4              ruby
+capstone         iana-etc      lzo              samurai
+cmake            inetutils     m4               sed
+COPYING          intltool      make             shadow
+COPYRIGHT        iproute2      man-db           sqlite3
+coreutils        iptables      man-pages        start-stop-daemon
+cpio             kbd           man-pages-posix  sudo
+curl             kmod          meson            sysfsutils
+dash             less          mlocate          sysklogd
+db               libarchive    mpdecimal        sysvinit
+dcron            libbsd        nasm             tar
+diffutils        libcap        ncurses          tzdata
+ed               libcap-ng     openssh          usbids
+elfutils         libdevmapper  openssl          usbutils
+eudev            libffi        p5-xml-parser    util-linux
+expat            libgmp        patch            vim
+fakeroot         libmd         pciutils         wget
+file             libmnl        perl             which
+filesystem       libmpc        pkg-config       xz
+findutils        libmpfr       pkgman           zlib
+flex             libnfnetlink  pkgmk            zstd</code></pre>
 
 <p>You can also use <a href="/pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
@@ -1163,6 +1222,8 @@ COPYRIGHT  desktop/  README     system/</code></pre>
 [ ] alsa-ucm-conf
 [i] alsa-utils
 ...</code></pre>
+
+<p>Note, that <b>pkgman</b> will list the packages&#39; sources from all <code>pkgsrc</code> collections indicated in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code>.</p>
 
 <p>Add the <b>--path</b> option to see the package source location:</p>
 
@@ -1220,7 +1281,7 @@ No differences found</code></pre>
 
 <p>Once you have found a package that you want to build and install you simply go into the desired package source directory and use <a href="/pkgmk.8.html">pkgmk(8)</a> to build it. Example:</p>
 
-<pre><code># cd /usr/src/pkgsrc/core/gawk
+<pre><code># cd /usr/src/pkgsrc-core/gawk
 # pkgmk -d</code></pre>
 
 <p>The <b>-d</b> option means download missing source files and tells <a href="/pkgmk.8.html">pkgmk(8)</a> to download the source(s) specified in <i>Pkgfile</i> (in case the source are already downloaded this option is ignored). When the download is completed the package will be built.</p>
@@ -1242,7 +1303,7 @@ No differences found</code></pre>
 
 <pre><code>$ fakeroot pkgmk -d</code></pre>
 
-<p>The <a href="/pkgman.1.html">pkgman(1)</a> already uses it by default in Zeppe-Lin installation.</p>
+<p>The <a href="/pkgman.1.html">pkgman(1)</a> already uses it in the default Zeppe-Lin distribution.</p>
 
 <p>If the package was built successfully you can use <a href="/pkgadd.8.html">pkgadd(8)</a> to install or upgrade it. Example:</p>
 
