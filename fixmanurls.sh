@@ -12,6 +12,7 @@ sed	\
 	-e "s,L<cryptmount(8)>,L<cryptmount(8)|${WEBSITE}/cryptmount.8.html>,g" \
 	-e "s,L<crypttab(5)>,L<crypttab(5)|${WEBSITE}/crypttab.5.html>,g" \
 	\
+	-e "s,L<rc(8)>,L<rc(8)|${WEBSITE}/rc.8.html>,g" \
 	-e "s,L<rc.conf(5)>,L<rc.conf(5)|${WEBSITE}/rc.conf.5.html>,g" \
 	\
 	-e "s,L<handbook(7)>,L<handbook(7)|${WEBSITE}/handbook.7.html>,g" \
@@ -109,7 +110,10 @@ sed	\
 	-e "s,L<wget(1)>,L<wget(1)|${MANKIER}/1/wget>,g" \
 	-e "s,L<wpa_passphrase(8)>,L<wpa_passphrase(8)|${MANKIER}/8/wpa_passphrase>,g" \
 	\
+	-e "s,L<init(8)>,L<init(8)|https://manpages.debian.org/unstable/sysvinit-core/init.8.en.html>,g" \
 	-e "s,L<inittab(5)>,L<inittab(5)|https://manpages.debian.org/unstable/sysvinit-core/inittab.5.en.html>,g" \
+	-e "s,L<reboot(8)>,L<reboot(8)|https://manpages.debian.org/unstable/sysvinit-core/reboot.8.en.html>,g" \
+	-e "s,L<shutdown(8)>,L<shutdown(8)|https://manpages.debian.org/unstable/sysvinit-core/shutdown.8.en.html>,g" \
 	\
 $@
 
