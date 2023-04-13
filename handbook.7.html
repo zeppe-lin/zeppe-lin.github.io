@@ -1122,7 +1122,7 @@ build() {
 
 <p>This collection contains build scripts and files for the packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
-<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding package. It contains various package maintaining utilities. Also, see <a href="/revdep.1.html">revdep(1)</a>.</p>
+<p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile">Makefile</a> in the collection root directory. This <i>Makefile</i> checks collection files for typical errors, including misconfigured dependencies, and is included into the other collections too. Also, see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding <b>system/pkgmaint</b> package for various package maintaining utilities. It will not be superfluous to mention <a href="/revdep.1.html">revdep(1)</a>.</p>
 
 <h4 id="system1">system</h4>
 
@@ -1179,39 +1179,41 @@ build() {
 <p>Under each of these directories you will find packages&#39; sources: build scripts and files for building binary package. You can simply browse around in the directory structure to find out which packages&#39; sources are available. Let&#39;s take <code>pkgsrc-core</code> as an example:</p>
 
 <pre><code>$ cd /usr/src/pkgsrc-core
-$ ls
-acl              gawk          libnftnl         pkgutils
-asciidoctor      gcc           libnsl           procps
-attr             gdbm          libpcre          psmisc
-autoconf         gettext-tiny  libpcre2         py3-setuptools
-automake         git           libpipeline      python3
-bash             glibc         libtirpc         rc
-bash-completion  glibc-32      libtool          rdate
-bc               gperf         libunistring     readline
-binutils         grep          libusb           README.md
-bison            groff         libyaml          rejmerge
-bzip2            gzip          linux-pam        revdep
-ca-certificates  hdparm        lz4              ruby
-capstone         iana-etc      lzo              samurai
-cmake            inetutils     m4               sed
-COPYING          intltool      make             shadow
-COPYRIGHT        iproute2      man-db           sqlite3
-coreutils        iptables      man-pages        start-stop-daemon
-cpio             kbd           man-pages-posix  sudo
-curl             kmod          meson            sysfsutils
-dash             less          mlocate          sysklogd
-db               libarchive    mpdecimal        sysvinit
-dcron            libbsd        nasm             tar
-diffutils        libcap        ncurses          tzdata
-ed               libcap-ng     openssh          usbids
-elfutils         libdevmapper  openssl          usbutils
-eudev            libffi        p5-xml-parser    util-linux
-expat            libgmp        patch            vim
-fakeroot         libmd         pciutils         wget
-file             libmnl        perl             which
-filesystem       libmpc        pkg-config       xz
-findutils        libmpfr       pkgman           zlib
-flex             libnfnetlink  pkgmk            zstd</code></pre>
+$ ls -p
+acl/              gcc/           libpcre/          psmisc/
+asciidoctor/      gdbm/          libpcre2/         py3-setuptools/
+attr/             gettext-tiny/  libpipeline/      python3/
+autoconf/         git/           libtirpc/         rc/
+automake/         glibc/         libtool/          rdate/
+bash/             glibc-32/      libunistring/     readline/
+bash-completion/  gperf/         libusb/           README.md
+bc/               grep/          libyaml/          rejmerge/
+binutils/         groff/         linux-pam/        revdep/
+bison/            gzip/          lz4/              ruby/
+bzip2/            hdparm/        lzo/              samurai/
+ca-certificates/  iana-etc/      m4/               sed/
+capstone/         inetutils/     make/             shadow/
+cmake/            intltool/      Makefile          sqlite3/
+COPYING           iproute2/      man-db/           start-stop-daemon/
+COPYRIGHT         iptables/      man-pages/        sudo/
+coreutils/        kbd/           man-pages-posix/  sysfsutils/
+cpio/             kmod/          meson/            sysklogd/
+curl/             less/          mlocate/          sysvinit/
+dash/             libarchive/    mpdecimal/        tar/
+db/               libbsd/        nasm/             tzdata/
+dcron/            libcap/        ncurses/          usbids/
+diffutils/        libcap-ng/     openssh/          usbutils/
+ed/               libdevmapper/  openssl/          util-linux/
+elfutils/         libffi/        p5-xml-parser/    vim/
+eudev/            libgmp/        patch/            wget/
+expat/            libmd/         pciutils/         which/
+fakeroot/         libmnl/        perl/             xz/
+file/             libmpc/        pkg-config/       zlib/
+filesystem/       libmpfr/       pkgman/           zstd/
+findutils/        libnfnetlink/  pkgmk/
+flex/             libnftnl/      pkgutils/
+gawk/             libnsl/        procps/
+$</code></pre>
 
 <p>You can also use <a href="/pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
