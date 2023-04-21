@@ -4,7 +4,7 @@
 #
 
 # Hack for relative urls.
-WEBSITE="http:///HACK4RELURL/"
+WEBSITE="http://HACK4RELURL//man"
 # The site that provides a man-pages which is not shipped by Zeppe-Lin website.
 MANKIER="https://www.mankier.com"
 
