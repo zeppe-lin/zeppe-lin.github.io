@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>pkgman.conf - configuration file for pkgman</title>
-<link rel="stylesheet" href="css/pod2html.css" type="text/css" />
+<link rel="stylesheet" href="/css/pod2html.css" type="text/css" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:root@k4v3r1.nonet" />
 </head>
@@ -30,7 +30,7 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>This manual page describes the format of the <i>pkgman.conf</i> file, that contains information for <a href="/pkgman.1.html">pkgman(1)</a>.</p>
+<p>This manual page describes the format of the <i>pkgman.conf</i> file, that contains information for <a href="/man/pkgman.1.html">pkgman(1)</a>.</p>
 
 <p>Every line can contain one configuration option. The format of the lines is <code>key value</code>. Any line <b>beginning</b> with a hash (<b>#</b>) is ignored, as are lines containing only whitespace.</p>
 
@@ -41,7 +41,7 @@
 <dt id="pkgsrcdir-path-:pkg1-pkg2"><b>pkgsrcdir</b> <i>path</i>[:<i>pkg1</i>,<i>pkg2</i>,...]</dt>
 <dd>
 
-<p>The location where to look for the packages sources. The order of the <code>pkgsrcdir</code> options is important as if a package is in multiple directories, <a href="/pkgman.1.html">pkgman(1)</a> will use the one found first (directories listed first have precedence).</p>
+<p>The location where to look for the packages sources. The order of the <code>pkgsrcdir</code> options is important as if a package is in multiple directories, <a href="/man/pkgman.1.html">pkgman(1)</a> will use the one found first (directories listed first have precedence).</p>
 
 <p>If you want to restrict the packages used from one <code>pkgsrcdir</code>, you can append a comma-separated list of packages to be used after the path, using a colon <code>:</code> character to separate the two components.</p>
 
@@ -78,7 +78,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="preferhigher-yes-no"><b>preferhigher</b> (<i>yes</i>|<i>no</i>)</dt>
 <dd>
 
-<p>If set to <i>yes</i>, <a href="/pkgman.1.html">pkgman(1)</a> will parse version strings and prefer the higher one, even if the one found in the packages sources directories is lower. Influences <i>diff</i> and <i>sysup</i> operations.</p>
+<p>If set to <i>yes</i>, <a href="/man/pkgman.1.html">pkgman(1)</a> will parse version strings and prefer the higher one, even if the one found in the packages sources directories is lower. Influences <i>diff</i> and <i>sysup</i> operations.</p>
 
 <p>Default: <i>no</i>.</p>
 
@@ -86,7 +86,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="useregex-yes-no"><b>useregex</b> (<i>yes</i>|<i>no</i>)</dt>
 <dd>
 
-<p>If set to <i>yes</i>, <a href="/pkgman.1.html">pkgman(1)</a> will interpret <code>expr</code> and <code>filter</code> patterns in <i>list</i>, <i>printf</i>, <i>dsearch</i> and <i>fsearch</i> operations as regular expression.</p>
+<p>If set to <i>yes</i>, <a href="/man/pkgman.1.html">pkgman(1)</a> will interpret <code>expr</code> and <code>filter</code> patterns in <i>list</i>, <i>printf</i>, <i>dsearch</i> and <i>fsearch</i> operations as regular expression.</p>
 
 <p>Default: <i>no</i>.</p>
 
@@ -94,7 +94,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="readme-verbose-compat-disabled"><b>readme</b> (<i>verbose</i>|<i>compat</i>|<i>disabled</i>)</dt>
 <dd>
 
-<p>If the readme option is set to something different that <i>disabled</i>, <a href="/pkgman.1.html">pkgman(1)</a> will notify the user if installed package has a README file.</p>
+<p>If the readme option is set to something different that <i>disabled</i>, <a href="/man/pkgman.1.html">pkgman(1)</a> will notify the user if installed package has a README file.</p>
 
 <dl>
 
@@ -118,7 +118,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 </dd>
 </dl>
 
-<p>See <a href="/pkgman-readme.1.html">pkgman-readme(1)</a> for information how to read those README files.</p>
+<p>See <a href="/man/pkgman-readme.1.html">pkgman-readme(1)</a> for information how to read those README files.</p>
 
 <p>Default: <i>verbose</i>.</p>
 
@@ -165,7 +165,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="makecommand-command"><b>makecommand</b> <i>command</i></dt>
 <dd>
 
-<p>Use an alternate <i>command</i> instead of <a href="/pkgmk.8.html">pkgmk(8)</a> for the command which is used to build the package.</p>
+<p>Use an alternate <i>command</i> instead of <a href="/man/pkgmk.8.html">pkgmk(8)</a> for the command which is used to build the package.</p>
 
 <p>Default: <i>pkgmk</i>.</p>
 
@@ -173,7 +173,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="addcommand-command"><b>addcommand</b> <i>command</i></dt>
 <dd>
 
-<p>Use an alternate <i>command</i> instead of <a href="/pkgadd.8.html">pkgadd(8)</a> for the command which is used to install the package.</p>
+<p>Use an alternate <i>command</i> instead of <a href="/man/pkgadd.8.html">pkgadd(8)</a> for the command which is used to install the package.</p>
 
 <p>Default: <i>pkgadd</i>.</p>
 
@@ -181,7 +181,7 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</code></pre>
 <dt id="removecommand-command"><b>removecommand</b> <i>command</i></dt>
 <dd>
 
-<p>Use an alternate <i>command</i> instead of <a href="/pkgrm.8.html">pkgrm(8)</a> for the command which is used to remove the package.</p>
+<p>Use an alternate <i>command</i> instead of <a href="/man/pkgrm.8.html">pkgrm(8)</a> for the command which is used to remove the package.</p>
 
 <p>Default: <i>pkgrm</i>.</p>
 
@@ -236,7 +236,7 @@ runscripts yes
 
 <h1 id="SEE-ALSO">SEE ALSO</h1>
 
-<p><a href="/pkgman.1.html">pkgman(1)</a></p>
+<p><a href="/man/pkgman.1.html">pkgman(1)</a></p>
 
 
 </body>
