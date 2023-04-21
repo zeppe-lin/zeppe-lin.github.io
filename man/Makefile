@@ -12,7 +12,7 @@ PODOPTS = --css=/css/pod2html.css --cachedir=/tmp
 all: $(HTML)
 
 %.html: %.pod
-	${FIX1} $^ | pod2html ${PODOPTS} - | ${FIX2} > $(notdir $@)
+	@${FIX1} $^ | pod2html ${PODOPTS} - | ${FIX2} > $(notdir $@)
 
 $(filter %.html,$(HTML)): %.html: %.pod
 
