@@ -2,8 +2,6 @@
 
 include config.mk
 
-FIX1    = ${CURDIR}/fixmanurls.sh
-FIX2    = sed 's|http://HACK4RELURL/||g'
 PODOPTS = --noindex --css=css/pod2html_min.css --cachedir=/tmp
 #PODOPTS = --css=/css/pod2html.css --cachedir=/tmp
 
