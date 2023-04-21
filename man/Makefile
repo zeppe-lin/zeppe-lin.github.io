@@ -5,7 +5,7 @@ include ${CURDIR}/../config.mk
 PODS    = $(foreach dir,$(POD_PATH),$(wildcard $(dir)/*.pod))
 HTML    = $(PODS:.pod=.html)
 
-FIX1    = ${CURDIR}/../fixmanurls.sh
+FIX1    = ${CURDIR}/fixmanurls.sh
 FIX2    = sed 's|http://HACK4RELURL/||g'
 PODOPTS = --css=/css/pod2html.css --cachedir=/tmp
 
