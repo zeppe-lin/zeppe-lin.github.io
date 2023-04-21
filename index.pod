@@ -21,13 +21,7 @@ focus is utilization of new Linux features and recent tools and
 libraries.  Zeppe-Lin also has a B<pkgsrc> system which makes it easy
 to install and upgrade applications.
 
-=begin html
-
-<img
-src="https://img.shields.io/github/v/release/zeppe-lin/pkgsrc?label=Current%20Release&style=flat-square">
-</img>
-
-=end html
+Current release is B<@CUR_REL_VER@>.
 
 =head1 DOCUMENTATION
 
