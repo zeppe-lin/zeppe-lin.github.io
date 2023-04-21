@@ -24,6 +24,7 @@
       <li><a href="#Header">Header</a></li>
       <li><a href="#Dependencies">Dependencies</a></li>
       <li><a href="#RC-Scripts">RC Scripts</a></li>
+      <li><a href="#Runscripts">Runscripts</a></li>
     </ul>
   </li>
   <li><a href="#ENVIRONMENT">ENVIRONMENT</a></li>
@@ -229,6 +230,30 @@
 <p>The actual scripts that control services should be named <code>rc.&lt;prog&gt;</code>, and installed to <i>/etc/rc.d/&lt;prog&gt;</i>.</p>
 
 <p>See <a href="#RC-Script">&quot;RC Script&quot;</a> for template script for a package.</p>
+
+<h2 id="Runscripts">Runscripts</h2>
+
+<p>Runscripts are supported by <a href="/pkgman.1.html">pkgman(1)</a>. Packages should be built with the idea in mind that people won&#39;t execute the <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code> and <code>post-remove</code> scripts. This is entirely true for <code>core</code> pkgsrc collection (because the packages in this collection are designed to be installed in a separate root directory by <a href="http://man.he.net/man1/pkgadd">pkgadd(1)</a> utility), and varies from one to another collections. If a package adds an user to the system using <code>pre-install</code>, a <code>pre-remove</code> scripts must remove that user.</p>
+
+<p>What these scripts should <b>not</b> do:</p>
+
+<ul>
+
+<li><p>Edit configuration files.</p>
+
+</li>
+<li><p>Remove other packages.</p>
+
+</li>
+<li><p>Restart servers.</p>
+
+</li>
+<li><p>Request for user input.</p>
+
+</li>
+</ul>
+
+<p>The above prohibitions apply only to packages in the official pkgsrc repositories. You may not follow them in your own collections if you need more sophisticated setups.</p>
 
 <h1 id="ENVIRONMENT">ENVIRONMENT</h1>
 
