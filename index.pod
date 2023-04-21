@@ -38,8 +38,8 @@ administration of Zeppe-Lin.
 
 =head2 Release Notes and Errata
 
-The L<release notes|@CURRENT_RELEASE_URL@> contains information
-about the current Zeppe-Lin release.
+The L<release notes|@CUR_REL_URL@> contains information about the
+current Zeppe-Lin release.
 
 =head1 DOWNLOAD
 
@@ -51,9 +51,8 @@ install it.
 
 =item *
 
-Check L<latest
-release|https://github.com/zeppe-lin/pkgsrc/releases/latest> if you
-want prebuilt rootfs image.
+Check L<latest release|@CUR_REL_URL@> if you want prebuilt rootfs
+image.
 
 =item *
 
