@@ -50,7 +50,6 @@ body {
 }
 body img.logo {
   /*margin: -9rem 1rem 1rem 1rem;*/
-  content: url("/images/logo2.png");
   /* center */
   display: block;
   margin-left: auto;
@@ -64,9 +63,6 @@ body img.logo {
     background-color: #f6f5f4;
     /*border: 1px solid hsl(140, 51%, 51%);*/
     color: #002b36;
-  }
-  body img.logo {
-    content: url("/images/logo2-light.png");
   }
 }
 
