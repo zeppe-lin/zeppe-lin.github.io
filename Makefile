@@ -5,6 +5,8 @@ include config.mk
 PODOPTS = --noindex --css=css/pod2html_min.css --cachedir=/tmp
 #PODOPTS = --css=/css/pod2html.css --cachedir=/tmp
 
+all: manpages index.html
+
 manpages:
 	$(MAKE) -C man
 
@@ -22,4 +24,4 @@ clean:
 	rm -f index.html
 	$(MAKE) -C man clean
 
-.PHONY: manpages index.html clean
+.PHONY: all manpages index.html clean
