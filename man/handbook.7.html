@@ -440,7 +440,7 @@ manual page.
 </dd>
 </dl>
 
-<p>Clone the collections you need, but note that one collection depends on another. Example:</p>
+<p>Clone the collections you need, but keep in mind that each subsequent collection depends on the previous ones. Example:</p>
 
 <pre><code>(chrooted) # cd /usr/src/
 (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
@@ -881,7 +881,7 @@ $ pkgman dep bash --recursive
 readline
  ncurses
 
-$ pkgman dep bash --recursive -vv --tree
+$ pkgman dep bash --recursive --tree -vv
 -- dependencies ([i] = installed, --&gt; seen before)
 [i] bash 5.1.8-1: GNU Bourne Again Shell
 [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
@@ -893,7 +893,7 @@ $ pkgman dep bash --recursive -vv --tree
 
 <p>Note, that the <code>install</code> command <b>DOES NOT</b> process dependencies without <b>--deps</b> option, and it&#39;s usually recommended to use <b>--deps</b> with <code>install</code>. It is also worth noting that <a href="/man/pkgman.1.html">pkgman(1)</a> by default tries to install all the packages specified in the dependencies, and if one of the dependencies does not build, it will skip it, and go further. In the end, it will show the <code>build-failed packages</code> in the report. This behavior can have unexpected consequences if you install many programs with many dependencies at a time. Because, one dependency may not build, and affect the building of another dependency, and thereby affect the third, etc.</p>
 
-<p>We can tell <a href="/man/pkgman.1.html">pkgman(1)</a> not to skip the <code>fails</code>, but to stop. Then we can fix the package build and start installation further.</p>
+<p>We can tell <a href="/man/pkgman.1.html">pkgman(1)</a> not to skip the fails, but to stop. Then we can fix the package build and start installation further.</p>
 
 <p>There is an option <b>--group</b> for this. In this handbook, it is recommended to use it always, unless you know what you are doing.</p>
 
