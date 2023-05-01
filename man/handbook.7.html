@@ -907,12 +907,12 @@ $ pkgman dep bash --recursive --tree -vv
 
 <h4 id="Viewing-and-updating-outdated-packages">Viewing and updating outdated packages</h4>
 
-<p>Since the packages sources for Zeppe-Lin is distributed via <a href="https://www.mankier.com/1/git">git(1)</a>, the first thing to do is to update the <code>pkgsrc</code> collection:</p>
+<p>Since the packages sources for Zeppe-Lin is distributed via <a href="https://www.mankier.com/1/git">git(1)</a>, the first thing to do is to update the <code>pkgsrc</code> collections:</p>
 
-<pre><code>$ cd /usr/src/pkgsrc-core     &amp;&amp;  git pull
-$ cd /usr/src/pkgsrc-system   &amp;&amp;  git pull
-$ cd /usr/src/pkgsrc-xorg     &amp;&amp;  git pull
-$ cd /usr/src/pkgsrc-desktop  &amp;&amp;  git pull</code></pre>
+<pre><code>$ git -C /usr/src/pkgsrc-core    pull
+$ git -C /usr/src/pkgsrc-system  pull
+$ git -C /usr/src/pkgsrc-xorg    pull
+$ git -C /usr/src/pkgsrc-desktop pull</code></pre>
 
 <p>It&#39;s may be annoying to do this few steps every time you want to synchronize <code>pkgsrc</code> repositories. If so, just add these steps to your <a href="http://man.he.net/man8/crond">crond(8)</a> daemon and synchronize your local repos once a week, for example.</p>
 
@@ -1147,26 +1147,19 @@ build() {
 <p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtains the collection you need at first time, use <code>git clone</code>. Example:</p>
 
 <pre><code># cd /usr/src/
-# git clone https://github.com/zeppe-lin/pkgsrc-core</code></pre>
-
-<p>The same for other collections from the list:</p>
-
-<pre><code># cd /usr/src
+# git clone https://github.com/zeppe-lin/pkgsrc-core
 # git clone https://github.com/zeppe-lin/pkgsrc-system
-...</code></pre>
+# git clone https://github.com/zeppe-lin/pkgsrc-xorg
+# git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
 
 <p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default only <code>core</code> collection is enabled. See <a href="/man/pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
 
 <p>To bring your local <code>core</code> collection up to date use <code>git pull</code>. Example:</p>
 
-<pre><code># cd /usr/src/pkgsrc-core     &amp;&amp;  git pull</code></pre>
-
-<p>The same for other collections from the list:</p>
-
-<pre><code># cd /usr/src/pkgsrc-system   &amp;&amp;  git pull
-# cd /usr/src/pkgsrc-xorg     &amp;&amp;  git pull
-# cd /usr/src/pkgsrc-desktop  &amp;&amp;  git pull
-# cd /usr/src/pkgsrc-stuff    &amp;&amp;  git pull</code></pre>
+<pre><code># git -C /usr/src/pkgsrc-core    pull
+# git -C /usr/src/pkgsrc-system  pull
+# git -C /usr/src/pkgsrc-xorg    pull
+# git -C /usr/src/pkgsrc-desktop pull</code></pre>
 
 <p>Depending on what collections you already have.</p>
 
