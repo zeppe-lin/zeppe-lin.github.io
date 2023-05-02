@@ -132,18 +132,16 @@ ROOTFS_LOG=...</code></pre>
 
 <h1 id="PREPARE-OFFICIAL-RELEASE">PREPARE OFFICIAL RELEASE</h1>
 
-<p>First, you need to prepare rootfs tarball as described above. Next, create a tag in <code>pkgsrc</code> repository (<i>/usr/src/pkgsrc</i>). Example:</p>
+<p>First, you need to prepare rootfs tarball as described above. Next, create a tag in <code>pkgsrc-core</code> repository (<i>/usr/src/pkgsrc-core</i>). Example:</p>
 
-<pre><code>cd /usr/src/pkgsrc
+<pre><code>$ cd /usr/src/pkgsrc-core
+$ PREVTAG=$(git describe --tags --abbrev=0)
+$ CURTAG=$(date +%F)
+$ git tag -a $CURTAG -m $CURTAG
+$ git push
+$ git push --tags</code></pre>
 
-PREVTAG=$(git describe --tags --abbrev=0)
-CURTAG=$(date +%F)
-
-git tag -a $CURTAG -m $CURTAG
-git push
-git push --tags</code></pre>
-
-<p>Secondly, go to Zeppe-Lin&#39;s <code>pkgsrc</code> repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/pkgsrc/release/new">https://github.com/zeppe-lin/pkgsrc/release/new</a>).</p>
+<p>Secondly, go to Zeppe-Lin&#39;s <code>pkgsrc-core</code> repository on the GitHub and press <code>Draft a new release</code> (<a href="https://github.com/zeppe-lin/pkgsrc-core/release/new">https://github.com/zeppe-lin/pkgsrc-core/release/new</a>).</p>
 
 <ul>
 
@@ -152,8 +150,8 @@ git push --tags</code></pre>
 </li>
 <li><p>Set <b>Release title</b> the same as the tag. To describe this release, prepare the git log for the rootfs tarball:</p>
 
-<pre><code>$ git log --oneline $PREVTAG..$CURTAG core/ |
-    xclip -selection clipboard</code></pre>
+<pre><code>$ cd /usr/src/pkgsrc-core
+$ git log --oneline $PREVTAG..$CURTAG . | xclip -selection clipboard</code></pre>
 
 <p>Next, paste the clipboard content into the <code>Describe</code> section on GitHub.</p>
 

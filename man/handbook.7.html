@@ -128,11 +128,11 @@
           <li><a href="#What-is-the-pkgsrc-repository">What is the pkgsrc repository?</a></li>
           <li><a href="#pkgsrc-collections">pkgsrc collections</a>
             <ul>
-              <li><a href="#core1">core</a></li>
-              <li><a href="#system1">system</a></li>
-              <li><a href="#xorg1">xorg</a></li>
-              <li><a href="#desktop1">desktop</a></li>
-              <li><a href="#stuff1">stuff</a></li>
+              <li><a href="#core">core</a></li>
+              <li><a href="#system">system</a></li>
+              <li><a href="#xorg">xorg</a></li>
+              <li><a href="#desktop">desktop</a></li>
+              <li><a href="#stuff">stuff</a></li>
             </ul>
           </li>
         </ul>
@@ -404,43 +404,9 @@ manual page.
 
 <h3 id="Prepare-the-package-sources">Prepare the package sources</h3>
 
-<p>Packages&#39; sources are organized in so called collections. There are five official pkgsrc repositories (collections):</p>
+<p>Packages&#39; sources are organized in so called collections, see <a href="#pkgsrc-collections">&quot;pkgsrc collections&quot;</a> for more information about that.</p>
 
-<dl>
-
-<dt id="core"><code>core</code></dt>
-<dd>
-
-<p>This collection contains build scripts and files for the packages required to create a basic Zeppe-Lin system. Most likely you need it.</p>
-
-</dd>
-<dt id="system"><code>system</code></dt>
-<dd>
-
-<p>This collection contains build scripts and files for the packages required for minimal Zeppe-Lin installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. <code>system</code> depends on the <code>core</code> collection.</p>
-
-</dd>
-<dt id="xorg"><code>xorg</code></dt>
-<dd>
-
-<p>This collection contains build scripts and files for the packages required for X Window System applications. <code>xorg</code> depends on the <code>system</code> collection.</p>
-
-</dd>
-<dt id="desktop"><code>desktop</code></dt>
-<dd>
-
-<p>This collection contains build scripts and files for the packages typically used on a desktop: web-browser, music/video player, file manager, chat messenger, etc. <code>desktop</code> depends on the <code>xorg</code> collection.</p>
-
-</dd>
-<dt id="stuff"><code>stuff</code></dt>
-<dd>
-
-<p>This collection contains build scripts and files for the packages that <b>do not</b> fit into any of the collections above.</p>
-
-</dd>
-</dl>
-
-<p>Clone the collections you need, but keep in mind that each subsequent collection depends on the previous ones. Example:</p>
+<p>Clone the collections you need, but keep in mind that each subsequent collection depends on the previous ones.</p>
 
 <pre><code>(chrooted) # cd /usr/src/
 (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
@@ -473,6 +439,8 @@ manual page.
   --config-append=&quot;runscripts no&quot; linux linux-firmware</code></pre>
 
 <p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="/man/mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system.</p>
+
+<p>Also, you may want to lock the <b>linux</b> package and do not update it during regular system updates, since the update will remove the current working kernel and its modules. If you plan not to turn off the computer for a long time, it is better to do this and update the kernel separately, through <a href="/man/pkgman-update.8.html">pkgman-update(8)</a>. See <a href="/man/pkgman-lock.8.html">pkgman-lock(8)</a> for more information about package locking.</p>
 
 <p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <a href="#Install-mkinitramfs">&quot;Install mkinitramfs&quot;</a>.</p>
 
@@ -1118,27 +1086,27 @@ build() {
 
 <p>Packages&#39; sources are organized in so called collections. There are five different layer (or five categories) of packages.</p>
 
-<h4 id="core1">core</h4>
+<h4 id="core"><a href="https://github.com/zeppe-lin/pkgsrc-core">core</a></h4>
 
 <p>This collection contains build scripts and files for the packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
 <p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile">Makefile</a> in the collection root directory. This <i>Makefile</i> checks collection files for typical errors, including misconfigured dependencies, and is included into the other collections too. Also, see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding <b>system/pkgmaint</b> package for various package maintaining utilities. It will not be superfluous to mention <a href="/man/revdep.1.html">revdep(1)</a>.</p>
 
-<h4 id="system1">system</h4>
+<h4 id="system"><a href="https://github.com/zeppe-lin/pkgsrc-system">system</a></h4>
 
 <p>This collection contains build scripts and files for the packages required for minimal installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. Packages in this collection depends <b>only</b> on the <code>core</code> pkgsrc collection.</p>
 
-<h4 id="xorg1">xorg</h4>
+<h4 id="xorg"><a href="https://github.com/zeppe-lin/pkgsrc-xorg">xorg</a></h4>
 
 <p>This collection contains build scripts and files for the packages required for X Window System applications. Packages in this collection depends on the <code>system</code> collection.</p>
 
-<h4 id="desktop1">desktop</h4>
+<h4 id="desktop"><a href="https://github.com/zeppe-lin/pkgsrc-desktop">desktop</a></h4>
 
 <p>This collection contains build scripts and files for the packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. Packages in this collection depends on the <code>xorg</code> collection.</p>
 
-<h4 id="stuff1">stuff</h4>
+<h4 id="stuff"><a href="https://github.com/zeppe-lin/pkgsrc-stuff">stuff</a></h4>
 
-<p>This collection contains build scripts and files for the packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above.</p>
+<p>This collection contains build scripts and files for the packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above. Since this collection contains packages of different (often dubious) quality and purpose, we will not use it in the examples and warn you that if you can live without it - it&#39;s better to do so.</p>
 
 <h2 id="Using-The-Pkgsrc">Using The Pkgsrc</h2>
 
@@ -1156,10 +1124,10 @@ build() {
 
 <p>To bring your local <code>core</code> collection up to date use <code>git pull</code>. Example:</p>
 
-<pre><code># git -C /usr/src/pkgsrc-core    pull
-# git -C /usr/src/pkgsrc-system  pull
-# git -C /usr/src/pkgsrc-xorg    pull
-# git -C /usr/src/pkgsrc-desktop pull</code></pre>
+<pre><code># git -C /usr/src/pkgsrc-core     pull
+# git -C /usr/src/pkgsrc-system   pull
+# git -C /usr/src/pkgsrc-xorg     pull
+# git -C /usr/src/pkgsrc-desktop  pull</code></pre>
 
 <p>Depending on what collections you already have.</p>
 
