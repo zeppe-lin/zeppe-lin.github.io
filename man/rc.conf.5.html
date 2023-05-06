@@ -39,6 +39,20 @@
 
 <dl>
 
+<dt id="BLANKTIME-0-60-force-poke"><b>BLANKTIME</b>=&quot;0-60|force|poke&quot;</dt>
+<dd>
+
+<p>Specifies the interval of console inactivity, in minutes, after which the screen will be automatically blanked. The contents of this variable will be passed as argument to <a href="http://man.he.net/man8/setterm">setterm(8)</a>.</p>
+
+<p>The <b>force</b> argument keeps the screen blank even if a key is pressed.</p>
+
+<p>The <b>poke</b> argument unblanks the screen.</p>
+
+<p>If <b>BLANKTIME</b> is unset, then <a href="/man/rc.8.html">rc(8)</a> make screen blanks after 15 minutes of idle time.</p>
+
+<p>Example: <code>BLANKTIME=15</code></p>
+
+</dd>
 <dt id="FONT-STRING"><b>FONT</b>=&quot;<i>STRING</i>&quot;</dt>
 <dd>
 
@@ -99,6 +113,7 @@
 # See rc.conf(5) for more information.
 #
 
+BLANKTIME=15
 FONT=default
 KEYMAP=us
 TIMEZONE=UTC

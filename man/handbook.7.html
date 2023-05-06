@@ -174,7 +174,7 @@
 
 <h1 id="INTRODUCTION">INTRODUCTION</h1>
 
-<img alt="Zeppe-Lin" class="logo" src="/images/logo-small.png">
+<img alt="Zeppe-Lin" class="logo" src="https://github.com/zeppe-lin/artwork/blob/master/logo-small.png?raw=true">
 
 <p>This handbook (as a whole Zeppe-Lin) is inspired and based on the <a href="https://crux.nu/Main/Documentation">CRUX Handbook</a>.</p>
 
@@ -327,16 +327,16 @@ manual page.
 <h3 id="Download-rootfs-tarball">Download rootfs tarball</h3>
 
 <pre><code># cd /mnt
-# wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2023-01-02/rootfs-2023-01-02-x86_64.tar.xz{,.sig}</code></pre>
+# wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz{,.sig}</code></pre>
 
 <h4 id="Signature-verification">Signature verification</h4>
 
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-2023-01-02-x86_64.tar.xz.sig rootfs-2023-01-02-x86_64.tar.xz</code></pre>
+# gpg --verify rootfs-v0.99-x86_64.tar.xz.sig rootfs-v0.99-x86_64.tar.xz</code></pre>
 
 <h3 id="Extract-rootfs-tarball">Extract rootfs tarball</h3>
 
-<pre><code># tar -xvf rootfs-2023-01-02-x86_64.tar.xz -C .</code></pre>
+<pre><code># tar -xvf rootfs-v0.99-x86_64.tar.xz -C .</code></pre>
 
 <h3 id="Chroot">Chroot</h3>
 
