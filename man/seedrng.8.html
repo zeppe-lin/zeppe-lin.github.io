@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>seedrng - seed the Linux kernel random number generator from seed files</title>
+<link rel="stylesheet" href="/css/pod2html.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#ENVIRONMENT">ENVIRONMENT</a></li>
+  <li><a href="#FILES">FILES</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>seedrng - seed the Linux kernel random number generator from seed files</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>seedrng</b></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>seedrng</b> is a simple program for seeding the Linux kernel random number generator from seed files. The program takes no arguments, must be run as root, and always attempts to do something useful.</p>
+
+<p>This program is useful in light of the fact that the Linux kernel RNG cannot be initialized from shell scripts, and new seeds cannot be safely generated from boot time shell scripts either.</p>
+
+<p>It should be run once at init time and once at shutdown time. It can be run at other times without detriment as well. Whenever it us run, it writes existing seed files into the RNG pool, and then creates a new seed file. If the RNG is initialized at the time of creating a new seed file, then that new seed file is marked as &quot;creditable&quot;, which means it can be used to initialized the RNG. Otherwise, it is marked as &quot;non-creditable&quot;, in which case it is still used to seed the RNG&#39;s pool, but will not initialize the RNG.</p>
+
+<p>In order to ensure that entropy only ever stays the same or increases from one seed file to the next, old seed values are hashed together with new seed values when writing new seed files:</p>
+
+<pre><code>new_seed =    new_seed[:-32]
+           || HASH(   fixed_prefix
+                   || real_time
+                   || boot_time
+                   || old_seed_len
+                   || old_seed
+                   || new_seed_len
+                   || new_seed
+                   )</code></pre>
+
+<h1 id="ENVIRONMENT">ENVIRONMENT</h1>
+
+<dl>
+
+<dt id="SEEDRNG_SKIP_CREDIT"><i>SEEDRNG_SKIP_CREDIT</i></dt>
+<dd>
+
+<p>If the <i>SEEDRNG_SKIP_CREDIT</i> environment variable is set to <code>1</code>, <code>true</code>, <code>yes</code>, or <code>y</code>, then seeds never credit the RNG, even if the seed file is creditable.</p>
+
+</dd>
+</dl>
+
+<h1 id="FILES">FILES</h1>
+
+<dl>
+
+<dt id="var-lib-seedrng"><i>/var/lib/seedrng</i></dt>
+<dd>
+
+<p>The directory where the seed files are stored.</p>
+
+</dd>
+<dt id="var-lib-seedrng-seed.credit"><i>/var/lib/seedrng/seed.credit</i></dt>
+<dd>
+
+<p>&quot;Creditable&quot; seed file.</p>
+
+</dd>
+<dt id="var-lib-seedrng-seed.no-credit"><i>/var/lib/seedrng/seed.no-credit</i></dt>
+<dd>
+
+<p>&quot;Non-creditable&quot; seed file.</p>
+
+</dd>
+</dl>
+
+
+</body>
+
+</html>
+
+

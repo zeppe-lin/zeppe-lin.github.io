@@ -76,6 +76,8 @@ sed	\
 	-e "s,L<mkinitramfs.cmdline(7)>,L<mkinitramfs.cmdline(7)|${WEBSITE}/mkinitramfs.cmdline.7.html>,g" \
 	-e "s,L<mkinitramfs.hooks(7)>,L<mkinitramfs.hooks(7)|${WEBSITE}/mkinitramfs.hooks.7.html>,g" \
 	\
+	-e "s,L<seedrng(8)>,L<seedrng(8)|${WEBSITE}/seedrng.8.html>,g" \
+	\
 	-e "s,L<aria2c(1)>,L<aria2c(1)|${MANKIER}/1/aria2c>,g" \
 	-e "s,L<blkid(8)>,L<blkid(8)|${MANKIER}/8/blkid>,g" \
 	-e "s,L<chown(1)>,L<chown(1)|${MANKIER}/1/chown>,g" \

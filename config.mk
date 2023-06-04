@@ -12,6 +12,7 @@ POD_PATH = \
 	    /usr/src/rejmerge           \
 	    /usr/src/revdep             \
 	    /usr/src/start-stop-daemon  \
+	    /usr/src/seedrng            \
 
 # Path to the POD file that will be converted to the index page.
 INDEX_POD = /usr/src/dot.github/profile/README.pod
