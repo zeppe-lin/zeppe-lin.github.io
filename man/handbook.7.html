@@ -936,7 +936,7 @@ bindutils                                           9.16.8-1
 
 <h2 id="Creating-Packages">Creating Packages</h2>
 
-<p>Creating a package is done using <a href="/man/pkgmk.8.html">pkgmk(8)</a>. This utility uses a file called Pkgfile (see <a href="/man/Pkgfile.5.html">Pkgfile(5)</a> for more info), which contains information about the package (such as name, version, etc) and the commands that should be executed in order to compile the package in question. To be more specific, the Pkgfile file is actually a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (name, version, release, and source) and a function (build). Below is an example of what a Pkgfile file might look like. The example shows how to package the <a href="https://www.mankier.com/1/grep">grep(1)</a> utility. Some comments are inserted for explanation.</p>
+<p>Creating a package is done using <a href="/man/pkgmk.8.html">pkgmk(8)</a>. This utility uses a file called <i>Pkgfile</i> (see <a href="/man/Pkgfile.5.html">Pkgfile(5)</a> for more info), which contains information about the package (such as name, version, etc) and the commands that should be executed in order to compile the package in question. To be more specific, the <i>Pkgfile</i> file is actually a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (name, version, release, and source) and a function (build). Below is an example of what a <i>Pkgfile</i> file might look like. The example shows how to package the <a href="https://www.mankier.com/1/grep">grep(1)</a> utility. Some comments are inserted for explanation.</p>
 
 <pre><code># Specify the name of the package.
 name=grep
@@ -1006,7 +1006,7 @@ build() {
 
 <p>When the build() function has been executed, the <code>$PKG</code> directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="/man/pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in <code>$PKG</code> (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
 
-<p>If the package is built without errors it&#39;s time to install it by using <a href="/man/pkgadd.8.html">pkgadd(8)</a> and try it out. It&#39;s highly recommended to look at the Pkgfile in another package(s) since looking at examples is a great way to learn.</p>
+<p>If the package is built without errors it&#39;s time to install it by using <a href="/man/pkgadd.8.html">pkgadd(8)</a> and try it out. It&#39;s highly recommended to look at the <i>Pkgfile</i> in another package(s) since looking at examples is a great way to learn.</p>
 
 <p>See <a href="/man/Pkgfile.5.html">Pkgfile(5)</a> for additional information.</p>
 
@@ -1031,19 +1031,19 @@ build() {
 <dt id="PKGMK_SOURCE_DIR">PKGMK_SOURCE_DIR</dt>
 <dd>
 
-<p>This setting defines where <a href="/man/pkgmk.8.html">pkgmk(8)</a> will store (if downloading) and use source archives when building.</p>
+<p>This setting defines where pkgmk will store (if downloading) and use source archives when building.</p>
 
 </dd>
 <dt id="PKGMK_PACKAGE_DIR">PKGMK_PACKAGE_DIR</dt>
 <dd>
 
-<p>This setting defines where <a href="/man/pkgmk.8.html">pkgmk(8)</a> will create package files once the build process is complete.</p>
+<p>This setting defines where pkgmk will create package files once the build process is complete.</p>
 
 </dd>
 <dt id="PKGMK_WORK_DIR">PKGMK_WORK_DIR</dt>
 <dd>
 
-<p>This setting defines a work area that <a href="/man/pkgmk.8.html">pkgmk(8)</a> will use to build the package.</p>
+<p>This setting defines a work area that pkgmk will use to build the package.</p>
 
 </dd>
 </dl>
@@ -1052,15 +1052,15 @@ build() {
 
 <pre><code>PKGMK_SOURCE_MIRRORS=&quot;http://fileserver.intranet/crux/sources/&quot;</code></pre>
 
-<p>This setting instructs <a href="/man/pkgmk.8.html">pkgmk(8)</a> to attempt to fetch all source archives from <i>http://fileserver.intranet/zeppe-lin/sources/</i> before falling back to the source URL specified in the Pkgfile. Multiple URLs can be separated by spaces (the spaces in the URL itself replace by <code>%20</code>!).</p>
+<p>This setting instructs pkgmk to attempt to fetch all source archives from <i>http://fileserver.intranet/zeppe-lin/sources/</i> before falling back to the source URL specified in the Pkgfile. Multiple URLs can be separated by spaces (the spaces in the URL itself replace by <code>%20</code>!).</p>
 
 <pre><code>PKGMK_SOURCE_DIR=&quot;/var/cache/pkgmk/sources&quot;</code></pre>
 
-<p>This setting instructs <a href="/man/pkgmk.8.html">pkgmk(8)</a> to store and find source archives in <code>/var/cache/pkgmk/sources</code>. An example benefit of this setup would be the ability to store <code>/var/cache/pkgmk/sources</code> on an NFS server on your local network for use by multiple Zeppe-Lin installations. <code>PKGMK_PACKAGE_DIR</code> can be set and used the same way.</p>
+<p>This setting instructs pkgmk to store and find source archives in <code>/var/cache/pkgmk/sources</code>. An example benefit of this setup would be the ability to store <code>/var/cache/pkgmk/sources</code> on an NFS server on your local network for use by multiple Zeppe-Lin installations. <code>PKGMK_PACKAGE_DIR</code> can be set and used the same way.</p>
 
 <pre><code>PKGMK_WORK_DIR=&quot;/var/cache/pkgmk/work/$name&quot;</code></pre>
 
-<p>This setting instructs <a href="/man/pkgmk.8.html">pkgmk(8)</a> to use <code>/var/cache/pkgmk/work/$name</code> as a work area for building the specified package. Building the <b>grep</b> package would result in the work area being <code>/var/cache/pkgmk/work/grep</code>. An alternative would be to use a <a href="https://www.mankier.com/5/tmpfs">tmpfs(5)</a> as your work directory.</p>
+<p>This setting instructs pkgmk to use <code>/var/cache/pkgmk/work/$name</code> as a work area for building the specified package. Building the <b>grep</b> package would result in the work area being <code>/var/cache/pkgmk/work/grep</code>. An alternative would be to use a <a href="https://www.mankier.com/5/tmpfs">tmpfs(5)</a> as your work directory.</p>
 
 <p>There are a few more settings that can be found on the <a href="/man/pkgmk.conf.5.html">pkgmk.conf(5)</a> manual page.</p>
 
