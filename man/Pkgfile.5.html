@@ -17,6 +17,7 @@
   <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
   <li><a href="#DESCRIPTION">DESCRIPTION</a>
     <ul>
+      <li><a href="#POSIX-Exceptions">POSIX Exceptions</a></li>
       <li><a href="#General-Guidelines">General Guidelines</a></li>
       <li><a href="#Directories">Directories</a></li>
       <li><a href="#Junk-Files">Junk Files</a></li>
@@ -48,7 +49,18 @@
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>This manual page describes the format of the <i>Pkgfile</i> file. The file is a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script, which defines a number of variables (<i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>) and a function (<i>build</i>) that should be executed in order to compile a package.</p>
+<p>This manual page describes the format of the <i>Pkgfile</i> file. The file is a POSIX <a href="https://www.mankier.com/1p/sh">sh(1p)</a> script with some exceptions (see below), which defines a number of variables (<i>name</i>, <i>version</i>, <i>release</i> and <i>source</i>) and a function (<i>build</i>) that should be executed in order to compile a package.</p>
+
+<h2 id="POSIX-Exceptions">POSIX Exceptions</h2>
+
+<p>In POSIX sh, <code>local</code> is undefined. You can adopt some convention to avoid accidentally overwriting variable names, e.g. prefixing with the function name:</p>
+
+<pre><code>build() {
+        _build_i=0
+        ...
+}</code></pre>
+
+<p>However, <code>local</code> is supported in many shells, including <a href="http://man.he.net/man1/bash">bash(1)</a>, <a href="http://man.he.net/man1/ksh">ksh(1)</a>, <a href="http://man.he.net/man1/dash">dash(1)</a> (which is used in Zeppe-Lin), and BusyBox <a href="http://man.he.net/man1/ash">ash(1)</a>. So, strictly speaking, it&#39;s not POSIX, but since quite a lot of real world shells support this feature, prefixing variables is little ugly, and finding bugs with overwriting variables is a big headache for developers, it was decided to allow <code>locale</code>. In the end, the choice is yours to use or not.</p>
 
 <h2 id="General-Guidelines">General Guidelines</h2>
 
