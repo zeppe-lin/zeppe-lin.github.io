@@ -11,7 +11,8 @@ manpages:
 	$(MAKE) -C man
 
 index.html:
-	@pod2html ${PODOPTS} ${INDEX_POD} > $@
+	@pod2html ${PODOPTS} index.pod > $@
+	@sed -i '/<link rel="stylesheet" .*/a <link rel="shortcut icon" href="https://raw.githubusercontent.com/zeppe-lin/artwork/master/logo-small.png">' $@
 
 check:
 	@echo "=======> Check URLs for response code"
