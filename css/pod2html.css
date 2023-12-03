@@ -45,7 +45,7 @@ body {
   word-wrap: break-word;
   text-align: justify;
   text-justify: inter-word;
-  background-color: #000;
+  background-color: #040404;
   color: #55af66;
 }
 
@@ -194,8 +194,7 @@ a:hover {
   padding: 0.5rem 0.5rem 0.5rem;
   border: 1px solid hsl(140, 51%, 51%);
   border-radius: 0px;
-  background-color: #000;
-  background-image: url("/images/background.png");
+  background-color: #111111;
   font-size: 16px;
   overflow: auto;
 }
