@@ -59,5 +59,41 @@ MANS = \
        /usr/share/man/man8/rejmerge.8.gz                          \
        /usr/share/man/man8/seedrng.8.gz                           \
        /usr/share/man/man8/start-stop-daemon.8.gz                 \
+       /usr/share/man/man8/blkid.8.gz                             \
+       /usr/share/man/man1/chown.1.gz                             \
+       /usr/share/man/man3/crypt.3.gz                             \
+       /usr/share/man/man8/cryptsetup.8.gz                        \
+       /usr/share/man/man1/curl.1.gz                              \
+       /usr/share/man/man1/fakeroot.1.gz                          \
+       /usr/share/man/man3/fnmatch.3.gz                           \
+       /usr/share/man/man5/fstab.5.gz                             \
+       /usr/share/man/man1/gpg.1.gz                               \
+       /usr/share/man/man1/git.1.gz                               \
+       /usr/share/man/man1/grep.1.gz                              \
+       /usr/share/man/man1/killall.1.gz                           \
+       /usr/share/man/man8/ld.so.8.gz                             \
+       /usr/share/man/man1/ldd.1.gz                               \
+       /usr/share/man/man1/loadkeys.1.gz                          \
+       /usr/share/man/man1/make.1.gz                              \
+       /usr/share/man/man8/mkfs.8.gz                              \
+       /usr/share/man/man8/mkswap.8.gz                            \
+       /usr/share/man/man8/parted.8.gz                            \
+       /usr/share/man/man1/pod2html.1pm.gz                        \
+       /usr/share/man/man3/regex.3.gz                             \
+       /usr/share/man/man8/rfkill.8.gz                            \
+       /usr/share/man/man8/setfont.8.gz                           \
+       /usr/share/man/man1/sh.1.gz                                \
+       /usr/share/man/man1p/sh.1p.gz                              \
+       /usr/share/man/man1p/strip.1p.gz                           \
+       /usr/share/man/man8/sudo.8.gz                              \
+       /usr/share/man/man5/sysfs.5.gz                             \
+       /usr/share/man/man5/tmpfs.5.gz                             \
+       /usr/share/man/man8/udevd.8.gz                             \
+       /usr/share/man/man1/wget.1.gz                              \
+       /usr/share/man/man8/wpa_passphrase.8.gz                    \
+       /usr/share/man/man8/init.8.gz                              \
+       /usr/share/man/man5/inittab.5.gz                           \
+       /usr/share/man/man8/reboot.8.gz                            \
+       /usr/share/man/man8/shutdown.8.gz                          \
 
 # End of file.
