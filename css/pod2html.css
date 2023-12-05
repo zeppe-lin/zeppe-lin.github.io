@@ -1,6 +1,6 @@
 /**
- * File:    ./pod2html.css
- * Author:  Jiří Kučera, <sanczes AT gmail.com>
+ * File:    pod2html.css
+ * Author:  Jiří Kučera, <sanczes@gmail.com>
  * Date:    2020-03-18 22:38:36 +0100
  * Project: pod2html.css
  * Version: 0.02
@@ -9,13 +9,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* Adjusted for Zeppe-Lin distribution by Alexandr Savca
- * <alexandr dot savca89 at gmail dot com>
+/* Adjusted for Zeppe-Lin distribution by
+ * Alexandr Savca <alexandr.savca89@gmail.com>
  */
 
 /*
  * Base
  */
+
 /*
 @font-face {
   font-family: 'Iosevka Term';
