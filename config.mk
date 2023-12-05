@@ -95,5 +95,14 @@ MANS = \
        /usr/share/man/man5/inittab.5.gz                           \
        /usr/share/man/man8/reboot.8.gz                            \
        /usr/share/man/man8/shutdown.8.gz                          \
+       /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
+       /usr/share/man/man8/crond.8.gz                             \
+       /usr/share/man/man1/setterm.1.gz                           \
+       /usr/share/man/man1/vi.1.gz                                \
+       /usr/share/man/man1/more.1.gz                              \
+       /usr/share/man/man1/diff.1.gz                              \
+       /usr/share/man/man1/sdiff.1.gz                             \
+       /usr/share/man/man1/dash.1.gz                              \
+       /usr/share/man/man1/bash.1.gz                              \
 
 # End of file.
