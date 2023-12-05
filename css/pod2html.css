@@ -16,18 +16,22 @@
 /*
  * Base
  */
-
+/*
 @font-face {
   font-family: 'Iosevka Term';
   src: URL('/font/Iosevka Term Medium Nerd Font Complete.ttf')
         format('truetype');
 }
+*/
 
 body {
   font: inherit;
-  font-family: "Iosevka Term", "DejaVu Sans", sans-serif;
-  font-size: 18px;
+  font-family: "Iosevka Font", "Iosevka Nerd Font", "Dejavu Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 /*
@@ -103,7 +107,7 @@ p {
 }
 
 pre, code {
-  font-family: "JetBrains Mono", "Iosevka Term", "DejaVu Sans Mono", x, monospace;
+  font-family: "JetBrains Mono", "JerBrains Nerd Mono", "Iosevka Term", "DejaVu Sans Mono", x, monospace;
 }
 
 table {
