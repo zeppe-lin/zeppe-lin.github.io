@@ -1,6 +1,7 @@
 /**
- * File:    ./pod2html_min.css
- * Author:  Jiří Kučera, <sanczes AT gmail.com>
+ * File:    pod2html_min.css
+ * Original File: pod2html.css
+ * Author:  Jiří Kučera <sanczes@gmail.com>
  * Date:    2020-03-18 22:38:36 +0100
  * Project: pod2html.css
  * Version: 0.02
@@ -9,25 +10,29 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* Adjusted for Zeppe-Lin distribution by Alexandr Savca
- * <alexandr dot savca89 at gmail dot com>
+/* Adjusted for Zeppe-Lin distribution by
+ * Alexandr Savca <alexandr.savca89@gmail.com>
  */
 
 /*
  * Base
  */
-
+/*
 @font-face {
   font-family: 'Iosevka Term';
   src: URL('/font/Iosevka Term Medium Nerd Font Complete.ttf')
         format('truetype');
 }
-
+*/
 body {
   font: inherit;
-  font-family: "Iosevka Term", "DejaVu Sans", sans-serif;
-  font-size: 18px;
+  font-family: "Iosevka Font", "Iosevka Nerd Font", "DejaVu Sans", sans-serif;
+  /*font-size: 18px;*/
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 /*
@@ -95,7 +100,7 @@ p {
 }
 
 pre, code {
-  font-family: "Iosevka Term", "DejaVu Sans Mono", x, monospace;
+  font-family: "JetBrains Mono", "JetBrains Nerd Mono", "Iosevka Term", "DejaVu Sans Mono", x, monospace;
 }
 
 table {
@@ -164,5 +169,5 @@ body header {
   }
 }
 
-/* vim:sw=2:ts=2:sts=2:et:tw=71:cc=72
+/* vim: sw=2 ts=2 sts=2 et tw=71 cc=72
  * End of file. */
