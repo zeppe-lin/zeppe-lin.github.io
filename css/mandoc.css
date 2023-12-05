@@ -263,7 +263,9 @@ h1.Sh, h2.Ss {	margin-left: 0em; }
 @media (prefers-color-scheme: dark) {
 html {		--bg: #000000;
 		--fg: #55af66; }
-:link {		color: #c24242; }
+/*
+:link {		color: #c28242; }
 :visited {	color: #8b2d2d; }
+*/
 }
 
