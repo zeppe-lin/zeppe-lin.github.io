@@ -199,7 +199,7 @@ a:hover {
   border: 1px solid hsl(140, 51%, 51%);
   border-radius: 0px;
   background-color: #111111;
-  font-size: 16px;
+  /*font-size: 16px;*/
   overflow: auto;
 }
 
@@ -224,9 +224,7 @@ ul#index li li a {
 }
 
 ul#index li li li a {
-  /*
-  padding-left: 3rem;
-  */
+  /*padding-left: 3rem;*/
 }
 
 #index a:hover {
@@ -258,5 +256,5 @@ p code {
   }
 }
 
-/* vim:sw=2:ts=2:sts=2:et:tw=71:cc=72
+/* vim: sw=2 ts=2 sts=2 et tw=70 cc=72
  * End of file. */
