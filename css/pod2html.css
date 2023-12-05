@@ -103,7 +103,7 @@ p {
 }
 
 pre, code {
-  font-family: "Iosevka Term", "DejaVu Sans Mono", x, monospace;
+  font-family: "JetBrains Mono", "Iosevka Term", "DejaVu Sans Mono", x, monospace;
 }
 
 table {
