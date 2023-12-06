@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   revdep(1) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>REVDEP(1)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">REVDEP(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">REVDEP(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">revdep</code> &#x2014; <span class="Nd">check for
+    missing or wrong libraries of installed packages</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">revdep</code></td>
+    <td>[<code class="Fl">-eptv</code>] [<code class="Fl">-L</code>
+      <var class="Ar">ldsoconffile</var>] [<code class="Fl">-D</code>
+      <var class="Ar">pkgdbfile</var>] [<code class="Fl">-R</code>
+      <var class="Ar">revdepdir</var>] [<code class="Fl">-I</code>
+      <var class="Ar">pkgname</var>[,...]] [<var class="Ar">pkgname
+      ...</var>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">revdep</code></td>
+    <td>[<code class="Fl">-V</code>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">revdep</code></td>
+    <td>[<code class="Fl">-h</code>]</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <code class="Nm">revdep</code> utility checks for missing or
+    wrong libraries of installed packages using elfutils' libelf and the same
+    algorithm that <a class="Xr" href="ld.so.8.html">ld.so(8)</a> uses.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="L"><a class="permalink" href="#L"><code class="Fl">-L</code></a>
+    <var class="Ar">ldsoconffile</var>,
+    <code class="Fl">--ldsoconf</code>=<var class="Ar">ldsoconffile</var></dt>
+  <dd>Specify an alternate location for <span class="Pa">ld.so.conf</span> file
+      instead of the default <span class="Pa">/etc/ld.so.conf</span>. That file
+      contains a list of directories, one per line, in which to search for
+      libraries.</dd>
+  <dt id="D"><a class="permalink" href="#D"><code class="Fl">-D</code></a>
+    <var class="Ar">pkgdbfile</var>,
+    <code class="Fl">--pkgdb</code>=<var class="Ar">pkgdbfile</var></dt>
+  <dd>Specify an alternate location for the package database file instead of the
+      default <span class="Pa">/var/lib/pkg/db</span>.</dd>
+  <dt id="R"><a class="permalink" href="#R"><code class="Fl">-R</code></a>
+    <var class="Ar">revdepdir</var>,
+    <code class="Fl">--revdepdir</code>=<var class="Ar">revdepdir</var></dt>
+  <dd>Specify an alternate location for <code class="Nm">revdep</code> package
+      configuration directory instead of the default
+      <span class="Pa">/etc/revdep.d</span>. See
+      <a class="Sx" href="#Additional_Library_Directories">Additional Library
+      Directories</a> below for details.</dd>
+  <dt id="I"><a class="permalink" href="#I"><code class="Fl">-I</code></a>
+    <var class="Ar">pkgname</var>[,...],
+    <code class="Fl">--ignore</code>=<var class="Ar">pkgname</var>[,...]</dt>
+  <dd>Comma-separated list of packages to ignore.</dd>
+  <dt id="e"><a class="permalink" href="#e"><code class="Fl">-e</code></a>,
+    <code class="Fl">--erroneous</code></dt>
+  <dd>Include erroneous files in the output.</dd>
+  <dt id="p"><a class="permalink" href="#p"><code class="Fl">-p</code></a>,
+    <code class="Fl">--precise</code></dt>
+  <dd>Include precise file errors in the output.</dd>
+  <dt id="t"><a class="permalink" href="#t"><code class="Fl">-t</code></a>,
+    <code class="Fl">--trace</code></dt>
+  <dd>Show debug/trace.</dd>
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
+    <code class="Fl">--verbose</code></dt>
+  <dd>Formatted listing.</dd>
+  <dt id="V"><a class="permalink" href="#V"><code class="Fl">-V</code></a>,
+    <code class="Fl">--version</code></dt>
+  <dd>Print version and exit.</dd>
+  <dt id="h"><a class="permalink" href="#h"><code class="Fl">-h</code></a>,
+    <code class="Fl">--help</code></dt>
+  <dd>Print help and exit.</dd>
+</dl>
+<section class="Ss">
+<h2 class="Ss" id="Additional_Library_Directories"><a class="permalink" href="#Additional_Library_Directories">Additional
+  Library Directories</a></h2>
+<p class="Pp">Upon startup, <code class="Nm">revdep</code> searches the
+    <span class="Pa">/etc/revdep.d</span> directory for files named after
+    packages. If any are found, any directories (assumed to be absolute paths
+    and delimited by newlines) within the file are added to a list of package
+    specific directories to search if a library dependency is not found in one
+    of the many standard locations (as specified by
+    <a class="Xr" href="ld.so.8.html">ld.so(8)</a>).</p>
+<p class="Pp">If a package is discovered to have a library dependencies that are
+    in a non-standard directory <span class="Pa">/usr/lib/firefox</span> then a
+    file named <span class="Pa">firefox</span> should be created under
+    <span class="Pa">/etc/revdep.d</span> with a single line containing
+    <span class="Pa">/usr/lib/firefox</span>. This will tell
+    <code class="Nm">revdep</code> where to find Firefox's
+    <span class="Pa">libxul.so</span> when looking for its library dependencies,
+    reducing one source of false positives. Ideally, this file would be included
+    with the package's own packaging as well.</p>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>There are no missing libraries found. All is ok.</dd>
+  <dt>1</dt>
+  <dd>Failed to parse command-line arguments.</dd>
+  <dt>2</dt>
+  <dd>Failed to read package database.</dd>
+  <dt>3</dt>
+  <dd>Failed to read <span class="Pa">ld.so.conf</span>.</dd>
+  <dt>4</dt>
+  <dd>Found at least one missing library.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Try this command to list broken packages:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>revdep</pre>
+</div>
+<p class="Pp">Use this command to rebuild packages on your system:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>pkgman update -fr `revdep`</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp">The original implementation of <code class="Nm">revdep</code> as a
+    shell script was done by <span class="An">Johannes Winkelmann</span>
+    &lt;<a class="Mt" href="mailto:jw@tks6.net">jw@tks6.net</a>&gt;, the member
+    of <a class="Lk" href="http://crux.nu">CRUX Team</a>, as part of
+    &#x201C;prt-utils&#x201D; package. The C++ rewrite was done by
+  <br/>
+  <span class="An">James Buren</span>
+    &lt;<a class="Mt" href="mailto:ryuo@frugalware.org">ryuo@frugalware.org</a>&gt;
+    with design contribution by
+  <br/>
+  <span class="An">Danny Rawlins</span>
+    &lt;<a class="Mt" href="mailto:contact@romster.me">contact@romster.me</a>&gt;.</p>
+<p class="Pp">This implementation was re-worked for
+    <a class="Lk" href="http://zeppel.ink">Zeppe-Lin</a> by
+  <br/>
+  <span class="An">Alexandr Savca</span>
+    &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 3, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

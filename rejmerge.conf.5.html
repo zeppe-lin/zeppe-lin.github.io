@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   rejmrege.conf(5) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>REJMERGE.CONF(5)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">REJMERGE.CONF(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">REJMERGE.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">rejmerge.conf</code> &#x2014;
+    <span class="Nd">configuration file for rejmerge</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">/etc/rejmerge.conf</code></td>
+    <td></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This manual page describes the format of the
+    <span class="Pa">rejmerge.conf</span> file. This file can be used to alter
+    the way <a class="Xr" href="rejmerge.8.html">rejmerge(8)</a> displays file
+    differences and performs file merges. Changing the default behaviour is done
+    by re-defining the shell functions <i class="Em">rejmerge_diff</i>,
+    <i class="Em">rejmerge_merge</i> and shell variables
+    <i class="Em">EDITOR</i>, <i class="Em">PAGER</i>.</p>
+<section class="Ss">
+<h2 class="Ss" id="rejmerge_diff"><a class="permalink" href="#rejmerge_diff">rejmerge_diff</a></h2>
+<p class="Pp">This function is executed once for each rejected file. Arguments
+    <i class="Em">$1</i> and <i class="Em">$2</i> contains the path to a
+    temporary file where this function should write its result. The contents of
+    the temporary file will later be presented to the user as the difference
+    between the two files.</p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="rejmerge_merge"><a class="permalink" href="#rejmerge_merge">rejmerge_merge</a></h2>
+<p class="Pp">This function is executed when the user chooses to merge two
+    files. Argument <i class="Em">$1</i> and <i class="Em">$2</i> contains the
+    paths to the installed and rejected files. Argument
+    <a class="permalink" href="#$3"><i class="Em" id="$3">$3</i></a> contains
+    the path to a temporary file where this function should write its result.
+    The contents of the temporary file will later be presented to the user as
+    the merge result.</p>
+<p class="Pp" id="REJMERGE_MERGE_INFO">This function also has the option to set
+    the variable
+    <a class="permalink" href="#REJMERGE_MERGE_INFO"><i class="Em">REJMERGE_MERGE_INFO</i></a>.
+    The contents of this variable will be displayed as informational text after
+    a merge has been performed. Its purpose is to provide information about the
+    merge (e.g. &#x201C;5 merge conflicts found&#x201D;).</p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="EDITOR"><a class="permalink" href="#EDITOR">EDITOR</a></h2>
+<p class="Pp">This variable defines the editor used in
+    <b class="Sy">rejmerge_merge</b> operation instead of the default
+    <code class="Ev">EDITOR</code> environment variable.</p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="PAGER"><a class="permalink" href="#PAGER">PAGER</a></h2>
+<p class="Pp">This variable defines the pager used in
+    <b class="Sy">rejmerge_diff</b> and <b class="Sy">rejmerge_merge</b>
+    operations instead of the default <code class="Ev">PAGER</code> environment
+    variable.</p>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag Bl-compact">
+  <dt><span class="Pa">/etc/rejmerge.conf</span></dt>
+  <dd>Configuration file for
+      <a class="Xr" href="rejmerge.8.html">rejmerge(8)</a>.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">If you want to produce side-by-side output for diffs, add the
+    following line to your configuration file:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>rejmerge_diff() { diff -y $1 $2 &gt; $3 ; }</pre>
+</div>
+<p class="Pp">If you want to produce unified and colorized output:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>rejmerge_diff() { diff -u --color=always $1 $2 &gt; $3 ; }</pre>
+</div>
+<p class="Pp">If you want to use <a class="Xr" href="sdiff.1.html">sdiff(1)</a>
+    to merge files instead of the default
+    <a class="Xr" href="diff.1.html">diff(1)</a>:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>rejmerge_merge() { sdiff -o $3 $1 $2 ; }</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr" href="rejmerge.8.html">rejmerge(8)</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 3, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

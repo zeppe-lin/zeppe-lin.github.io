@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgadd.conf(5) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGADD.CONF(5)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGADD.CONF(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">PKGADD.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgadd.conf</code> &#x2014;
+    <span class="Nd">configuration file for pkgadd</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">/etc/pkgadd.conf</code></td>
+    <td></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This manual page describes the format of the
+    <span class="Pa">pkgadd.conf</span> file. This file can be used to alter the
+    way <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> upgrade and/or install
+    the package.</p>
+<p class="Pp" id="pkgadd.conf"><a class="permalink" href="#pkgadd.conf"><b class="Sy">pkgadd.conf</b></a>
+    file contain rules, that are built out of three fragments:
+    <i class="Em">EVENT</i>, <i class="Em">PATTERN</i> and
+    <i class="Em">ACTION</i>. The <i class="Em">EVENT</i> describes in what kind
+    of situation this rule applies. Currently there are two types of events:
+    <b class="Sy">UPGRADE</b> and <b class="Sy">INSTALL</b>.
+    <b class="Sy">UPGRADE</b> rules are applied when a package is installed over
+    an existing version, and <b class="Sy">INSTALL</b> rules are applied in any
+    case. The <i class="Em">PATTERN</i> is a regular expression. The
+    <i class="Em">ACTION</i> applicable to both the <b class="Sy">UPGRADE</b>
+    and <b class="Sy">INSTALL</b> event is
+    <a class="permalink" href="#YES"><b class="Sy" id="YES">YES</b></a> and
+    <a class="permalink" href="#NO"><b class="Sy" id="NO">NO</b></a>. More than
+    one rule of the same <i class="Em">EVENT</i> type is allowed, in which case
+    the first rule will have the lowest priority and the last rule will have the
+    highest priority.</p>
+<p class="Pp">For example:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>UPGRADE        ^etc/.*$                   NO
+UPGRADE        ^var/log/.*$               NO
+UPGRADE        ^etc/X11/.*$               YES
+UPGRADE        ^etc/X11/XF86Config$       NO</pre>
+</div>
+<p class="Pp">The above example will cause
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> to never upgrade anything
+    in <span class="Pa">/etc</span> or <span class="Pa">/var/log</span>
+    (subdirectories included), except files in <span class="Pa">/etc/X11</span>
+    (subdirectories included), unless it is the files
+    <span class="Pa">/etc/X11/XF86Config</span>. The default rule is to
+    upgrade/install everything, rules in this file are exceptions to that
+  rule.</p>
+<p class="Pp">Note that the <i class="Em">PATTERN</i> should never contain an
+    initial slash (&#x2018;<code class="Li">/</code>&#x2019;) since you are
+    referring to the files in the package, not the files on the disk.</p>
+<p class="Pp">If <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> finds that a
+    specific file should not be upgraded it will install it under
+    <span class="Pa">/var/lib/pkg/rejected/</span>. The user is then free to
+    examine/use/remove that file manually or use
+    <a class="Xr" href="rejmerge.8.html">rejmerge(8)</a> to manage rejected
+    files.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag Bl-compact">
+  <dt><span class="Pa">/etc/pkgadd.conf</span></dt>
+  <dd>Configuration file for
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a>.</dd>
+  <dt><span class="Pa">/var/lib/pkg/db</span></dt>
+  <dd>Database of currently installed packages.</dd>
+  <dt><span class="Pa">/var/lib/pkg/rejected/</span></dt>
+  <dd>Directory where rejected files are stored.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">What follows is a sample configuration file which may, or may not
+    match your environment:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>#
+# /etc/pkgadd.conf: pkgadd(8) configuration
+#
+# See pkgadd.conf(5) for more information.
+#
+
+# Default rule (implicit)
+#UPGRADE       ^.*$                       YES
+
+UPGRADE        ^var/log/.*$               NO
+UPGRADE        ^var/spool/cron/.*$        NO
+UPGRADE        ^var/run/utmp$             NO
+
+UPGRADE        ^etc/rc.*$                 YES
+UPGRADE        ^etc/rc\.conf$             NO
+
+# End of file.</pre>
+</div>
+<p class="Pp">All lines which begin with the
+    &quot;<code class="Li">#</code>&quot; character are comments and will not be
+    parsed. The first three rules will cause
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> to never upgrade anything
+    in <span class="Pa">/var/log</span> (subdirectories included), never upgrade
+    anything in <span class="Pa">/var/spool/cron</span> and never upgrade
+    <span class="Pa">/var/run/utmp</span> file. The last two rules will cause
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> to upgrade any
+    <span class="Pa">/etc/rc*</span> files, except
+    <span class="Pa">/etc/rc.conf</span> system settings.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr" href="pkgadd.8.html">pkgadd(8)</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 6, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

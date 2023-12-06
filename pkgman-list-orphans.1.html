@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgman-list-orphans(1) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGMAN-LIST-ORPHANS(1)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGMAN-LIST-ORPHANS(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">PKGMAN-LIST-ORPHANS(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgman-list-orphans</code> &#x2014;
+    <span class="Nd">list orphaned packages on your system</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkgman</code></td>
+    <td><code class="Cm">list-orphans</code> [<code class="Fl">-v</code>]</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Print list of orphaned packages on your system.
+    &#x201C;Orphaned&#x201D; are packages what are not present in the packages
+    sources directories configured in <span class="Pa">/etc/pkgman.conf</span>
+    as &#x201C;pkgsrcdir&#x201D; directories.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a></dt>
+  <dd>Also show the ones that depends on orphaned (or even completely missing)
+      packages.</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

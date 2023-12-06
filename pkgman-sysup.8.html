@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgman-sysup(8) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGMAN-SYSUP(8)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGMAN-SYSUP(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">PKGMAN-SYSUP(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgman-sysup</code> &#x2014;
+    <span class="Nd">update all outdated packages</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkgman</code></td>
+    <td><code class="Cm">sysup</code>
+      [<code class="Fl">-v</code>|<code class="Fl">-vv</code>]
+      [<code class="Fl">--test</code>] [<code class="Fl">--log</code>]
+      [<code class="Fl">--deps</code>] [<code class="Fl">--depsort</code>]
+      [<code class="Fl">--group</code>]
+      [<code class="Fl">--margs</code>=<var class="Ar">pkgmk_args</var>|<var class="Ar">pkgmk_aliases</var>]
+      [<code class="Fl">--aargs</code>=<var class="Ar">pkgadd_args</var>|<var class="Ar">pkgadd_aliases</var>]
+      [<code class="Fl">--ignore</code>=<var class="Ar">pkgname</var>[,...]]
+      [<code class="Fl">--install-scripts</code>|[<code class="Fl">--pre-install</code>][<code class="Fl">--post-install</code>]]</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Update all installed packages which are outdated.</p>
+<p class="Pp">Also see the
+    <a class="Xr" href="pkgman-lock.8.html">pkgman-lock(8)</a> and
+    <a class="Xr" href="pkgman-unlock.8.html">pkgman-unlock(8)</a> commands to
+    keep the currently installed versions, even if there are changes in the
+    packages sources directories.</p>
+<p class="Pp">If you want to update only diffs which have a lower version
+    installed than the one in the packages sources directories, use the
+    <code class="Fl">--prefer-higher</code> option.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a></dt>
+  <dd>Unused.</dd>
+  <dt id="vv"><a class="permalink" href="#vv"><code class="Fl">-vv</code></a></dt>
+  <dd>Log to stdout the installation/updating process.</dd>
+  <dt id="test"><a class="permalink" href="#test"><code class="Fl">--test</code></a></dt>
+  <dd>Dry run, do not actually install/update anything.</dd>
+  <dt id="log"><a class="permalink" href="#log"><code class="Fl">--log</code></a></dt>
+  <dd>Create a transaction log file. It can be set globally for all transactions
+      (see &#x201C;<code class="Li">writelog</code>&#x201D; option in
+      <a class="Xr" href="pkgman.conf.5.html">pkgman.conf(5)</a>).</dd>
+  <dt id="deps"><a class="permalink" href="#deps"><code class="Fl">--deps</code></a></dt>
+  <dd>Update all packages including their new dependencies.</dd>
+  <dt id="depsort"><a class="permalink" href="#depsort"><code class="Fl">--depsort</code></a></dt>
+  <dd>Sort updating by dependencies.</dd>
+  <dt id="group"><a class="permalink" href="#group"><code class="Fl">--group</code></a></dt>
+  <dd>Update all packages, but stop if updating of one package fails.</dd>
+  <dt id="-margs"><a class="permalink" href="#-margs"><b class="Sy">--margs</b></a>=<var class="Ar">pkgmk_args</var></dt>
+  <dd>Arguments to be passed to
+    <a class="Xr" href="pkgmk.8.html">pkgmk(8)</a>.</dd>
+  <dt><var class="Ar">pkgmk_aliases</var></dt>
+  <dd>
+    <dl class="Bl-tag">
+      <dt id="fr"><a class="permalink" href="#fr"><code class="Fl">-fr</code></a></dt>
+      <dd>Force build, implies &#x201C;<code class="Li">pkgmk -f</code>&#x201D;
+          (same as &#x201C;<code class="Li">--margs</code>=-f&#x201D;).</dd>
+      <dt id="um"><a class="permalink" href="#um"><code class="Fl">-um</code></a></dt>
+      <dd>Update md5sum, implies &#x201C;<code class="Li">pkgmk
+          -um</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-um&#x201D;).</dd>
+      <dt id="im"><a class="permalink" href="#im"><code class="Fl">-im</code></a></dt>
+      <dd>Ignore md5sum, implies &#x201C;<code class="Li">pkgmk
+          -im</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-im&#x201D;).</dd>
+      <dt id="uf"><a class="permalink" href="#uf"><code class="Fl">-uf</code></a></dt>
+      <dd>Update footprint, implies &#x201C;<code class="Li">pkgmk
+          -uf</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-uf&#x201D;).</dd>
+      <dt id="if"><a class="permalink" href="#if"><code class="Fl">-if</code></a></dt>
+      <dd>Ignore footprint, implies &#x201C;<code class="Li">pkgmk
+          -if</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-if&#x201D;).</dd>
+      <dt id="ns"><a class="permalink" href="#ns"><code class="Fl">-ns</code></a></dt>
+      <dd>No stripping, implies &#x201C;<code class="Li">pkgmk
+          -ns</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-ns&#x201D;).</dd>
+      <dt id="kw"><a class="permalink" href="#kw"><code class="Fl">-kw</code></a></dt>
+      <dd>Keep working directory, implies &#x201C;<code class="Li">pkgmk
+          -kw</code>&#x201D; (same as
+          &#x201C;<code class="Li">--margs</code>=-kw&#x201D;).</dd>
+    </dl>
+  </dd>
+  <dt id="aargs"><a class="permalink" href="#aargs"><code class="Fl">--aargs</code></a>=<var class="Ar">pkgadd_args</var></dt>
+  <dd>Arguments to be passed to
+      <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a>.</dd>
+  <dt><var class="Ar">pkgadd_aliases</var></dt>
+  <dd>
+    <dl class="Bl-tag">
+      <dt id="f"><a class="permalink" href="#f"><code class="Fl">-f</code></a>,
+        <code class="Fl">-i</code></dt>
+      <dd>Force install, implies &#x201C;<code class="Li">pkgadd
+          -f</code>&#x201D; (same as
+          &#x201C;<code class="Li">--aargs</code>=-f&#x201D;).</dd>
+    </dl>
+  </dd>
+  <dt id="ignore"><a class="permalink" href="#ignore"><code class="Fl">--ignore</code></a>=<var class="Ar">pkgname</var>[,...]</dt>
+  <dd>Do not install/update those packages, even if they are listed as
+      dependency.</dd>
+  <dt id="install-scripts"><a class="permalink" href="#install-scripts"><code class="Fl">--install-scripts</code></a></dt>
+  <dd>Execute pre-install and post-install script if they are there.</dd>
+  <dt id="pre-install"><a class="permalink" href="#pre-install"><code class="Fl">--pre-install</code></a></dt>
+  <dd>Execute pre-install script if it is there.</dd>
+  <dt id="post-install"><a class="permalink" href="#post-install"><code class="Fl">--post-install</code></a></dt>
+  <dd>Execute post-install scripts if it is there.</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgman-diff(1) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGMAN-DIFF(1)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGMAN-DIFF(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">PKGMAN-DIFF(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgman-diff</code> &#x2014; <span class="Nd">show
+    differences between installed and available packages</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkgman</code></td>
+    <td><code class="Cm">diff</code> [<code class="Fl">--all</code>]
+      [<code class="Fl">--deps</code>] [<code class="Fl">--full</code>]
+      [<code class="Fl">--regex</code>]
+      [<code class="Fl">--filter</code>=<var class="Ar">expr</var>]</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Print an overview of packages that are installed and have a
+    different version than they are in the packages sources directories. If you
+    would like to compare the packages using version comparison and show only
+    packages with higher version, then use
+    <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
+    configuration settings:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>pkgman --config-set=&quot;preferhigher yes&quot; diff</pre>
+</div>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="all"><a class="permalink" href="#all"><code class="Fl">--all</code></a></dt>
+  <dd>Display locked packages too.</dd>
+  <dt id="deps"><a class="permalink" href="#deps"><code class="Fl">--deps</code></a></dt>
+  <dd>Calculate the new dependencies for available packages.</dd>
+  <dt id="full"><a class="permalink" href="#full"><code class="Fl">--full</code></a></dt>
+  <dd>Show full table.</dd>
+  <dt id="regex"><a class="permalink" href="#regex"><code class="Fl">--regex</code></a></dt>
+  <dd>Interpret filter argument as a regular expression.</dd>
+  <dt id="filter"><a class="permalink" href="#filter"><code class="Fl">--filter</code></a>=<var class="Ar">expr</var></dt>
+  <dd>Filter listing packages by <var class="Ar">expr</var>. The filter argument
+      may be the string, wildcard in
+      <a class="Xr" href="fnmatch.3.html">fnmatch(3)</a> format, or regex in
+      <a class="Xr" href="regex.3.html">regex(3)</a> format.</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

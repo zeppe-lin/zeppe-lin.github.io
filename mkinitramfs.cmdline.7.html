@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   mkinitramfs.cmdline(7) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>MKINITRAMFS.CMDLINE(7)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MKINITRAMFS.CMDLINE(7)</td>
+    <td class="head-vol">Miscellaneous Information Manual</td>
+    <td class="head-rtitle">MKINITRAMFS.CMDLINE(7)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">mkinitramfs.cmdline</code> &#x2014;
+    <span class="Nd">mkinitramfs' kernel command-line parameters</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <a class="Xr" href="mkinitramfs.8.html">mkinitramfs(8)</a>
+    utility provides a way to control configuration dynamically via kernel
+    parameters without needing to regenerate initramfs image.</p>
+<section class="Ss">
+<h2 class="Ss" id="General_Parameters"><a class="permalink" href="#General_Parameters">General
+  Parameters</a></h2>
+<dl class="Bl-tag Bl-compact">
+  <dt id="debug"><a class="permalink" href="#debug"><b class="Sy">debug</b></a>=[1]</dt>
+  <dd>Enable debug mode.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="break"><a class="permalink" href="#break"><b class="Sy">break</b></a>=&#x27E8;BREAKPOINT&#x27E9;</dt>
+  <dd>Specify breakpoint where shell should be invoked. Useful for debugging.
+    <p class="Pp">List of builtin breakpoints:</p>
+    <dl class="Bl-tag Bl-compact">
+      <dt>- boot</dt>
+      <dd style="width: auto;">&#x00A0;</dd>
+      <dt>- root</dt>
+      <dd style="width: auto;">&#x00A0;</dd>
+    </dl>
+    <p class="Pp">Hooks can provide their own breakpoints. See source code of
+        hooks for more information.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="root"><a class="permalink" href="#root"><b class="Sy">root</b></a>=&#x27E8;UUID
+    | LABEL | /dev/* | PARTUUID&#x27E9;</dt>
+  <dd>Specify which way initramfs will use to look up root filesystem.
+    <p class="Pp"></p>
+    <dl class="Bl-tag Bl-compact">
+      <dt>UUID</dt>
+      <dd>Lookup device by uuid.</dd>
+      <dt>LABEL</dt>
+      <dd>Lookup device by label.</dd>
+      <dt>/dev/*</dt>
+      <dd>Lookup device by full path.</dd>
+      <dt>PARTUUID</dt>
+      <dd>Lookup device by partition uuid.</dd>
+    </dl>
+    <p class="Pp" id="blkid">Initramfs must contain
+        <a class="permalink" href="#blkid"><b class="Sy">blkid</b></a> utility
+        for ability to use UUID, LABEL, PARTUUID.
+        <a class="permalink" href="#Note"><b class="Sy" id="Note">Note</b></a>:
+        PARTUUID only supported in
+        <a class="permalink" href="#util-linux"><b class="Sy" id="util-linux">util-linux</b></a>'
+        <a class="Xr" href="blkid.8.html">blkid(8)</a>.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="root_type"><a class="permalink" href="#root_type"><b class="Sy">root_type</b></a>=&#x27E8;TYPE&#x27E9;</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt id="rootfstype"><a class="permalink" href="#rootfstype"><b class="Sy">rootfstype</b></a>=&#x27E8;TYPE&#x27E9;</dt>
+  <dd>Explicitly set root filesystem type. Kernel must support specified type.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="rootdelay"><a class="permalink" href="#rootdelay"><b class="Sy">rootdelay</b></a>=&#x27E8;DELAY&#x27E9;</dt>
+  <dd>Specify maximum number of seconds to wait for root device instead of the
+      default 30 seconds.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="root_opts"><a class="permalink" href="#root_opts"><b class="Sy">root_opts</b></a>=&#x27E8;OPTS&#x27E9;</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt id="rootflags"><a class="permalink" href="#rootflags"><b class="Sy">rootflags</b></a>=&#x27E8;OPTS&#x27E9;</dt>
+  <dd>See <a class="Xr" href="fstab.5.html">fstab(5)</a> fourth field.</dd>
+</dl>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Hooks_Parameters"><a class="permalink" href="#Hooks_Parameters">Hooks
+  Parameters</a></h2>
+<p class="Pp">Initramfs must contain appropriate hooks for ability to use below
+    parameters.</p>
+<p class="Pp">The parameters for <b class="Sy">LVM</b> hook are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="lvm_tag"><a class="permalink" href="#lvm_tag"><b class="Sy">lvm_tag</b></a>=&#x27E8;TAG&#x27E9;</dt>
+  <dd>Specify LVM tag which will be used to trigger LVM.
+    <p class="Pp">This option will be ignored if
+        <b class="Sy">lvm_name</b>/<b class="Sy">lvm_group</b> was
+      specified.</p>
+  </dd>
+  <dt id="lvm_name"><a class="permalink" href="#lvm_name"><b class="Sy">lvm_name</b></a>=&#x27E8;NAME&#x27E9;</dt>
+  <dd>Specify LVM name which will be used to trigger LVM.
+    <p class="Pp"><b class="Sy">lvm_group</b> (see below) must be specified.</p>
+  </dd>
+  <dt id="lvm_group"><a class="permalink" href="#lvm_group"><b class="Sy">lvm_group</b></a>=&#x27E8;GROUP&#x27E9;</dt>
+  <dd>Specify LVM group which will be used to trigger LVM.</dd>
+  <dt id="lvm_discard"><a class="permalink" href="#lvm_discard"><b class="Sy">lvm_discard</b></a>=[1]</dt>
+  <dd>Pass
+      <a class="permalink" href="#issue_discards"><i class="Em" id="issue_discards">issue_discards</i></a>
+      to LVM. Leave empty to disable. Useful for SSD's.</dd>
+</dl>
+<p class="Pp">The parameters for <b class="Sy">LUKS</b> hook are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="luks_name"><a class="permalink" href="#luks_name"><b class="Sy">luks_name</b></a>=&#x27E8;NAME&#x27E9;</dt>
+  <dd>Specify which name will be registered to mapping table after
+      <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a> unlocks LUKS
+      root.</dd>
+  <dt id="luks_root"><a class="permalink" href="#luks_root"><b class="Sy">luks_root</b></a>=&#x27E8;UUID
+    | LABEL | /dev/* | PARTUUID&#x27E9;</dt>
+  <dd>See <b class="Sy">root</b> (above) for details.</dd>
+  <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=[1]</dt>
+  <dd>Pass &#x201C;--allow-discards&#x201D; to
+      <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a>. Leave empty to
+      disable.
+    <p class="Pp">Useful for SSD's, but you must know that security will be
+        decreased.</p>
+  </dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Specify <b class="Sy">root</b> option argument:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>vmlinuz initrd=\initramfs root=/dev/sda1 [...]</pre>
+</div>
+<p class="Pp">Disable &#x201C;discards&#x201D; for <b class="Sy">LUKS</b> and
+    <b class="Sy">LVM</b>:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>vmlinuz initrd=\initramfs luks_discard= lvm_discard= [...]</pre>
+</div>
+<p class="Pp">Pass arguments to real init:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>vmlinuz initrd=\initramfs [...] -- arguments</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr" href="mkinitramfs.config.5.html">mkinitramfs.config(5)</a>,
+    <a class="Xr" href="mkinitramfs.hooks.7.html">mkinitramfs.hooks(7)</a>,
+    <a class="Xr" href="mkinitramfs.8.html">mkinitramfs(8)</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 7, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

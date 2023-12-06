@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   start-stop-daemon(8) manual page
+   See COPYRIGHT file for copyright notices.
+  
+   This is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+  
+   This is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+  
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+   -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>START-STOP-DAEMON(8)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">START-STOP-DAEMON(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">START-STOP-DAEMON(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">start-stop-daemon</code> &#x2014;
+    <span class="Nd">start and stop system daemon programs</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">start-stop-daemon</code></td>
+    <td>[option ...] <var class="Ar">command</var></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <code class="Nm">start-stop-daemon</code> utility is used to
+    control the creation and termination of system-level processes. Using one of
+    the matching options, <code class="Nm">start-stop-daemon</code> can be
+    configured to find existing instances of a running process.</p>
+<p class="Pp"><b class="Sy">Note</b>: Unless <code class="Fl">--pid</code> or
+    <code class="Fl">-p</code>/<code class="Fl">--pidfile</code> are specified,
+    <code class="Nm">start-stop-daemon</code> behaves similar to
+    <a class="Xr" href="killall.1.html">killall(1)</a>.
+    <code class="Nm">start-stop-daemon</code> will scan the process table
+    looking for any processes which match the process name, parent pid, uid,
+    and/or gid (if specified). Any matching process will prevent
+    <code class="Fl">-S</code>/<code class="Fl">--start</code> from starting the
+    daemon. All matching processes will be sent the TERM signal (or the one
+    specified via <code class="Fl">-s</code>/<code class="Fl">--signal</code> or
+    <code class="Fl">-R</code>/<code class="Fl">--retry</code>) if
+    <code class="Fl">-K</code>/<code class="Fl">--stop</code> is specified. For
+    daemons which have long-lived children which need to live through a
+    <code class="Fl">-K</code>/<code class="Fl">--stop</code>, you must specify
+    a pidfile.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COMMANDS"><a class="permalink" href="#COMMANDS">COMMANDS</a></h1>
+<dl class="Bl-tag">
+  <dt id="S"><a class="permalink" href="#S"><code class="Fl">-S</code></a>,
+    <code class="Fl">--start</code> [-- <var class="Ar">argument ...</var>]</dt>
+  <dd>Check for the existence of a specified process. If such a process exists,
+      <code class="Nm">start-stop-daemon</code> does nothing, and exits with
+      error status 1 (0 if
+      <code class="Fl">-o</code>/<code class="Fl">--oknodo</code> is specified).
+      If such a process does not exist, it starts an instance, using either the
+      executable specified by
+      <code class="Fl">-x</code>/<code class="Fl">--exec</code> or, if
+      specified, by
+      <code class="Fl">-a</code>/<code class="Fl">--startas</code>. Any
+      <var class="Ar">argument</var>(s) given after
+      <a class="permalink" href="#-"><b class="Sy" id="-">--</b></a> on the
+      command line are passed unmodified to the program being started.</dd>
+  <dt id="K"><a class="permalink" href="#K"><code class="Fl">-K</code></a>,
+    <code class="Fl">--stop</code></dt>
+  <dd>Checks for the existence of a specified process. If such a process exists,
+      <code class="Nm">start-stop-daemon</code> sends it the signal specified by
+      <code class="Fl">-s</code>/<code class="Fl">--signal</code>, and exits
+      with error status 0. If such a process does not exist,
+      <code class="Nm">start-stop-daemon</code> exits with error status 1 (0 if
+      <code class="Fl">-o</code>/<code class="Fl">--oknodo</code> is specified).
+      If <code class="Fl">-R</code>/<code class="Fl">--retry</code> is
+      specified, then <code class="Nm">start-stop-daemon</code> will check that
+      the process(es) have terminated.</dd>
+  <dt id="T"><a class="permalink" href="#T"><code class="Fl">-T</code></a>,
+    <code class="Fl">--status</code></dt>
+  <dd>Check for the existence of a specified process, and returns an exit status
+      code, according to the LSB Init Script Actions.</dd>
+  <dt id="H"><a class="permalink" href="#H"><code class="Fl">-H</code></a>,
+    <code class="Fl">--help</code></dt>
+  <dd>Show usage information and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><code class="Fl">-V</code></a>,
+    <code class="Fl">--version</code></dt>
+  <dd>Show the program version and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<section class="Ss">
+<h2 class="Ss" id="Matching_options"><a class="permalink" href="#Matching_options">Matching
+  options</a></h2>
+<dl class="Bl-tag">
+  <dt id="pid"><a class="permalink" href="#pid"><code class="Fl">--pid</code></a>=<var class="Ar">pid</var></dt>
+  <dd>Check for a process with the specified <var class="Ar">pid</var>. The
+      <var class="Ar">pid</var> must be a number greater than 0.</dd>
+  <dt id="ppid"><a class="permalink" href="#ppid"><code class="Fl">--ppid</code></a>=<var class="Ar">ppid</var></dt>
+  <dd>Check for a process with the specified parent pid
+      <var class="Ar">ppid</var>. The <var class="Ar">ppid</var> must be a
+      number greater than 0.</dd>
+  <dt id="p"><a class="permalink" href="#p"><code class="Fl">-p</code></a>
+    <var class="Ar">pidfile</var>,
+    <code class="Fl">--pidfile</code>=<var class="Ar">pidfile</var></dt>
+  <dd>Check whether a process has created the file
+      <var class="Ar">pidfile</var>.
+    <p class="Pp"><b class="Sy">Note</b>: Using this matching option alone might
+        cause unintended processes to be acted on, if the old process terminated
+        without being able to remove the <var class="Ar">pidfile</var>.</p>
+    <p class="Pp"><b class="Sy">Warning</b>: Using this match option with a
+        world-writable pidfile or using it alone with a daemon that writes the
+        pidfile as an unprivileged (non-root) user will be refused with an error
+        as this is a security risk, because either any user can write to it, or
+        if the daemon gets compromised, the contents of the pidfile cannot be
+        trusted, and then a privileged runner (such as an init script executed
+        as root) would end up acting on any system process. Using
+        <span class="Pa">/dev/null</span> is exempt from these checks.</p>
+  </dd>
+  <dt id="x"><a class="permalink" href="#x"><code class="Fl">-x</code></a>
+    <var class="Ar">executable</var>,
+    <code class="Fl">--exec</code>=<var class="Ar">executable</var></dt>
+  <dd>Check for processes that are instances of this
+      <var class="Ar">executable</var>. The <var class="Ar">executable</var>
+      argument should be an absolute pathname.
+    <p class="Pp"><b class="Sy">Note</b>: This might not work as intended with
+        interpreted scripts, as the executable will point to the interpreter.
+        Take into account processes running from inside a chroot will also be
+        matched, so other match restrictions might be needed.</p>
+  </dd>
+  <dt id="n"><a class="permalink" href="#n"><code class="Fl">-n</code></a>
+    <var class="Ar">process-name</var>,
+    <code class="Fl">--name</code>=<var class="Ar">process-name</var></dt>
+  <dd>Check for processes with the name <var class="Ar">process-name</var>. The
+      <var class="Ar">process-name</var> is usually the process filename, but it
+      could have been changed by the process itself.
+    <p class="Pp"><b class="Sy">Note</b>: On most systems this information is
+        retrieved from the process comm name from the kernel, which tends to
+        have a relatively short length limit (assuming more than 15 characters
+        is non-portable).</p>
+  </dd>
+  <dt id="u"><a class="permalink" href="#u"><code class="Fl">-u</code></a>
+    <var class="Ar">username</var>|<var class="Ar">uid</var>,
+    <code class="Fl">--user</code>=<var class="Ar">username</var>|<var class="Ar">uid</var></dt>
+  <dd>Check for processes owned by the user specified by
+      <var class="Ar">username</var> or <var class="Ar">uid</var>.
+    <p class="Pp"><b class="Sy">Note</b>: Using this matching option alone will
+        cause all processes matching the user to be acted on.</p>
+  </dd>
+</dl>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Generic_options"><a class="permalink" href="#Generic_options">Generic
+  options</a></h2>
+<dl class="Bl-tag">
+  <dt id="g"><a class="permalink" href="#g"><code class="Fl">-g</code></a>
+    <var class="Ar">group</var>|<var class="Ar">gid</var>,
+    <code class="Fl">--group</code>=<var class="Ar">group</var>|<var class="Ar">gid</var></dt>
+  <dd>Change to <var class="Ar">group</var> or <var class="Ar">gid</var> when
+      starting the process.</dd>
+  <dt id="s"><a class="permalink" href="#s"><code class="Fl">-s</code></a>
+    <var class="Ar">signal</var>,
+    <code class="Fl">--signal</code>=<var class="Ar">signal</var></dt>
+  <dd>With <code class="Fl">-K</code>/<code class="Fl">--stop</code>, specifies
+      the signal to send to processes being stopped (default TERM).</dd>
+  <dt id="R"><a class="permalink" href="#R"><code class="Fl">-R</code></a>
+    <var class="Ar">timeout</var>|<var class="Ar">schedule</var>,
+    <code class="Fl">--retry</code>=<var class="Ar">timeout</var>|<var class="Ar">schedule</var></dt>
+  <dd>With <code class="Fl">-K</code>/<code class="Fl">--stop</code>, specifies
+      that <code class="Nm">start-stop-daemon</code> is to check whether the
+      process(es) do finish. It will check repeatedly whether any matching
+      processes are running, until none are. If the processes do not exit it
+      will then take further action as determined by the schedule.
+    <p class="Pp" id="/KILL/">If <var class="Ar">timeout</var> is specified
+        instead of <var class="Ar">schedule</var>, then the schedule
+        <var class="Ar">signal</var><b class="Sy">/</b><var class="Ar">timeout</var><a class="permalink" href="#/KILL/"><b class="Sy">/KILL/</b></a><var class="Ar">timeout</var>
+        is used, where <var class="Ar">signal</var> is the signal specified with
+        <code class="Fl">-s</code>/<code class="Fl">--signal</code>.</p>
+    <p class="Pp" id="signal-number"><var class="Ar">schedule</var> is a list of
+        at least two items separated by slashes (<b class="Sy">/</b>); each item
+        may be
+        <b class="Sy">-</b><a class="permalink" href="#signal-number"><i class="Em">signal-number</i></a>
+        or [-]<var class="Ar">signal-name</var>, which means to send that
+        signal, or <var class="Ar">timeout</var>, which means to wait that many
+        seconds for processes to exit, or <b class="Sy">forever</b>, which means
+        to repeat the rest of the schedule forever if necessary.</p>
+    <p class="Pp">If the end of the schedule is reached and
+        <b class="Sy">forever</b> is not specified, then
+        <code class="Nm">start-stop-daemon</code> exits with error status 2. If
+        a schedule is specified, then any signal specified with
+        <code class="Fl">-s</code>/<code class="Fl">--signal</code> is
+      ignored.</p>
+  </dd>
+  <dt id="a"><a class="permalink" href="#a"><code class="Fl">-a</code></a>
+    <var class="Ar">pathname</var>,
+    <code class="Fl">--startas</code>=<var class="Ar">pathname</var></dt>
+  <dd>With <code class="Fl">-S</code>/<code class="Fl">--start</code>, start the
+      process specified by <var class="Ar">pathname</var>. If not specified,
+      defaults to the argument given to
+      <code class="Fl">-x</code>/<code class="Fl">--exec</code>.</dd>
+  <dt id="t"><a class="permalink" href="#t"><code class="Fl">-t</code></a>,
+    <code class="Fl">--test</code></dt>
+  <dd>Print actions that would be taken and set appropriate return value, but
+      take no action.</dd>
+  <dt id="o"><a class="permalink" href="#o"><code class="Fl">-o</code></a>,
+    <code class="Fl">--oknodo</code></dt>
+  <dd>Return exit status 0 instead of 1 if no actions are (would be) taken.</dd>
+  <dt id="q"><a class="permalink" href="#q"><code class="Fl">-q</code></a>,
+    <code class="Fl">--quiet</code></dt>
+  <dd>Do not print informational messages; only display error messages.</dd>
+  <dt id="c"><a class="permalink" href="#c"><code class="Fl">-c</code></a>
+    <var class="Ar">username</var>|<var class="Ar">uid</var>[:<var class="Ar">group</var>|<var class="Ar">gid</var>],
+    <code class="Fl">--chuid</code>=<var class="Ar">username</var>|<var class="Ar">uid</var>[:<var class="Ar">group</var>|<var class="Ar">gid</var>]</dt>
+  <dd>Change to this username/uid before starting the process. You can also
+      specify a group by appending a semicolon
+      &#x2018;<code class="Li">:</code>&#x2019;, then the group or gid in the
+      same way as you would for the
+      <a class="Xr" href="chown.1.html">chown(1)</a> command
+      (<var class="Ar">user</var>:<var class="Ar">group</var>). If a user is
+      specified without a group, the primary GID for that user is used. When
+      using this option you must realize that the primary and supplemental
+      groups are set as well, even if the
+      <code class="Fl">-g</code>/<code class="Fl">--group</code> option is not
+      specified. The <code class="Fl">-g</code>/<code class="Fl">--group</code>
+      option is only for groups that the user isn't normally a member of (like
+      adding per process group membership for generic users like
+      <a class="permalink" href="#nobody"><b class="Sy" id="nobody">nobody</b></a>).</dd>
+  <dt id="e"><a class="permalink" href="#e"><code class="Fl">-e</code></a>
+    <var class="Ar">var</var>[=<var class="Ar">value</var>],
+    <code class="Fl">--env</code>=<var class="Ar">var</var>[=<var class="Ar">value</var>]</dt>
+  <dd>Set the environment variable <var class="Ar">var</var> to
+      <var class="Ar">value</var>.
+    <p class="Pp"><b class="Sy">Warning</b>: The GNU C library implementation
+        provides a nonstandard extension. If
+        <code class="Fl">-e</code>/<code class="Fl">--env</code> argument does
+        not include an equal sign (e.g., &#x201C;--env VAR&#x201D;) then the
+        named variable is removed from the caller's environment. See
+        <a class="Xr" href="putenv.3.html">putenv(3)</a> for implementation
+        details in your C standard library.</p>
+  </dd>
+  <dt id="r"><a class="permalink" href="#r"><code class="Fl">-r</code></a>
+    <var class="Ar">root</var>,
+    <code class="Fl">--chroot</code>=<var class="Ar">root</var></dt>
+  <dd>Change directory and chroot to <var class="Ar">root</var> before starting
+      the process. Please note that the pidfile is also written after the
+      chroot.</dd>
+  <dt id="d"><a class="permalink" href="#d"><code class="Fl">-d</code></a>
+    <var class="Ar">path</var>,
+    <code class="Fl">--chdir</code>=<var class="Ar">path</var></dt>
+  <dd>Change directory to <var class="Ar">path</var> before starting the
+      process. This is done after the chroot if the
+      <code class="Fl">-r</code>/<code class="Fl">--chroot</code> option is set.
+      When not specified, <code class="Nm">start-stop-daemon</code> will change
+      directory to the root directory before starting the process.</dd>
+  <dt id="b"><a class="permalink" href="#b"><code class="Fl">-b</code></a>,
+    <code class="Fl">--background</code></dt>
+  <dd>Typically used with programs that don't detach on their own. This option
+      will force <code class="Nm">start-stop-daemon</code> to fork before
+      starting the process, and force it into the background.
+    <p class="Pp" id="any"><b class="Sy">Warning</b>:
+        <code class="Nm">start-stop-daemon</code> cannot check the exit status
+        if the process fails to execute for
+        <a class="permalink" href="#any"><b class="Sy">any</b></a> reason. This
+        is a last resort, and is only meant for programs that either make no
+        sense forking on their own, or where it's not feasible to add the code
+        for them to do this themselves.</p>
+  </dd>
+  <dt id="C"><a class="permalink" href="#C"><code class="Fl">-C</code></a>,
+    <code class="Fl">--no-close</code></dt>
+  <dd>Do not close any file descriptor when forcing the daemon into the
+      background. Used for debugging purposes to see the process output, or to
+      redirect file descriptors to log the process output. Only relevant when
+      using
+    <code class="Fl">-b</code>/<code class="Fl">--background</code>.</dd>
+  <dt id="O"><a class="permalink" href="#O"><code class="Fl">-O</code></a>
+    <var class="Ar">pathname</var>,
+    <code class="Fl">--output</code>=<var class="Ar">pathname</var></dt>
+  <dd>Redirect
+      <a class="permalink" href="#stdout"><b class="Sy" id="stdout">stdout</b></a>
+      and
+      <a class="permalink" href="#stderr"><b class="Sy" id="stderr">stderr</b></a>
+      to <var class="Ar">pathname</var> when forcing the daemon into the
+      background. Only relevant when using
+      <code class="Fl">-b</code>/<code class="Fl">--background</code>.</dd>
+  <dt id="N"><a class="permalink" href="#N"><code class="Fl">-N</code></a>
+    <var class="Ar">int</var>,
+    <code class="Fl">--nicelevel</code>=<var class="Ar">int</var></dt>
+  <dd>This alters the priority of the process before starting it.</dd>
+  <dt id="P"><a class="permalink" href="#P"><code class="Fl">-P</code></a>
+    <var class="Ar">policy</var>:<var class="Ar">priority</var>,
+    <code class="Fl">--procsched</code>=<var class="Ar">policy</var>:<var class="Ar">priority</var></dt>
+  <dd>This alters the process scheduler policy and priority of the process
+      before starting it. The priority can be optionally specified by appending
+      a semicolon &#x2018;<code class="Li">:</code>&#x2019; followed by the
+      value. The default <var class="Ar">priority</var> is 0. The currently
+      supported policy values are
+      <a class="permalink" href="#other"><b class="Sy" id="other">other</b></a>,
+      <a class="permalink" href="#fifo"><b class="Sy" id="fifo">fifo</b></a> and
+      <a class="permalink" href="#rr"><b class="Sy" id="rr">rr</b></a>.</dd>
+  <dt id="I"><a class="permalink" href="#I"><code class="Fl">-I</code></a>
+    <var class="Ar">class</var>:<var class="Ar">priority</var>,
+    <code class="Fl">--iosched</code>=<var class="Ar">class</var>:<var class="Ar">priority</var></dt>
+  <dd>This alters the IO scheduler class and priority of the process before
+      starting it. The priority can be optionally specified by appending a
+      semicolon &#x2018;<code class="Li">:</code>&#x2019; followed by the value.
+      The default <i class="Em">priority</i> is 4, unless
+      <i class="Em">class</i> is <b class="Sy">idle</b>, then
+      <i class="Em">priority</i> will always be 7. The currently supported
+      values for <i class="Em">class</i> are <b class="Sy">idle</b>,
+      <a class="permalink" href="#best-effort"><b class="Sy" id="best-effort">best-effort</b></a>
+      and
+      <a class="permalink" href="#real-time"><b class="Sy" id="real-time">real-time</b></a>.</dd>
+  <dt id="k"><a class="permalink" href="#k"><code class="Fl">-k</code></a>
+    <var class="Ar">mask</var>,
+    <code class="Fl">--umask</code>=<var class="Ar">mask</var></dt>
+  <dd>This sets the umask of the process before starting it.</dd>
+  <dt id="m"><a class="permalink" href="#m"><code class="Fl">-m</code></a>,
+    <code class="Fl">--make-pidfile</code></dt>
+  <dd>Used when starting a program that does not create its own pid file. This
+      option will make <code class="Nm">start-stop-daemon</code> create the file
+      referenced with
+      <code class="Fl">-p</code>/<code class="Fl">--pidfile</code> and place the
+      pid into it just before executing the process. Note, the file will only be
+      removed when stopping the program if
+      <code class="Fl">--remove-pidfile</code> is used.
+    <p class="Pp"><b class="Sy">Note</b>: This feature may not work in all
+        cases. Most notably when the program being executed forks from its main
+        process. Because of this, it is usually only useful when combined with
+        the <code class="Fl">-b</code>/<code class="Fl">--background</code>
+        option.</p>
+  </dd>
+  <dt id="remove-pidfile"><a class="permalink" href="#remove-pidfile"><code class="Fl">--remove-pidfile</code></a></dt>
+  <dd>Used when stopping a program that does not remove its own pid file. This
+      option will make <code class="Nm">start-stop-daemon</code> remove the file
+      referenced with
+      <code class="Fl">-p</code>/<code class="Fl">--pidfile</code> after
+      terminating the process.</dd>
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
+    <code class="Fl">--verbose</code></dt>
+  <dd>Print verbose informational messages.</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>The requested action was performed. If
+      <code class="Fl">-o</code>/<code class="Fl">--oknodo</code> was specified,
+      it's also possible that nothing had to be done. This can happen when
+      <code class="Fl">-S</code>/<code class="Fl">--start</code> was specified
+      and a matching process was already running, or when
+      <code class="Fl">-K</code>/<code class="Fl">--stop</code> was specified
+      and there were no matching processes.</dd>
+  <dt>1</dt>
+  <dd>If <code class="Fl">-o</code>/<code class="Fl">--oknodo</code> was not
+      specified and nothing was done.</dd>
+  <dt>2</dt>
+  <dd>If <code class="Fl">-K</code>/<code class="Fl">--stop</code> and
+      <code class="Fl">-R</code>/<code class="Fl">--retry</code> were specified,
+      but the end of the schedule was reached and the processes were still
+      running.</dd>
+  <dt>3</dt>
+  <dd>Any other error.</dd>
+</dl>
+<p class="Pp">When using the
+    <code class="Fl">-T</code>/<code class="Fl">--status</code> command, the
+    following status codes are returned:</p>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>Program is running.</dd>
+  <dt>1</dt>
+  <dd>Program is not running and the pid file exists.</dd>
+  <dt>3</dt>
+  <dd>Program is not running.</dd>
+  <dt>4</dt>
+  <dd>Unable to determine program status.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<ul class="Bl-bullet">
+  <li>Start the <b class="Sy">foo</b> daemon, unless one is already running (a
+      process named &#x201C;foo&#x201D;, running as user &#x201C;foo&#x201D;,
+      with pid in <span class="Pa">foo.pid</span>):
+    <div class="Bd Pp Bd-indent Li">
+    <pre>start-stop-daemon               \
+        --start                 \
+        --oknodo                \
+        --user=foo              \
+        --name=foo              \
+        --pidfile=/run/foo.pid  \
+        --startas=/usr/sbin/foo \
+        --chuid=foo             \
+        -- --daemon</pre>
+    </div>
+  </li>
+  <li id="SIGTERM">Send
+      <a class="permalink" href="#SIGTERM"><b class="Sy">SIGTERM</b></a> to
+      <b class="Sy">foo</b> and wait up to 5 seconds for it to stop:
+    <div class="Bd Pp Bd-indent Li">
+    <pre>start-stop-daemon               \
+        --stop                  \
+        --oknodo                \
+        --user=foo              \
+        --name=foo              \
+        --pidfile=/run/foo.pid  \
+        --retry=5</pre>
+    </div>
+  </li>
+  <li>Demonstration of a custom schedule for stopping <b class="Sy">foo</b>:
+    <div class="Bd Pp Bd-indent Li">
+    <pre>start-stop-daemon               \
+        --stop                  \
+        --oknodo                \
+        --user=foo              \
+        --name=foo              \
+        --pidfile=/run/foo.pid  \
+        --retry=TERM/30/KILL/5</pre>
+    </div>
+  </li>
+</ul>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 6, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

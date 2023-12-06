@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgman-dsearch(1) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGMAN-DSEARCH(1)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGMAN-DSEARCH(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">PKGMAN-DSEARCH(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgman-dsearch</code> &#x2014;
+    <span class="Nd">search the packages sources directories for package name
+    and description</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkgman</code></td>
+    <td><code class="Cm">dsearch</code> [<code class="Fl">-v</code> |
+      <code class="Fl">-vv</code>] [<code class="Fl">--path</code>]
+      [<code class="Fl">--regex</code>] <var class="Ar">expr</var></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Search the packages sources directories for
+    <var class="Ar">expr</var> in packages' name and description. It looks in
+    all directories specified in <span class="Pa">/etc/pkgman.conf</span> as
+    &#x201C;pkgsrcdir&#x201D; directories.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a></dt>
+  <dd>Show package version in the listing.</dd>
+  <dt id="vv"><a class="permalink" href="#vv"><code class="Fl">-vv</code></a></dt>
+  <dd>Show package version and description in the listing.</dd>
+  <dt id="path"><a class="permalink" href="#path"><code class="Fl">--path</code></a></dt>
+  <dd>Show package source path in the listing.</dd>
+  <dt id="regex"><a class="permalink" href="#regex"><code class="Fl">--regex</code></a></dt>
+  <dd>Interpret <var class="Ar">expr</var> as regular expression.</dd>
+  <dt><var class="Ar">expr</var></dt>
+  <dd>Search names and descriptions for <var class="Ar">expr</var>, where the
+      expression may be the string or regex in
+      <a class="Xr" href="regex.3.html">regex(3)</a> format.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>Success.</dd>
+  <dt>255</dt>
+  <dd>Nothing found.</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

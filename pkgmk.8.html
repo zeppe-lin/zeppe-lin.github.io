@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   pkgmk(8) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>PKGMK(8)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PKGMK(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">PKGMK(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">pkgmk</code> &#x2014; <span class="Nd">make
+    software package</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkgmk</code></td>
+    <td>[<var class="Ar">option ...</var>]</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><code class="Nm">pkgmk</code> is a package management utility,
+    which makes a software package. A package is an archive of files
+    (&#x201C;.pkg.tar.gz&#x201D;, &#x201C;.pkg.tar.bz2&#x201D;,
+    &#x201C;.pkg.tar.lz&#x201D;, &#x201C;.pkg.tar.zst&#x201D;, or
+    &#x201C;.pkg.tar.xz&#x201D;) that can be installed using
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a>.</p>
+<p class="Pp">To prepare to use <code class="Nm">pkgmk</code>, you must write a
+    file named <span class="Pa">Pkgfile</span>, that describes how the package
+    should be build. See <a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a> for
+    more information how-to write <span class="Pa">Pkgfile</span>(s). Once a
+    suitable <span class="Pa">Pkgfile</span> exists, each time you change some
+    source files, you simple execute <code class="Nm">pkgmk</code> to bring the
+    package up to date. The <code class="Nm">pkgmk</code> program uses
+    <span class="Pa">Pkgfile</span> file and the last-modification times of the
+    source files to decide if the package needs to be updated. Global
+    configuration file is stored in <span class="Pa">/etc/pkgmk.conf</span>.
+    This file is read by <code class="Nm">pkgmk</code> at startup.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="d"><a class="permalink" href="#d"><code class="Fl">-d</code></a>,
+    <code class="Fl">--download</code></dt>
+  <dd>Download missing source files.</dd>
+  <dt id="do"><a class="permalink" href="#do"><code class="Fl">-do</code></a>,
+    <code class="Fl">--download-only</code></dt>
+  <dd>Do not build, only download missing source files.</dd>
+  <dt id="utd"><a class="permalink" href="#utd"><code class="Fl">-utd</code></a>,
+    <code class="Fl">--up-to-date</code></dt>
+  <dd>Do not build, only check if the package is up to date.</dd>
+  <dt id="uf"><a class="permalink" href="#uf"><code class="Fl">-uf</code></a>,
+    <code class="Fl">--update-footprint</code></dt>
+  <dd>Update footprint and treat last build as successful.</dd>
+  <dt id="if"><a class="permalink" href="#if"><code class="Fl">-if</code></a>,
+    <code class="Fl">--ignore-footprint</code></dt>
+  <dd>Build package without checking footprint.</dd>
+  <dt id="in"><a class="permalink" href="#in"><code class="Fl">-in</code></a>,
+    <code class="Fl">--ignore-new</code></dt>
+  <dd>Build package, ignore new files in a footprint mismatch.</dd>
+  <dt id="um"><a class="permalink" href="#um"><code class="Fl">-um</code></a>,
+    <code class="Fl">--update-md5sum</code></dt>
+  <dd>Update md5sum using the current source files.</dd>
+  <dt id="im"><a class="permalink" href="#im"><code class="Fl">-im</code></a>,
+    <code class="Fl">--ignore-md5sum</code></dt>
+  <dd>Build package without checking md5sum first.</dd>
+  <dt id="cm"><a class="permalink" href="#cm"><code class="Fl">-cm</code></a>,
+    <code class="Fl">--check-md5sum</code></dt>
+  <dd>Check md5sum without building the package.</dd>
+  <dt id="ns"><a class="permalink" href="#ns"><code class="Fl">-ns</code></a>,
+    <code class="Fl">--no-strip</code></dt>
+  <dd>Do not strip executable binaries or libraries.</dd>
+  <dt id="f"><a class="permalink" href="#f"><code class="Fl">-f</code></a>,
+    <code class="Fl">--force</code></dt>
+  <dd>Build package even if it appears to be up to date.</dd>
+  <dt id="c"><a class="permalink" href="#c"><code class="Fl">-c</code></a>,
+    <code class="Fl">--clean</code></dt>
+  <dd>Remove the (previously built) package and the downloaded source
+    files.</dd>
+  <dt id="kw"><a class="permalink" href="#kw"><code class="Fl">-kw</code></a>,
+    <code class="Fl">--keep-work</code></dt>
+  <dd>Keep temporary working directory.</dd>
+  <dt id="cf"><a class="permalink" href="#cf"><code class="Fl">-cf</code></a>
+    <var class="Ar">conffile</var>,
+    <code class="Fl">--config-file</code>=<var class="Ar">conffile</var></dt>
+  <dd>Specify an alternate configuration file instead of the default
+      <span class="Pa">/etc/pkgmk.conf</span>.</dd>
+  <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
+    <code class="Fl">--version</code></dt>
+  <dd>Print version and exit.</dd>
+  <dt id="h"><a class="permalink" href="#h"><code class="Fl">-h</code></a>,
+    <code class="Fl">--help</code></dt>
+  <dd>Print help and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt><span class="Pa">Pkgfile</span></dt>
+  <dd>Package build description. See
+      <a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a> for more
+    information.</dd>
+  <dt><span class="Pa">.footprint</span></dt>
+  <dd>Package footprint (used for regression testing).</dd>
+  <dt><span class="Pa">.md5sum</span></dt>
+  <dd>MD5 checksum of source files.</dd>
+  <dt><span class="Pa">/etc/pkgmk.conf</span></dt>
+  <dd>Global package make configuration. See
+      <a class="Xr" href="pkgmk.conf.5.html">pkgmk.conf(5)</a> for more
+      information.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>No error occurred.</dd>
+  <dt>1</dt>
+  <dd>A general error has occurred.</dd>
+  <dt>2</dt>
+  <dd>The <span class="Pa">Pkgfile</span> is invalid.</dd>
+  <dt>3</dt>
+  <dd>The source or build directory is missing or is lacking read/write
+      permissions.</dd>
+  <dt>4</dt>
+  <dd>An error occurred during the download of source files.</dd>
+  <dt>5</dt>
+  <dd>An error occurred during unpacking of source files.</dd>
+  <dt>6</dt>
+  <dd>An md5sum mismatch occurred.</dd>
+  <dt>7</dt>
+  <dd>A footprint mismatch occurred.</dd>
+  <dt id="build">8</dt>
+  <dd>An error occurred while running the
+      <a class="permalink" href="#build"><b class="Sy">build</b></a>
+    function.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a>,
+    <a class="Xr" href="pkgmk.conf.5.html">pkgmk.conf(5)</a></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp">The original implementation of <code class="Nm">pkgmk</code> was
+    done by <span class="An">Per Lid&#x00E9;n</span>
+    &lt;<a class="Mt" href="mailto:per@fukt.bth.se">per@fukt.bth.se</a>&gt;, the
+    author of <a class="Lk" href="http://crux.nu">CRUX</a>, as part of
+    &#x201C;pkgutils&#x201D; package, and was maintained for years (and still
+    maintaining) by CRUX team.</p>
+<p class="Pp">This implementation was extensively re-worked for
+    <a class="Lk" href="http://zeppel.ink">Zeppe-Lin</a> by
+  <br/>
+  <span class="An">Alexandr Savca</span>
+    &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 6, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>

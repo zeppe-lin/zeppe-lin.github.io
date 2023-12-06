@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an automatically generated file.  Do not edit.
+   rc.conf(5) manual page
+   See COPYING and COPYRIGHT files for corresponding information.
+ -->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
+  <title>RC.CONF(5)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">RC.CONF(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">RC.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">rc.conf</code> &#x2014; <span class="Nd">system
+    configuration file</span></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">/etc/rc.conf</code></td>
+    <td></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This manual page describes the format of the
+    <span class="Pa">/etc/rc.conf</span> file. This file is a simple POSIX
+    <a class="Xr" href="sh.1p.html">sh(1p)</a> script that defines font,
+    timezone, hostname and services which are used on system initialization and
+    shutdown.</p>
+<p class="Pp">The file consists of a number of variable assignments of the form
+    &#x201C;variable=value&#x201D;. Comments can be specified by putting a hash
+    (&#x2018;<code class="Li">#</code>&#x2019;) symbol as the first character on
+    the line.</p>
+<p class="Pp">The different configuration variables are:</p>
+<dl class="Bl-tag">
+  <dt id="BLANKTIME"><a class="permalink" href="#BLANKTIME"><b class="Sy">BLANKTIME</b></a>=&#x27E8;<var class="Ar">0-60</var>
+    | <var class="Ar">force</var> | <var class="Ar">poke</var>&#x27E9;</dt>
+  <dd>Specifies the interval of console inactivity, in minutes, after which the
+      screen will be automatically blanked. The contents of this variable will
+      be passed as argument to
+      <a class="Xr" href="setterm.1.html">setterm(1)</a>.
+    <p class="Pp">The <var class="Ar">force</var> argument keeps the screen
+        blank even if a key is pressed.</p>
+    <p class="Pp">The <var class="Ar">poke</var> argument unblanks the
+      screen.</p>
+    <p class="Pp">If <b class="Sy">BLANKTIME</b> is unset, then
+        <a class="Xr" href="rc.8.html">rc(8)</a> make screen blanks after 15
+        minutes of idle time.</p>
+    <p class="Pp">Example: &#x201C;BLANKTIME=15&#x201D;</p>
+  </dd>
+  <dt id="FONT"><a class="permalink" href="#FONT"><b class="Sy">FONT</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies which console font to load at system startup. The contents of
+      this variable will be passed as argument to
+      <a class="Xr" href="setfont.8.html">setfont(8)</a>. The available fonts
+      are located in <span class="Pa">/usr/share/kbd/consolefonts/</span>.
+    <p class="Pp">Example: &#x201C;FONT=default&#x201D;</p>
+  </dd>
+  <dt id="KEYMAP"><a class="permalink" href="#KEYMAP"><b class="Sy">KEYMAP</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies which console keyboard map to load at system startup. The
+      contents of this variable will be passed as argument to
+      <a class="Xr" href="loadkeys.1.html">loadkeys(1)</a>. The available
+      keyboard maps are located in
+      <span class="Pa">/usr/share/kbd/keymaps/</span>.
+    <p class="Pp">Example: &#x201C;KEYMAP=us&#x201D;</p>
+  </dd>
+  <dt id="TIMEZONE"><a class="permalink" href="#TIMEZONE"><b class="Sy">TIMEZONE</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies the timezone used by the system. The available zone description
+      files are located in <span class="Pa">/usr/share/zoneinfo/</span>.
+    <p class="Pp">Example: &#x201C;TIMEZONE=Europe/Stockholm&#x201D;</p>
+  </dd>
+  <dt id="HOSTNAME"><a class="permalink" href="#HOSTNAME"><b class="Sy">HOSTNAME</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies the hostname.
+    <p class="Pp">Example: &#x201C;HOSTNAME=pluto&#x201D;</p>
+  </dd>
+  <dt id="SEEDRNG_SKIP_CREDIT"><a class="permalink" href="#SEEDRNG_SKIP_CREDIT"><b class="Sy">SEEDRNG_SKIP_CREDIT</b></a>=&#x27E8;<var class="Ar">1</var>
+    | <var class="Ar">true</var> | <var class="Ar">yes</var> |
+    <var class="Ar">y</var>&#x27E9;</dt>
+  <dd>Specifies <a class="Xr" href="seedrng.8.html">seedrng(8)</a> that seeds
+      never credit the RNG, even if the seed file is creditable. Disabled by
+      default.
+    <p class="Pp">Example: &#x201C;SEEDRNG_SKIP_CREDIT=false&#x201D;</p>
+  </dd>
+  <dt id="SYSLOG"><a class="permalink" href="#SYSLOG"><b class="Sy">SYSLOG</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies the system logging daemon to run at startup. The daemon
+      specified in this string must have a matching start/stop script in
+      <span class="Pa">/etc/rc.d</span>.
+    <p class="Pp">Example: &#x201C;SYSLOG=sysklogd&#x201D;</p>
+  </dd>
+  <dt id="SERVICES"><a class="permalink" href="#SERVICES"><b class="Sy">SERVICES</b></a>=&#x2018;<code class="Li">&#x27E8;<var class="Ar">STRING
+    ...</var>&#x27E9;</code>&#x2019;</dt>
+  <dd>Specifies which services to start at system startup. The services
+      specified in this string must be separated by space and have a matching
+      start/stop script in <span class="Pa">/etc/rc.d/</span>. When entering
+      multi-user mode the specified scripts will be called in the specified
+      order with the argument &#x201C;<code class="Li">start</code>&#x201D;. At
+      system shutdown or when entering single-user mode these scripts will be
+      called in the reverse order with the argument
+      &#x201C;<code class="Li">stop</code>&#x201D;.
+    <p class="Pp">Example: &#x201C;SERVICES=&#x2018;<code class="Li">lo crond
+        net sshd</code>&#x2019;&#x201D;</p>
+  </dd>
+</dl>
+<p class="Pp">The reason why the <b class="Sy">SYSLOG</b> is specified
+    separately from the <b class="Sy">SERVICES</b> variable is as follows:
+    firstly, the syslog daemon also starts in the single-user mode, and
+    secondly, it is needed before the start of any services, so that the
+    services can log the result if their work.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt><span class="Pa">/etc/rc.conf</span></dt>
+  <dd>System configuration file.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">A sample <span class="Pa">/etc/rc.conf</span> file:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>#
+# /etc/rc.conf: system configuration
+#
+# See rc.conf(5) for more information.
+#
+
+BLANKTIME=15
+FONT=default
+KEYMAP=us
+TIMEZONE=UTC
+HOSTNAME=host
+SYSLOG=sysklogd
+SERVICES='lo crond net'
+
+# End of file.</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr" href="rc.8.html">rc(8)</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 3, 2023</td>
+    <td class="foot-os">Zeppe-Lin</td>
+  </tr>
+</table>
+</body>
+</html>
