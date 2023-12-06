@@ -1,3 +1,19 @@
+# favicon image url
+FAVICON_URL = https://raw.githubusercontent.com/zeppe-lin/artwork/master/logo-small.png
+
+# path to the mandoc and mandoc options
+# used to generate html pages for manuals
+MANDOC      = /usr/bin/mandoc
+MANDOC_OPTS = -T html -O style=mandoc.css,includes=%N.%S.html,man=%N.%S.html
+
+# path to the pod2html and pod2html options
+# used to generate html pages for handbook and index page
+POD2HTML = /usr/bin/pod2html
+POD2HTML_OPTS = --cachedir=/tmp
+
+# path to the handbook
+HANDBOOK = ${CURDIR}/../handbook
+
 # paths to the man pages for conversion to html
 MANS = \
        /usr/share/man/man1/finddeps-distmeta.1.gz                 \
@@ -104,5 +120,8 @@ MANS = \
        /usr/share/man/man1/sdiff.1.gz                             \
        /usr/share/man/man1/dash.1.gz                              \
        /usr/share/man/man1/bash.1.gz                              \
+
+# path to the output (generated) html files
+DESTDIR = ${CURDIR}/www
 
 # End of file.
