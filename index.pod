@@ -4,7 +4,7 @@
 
 =begin html
 
-  <!-- LOGO -->
+  <!-- Logo -->
   <header>
     <img alt="Zeppe-Lin" class="logo" src="https://github.com/zeppe-lin/artwork/blob/master/logo-big-2color.png?raw=true">
   </header>
@@ -56,26 +56,6 @@ hardware is supported, and you know how to install it.  Then look at the
 L<release announcement|https://github.com/orgs/zeppe-lin/discussions/1>
 for important information about the current Zeppe-Lin release and
 download links.
-
-=over 8
-
-=item *
-
-Check L<latest release|@CUR_REL_URL@> if you want prebuilt rootfs
-image.
-
-=item *
-
-Check L<mkrootfs|https://github.com/zeppe-lin/mkrootfs> if you want to
-build (custom) rootfs image.
-
-=item *
-
-Check L<dockerfile|https://github.com/zeppe-lin/dockerfile> if you
-want to build (custom) docker image.
-
-=back
-
 
 =head1 COMMUNITY
 
