@@ -330,20 +330,20 @@ manual page.
 <p>As mentioned before, the <code>/mnt</code> directory is the default mountpoint for our system. Let&#39;s download the rootfs into this directory so we won&#39;t pollute LiveCD RAM:</p>
 
 <pre><code># cd /mnt
-# wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz{,.sig}</code></pre>
+# wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz{,.sig}</code></pre>
 
 <h4 id="Signature-verification"><i>Signature verification</i></h4>
 
 <p>It&#39;s optional but highly recommended to verify rootfs signature:</p>
 
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-v0.99-x86_64.tar.xz.sig rootfs-v0.99-x86_64.tar.xz</code></pre>
+# gpg --verify rootfs-v0.99.1-x86_64.tar.xz.sig rootfs-v0.99.1-x86_64.tar.xz</code></pre>
 
 <h3 id="Extract-rootfs-tarball"><b>Extract rootfs tarball</b></h3>
 
 <p>If everything is OK, let&#39;s unpack the tarball:</p>
 
-<pre><code># tar -xvf rootfs-v0.99-x86_64.tar.xz -C .</code></pre>
+<pre><code># tar -xvf rootfs-v0.99.1-x86_64.tar.xz -C .</code></pre>
 
 <h3 id="Chroot"><b>Chroot</b></h3>
 

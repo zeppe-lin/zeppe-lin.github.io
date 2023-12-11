@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-        Date: 2023-11-02
+        Date: 2023-11-20
       Manual: Git Manual
-      Source: Git 2.42.1
+      Source: Git 2.43.0
     Language: English
    -->
 <head>
@@ -115,9 +115,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   environment. <b>&lt;envvar&gt;</b> may not contain an equals sign to avoid
   ambiguity with <b>&lt;name&gt;</b> containing one.
 <p class="Pp">This is useful for cases where you want to pass transitory
-    configuration options to git, but are doing so on OS&#x2019;s where other
-    processes might be able to read your cmdline (e.g.
-    <b>/proc/self/cmdline</b>), but not your environ (e.g.
+    configuration options to git, but are doing so on operating systems where
+    other processes might be able to read your command line (e.g.
+    <b>/proc/self/cmdline</b>), but not your environment (e.g.
     <b>/proc/self/environ</b>). That behavior is the default on Linux, but may
     not be on your system.</p>
 <p class="Pp">Note that this might add security for variables such as
@@ -393,7 +393,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp"><b>git-version</b>(1)</p>
 <div class="Bd-indent">Display version information about Git.</div>
 <p class="Pp"><b>git-whatchanged</b>(1)</p>
-<div class="Bd-indent">Show logs with difference each commit introduces.</div>
+<div class="Bd-indent">Show logs with differences each commit introduces.</div>
 <p class="Pp"><b>gitweb</b>(1)</p>
 <div class="Bd-indent">Git web interface (web frontend to Git
   repositories).</div>
@@ -1194,6 +1194,15 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   default value is <b>1</b> (i.e., be paranoid about detecting and aborting all
   operations). You should not normally need to set this to <b>0</b>, but it may
   be useful when trying to salvage data from a corrupted repository.</div>
+<p class="Pp"><b>GIT_COMMIT_GRAPH_PARANOIA</b></p>
+<div class="Bd-indent">When loading a commit object from the commit-graph, Git
+  performs an existence check on the object in the object database. This is done
+  to avoid issues with stale commit-graphs that contain references to
+  already-deleted commits, but comes with a performance penalty.
+<p class="Pp">The default is &quot;true&quot;, which enables the aforementioned
+    behavior. Setting this to &quot;false&quot; disables the existence check.
+    This can lead to a performance improvement at the cost of consistency.</p>
+</div>
 <p class="Pp"><b>GIT_ALLOW_PROTOCOL</b></p>
 <div class="Bd-indent">If set to a colon-separated list of protocols, behave as
   if <b>protocol.allow</b> is set to <b>never</b>, and each of the listed
@@ -1396,8 +1405,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-11-02</td>
-    <td class="foot-os">Git 2.42.1</td>
+    <td class="foot-date">2023-11-20</td>
+    <td class="foot-os">Git 2.43.0</td>
   </tr>
 </table>
 </body>

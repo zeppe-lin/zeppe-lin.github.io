@@ -268,7 +268,7 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="VERSION"><a class="permalink" href="#VERSION">VERSION</a></h1>
-<p class="Pp">This man page describes curl 8.4.0. If you use a later version,
+<p class="Pp">This man page describes curl 8.5.0. If you use a later version,
     chances are this man page does not fully document it. If you use an earlier
     version, this document tries to include version information about which
     specific version that introduced changes.</p>
@@ -1935,7 +1935,9 @@
     <p class="Pp">curl makes sure that each header you add/replace is sent with
         the proper end-of-line marker, you should thus <b>not</b> add that as a
         part of the header content: do not add newlines or carriage returns,
-        they only mess things up for you.</p>
+        they only mess things up for you. curl passes on the verbatim string you
+        give it without any filter or other safe guards. That includes white
+        space and control characters.</p>
     <p class="Pp">This option can take an argument in @filename style, which
         then adds a header for each line in the input file. Using @- makes curl
         read the header file from stdin. Added in 7.55.0.</p>
@@ -2244,9 +2246,9 @@
   </dd>
   <dt id="ipfs"><a class="permalink" href="#ipfs">--ipfs-gateway
     &lt;URL&gt;</a></dt>
-  <dd>Specifies which gateway to use for IPFS and IPNS URLs. Not specifying this
-      argument will let cURL try to automatically check if IPFS_GATEWAY
-      environment variable is set, or if ~/.ipfs/gateway plain text file exists.
+  <dd>Specify which gateway to use for IPFS and IPNS URLs. Not specifying this
+      will instead make curl check if the IPFS_GATEWAY environment variable is
+      set, or if a ~/.ipfs/gateway file holding the gateway URL exists.
     <p class="Pp">If you run a local IPFS node, this gateway is by default
         available under http://localhost:8080. A full example URL would look
         like:</p>
@@ -2254,31 +2256,20 @@
     <pre>
 <br/>
  curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydrevyr2mzarwidgadawmamiteydbzi</pre>
-    <p class="Pp"></p>
-    <p class="Pp">You can also specify publicly available gateways. One such
-        gateway is https://ipfs.io. A full example url would look like:</p>
-    <p class="Pp"></p>
-    <pre>
-<br/>
- curl --ipfs-gateway https://ipfs.io ipfs://bafybeigagd5nmnn2iys2f3doro7ydrevyr2mzarwidgadawmamiteydbzi</pre>
-    <p class="Pp"></p>
-    <p class="Pp">There are many public IPFS gateways. As a starting point to
-        find one that works for your case, consult this page:</p>
+    <p class="Pp">There are many public IPFS gateways. See for example:</p>
     <p class="Pp"></p>
     <pre>
 <br/>
  https://ipfs.github.io/public-gateway-checker/</pre>
-    <p class="Pp"></p>
-    <p class="Pp">A word of caution! When you opt to go for a remote gateway you
-        should be aware that you completely trust the gateway. This is fine in
-        local gateways as you host it yourself. With remote gateways there could
+    <p class="Pp">WARNING: If you opt to go for a remote gateway you should be
+        aware that you completely trust the gateway. This is fine in local
+        gateways as you host it yourself. With remote gateways there could
         potentially be a malicious actor returning you data that does not match
         the request you made, inspect or even interfere with the request. You
-        won't notice this when using cURL. A mitigation could be to go for a
+        will not notice this when using curl. A mitigation could be to go for a
         &quot;trustless&quot; gateway. This means you locally verify that the
         data. Consult the docs page on trusted vs trustless:
         https://docs.ipfs.tech/reference/http/gateway/#trusted-vs-trustless</p>
-    <p class="Pp"></p>
     <p class="Pp">If <i>--ipfs-gateway</i> is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
@@ -4152,6 +4143,9 @@
       of using the path as provided in the URL. Particularly useful when wanting
       to issue HTTP requests without leading slash or other data that does not
       follow the regular URL pattern, like &quot;OPTIONS *&quot;.
+    <p class="Pp">curl passes on the verbatim string you give it its the request
+        without any filter or other safe guards. That includes white space and
+        control characters.</p>
     <p class="Pp">If <i>--request-target</i> is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
@@ -4162,7 +4156,11 @@
   </dd>
   <dt id="X,"><a class="permalink" href="#X,">-X, --request
     &lt;method&gt;</a></dt>
-  <dd>Change the method to use when starting the transfer.</dd>
+  <dd>Change the method to use when starting the transfer.
+    <p class="Pp">curl passes on the verbatim string you give it its the request
+        without any filter or other safe guards. That includes white space and
+        control characters.</p>
+  </dd>
 </dl>
 <div class="Bd-indent">
 <dl class="Bl-tag">
@@ -4240,8 +4238,6 @@
         added in 7.59.0.</p>
     <p class="Pp">Support for resolving with wildcard was added in 7.64.0.</p>
     <p class="Pp">Support for the '+' prefix was was added in 7.75.0.</p>
-    <p class="Pp">This option can be used many times to add many host names to
-        resolve.</p>
     <p class="Pp"><i>--resolve</i> can be used several times in a command
       line</p>
     <p class="Pp">Example:</p>
@@ -5564,7 +5560,7 @@
   <dt id="http_version"><a class="permalink" href="#http_version"><b>http_version</b></a></dt>
   <dd>The http version that was effectively used. (Added in 7.50.0)</dd>
   <dt id="json~3"><a class="permalink" href="#json~3"><b>json</b></a></dt>
-  <dd>A JSON object with all available keys.</dd>
+  <dd>A JSON object with all available keys. (Added in 7.70.0)</dd>
   <dt id="local_ip"><a class="permalink" href="#local_ip"><b>local_ip</b></a></dt>
   <dd>The IP address of the local end of the most recently done connection - can
       be either IPv4 or IPv6.</dd>
@@ -5962,8 +5958,8 @@
   <dd>Write error. Curl could not write data to a local filesystem or
     similar.</dd>
   <dt>25</dt>
-  <dd>FTP could not STOR file. The server denied the STOR operation, used for
-      FTP uploading.</dd>
+  <dd>Failed starting the upload. For FTP, the server typically denied the STOR
+      command.</dd>
   <dt>26</dt>
   <dd>Read error. Various reading problems.</dd>
   <dt>27</dt>
@@ -6126,8 +6122,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">October 05 2023</td>
-    <td class="foot-os">curl 8.4.0</td>
+    <td class="foot-date">December 05 2023</td>
+    <td class="foot-os">curl 8.5.0</td>
   </tr>
 </table>
 </body>
