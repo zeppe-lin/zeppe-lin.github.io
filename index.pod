@@ -42,9 +42,9 @@ Zeppe-Lin.
 
 =head2 Release Notes and Errata
 
-The L<release announcement page|https://github.com/orgs/zeppe-lin/discussions/1>
-contains important information about updates, changes, and bug fixes in
-the current Zeppe-Lin release. Whereas the
+The L<announcements page|https://github.com/orgs/zeppe-lin/discussions/categories/announcements>
+contains important information about releases, updates, changes, and
+bug fixes. Whereas the
 L<projects page|https://github.com/orgs/zeppe-lin/projects>
 contains the tasks and issues for current and next release.
 
@@ -52,9 +52,9 @@ contains the tasks and issues for current and next release.
 
 Before downloading Zeppe-Lin, please read the
 L<handbook(7)|https://zeppel.ink/handbook.7.html> to be sure your
-hardware is supported, and you know how to install it.  Then look at the
-L<release announcement|https://github.com/orgs/zeppe-lin/discussions/1>
-for important information about the current Zeppe-Lin release and
+hardware is supported, and you know how to install it.  Then look at
+the release L<announcements|https://github.com/orgs/zeppe-lin/discussions/categories/announcements>
+for important information about the latest Zeppe-Lin release and
 download links.
 
 =head1 COMMUNITY
