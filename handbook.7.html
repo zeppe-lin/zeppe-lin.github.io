@@ -14,173 +14,166 @@
 
 
 <ul id="index">
-  <li><a href="#INTRODUCTION">INTRODUCTION</a></li>
-  <li><a href="#LICENSE">LICENSE</a>
+  <li><a href="#PREFACE">1. PREFACE</a></li>
+  <li><a href="#INTRODUCTION">2. INTRODUCTION</a>
     <ul>
-      <li><a href="#Packages">Packages</a></li>
-      <li><a href="#Build-Scripts">Build Scripts</a></li>
-      <li><a href="#NO-WARRANTY">NO WARRANTY</a></li>
+      <li><a href="#What-is-Zeppe-Lin">2.1. What is Zeppe-Lin?</a></li>
+      <li><a href="#Why-use-Zeppe-Lin">2.2. Why use Zeppe-Lin?</a></li>
     </ul>
   </li>
-  <li><a href="#INSTALL-ZEPPE-LIN">INSTALL ZEPPE-LIN</a>
+  <li><a href="#LICENSE">3. LICENSE</a>
     <ul>
-      <li><a href="#Supported-Hardware-Requirements">Supported Hardware / Requirements</a></li>
-      <li><a href="#Install-From-RootFS-Image">Install From RootFS Image</a>
-        <ul>
-          <li><a href="#Disk-partitions-and-filesystems">Disk partitions and filesystems</a>
-            <ul>
-              <li><a href="#Boot-partition-filesystem">Boot partition filesystem</a></li>
-              <li><a href="#Encrypt-LUKS-partition">Encrypt LUKS partition</a></li>
-            </ul>
-          </li>
-          <li><a href="#LVM-inside-LUKS-device">LVM inside LUKS device</a>
-            <ul>
-              <li><a href="#Create-the-physical-volume">Create the physical volume</a></li>
-              <li><a href="#Create-the-volume-group">Create the volume group</a></li>
-              <li><a href="#Create-the-logical-volume">Create the logical volume</a></li>
-            </ul>
-          </li>
-          <li><a href="#Create-root-filesystem-and-setup-swap-area">Create root filesystem and setup swap area</a></li>
-          <li><a href="#Mount-prepared-partitions">Mount prepared partitions</a></li>
-          <li><a href="#Download-rootfs-tarball">Download rootfs tarball</a>
-            <ul>
-              <li><a href="#Signature-verification">Signature verification</a></li>
-            </ul>
-          </li>
-          <li><a href="#Extract-rootfs-tarball">Extract rootfs tarball</a></li>
-          <li><a href="#Chroot">Chroot</a></li>
-          <li><a href="#Configure-the-base-system">Configure the base system</a></li>
-          <li><a href="#Prepare-the-package-sources">Prepare the package sources</a>
-            <ul>
-              <li><a href="#Update-the-core-packages-and-configuration-files">Update the core packages and configuration files</a></li>
-            </ul>
-          </li>
-          <li><a href="#Install-bare-metal-packages">Install bare metal packages</a></li>
-          <li><a href="#Install-the-linux-kernel">Install the linux kernel</a>
-            <ul>
-              <li><a href="#Install-the-kernel-package">Install the kernel package</a></li>
-              <li><a href="#Install-the-kernel-manually">Install the kernel manually</a></li>
-            </ul>
-          </li>
-          <li><a href="#Prepare-initramfs-image">Prepare initramfs image</a></li>
-          <li><a href="#Configure-GRUB">Configure GRUB</a></li>
-          <li><a href="#Exit-from-chroot-and-umount-mnt-and-reboot">Exit from chroot and umount /mnt and reboot</a></li>
-        </ul>
-      </li>
-      <li><a href="#Post-Installation-Notes">Post Installation Notes</a>
-        <ul>
-          <li><a href="#Install-xorg">Install xorg</a></li>
-        </ul>
-      </li>
+      <li><a href="#Packages">3.1. Packages</a></li>
+      <li><a href="#Build-Scripts">3.2. Build Scripts</a></li>
+      <li><a href="#NO-WARRANTY">3.3. NO WARRANTY</a></li>
     </ul>
   </li>
-  <li><a href="#THE-PACKAGE-SYSTEM">THE PACKAGE SYSTEM</a>
+  <li><a href="#INSTALLATION">4. INSTALLATION</a>
     <ul>
-      <li><a href="#Introduction">Introduction</a>
+      <li><a href="#Supported-Hardware">4.1. Supported Hardware</a></li>
+      <li><a href="#Boot-a-Live-System">4.2. Boot a Live System</a></li>
+      <li><a href="#Disk-Partitions-and-Filesystems">4.3. Disk Partitions and Filesystems</a>
         <ul>
-          <li><a href="#Basic-package-management-tools">Basic package management tools</a></li>
-        </ul>
-      </li>
-      <li><a href="#Using-the-Package-System">Using the Package System</a>
-        <ul>
-          <li><a href="#Installing-a-package">Installing a package</a></li>
-          <li><a href="#Upgrading-a-package">Upgrading a package</a>
+          <li><a href="#UEFI-and-LVM-on-LUKS">4.3.1. UEFI and LVM-on-LUKS</a>
             <ul>
-              <li><a href="#Rejected-files">Rejected files</a></li>
-            </ul>
-          </li>
-          <li><a href="#Removing-a-package">Removing a package</a></li>
-          <li><a href="#Querying-the-package-database">Querying the package database</a>
-            <ul>
-              <li><a href="#List-installed-packages-and-their-version">List installed packages and their version</a></li>
-              <li><a href="#List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE</a></li>
-              <li><a href="#List-owners-of-files-matching-bin-ls">List owners of files matching bin/ls</a></li>
-              <li><a href="#Print-footprint-for-file">Print footprint for file</a></li>
+              <li><a href="#Partition-scheme">4.3.1.1. Partition scheme</a></li>
+              <li><a href="#Create-the-partitions">4.3.1.2. Create the partitions</a></li>
+              <li><a href="#Create-LVM-inside-LUKS-device">4.3.1.3. Create LVM inside LUKS device</a></li>
+              <li><a href="#Create-the-filesystems">4.3.1.4. Create the filesystems</a></li>
+              <li><a href="#Mount-prepared-partitions">4.3.1.5. Mount prepared partitions</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#Package-Management-Frontend:-pkgman">Package Management Frontend: pkgman</a>
+      <li><a href="#Install-Base-System">4.4. Install Base System</a>
         <ul>
-          <li><a href="#Functionality">Functionality</a>
-            <ul>
-              <li><a href="#Listing-installed-packages">Listing installed packages</a></li>
-              <li><a href="#Querying-information-about-a-package-source">Querying information about a package source</a></li>
-              <li><a href="#Searching-for-packages-sources-by-name">Searching for packages sources by name</a></li>
-              <li><a href="#Searching-for-packages-sources-by-words-in-their-description">Searching for packages sources by words in their description</a></li>
-              <li><a href="#Viewing-dependency-lists">Viewing dependency lists</a></li>
-              <li><a href="#Installing-packages">Installing packages</a></li>
-              <li><a href="#Viewing-and-updating-outdated-packages">Viewing and updating outdated packages</a></li>
-            </ul>
-          </li>
-          <li><a href="#Configuration">Configuration</a></li>
+          <li><a href="#Download-rootfs-tarball">4.4.1. Download rootfs tarball</a></li>
+          <li><a href="#Verify-downloaded-tarball">4.4.2. Verify downloaded tarball</a></li>
+          <li><a href="#Extract-rootfs-tarball">4.4.3. Extract rootfs tarball</a></li>
         </ul>
       </li>
-      <li><a href="#Creating-Packages">Creating Packages</a></li>
-      <li><a href="#Adjusting-Configuring-the-Package-Build-Process">Adjusting/Configuring the Package Build Process</a></li>
-    </ul>
-  </li>
-  <li><a href="#THE-PKGSRC-SYSTEM">THE PKGSRC SYSTEM</a>
-    <ul>
-      <li><a href="#Introduction1">Introduction</a>
+      <li><a href="#Chroot-Into-Base-System">4.5. Chroot Into Base System</a></li>
+      <li><a href="#Configure-The-Base-System">4.6. Configure The Base System</a></li>
+      <li><a href="#Prepare-The-PKGSRC-Repos">4.7. Prepare The PKGSRC Repos</a></li>
+      <li><a href="#Update-The-Base-System">4.8. Update The Base System</a></li>
+      <li><a href="#Install-essential-packages">4.9. Install essential packages</a></li>
+      <li><a href="#Prepare-a-Linux-Kernel">4.10. Prepare a Linux Kernel</a>
         <ul>
-          <li><a href="#What-is-a-package-source">What is a package source?</a></li>
-          <li><a href="#What-is-the-pkgsrc-repository">What is the pkgsrc repository?</a></li>
-          <li><a href="#The-pkgsrc-collections">The pkgsrc collections</a>
-            <ul>
-              <li><a href="#core">core</a></li>
-              <li><a href="#system">system</a></li>
-              <li><a href="#xorg">xorg</a></li>
-              <li><a href="#desktop">desktop</a></li>
-              <li><a href="#stuff">stuff</a></li>
-            </ul>
-          </li>
+          <li><a href="#Install-kernel-package">4.10.1. Install kernel package</a></li>
+          <li><a href="#Install-the-kernel-manually">4.10.2. Install the kernel manually</a></li>
         </ul>
       </li>
-      <li><a href="#Using-The-Pkgsrc">Using The Pkgsrc</a>
+      <li><a href="#Prepare-Initramfs-Image">4.11. Prepare Initramfs Image</a></li>
+      <li><a href="#Install-a-Bootloader">4.12. Install a Bootloader</a>
         <ul>
-          <li><a href="#Synchronizing-your-local-pkgsrc-repository">Synchronizing your local pkgsrc repository</a></li>
-          <li><a href="#Listing-local-pkgsrc-repositories">Listing local pkgsrc repositories</a></li>
-          <li><a href="#Listing-version-differences">Listing version differences</a></li>
-          <li><a href="#Building-and-installing-packages">Building and installing packages</a></li>
-          <li><a href="#Build-packages-as-an-unprivileged-user">Build packages as an unprivileged user</a></li>
-          <li><a href="#Renice-pkgmks-child-process">Renice pkgmk&#39;s child process</a></li>
-          <li><a href="#Build-in-ram">Build in ram</a></li>
+          <li><a href="#GRUB">4.12.1. GRUB</a></li>
+        </ul>
+      </li>
+      <li><a href="#Post-installation-Tasks">4.13. Post-installation Tasks</a>
+        <ul>
+          <li><a href="#Install-X11">4.13.1. Install X11</a></li>
+          <li><a href="#Reboot">4.13.2. Reboot</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#CONFIGURATION">CONFIGURATION</a>
+  <li><a href="#THE-PACKAGE-SYSTEM">5. THE PACKAGE SYSTEM</a>
     <ul>
-      <li><a href="#Generating-locales">Generating locales</a></li>
-      <li><a href="#Initialization-Scripts">Initialization Scripts</a>
+      <li><a href="#Introduction">5.1. Introduction</a>
         <ul>
-          <li><a href="#Runlevels">Runlevels</a></li>
-          <li><a href="#Layout">Layout</a></li>
+          <li><a href="#Basic-package-management-tools">5.1.1. Basic package management tools</a></li>
         </ul>
       </li>
-      <li><a href="#Network-configuration">Network configuration</a>
+      <li><a href="#Using-the-Package-System">5.2. Using the Package System</a>
         <ul>
-          <li><a href="#Static-address">Static address</a></li>
-          <li><a href="#Dynamic-address">Dynamic address</a></li>
-          <li><a href="#Wireless-network">Wireless network</a></li>
+          <li><a href="#Installing-a-package">5.2.1. Installing a package</a></li>
+          <li><a href="#Upgrading-a-package">5.2.2. Upgrading a package</a>
+            <ul>
+              <li><a href="#Rejected-files">5.2.2.1. Rejected files</a></li>
+            </ul>
+          </li>
+          <li><a href="#Removing-a-package">5.2.3. Removing a package</a></li>
+          <li><a href="#Querying-the-package-database">5.2.4. Querying the package database</a></li>
         </ul>
       </li>
-      <li><a href="#Passwords">Passwords</a></li>
+      <li><a href="#Package-Management-Front-end:-pkgman">5.3. Package Management Front-end: pkgman</a>
+        <ul>
+          <li><a href="#Functionality">5.3.1. Functionality</a></li>
+          <li><a href="#Configuration">5.3.2. Configuration</a></li>
+        </ul>
+      </li>
+      <li><a href="#Creating-Packages">5.4. Creating Packages</a></li>
+      <li><a href="#Adjusting-Configuring-the-Package-Build-Process">5.5. Adjusting/Configuring the Package Build Process</a></li>
     </ul>
   </li>
-  <li><a href="#REPORTING-BUGS">REPORTING BUGS</a></li>
+  <li><a href="#THE-PKGSRC-SYSTEM">6.0. THE PKGSRC SYSTEM</a>
+    <ul>
+      <li><a href="#Introduction1">6.1. Introduction</a>
+        <ul>
+          <li><a href="#What-is-a-package-source">6.1.1. What is a package source?</a></li>
+          <li><a href="#What-is-a-pkgsrc-repository">6.1.2. What is a pkgsrc repository?</a></li>
+          <li><a href="#The-pkgsrc-collections">6.1.3. The pkgsrc collections</a></li>
+        </ul>
+      </li>
+      <li><a href="#Using-The-Pkgsrc">6.2. Using The Pkgsrc</a>
+        <ul>
+          <li><a href="#Synchronizing-your-local-pkgsrc-repository">6.2.1. Synchronizing your local pkgsrc repository</a></li>
+          <li><a href="#Listing-local-pkgsrc-repositories">6.2.2. Listing local pkgsrc repositories</a></li>
+          <li><a href="#Listing-version-differences">6.2.3. Listing version differences</a></li>
+          <li><a href="#Building-and-installing-packages">6.2.4. Building and installing packages</a></li>
+          <li><a href="#Build-packages-as-an-unprivileged-user">6.2.5. Build packages as an unprivileged user</a></li>
+          <li><a href="#Renice-pkgmks-child-process">6.2.6. Renice pkgmk&#39;s child process</a></li>
+          <li><a href="#Build-in-ram">6.2.7. Build in ram</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#CONFIGURATION">7. CONFIGURATION</a>
+    <ul>
+      <li><a href="#Generating-Locales">7.1. Generating Locales</a></li>
+      <li><a href="#Initialization-Scripts">7.2. Initialization Scripts</a>
+        <ul>
+          <li><a href="#Runlevels">7.2.1. Runlevels</a></li>
+          <li><a href="#Layout">7.2.2. Layout</a></li>
+        </ul>
+      </li>
+      <li><a href="#Network-Configuration">7.3. Network Configuration</a>
+        <ul>
+          <li><a href="#Static-address">7.3.1. Static address</a></li>
+          <li><a href="#Dynamic-address">7.3.2. Dynamic address</a></li>
+          <li><a href="#Wireless-network">7.3.3. Wireless network</a></li>
+        </ul>
+      </li>
+      <li><a href="#Passwords">7.4. Passwords</a></li>
+    </ul>
+  </li>
+  <li><a href="#REPORTING-BUGS">8. REPORTING BUGS</a></li>
 </ul>
 
-<h1 id="INTRODUCTION">INTRODUCTION</h1>
+<h1 id="PREFACE">1. PREFACE</h1>
 
-    <img alt="Zeppe-Lin" class="logo" src="https://github.com/zeppe-lin/artwork/blob/master/logo-small.png?raw=true" />
+<p>This handbook (and Zeppe-Lin itself) is inspired and based on the <a href="http://crux.nu/Main/Documentation">CRUX Handbook</a>. The original version was written by Per Lid&eacute;n <a href="mailto:per@fukt.bth.se">mailto:per@fukt.bth.se</a> and maintained by CRUX Team. This implementation was reworked and adapted for Zeppe-Lin by Alexandr Savca <a href="mailto:alexandr.savca89@gmail.com">mailto:alexandr.savca89@gmail.com</a>.</p>
 
-<p>This handbook (and Zeppe-Lin itself) is inspired and based on the <a href="http://crux.nu/Main/Documentation">CRUX Handbook</a>.</p>
+<h1 id="INTRODUCTION">2. INTRODUCTION</h1>
 
-It is also available on the Zeppe-Lin system as a
-<a href="https://github.com/zeppe-lin/handbook">handbook(7)</a>
-manual page.
+<p>Welcome to the Zeppe-Lin Handbook! It&#39;s not an extensive guide on how to use and configure common Linux software. The purpose of the handbook is to explain how to install, configure, and maintain Zeppe-Lin systems, and to highlight the differences between common Linux distributions and Zeppe-Lin.</p>
+
+<ul>
+
+<li><p>The online version of this handbook is placed at: <a href="http://zeppel.ink/handbook.7.html">http://zeppel.ink/handbook.7.html</a>.</p>
+
+</li>
+<li><p>The pdf version of this handbook can be downloaded at: <a href="http://zeppel.ink/handbook.7.pdf">http://zeppel.ink/handbook.7.pdf</a>.</p>
+
+</li>
+<li><p>The local copy of this handbook can be installed on Zeppe-Lin system by the following command:</p>
+
+<pre><code># pkgman install handbook</code></pre>
+
+</li>
+</ul>
+
+<h2 id="What-is-Zeppe-Lin">2.1. What is Zeppe-Lin?</h2>
 
 <p>Zeppe-Lin is a lightweight GNU/Linux distribution for the x86-64 architecture targeted at experienced users. It is forked from CRUX and the primary focus of this distribution is &quot;keep it simple&quot; too.</p>
 
@@ -188,39 +181,71 @@ manual page.
 
 <p>The secondary focus is the utilization of new GNU/Linux features and recent tools and libraries.</p>
 
-<h1 id="LICENSE">LICENSE</h1>
+<h2 id="Why-use-Zeppe-Lin">2.2. Why use Zeppe-Lin?</h2>
 
-<h2 id="Packages">Packages</h2>
+<p>In short, <b>Zeppe-Lin</b> might suit you very well if you are:</p>
+
+<ul>
+
+<li><p>an experienced user who wants a clean and simple GNU/Linux distribution as a foundation of your installation;</p>
+
+</li>
+<li><p>a person who prefers editing configuration files with an editor to using GUI;</p>
+
+</li>
+<li><p>someone who does not hesitate to download and compile programs from the source;</p>
+
+</li>
+<li><p>someone who wants a KISS GNU/Linux distribution as a foundation of your own distro;</p>
+
+</li>
+</ul>
+
+<h1 id="LICENSE">3. LICENSE</h1>
+
+<h2 id="Packages">3.1. Packages</h2>
 
 <p>Since Zeppe-Lin is a GNU/Linux distribution, it contains software written by a lot of different people. Each software package comes with its own license, chosen by its author(s). To find out how a particular package is licensed, have a look at its source code.</p>
 
-<h2 id="Build-Scripts">Build Scripts</h2>
+<h2 id="Build-Scripts">3.2. Build Scripts</h2>
 
 <p>All package build scripts in Zeppe-Lin are Copyright (C) 2000-2021 by Per Lid&eacute;n <a href="mailto:per@fukt.bth.se">mailto:per@fukt.bth.se</a> and CRUX team <a href="http://crux.nu">http://crux.nu</a> and are released under the GPLv3+: GNU General Public License version 3 or later <a href="https://gnu.org/licenses/gpl.html">https://gnu.org/licenses/gpl.html</a>.</p>
 
-<h2 id="NO-WARRANTY">NO WARRANTY</h2>
+<h2 id="NO-WARRANTY">3.3. NO WARRANTY</h2>
 
 <p>Zeppe-Lin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Use it at YOUR OWN RISK.</p>
 
-<h1 id="INSTALL-ZEPPE-LIN">INSTALL ZEPPE-LIN</h1>
+<h1 id="INSTALLATION">4. INSTALLATION</h1>
 
-<h2 id="Supported-Hardware-Requirements">Supported Hardware / Requirements</h2>
+<h2 id="Supported-Hardware">4.1. Supported Hardware</h2>
 
 <p>Packages on the official <b>rootfs</b> image are compiled with optimization for x86-64 (AMD Athlon 64, Intel Core, Intel Atom) or newer processors. Do not try to install it on an i686 (Pentium Pro, Celeron, Pentium-III) or lower processor, it simply will not work.</p>
 
-<p>Since Zeppe-Lin is distributed in the form of a compiled tarball containing a root filesystem, the installation requires a LiveCD with any GNU/Linux.</p>
+<h2 id="Boot-a-Live-System">4.2. Boot a Live System</h2>
 
-<h2 id="Install-From-RootFS-Image">Install From RootFS Image</h2>
+<p>Since Zeppe-Lin is distributed in the form of a compiled tarball containing a root filesystem, you will first need to boot your computer using a Linux-based image, so called &quot;Live CD/DVD/USB&quot; operating system.</p>
 
-<p>This chapter describes how to install Zeppe-Lin on the UEFI LUKS partition and LVM volume group, so make sure you have the following packages installed on your LiveCD: <code>parted</code>, <code>dosfstools</code>, <code>cryptsetup</code> and <code>lvm2</code>.</p>
+<p>Boot from the live CD/DVD/USB, open a terminal and get root privileges (e.g. <code>sudo su</code>).</p>
 
-<p>Let&#39;s go.</p>
+<h2 id="Disk-Partitions-and-Filesystems">4.3. Disk Partitions and Filesystems</h2>
 
-<p>Boot from the LiveCD, open a terminal and get root privileges (e.g. <code>sudo su</code>).</p>
+<h3 id="UEFI-and-LVM-on-LUKS"><b>4.3.1. UEFI and LVM-on-LUKS</b></h3>
 
-<h3 id="Disk-partitions-and-filesystems"><b>Disk partitions and filesystems</b></h3>
+<p>This section describes how to set up Zeppe-Lin on a fully encrypted disk (apart from the bootloader partition). We will have an LVM container installed inside an encrypted partition. To encrypt the partition containing the LVM volume group, <b>dm-crypt</b> (which is managed by the <a href="cryptsetup.8.html">cryptsetup(8)</a> command) and its LUKS subsystem is used.</p>
 
-<p>This is a quite simple partition scheme used in this handbook. There is a SCSI disk <code>/dev/sda</code>, but if you have an NVME disk (like <code>/dev/nvme0n1</code>) or another SCSI disk (like <code>/dev/sdb</code>), it&#39;s simple as run <code>sed &#39;s/sda/sdb/g&#39;</code>.</p>
+<dl>
+
+<dt id="Important"><b>Important</b>:</dt>
+<dd>
+
+<p>Make sure you have the following packages installed on your live system: <b>parted</b>, <b>dosfstools</b>, <b>cryptsetup</b>, and <b>lvm2</b>.</p>
+
+</dd>
+</dl>
+
+<h4 id="Partition-scheme"><b>4.3.1.1. Partition scheme</b></h4>
+
+<p>This is a quite simple partition scheme used in this section. There is a SCSI disk <code>/dev/sda</code>, but if you have an NVME disk (like <code>/dev/nvme0n1</code>) or another SCSI disk (like <code>/dev/sdb</code>), it&#39;s simple as run <code>sed &#39;s/sda/sdb/g&#39;</code>.</p>
 
     <table>
         <tr>
@@ -243,6 +268,18 @@ manual page.
         </tr>
     </table>
 
+<dl>
+
+<dt id="Important1"><b>Important</b>:</dt>
+<dd>
+
+<p>On UEFI systems with a GPT-partitioned disk, there must be an EFI system partition (ESP). The suggested size is around 512 MiB.</p>
+
+</dd>
+</dl>
+
+<h4 id="Create-the-partitions"><b>4.3.1.2. Create the partitions</b></h4>
+
 <p>Using <a href="parted.8.html">parted(8)</a> utility we can create all required partitions.</p>
 
 <pre><code># parted /dev/sda
@@ -254,32 +291,19 @@ manual page.
 (parted) name 2 luks
 (parted) quit</code></pre>
 
-<h4 id="Boot-partition-filesystem"><i>Boot partition filesystem</i></h4>
-
-<p>Create a FAT32 filesystem for the first (efiboot) partition:</p>
-
-<pre><code># mkfs.vfat -F32 /dev/sda1</code></pre>
-
-<h4 id="Encrypt-LUKS-partition"><i>Encrypt LUKS partition</i></h4>
-
-<p>Encrypt the second (luks) partition with LUKS and open the LUKS device:</p>
+<p>Encrypt the second (luks) partition with LUKS and open the LUKS device (for example, as <code>crypt</code> mapped name):</p>
 
 <pre><code># cryptsetup luksFormat /dev/sda2
 # cryptsetup luksOpen /dev/sda2 crypt</code></pre>
 
-<h3 id="LVM-inside-LUKS-device"><b>LVM inside LUKS device</b></h3>
+<h4 id="Create-LVM-inside-LUKS-device"><b>4.3.1.3. Create LVM inside LUKS device</b></h4>
 
-<h4 id="Create-the-physical-volume"><i>Create the physical volume</i></h4>
+<p>Create a physical volume and a new volume group (named <code>zpln</code> for example):</p>
 
-<pre><code># pvcreate /dev/mapper/crypt</code></pre>
+<pre><code># pvcreate /dev/mapper/crypt
+# vgcreate zpln /dev/mapper/crypt</code></pre>
 
-<h4 id="Create-the-volume-group"><i>Create the volume group</i></h4>
-
-<pre><code># vgcreate zpln /dev/mapper/crypt</code></pre>
-
-<h4 id="Create-the-logical-volume"><i>Create the logical volume</i></h4>
-
-<p>This is a quite simple logical volumes scheme used in this handbook.</p>
+<p>Before creating the logical volumes, this is a quite simple logical volumes scheme used in this section:</p>
 
     <table>
         <tr>
@@ -311,13 +335,22 @@ manual page.
 <pre><code># lvcreate -L 8G -n swap zpln
 # lvcreate -l 100%FREE -n root zpln</code></pre>
 
-<h3 id="Create-root-filesystem-and-setup-swap-area"><b>Create root filesystem and setup swap area</b></h3>
+<h4 id="Create-the-filesystems"><b>4.3.1.4. Create the filesystems</b></h4>
 
-<pre><code># mkfs.ext4 /dev/zpln/root
-# mkswap /dev/zpln/swap
+<p>Create a FAT32 filesystem for the first (boot) partition:</p>
+
+<pre><code># mkfs.vfat -F32 /dev/sda1</code></pre>
+
+<p>Create root filesystem:</p>
+
+<pre><code># mkfs.ext4 /dev/zpln/root</code></pre>
+
+<p>Format swap logical volume as swap area and activate it:</p>
+
+<pre><code># mkswap /dev/zpln/swap
 # swapon /dev/zpln/swap</code></pre>
 
-<h3 id="Mount-prepared-partitions"><b>Mount prepared partitions</b></h3>
+<h4 id="Mount-prepared-partitions"><b>4.3.1.5. Mount prepared partitions</b></h4>
 
 <p>In this handbook, the <code>/mnt</code> directory is used as a default mountpoint.</p>
 
@@ -325,27 +358,64 @@ manual page.
 # mkdir /mnt/boot
 # mount /dev/sda1 /mnt/boot</code></pre>
 
-<h3 id="Download-rootfs-tarball"><b>Download rootfs tarball</b></h3>
+<h2 id="Install-Base-System">4.4. Install Base System</h2>
 
-<p>As mentioned before, the <code>/mnt</code> directory is the default mountpoint for our system. Let&#39;s download the rootfs into this directory so we won&#39;t pollute LiveCD RAM:</p>
+<h3 id="Download-rootfs-tarball"><b>4.4.1. Download rootfs tarball</b></h3>
+
+<p>As mentioned before, the <code>/mnt</code> directory is the default mountpoint for our system. Let&#39;s download the rootfs tarball into this directory so we won&#39;t pollute live CD/DVD/USB RAM:</p>
 
 <pre><code># cd /mnt
 # wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz{,.sig}</code></pre>
 
-<h4 id="Signature-verification"><i>Signature verification</i></h4>
+<h3 id="Verify-downloaded-tarball"><b>4.4.2. Verify downloaded tarball</b></h3>
 
-<p>It&#39;s optional but highly recommended to verify rootfs signature:</p>
+<p>Zeppe-Lin rootfs tarball is signed using GPG. It&#39;s a good practice to verify authenticity and integrity of downloaded files when possible.</p>
 
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-v0.99.1-x86_64.tar.xz.sig rootfs-v0.99.1-x86_64.tar.xz</code></pre>
+# gpg --verify rootfs-v0.99.1-x86_64.tar.xz{.sig,}</code></pre>
 
-<h3 id="Extract-rootfs-tarball"><b>Extract rootfs tarball</b></h3>
+<h3 id="Extract-rootfs-tarball"><b>4.4.3. Extract rootfs tarball</b></h3>
 
-<p>If everything is OK, let&#39;s unpack the tarball:</p>
+<p>Once the rootfs tarball is downloaded and verified, extract the contents with the following command:</p>
 
-<pre><code># tar -xvf rootfs-v0.99.1-x86_64.tar.xz -C .</code></pre>
+<pre><code># tar --numeric-owner --xattrs --xattrs-include=&#39;*&#39; -xpf \
+    rootfs-v0.99.1-x86_64.tar.xz</code></pre>
 
-<h3 id="Chroot"><b>Chroot</b></h3>
+<dl>
+
+<dt id="Important2"><b>Important</b>:</dt>
+<dd>
+
+<p>It is very important to use all the options included above. See below for details.</p>
+
+</dd>
+</dl>
+
+<p>Here are what the options to <a href="tar.1.html">tar(1)</a> do:</p>
+
+<dl>
+
+<dt id="numeric-owner"><b>--numeric-owner</b></dt>
+<dd>
+
+<p>Without this option, <a href="tar.1.html">tar(1)</a> will map ownership and group ownership based on the UID to user and GID to group mappings as defined on the Live CD/DVD/USB. By specifying <b>--numeric-owner</b> we tell that we want the <i>numeric values</i> of the UIDs and GIDs in the tarball to be preserved on disk, so when your Zeppe-Lin system boots, the UIDs and GIDs are set correctly for Zeppe-Lin.</p>
+
+</dd>
+<dt id="xattrs---xattrs-include"><b>--xattrs --xattrs-include=&#39;*&#39;</b></dt>
+<dd>
+
+<p>Zeppe-Lin uses filesystem extended attributes to set Linux capabilities, which allow for certain programs such as ping to have enhanced privileges without having to be fully &#39;suid root&#39;. Even with the <b>-p</b> option, <a href="tar.1.html">tar(1)</a> will not restore extended attributes we need unless these two options are specified.</p>
+
+</dd>
+<dt id="xpf"><b>-xpf</b></dt>
+<dd>
+
+<p>Extract (<b>x</b>), preserve regular permissions and ownership (<b>p</b>), and use the filename (<b>f</b>) specified.</p>
+
+</dd>
+</dl>
+
+<h2 id="Chroot-Into-Base-System">4.5. Chroot Into Base System</h2>
 
 <p>Copy DNS configuration to have the availability to use the network from the chrooted root:</p>
 
@@ -370,7 +440,7 @@ manual page.
 
 <pre><code>(chrooted) # export SHELL=/bin/bash</code></pre>
 
-<h3 id="Configure-the-base-system"><b>Configure the base system</b></h3>
+<h2 id="Configure-The-Base-System">4.6. Configure The Base System</h2>
 
 <p>Set the root password:</p>
 
@@ -387,16 +457,24 @@ manual page.
 
 <p>Then add <code>export LANG=en_US.UTF-8</code> to <i>/etc/profile</i> to make it system-wide.</p>
 
-<p>Edit <i>/etc/fstab</i> (see <a href="fstab.5.html">fstab(5)</a> for more information) to configure your filesystems and add the prepared partitions:</p>
+<p>Edit <i>/etc/fstab</i> (see <a href="fstab.5.html">fstab(5)</a> for more information) to configure your filesystems and add the prepared partitions. For example, for <a href="#UEFI-and-LVM-on-LUKS">&quot;4.3.1. UEFI and LVM-on-LUKS&quot;</a> installation, you may specify the following:</p>
 
 <pre><code>/dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
 /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
 /dev/zpln/swap  swap   swap  defaults                     0 0</code></pre>
 
-<p><b>Note</b>: you can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=xxx</code> instead of <code>/dev/*</code> used above to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s UUID:</p>
+<dl>
 
-<pre><code>(chrooted) # blkid -o value -s UUID /dev/zpln/root
+<dt id="Note"><b>Note</b>:</dt>
+<dd>
+
+<p>You can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=xxx</code> instead of <code>/dev/*</code> used above to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s UUID:</p>
+
+<pre><code>(chrooted) # blkid -o value -s UUID &lt;DEVICE&gt;
 ...</code></pre>
+
+</dd>
+</dl>
 
 <p>Uncomment <i>/var/cache/pkgmk/work</i> if you want to build packages in RAM.</p>
 
@@ -440,9 +518,9 @@ If you setup to build packages in RAM:
 
 # End of file.</code></pre>
 
-<h3 id="Prepare-the-package-sources"><b>Prepare the package sources</b></h3>
+<h2 id="Prepare-The-PKGSRC-Repos">4.7. Prepare The PKGSRC Repos</h2>
 
-<p>Packages&#39; sources are organized in so-called collections, see <a href="#The-pkgsrc-collections">&quot;The pkgsrc collections&quot;</a> for more information about that.</p>
+<p>Packages&#39; sources are organized in so-called collections, see <a href="#The-pkgsrc-collections">&quot;6.1.3. The pkgsrc collections&quot;</a> for more information about that.</p>
 
 <p>Clone the collections you need, but keep in mind that each subsequent collection depends on the previous ones.</p>
 
@@ -454,18 +532,31 @@ If you setup to build packages in RAM:
 
 <p>Edit <i>/etc/pkgman.conf</i> (see <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information) and enable the collections you cloned. By default, only <code>core</code> collection is enabled. Also, you may like to edit <i>/etc/pkgmk.conf</i> (see <a href="pkgmk.conf.5.html">pkgmk.conf(5)</a> for more information).</p>
 
-<h4 id="Update-the-core-packages-and-configuration-files"><i>Update the core packages and configuration files</i></h4>
+<h2 id="Update-The-Base-System">4.8. Update The Base System</h2>
 
-<p><b>Note</b>: Starting from version <code>6.0</code>, <code>pkgutils</code> has broken backward compatibility when generating footprint files. So, at the beginning it is recommended to update <code>pkgmk</code> and <code>pkgutils</code>:</p>
+<p>Before installing any package you need, it&#39;s highly recommended to update the system which you just installed.</p>
+
+<dl>
+
+<dt id="Warning"><b>Warning</b>:</dt>
+<dd>
+
+<p>Starting from version <code>6.0</code>, <code>pkgutils</code> has broken backward compatibility when generating footprint files. So, at the beginning it is recommended to update <code>pkgmk</code> and <code>pkgutils</code>:</p>
 
 <pre><code>(chrooted) # pkgman update -f pkgmk pkgutils</code></pre>
 
-<p>Now, it&#39;s highly recommended to update <code>core</code> packages and configuration files before the next step:</p>
+</dd>
+</dl>
 
-<pre><code>(chrooted) # pkgman sysup --deps --depsort --group
-(chrooted) # rejmerge</code></pre>
+<p>The following command tells to <a href="pkgman.1.html">pkgman(1)</a> to run system update (with dependency handling/sorting) and to stop if installation of at least one package fails:</p>
 
-<h3 id="Install-bare-metal-packages"><b>Install bare metal packages</b></h3>
+<pre><code>(chrooted) # pkgman sysup --deps --depsort --group</code></pre>
+
+<p>It&#39;s also recommended to merge the files that were rejected during updates:</p>
+
+<pre><code>(chrooted) # rejmerge</code></pre>
+
+<h2 id="Install-essential-packages">4.9. Install essential packages</h2>
 
 <p>Let&#39;s install all the necessary packages for the so-called workstation:</p>
 
@@ -473,26 +564,44 @@ If you setup to build packages in RAM:
     cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg \
     lvm2 pinentry wireless-tools wpa-supplicant dhcpcd iputils</code></pre>
 
-<p>Edit <i>/etc/rc.d/dhcpcd</i> and <i>/etc/rc.d/wpa_supplicant</i> and setup your network interfaces. <b>Note</b>: If you configured the networking bridge, don&#39;t forget to specify the bridge interface to <b>dhcpcd</b> and/or <b>wpa_supplicant</b> RC scripts.</p>
+<p>Edit <i>/etc/rc.d/dhcpcd</i> and <i>/etc/rc.d/wpa_supplicant</i> and setup your network interfaces.</p>
 
-<h3 id="Install-the-linux-kernel"><b>Install the linux kernel</b></h3>
+<dl>
 
-<p>There is at least two ways to install the kernel: as a package and manually. Let&#39;s look at each method.</p>
+<dt id="Note1"><b>Note</b>:</dt>
+<dd>
 
-<h4 id="Install-the-kernel-package"><i>Install the kernel package</i></h4>
+<p>If you configured the networking bridge, don&#39;t forget to specify the bridge interface to <b>dhcpcd</b> and/or <b>wpa_supplicant</b> RC scripts.</p>
 
-<p><code>system</code> pkgsrc collection provides a package with the kernel and non-free firmware:</p>
+</dd>
+</dl>
+
+<h2 id="Prepare-a-Linux-Kernel">4.10. Prepare a Linux Kernel</h2>
+
+<p>Follow only one of the two following subsections.</p>
+
+<h3 id="Install-kernel-package"><b>4.10.1. Install kernel package</b></h3>
+
+<p>The <code>pkgsrc-system</code> collection provides a package with the kernel and non-free firmware:</p>
 
 <pre><code>(chrooted) # pkgman install --deps --group \
     --config-append=&quot;runscripts no&quot; linux linux-firmware</code></pre>
 
-<p>The <b>linux</b> package has a <b>post-install</b> script that executes <a href="mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system but now it&#39;s unnecessary.</p>
+<p>This <b>linux</b> package has a <b>post-install</b> script that executes <a href="mkinitramfs.8.html">mkinitramfs(8)</a> and updates the <b>grub</b> config. We turn off the execution of this script because we&#39;ll do it manually. It is useful when regularly updating the system but now it&#39;s unnecessary.</p>
 
-<p><b>Note</b>: You may like to lock the <b>linux</b> package and not update it during regular system updates, since the update will remove the current working kernel and its modules. If you plan not to turn off the computer for a long time, it is better to do this and update the kernel separately, through <a href="pkgman-update.8.html">pkgman-update(8)</a>. See <a href="pkgman-lock.8.html">pkgman-lock(8)</a> for more information about package locking.</p>
+<dl>
 
-<p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <a href="#Prepare-initramfs-image">&quot;Prepare initramfs image&quot;</a>.</p>
+<dt id="Note2"><b>Note</b>:</dt>
+<dd>
 
-<h4 id="Install-the-kernel-manually"><i>Install the kernel manually</i></h4>
+<p>You may like to lock the <b>linux</b> package and not update it during regular system updates, since the update will remove the current working kernel and its modules. If you plan not to turn off the computer for a long time, it is better to do this and update the kernel separately, through <a href="pkgman-update.8.html">pkgman-update(8)</a>. See <a href="pkgman-lock.8.html">pkgman-lock(8)</a> for more information about package locking.</p>
+
+</dd>
+</dl>
+
+<p>If you installed the kernel package through a package manager, you can jump over the next paragraph, to the <a href="#Prepare-Initramfs-Image">&quot;4.11. Prepare Initramfs Image&quot;</a>.</p>
+
+<h3 id="Install-the-kernel-manually"><b>4.10.2. Install the kernel manually</b></h3>
 
 <p>Since the <a href="pkgman.1.html">pkgman(1)</a> build the package that contains only the binaries (kernel and modules), you may want to build your own kernel. For example, you do not need such a fat kernel, which goes by default, or you need the sources of the running kernel because you want to build the Nvidia driver and/or VirtualBox.</p>
 
@@ -535,13 +644,13 @@ If you setup to build packages in RAM:
 (chrooted) # cp .config /boot/config-$KV
 (chrooted) # make modules_install</code></pre>
 
-<p>You may still need to install the kernel non-free firmwares:</p>
+<p>You may still need to install the kernel non-free firmware:</p>
 
 <pre><code>(chrooted) # pkgman install --deps linux-firmware</code></pre>
 
 <p>Next, we need to prepare the initramfs and update our bootloader.</p>
 
-<h3 id="Prepare-initramfs-image"><b>Prepare initramfs image</b></h3>
+<h2 id="Prepare-Initramfs-Image">4.11. Prepare Initramfs Image</h2>
 
 <p>Install <b>mkinitramfs</b> package:</p>
 
@@ -568,10 +677,18 @@ luks_root=/dev/sda2
 
 <p>See <a href="mkinitramfs.config.5.html">mkinitramfs.config(5)</a> for more information.</p>
 
-<p><b>Note</b>: As in case of <i>/etc/fstab</i>, you can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=[...]</code> instead of <code>/dev/*</code> to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s <code>UUID</code>:</p>
+<dl>
 
-<pre><code>(chrooted) # blkid -o value -s UUID /dev/zpln/root
-[...]</code></pre>
+<dt id="Note3"><b>Note</b>:</dt>
+<dd>
+
+<p>As in case of <i>/etc/fstab</i>, you can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=...</code> instead of <code>/dev/*</code> to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s <code>UUID</code>:</p>
+
+<pre><code>(chrooted) # blkid -o value -s UUID &lt;DEVICE&gt;
+...</code></pre>
+
+</dd>
+</dl>
 
 <p>Now, prepare an initramfs. If you installed the <code>linux</code> kernel manually, you have already set <code>KV</code> variable to kernel version. Otherwise, obtain the kernel version from package source like the following:</p>
 
@@ -581,7 +698,9 @@ luks_root=/dev/sda2
 
 <pre><code>(chrooted) # mkinitramfs -o /boot/initramfs-$KV.img -k $KV</code></pre>
 
-<h3 id="Configure-GRUB"><b>Configure GRUB</b></h3>
+<h2 id="Install-a-Bootloader">4.12. Install a Bootloader</h2>
+
+<h3 id="GRUB"><b>4.12.1. GRUB</b></h3>
 
 <p>Create <i>/etc/default/grub</i> file with the following content:</p>
 
@@ -598,30 +717,32 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <pre><code>(chrooted) # grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
 
-<h3 id="Exit-from-chroot-and-umount-mnt-and-reboot"><b>Exit from chroot and umount /mnt and reboot</b></h3>
+<h2 id="Post-installation-Tasks">4.13. Post-installation Tasks</h2>
+
+<h3 id="Install-X11"><b>4.13.1. Install X11</b></h3>
+
+<p>See the available X11 video and input drivers, and choose the right one:</p>
+
+<pre><code># pkgman search -vv xf86-</code></pre>
+
+<p>Next, install the <b>xorg</b> package and the drivers you wish:</p>
+
+<pre><code># pkgman install --deps --group xorg ...</code></pre>
+
+<h3 id="Reboot"><b>4.13.2. Reboot</b></h3>
+
+<p>Exit from chroot and umount <i>/mnt</i> and reboot:</p>
 
 <pre><code>(chrooted) # exit
 # cd /
 # umount -R /mnt
 # shutdown -r now</code></pre>
 
-<h2 id="Post-Installation-Notes">Post Installation Notes</h2>
+<h1 id="THE-PACKAGE-SYSTEM">5. THE PACKAGE SYSTEM</h1>
 
-<h3 id="Install-xorg"><b>Install xorg</b></h3>
+<h2 id="Introduction">5.1. Introduction</h2>
 
-<p>See the available Xorg video and input drivers, and choose the right one:</p>
-
-<pre><code># pkgman search -vv xf86-</code></pre>
-
-<p>Next, install <b>xorg</b> and the drivers you wish:</p>
-
-<pre><code># pkgman install --deps --group xorg ...</code></pre>
-
-<h1 id="THE-PACKAGE-SYSTEM">THE PACKAGE SYSTEM</h1>
-
-<h2 id="Introduction">Introduction</h2>
-
-<h3 id="Basic-package-management-tools"><b>Basic package management tools</b></h3>
+<h3 id="Basic-package-management-tools"><b>5.1.1. Basic package management tools</b></h3>
 
 <p>The package system (<b>pkgutils</b>) is a fork of CRUX&#39;s pkgutils. It is made with simplicity in mind, where all packages are plain <i>tar.gz</i> files (i.e. without any kind of metadata).</p>
 
@@ -639,9 +760,9 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <p>The following sections will describe in short how to use the package utilities. Additional information about these utilities can be found on their respective manpage.</p>
 
-<h2 id="Using-the-Package-System">Using the Package System</h2>
+<h2 id="Using-the-Package-System">5.2. Using the Package System</h2>
 
-<h3 id="Installing-a-package"><b>Installing a package</b></h3>
+<h3 id="Installing-a-package"><b>5.2.1. Installing a package</b></h3>
 
 <p>Installing a package is done by using <a href="pkgadd.8.html">pkgadd(8)</a>. This utility requires at least one argument, the package you want to install. Example:</p>
 
@@ -680,7 +801,7 @@ pkgadd error: listed files already installed
 
 <p>As earlier, the package file itself does not contain any metadata. Instead, the <a href="pkgadd.8.html">pkgadd(8)</a> uses the package filename to determine the package name and version. Thus, when installing a package file named <i>bash#5.0.18-1.pkg.tar.gz</i>, <a href="pkgadd.8.html">pkgadd(8)</a> will interpret this as a package named <i>bash</i> at version <i>5.0.18-1</i>. If <a href="pkgadd.8.html">pkgadd(8)</a> is unable to interpret the filename (e.g. <b>#</b> is missing or the filename does not end with .pkg.tar.gz) an error message will be printed and <a href="pkgadd.8.html">pkgadd(8)</a> will abort without installing the package.</p>
 
-<h3 id="Upgrading-a-package"><b>Upgrading a package</b></h3>
+<h3 id="Upgrading-a-package"><b>5.2.2. Upgrading a package</b></h3>
 
 <p>Upgrading a package is done using <a href="pkgadd.8.html">pkgadd(8)</a> with the <b>-u</b> option. Example:</p>
 
@@ -705,11 +826,19 @@ UPGRADE       ^etc/X11/xorg.conf$     NO
 
 <p>The above example will cause <a href="pkgadd.8.html">pkgadd(8)</a> to never upgrade anything in <i>/etc/</i> or <i>/var/log/</i> (subdirectories included), except files in <i>/etc/X11/</i> (subdirectories included), unless it&#39;s the file <i>/etc/X11/xorg.conf</i>. The default rule is to upgrade everything, rules in this file are exceptions to that rule.</p>
 
-<p><b>Note</b>: A pattern should never contain an initial &quot;/&quot; since you are referring to the files in the package, not the files on the disk.</p>
+<dl>
+
+<dt id="Caution"><b>Caution</b>:</dt>
+<dd>
+
+<p>A pattern should never contain an initial &quot;/&quot; since you are referring to the files in the package, not the files on the disk.</p>
+
+</dd>
+</dl>
 
 <p>See <a href="pkgadd.conf.5.html">pkgadd.conf(5)</a> for more information.</p>
 
-<h4 id="Rejected-files"><i>Rejected files</i></h4>
+<h4 id="Rejected-files"><b>5.2.2.1. Rejected files</b></h4>
 
 <p>If <a href="pkgadd.8.html">pkgadd(8)</a> finds that a specific file should not be upgraded, it will install it under <i>/var/lib/pkg/rejected/</i>. Files in this directory are never added to the package database. The user is then free to examine, use and/or remove that file manually. Another option is to use <a href="rejmerge.8.html">rejmerge(8)</a>. For each rejected file found in <i>/var/lib/pkg/rejected/</i>, <a href="rejmerge.8.html">rejmerge(8)</a> will display the difference between the installed version and the rejected version. The user can then choose to keep the installed version, upgrade to the rejected version or perform a merge of the two. Example (using the above <i>/etc/pkgadd.conf</i>):</p>
 
@@ -721,7 +850,7 @@ pkgadd: rejecting etc/profile, keeping existing version
 `-- etc
     `-- profile</code></pre>
 
-<h3 id="Removing-a-package"><b>Removing a package</b></h3>
+<h3 id="Removing-a-package"><b>5.2.3. Removing a package</b></h3>
 
 <p>Removing a package is done by using <a href="pkgrm.8.html">pkgrm(8)</a>. This utility requires one argument, the name of the package you want to remove. Example:</p>
 
@@ -744,7 +873,7 @@ pkgadd: rejecting etc/profile, keeping existing version
         </tr>
     </table>
 
-<h3 id="Querying-the-package-database"><b>Querying the package database</b></h3>
+<h3 id="Querying-the-package-database"><b>5.2.4. Querying the package database</b></h3>
 
 <p>Querying the package database is done using <a href="pkginfo.1.html">pkginfo(1)</a>. This utility has a few options to answer different queries.</p>
 
@@ -783,18 +912,23 @@ pkgadd: rejecting etc/profile, keeping existing version
         </tr>
     </table>
 
-<h4 id="List-installed-packages-and-their-version"><i>List installed packages and their version</i></h4>
+<dl>
+
+<dt id="List-installed-packages-and-their-version">List installed packages and their version:</dt>
+<dd>
 
 <pre><code>$ pkginfo -i
 audiofile 0.2.3-1
 autoconf 2.52-1
 automake 1.5-1
-[...]
+...
 xmms 1.2.7-1
 zip 2.3-1
 zlib 1.1.4-1</code></pre>
 
-<h4 id="List-files-in-PACKAGE-or-FILE"><i>List files in PACKAGE or FILE</i></h4>
+</dd>
+<dt id="List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE:</dt>
+<dd>
 
 <pre><code>$ pkginfo -l bash
 bin/
@@ -818,14 +952,18 @@ usr/share/man/man1/egrep.1.gz
 usr/share/man/man1/fgrep.1.gz
 usr/share/man/man1/grep.1.gz</code></pre>
 
-<h4 id="List-owners-of-files-matching-bin-ls"><i>List owners of files matching <i>bin/ls</i></i></h4>
+</dd>
+<dt id="List-owners-of-files-matching-bin-ls">List owners of files matching <i>bin/ls</i>:</dt>
+<dd>
 
 <pre><code>$ pkginfo -o bin/ls
 e2fsprogs  usr/bin/lsattr
 fileutils  bin/ls
 modutils   sbin/lsmod</code></pre>
 
-<h4 id="Print-footprint-for-file"><i>Print footprint for file</i></h4>
+</dd>
+<dt id="Print-footprint-for-file">Print footprint for file:</dt>
+<dd>
 
 <pre><code>$ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
 drwxr-xr-x      root/root       usr/
@@ -838,34 +976,42 @@ drwxr-xr-x      root/root       usr/share/man/man1/
 
 <p>This feature is mainly used by <a href="pkgmk.8.html">pkgmk(8)</a> for creating and comparing footprints.</p>
 
+</dd>
+</dl>
+
 <p>The <b>-r</b>/<b>--root</b> option should be used if you want to display information about a package that is installed on a temporarily mounted partition, which is &quot;owned&quot; by another system. By using this option you specify which database to use.</p>
 
-<h2 id="Package-Management-Frontend:-pkgman">Package Management Frontend: pkgman</h2>
+<h2 id="Package-Management-Front-end:-pkgman">5.3. Package Management Front-end: pkgman</h2>
 
 <p>In its current form <b>pkgutils</b> does not have a concept of dependency handling. To address this, a front-end utility called <b>pkgman</b> exists. <a href="pkgman.1.html">pkgman(1)</a> supports dependency handling (with the caveat mentioned below) as well as some overlap with <b>pkgutils</b> features.</p>
 
-<h3 id="Functionality"><b>Functionality</b></h3>
+<h3 id="Functionality"><b>5.3.1. Functionality</b></h3>
 
 <p>Some examples of pkgman&#39;s functionality and use are as follows:</p>
 
-<h4 id="Listing-installed-packages"><i>Listing installed packages</i></h4>
+<dl>
+
+<dt id="Listing-installed-packages">Listing installed packages:</dt>
+<dd>
 
 <pre><code>$ pkgman list
 acl
 attr
-[...]
+...
 
 $ pkgman list -v
 acl 2.3.1-1
 attr 2.5.1-1
-[...]
+...
 
 $ pkgman list -vv
 acl 2.3.1-1: Access Control List filesystem support
 attr 2.5.1-1: Extended attribute support library for ACL support
-[...]</code></pre>
+...</code></pre>
 
-<h4 id="Querying-information-about-a-package-source"><i>Querying information about a package source</i></h4>
+</dd>
+<dt id="Querying-information-about-a-package-source">Querying information about a package source:</dt>
+<dd>
 
 <pre><code>$ pkgman info acl
 Name:         acl
@@ -876,7 +1022,9 @@ Description:  Access Control List filesystem support
 URL:          http://savannah.nongnu.org/projects/acl
 Dependencies: attr</code></pre>
 
-<h4 id="Searching-for-packages-sources-by-name"><i>Searching for packages sources by name</i></h4>
+</dd>
+<dt id="Searching-for-packages-sources-by-name">Searching for packages sources by name:</dt>
+<dd>
 
 <pre><code>$ pkgman search -vv glibc
 -- search ([i] = installed)
@@ -888,7 +1036,9 @@ $ pkgman search -vv --regex &#39;^(glib)c?$&#39;
 [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
 [i] glibc 2.32-5: GNU C Library</code></pre>
 
-<h4 id="Searching-for-packages-sources-by-words-in-their-description"><i>Searching for packages sources by words in their description</i></h4>
+</dd>
+<dt id="Searching-for-packages-sources-by-words-in-their-description">Searching for packages sources by words in their description:</dt>
+<dd>
 
 <pre><code>$ pkgman dsearch -vv archive
 -- search ([i] = installed)
@@ -897,7 +1047,9 @@ $ pkgman search -vv --regex &#39;^(glib)c?$&#39;
 [ ] unrar 6.0.7-1: Extracts RAR archives
 [ ] zip 3.0-1: Compression and file packaging/archive utility</code></pre>
 
-<h4 id="Viewing-dependency-lists"><i>Viewing dependency lists</i></h4>
+</dd>
+<dt id="Viewing-dependency-lists">Viewing dependency lists:</dt>
+<dd>
 
 <pre><code>$ pkgman dep bash
 readline
@@ -912,11 +1064,21 @@ $ pkgman dep bash --recursive --tree -vv
 [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
 [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library</code></pre>
 
-<h4 id="Installing-packages"><i>Installing packages</i></h4>
+</dd>
+<dt id="Installing-packages">Installing packages:</dt>
+<dd>
 
 <pre><code>$ pkgman install --deps xterm</code></pre>
 
-<p><b>Note</b>: The <code>install</code> command <b>DOES NOT</b> process dependencies without <b>--deps</b> option, and it&#39;s usually recommended to use <b>--deps</b> with <code>install</code>. It is also worth noting that <a href="pkgman.1.html">pkgman(1)</a> by default tries to install all the packages specified in the dependencies, and if one of the dependencies does not build, it will skip it, and go further. In the end, it will show the <code>build-failed packages</code> in the report. This behavior can have unexpected consequences if you install many programs with many dependencies at a time. Because, one dependency may not build, and affect the building of another dependency, and thereby affect the third, etc.</p>
+<dl>
+
+<dt id="Important3"><b>Important</b>:</dt>
+<dd>
+
+<p>The <code>install</code> command <b>DOES NOT</b> process dependencies without <b>--deps</b> option, and it&#39;s usually recommended to use <b>--deps</b> with <code>install</code>. It is also worth noting that <a href="pkgman.1.html">pkgman(1)</a> by default tries to install all the packages specified in the dependencies, and if one of the dependencies does not build, it will skip it, and go further. In the end, it will show the <code>build-failed packages</code> in the report. This behavior can have unexpected consequences if you install many programs with many dependencies at a time. Because, one dependency may not build, and affect the building of another dependency, and thereby affect the third, etc.</p>
+
+</dd>
+</dl>
 
 <p>We can tell <a href="pkgman.1.html">pkgman(1)</a> not to skip the fails, but to stop. Then we can fix the package build and start installation further.</p>
 
@@ -930,7 +1092,9 @@ $ pkgman dep bash --recursive --tree -vv
 
 <p>The option <b>--force</b> tell to <a href="pkgman.1.html">pkgman(1)</a> to skip installation of already installed package(s). It just ignores the package and installs next in the listed order. At the end of the installation procedure, all skipped packages will be in the report.</p>
 
-<h4 id="Viewing-and-updating-outdated-packages"><i>Viewing and updating outdated packages</i></h4>
+</dd>
+<dt id="Viewing-and-updating-outdated-packages">Viewing and updating outdated packages:</dt>
+<dd>
 
 <p>Since the packages sources for Zeppe-Lin are distributed via <a href="git.1.html">git(1)</a>, the first thing to do is to update the <code>pkgsrc</code> collections:</p>
 
@@ -961,37 +1125,37 @@ bindutils                                           9.16.8-1
 
 <pre><code>$ pkgman sysup --deps --depsort --group</code></pre>
 
-<h3 id="Configuration"><b>Configuration</b></h3>
+</dd>
+</dl>
+
+<h3 id="Configuration"><b>5.3.2. Configuration</b></h3>
 
 <p>pkgman&#39;s main configuration file, <i>/etc/pkgman.conf</i>, contains options that can be used to change pkgman&#39;s behavior. Notably in this file, the following options can be configured:</p>
 
-<dl>
+<ul>
 
-<dt id="pkgsrcdir"><b>pkgsrcdir</b></dt>
-<dd>
+<li><p><code>pkgsrcdir</code></p>
 
 <p>This option can occur multiple times and specifies a directory with a packages&#39; sources &quot;collection&quot; which <a href="pkgman.1.html">pkgman(1)</a> should check in its operation. By default, the <i>core</i> collection is enabled, but <i>system</i>, <i>xorg</i>, <i>desktop</i>, and <i>stuff</i> collections are commented.</p>
 
-</dd>
-<dt id="runscripts"><b>runscripts</b></dt>
-<dd>
+</li>
+<li><p><code>runscripts</code></p>
 
 <p>This option configures <a href="pkgman.1.html">pkgman(1)</a> to run <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and <code>post-remove</code> scripts if they exist in the package source directory. These scripts are run during <i>install</i>, <i>update</i>, <i>sysup</i>, and <i>remove</i> operations.</p>
 
 <p>It is recommended that this be enabled as in many cases if these scripts exist in a package source directory, it is required to be run for proper operation.</p>
 
-</dd>
-<dt id="logfile"><b>logfile</b></dt>
-<dd>
+</li>
+<li><p><code>logfile</code></p>
 
 <p>This option configures a file for pkgman to log its operation if desired.</p>
 
-</dd>
-</dl>
+</li>
+</ul>
 
 <p>This is <b>NOT</b> an exhaustive list of all of pkgman&#39;s commands, features, and configuration options, merely a starting point. More information can be found in <a href="pkgman.1.html">pkgman(1)</a> and <a href="pkgman.conf.5.html">pkgman.conf(5)</a>.</p>
 
-<h2 id="Creating-Packages">Creating Packages</h2>
+<h2 id="Creating-Packages">5.4. Creating Packages</h2>
 
 <p>Creating a package is done using <a href="pkgmk.8.html">pkgmk(8)</a>. This utility uses a file called <i>Pkgfile</i> (see <a href="Pkgfile.5.html">Pkgfile(5)</a> for more info), which contains information about the package (such as name, version, etc) and the commands that should be executed in order to compile the package in question. To be more specific, the <i>Pkgfile</i> file is actually a POSIX <a href="sh.1p.html">sh(1p)</a> script, which defines a number of variables (name, version, release, and source) and a function (build). Below is an example of what a <i>Pkgfile</i> file might look like. The example shows how to package the <a href="grep.1.html">grep(1)</a> utility. Some comments are inserted for explanation.</p>
 
@@ -1059,7 +1223,7 @@ build() {
         rm -rf $PKG/usr/info
 }</code></pre>
 
-<p>Note that the build() function in the example above is just an example of how grep is built. The contents of the function can differ significantly if the program is built in some other way, e.g. does not use <b>autoconf</b>.</p>
+<p>Note that the <code>build()</code> function in the example above is just an example of how grep is built. The contents of the function can differ significantly if the program is built in some other way, e.g. does not use <b>autoconf</b>.</p>
 
 <p>When the build() function has been executed, the <code>$PKG</code> directory will be made into a package named <i>name#version-release.pkg.tar.gz</i>. Before the package creation is completed, <a href="pkgmk.8.html">pkgmk(8)</a> will check the content of the package against the <i>.footprint</i> file. If this file does not exist, it will be created and the test will be skipped. The <i>.footprint</i> file will contain a list of all files that should be in the package if the build was successful or a list of all the files that were installed in <code>$PKG</code> (if the <i>.footprint</i> did not already exist). If there is a mismatch the test will fail and an error message will be printed. You should NOT write the <i>.footprint</i> file by hand. Instead, when a package has been upgraded and you need to update the contents of the <i>.footprint</i> file you simply do <code>pkgmk -uf</code>. This test ensures that a rebuild of the package turned out as expected.</p>
 
@@ -1067,7 +1231,7 @@ build() {
 
 <p>A detailed guideline is described in <a href="Pkgfile.5.html">Pkgfile(5)</a> manual page.</p>
 
-<h2 id="Adjusting-Configuring-the-Package-Build-Process">Adjusting/Configuring the Package Build Process</h2>
+<h2 id="Adjusting-Configuring-the-Package-Build-Process">5.5. Adjusting/Configuring the Package Build Process</h2>
 
 <p>Many settings of the package build process can be adjusted by editing the <a href="pkgmk.8.html">pkgmk(8)</a> configuration file <i>/etc/pkgmk.conf</i>. Some of these configurable settings include:</p>
 
@@ -1130,49 +1294,58 @@ build() {
 
 <p>There are a few more settings that can be found on the <a href="pkgmk.conf.5.html">pkgmk.conf(5)</a> manual page.</p>
 
-<h1 id="THE-PKGSRC-SYSTEM">THE PKGSRC SYSTEM</h1>
+<h1 id="THE-PKGSRC-SYSTEM">6.0. THE PKGSRC SYSTEM</h1>
 
-<h2 id="Introduction1">Introduction</h2>
+<h2 id="Introduction1">6.1. Introduction</h2>
 
-<h3 id="What-is-a-package-source"><b>What is a package source?</b></h3>
+<h3 id="What-is-a-package-source"><b>6.1.1. What is a package source?</b></h3>
 
 <p>A package source is a directory containing the files needed for building a package using <a href="pkgmk.8.html">pkgmk(8)</a>. This means that this directory at least has the files <i>Pkgfile</i> (which is the package build description) and <i>.footprint</i> (which is used for regression testing and contains a list of files this package is expected to contain once it is built). Further, a package source directory can contain patches and/or other files needed for building the package, even software sources. It is important to understand that the actual source code for the package is not necessarily present in the package source directory. Instead, the <i>Pkgfile</i> contains an URL that points to a location where the source can be downloaded.</p>
 
 <p>The use of the words &quot;package source&quot; in this context is borrowed from the NetBSD world, where a package refers to a set of files and building instructions that describe what&#39;s necessary to build a certain piece of software.</p>
 
-<h3 id="What-is-the-pkgsrc-repository"><b>What is the pkgsrc repository?</b></h3>
+<h3 id="What-is-a-pkgsrc-repository"><b>6.1.2. What is a pkgsrc repository?</b></h3>
 
 <p>The term <i>pkgsrc repository</i> refers to a remote repository containing packages&#39; sources: build scripts and files for building binary packages.</p>
 
-<h3 id="The-pkgsrc-collections"><b>The pkgsrc collections</b></h3>
+<h3 id="The-pkgsrc-collections"><b>6.1.3. The pkgsrc collections</b></h3>
 
 <p>Packages&#39; sources are organized in so-called collections. There are five different layers (or five categories) of packages.</p>
 
-<h4 id="core"><i><a href="https://github.com/zeppe-lin/pkgsrc-core">core</a></i></h4>
+<ul>
+
+<li><p><i>pkgsrc-core</i></p>
 
 <p>This collection contains build scripts and files for the packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
 <p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile">Makefile</a> in the collection root directory. This <i>Makefile</i> checks collection files for typical errors, including misconfigured dependencies, and is included in the other collections too. Also, see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding <b>system/pkgmaint</b> package for various package maintaining utilities. It will not be superfluous to mention <a href="revdep.1.html">revdep(1)</a>.</p>
 
-<h4 id="system"><i><a href="https://github.com/zeppe-lin/pkgsrc-system">system</a></i></h4>
+</li>
+<li><p><i>pkgsrc-system</i></p>
 
-<p>This collection contains build scripts and files for the packages required for minimal installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. Packages in this collection depend <b>only</b> on the <code>core</code> pkgsrc collection.</p>
+<p>This collection contains build scripts and files for the packages required for minimal installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. Packages in this collection depend <b>only</b> on the <code>pkgsrc-core</code> collection.</p>
 
-<h4 id="xorg"><i><a href="https://github.com/zeppe-lin/pkgsrc-xorg">xorg</a></i></h4>
+</li>
+<li><p><i>pkgsrc-xorg</i></p>
 
-<p>This collection contains build scripts and files for the packages required for X Window System applications. Packages in this collection depend on the <code>system</code> collection.</p>
+<p>This collection contains build scripts and files for the packages required for X Window System applications. Packages in this collection depend on the <code>pkgsrc-system</code> collection.</p>
 
-<h4 id="desktop"><i><a href="https://github.com/zeppe-lin/pkgsrc-desktop">desktop</a></i></h4>
+</li>
+<li><p><i>pkgsrc-desktop</i></p>
 
-<p>This collection contains build scripts and files for the packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. Packages in this collection depend on the <code>xorg</code> collection.</p>
+<p>This collection contains build scripts and files for the packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. Packages in this collection depend on the <code>pkgsrc-xorg</code> collection.</p>
 
-<h4 id="stuff"><i><a href="https://github.com/zeppe-lin/pkgsrc-stuff">stuff</a></i></h4>
+</li>
+<li><p><i>pkgsrc-stuff</i></p>
 
 <p>This collection contains build scripts and files for the packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above. Since this collection contains packages of different (often dubious) quality and purpose, we will not use it in the examples and warn you that if you can live without it - it&#39;s better to do so.</p>
 
-<h2 id="Using-The-Pkgsrc">Using The Pkgsrc</h2>
+</li>
+</ul>
 
-<h3 id="Synchronizing-your-local-pkgsrc-repository"><b>Synchronizing your local pkgsrc repository</b></h3>
+<h2 id="Using-The-Pkgsrc">6.2. Using The Pkgsrc</h2>
+
+<h3 id="Synchronizing-your-local-pkgsrc-repository"><b>6.2.1. Synchronizing your local pkgsrc repository</b></h3>
 
 <p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtain the collection you need the first time, use <code>git clone</code>. Example:</p>
 
@@ -1195,7 +1368,7 @@ build() {
 
 <p>It&#39;s maybe annoying to do these few steps every time you want to synchronize <code>pkgsrc</code> repositories. If so, just add these steps to your <a href="crond.8.html">crond(8)</a> daemon and sync your local repos once a week, for example.</p>
 
-<h3 id="Listing-local-pkgsrc-repositories"><b>Listing local pkgsrc repositories</b></h3>
+<h3 id="Listing-local-pkgsrc-repositories"><b>6.2.2. Listing local pkgsrc repositories</b></h3>
 
 <p>When the local pkgsrc repositories have been cloned/updated the directory <code>/usr/src/</code> will contain some <code>pkgsrc-???</code> directories.</p>
 
@@ -1208,35 +1381,7 @@ asciidoctor/      gdbm/          libpcre2/         py3-setuptools/
 attr/             gettext-tiny/  libpipeline/      python3/
 autoconf/         git/           libtirpc/         rc/
 automake/         glibc/         libtool/          rdate/
-bash/             glibc-32/      libunistring/     readline/
-bash-completion/  gperf/         libusb/           README.md
-bc/               grep/          libyaml/          rejmerge/
-binutils/         groff/         linux-pam/        revdep/
-bison/            gzip/          lz4/              ruby/
-bzip2/            hdparm/        lzo/              samurai/
-ca-certificates/  iana-etc/      m4/               sed/
-capstone/         inetutils/     make/             shadow/
-cmake/            intltool/      Makefile          sqlite3/
-COPYING           iproute2/      man-db/           start-stop-daemon/
-COPYRIGHT         iptables/      man-pages/        sudo/
-coreutils/        kbd/           man-pages-posix/  sysfsutils/
-cpio/             kmod/          meson/            sysklogd/
-curl/             less/          mlocate/          sysvinit/
-dash/             libarchive/    mpdecimal/        tar/
-db/               libbsd/        nasm/             tzdata/
-dcron/            libcap/        ncurses/          usbids/
-diffutils/        libcap-ng/     openssh/          usbutils/
-ed/               libdevmapper/  openssl/          util-linux/
-elfutils/         libffi/        p5-xml-parser/    vim/
-eudev/            libgmp/        patch/            wget/
-expat/            libmd/         pciutils/         which/
-fakeroot/         libmnl/        perl/             xz/
-file/             libmpc/        pkg-config/       zlib/
-filesystem/       libmpfr/       pkgman/           zstd/
-findutils/        libnfnetlink/  pkgmk/
-flex/             libnftnl/      pkgutils/
-gawk/             libnsl/        procps/
-$</code></pre>
+...</code></pre>
 
 <p>You can also use <a href="pkgman.1.html">pkgman(1)</a> with command <b>list</b> and option <b>--all</b> to list all local packages&#39; sources. Example:</p>
 
@@ -1248,7 +1393,15 @@ $</code></pre>
 [i] alsa-utils
 ...</code></pre>
 
-<p><b>Note</b>: <b>pkgman</b> will list the packages&#39; sources from all <code>pkgsrc</code> collections indicated in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code>.</p>
+<dl>
+
+<dt id="Note4"><b>Note</b>:</dt>
+<dd>
+
+<p><b>pkgman</b> will list the packages&#39; sources from all <code>pkgsrc</code> collections indicated in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code>.</p>
+
+</dd>
+</dl>
 
 <p>Add the <b>--path</b> option to see the package source location:</p>
 
@@ -1267,7 +1420,7 @@ $</code></pre>
 [ ] /usr/src/pkgsrc-system/alsa-ucm-conf
 [i] /usr/src/pkgsrc-system/alsa-utils</code></pre>
 
-<h3 id="Listing-version-differences"><b>Listing version differences</b></h3>
+<h3 id="Listing-version-differences"><b>6.2.3. Listing version differences</b></h3>
 
 <p>To find out if the <b>pkgsrc</b> repository carries packages that are different (likely newer) compared to the versions currently installed you can use <a href="pkgman-diff.1.html">pkgman-diff(1)</a>. If versions differences are found, the output could look like this:</p>
 
@@ -1300,9 +1453,17 @@ libncurses5-compat                                  android-ndk-bin
 <pre><code>$ pkgman diff
 No differences found</code></pre>
 
-<h3 id="Building-and-installing-packages"><b>Building and installing packages</b></h3>
+<h3 id="Building-and-installing-packages"><b>6.2.4. Building and installing packages</b></h3>
 
-<p><b>Note</b>: The recommended way is to use <a href="pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
+<dl>
+
+<dt id="Note5"><b>Note</b>:</dt>
+<dd>
+
+<p>The recommended way is to use <a href="pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
+
+</dd>
+</dl>
 
 <p>Once you have found a package that you want to build and install you simply go into the desired package source directory and use <a href="pkgmk.8.html">pkgmk(8)</a> to build it. Example:</p>
 
@@ -1315,6 +1476,7 @@ No differences found</code></pre>
         <tr>
             <th>WARNING</th>
         </tr>
+
         <tr>
             <td>
                 It is often not a good idea to build the packages with
@@ -1323,7 +1485,7 @@ No differences found</code></pre>
                 overwrite system files.
             </td>
         </tr>
-  </table>
+    </table>
 
 <p>If you will build packages with non-root privileges, the installed files will have user permissions. This is wrong, both in terms of security and distribution of these packages. It is better to use <a href="fakeroot.1.html">fakeroot(1)</a>, to run <a href="pkgmk.8.html">pkgmk(8)</a> in an environment faking root privileges. Example:</p>
 
@@ -1335,7 +1497,7 @@ No differences found</code></pre>
 
 <pre><code># pkgadd gawk#3.1.5-3.pkg.tar.gz</code></pre>
 
-<h3 id="Build-packages-as-an-unprivileged-user"><b>Build packages as an unprivileged user</b></h3>
+<h3 id="Build-packages-as-an-unprivileged-user"><b>6.2.5. Build packages as an unprivileged user</b></h3>
 
 <p>It is already done in the default Zeppe-Lin distribution. The packages <code>core/filesystem</code>, <code>core/pkgmk</code>, and <code>core/pkgman</code> have corresponding configurations. However, it does not hurt to describe how to achieve this, so that you will know how it is done in Zeppe-Lin or if you would like to adjust default settings.</p>
 
@@ -1360,7 +1522,7 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <pre><code>makecommand sudo -H -u pkgmk fakeroot pkgmk</code></pre>
 
-<h3 id="Renice-pkgmks-child-process"><b>Renice pkgmk&#39;s child process</b></h3>
+<h3 id="Renice-pkgmks-child-process"><b>6.2.6. Renice pkgmk&#39;s child process</b></h3>
 
 <p>If you keep using your computer while compiling packages you will notice that your box is much less responsive than usual. This is caused by having two <code>groups</code> of processes with the same nice priority: your usual running tasks on one side, and <a href="pkgman.1.html">pkgman(1)</a> (and its child processes) on the other. Now, if you could renice <a href="pkgman.1.html">pkgman(1)</a> and its children to a higher nice (i.e. lower priority!) value (default is 0), compiling would inevitably take somewhat longer, but you could use your workstation without noticing much difference to its usual performance.</p>
 
@@ -1368,7 +1530,7 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <pre><code>makecommand sudo -H -u pkgmk nice -n10 ionice -c2 -n6 fakeroot pkgmk</code></pre>
 
-<h3 id="Build-in-ram"><b>Build in ram</b></h3>
+<h3 id="Build-in-ram"><b>6.2.7. Build in ram</b></h3>
 
 <p>By default, Zeppe-Lin already has <code>pkgmk</code> user and <i>/etc/fstab</i>&#39;s entry for this. Just edit <i>/etc/fstab</i>&#39;s <code>pkgmk</code> entry, remove <code>-pipe</code> from <i>/etc/pkgmk.conf</i>, and type <code>mount pkgmk</code>.</p>
 
@@ -1400,9 +1562,9 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <p>Remove <code>-pipe</code> from all your <code>CFLAGS</code> and <code>CXXFLAGS</code>.</p>
 
-<h1 id="CONFIGURATION">CONFIGURATION</h1>
+<h1 id="CONFIGURATION">7. CONFIGURATION</h1>
 
-<h2 id="Generating-locales">Generating locales</h2>
+<h2 id="Generating-Locales">7.1. Generating Locales</h2>
 
 <p><b>glibc</b> does not contain all possible locales, thus you&#39;ll have to generate the locales you need/use. To ensure the proper operation of <a href="pkgmk.8.html">pkgmk(8)</a>, the locale <code>C.UTF-8</code> is generated as part of the <b>glibc</b> package. Any other desired locales must be created by the administrator.</p>
 
@@ -1412,9 +1574,9 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <p>To use this locale system-wide, add <code>export LANG=en_US.UTF-8</code> to <i>/etc/profile</i>.</p>
 
-<h2 id="Initialization-Scripts">Initialization Scripts</h2>
+<h2 id="Initialization-Scripts">7.2. Initialization Scripts</h2>
 
-<h3 id="Runlevels"><b>Runlevels</b></h3>
+<h3 id="Runlevels"><b>7.2.1. Runlevels</b></h3>
 
 <p>The following runlevels are used in Zeppe-Lin (defined in <i>/etc/inittab</i>):</p>
 
@@ -1429,7 +1591,7 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <p>See <a href="inittab.5.html">inittab(5)</a> for more information about runlevels.</p>
 
-<h3 id="Layout"><b>Layout</b></h3>
+<h3 id="Layout"><b>7.2.2. Layout</b></h3>
 
 <p>The initialization scripts used in Zeppe-Lin follow the BSD-style (as opposed to the SysV-style) and have the following layout:</p>
 
@@ -1476,9 +1638,9 @@ PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
 
 <p>Modify <i>/etc/rc.modules</i>, <i>/etc/rc.local</i>, and <i>/etc/rc.conf</i> according to your needs. See <a href="rc.conf.5.html">rc.conf(5)</a> and <a href="rc.8.html">rc(8)</a> for more information about <i>rc.conf</i> configuration file and initialization scripts.</p>
 
-<h2 id="Network-configuration">Network configuration</h2>
+<h2 id="Network-Configuration">7.3. Network Configuration</h2>
 
-<h3 id="Static-address"><b>Static address</b></h3>
+<h3 id="Static-address"><b>7.3.1. Static address</b></h3>
 
 <p>The network configuration is found in the RC script <i>/etc/rc.d/net</i>. To enable this service you need to add <code>net</code> to the <code>SERVICES</code> string in <i>/etc/rc.conf</i>. By default, this RC script configures a static IP address. Example:</p>
 
@@ -1526,14 +1688,14 @@ nameserver &lt;your DNS server&gt;
 
 # End of file.</code></pre>
 
-<h3 id="Dynamic-address"><b>Dynamic address</b></h3>
+<h3 id="Dynamic-address"><b>7.3.2. Dynamic address</b></h3>
 
 <p>If you want to configure your system to use a dynamic IP address, install the <code>dhcpcd</code> package, edit and run <i>/etc/rc.d/dhcpcd</i> service:</p>
 
 <pre><code># $EDITOR /etc/rc.d/dhcpcd
 # /etc/rc.d/dhcpcd start</code></pre>
 
-<h3 id="Wireless-network"><b>Wireless network</b></h3>
+<h3 id="Wireless-network"><b>7.3.3. Wireless network</b></h3>
 
 <p>Before using wireless networking, use <a href="rfkill.8.html">rfkill(8)</a> to check whether the relevant interfaces are soft- or hard-blocked:</p>
 
@@ -1567,13 +1729,13 @@ nameserver &lt;your DNS server&gt;
     auth_alg=SHARED
 }</code></pre>
 
-<h2 id="Passwords">Passwords</h2>
+<h2 id="Passwords">7.4. Passwords</h2>
 
 <p>Zeppe-Lin uses <code>SHA512</code> passwords by default. To change the password encryption method set the <code>ENCRYPT_METHOD</code> variable in <i>/etc/login.defs</i> to <code>DES</code>, <code>MD5</code>, or <code>SHA256</code>.</p>
 
 <p>Furthermore, when compiling programs that use the <a href="crypt.3.html">crypt(3)</a> function to authenticate users you should make sure that these programs are linked against the <b>libcrypt</b> library (i.e. use <code>-lcrypt</code> when linking) which contains the <code>SHA512</code> version of the crypt function (this version is backward compatible and understands <code>DES</code> passwords as well).</p>
 
-<h1 id="REPORTING-BUGS">REPORTING BUGS</h1>
+<h1 id="REPORTING-BUGS">8. REPORTING BUGS</h1>
 
 <p>For bug reports, use the issue tracker at: <a href="https://github.com/zeppe-lin/handbook/issues">https://github.com/zeppe-lin/handbook/issues</a>.</p>
 
