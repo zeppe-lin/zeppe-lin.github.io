@@ -106,6 +106,7 @@ h1 {
 
 h2 {
   color: #9eaf55;
+  /*color: #af5571;*/
 }
 
 h3 {
@@ -113,7 +114,9 @@ h3 {
 }
 
 h4 {
-  color: #559eaf;
+  color: #8ebf78;
+  /*color: #af9355;*/
+  /*color: #5571af;*/
 }
 
 p {
@@ -236,11 +239,11 @@ ul#index li + li {
 }
 
 ul#index li li a {
-  /*padding-left: 2rem;*/
+  /*padding-left: -4rem;*/
 }
 
 ul#index li li li a {
-  /*padding-left: 3rem;*/
+  /*padding-left: -4rem;*/
 }
 
 #index a:hover {
