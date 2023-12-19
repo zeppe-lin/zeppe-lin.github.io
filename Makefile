@@ -24,6 +24,11 @@ handbook.7.html:
 	@$(MAKE) --quiet -C ${HANDBOOK} clean
 	@sed -i "/<link rel=\"stylesheet\" .*/a <link rel=\"shortcut icon\" href=\"${FAVICON_URL}\">" $@
 
+handbook.7.pdf:
+	@$(MAKE) --quiet -C ${HANDBOOK} pdf
+	@cp -f ${HANDBOOK}/handbook.7.pdf ${CURDIR}
+	@$(MAKE) --quiet -C ${HANDBOOK} clean
+
 check:
 	@echo "=======> Check URLs for response code"
 	@grep -Eiho "https?://[^\"\\'>< ]+" *.*  \
