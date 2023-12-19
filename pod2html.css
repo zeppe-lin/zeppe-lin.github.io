@@ -105,15 +105,15 @@ h1 {
 }
 
 h2 {
-  color: #71af55;
-}
-
-h3 {
   color: #9eaf55;
 }
 
+h3 {
+  color: #71af55;
+}
+
 h4 {
-  color: #9355af;
+  color: #559eaf;
 }
 
 p {
@@ -150,7 +150,8 @@ pre code {
 }
 
 a {
-  color: hsl(0, 51%, 51%);
+  color: #af6655;
+  /*color: hsl(0, 51%, 51%);*/
   text-decoration: none;
 }
 a:hover {
@@ -172,6 +173,7 @@ a:hover {
   }
 
   a {
+    /*color: #af6655; (too pale, used in dark mode)*/
     color: hsl(0, 51%, 51%);
   }
   a:hover {
