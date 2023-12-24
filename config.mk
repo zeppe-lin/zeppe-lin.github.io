@@ -120,6 +120,7 @@ MANS = \
        /usr/share/man/man1/sdiff.1.gz                             \
        /usr/share/man/man1/dash.1.gz                              \
        /usr/share/man/man1/bash.1.gz                              \
+       /usr/share/man/man1/tar.1.gz                               \
 
 # path to the output (generated) html files
 DESTDIR = ${CURDIR}/www
