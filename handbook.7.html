@@ -117,7 +117,7 @@
       </li>
       <li><a href="#Using-The-Pkgsrc">6.2. Using The Pkgsrc</a>
         <ul>
-          <li><a href="#Synchronizing-your-local-pkgsrc-repository">6.2.1. Synchronizing your local pkgsrc repository</a></li>
+          <li><a href="#Synchronizing-your-local-pkgsrc-repositories">6.2.1. Synchronizing your local pkgsrc repositories</a></li>
           <li><a href="#Listing-local-pkgsrc-repositories">6.2.2. Listing local pkgsrc repositories</a></li>
           <li><a href="#Listing-version-differences">6.2.3. Listing version differences</a></li>
           <li><a href="#Building-and-installing-packages">6.2.4. Building and installing packages</a></li>
@@ -183,7 +183,7 @@
 
 <h2 id="Why-use-Zeppe-Lin">2.2. Why use Zeppe-Lin?</h2>
 
-<p>In short, <b>Zeppe-Lin</b> might suit you very well if you are:</p>
+<p>In short, Zeppe-Lin might suit you very well if you are:</p>
 
 <ul>
 
@@ -530,7 +530,7 @@ If you setup to build packages in RAM:
 (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg
 (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
 
-<p>Edit <i>/etc/pkgman.conf</i> (see <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information) and enable the collections you cloned. By default, only <code>core</code> collection is enabled. Also, you may like to edit <i>/etc/pkgmk.conf</i> (see <a href="pkgmk.conf.5.html">pkgmk.conf(5)</a> for more information).</p>
+<p>Edit <i>/etc/pkgman.conf</i> (see <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information) and enable the collections you cloned. By default, only <code>pkgsrc-core</code> collection is enabled. Also, you may like to edit <i>/etc/pkgmk.conf</i> (see <a href="pkgmk.conf.5.html">pkgmk.conf(5)</a> for more information).</p>
 
 <h2 id="Update-The-Base-System">4.8. Update The Base System</h2>
 
@@ -1153,7 +1153,7 @@ bindutils                                           9.16.8-1
 </li>
 </ul>
 
-<p>This is <b>NOT</b> an exhaustive list of all of pkgman&#39;s commands, features, and configuration options, merely a starting point. More information can be found in <a href="pkgman.1.html">pkgman(1)</a> and <a href="pkgman.conf.5.html">pkgman.conf(5)</a>.</p>
+<p>This is <b>NOT</b> an exhaustive list of all of pkgman&#39;s commands, features, and configuration options, merely a starting point. More information can be found in <a href="pkgman.1.html">pkgman(1)</a> and <a href="pkgman.conf.5.html">pkgman.conf(5)</a> manual pages.</p>
 
 <h2 id="Creating-Packages">5.4. Creating Packages</h2>
 
@@ -1345,7 +1345,7 @@ build() {
 
 <h2 id="Using-The-Pkgsrc">6.2. Using The Pkgsrc</h2>
 
-<h3 id="Synchronizing-your-local-pkgsrc-repository"><b>6.2.1. Synchronizing your local pkgsrc repository</b></h3>
+<h3 id="Synchronizing-your-local-pkgsrc-repositories"><b>6.2.1. Synchronizing your local pkgsrc repositories</b></h3>
 
 <p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtain the collection you need the first time, use <code>git clone</code>. Example:</p>
 
@@ -1355,9 +1355,9 @@ build() {
 # git clone https://github.com/zeppe-lin/pkgsrc-xorg
 # git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
 
-<p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default, only <code>core</code> collection is enabled. See <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
+<p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default, only <code>pkgsrc-core</code> collection is enabled. See <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
 
-<p>To bring your local <code>core</code> collection up to date use <code>git pull</code>. Example:</p>
+<p>To bring your local collections up to date use <code>git pull</code>. Example:</p>
 
 <pre><code># git -C /usr/src/pkgsrc-core     pull
 # git -C /usr/src/pkgsrc-system   pull
@@ -1702,13 +1702,13 @@ nameserver &lt;your DNS server&gt;
 <pre><code>$ rfkill list
 # rfkill unblock &lt;ID|TYPE&gt;</code></pre>
 
-<p>Next, install the <code>wpa-supplicant</code> package. It includes utilities to configure wireless interfaces and handle wireless security protocols. To use <code>wpa_supplicant</code>, you will need to enable <i>/etc/rc.d/wpa_supplicant</i> service.</p>
+<p>Next, install the <code>wpa-supplicant</code> package. It includes utilities to configure wireless interfaces and handle wireless security protocols. To use <code>wpa_supplicant</code>, you will need to edit (specify your wireless interface) and enable <i>/etc/rc.d/wpa_supplicant</i> service.</p>
 
 <p>To use <b>WPA-PSK</b>, generate a pre-shared key with <a href="wpa_passphrase.8.html">wpa_passphrase(8)</a> and append the output to the <i>/etc/wpa_supplicant.conf</i> file:</p>
 
 <pre><code># wpa_passphrase &lt;MYSSID&gt; &lt;PASSPHRASE&gt; &gt;&gt; /etc/wpa_supplicant.conf</code></pre>
 
-<p>Then, edit and run the following service files: <i>/etc/rc.d/wpa_supplicant</i>, <i>/etc/rc.d/dhcpcd</i>.</p>
+<p>Then edit and run the following service files: <i>/etc/rc.d/wpa_supplicant</i>, <i>/etc/rc.d/dhcpcd</i>.</p>
 
 <pre><code># $EDITOR /etc/rc.d/wpa_supplicant
 # $EDITOR /etc/rc.d/dhcpcd

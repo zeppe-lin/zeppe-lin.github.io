@@ -39,7 +39,8 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Print list of duplicate packages in the packages sources
     directories. It looks in all directories specified in
-    <span class="Pa">/etc/pkgman.conf</span> as &#x201C;pkgsrcdir&#x201D;.</p>
+    <span class="Pa">/etc/pkgman.conf</span> as &#x201C;pkgsrcdir&#x201D;
+    argument.</p>
 <p class="Pp">The default <var class="Ar">format</var> string is &#x201C;%p1 %v1
     %c %p2 %v2\n&#x201D;.</p>
 <p class="Pp">The options are as follows:</p>
@@ -48,10 +49,12 @@
   <dd>Prefer higher installed versions over lower ones in the packages sources
       directories.</dd>
   <dt id="strict-diff"><a class="permalink" href="#strict-diff"><code class="Fl">--strict-diff</code></a></dt>
-  <dd>Override <code class="Fl">-preferhigher</code> configuration
-    settings.</dd>
+  <dd>Override <code class="Fl">--prefer-higher</code> command-line option or
+      <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
+      configuration setting in <span class="Pa">pkgman.conf</span>.</dd>
   <dt><var class="Ar">format</var></dt>
   <dd>The string that contain variables, which are replaced like this:
+    <p class="Pp"></p>
     <table class="Bl-column Bl-compact">
       <tr id="Variable">
         <td><a class="permalink" href="#Variable"><b class="Sy">Variable</b></a></td>
@@ -84,8 +87,9 @@
           &#x201C;!=&#x201D;</td>
       </tr>
     </table>
-    Use &#x201C;\n&#x201D; and &#x201C;\t&#x201D; to format your output. No
-      additional format specifier is supported.</dd>
+    <p class="Pp">Use &#x201C;\n&#x201D; and &#x201C;\t&#x201D; to format your
+        output. No additional format specifier is supported.</p>
+  </dd>
 </dl>
 </section>
 </div>

@@ -111,7 +111,9 @@
     <code class="Fl">--output</code>=<var class="Ar">initramfs</var></dt>
   <dd>Specify an alternate output file where initramfs image will be stored
       instead of the default
-      <span class="Pa">/tmp/mkinitramfs-</span>&quot;<code class="Li">kernel_version</code>&quot;</dd>
+      <span class="Pa">mkinitramfs-</span>&quot;<code class="Li">kernel_version</code>&quot;
+      directory, created in <code class="Ev">TMPDIR</code> or (if unavailable)
+      in <span class="Pa">/tmp</span> directory.</dd>
   <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
     <code class="Fl">--version</code></dt>
   <dd>Print version and exit.</dd>

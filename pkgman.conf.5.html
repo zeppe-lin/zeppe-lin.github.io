@@ -148,6 +148,33 @@ pkgsrcdir /usr/src/pkgsrc-desktop:mpv,ffmpeg</pre>
     <a class="permalink" href="#format"><i class="Em" id="format">format</i></a></dt>
   <dd>The string that contains a path to the log file, where all occurrences of
       next characters will be replaced by corresponding items:
+    <p class="Pp"></p>
+    <table class="Bl-column Bl-compact">
+      <tr id="Variable">
+        <td><a class="permalink" href="#Variable"><b class="Sy">Variable</b></a></td>
+        <td><a class="permalink" href="#Description"><b class="Sy" id="Description">Description</b></a></td>
+      </tr>
+      <tr>
+        <td>%n</td>
+        <td>package name</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>%p</td>
+        <td>package path</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>%v</td>
+        <td>package version</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>%r</td>
+        <td>package release number</td>
+        <td></td>
+      </tr>
+    </table>
     <p class="Pp">Example:
         &#x201C;<code class="Li">/var/log/pkgbuild/%n.log</code>&#x201D;</p>
     <p class="Pp">Unset by default.</p>

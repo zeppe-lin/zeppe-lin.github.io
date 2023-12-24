@@ -51,7 +51,7 @@
   Exceptions</a></h2>
 <p class="Pp">In POSIX sh, &#x201C;<code class="Li">local</code>&#x201D; is
     undefined. You can adopt some convention to avoid accidentally overwriting
-    variable names, e.g., prefixing with the function name:</p>
+    variable names, e.g. prefixing with the function name:</p>
 <div class="Bd Pp Bd-indent Li">
 <pre>build() {
         _build_foo=&quot;bar&quot;
@@ -73,12 +73,12 @@
 <section class="Ss">
 <h2 class="Ss" id="General_Guidelines"><a class="permalink" href="#General_Guidelines">General
   Guidelines</a></h2>
-<p class="Pp">The name of a package should always be lowercase (e.g.,
+<p class="Pp">The name of a package should always be lowercase (e.g.
     &#x201C;name=eterm&#x201D; and not &#x201C;name=Eterm&#x201D;). Dashes are
     also allowed.</p>
 <p class="Pp" id="/usr/src/pkgsrc-???/eterm">In case the package is added to the
     packages sources tree the exact same name should be used for the name of the
-    directory in the packages sources structure (e.g.,
+    directory in the packages sources structure (e.g.
     <a class="permalink" href="#/usr/src/pkgsrc-???/eterm"><i class="Em">/usr/src/pkgsrc-???/eterm</i></a>).</p>
 <p class="Pp">Do not combine several separately distributed programs/libraries
     into one package. Make several packages instead.</p>
@@ -141,15 +141,15 @@
 <h2 class="Ss" id="Junk_Files"><a class="permalink" href="#Junk_Files">Junk
   Files</a></h2>
 <p class="Pp">Packages should not contain &#x201C;junk files&#x201D;. This
-    includes info pages and other online documentation, man pages excluded
-    (e.g., &#x201C;/usr/share/doc&#x201D;, &#x201C;README&#x201D;,
+    includes info pages and other online documentation, man pages excluded (e.g.
+    &#x201C;/usr/share/doc&#x201D;, &#x201C;README&#x201D;,
     &#x201C;*.info&#x201D;, &#x201C;*.html&#x201D;, etc).</p>
 <p class="Pp">Also should be removed:</p>
 <ul class="Bl-bullet">
   <li>Files related to NLS (National Language Support), always use
       &#x201C;--disable-nls&#x201D; and similar build options when available and
       remove <span class="Pa">/usr/share/locale</span> when not.</li>
-  <li>Useless or obsolete binaries (e.g.,
+  <li>Useless or obsolete binaries (e.g.
       <span class="Pa">/usr/games/banner</span> and
       <span class="Pa">/sbin/mkfs.minix</span>).</li>
 </ul>
