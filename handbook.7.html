@@ -103,7 +103,7 @@
         </ul>
       </li>
       <li><a href="#Creating-Packages">5.4. Creating Packages</a></li>
-      <li><a href="#Adjusting-Configuring-the-Package-Build-Process">5.5. Adjusting/Configuring the Package Build Process</a></li>
+      <li><a href="#Configuring-the-Package-Build-Process">5.5. Configuring the Package Build Process</a></li>
     </ul>
   </li>
   <li><a href="#THE-PKGSRC-SYSTEM">6.0. THE PKGSRC SYSTEM</a>
@@ -967,9 +967,9 @@ modutils   sbin/lsmod</code></pre>
 
 <pre><code>$ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
 drwxr-xr-x      root/root       usr/
-drwxr-xr-x      root/root       usr/share/
 drwxr-xr-x      root/root       usr/bin/
 -rwxr-xr-x      root/root       usr/bin/xkill
+drwxr-xr-x      root/root       usr/share/
 drwxr-xr-x      root/root       usr/share/man/
 drwxr-xr-x      root/root       usr/share/man/man1/
 -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz</code></pre>
@@ -1231,9 +1231,9 @@ build() {
 
 <p>A detailed guideline is described in <a href="Pkgfile.5.html">Pkgfile(5)</a> manual page.</p>
 
-<h2 id="Adjusting-Configuring-the-Package-Build-Process">5.5. Adjusting/Configuring the Package Build Process</h2>
+<h2 id="Configuring-the-Package-Build-Process">5.5. Configuring the Package Build Process</h2>
 
-<p>Many settings of the package build process can be adjusted by editing the <a href="pkgmk.8.html">pkgmk(8)</a> configuration file <i>/etc/pkgmk.conf</i>. Some of these configurable settings include:</p>
+<p>Many settings of the package build process can be configured by editing the <i>/etc/pkgmk.conf</i> configuration file. Some of these configurable settings include:</p>
 
     <table>
         <tr>
