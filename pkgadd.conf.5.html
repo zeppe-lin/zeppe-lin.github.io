@@ -41,27 +41,48 @@
     the package.</p>
 <p class="Pp" id="pkgadd.conf"><a class="permalink" href="#pkgadd.conf"><b class="Sy">pkgadd.conf</b></a>
     file contain rules, that are built out of three fragments:
-    <i class="Em">EVENT</i>, <i class="Em">PATTERN</i> and
-    <i class="Em">ACTION</i>. The <i class="Em">EVENT</i> describes in what kind
+    <b class="Sy">Event</b>, <b class="Sy">Pattern</b> and
+    <b class="Sy">Action</b>. The <b class="Sy">Event</b> describes in what kind
     of situation this rule applies. Currently there are two types of events:
-    <b class="Sy">UPGRADE</b> and <b class="Sy">INSTALL</b>.
-    <b class="Sy">UPGRADE</b> rules are applied when a package is installed over
-    an existing version, and <b class="Sy">INSTALL</b> rules are applied in any
-    case. The <i class="Em">PATTERN</i> is a regular expression. The
-    <i class="Em">ACTION</i> applicable to both the <b class="Sy">UPGRADE</b>
-    and <b class="Sy">INSTALL</b> event is
-    <a class="permalink" href="#YES"><b class="Sy" id="YES">YES</b></a> and
-    <a class="permalink" href="#NO"><b class="Sy" id="NO">NO</b></a>. More than
-    one rule of the same <i class="Em">EVENT</i> type is allowed, in which case
+    <i class="Em">UPGRADE</i> and <i class="Em">INSTALL</i>.
+    <i class="Em">UPGRADE</i> rules are applied when a package is installed over
+    an existing version, and <i class="Em">INSTALL</i> rules are applied in any
+    case. The <b class="Sy">Pattern</b> is a regular expression. The
+    <b class="Sy">Action</b> applicable to both the <i class="Em">UPGRADE</i>
+    and <i class="Em">INSTALL</i> event is
+    <a class="permalink" href="#YES"><i class="Em" id="YES">YES</i></a> and
+    <a class="permalink" href="#NO"><i class="Em" id="NO">NO</i></a>. More than
+    one rule of the same <b class="Sy">Event</b> type is allowed, in which case
     the first rule will have the lowest priority and the last rule will have the
     highest priority.</p>
 <p class="Pp">For example:</p>
-<div class="Bd Pp Bd-indent Li">
-<pre>UPGRADE        ^etc/.*$                   NO
-UPGRADE        ^var/log/.*$               NO
-UPGRADE        ^etc/X11/.*$               YES
-UPGRADE        ^etc/X11/XF86Config$       NO</pre>
-</div>
+<table class="Bl-column">
+  <tr id="Event">
+    <td><a class="permalink" href="#Event"><b class="Sy">Event</b></a></td>
+    <td><a class="permalink" href="#Pattern"><b class="Sy" id="Pattern">Pattern</b></a></td>
+    <td><a class="permalink" href="#Action"><b class="Sy" id="Action">Action</b></a></td>
+  </tr>
+  <tr>
+    <td>UPGRADE</td>
+    <td>^etc/.*$</td>
+    <td>NO</td>
+  </tr>
+  <tr>
+    <td>UPGRADE</td>
+    <td>^var/log/.*$</td>
+    <td>NO</td>
+  </tr>
+  <tr>
+    <td>UPGRADE</td>
+    <td>^etc/X11/.*$</td>
+    <td>YES</td>
+  </tr>
+  <tr>
+    <td>UPGRADE</td>
+    <td>^etc/X11/XF86Config$</td>
+    <td>NO</td>
+  </tr>
+</table>
 <p class="Pp">The above example will cause
     <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> to never upgrade anything
     in <span class="Pa">/etc</span> or <span class="Pa">/var/log</span>
@@ -70,9 +91,10 @@ UPGRADE        ^etc/X11/XF86Config$       NO</pre>
     <span class="Pa">/etc/X11/XF86Config</span>. The default rule is to
     upgrade/install everything, rules in this file are exceptions to that
   rule.</p>
-<p class="Pp">Note that the <i class="Em">PATTERN</i> should never contain an
-    initial slash (&#x2018;<code class="Li">/</code>&#x2019;) since you are
-    referring to the files in the package, not the files on the disk.</p>
+<p class="Pp" id="Important"><a class="permalink" href="#Important"><b class="Sy">Important</b></a>:
+    The <b class="Sy">Pattern</b> should never contain an initial slash
+    (&#x2018;<code class="Li">/</code>&#x2019;) since you are referring to the
+    files in the package, not the files on the disk.</p>
 <p class="Pp">If <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> finds that a
     specific file should not be upgraded it will install it under
     <span class="Pa">/var/lib/pkg/rejected/</span>. The user is then free to
@@ -102,6 +124,8 @@ UPGRADE        ^etc/X11/XF86Config$       NO</pre>
 #
 # See pkgadd.conf(5) for more information.
 #
+
+# &lt;Event&gt;      &lt;Pattern&gt;                  &lt;Action&gt;
 
 # Default rule (implicit)
 #UPGRADE       ^.*$                       YES
