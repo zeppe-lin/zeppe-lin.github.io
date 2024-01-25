@@ -4,10 +4,10 @@
    t
        Title: cryptsetup
       Author: [see the "AUTHOR(S)" section]
-   Generator: Asciidoctor 2.0.18
-        Date: 2023-02-09
+   Generator: Asciidoctor 2.0.20
+        Date: 2024-01-16
       Manual: Maintenance Commands
-      Source: cryptsetup 2.6.1
+      Source: cryptsetup 2.7.0
     Language: English
    -->
 <head>
@@ -44,7 +44,7 @@
     visible and vulnerable to damage.</p>
 <p class="Pp">In addition, cryptsetup provides limited support for the use of
     loop-AES volumes, TrueCrypt, VeraCrypt, BitLocker and FileVault2 compatible
-    volumes.</p>
+    volumes, and for hardware-based encryption on OPAL capable drives.</p>
 <p class="Pp">For more information about specific cryptsetup action see
     <b>cryptsetup-&lt;action&gt;</b>(8), where <b>&lt;action&gt;</b> is the name
     of the cryptsetup action.</p>
@@ -481,15 +481,45 @@
   <br/>
   See <b>cryptsetup-open</b>(8).</p>
 </section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SED_(SELF_ENCRYPTING_DRIVE)_OPAL_EXTENSION"><a class="permalink" href="#SED_(SELF_ENCRYPTING_DRIVE)_OPAL_EXTENSION">SED
+  (SELF ENCRYPTING DRIVE) OPAL EXTENSION</a></h1>
+<p class="Pp">cryptsetup supports using native hardware encryption on drives
+    that provide an <b>OPAL</b> interface, both nested with <b>dm-crypt</b> and
+    standalone. Passphrases, tokens and metadata are stored using the LUKS2
+    header format, and are thus compatible with any software or system that uses
+    LUKS2 (e.g.: tokens).</p>
+<p class="Pp"><b>WARNING:</b> this support is new and experimental, and requires
+    at least kernel v6.4. Resizing devices is not supported.</p>
+<p class="Pp"><b>--hw-opal</b> can be specified for OPAL + dm-crypt, and
+    <b>--hw-opal-only</b> can be specified to use OPAL only, without a dm-crypt
+    layer.</p>
+<p class="Pp">Opening, closing and enrolling tokens work in the same way as with
+    LUKS2 and dm-crypt. The new parameters are only necessary when formatting,
+    the LUKS2 metadata will ensure the right setup is performed when opening or
+    closing. If no <b>subsystem</b> is specified, it will be automatically set
+    to <b>HW-OPAL</b> so that it is immediately apparent when a device uses
+    OPAL.</p>
 <section class="Ss">
-<h2 class="Ss" id="DUMP~4"><a class="permalink" href="#DUMP~4">DUMP</a></h2>
-<p class="Pp"><b>fvault2Dump &lt;device&gt;</b></p>
-<p class="Pp">Dump the header information of an FVAULT2 device.
-  <br/>
-  See <b>cryptsetup-fvault2Dump</b>(8).</p>
-<p class="Pp">Note that cryptsetup does not use any macOS code or proprietary
-    specifications. Please report all problems related to this compatibility
-    extension to the cryptsetup project.</p>
+<h2 class="Ss" id="FORMAT~2"><a class="permalink" href="#FORMAT~2">FORMAT</a></h2>
+<p class="Pp"><b>luksFormat --type luks2 --hw-opal &lt;device&gt; [&lt;key
+    file&gt;]</b></p>
+<p class="Pp">Additionally specify <b>--hw-opal-only</b> instead of
+    <b>--hw-opal</b> to avoid the dm-crypt layer. Other than the usual
+    passphrase, an admin password will have to be specified when formatting the
+    first partition of the drive, and will have to be re-supplied when
+    formatting any other partition until a factory reset is performed.</p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="ERASE~2"><a class="permalink" href="#ERASE~2">ERASE</a></h2>
+<p class="Pp"><b>erase &lt;device&gt;</b></p>
+<p class="Pp">Securely erase a partition or device. Requires admin password.
+    Additionally specify <b>--hw-opal-factory-reset</b> for a FULL factory reset
+    of the drive, using the drive&#x2019;s <b>PSID</b> (typically printed on the
+    label) instead of the admin password. <b>WARNING</b>: a factory reset will
+    cause ALL data on the device to be lost, regardless of the partition it is
+    ran on, if any, and regardless of any LUKS2 header backup.</p>
 </section>
 </section>
 <section class="Sh">
@@ -721,10 +751,14 @@
     device. All activation and deactivation of this device stack is performed by
     cryptsetup, there is no difference in using <b>luksOpen</b> for integrity
     protected devices. If you want to format LUKS2 device with data integrity
-    protection, use <b>--integrity</b> option.</p>
-<p class="Pp">Since dm-integrity doesn&#x2019;t support discards (TRIM),
-    dm-crypt device on top of it inherits this, so integrity protection mode
-    doesn&#x2019;t support discards either.</p>
+    protection, use <b>--integrity</b> option (see
+    <b>cryptsetup-luksFormat(8)</b>).</p>
+<p class="Pp">Albeit Linux kernel 5.7 added TRIM support for standalone
+    dm-integrity devices, <b>cryptsetup(8)</b> can&#x2019;t offer support for
+    discards (TRIM) in authenticated encryption mode, because the underlying
+    dm-crypt kernel module does not support this functionality when dm-integrity
+    is used as auth tag space allocator (see <b>--allow-discards</b> in
+    <b>cryptsetup-luksFormat(8)</b>).</p>
 <p class="Pp">Some integrity modes requires two independent keys (key for
     encryption and for authentication). Both these keys are stored in one LUKS
     keyslot.</p>
@@ -810,8 +844,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date"><b>2023-02-09</b></td>
-    <td class="foot-os"><b>cryptsetup 2.6.1</b></td>
+    <td class="foot-date"><b>2024-01-16</b></td>
+    <td class="foot-os"><b>cryptsetup 2.7.0</b></td>
   </tr>
 </table>
 </body>
