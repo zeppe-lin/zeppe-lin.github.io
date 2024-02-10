@@ -651,12 +651,11 @@
     <p class="Pp"></p>
   </dd>
   <dt id="unwrap"><a class="permalink" href="#unwrap"><b>--unwrap</b></a></dt>
-  <dd>This command is similar to <b>--decrypt</b> with the difference that the
-      output is not the usual plaintext but the original message with the
-      encryption layer removed. Thus the output will be an OpenPGP data
-      structure which often means a signed OpenPGP message. Note that this
-      option may or may not remove a compression layer which is often found
-      beneath the encryption layer.
+  <dd>This option modifies the command <b>--decrypt</b> to output the original
+      message with the encryption layer removed. Thus the output will be an
+      OpenPGP data structure which often means a signed OpenPGP message. Note
+      that this option may or may not remove a compression layer which is often
+      found beneath the encryption layer.
     <p class="Pp"></p>
   </dd>
   <dt id="tofu-policy"><a class="permalink" href="#tofu-policy"><b>--tofu-policy
@@ -1616,16 +1615,6 @@
     <p class="Pp">On Windows systems it is possible to install GnuPG as a
         portable application. In this case only this command line option is
         considered, all other ways to set a home directory are ignored.</p>
-    <p class="Pp">To install GnuPG as a portable application under Windows,
-        create an empty file named &#x2018;<i>gpgconf.ctl</i>&#x2019; in the
-        same directory as the tool &#x2018;<i>gpgconf.exe</i>&#x2019;. The root
-        of the installation is then that directory; or, if
-        &#x2018;<i>gpgconf.exe</i>&#x2019; has been installed directly below a
-        directory named &#x2018;<i>bin</i>&#x2019;, its parent directory. You
-        also need to make sure that the following directories exist and are
-        writable: &#x2018;<i>ROOT/home</i>&#x2019; for the GnuPG home and
-        &#x2018;<i>ROOT/var/cache/gnupg</i>&#x2019; for internal cache
-      files.</p>
     <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
@@ -2650,6 +2639,11 @@
       final clean step after merging the imported key into the existing key.
     <p class="Pp"></p>
   </dd>
+  <dt id="ignore-attributes"><a class="permalink" href="#ignore-attributes"><b>ignore-attributes</b></a></dt>
+  <dd>Ignore all attribute user IDs (photo IDs) and their signatures while
+      importing a key.
+    <p class="Pp"></p>
+  </dd>
   <dt id="repair-keys"><a class="permalink" href="#repair-keys"><b>repair-keys</b></a></dt>
   <dd>After import, fix various problems with the keys. For example, this
       reorders signatures, and strips duplicate signatures. Defaults to yes.
@@ -2813,6 +2807,14 @@
       (drop-sig)
     <p class="Pp"></p>
   </dd>
+  <dt id="sig_expires"><a class="permalink" href="#sig_expires"><b>sig_expires</b></a></dt>
+  <dd></dd>
+  <dt id="sig_expires_d"><a class="permalink" href="#sig_expires_d"><b>sig_expires_d</b></a></dt>
+  <dd>The expiration time of a signature packet or 0 if it does not expire. The
+      second is the same but given as an ISO date string or an empty string e.g.
+      &quot;2038-01-19&quot;.
+    <p class="Pp"></p>
+  </dd>
   <dt id="sig_algo"><a class="permalink" href="#sig_algo"><b>sig_algo</b></a></dt>
   <dd>A number with the public key algorithm of a signature packet. (drop-sig)
     <p class="Pp"></p>
@@ -2952,6 +2954,11 @@
       printing of the fingerprint for all subkeys. This could also be achieved
       by using the <b>--with-fingerprint</b> twice but by using this option
       along with keyid-format &quot;none&quot; a compact fingerprint is printed.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="with-v5-fingerprint"><a class="permalink" href="#with-v5-fingerprint"><b>--with-v5-fingerprint</b></a></dt>
+  <dd>In a colon mode listing emit &quot;fp2&quot; lines for version 4 OpenPGP
+      keys having a v5 style fingerprint of the key.
     <p class="Pp"></p>
   </dd>
   <dt id="with-icao-spelling"><a class="permalink" href="#with-icao-spelling"><b>--with-icao-spelling</b></a></dt>
@@ -5004,9 +5011,10 @@ $ gpg --import-ownertrust otrust.lst</pre>
     <i>algo</i>:<i>fpr</i> [sensitive]</b></a></dt>
   <dd>Add a designated revoker to the generated key. Algo is the public key
       algorithm of the designated revoker (i.e. RSA=1, DSA=17, etc.) <i>fpr</i>
-      is the fingerprint of the designated revoker. The optional
-      &#x2018;sensitive&#x2019; flag marks the designated revoker as sensitive
-      information. Only v4 keys may be designated revokers.
+      is the fingerprint of the designated revoker. <i>fpr</i> may not contain
+      spaces or colons. The optional &#x2018;sensitive&#x2019; flag marks the
+      designated revoker as sensitive information. Only v4 and v5 keys may be
+      designated revokers.
     <p class="Pp"></p>
   </dd>
   <dt id="Keyserver:"><a class="permalink" href="#Keyserver:"><b>Keyserver:
@@ -5141,8 +5149,8 @@ ssb   elg1024 2016-12-16 [E]</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-06-21</td>
-    <td class="foot-os">GnuPG 2.4.3</td>
+    <td class="foot-date">2024-01-25</td>
+    <td class="foot-os">GnuPG 2.4.4</td>
   </tr>
 </table>
 </body>
