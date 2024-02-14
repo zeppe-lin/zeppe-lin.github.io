@@ -156,6 +156,12 @@
     list</i></a></dt>
   <dd>Use objects named in <i>list</i> as auditors. The objects in <i>list</i>
       are delimited by colons.</dd>
+  <dt id="glibc-hwcaps-mask"><a class="permalink" href="#glibc-hwcaps-mask"><b>--glibc-hwcaps-mask</b><i>
+    list</i></a></dt>
+  <dd>only search built-in subdirectories if in <i>list</i>.</dd>
+  <dt id="glibc-hwcaps-prepend"><a class="permalink" href="#glibc-hwcaps-prepend"><b>--glibc-hwcaps-prepend</b><i>
+    list</i></a></dt>
+  <dd>Search glibc-hwcaps subdirectories in <i>list</i>.</dd>
   <dt id="inhibit"><a class="permalink" href="#inhibit"><b>--inhibit-cache</b></a></dt>
   <dd>Do not use <i>/etc/ld.so.cache</i>.</dd>
   <dt id="library"><a class="permalink" href="#library"><b>--library-path</b><i>
@@ -171,9 +177,14 @@
       objects in <i>list</i> are delimited by colons or spaces.</dd>
   <dt id="list"><a class="permalink" href="#list"><b>--list</b></a></dt>
   <dd>List all dependencies and how they are resolved.</dd>
-  <dt><b>--list-tunables</b> (since glibc 2.33)</dt>
-  <dd>Print the names and values of all tunables, along with the minimum and
-      maximum allowed values.</dd>
+  <dt><b>--list-diagnostics</b> (since glibc 2.33)</dt>
+  <dd>Print system diagnostic information in a machine-readable format, such as
+      some internal loader variables, the auxiliary vector (see
+      <b>getauxval</b>(3)), and the environment variables. On some
+      architectures, the command might print additional information (like the
+      cpu features used in GNU indirect function selection on x86).
+      <b>--list-tunables</b> (since glibc 2.33) Print the names and values of
+      all tunables, along with the minimum and maximum allowed values.</dd>
   <dt id="preload"><a class="permalink" href="#preload"><b>--preload</b>
     <i>list</i> (since glibc 2.30)</a></dt>
   <dd>Preload the objects specified in <i>list</i>. The objects in <i>list</i>
@@ -208,10 +219,13 @@
     does not even see the definitions. Some of these environment variables
     affect the operation of the dynamic linker itself, and are described below.
     Other environment variables treated in this way include: <b>GCONV_PATH</b>,
-    <b>GETCONF_DIR</b>, <b>HOSTALIASES</b>, <b>LOCALDOMAIN</b>, <b>LOCPATH</b>,
-    <b>MALLOC_TRACE</b>, <b>NIS_PATH</b>, <b>NLSPATH</b>,
-    <b>RESOLV_HOST_CONF</b>, <b>RES_OPTIONS</b>, <b>TMPDIR</b>, and
-    <b>TZDIR</b>.</p>
+    <b>GETCONF_DIR</b>, <b>HOSTALIASES</b>, <b>LOCALDOMAIN</b>, <b>LD_AUDIT</b>,
+    <b>LD_DEBUG</b>, <b>LD_DEBUG_OUTPUT</b>, <b>LD_DYNAMIC_WEAK</b>,
+    <b>LD_HWCAP_MASK</b>, <b>LD_LIBRARY_PATH</b>, <b>LD_ORIGIN_PATH</b>,
+    <b>LD_PRELOAD</b>, <b>LD_PROFILE</b>, <b>LD_SHOW_AUXV</b>,
+    <b>LOCALDOMAIN</b>, <b>LOCPATH</b>, <b>MALLOC_TRACE</b>, <b>NIS_PATH</b>,
+    <b>NLSPATH</b>, <b>RESOLV_HOST_CONF</b>, <b>RES_OPTIONS</b>, <b>TMPDIR</b>,
+    and <b>TZDIR</b>.</p>
 <p class="Pp">A binary is executed in secure-execution mode if the
     <b>AT_SECURE</b> entry in the auxiliary vector (see <b>getauxval</b>(3)) has
     a nonzero value. This entry may have a nonzero value for various reasons,
@@ -235,7 +249,7 @@
   following:</p>
 <dl class="Bl-tag">
   <dt id="LD_ASSUME_KERNEL"><a class="permalink" href="#LD_ASSUME_KERNEL"><b>LD_ASSUME_KERNEL</b>
-    (since glibc 2.2.3)</a></dt>
+    (from glibc 2.2.3 to glibc 2.36)</a></dt>
   <dd>Each shared object can inform the dynamic linker of the minimum kernel ABI
       version that it requires. (This requirement is encoded in an ELF note
       section that is viewable via <i>readelf&#x00A0;-n</i> as a section labeled
@@ -480,8 +494,9 @@
 </dl>
 <dl class="Bl-tag">
   <dt id="LD_HWCAP_MASK"><a class="permalink" href="#LD_HWCAP_MASK"><b>LD_HWCAP_MASK</b>
-    (since glibc 2.1)</a></dt>
-  <dd>Mask for hardware capabilities.</dd>
+    (from glibc 2.1 to glibc 2.38)</a></dt>
+  <dd>Mask for hardware capabilities. Since glibc 2.26, the option might be
+      ignored if glibc does not support tunables.</dd>
   <dt id="LD_ORIGIN_PATH"><a class="permalink" href="#LD_ORIGIN_PATH"><b>LD_ORIGIN_PATH</b>
     (since glibc 2.1)</a></dt>
   <dd>Path where the binary is found.</dd>
@@ -511,8 +526,8 @@
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
-  <dd>Since glibc 2.2.5, <b>LD_PROFILE</b> is ignored in secure-execution
-    mode.</dd>
+  <dd>Since glibc 2.2.5, <b>LD_PROFILE</b> uses a different default path in
+      secure-execution mode.</dd>
 </dl>
 <dl class="Bl-tag">
   <dt id="LD_PROFILE_OUTPUT"><a class="permalink" href="#LD_PROFILE_OUTPUT"><b>LD_PROFILE_OUTPUT</b>
@@ -524,9 +539,7 @@
 <dl class="Bl-tag">
   <dt></dt>
   <dd><b>LD_PROFILE_OUTPUT</b> is ignored in secure-execution mode; instead
-      <i>/var/profile</i> is always used. (This detail is relevant only before
-      glibc 2.2.5, since in later glibc versions, <b>LD_PROFILE</b> is also
-      ignored in secure-execution mode.)</dd>
+      <i>/var/profile</i> is always used.</dd>
 </dl>
 <dl class="Bl-tag">
   <dt id="LD_SHOW_AUXV"><a class="permalink" href="#LD_SHOW_AUXV"><b>LD_SHOW_AUXV</b>
@@ -542,13 +555,13 @@
 </dl>
 <dl class="Bl-tag">
   <dt id="LD_TRACE_PRELINKING"><a class="permalink" href="#LD_TRACE_PRELINKING"><b>LD_TRACE_PRELINKING</b>
-    (since glibc 2.4)</a></dt>
+    (from glibc 2.4 to glibc 2.35)</a></dt>
   <dd>If this environment variable is defined, trace prelinking of the object
       whose name is assigned to this environment variable. (Use <b>ldd</b>(1) to
       get a list of the objects that might be traced.) If the object name is not
       recognized, then all prelinking activity is traced.</dd>
   <dt id="LD_USE_LOAD_BIAS"><a class="permalink" href="#LD_USE_LOAD_BIAS"><b>LD_USE_LOAD_BIAS</b>
-    (since glibc 2.3.3)</a></dt>
+    (from glibc 2.3.3 to glibc 2.35)</a></dt>
   <dd>By default (i.e., if this variable is not defined), executables and
       prelinked shared objects will honor base addresses of their dependent
       shared objects and (nonprelinked) position-independent executables (PIEs)
@@ -617,8 +630,8 @@
 <section class="Sh">
 <h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
 <section class="Ss">
-<h2 class="Ss" id="Hardware_capabilities"><a class="permalink" href="#Hardware_capabilities">Hardware
-  capabilities</a></h2>
+<h2 class="Ss" id="Legacy_Hardware_capabilities_(from_glibc_2.5_to_glibc_2.37)"><a class="permalink" href="#Legacy_Hardware_capabilities_(from_glibc_2.5_to_glibc_2.37)">Legacy
+  Hardware capabilities (from glibc 2.5 to glibc 2.37)</a></h2>
 <p class="Pp">Some shared objects are compiled using hardware-specific
     instructions which do not exist on every CPU. Such objects should be
     installed in directories whose names define the required hardware
@@ -647,6 +660,45 @@
   <dd>acpi, apic, clflush, cmov, cx8, dts, fxsr, ht, i386, i486, i586, i686,
       mca, mmx, mtrr, pat, pbe, pge, pn, pse36, sep, ss, sse, sse2, tm</dd>
 </dl>
+<p class="Pp">The legacy hardware capabilities support has the drawback that
+    each new feature added grows the search path exponentially, because it has
+    to be added to every combination of the other existing features.</p>
+<p class="Pp">For instance, on x86 32-bit, if the hardware supports <b>i686</b>
+    and <b>sse2</b>, the resulting search path will be
+    <b>i686/sse2:i686:sse2:.</b>. A new capability <b>newcap</b> will set the
+    search path to
+    <b>newcap/i686/sse2:newcap/i686:newcap/sse2:newcap:i686/sse2:i686:sse2:</b>.</p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="glibc_Hardware_capabilities_(from_glibc_2.33)"><a class="permalink" href="#glibc_Hardware_capabilities_(from_glibc_2.33)">glibc
+  Hardware capabilities (from glibc 2.33)</a></h2>
+<dl class="Bl-tag">
+  <dt id="glibc"><a class="permalink" href="#glibc">glibc 2.33 added a new
+    hardware capability scheme,</a></dt>
+  <dd>where under each CPU architecture, certain levels can be defined, grouping
+      support for certain features or special instructions. Each architecture
+      level has a fixed set of paths that it adds to the dynamic linker search
+      list, depending on the hardware of the machine. Since each new
+      architecture level is not combined with previously existing ones, the new
+      scheme does not have the drawback of growing the dynamic linker search
+      list uncontrollably.</dd>
+</dl>
+<p class="Pp">For instance, on x86 64-bit, if the hardware supports
+    <b>x86_64-v3</b> (for instance Intel Haswell or AMD Excavator), the
+    resulting search path will be
+    <b>glibc-hwcaps/x86-64-v3:glibc-hwcaps/x86-64-v2:.</b> The following paths
+    are currently supported, in priority order.</p>
+<dl class="Bl-tag">
+  <dt><b>PowerPC (64-bit little-endian only)</b></dt>
+  <dd>power10, power9</dd>
+  <dt><b>s390 (64-bit only)</b></dt>
+  <dd>z16, z15, z14, z13</dd>
+  <dt id="x86~2"><a class="permalink" href="#x86~2"><b>x86 (64-bit
+    only)</b></a></dt>
+  <dd>x86-64-v4, x86-64-v3, x86-64-v2</dd>
+</dl>
+<p class="Pp">glibc 2.37 removed support for the legacy hardware
+  capabilities.</p>
 </section>
 </section>
 <section class="Sh">
@@ -660,8 +712,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-07-18</td>
-    <td class="foot-os">Linux man-pages 6.05.01</td>
+    <td class="foot-date">2024-02-12</td>
+    <td class="foot-os">Linux man-pages 6.06</td>
   </tr>
 </table>
 </body>

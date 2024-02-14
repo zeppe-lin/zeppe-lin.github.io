@@ -60,7 +60,8 @@
 <dl class="Bl-tag">
   <dt id="size"><a class="permalink" href="#size"><b>size</b>=<i>bytes</i></a></dt>
   <dd>Specify an upper limit on the size of the filesystem. The size is given in
-      bytes, and rounded up to entire pages.</dd>
+      bytes, and rounded up to entire pages. The limit is removed if the size is
+      <b>0</b>.</dd>
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
@@ -86,7 +87,8 @@
   <dt id="nr_inodes"><a class="permalink" href="#nr_inodes"><b>nr_inodes</b>=<i>inodes</i></a></dt>
   <dd>The maximum number of inodes for this instance. The default is half of the
       number of your physical RAM pages, or (on a machine with highmem) the
-      number of lowmem RAM pages, whichever is smaller.</dd>
+      number of lowmem RAM pages, whichever is smaller. The limit is removed if
+      the number is <b>0</b>.</dd>
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
@@ -94,6 +96,10 @@
       <b>size</b>, but not a % suffix.</dd>
 </dl>
 <dl class="Bl-tag">
+  <dt id="noswap"><a class="permalink" href="#noswap"><b>noswap</b>(since Linux
+    6.4)</a></dt>
+  <dd>Disables swap. Remounts must respect the original settings. By default
+      swap is enabled.</dd>
   <dt id="mode"><a class="permalink" href="#mode"><b>mode</b>=<i>mode</i></a></dt>
   <dd>Set initial permissions of the root directory.</dd>
   <dt id="gid"><a class="permalink" href="#gid"><b>gid</b>=<i>gid</i> (since
@@ -202,8 +208,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-07-28</td>
-    <td class="foot-os">Linux man-pages 6.05.01</td>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.06</td>
   </tr>
 </table>
 </body>
