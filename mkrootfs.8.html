@@ -29,7 +29,7 @@
 <table class="Nm">
   <tr>
     <td><code class="Nm">mkrootfs</code></td>
-    <td>[<code class="Fl">-BCTv</code>] [<code class="Fl">-c</code>
+    <td>[<code class="Fl">-BCTVhv</code>] [<code class="Fl">-c</code>
       <var class="Ar">conffile</var>] [<code class="Fl">-l</code>
       <var class="Ar">logfile</var>] [<code class="Fl">-r</code>
       <var class="Ar">rootfsdir</var>] [<code class="Fl">-t</code>
@@ -39,27 +39,13 @@
       ...</var>]</td>
   </tr>
 </table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">mkrootfs</code></td>
-    <td>[<code class="Fl">-V</code>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">mkrootfs</code></td>
-    <td>[<code class="Fl">-h</code>]</td>
-  </tr>
-</table>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">The <code class="Nm">mkrootfs</code> utility builds customized
     root filesystem for chroot installation. By default,
     <code class="Nm">mkrootfs</code> builds and installs all packages from
-    &#x201C;core pkgsrc collection&#x201D;, unless
+    &#x201C;core&#x201D; pkgsrc collection, unless
     <var class="Ar">pkgname</var>(s) specified.</p>
 <p class="Pp">The options are as follows:</p>
 <dl class="Bl-tag">

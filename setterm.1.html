@@ -5,9 +5,9 @@
        Title: setterm
       Author: [see the "AUTHOR(S)" section]
    Generator: Asciidoctor 2.0.20
-        Date: 2023-11-21
+        Date: 2024-05-01
       Manual: User Commands
-      Source: util-linux 2.39.3
+      Source: util-linux 2.40.1
     Language: English
    -->
 <head>
@@ -207,6 +207,12 @@
 <div class="Bd-indent">Print version and exit.</div>
 </section>
 <section class="Sh">
+<h1 class="Sh" id="WARNING"><a class="permalink" href="#WARNING">WARNING</a></h1>
+<p class="Pp">Use of <b>setterm</b> in combination with stdout redirection can
+    have unexpected results, as some options operate on stdin. To prevent
+    problems, always redirect both stdin and stdout to the same device.</p>
+</section>
+<section class="Sh">
 <h1 class="Sh" id="COMPATIBILITY"><a class="permalink" href="#COMPATIBILITY">COMPATIBILITY</a></h1>
 <p class="Pp">Since version 2.25 <b>setterm</b> has support for long options
     with two hyphens, for example <b>--help</b>, beside the historical long
@@ -241,8 +247,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-11-21</td>
-    <td class="foot-os">util-linux 2.39.3</td>
+    <td class="foot-date">2024-05-01</td>
+    <td class="foot-os">util-linux 2.40.1</td>
   </tr>
 </table>
 </body>

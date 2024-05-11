@@ -556,6 +556,14 @@ If you setup to build packages in RAM:
 
 <pre><code>(chrooted) # rejmerge</code></pre>
 
+<p>And it&#39;s a good idea to check which packages need to be rebuilt:</p>
+
+<pre><code>(chrooted) # revdep</code></pre>
+
+<p>If <b>revdep(1)</b> showed anything rebuild them as follows:</p>
+
+<pre><code>(chrooted) # pkgman update -fr --depsort `revdep`</code></pre>
+
 <h2 id="Install-essential-packages">4.9. Install essential packages</h2>
 
 <p>Let&#39;s install all the necessary packages for the so-called workstation:</p>

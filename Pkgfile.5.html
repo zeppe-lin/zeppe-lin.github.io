@@ -62,13 +62,14 @@
     supported in many shells, including
     <a class="Xr" href="bash.1.html">bash(1)</a>,
     <a class="Xr" href="ksh.1.html">ksh(1)</a>,
-    <a class="Xr" href="dash.1.html">dash(1)</a> (which is used in Zeppe-Lin),
-    and BusyBox' <a class="Xr" href="ash.1.html">ash(1)</a>. So, strictly
-    speaking, it's not POSIX, but since quite a lot of real world shells support
-    this feature, prefixing variables is little ugly, and finding bugs with
-    overwriting variables is a big headache for developers, it was decided to
-    allow &quot;<code class="Li">local</code>&quot;. In the end, the choice is
-    yours to use or not.</p>
+    <a class="Xr" href="dash.1.html">dash(1)</a> (which is used in Zeppe-Lin as
+    default <span class="Pa">/bin/sh</span> provider), and BusyBox'
+    <a class="Xr" href="ash.1.html">ash(1)</a>. So, strictly speaking, it's not
+    POSIX, but since quite a lot of real world shells support this feature,
+    prefixing variables is little ugly, and finding bugs with overwriting
+    variables is a big headache for developers, it was decided to allow
+    &quot;<code class="Li">local</code>&quot;. In the end, the choice is yours
+    to use or not.</p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="General_Guidelines"><a class="permalink" href="#General_Guidelines">General
@@ -426,8 +427,7 @@ esac
     for <a class="Lk" href="http://crux.nu">CRUX</a>.</p>
 <p class="Pp">This implementation was extensively re-worked and adapted for
     <a class="Lk" href="http://zeppel.ink">Zeppe-Lin</a> by
-  <br/>
-  <span class="An">Alexandr Savca</span>
+    <span class="An">Alexandr Savca</span>
     &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
 </section>
 </div>

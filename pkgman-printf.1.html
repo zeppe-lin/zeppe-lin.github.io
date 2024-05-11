@@ -32,7 +32,7 @@
     <td><code class="Cm">printf</code>
       [<code class="Fl">--sort</code>=<var class="Ar">format</var>]
       [<code class="Fl">--regex</code>]
-      [<code class="Fl">--filter</code>=<var class="Ar">pkgname</var>]
+      [<code class="Fl">--filter</code>=<var class="Ar">expr</var>]
       <var class="Ar">format</var></td>
   </tr>
 </table>
@@ -51,9 +51,9 @@
   <dt id="regex"><a class="permalink" href="#regex"><code class="Fl">--regex</code></a></dt>
   <dd>Interpret <code class="Fl">--filter</code> argument as a regular
       expression.</dd>
-  <dt id="filter"><a class="permalink" href="#filter"><code class="Fl">--filter</code></a>=<var class="Ar">pkgname</var></dt>
-  <dd>Filter listing packages by name. The <code class="Fl">--filter</code>
-      argument may be the string, wildcard in
+  <dt id="filter"><a class="permalink" href="#filter"><code class="Fl">--filter</code></a>=<var class="Ar">expr</var></dt>
+  <dd>Filter listing package names by <var class="Ar">expr</var>. The
+      <code class="Fl">--filter</code> argument may be the string, wildcard in
       <a class="Xr" href="fnmatch.3.html">fnmatch(3)</a> format, or regex in
       <a class="Xr" href="regex.3.html">regex(3)</a> format.</dd>
   <dt><var class="Ar">format</var></dt>

@@ -65,23 +65,23 @@
   <dd>affect symbolic links instead of any referenced file (useful only on
       systems that can change the ownership of a symlink)</dd>
   <dt id="from"><a class="permalink" href="#from"><b>--from</b>=<i>CURRENT_OWNER</i>:CURRENT_GROUP</a></dt>
-  <dd>change the owner and/or group of each file only if its current owner
-      and/or group match those specified here. Either may be omitted, in which
-      case a match is not required for the omitted attribute</dd>
+  <dd>change the ownership of each file only if its current owner and/or group
+      match those specified here. Either may be omitted, in which case a match
+      is not required for the omitted attribute</dd>
   <dt id="no"><a class="permalink" href="#no"><b>--no-preserve-root</b></a></dt>
   <dd>do not treat '/' specially (the default)</dd>
   <dt id="preserve"><a class="permalink" href="#preserve"><b>--preserve-root</b></a></dt>
   <dd>fail to operate recursively on '/'</dd>
   <dt id="reference"><a class="permalink" href="#reference"><b>--reference</b>=<i>RFILE</i></a></dt>
-  <dd>use RFILE's owner and group rather than specifying OWNER:GROUP values.
-      RFILE is always dereferenced.</dd>
+  <dd>use RFILE's ownership rather than specifying values RFILE is always
+      dereferenced if a symbolic link.</dd>
   <dt id="R"><a class="permalink" href="#R"><b>-R</b>,
     <b>--recursive</b></a></dt>
   <dd>operate on files and directories recursively</dd>
 </dl>
 <p class="Pp">The following options modify how a hierarchy is traversed when the
     <b>-R</b> option is also specified. If more than one is specified, only the
-    final one takes effect.</p>
+    final one takes effect. '-P' is the default.</p>
 <dl class="Bl-tag">
   <dt id="H"><a class="permalink" href="#H"><b>-H</b></a></dt>
   <dd>if a command line argument is a symbolic link to a directory, traverse
@@ -89,7 +89,7 @@
   <dt id="L"><a class="permalink" href="#L"><b>-L</b></a></dt>
   <dd>traverse every symbolic link to a directory encountered</dd>
   <dt id="P"><a class="permalink" href="#P"><b>-P</b></a></dt>
-  <dd>do not traverse any symbolic links (default)</dd>
+  <dd>do not traverse any symbolic links</dd>
   <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
   <dd>display this help and exit</dd>
   <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
@@ -127,7 +127,7 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
-<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+<p class="Pp">Copyright &#x00A9; 2024 Free Software Foundation, Inc. License
     GPLv3+: GNU GPL version 3 or later
     &lt;https://gnu.org/licenses/gpl.html&gt;.
   <br/>
@@ -146,8 +146,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">August 2023</td>
-    <td class="foot-os">GNU coreutils 9.4</td>
+    <td class="foot-date">March 2024</td>
+    <td class="foot-os">GNU coreutils 9.5</td>
   </tr>
 </table>
 </body>

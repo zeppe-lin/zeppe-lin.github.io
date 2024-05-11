@@ -5,9 +5,9 @@
        Title: fstab
       Author: [see the "AUTHOR(S)" section]
    Generator: Asciidoctor 2.0.20
-        Date: 2023-12-01
+        Date: 2024-05-01
       Manual: File formats
-      Source: util-linux 2.39.3
+      Source: util-linux 2.40.1
     Language: English
    -->
 <head>
@@ -41,6 +41,11 @@
     and maintain this file. The order of records in <b>fstab</b> is important
     because <b>fsck</b>(8), <b>mount</b>(8), and <b>umount</b>(8) sequentially
     iterate through <b>fstab</b> doing their thing.</p>
+<p class="Pp">The file is not read by <b>mount</b>(8) only but often is used by
+    many other tools and daemons, and proper functionality may require
+    additional steps. For example, on systemd-based systems, it&#x2019;s
+    recommended to use <b>systemctl daemon-reload</b> after <b>fstab</b>
+    modification.</p>
 <p class="Pp">Each filesystem is described on a separate line. Fields on each
     line are separated by tabs or spaces. Lines starting with '#' are comments.
     Blank lines are ignored.</p>
@@ -169,6 +174,9 @@
 <p class="Pp">The keyword <b>ignore</b> as a filesystem type (3rd field) is no
     longer supported by the pure libmount based mount utility (since util-linux
     v2.22).</p>
+<p class="Pp">This document describes handling of <b>fstab</b> by
+    <b>util-linux</b> and <b>libmount</b>. For <b>systemd</b>, read
+    <b>systemd</b> documentation. There are slight differences.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
@@ -196,8 +204,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-12-01</td>
-    <td class="foot-os">util-linux 2.39.3</td>
+    <td class="foot-date">2024-05-01</td>
+    <td class="foot-os">util-linux 2.40.1</td>
   </tr>
 </table>
 </body>

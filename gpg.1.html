@@ -721,8 +721,8 @@
         gpg will figure them out and creates an OpenPGP key consisting of the
         usual primary key and one subkey. This works only with certain
         smartcards. Note that the interactive <b>--full-gen-key</b> command
-        allows to do the same but with greater flexibility in the selection of
-        the smartcard keys.</p>
+        allows one to do the same but with greater flexibility in the selection
+        of the smartcard keys.</p>
     <p class="Pp">Note that it is possible to create a primary key and a subkey
         using non-default algorithms by using ``default'' and changing the
         default parameters using the option <b>--default-new-key-algo</b>.</p>
@@ -1279,19 +1279,22 @@
 <dl class="Bl-tag">
   <dt id="default-key"><a class="permalink" href="#default-key"><b>--default-key
     <i>name</i></b></a></dt>
-  <dd>Use <i>name</i> as the default key to sign with. If this option is not
-      used, the default key is the first key found in the secret keyring. Note
-      that <b>-u</b> or <b>--local-user</b> overrides this option. This option
-      may be given multiple times. In this case, the last key for which a secret
-      key is available is used. If there is no secret key available for any of
-      the specified values, GnuPG will not emit an error message but continue as
-      if this option wasn't given.
+  <dd>Use <i>name</i> as the default key to sign with. It is suggested to use a
+      fingerprint or at least a long keyID for <i>name</i>. If this option is
+      not used, the default key is the first key found in the secret keyring.
+      Note that <b>-u</b> or <b>--local-user</b> overrides this option. This
+      option may be given multiple times. In this case, the last key for which a
+      secret key is available is used. If there is no secret key available for
+      any of the specified values, GnuPG will not emit an error message but
+      continue as if this option wasn't given.
+    <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
   <dt id="default-recipient"><a class="permalink" href="#default-recipient"><b>--default-recipient
     <i>name</i></b></a></dt>
   <dd>Use <i>name</i> as default recipient if option <b>--recipient</b> is not
-      used and don't ask if this is a valid one. <i>name</i> must be non-empty.
+      used and don't ask if this is a valid one. <i>name</i> must be non-empty
+      and it is suggested to use a fingerprint for <i>name</i>.
     <p class="Pp"></p>
   </dd>
   <dt id="default-recipient-self"><a class="permalink" href="#default-recipient-self"><b>--default-recipient-self</b></a></dt>
@@ -1781,7 +1784,10 @@
       don't want to keep your secret keys (or one of them) online but still want
       to be able to check the validity of a given recipient's or signator's key.
       If the given key is not locally available but an LDAP keyserver is
-      configured the missing key is imported from that server.
+      configured the missing key is imported from that server. The value
+      &quot;none&quot; is explicitly allowed to distinguish between the use of
+      any trusted-key option and no use of this option at all (e.g. due to the
+      <b>--no-options</b> option).
     <p class="Pp"></p>
   </dd>
   <dt id="add-desig-revoker"><a class="permalink" href="#add-desig-revoker"><b>--add-desig-revoker
@@ -1915,6 +1921,28 @@
       if and only if a signature has been encountered, is valid, and the key
       matches one of the fingerprints given by this option.
     <p class="Pp"></p>
+  </dd>
+  <dt id="assert-pubkey-algo"><a class="permalink" href="#assert-pubkey-algo"><b>--assert-pubkey-algo
+    <i>algolist</i></b></a></dt>
+  <dd>During data signature verification this options checks whether the used
+      public key algorithm matches the algorithms given by <i>algolist</i>. This
+      option can be given multiple times to concatenate more algorithms to the
+      list; the delimiter of the list are either commas or spaces.
+    <p class="Pp">The algorithm names given in the list may either be verbatim
+        names like &quot;ed25519&quot; with an optional leading single equal
+        sign, or being prefixed with &quot;&gt;&quot;, &quot;&gt;=&quot;,
+        &quot;&lt;=&quot;, or &quot;&lt;&quot;. That prefix operator is applied
+        to the number part of the algorithm name; for example 2048 in
+        &quot;rsa2048&quot; or 384 in &quot;brainpoolP384r1&quot;. If the the
+        leading non-digits in the name matches, the prefix operator is used to
+        compare the number part, a trailing suffix is ignored in this case. For
+        example an algorithm list &quot;&gt;rsa3000, &gt;=brainpool384r1,
+        =ed25519&quot; allows RSA signatures with more that 3000 bits, Brainpool
+        curves 384 and 512, and the ed25519 algorithm.</p>
+    <p class="Pp">With this option gpg (and also gpgv) is guaranteed to return
+        with an exit code of 0 if and only if all valid signatures on data are
+        made using a matching algorithm from the given list.</p>
+    <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
   <dt id="auto-key-locate"><a class="permalink" href="#auto-key-locate"><b>--auto-key-locate
@@ -1957,14 +1985,14 @@
   </dd>
   <dt id="ntds"><a class="permalink" href="#ntds"><b>ntds</b></a></dt>
   <dd>Locate the key using the Active Directory (Windows only). This method also
-      allows to search by fingerprint using the command
+      allows one to search by fingerprint using the command
       <b>--locate-external-key</b>. Note that this mechanism is actually a
       shortcut for the mechanism &#x2018;keyserver&#x2019; but using
       &quot;ldap:///&quot; as the keyserver.
     <p class="Pp"></p>
   </dd>
   <dt id="keyserver~2"><a class="permalink" href="#keyserver~2"><b>keyserver</b></a></dt>
-  <dd>Locate a key using a keyserver. This method also allows to search by
+  <dd>Locate a key using a keyserver. This method also allows one to search by
       fingerprint using the command <b>--locate-external-key</b> if any of the
       configured keyservers is an LDAP server.
     <p class="Pp"></p>
@@ -1972,7 +2000,7 @@
   <dt id="keyserver-URL"><a class="permalink" href="#keyserver-URL"><b>keyserver-URL</b></a></dt>
   <dd>In addition, a keyserver URL as used in the <b>dirmngr</b> configuration
       may be used here to query that particular keyserver. This method also
-      allows to search by fingerprint using the command
+      allows one to search by fingerprint using the command
       <b>--locate-external-key</b> if the URL specifies an LDAP server.
     <p class="Pp"></p>
   </dd>
@@ -2378,20 +2406,22 @@
     <i>name</i></b></a></dt>
   <dd>Same as <b>--recipient</b> but this one is intended for use in the options
       file and may be used with your own user-id as an
-      &quot;encrypt-to-self&quot;. These keys are only used when there are other
-      recipients given either by use of <b>--recipient</b> or by the asked user
-      id. No trust checking is performed for these user ids and even disabled
-      keys can be used.
+      &quot;encrypt-to-self&quot;. It is suggested to use a fingerprint or at
+      least a long keyID for <i>name</i>. These keys are only used when there
+      are other recipients given either by use of <b>--recipient</b> or by the
+      asked user id. No trust checking is performed for these user ids and even
+      disabled keys can be used.
     <p class="Pp"></p>
   </dd>
   <dt id="hidden-encrypt-to"><a class="permalink" href="#hidden-encrypt-to"><b>--hidden-encrypt-to
     <i>name</i></b></a></dt>
   <dd>Same as <b>--hidden-recipient</b> but this one is intended for use in the
       options file and may be used with your own user-id as a hidden
-      &quot;encrypt-to-self&quot;. These keys are only used when there are other
-      recipients given either by use of <b>--recipient</b> or by the asked user
-      id. No trust checking is performed for these user ids and even disabled
-      keys can be used.
+      &quot;encrypt-to-self&quot;. It is suggested to use a fingerprint or at
+      least a long keyID for <i>name</i>. These keys are only used when there
+      are other recipients given either by use of <b>--recipient</b> or by the
+      asked user id. No trust checking is performed for these user ids and even
+      disabled keys can be used.
     <p class="Pp"></p>
   </dd>
   <dt id="no-encrypt-to"><a class="permalink" href="#no-encrypt-to"><b>--no-encrypt-to</b></a></dt>
@@ -2998,29 +3028,6 @@
 <p class="Pp"></p>
 <p class="Pp"></p>
 <dl class="Bl-tag">
-  <dt id="t,"><a class="permalink" href="#t,"><b>-t, --textmode</b></a></dt>
-  <dd></dd>
-  <dt id="no-textmode"><a class="permalink" href="#no-textmode"><b>--no-textmode</b></a></dt>
-  <dd>Treat input files as text and store them in the OpenPGP canonical text
-      form with standard &quot;CRLF&quot; line endings. This also sets the
-      necessary flags to inform the recipient that the encrypted or signed data
-      is text and may need its line endings converted back to whatever the local
-      system uses. This option is useful when communicating between two
-      platforms that have different line ending conventions (UNIX-like to Mac,
-      Mac to Windows, etc). <b>--no-textmode</b> disables this option, and is
-      the default.
-    <p class="Pp"></p>
-  </dd>
-  <dt id="force-v3-sigs"><a class="permalink" href="#force-v3-sigs"><b>--force-v3-sigs</b></a></dt>
-  <dd></dd>
-  <dt id="no-force-v3-sigs"><a class="permalink" href="#no-force-v3-sigs"><b>--no-force-v3-sigs</b></a></dt>
-  <dd></dd>
-  <dt id="force-v4-certs"><a class="permalink" href="#force-v4-certs"><b>--force-v4-certs</b></a></dt>
-  <dd></dd>
-  <dt id="no-force-v4-certs"><a class="permalink" href="#no-force-v4-certs"><b>--no-force-v4-certs</b></a></dt>
-  <dd>These options are obsolete and have no effect since GnuPG 2.1.
-    <p class="Pp"></p>
-  </dd>
   <dt id="force-ocb"><a class="permalink" href="#force-ocb"><b>--force-ocb</b></a></dt>
   <dd></dd>
   <dt id="force-aead"><a class="permalink" href="#force-aead"><b>--force-aead</b></a></dt>
@@ -3261,7 +3268,7 @@
   <dd>Set compatibility flags to work around problems due to non-compliant keys
       or data. The <i>flags</i> are given as a comma separated list of flag
       names and are OR-ed together. The special flag &quot;none&quot; clears the
-      list and allows to start over with an empty list. To get a list of
+      list and allows one to start over with an empty list. To get a list of
       available flags the sole word &quot;help&quot; can be used.
     <p class="Pp"></p>
   </dd>
@@ -3322,8 +3329,8 @@
     <p class="Pp"></p>
   </dd>
   <dt id="debug-allow-large-chunks"><a class="permalink" href="#debug-allow-large-chunks"><b>--debug-allow-large-chunks</b></a></dt>
-  <dd>To facilitate software tests and experiments this option allows to specify
-      a limit of up to 4 EiB (<b>--chunk-size 62</b>).
+  <dd>To facilitate software tests and experiments this option allows one to
+      specify a limit of up to 4 EiB (<b>--chunk-size 62</b>).
     <p class="Pp"></p>
   </dd>
   <dt id="debug-ignore-expiration"><a class="permalink" href="#debug-ignore-expiration"><b>--debug-ignore-expiration</b></a></dt>
@@ -3513,8 +3520,20 @@
   <dd></dd>
   <dt id="no-use-embedded-filename"><a class="permalink" href="#no-use-embedded-filename"><b>--no-use-embedded-filename</b></a></dt>
   <dd>Try to create a file with a name as embedded in the data. This can be a
-      dangerous option as it enables overwriting files. Defaults to no. Note
-      that the option <b>--output</b> overrides this option.
+      dangerous option as it enables overwriting files by giving the sender
+      control on how to store files. Defaults to no. Note that the option
+      <b>--output</b> overrides this option.
+    <p class="Pp">A better approach than using this option is to decrypt to a
+        temporary filename and then rename that file to the embedded file name
+        after checking that the embedded filename is harmless. When using the
+        <b>--status-fd</b> option gpg tells the filename as part of the
+        PLAINTEXT status message. If the filename is important, the use of
+        <b>gpgtar</b> is another option because gpgtar will never overwrite a
+        file but decrypt the files to a new directory.</p>
+    <p class="Pp">Note also that unless a modern version 5 signature is used the
+        embedded filename is not part of the signed data.</p>
+    <p class="Pp"></p>
+    <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
   <dt id="cipher-algo"><a class="permalink" href="#cipher-algo"><b>--cipher-algo
@@ -3791,7 +3810,7 @@
   <dt id="allow-weak-key-signatures"><a class="permalink" href="#allow-weak-key-signatures"><b>--allow-weak-key-signatures</b></a></dt>
   <dd>To avoid a minor risk of collision attacks on third-party key signatures
       made using SHA-1, those key signatures are considered invalid. This
-      options allows to override this restriction.
+      options allows one to override this restriction.
     <p class="Pp"></p>
   </dd>
   <dt id="override-compliance-check"><a class="permalink" href="#override-compliance-check"><b>--override-compliance-check</b></a></dt>
@@ -4043,6 +4062,30 @@
 <p class="Pp"></p>
 <p class="Pp"></p>
 <dl class="Bl-tag">
+  <dt id="t,"><a class="permalink" href="#t,"><b>-t, --textmode</b></a></dt>
+  <dd></dd>
+  <dt id="no-textmode"><a class="permalink" href="#no-textmode"><b>--no-textmode</b></a></dt>
+  <dd>Treat input files as text and store them in the OpenPGP canonical text
+      form with standard &quot;CRLF&quot; line endings. This also sets the
+      necessary flags to inform the recipient that the encrypted or signed data
+      is text and may need its line endings converted back to whatever the local
+      system uses. This option was useful when communicating between two
+      platforms with different line ending conventions (UNIX-like to Mac, Mac to
+      Windows, etc). <b>--no-textmode</b> disables this option, and is the
+      default. Note that this is a legacy option which should not anymore be
+      used by any modern software.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="force-v3-sigs"><a class="permalink" href="#force-v3-sigs"><b>--force-v3-sigs</b></a></dt>
+  <dd></dd>
+  <dt id="no-force-v3-sigs"><a class="permalink" href="#no-force-v3-sigs"><b>--no-force-v3-sigs</b></a></dt>
+  <dd></dd>
+  <dt id="force-v4-certs"><a class="permalink" href="#force-v4-certs"><b>--force-v4-certs</b></a></dt>
+  <dd></dd>
+  <dt id="no-force-v4-certs"><a class="permalink" href="#no-force-v4-certs"><b>--no-force-v4-certs</b></a></dt>
+  <dd>These options are obsolete and have no effect since GnuPG 2.1.
+    <p class="Pp"></p>
+  </dd>
   <dt id="show-photos~3"><a class="permalink" href="#show-photos~3"><b>--show-photos</b></a></dt>
   <dd></dd>
   <dt id="no-show-photos"><a class="permalink" href="#no-show-photos"><b>--no-show-photos</b></a></dt>
@@ -4729,7 +4772,7 @@ $ gpg --import-ownertrust otrust.lst</pre>
     <p class="Pp"></p>
   </dd>
   <dt id="GNUPG_EXEC_DEBUG_FLAGS"><a class="permalink" href="#GNUPG_EXEC_DEBUG_FLAGS"><b>GNUPG_EXEC_DEBUG_FLAGS</b></a></dt>
-  <dd>This variable allows to enable diagnostics for process management. A
+  <dd>This variable allows one to enable diagnostics for process management. A
       numeric decimal value is expected. Bit 0 enables general diagnostics, bit
       1 enables certain warnings on Windows.
     <p class="Pp"></p>
@@ -5149,8 +5192,8 @@ ssb   elg1024 2016-12-16 [E]</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-01-25</td>
-    <td class="foot-os">GnuPG 2.4.4</td>
+    <td class="foot-date">2024-03-04</td>
+    <td class="foot-os">GnuPG 2.4.5</td>
   </tr>
 </table>
 </body>

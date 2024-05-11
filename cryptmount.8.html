@@ -29,61 +29,15 @@
 <table class="Nm">
   <tr>
     <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-fnvq</code>] [<code class="Fl">-c</code>
+    <td>[<code class="Fl">-Vfhnvq</code>] [<code class="Fl">-c</code>
       <var class="Ar">crypttab</var>] [<code class="Fl">-w</code>
       <var class="Ar">num</var>] [<code class="Fl">-o</code>
       <var class="Ar">options</var>] [<code class="Fl">-O</code>
-      <var class="Ar">filters</var>] [<code class="Fl">-L</code>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-fnvq</code>] [<code class="Fl">-c</code>
-      <var class="Ar">crypttab</var>] [<code class="Fl">-w</code>
-      <var class="Ar">num</var>] [<code class="Fl">-o</code>
-      <var class="Ar">options</var>] [<code class="Fl">-O</code>
-      <var class="Ar">filters</var>] <code class="Cm">-</code>M [name |
-      device]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-fnvq</code>] [<code class="Fl">-c</code>
-      <var class="Ar">crypttab</var>] [<code class="Fl">-w</code>
-      <var class="Ar">num</var>] [<code class="Fl">-o</code>
-      <var class="Ar">options</var>] [<code class="Fl">-O</code>
-      <var class="Ar">filters</var>] <code class="Cm">-</code>M
-      <var class="Ar">name device</var> [key]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-fnvq</code>] [<code class="Fl">-c</code>
-      <var class="Ar">crypttab</var>] [<code class="Fl">-w</code>
-      <var class="Ar">num</var>] [<code class="Fl">-o</code>
-      <var class="Ar">options</var>] [<code class="Fl">-O</code>
-      <var class="Ar">filters</var>] <code class="Cm">-</code>U
-      [name[,...]]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-V</code>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">cryptmount</code></td>
-    <td>[<code class="Fl">-h</code>]</td>
+      <var class="Ar">filters</var>] [{<code class="Fl">-L</code> |
+      <code class="Fl">-M</code> [<var class="Ar">name</var> |
+      <var class="Ar">device</var> | <var class="Ar">name device</var>
+      [<var class="Ar">key</var>]] | <code class="Fl">-U</code>
+      [<var class="Ar">name</var>[,...]]}]</td>
   </tr>
 </table>
 </section>
@@ -210,14 +164,11 @@
     was done by <span class="An">Matthew Monaco</span>
     &lt;<a class="Mt" href="mailto:dgbaley27@0x01b.net">dgbaley27@0x01b.net</a>&gt;
     and maintained for <a class="Lk" href="http://sabo.xyz">Sabotage Linux</a>
-    by
-  <br/>
-  <span class="An">rofl0r</span>
+    by <span class="An">rofl0r</span>
     &lt;<a class="Mt" href="mailto:retnyg@gmx.net">retnyg@gmx.net</a>&gt;.</p>
 <p class="Pp">This implementation was re-worked for
     <a class="Lk" href="http://zeppel.ink">Zeppe-Lin</a> by
-  <br/>
-  <span class="An">Alexandr Savca</span>
+    <span class="An">Alexandr Savca</span>
     &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
 </section>
 </div>

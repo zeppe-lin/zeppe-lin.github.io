@@ -5,9 +5,9 @@
        Title: mkswap
       Author: [see the "AUTHOR(S)" section]
    Generator: Asciidoctor 2.0.20
-        Date: 2023-12-01
+        Date: 2024-05-01
       Manual: System Administration
-      Source: util-linux 2.39.3
+      Source: util-linux 2.40.1
     Language: English
    -->
 <head>
@@ -31,7 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>mkswap</b> [options] <i>device</i> [<i>size</i>]</p>
+<p class="Pp"><b>mkswap</b> [options] <i>device</i> [<i>blocks</i>]</p>
+<p class="Pp"><b>mkswap</b> [options] --size <i>size</i> --file <i>file</i></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -43,7 +44,7 @@
     that partitions of hex type 82 (LINUX_SWAP) are meant to be swap partitions.
     (<b>Warning: Solaris also uses this type. Be careful not to kill your
     Solaris partitions.</b>)</p>
-<p class="Pp">The <i>size</i> parameter is superfluous but retained for
+<p class="Pp">The <i>blocks</i> parameter is superfluous but retained for
     backwards compatibility. (It specifies the desired size of the swap area in
     1024-byte blocks. <b>mkswap</b> will use the entire partition or file if it
     is omitted. Specifying it is unwise - a typo may destroy your disk.)</p>
@@ -68,6 +69,9 @@
 <div class="Bd-indent">Check the device (if it is a block device) for bad blocks
   before creating the swap area. If any bad blocks are found, the count is
   printed.</div>
+<p class="Pp"><b>-F</b>, <b>--file</b></p>
+<div class="Bd-indent">Create a swap file with the appropriate file permissions
+  and populated blocks on disk.</div>
 <p class="Pp"><b>-f</b>, <b>--force</b></p>
 <div class="Bd-indent">Go ahead even if the command is stupid. This allows the
   creation of a swap area larger than the file or partition it resides on.
@@ -107,6 +111,16 @@
 <div class="Bd-indent">Specify the <i>ENDIANNESS</i> to use, valid arguments are
   <b>native</b>, <b>little</b> or <b>big</b>. The default is
   <b>native</b>.</div>
+<p class="Pp"><b>-o</b>, <b>--offset</b> <i>offset</i></p>
+<div class="Bd-indent">Specify the <i>offset</i> to write the swap area
+  to.</div>
+<p class="Pp"><b>-s</b>, <b>--size</b> <i>size</i></p>
+<div class="Bd-indent">Specify the size of the created swap file in bytes and
+  may be followed by a multiplicative suffix: KiB (=1024), MiB (=1024*1024), and
+  so on for GiB, TiB, PiB, EiB, ZiB and YiB (the &quot;iB&quot; is optional,
+  e.g., &quot;K&quot; has the same meaning as &quot;KiB&quot;). If the file
+  exists and is larger than <i>size</i>, it will be truncated to this size. This
+  option only makes sense when used with <b>--file</b>.</div>
 <p class="Pp"><b>-v</b>, <b>--swapversion 1</b></p>
 <div class="Bd-indent">Specify the swap-space version. (This option is currently
   pointless, as the old <b>-v 0</b> option has become obsolete and now only
@@ -171,8 +185,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2023-12-01</td>
-    <td class="foot-os">util-linux 2.39.3</td>
+    <td class="foot-date">2024-05-01</td>
+    <td class="foot-os">util-linux 2.40.1</td>
   </tr>
 </table>
 </body>

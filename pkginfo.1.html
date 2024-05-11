@@ -29,47 +29,12 @@
 <table class="Nm">
   <tr>
     <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-r</code> <var class="Ar">rootdir</var>]
-      [<code class="Fl">-f</code> <var class="Ar">file</var>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-r</code> <var class="Ar">rootdir</var>]
-      [<code class="Fl">-i</code>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-r</code> <var class="Ar">rootdir</var>]
-      [<code class="Fl">-l</code> <var class="Ar">pkgname</var> |
-      <var class="Ar">file</var>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-r</code> <var class="Ar">rootdir</var>]
-      [<code class="Fl">-o</code> <var class="Ar">pattern</var>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-V</code>]</td>
-  </tr>
-</table>
-<br/>
-<table class="Nm">
-  <tr>
-    <td><code class="Nm">pkginfo</code></td>
-    <td>[<code class="Fl">-h</code>]</td>
+    <td>[<code class="Fl">-Vh</code>] [<code class="Fl">-r</code>
+      <var class="Ar">rootdir</var>] {<code class="Fl">-f</code>
+      <var class="Ar">file</var> | <code class="Fl">-i</code> |
+      <code class="Fl">-l</code> &#x27E8;<var class="Ar">pkgname</var> |
+      <var class="Ar">file</var>&#x27E9; | <code class="Fl">-o</code>
+      <var class="Ar">pattern</var>}</td>
   </tr>
 </table>
 </section>
@@ -92,9 +57,9 @@
     <code class="Fl">--installed</code></dt>
   <dd>List installed packages and their version.</dd>
   <dt id="l"><a class="permalink" href="#l"><code class="Fl">-l</code></a>
-    <var class="Ar">pkgname</var> | <var class="Ar">file</var>,
-    <code class="Fl">--list</code>=<var class="Ar">pkgname</var> |
-    <var class="Ar">file</var></dt>
+    &#x27E8;<var class="Ar">pkgname</var> | <var class="Ar">file</var>&#x27E9;,
+    <code class="Fl">--list</code>=&#x27E8;<var class="Ar">pkgname</var> |
+    <var class="Ar">file</var>&#x27E9;</dt>
   <dd>List files owned by the specified package or contained in
       <var class="Ar">file</var>.</dd>
   <dt id="o"><a class="permalink" href="#o"><code class="Fl">-o</code></a>

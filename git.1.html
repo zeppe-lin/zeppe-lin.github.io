@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-        Date: 2024-02-08
+        Date: 2024-04-29
       Manual: Git Manual
-      Source: Git 2.43.1
+      Source: Git 2.45.0
     Language: English
    -->
 <head>
@@ -177,8 +177,14 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">Treat the repository as a bare repository. If GIT_DIR
   environment is not set, it is set to the current working directory.</div>
 <p class="Pp">--no-replace-objects</p>
-<div class="Bd-indent">Do not use replacement refs to replace Git objects. See
-  <b>git-replace</b>(1) for more information.</div>
+<div class="Bd-indent">Do not use replacement refs to replace Git objects. This
+  is equivalent to exporting the <b>GIT_NO_REPLACE_OBJECTS</b> environment
+  variable with any value. See <b>git-replace</b>(1) for more information.</div>
+<p class="Pp">--no-lazy-fetch</p>
+<div class="Bd-indent">Do not fetch missing objects from the promisor remote on
+  demand. Useful together with <b>git cat-file -e &lt;object&gt;</b> to see if
+  the object is locally available. This is equivalent to setting the
+  <b>GIT_NO_LAZY_FETCH</b> environment variable to <b>1</b>.</div>
 <p class="Pp">--literal-pathspecs</p>
 <div class="Bd-indent">Treat pathspecs literally (i.e. no globbing, no pathspec
   magic). This is equivalent to setting the <b>GIT_LITERAL_PATHSPECS</b>
@@ -200,7 +206,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp">--no-optional-locks</p>
 <div class="Bd-indent">Do not perform optional operations that require locks.
   This is equivalent to setting the <b>GIT_OPTIONAL_LOCKS</b> to <b>0</b>.</div>
-<p class="Pp">--list-cmds=group[,group...]</p>
+<p class="Pp">--list-cmds=&lt;group&gt;[,&lt;group&gt;...]</p>
 <div class="Bd-indent">List commands by group. This is an internal/experimental
   option and may change or be removed in the future. Supported groups are:
   builtins, parseopt (builtin commands that use parse-options), main (all
@@ -499,6 +505,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   files.</div>
 <p class="Pp"><b>git-read-tree</b>(1)</p>
 <div class="Bd-indent">Reads tree information into the index.</div>
+<p class="Pp"><b>git-replay</b>(1)</p>
+<div class="Bd-indent">EXPERIMENTAL: Replay commits on a new base, works with
+  bare repos too.</div>
 <p class="Pp"><b>git-symbolic-ref</b>(1)</p>
 <div class="Bd-indent">Read, modify and delete symbolic refs.</div>
 <p class="Pp"><b>git-unpack-objects</b>(1)</p>
@@ -894,6 +903,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   new repositories will be set to this value. This value is ignored when cloning
   and the setting of the remote repository is always used. The default is
   &quot;sha1&quot;. See <b>--object-format</b> in <b>git-init</b>(1).</div>
+<p class="Pp"><b>GIT_DEFAULT_REF_FORMAT</b></p>
+<div class="Bd-indent">If this variable is set, the default reference backend
+  format for new repositories will be set to this value. The default is
+  &quot;files&quot;. See <b>--ref-format</b> in <b>git-init</b>(1).</div>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Git_Commits"><a class="permalink" href="#Git_Commits">Git
@@ -1136,7 +1149,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     process) in that directory, named according to the last component of the SID
     and an optional counter (to avoid filename collisions).</p>
 <p class="Pp">In addition, if the variable is set to
-    <b>af_unix:[&lt;socket_type&gt;:]&lt;absolute-pathname&gt;</b>, Git will try
+    <b>af_unix:[&lt;socket-type&gt;:]&lt;absolute-pathname&gt;</b>, Git will try
     to open the path as a Unix Domain Socket. The socket type can be either
     <b>stream</b> or <b>dgram</b>.</p>
 <p class="Pp">Unsetting the variable, or setting it to empty, &quot;0&quot; or
@@ -1157,6 +1170,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   values of cookies, the &quot;Authorization:&quot; header, the
   &quot;Proxy-Authorization:&quot; header and packfile URIs. Set this Boolean
   environment variable to false to prevent this redaction.</div>
+<p class="Pp"><b>GIT_NO_REPLACE_OBJECTS</b></p>
+<div class="Bd-indent">Setting and exporting this environment variable tells Git
+  to ignore replacement refs and do not replace Git objects.</div>
 <p class="Pp"><b>GIT_LITERAL_PATHSPECS</b></p>
 <div class="Bd-indent">Setting this Boolean environment variable to true will
   cause Git to treat all pathspecs literally, rather than as glob patterns. For
@@ -1176,6 +1192,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp"><b>GIT_ICASE_PATHSPECS</b></p>
 <div class="Bd-indent">Setting this Boolean environment variable to true will
   cause Git to treat all pathspecs as case-insensitive.</div>
+<p class="Pp"><b>GIT_NO_LAZY_FETCH</b></p>
+<div class="Bd-indent">Setting this Boolean environment variable to true tells
+  Git not to lazily fetch missing objects from the promisor remote on
+  demand.</div>
 <p class="Pp"><b>GIT_REFLOG_ACTION</b></p>
 <div class="Bd-indent">When a ref is updated, reflog entries are created to keep
   track of the reason why the ref was updated (which is typically the name of
@@ -1219,8 +1239,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp"><b>GIT_PROTOCOL</b></p>
 <div class="Bd-indent">For internal use only. Used in handshaking the wire
   protocol. Contains a colon <i>:</i> separated list of keys with optional
-  values <i>key[=value]</i>. Presence of unknown keys and values must be
-  ignored.
+  values <i>&lt;key&gt;[=&lt;value&gt;]</i>. Presence of unknown keys and values
+  must be ignored.
 <p class="Pp">Note that servers may need to be configured to allow this variable
     to pass over some transports. It will be propagated automatically when
     accessing local repositories (i.e., <b>file://</b> or a filesystem path), as
@@ -1407,8 +1427,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-02-08</td>
-    <td class="foot-os">Git 2.43.1</td>
+    <td class="foot-date">2024-04-29</td>
+    <td class="foot-os">Git 2.45.0</td>
   </tr>
 </table>
 </body>
