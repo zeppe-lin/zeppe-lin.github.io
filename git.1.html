@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-        Date: 2024-04-29
+        Date: 2024-04-24
       Manual: Git Manual
-      Source: Git 2.45.0
+      Source: Git 2.45.1
     Language: English
    -->
 <head>
@@ -1334,6 +1334,33 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     various unmerged version of a file when a merge is in progress.</p>
 </section>
 <section class="Sh">
+<h1 class="Sh" id="SECURITY"><a class="permalink" href="#SECURITY">SECURITY</a></h1>
+<p class="Pp">Some configuration options and hook files may cause Git to run
+    arbitrary shell commands. Because configuration and hooks are not copied
+    using <b>git clone</b>, it is generally safe to clone remote repositories
+    with untrusted content, inspect them with <b>git log</b>, and so on.</p>
+<p class="Pp">However, it is not safe to run Git commands in a <b>.git</b>
+    directory (or the working tree that surrounds it) when that <b>.git</b>
+    directory itself comes from an untrusted source. The commands in its config
+    and hooks are executed in the usual way.</p>
+<p class="Pp">By default, Git will refuse to run when the repository is owned by
+    someone other than the user running the command. See the entry for
+    <b>safe.directory</b> in <b>git-config</b>(1). While this can help protect
+    you in a multi-user environment, note that you can also acquire untrusted
+    repositories that are owned by you (for example, if you extract a zip file
+    or tarball from an untrusted source). In such cases, you&#x2019;d need to
+    &quot;sanitize&quot; the untrusted repository first.</p>
+<p class="Pp">If you have an untrusted <b>.git</b> directory, you should first
+    clone it with <b>git clone --no-local</b> to obtain a clean copy. Git does
+    restrict the set of options and hooks that will be run by
+    <b>upload-pack</b>, which handles the server side of a clone or fetch, but
+    beware that the surface area for attack against <b>upload-pack</b> is large,
+    so this does carry some risk. The safest thing is to serve the repository as
+    an unprivileged user (either via <b>git-daemon</b>(1), ssh, or using other
+    tools to change user ids). See the discussion in the <b>SECURITY</b> section
+    of <b>git-upload-pack</b>(1).</p>
+</section>
+<section class="Sh">
 <h1 class="Sh" id="FURTHER_DOCUMENTATION"><a class="permalink" href="#FURTHER_DOCUMENTATION">FURTHER
   DOCUMENTATION</a></h1>
 <p class="Pp">See the references in the &quot;description&quot; section to get
@@ -1427,8 +1454,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-04-29</td>
-    <td class="foot-os">Git 2.45.0</td>
+    <td class="foot-date">2024-04-24</td>
+    <td class="foot-os">Git 2.45.1</td>
   </tr>
 </table>
 </body>

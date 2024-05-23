@@ -244,7 +244,7 @@ https://example.com/</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="VERSION"><a class="permalink" href="#VERSION">VERSION</a></h1>
-<p class="Pp">This man page describes curl 8.7.1. If you use a later version,
+<p class="Pp">This man page describes curl 8.8.0. If you use a later version,
     chances are this man page does not fully document it. If you use an earlier
     version, this document tries to include version information about which
     specific version that introduced changes.</p>
@@ -451,39 +451,6 @@ curl https://curl.se/info</pre>
  curl --capath /local/directory https://example.com</pre>
     <p class="Pp">See also <i>--cacert</i> and <i>-k, --insecure</i>.</p>
   </dd>
-  <dt id="cert"><a class="permalink" href="#cert">--cert-status</a></dt>
-  <dd>(TLS) Verify the status of the server certificate by using the Certificate
-      Status Request (aka. OCSP stapling) TLS extension.
-    <p class="Pp">If this option is enabled and the server sends an invalid
-        (e.g. expired) response, if the response suggests that the server
-        certificate has been revoked, or no response at all is received, the
-        verification fails.</p>
-    <p class="Pp">This support is currently only implemented in the OpenSSL and
-        GnuTLS backends.</p>
-    <p class="Pp">Providing --cert-status multiple times has no extra effect.
-        Disable it again with --no-cert-status.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert-status https://example.com</pre>
-    <p class="Pp">See also <i>--pinnedpubkey</i>.</p>
-  </dd>
-  <dt id="cert~2"><a class="permalink" href="#cert~2">--cert-type
-    &lt;type&gt;</a></dt>
-  <dd>(TLS) Set type of the provided client certificate. PEM, DER, ENG and P12
-      are recognized types.
-    <p class="Pp">The default type depends on the TLS backend and is usually
-        PEM, however for Secure Transport and Schannel it is P12. If <i>-E,
-        --cert</i> is a pkcs11: URI then ENG is the default type.</p>
-    <p class="Pp">If --cert-type is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert-type PEM --cert file https://example.com</pre>
-    <p class="Pp">See also <i>-E, --cert</i>, <i>--key</i> and
-        <i>--key-type</i>.</p>
-  </dd>
   <dt id="E,"><a class="permalink" href="#E,">-E, --cert
     &lt;certificate[:password]&gt;</a></dt>
   <dd>(TLS) Use the specified client certificate file when getting a file with
@@ -531,6 +498,39 @@ curl https://curl.se/info</pre>
     <p class="Pp">See also <i>--cert-type</i>, <i>--key</i> and
         <i>--key-type</i>.</p>
   </dd>
+  <dt id="cert"><a class="permalink" href="#cert">--cert-status</a></dt>
+  <dd>(TLS) Verify the status of the server certificate by using the Certificate
+      Status Request (aka. OCSP stapling) TLS extension.
+    <p class="Pp">If this option is enabled and the server sends an invalid
+        (e.g. expired) response, if the response suggests that the server
+        certificate has been revoked, or no response at all is received, the
+        verification fails.</p>
+    <p class="Pp">This support is currently only implemented in the OpenSSL and
+        GnuTLS backends.</p>
+    <p class="Pp">Providing --cert-status multiple times has no extra effect.
+        Disable it again with --no-cert-status.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --cert-status https://example.com</pre>
+    <p class="Pp">See also <i>--pinnedpubkey</i>.</p>
+  </dd>
+  <dt id="cert~2"><a class="permalink" href="#cert~2">--cert-type
+    &lt;type&gt;</a></dt>
+  <dd>(TLS) Set type of the provided client certificate. PEM, DER, ENG and P12
+      are recognized types.
+    <p class="Pp">The default type depends on the TLS backend and is usually
+        PEM, however for Secure Transport and Schannel it is P12. If <i>-E,
+        --cert</i> is a pkcs11: URI then ENG is the default type.</p>
+    <p class="Pp">If --cert-type is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --cert-type PEM --cert file https://example.com</pre>
+    <p class="Pp">See also <i>-E, --cert</i>, <i>--key</i> and
+        <i>--key-type</i>.</p>
+  </dd>
   <dt id="ciphers"><a class="permalink" href="#ciphers">--ciphers &lt;list of
     ciphers&gt;</a></dt>
   <dd>(TLS) Specifies which ciphers to use in the connection. The list of
@@ -545,17 +545,6 @@ curl https://curl.se/info</pre>
  curl --ciphers ECDHE-ECDSA-AES256-CCM8 https://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.3</i>, <i>--tls13-ciphers</i> and
         <i>--proxy-ciphers</i>.</p>
-  </dd>
-  <dt>--compressed-ssh</dt>
-  <dd>(SCP SFTP) Enables built-in SSH compression. This is a request, not an
-      order; the server may or may not do it.
-    <p class="Pp">Providing --compressed-ssh multiple times has no extra effect.
-        Disable it again with --no-compressed-ssh.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --compressed-ssh sftp://example.com/</pre>
-    <p class="Pp">See also <i>--compressed</i>. Added in 7.56.0.</p>
   </dd>
   <dt id="compressed"><a class="permalink" href="#compressed">--compressed</a></dt>
   <dd>(HTTP) Request a compressed response using one of the algorithms curl
@@ -574,6 +563,17 @@ curl https://curl.se/info</pre>
 <br/>
  curl --compressed https://example.com</pre>
     <p class="Pp">See also <i>--compressed-ssh</i>.</p>
+  </dd>
+  <dt>--compressed-ssh</dt>
+  <dd>(SCP SFTP) Enables built-in SSH compression. This is a request, not an
+      order; the server may or may not do it.
+    <p class="Pp">Providing --compressed-ssh multiple times has no extra effect.
+        Disable it again with --no-compressed-ssh.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --compressed-ssh sftp://example.com/</pre>
+    <p class="Pp">See also <i>--compressed</i>. Added in 7.56.0.</p>
   </dd>
   <dt id="K,"><a class="permalink" href="#K,">-K, --config &lt;file&gt;</a></dt>
   <dd>Specify a text file to read curl arguments from. The command line
@@ -700,35 +700,6 @@ referer = &quot;http://nowhereatall.example.com/&quot;
  curl -C 400 https://example.com</pre>
     <p class="Pp">See also <i>-r, --range</i>.</p>
   </dd>
-  <dt id="c,"><a class="permalink" href="#c,">-c, --cookie-jar
-    &lt;filename&gt;</a></dt>
-  <dd>(HTTP) Specify to which file you want curl to write all cookies after a
-      completed operation. Curl writes all cookies from its in-memory cookie
-      storage to the given file at the end of operations. Even if no cookies are
-      known, a file is created so that it removes any formerly existing cookies
-      from the file. The file uses the Netscape cookie file format. If you set
-      the filename to a single minus, &quot;-&quot;, the cookies are written to
-      stdout.
-    <p class="Pp">The file specified with <i>-c, --cookie-jar</i> is only used
-        for output. No cookies are read from the file. To read cookies, use the
-        <i>-b, --cookie</i> option. Both options can specify the same file.</p>
-    <p class="Pp">This command line option activates the cookie engine that
-        makes curl record and use cookies. The <i>-b, --cookie</i> option also
-        activates it.</p>
-    <p class="Pp">If the cookie jar cannot be created or written to, the whole
-        curl operation does not fail or even report an error clearly. Using
-        <i>-v, --verbose</i> gets a warning displayed, but that is the only
-        visible feedback you get about this possibly lethal situation.</p>
-    <p class="Pp">If --cookie-jar is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -c store-here.txt https://example.com
-<br/>
- curl -c store-here.txt -b read-these https://example.com</pre>
-    <p class="Pp">See also <i>-b, --cookie</i>.</p>
-  </dd>
   <dt id="b,"><a class="permalink" href="#b,">-b, --cookie
     &lt;data|filename&gt;</a></dt>
   <dd>(HTTP) Pass the data to the HTTP server in the Cookie header. It is
@@ -781,6 +752,35 @@ referer = &quot;http://nowhereatall.example.com/&quot;
  curl -b name=Jane https://example.com</pre>
     <p class="Pp">See also <i>-c, --cookie-jar</i> and <i>-j,
         --junk-session-cookies</i>.</p>
+  </dd>
+  <dt id="c,"><a class="permalink" href="#c,">-c, --cookie-jar
+    &lt;filename&gt;</a></dt>
+  <dd>(HTTP) Specify to which file you want curl to write all cookies after a
+      completed operation. Curl writes all cookies from its in-memory cookie
+      storage to the given file at the end of operations. Even if no cookies are
+      known, a file is created so that it removes any formerly existing cookies
+      from the file. The file uses the Netscape cookie file format. If you set
+      the filename to a single minus, &quot;-&quot;, the cookies are written to
+      stdout.
+    <p class="Pp">The file specified with <i>-c, --cookie-jar</i> is only used
+        for output. No cookies are read from the file. To read cookies, use the
+        <i>-b, --cookie</i> option. Both options can specify the same file.</p>
+    <p class="Pp">This command line option activates the cookie engine that
+        makes curl record and use cookies. The <i>-b, --cookie</i> option also
+        activates it.</p>
+    <p class="Pp">If the cookie jar cannot be created or written to, the whole
+        curl operation does not fail or even report an error clearly. Using
+        <i>-v, --verbose</i> gets a warning displayed, but that is the only
+        visible feedback you get about this possibly lethal situation.</p>
+    <p class="Pp">If --cookie-jar is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Examples:</p>
+    <pre>
+<br/>
+ curl -c store-here.txt https://example.com
+<br/>
+ curl -c store-here.txt -b read-these https://example.com</pre>
+    <p class="Pp">See also <i>-b, --cookie</i>.</p>
   </dd>
   <dt id="create"><a class="permalink" href="#create">--create-dirs</a></dt>
   <dd>When used in conjunction with the <i>-o, --output</i> option, curl creates
@@ -858,6 +858,43 @@ referer = &quot;http://nowhereatall.example.com/&quot;
 <br/>
  curl --curves X25519 https://example.com</pre>
     <p class="Pp">See also <i>--ciphers</i>. Added in 7.73.0.</p>
+  </dd>
+  <dt id="d,"><a class="permalink" href="#d,">-d, --data &lt;data&gt;</a></dt>
+  <dd>(HTTP MQTT) Sends the specified data in a POST request to the HTTP server,
+      in the same way that a browser does when a user has filled in an HTML form
+      and presses the submit button. This option makes curl pass the data to the
+      server using the content-type application/x-www-form-urlencoded. Compare
+      to <i>-F, --form</i>.
+    <p class="Pp"><i>--data-raw</i> is almost the same but does not have a
+        special interpretation of the @ character. To post data purely binary,
+        you should instead use the <i>--data-binary</i> option. To URL-encode
+        the value of a form field you may use <i>--data-urlencode</i>.</p>
+    <p class="Pp">If any of these options is used more than once on the same
+        command line, the data pieces specified are merged with a separating
+        &amp;-symbol. Thus, using '-d name=daniel -d skill=lousy' would generate
+        a post chunk that looks like 'name=daniel&amp;skill=lousy'.</p>
+    <p class="Pp">If you start the data with the letter @, the rest should be a
+        filename to read the data from, or - if you want curl to read the data
+        from stdin. Posting data from a file named 'foobar' would thus be done
+        with <i>-d, --data</i> @foobar. When <i>-d, --data</i> is told to read
+        from a file like that, carriage returns, newlines and null bytes are
+        stripped out. If you do not want the @ character to have a special
+        interpretation use <i>--data-raw</i> instead.</p>
+    <p class="Pp">The data for this option is passed on to the server exactly as
+        provided on the command line. curl does not convert, change or improve
+        it. It is up to the user to provide the data in the correct form.</p>
+    <p class="Pp">--data can be used several times in a command line</p>
+    <p class="Pp">Examples:</p>
+    <pre>
+<br/>
+ curl -d &quot;name=curl&quot; https://example.com
+<br/>
+ curl -d &quot;name=curl&quot; -d &quot;tool=cmdline&quot; https://example.com
+<br/>
+ curl -d @filename https://example.com</pre>
+    <p class="Pp">See also <i>--data-binary</i>, <i>--data-urlencode</i> and
+        <i>--data-raw</i>. This option is mutually exclusive to <i>-F,
+        --form</i> and <i>-I, --head</i> and <i>-T, --upload-file</i>.</p>
   </dd>
   <dt id="data"><a class="permalink" href="#data">--data-ascii
     &lt;data&gt;</a></dt>
@@ -953,43 +990,6 @@ referer = &quot;http://nowhereatall.example.com/&quot;
  curl --data-urlencode @fileonly https://example.com</pre>
     <p class="Pp">See also <i>-d, --data</i> and <i>--data-raw</i>.</p>
   </dd>
-  <dt id="d,"><a class="permalink" href="#d,">-d, --data &lt;data&gt;</a></dt>
-  <dd>(HTTP MQTT) Sends the specified data in a POST request to the HTTP server,
-      in the same way that a browser does when a user has filled in an HTML form
-      and presses the submit button. This option makes curl pass the data to the
-      server using the content-type application/x-www-form-urlencoded. Compare
-      to <i>-F, --form</i>.
-    <p class="Pp"><i>--data-raw</i> is almost the same but does not have a
-        special interpretation of the @ character. To post data purely binary,
-        you should instead use the <i>--data-binary</i> option. To URL-encode
-        the value of a form field you may use <i>--data-urlencode</i>.</p>
-    <p class="Pp">If any of these options is used more than once on the same
-        command line, the data pieces specified are merged with a separating
-        &amp;-symbol. Thus, using '-d name=daniel -d skill=lousy' would generate
-        a post chunk that looks like 'name=daniel&amp;skill=lousy'.</p>
-    <p class="Pp">If you start the data with the letter @, the rest should be a
-        filename to read the data from, or - if you want curl to read the data
-        from stdin. Posting data from a file named 'foobar' would thus be done
-        with <i>-d, --data</i> @foobar. When <i>-d, --data</i> is told to read
-        from a file like that, carriage returns, newlines and null bytes are
-        stripped out. If you do not want the @ character to have a special
-        interpretation use <i>--data-raw</i> instead.</p>
-    <p class="Pp">The data for this option is passed on to the server exactly as
-        provided on the command line. curl does not convert, change or improve
-        it. It is up to the user to provide the data in the correct form.</p>
-    <p class="Pp">--data can be used several times in a command line</p>
-    <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -d &quot;name=curl&quot; https://example.com
-<br/>
- curl -d &quot;name=curl&quot; -d &quot;tool=cmdline&quot; https://example.com
-<br/>
- curl -d @filename https://example.com</pre>
-    <p class="Pp">See also <i>--data-binary</i>, <i>--data-urlencode</i> and
-        <i>--data-raw</i>. This option is mutually exclusive to <i>-F,
-        --form</i> and <i>-I, --head</i> and <i>-T, --upload-file</i>.</p>
-  </dd>
   <dt id="delegation"><a class="permalink" href="#delegation">--delegation
     &lt;LEVEL&gt;</a></dt>
   <dd>(GSS/kerberos) Set LEVEL what curl is allowed to delegate when it comes to
@@ -1032,6 +1032,20 @@ referer = &quot;http://nowhereatall.example.com/&quot;
         <i>--anyauth</i>. This option is mutually exclusive to <i>--basic</i>
         and <i>--ntlm</i> and <i>--negotiate</i>.</p>
   </dd>
+  <dt id="q,"><a class="permalink" href="#q,">-q, --disable</a></dt>
+  <dd>If used as the <b>first</b> parameter on the command line, the
+      <i>curlrc</i> config file is not read or used. See the <i>-K, --config</i>
+      for details on the default config file search path.
+    <p class="Pp">Prior to 7.50.0 curl supported the short option name <i>q</i>
+        but not the long option name <i>disable</i>.</p>
+    <p class="Pp">Providing --disable multiple times has no extra effect.
+        Disable it again with --no-disable.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl -q https://example.com</pre>
+    <p class="Pp">See also <i>-K, --config</i>.</p>
+  </dd>
   <dt id="disable"><a class="permalink" href="#disable">--disable-eprt</a></dt>
   <dd>(FTP) Disable the use of the EPRT and LPRT commands when doing active FTP
       transfers. Curl normally first attempts to use EPRT before using PORT, but
@@ -1070,20 +1084,6 @@ referer = &quot;http://nowhereatall.example.com/&quot;
 <br/>
  curl --disable-epsv ftp://example.com/</pre>
     <p class="Pp">See also <i>--disable-eprt</i> and <i>-P, --ftp-port</i>.</p>
-  </dd>
-  <dt id="q,"><a class="permalink" href="#q,">-q, --disable</a></dt>
-  <dd>If used as the <b>first</b> parameter on the command line, the
-      <i>curlrc</i> config file is not read or used. See the <i>-K, --config</i>
-      for details on the default config file search path.
-    <p class="Pp">Prior to 7.50.0 curl supported the short option name <i>q</i>
-        but not the long option name <i>disable</i>.</p>
-    <p class="Pp">Providing --disable multiple times has no extra effect.
-        Disable it again with --no-disable.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -q https://example.com</pre>
-    <p class="Pp">See also <i>-K, --config</i>.</p>
   </dd>
   <dt id="disallow"><a class="permalink" href="#disallow">--disallow-username-in-url</a></dt>
   <dd>Exit with error if passed a URL containing a username. Probably most
@@ -1223,6 +1223,44 @@ referer = &quot;http://nowhereatall.example.com/&quot;
  curl --dump-header store.txt https://example.com</pre>
     <p class="Pp">See also <i>-o, --output</i>.</p>
   </dd>
+  <dt id="ech"><a class="permalink" href="#ech">--ech &lt;config&gt;</a></dt>
+  <dd>(HTTPS) Specifies how to do ECH (Encrypted Client Hello).
+    <p class="Pp">The values allowed for &lt;config&gt; can be:</p>
+  </dd>
+</dl>
+<div class="Bd-indent">
+<dl class="Bl-tag">
+  <dt id="false"><a class="permalink" href="#false">false</a></dt>
+  <dd>Do not attempt ECH</dd>
+  <dt id="grease"><a class="permalink" href="#grease">grease</a></dt>
+  <dd>Send a GREASE ECH extension</dd>
+  <dt id="true"><a class="permalink" href="#true">true</a></dt>
+  <dd>Attempt ECH if possible, but do not fail if ECH is not attempted. (The
+      connection fails if ECH is attempted but fails.)</dd>
+  <dt id="hard"><a class="permalink" href="#hard">hard</a></dt>
+  <dd>Attempt ECH and fail if that is not possible. ECH only works with TLS 1.3
+      and also requires using DoH or providing an ECHConfigList on the command
+      line.</dd>
+  <dt id="ecl:_b64val_"><a class="permalink" href="#ecl:_b64val_">ecl:&lt;b64val&gt;</a></dt>
+  <dd>A base64 encoded ECHConfigList that is used for ECH.</dd>
+  <dt id="pn:_name_"><a class="permalink" href="#pn:_name_">pn:&lt;name&gt;</a></dt>
+  <dd>A name to use to over-ride the &quot;public_name&quot; field of an
+      ECHConfigList (only available with OpenSSL TLS support)</dd>
+  <dt id="Errors"><a class="permalink" href="#Errors">Errors</a></dt>
+  <dd>Most errors cause error <i>CURLE_ECH_REQUIRED</i> (101).</dd>
+</dl>
+</div>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>
+    <p class="Pp">If --ech is provided several times, the last set value is
+        used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --ech true https://example.com</pre>
+    <p class="Pp">See also <i>--doh-url</i>. Added in 8.8.0.</p>
+  </dd>
   <dt id="egd"><a class="permalink" href="#egd">--egd-file &lt;file&gt;</a></dt>
   <dd>(TLS) Deprecated option (added in 7.84.0). Prior to that it only had an
       effect on curl if built to use old versions of OpenSSL.
@@ -1301,6 +1339,25 @@ referer = &quot;http://nowhereatall.example.com/&quot;
  curl --expect100-timeout 2.5 -T file https://example.com</pre>
     <p class="Pp">See also <i>--connect-timeout</i>.</p>
   </dd>
+  <dt id="f,"><a class="permalink" href="#f,">-f, --fail</a></dt>
+  <dd>(HTTP) Fail fast with no output at all on server errors. This is useful to
+      enable scripts and users to better deal with failed attempts. In normal
+      cases when an HTTP server fails to deliver a document, it returns an HTML
+      document stating so (which often also describes why and more). This
+      command line option prevents curl from outputting that and return error
+      22.
+    <p class="Pp">This method is not fail-safe and there are occasions where
+        non-successful response codes slip through, especially when
+        authentication is involved (response codes 401 and 407).</p>
+    <p class="Pp">Providing --fail multiple times has no extra effect. Disable
+        it again with --no-fail.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --fail https://example.com</pre>
+    <p class="Pp">See also <i>--fail-with-body</i> and <i>--fail-early</i>. This
+        option is mutually exclusive to <i>--fail-with-body</i>.</p>
+  </dd>
   <dt id="fail"><a class="permalink" href="#fail">--fail-early</a></dt>
   <dd>Fail and exit on the first detected transfer error.
     <p class="Pp">When curl is used to do multiple transfers on the command
@@ -1344,26 +1401,7 @@ referer = &quot;http://nowhereatall.example.com/&quot;
     <p class="Pp">See also <i>-f, --fail</i> and <i>--fail-early</i>. This
         option is mutually exclusive to <i>-f, --fail</i>. Added in 7.76.0.</p>
   </dd>
-  <dt id="f,"><a class="permalink" href="#f,">-f, --fail</a></dt>
-  <dd>(HTTP) Fail fast with no output at all on server errors. This is useful to
-      enable scripts and users to better deal with failed attempts. In normal
-      cases when an HTTP server fails to deliver a document, it returns an HTML
-      document stating so (which often also describes why and more). This
-      command line option prevents curl from outputting that and return error
-      22.
-    <p class="Pp">This method is not fail-safe and there are occasions where
-        non-successful response codes slip through, especially when
-        authentication is involved (response codes 401 and 407).</p>
-    <p class="Pp">Providing --fail multiple times has no extra effect. Disable
-        it again with --no-fail.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --fail https://example.com</pre>
-    <p class="Pp">See also <i>--fail-with-body</i> and <i>--fail-early</i>. This
-        option is mutually exclusive to <i>--fail-with-body</i>.</p>
-  </dd>
-  <dt id="false"><a class="permalink" href="#false">--false-start</a></dt>
+  <dt>--false-start</dt>
   <dd>(TLS) Use false start during the TLS handshake. False start is a mode
       where a TLS client starts sending application data before verifying the
       server's Finished message, thus saving a round trip when performing a full
@@ -1377,32 +1415,6 @@ referer = &quot;http://nowhereatall.example.com/&quot;
 <br/>
  curl --false-start https://example.com</pre>
     <p class="Pp">See also <i>--tcp-fastopen</i>.</p>
-  </dd>
-  <dt id="form"><a class="permalink" href="#form">--form-escape</a></dt>
-  <dd>(HTTP) Pass on names of multipart form fields and files using
-      backslash-escaping instead of percent-encoding.
-    <p class="Pp">If --form-escape is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --form-escape -F 'field\name=curl' -F 'file=@load&quot;this' https://example.com</pre>
-    <p class="Pp">See also <i>-F, --form</i>. Added in 7.81.0.</p>
-  </dd>
-  <dt id="form~2"><a class="permalink" href="#form~2">--form-string
-    &lt;name=string&gt;</a></dt>
-  <dd>(HTTP SMTP IMAP) Similar to <i>-F, --form</i> except that the value string
-      for the named parameter is used literally. Leading @ and &lt; characters,
-      and the &quot;;type=&quot; string in the value have no special meaning.
-      Use this in preference to <i>-F, --form</i> if there is any possibility
-      that the string value may accidentally trigger the @ or &lt; features of
-      <i>-F, --form</i>.
-    <p class="Pp">--form-string can be used several times in a command line</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --form-string &quot;name=data&quot; https://example.com</pre>
-    <p class="Pp">See also <i>-F, --form</i>.</p>
   </dd>
   <dt id="F,"><a class="permalink" href="#F,">-F, --form
     &lt;name=content&gt;</a></dt>
@@ -1523,6 +1535,32 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">See also <i>-d, --data</i>, <i>--form-string</i> and
         <i>--form-escape</i>. This option is mutually exclusive to <i>-d,
         --data</i> and <i>-I, --head</i> and <i>-T, --upload-file</i>.</p>
+  </dd>
+  <dt id="form"><a class="permalink" href="#form">--form-escape</a></dt>
+  <dd>(HTTP) Pass on names of multipart form fields and files using
+      backslash-escaping instead of percent-encoding.
+    <p class="Pp">If --form-escape is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --form-escape -F 'field\name=curl' -F 'file=@load&quot;this' https://example.com</pre>
+    <p class="Pp">See also <i>-F, --form</i>. Added in 7.81.0.</p>
+  </dd>
+  <dt id="form~2"><a class="permalink" href="#form~2">--form-string
+    &lt;name=string&gt;</a></dt>
+  <dd>(HTTP SMTP IMAP) Similar to <i>-F, --form</i> except that the value string
+      for the named parameter is used literally. Leading @ and &lt; characters,
+      and the &quot;;type=&quot; string in the value have no special meaning.
+      Use this in preference to <i>-F, --form</i> if there is any possibility
+      that the string value may accidentally trigger the @ or &lt; features of
+      <i>-F, --form</i>.
+    <p class="Pp">--form-string can be used several times in a command line</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --form-string &quot;name=data&quot; https://example.com</pre>
+    <p class="Pp">See also <i>-F, --form</i>.</p>
   </dd>
   <dt id="ftp"><a class="permalink" href="#ftp">--ftp-account
     &lt;data&gt;</a></dt>
@@ -1689,7 +1727,20 @@ curl -F '=text message;encoder=quoted-printable' \
  curl --ftp-skip-pasv-ip ftp://example.com/</pre>
     <p class="Pp">See also <i>--ftp-pasv</i>.</p>
   </dd>
-  <dt id="ftp~8"><a class="permalink" href="#ftp~8">--ftp-ssl-ccc-mode
+  <dt id="ftp~8"><a class="permalink" href="#ftp~8">--ftp-ssl-ccc</a></dt>
+  <dd>(FTP) Use CCC (Clear Command Channel) Shuts down the SSL/TLS layer after
+      authenticating. The rest of the control channel communication is be
+      unencrypted. This allows NAT routers to follow the FTP transaction. The
+      default mode is passive.
+    <p class="Pp">Providing --ftp-ssl-ccc multiple times has no extra effect.
+        Disable it again with --no-ftp-ssl-ccc.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --ftp-ssl-ccc ftps://example.com/</pre>
+    <p class="Pp">See also <i>--ssl</i> and <i>--ftp-ssl-ccc-mode</i>.</p>
+  </dd>
+  <dt id="ftp~9"><a class="permalink" href="#ftp~9">--ftp-ssl-ccc-mode
     &lt;active/passive&gt;</a></dt>
   <dd>(FTP) Sets the CCC mode. The passive mode does not initiate the shutdown,
       but instead waits for the server to do it, and does not reply to the
@@ -1702,19 +1753,6 @@ curl -F '=text message;encoder=quoted-printable' \
 <br/>
  curl --ftp-ssl-ccc-mode active --ftp-ssl-ccc ftps://example.com/</pre>
     <p class="Pp">See also <i>--ftp-ssl-ccc</i>.</p>
-  </dd>
-  <dt id="ftp~9"><a class="permalink" href="#ftp~9">--ftp-ssl-ccc</a></dt>
-  <dd>(FTP) Use CCC (Clear Command Channel) Shuts down the SSL/TLS layer after
-      authenticating. The rest of the control channel communication is be
-      unencrypted. This allows NAT routers to follow the FTP transaction. The
-      default mode is passive.
-    <p class="Pp">Providing --ftp-ssl-ccc multiple times has no extra effect.
-        Disable it again with --no-ftp-ssl-ccc.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-ssl-ccc ftps://example.com/</pre>
-    <p class="Pp">See also <i>--ssl</i> and <i>--ftp-ssl-ccc-mode</i>.</p>
   </dd>
   <dt id="ftp~10"><a class="permalink" href="#ftp~10">--ftp-ssl-control</a></dt>
   <dd>(FTP) Require SSL/TLS for the FTP login, clear for transfer. Allows secure
@@ -1992,23 +2030,6 @@ curl -F '=text message;encoder=quoted-printable' \
         mutually exclusive to <i>--http1.0</i> and <i>--http2</i> and
         <i>--http2-prior-knowledge</i> and <i>--http3</i>.</p>
   </dd>
-  <dt>--http2-prior-knowledge</dt>
-  <dd>(HTTP) Issue a non-TLS HTTP requests using HTTP/2 directly without
-      HTTP/1.1 Upgrade. It requires prior knowledge that the server supports
-      HTTP/2 straight away. HTTPS requests still do HTTP/2 the standard way with
-      negotiated protocol version in the TLS handshake.
-    <p class="Pp">Providing --http2-prior-knowledge multiple times has no extra
-        effect. Disable it again with --no-http2-prior-knowledge.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http2-prior-knowledge https://example.com</pre>
-    <p class="Pp">See also <i>--http2</i> and <i>--http3</i>.
-        <i>--http2-prior-knowledge</i> requires that the underlying libcurl was
-        built to support HTTP/2. This option is mutually exclusive to
-        <i>--http1.1</i> and <i>--http1.0</i> and <i>--http2</i> and
-        <i>--http3</i>.</p>
-  </dd>
   <dt id="http2"><a class="permalink" href="#http2">--http2</a></dt>
   <dd>(HTTP) Use HTTP/2.
     <p class="Pp">For HTTPS, this means curl negotiates HTTP/2 in the TLS
@@ -2029,26 +2050,22 @@ curl -F '=text message;encoder=quoted-printable' \
         <i>--http1.1</i> and <i>--http1.0</i> and <i>--http2-prior-knowledge</i>
         and <i>--http3</i>.</p>
   </dd>
-  <dt>--http3-only</dt>
-  <dd>(HTTP) Instructs curl to use HTTP/3 to the host in the URL, with no
-      fallback to earlier HTTP versions. HTTP/3 can only be used for HTTPS and
-      not for HTTP URLs. For HTTP, this option triggers an error.
-    <p class="Pp">This option allows a user to avoid using the Alt-Svc method of
-        upgrading to HTTP/3 when you know that the target speaks HTTP/3 on the
-        given host and port.</p>
-    <p class="Pp">This option makes curl fail if a QUIC connection cannot be
-        established, it does not attempt any other HTTP versions on its own. Use
-        <i>--http3</i> for similar functionality <i>with</i> a fallback.</p>
-    <p class="Pp">Providing --http3-only multiple times has no extra effect.</p>
+  <dt>--http2-prior-knowledge</dt>
+  <dd>(HTTP) Issue a non-TLS HTTP requests using HTTP/2 directly without
+      HTTP/1.1 Upgrade. It requires prior knowledge that the server supports
+      HTTP/2 straight away. HTTPS requests still do HTTP/2 the standard way with
+      negotiated protocol version in the TLS handshake.
+    <p class="Pp">Providing --http2-prior-knowledge multiple times has no extra
+        effect. Disable it again with --no-http2-prior-knowledge.</p>
     <p class="Pp">Example:</p>
     <pre>
 <br/>
- curl --http3-only https://example.com</pre>
-    <p class="Pp">See also <i>--http1.1</i>, <i>--http2</i> and <i>--http3</i>.
-        <i>--http3-only</i> requires that the underlying libcurl was built to
-        support HTTP/3. This option is mutually exclusive to <i>--http1.1</i>
-        and <i>--http1.0</i> and <i>--http2</i> and
-        <i>--http2-prior-knowledge</i> and <i>--http3</i>. Added in 7.88.0.</p>
+ curl --http2-prior-knowledge https://example.com</pre>
+    <p class="Pp">See also <i>--http2</i> and <i>--http3</i>.
+        <i>--http2-prior-knowledge</i> requires that the underlying libcurl was
+        built to support HTTP/2. This option is mutually exclusive to
+        <i>--http1.1</i> and <i>--http1.0</i> and <i>--http2</i> and
+        <i>--http3</i>.</p>
   </dd>
   <dt id="http3"><a class="permalink" href="#http3">--http3</a></dt>
   <dd>(HTTP) Attempt HTTP/3 to the host in the URL, but fallback to earlier HTTP
@@ -2073,6 +2090,27 @@ curl -F '=text message;encoder=quoted-printable' \
         option is mutually exclusive to <i>--http1.1</i> and <i>--http1.0</i>
         and <i>--http2</i> and <i>--http2-prior-knowledge</i> and
         <i>--http3-only</i>. Added in 7.66.0.</p>
+  </dd>
+  <dt>--http3-only</dt>
+  <dd>(HTTP) Instructs curl to use HTTP/3 to the host in the URL, with no
+      fallback to earlier HTTP versions. HTTP/3 can only be used for HTTPS and
+      not for HTTP URLs. For HTTP, this option triggers an error.
+    <p class="Pp">This option allows a user to avoid using the Alt-Svc method of
+        upgrading to HTTP/3 when you know that the target speaks HTTP/3 on the
+        given host and port.</p>
+    <p class="Pp">This option makes curl fail if a QUIC connection cannot be
+        established, it does not attempt any other HTTP versions on its own. Use
+        <i>--http3</i> for similar functionality <i>with</i> a fallback.</p>
+    <p class="Pp">Providing --http3-only multiple times has no extra effect.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --http3-only https://example.com</pre>
+    <p class="Pp">See also <i>--http1.1</i>, <i>--http2</i> and <i>--http3</i>.
+        <i>--http3-only</i> requires that the underlying libcurl was built to
+        support HTTP/3. This option is mutually exclusive to <i>--http1.1</i>
+        and <i>--http1.0</i> and <i>--http2</i> and
+        <i>--http2-prior-knowledge</i> and <i>--http3</i>. Added in 7.88.0.</p>
   </dd>
   <dt id="ignore"><a class="permalink" href="#ignore">--ignore-content-length</a></dt>
   <dd>(FTP HTTP) For HTTP, Ignore the Content-Length header. This is
@@ -2277,19 +2315,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
  curl --keepalive-time 20 https://example.com</pre>
     <p class="Pp">See also <i>--no-keepalive</i> and <i>-m, --max-time</i>.</p>
   </dd>
-  <dt id="key"><a class="permalink" href="#key">--key-type &lt;type&gt;</a></dt>
-  <dd>(TLS) Private key file type. Specify which type your <i>--key</i> provided
-      private key is. DER, PEM, and ENG are supported. If not specified, PEM is
-      assumed.
-    <p class="Pp">If --key-type is provided several times, the last set value is
-        used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --key-type DER --key here https://example.com</pre>
-    <p class="Pp">See also <i>--key</i>.</p>
-  </dd>
-  <dt id="key~2"><a class="permalink" href="#key~2">--key &lt;key&gt;</a></dt>
+  <dt id="key"><a class="permalink" href="#key">--key &lt;key&gt;</a></dt>
   <dd>(TLS SSH) Private key filename. Allows you to provide your private key in
       this separate file. For SSH, if not specified, curl tries the following
       candidates in order: &quot;~/.ssh/id_rsa&quot;, &quot;~/.ssh/id_dsa&quot;,
@@ -2312,6 +2338,19 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
 <br/>
  curl --cert certificate --key here https://example.com</pre>
     <p class="Pp">See also <i>--key-type</i> and <i>-E, --cert</i>.</p>
+  </dd>
+  <dt id="key~2"><a class="permalink" href="#key~2">--key-type
+    &lt;type&gt;</a></dt>
+  <dd>(TLS) Private key file type. Specify which type your <i>--key</i> provided
+      private key is. DER, PEM, and ENG are supported. If not specified, PEM is
+      assumed.
+    <p class="Pp">If --key-type is provided several times, the last set value is
+        used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --key-type DER --key here https://example.com</pre>
+    <p class="Pp">See also <i>--key</i>.</p>
   </dd>
   <dt id="krb"><a class="permalink" href="#krb">--krb &lt;level&gt;</a></dt>
   <dd>(FTP) Enable Kerberos authentication and use. The level must be entered
@@ -2371,10 +2410,10 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
         --speed-time</i>.</p>
   </dd>
   <dt id="l,"><a class="permalink" href="#l,">-l, --list-only</a></dt>
-  <dd>(FTP POP3 SFTP) When listing an FTP directory, force a name-only view.
-      Maybe particularly useful if the user wants to machine-parse the contents
-      of an FTP directory since the normal directory view does not use a
-      standard look or format. When used like this, the option causes an NLST
+  <dd>(FTP POP3 SFTP FILE) When listing an FTP directory, force a name-only
+      view. Maybe particularly useful if the user wants to machine-parse the
+      contents of an FTP directory since the normal directory view does not use
+      a standard look or format. When used like this, the option causes an NLST
       command to be sent to the server instead of LIST.
     <p class="Pp">Note: Some FTP servers list only files in their response to
         NLST; they do not include sub-directories and symbolic links.</p>
@@ -2386,6 +2425,8 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
         a LIST command to be performed instead of RETR. This is particularly
         useful if the user wants to see if a specific message-id exists on the
         server and what size it is.</p>
+    <p class="Pp">For FILE, this option has no effect yet as directories are
+        always listed in this mode.</p>
     <p class="Pp">Note: When combined with <i>-X, --request</i>, this option can
         be used to send a UIDL command instead, so the user may use the email's
         unique identifier rather than its message-id to make the request.</p>
@@ -2410,20 +2451,6 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
 <br/>
  curl --local-port 1000-3000 https://example.com</pre>
     <p class="Pp">See also <i>-g, --globoff</i>.</p>
-  </dd>
-  <dt id="location"><a class="permalink" href="#location">--location-trusted</a></dt>
-  <dd>(HTTP) Like <i>-L, --location</i>, but allows sending the name + password
-      to all hosts that the site may redirect to. This may or may not introduce
-      a security breach if the site redirects you to a site to which you send
-      your authentication info (which is clear-text in the case of HTTP Basic
-      authentication).
-    <p class="Pp">Providing --location-trusted multiple times has no extra
-        effect. Disable it again with --no-location-trusted.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --location-trusted -u user:password https://example.com</pre>
-    <p class="Pp">See also <i>-u, --user</i>.</p>
   </dd>
   <dt id="L,"><a class="permalink" href="#L,">-L, --location</a></dt>
   <dd>(HTTP) If the server reports that the requested page has moved to a
@@ -2453,6 +2480,20 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
 <br/>
  curl -L https://example.com</pre>
     <p class="Pp">See also <i>--resolve</i> and <i>--alt-svc</i>.</p>
+  </dd>
+  <dt id="location"><a class="permalink" href="#location">--location-trusted</a></dt>
+  <dd>(HTTP) Like <i>-L, --location</i>, but allows sending the name + password
+      to all hosts that the site may redirect to. This may or may not introduce
+      a security breach if the site redirects you to a site to which you send
+      your authentication info (which is clear-text in the case of HTTP Basic
+      authentication).
+    <p class="Pp">Providing --location-trusted multiple times has no extra
+        effect. Disable it again with --no-location-trusted.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --location-trusted -u user:password https://example.com</pre>
+    <p class="Pp">See also <i>-u, --user</i>.</p>
   </dd>
   <dt id="login"><a class="permalink" href="#login">--login-options
     &lt;options&gt;</a></dt>
@@ -2502,25 +2543,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
  curl --mail-from user@example.com -T mail smtp://example.com/</pre>
     <p class="Pp">See also <i>--mail-rcpt</i> and <i>--mail-auth</i>.</p>
   </dd>
-  <dt id="mail~3"><a class="permalink" href="#mail~3">--mail-rcpt-allowfails</a></dt>
-  <dd>(SMTP) When sending data to multiple recipients, by default curl aborts
-      SMTP conversation if at least one of the recipients causes RCPT TO command
-      to return an error.
-    <p class="Pp">The default behavior can be changed by passing
-        <i>--mail-rcpt-allowfails</i> command-line option which makes curl
-        ignore errors and proceed with the remaining valid recipients.</p>
-    <p class="Pp">If all recipients trigger RCPT TO failures and this flag is
-        specified, curl still aborts the SMTP conversation and returns the error
-        received from to the last RCPT TO command.</p>
-    <p class="Pp">Providing --mail-rcpt-allowfails multiple times has no extra
-        effect. Disable it again with --no-mail-rcpt-allowfails.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mail-rcpt-allowfails --mail-rcpt dest@example.com smtp://example.com</pre>
-    <p class="Pp">See also <i>--mail-rcpt</i>. Added in 7.69.0.</p>
-  </dd>
-  <dt id="mail~4"><a class="permalink" href="#mail~4">--mail-rcpt
+  <dt id="mail~3"><a class="permalink" href="#mail~3">--mail-rcpt
     &lt;address&gt;</a></dt>
   <dd>(SMTP) Specify a single email address, username or mailing list name.
       Repeat this option several times to send to multiple recipients.
@@ -2537,6 +2560,24 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
 <br/>
  curl --mail-rcpt user@example.net smtp://example.com</pre>
     <p class="Pp">See also <i>--mail-rcpt-allowfails</i>.</p>
+  </dd>
+  <dt id="mail~4"><a class="permalink" href="#mail~4">--mail-rcpt-allowfails</a></dt>
+  <dd>(SMTP) When sending data to multiple recipients, by default curl aborts
+      SMTP conversation if at least one of the recipients causes RCPT TO command
+      to return an error.
+    <p class="Pp">The default behavior can be changed by passing
+        <i>--mail-rcpt-allowfails</i> command-line option which makes curl
+        ignore errors and proceed with the remaining valid recipients.</p>
+    <p class="Pp">If all recipients trigger RCPT TO failures and this flag is
+        specified, curl still aborts the SMTP conversation and returns the error
+        received from to the last RCPT TO command.</p>
+    <p class="Pp">Providing --mail-rcpt-allowfails multiple times has no extra
+        effect. Disable it again with --no-mail-rcpt-allowfails.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --mail-rcpt-allowfails --mail-rcpt dest@example.com smtp://example.com</pre>
+    <p class="Pp">See also <i>--mail-rcpt</i>. Added in 7.69.0.</p>
   </dd>
   <dt id="M,"><a class="permalink" href="#M,">-M, --manual</a></dt>
   <dd>Manual. Display the huge help text.
@@ -2633,33 +2674,6 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">See also <i>--basic</i>, <i>--ntlm</i>, <i>--anyauth</i> and
         <i>--proxy-negotiate</i>.</p>
   </dd>
-  <dt id="netrc"><a class="permalink" href="#netrc">--netrc-file
-    &lt;filename&gt;</a></dt>
-  <dd>Set the netrc file to use. Similar to <i>-n, --netrc</i>, except that you
-      also provide the path (absolute or relative).
-    <p class="Pp">It abides by <i>--netrc-optional</i> if specified.</p>
-    <p class="Pp">If --netrc-file is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --netrc-file netrc https://example.com</pre>
-    <p class="Pp">See also <i>-n, --netrc</i>, <i>-u, --user</i> and <i>-K,
-        --config</i>. This option is mutually exclusive to <i>-n,
-      --netrc</i>.</p>
-  </dd>
-  <dt id="netrc~2"><a class="permalink" href="#netrc~2">--netrc-optional</a></dt>
-  <dd>Similar to <i>-n, --netrc</i>, but this option makes the .netrc usage
-      <b>optional</b> and not mandatory as the <i>-n, --netrc</i> option does.
-    <p class="Pp">Providing --netrc-optional multiple times has no extra effect.
-        Disable it again with --no-netrc-optional.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --netrc-optional https://example.com</pre>
-    <p class="Pp">See also <i>--netrc-file</i>. This option is mutually
-        exclusive to <i>-n, --netrc</i>.</p>
-  </dd>
   <dt id="n,"><a class="permalink" href="#n,">-n, --netrc</a></dt>
   <dd>Make curl scan the <i>.netrc</i> file in the user's home directory for
       login name and password. This is typically used for FTP on Unix. If used
@@ -2687,6 +2701,33 @@ Example:
     <p class="Pp">See also <i>--netrc-file</i>, <i>-K, --config</i> and <i>-u,
         --user</i>. This option is mutually exclusive to <i>--netrc-file</i> and
         <i>--netrc-optional</i>.</p>
+  </dd>
+  <dt id="netrc"><a class="permalink" href="#netrc">--netrc-file
+    &lt;filename&gt;</a></dt>
+  <dd>Set the netrc file to use. Similar to <i>-n, --netrc</i>, except that you
+      also provide the path (absolute or relative).
+    <p class="Pp">It abides by <i>--netrc-optional</i> if specified.</p>
+    <p class="Pp">If --netrc-file is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --netrc-file netrc https://example.com</pre>
+    <p class="Pp">See also <i>-n, --netrc</i>, <i>-u, --user</i> and <i>-K,
+        --config</i>. This option is mutually exclusive to <i>-n,
+      --netrc</i>.</p>
+  </dd>
+  <dt id="netrc~2"><a class="permalink" href="#netrc~2">--netrc-optional</a></dt>
+  <dd>Similar to <i>-n, --netrc</i>, but this option makes the .netrc usage
+      <b>optional</b> and not mandatory as the <i>-n, --netrc</i> option does.
+    <p class="Pp">Providing --netrc-optional multiple times has no extra effect.
+        Disable it again with --no-netrc-optional.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --netrc-optional https://example.com</pre>
+    <p class="Pp">See also <i>--netrc-file</i>. This option is mutually
+        exclusive to <i>-n, --netrc</i>.</p>
   </dd>
   <dt>-:, --next</dt>
   <dd>Use a separate operation for the following URL and associated options.
@@ -2846,17 +2887,6 @@ Examples:
  curl --noproxy &quot;www.example&quot; https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>.</p>
   </dd>
-  <dt>--ntlm-wb</dt>
-  <dd>(HTTP) Enables NTLM much in the style <i>--ntlm</i> does, but hand over
-      the authentication to the separate binary &quot;ntlmauth&quot; application
-      that is executed when needed.
-    <p class="Pp">Providing --ntlm-wb multiple times has no extra effect.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ntlm-wb -u user:password https://example.com</pre>
-    <p class="Pp">See also <i>--ntlm</i> and <i>--proxy-ntlm</i>.</p>
-  </dd>
   <dt id="ntlm"><a class="permalink" href="#ntlm">--ntlm</a></dt>
   <dd>(HTTP) Use NTLM authentication. The NTLM authentication method was
       designed by Microsoft and is used by IIS web servers. It is a proprietary
@@ -2876,6 +2906,18 @@ Examples:
         exclusive to <i>--basic</i> and <i>--negotiate</i> and <i>--digest</i>
         and <i>--anyauth</i>.</p>
   </dd>
+  <dt>--ntlm-wb</dt>
+  <dd>(HTTP) Deprecated option (added in 8.8.0).
+    <p class="Pp">Enabled NTLM much in the style <i>--ntlm</i> does, but handed
+        over the authentication to a separate executable that was executed when
+        needed.</p>
+    <p class="Pp">Providing --ntlm-wb multiple times has no extra effect.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --ntlm-wb -u user:password https://example.com</pre>
+    <p class="Pp">See also <i>--ntlm</i> and <i>--proxy-ntlm</i>.</p>
+  </dd>
   <dt id="oauth2"><a class="permalink" href="#oauth2">--oauth2-bearer
     &lt;token&gt;</a></dt>
   <dd>(IMAP LDAP POP3 SMTP HTTP) Specify the Bearer Token for OAUTH 2.0 server
@@ -2892,23 +2934,6 @@ Examples:
  curl --oauth2-bearer &quot;mF_9.B5f-4.1JqM&quot; https://example.com</pre>
     <p class="Pp">See also <i>--basic</i>, <i>--ntlm</i> and
       <i>--digest</i>.</p>
-  </dd>
-  <dt id="output"><a class="permalink" href="#output">--output-dir
-    &lt;dir&gt;</a></dt>
-  <dd>Specify the directory in which files should be stored, when <i>-O,
-      --remote-name</i> or <i>-o, --output</i> are used.
-    <p class="Pp">The given output directory is used for all URLs and output
-        options on the command line, up until the first <i>-:, --next</i>.</p>
-    <p class="Pp">If the specified target directory does not exist, the
-        operation fails unless <i>--create-dirs</i> is also used.</p>
-    <p class="Pp">If --output-dir is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --output-dir &quot;tmp&quot; -O https://example.com</pre>
-    <p class="Pp">See also <i>-O, --remote-name</i> and <i>-J,
-        --remote-header-name</i>. Added in 7.73.0.</p>
   </dd>
   <dt id="o,"><a class="permalink" href="#o,">-o, --output &lt;file&gt;</a></dt>
   <dd>Write output to the given file instead of stdout. If you are using
@@ -2959,6 +2984,37 @@ Examples:
     <p class="Pp">See also <i>-O, --remote-name</i>, <i>--remote-name-all</i>
         and <i>-J, --remote-header-name</i>.</p>
   </dd>
+  <dt id="output"><a class="permalink" href="#output">--output-dir
+    &lt;dir&gt;</a></dt>
+  <dd>Specify the directory in which files should be stored, when <i>-O,
+      --remote-name</i> or <i>-o, --output</i> are used.
+    <p class="Pp">The given output directory is used for all URLs and output
+        options on the command line, up until the first <i>-:, --next</i>.</p>
+    <p class="Pp">If the specified target directory does not exist, the
+        operation fails unless <i>--create-dirs</i> is also used.</p>
+    <p class="Pp">If --output-dir is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --output-dir &quot;tmp&quot; -O https://example.com</pre>
+    <p class="Pp">See also <i>-O, --remote-name</i> and <i>-J,
+        --remote-header-name</i>. Added in 7.73.0.</p>
+  </dd>
+  <dt id="Z,"><a class="permalink" href="#Z,">-Z, --parallel</a></dt>
+  <dd>Makes curl perform its transfers in parallel as compared to the regular
+      serial manner.
+    <p class="Pp">This option is global and does not need to be specified for
+        each use of --next.</p>
+    <p class="Pp">Providing --parallel multiple times has no extra effect.
+        Disable it again with --no-parallel.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --parallel https://example.com -o file1 https://example.com -o file2</pre>
+    <p class="Pp">See also <i>-:, --next</i> and <i>-v, --verbose</i>. Added in
+        7.66.0.</p>
+  </dd>
   <dt id="parallel"><a class="permalink" href="#parallel">--parallel-immediate</a></dt>
   <dd>When doing parallel transfers, this option instructs curl that it should
       rather prefer opening up more connections in parallel at once rather than
@@ -2989,20 +3045,6 @@ Examples:
 <br/>
  curl --parallel-max 100 -Z https://example.com ftp://example.com/</pre>
     <p class="Pp">See also <i>-Z, --parallel</i>. Added in 7.66.0.</p>
-  </dd>
-  <dt id="Z,"><a class="permalink" href="#Z,">-Z, --parallel</a></dt>
-  <dd>Makes curl perform its transfers in parallel as compared to the regular
-      serial manner.
-    <p class="Pp">This option is global and does not need to be specified for
-        each use of --next.</p>
-    <p class="Pp">Providing --parallel multiple times has no extra effect.
-        Disable it again with --no-parallel.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --parallel https://example.com -o file1 https://example.com -o file2</pre>
-    <p class="Pp">See also <i>-:, --next</i> and <i>-v, --verbose</i>. Added in
-        7.66.0.</p>
   </dd>
   <dt id="pass"><a class="permalink" href="#pass">--pass &lt;phrase&gt;</a></dt>
   <dd>(SSH TLS) Passphrase for the private key.
@@ -3145,43 +3187,7 @@ Examples:
  curl -# -O https://example.com</pre>
     <p class="Pp">See also <i>--styled-output</i>.</p>
   </dd>
-  <dt id="proto"><a class="permalink" href="#proto">--proto-default
-    &lt;protocol&gt;</a></dt>
-  <dd>Use <i>protocol</i> for any provided URL missing a scheme.
-    <p class="Pp">An unknown or unsupported protocol causes error
-        <i>CURLE_UNSUPPORTED_PROTOCOL</i>.</p>
-    <p class="Pp">This option does not change the default proxy protocol
-      (http).</p>
-    <p class="Pp">Without this option set, curl guesses protocol based on the
-        hostname, see <i>--url</i> for details.</p>
-    <p class="Pp">If --proto-default is provided several times, the last set
-        value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proto-default https ftp.example.com</pre>
-    <p class="Pp">See also <i>--proto</i> and <i>--proto-redir</i>.</p>
-  </dd>
-  <dt id="proto~2"><a class="permalink" href="#proto~2">--proto-redir
-    &lt;protocols&gt;</a></dt>
-  <dd>Limit what protocols to allow on redirects. Protocols denied by
-      <i>--proto</i> are not overridden by this option. See <i>--proto</i> for
-      how protocols are represented.
-    <p class="Pp">Example, allow only HTTP and HTTPS on redirect:</p>
-    <pre>
-curl --proto-redir -all,http,https http://example.com</pre>
-    <p class="Pp">By default curl only allows HTTP, HTTPS, FTP and FTPS on
-        redirects (added in 7.65.2). Specifying <i>all</i> or <i>+all</i>
-        enables all protocols on redirects, which is not good for security.</p>
-    <p class="Pp">If --proto-redir is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proto-redir =http,https https://example.com</pre>
-    <p class="Pp">See also <i>--proto</i>.</p>
-  </dd>
-  <dt id="proto~3"><a class="permalink" href="#proto~3">--proto
+  <dt id="proto"><a class="permalink" href="#proto">--proto
     &lt;protocols&gt;</a></dt>
   <dd>Limit what protocols to allow for transfers. Protocols are evaluated left
       to right, are comma separated, and are each a protocol name or 'all',
@@ -3224,6 +3230,85 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --proto =http,https,sftp https://example.com</pre>
     <p class="Pp">See also <i>--proto-redir</i> and <i>--proto-default</i>.</p>
+  </dd>
+  <dt id="proto~2"><a class="permalink" href="#proto~2">--proto-default
+    &lt;protocol&gt;</a></dt>
+  <dd>Use <i>protocol</i> for any provided URL missing a scheme.
+    <p class="Pp">An unknown or unsupported protocol causes error
+        <i>CURLE_UNSUPPORTED_PROTOCOL</i>.</p>
+    <p class="Pp">This option does not change the default proxy protocol
+      (http).</p>
+    <p class="Pp">Without this option set, curl guesses protocol based on the
+        hostname, see <i>--url</i> for details.</p>
+    <p class="Pp">If --proto-default is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --proto-default https ftp.example.com</pre>
+    <p class="Pp">See also <i>--proto</i> and <i>--proto-redir</i>.</p>
+  </dd>
+  <dt id="proto~3"><a class="permalink" href="#proto~3">--proto-redir
+    &lt;protocols&gt;</a></dt>
+  <dd>Limit what protocols to allow on redirects. Protocols denied by
+      <i>--proto</i> are not overridden by this option. See <i>--proto</i> for
+      how protocols are represented.
+    <p class="Pp">Example, allow only HTTP and HTTPS on redirect:</p>
+    <pre>
+curl --proto-redir -all,http,https http://example.com</pre>
+    <p class="Pp">By default curl only allows HTTP, HTTPS, FTP and FTPS on
+        redirects (added in 7.65.2). Specifying <i>all</i> or <i>+all</i>
+        enables all protocols on redirects, which is not good for security.</p>
+    <p class="Pp">If --proto-redir is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --proto-redir =http,https https://example.com</pre>
+    <p class="Pp">See also <i>--proto</i>.</p>
+  </dd>
+  <dt id="x,"><a class="permalink" href="#x,">-x, --proxy
+    [protocol://]host[:port]</a></dt>
+  <dd>Use the specified proxy.
+    <p class="Pp">The proxy string can be specified with a protocol:// prefix.
+        No protocol specified or http:// it is treated as an HTTP proxy. Use
+        socks4://, socks4a://, socks5:// or socks5h:// to request a specific
+        SOCKS version to be used.</p>
+    <p class="Pp">Unix domain sockets are supported for socks proxy. Set
+        localhost for the host part. e.g.
+        socks5h://localhost/path/to/socket.sock</p>
+    <p class="Pp">HTTPS proxy support works set with the https:// protocol
+        prefix for OpenSSL and GnuTLS (added in 7.52.0). It also works for
+        BearSSL, mbedTLS, rustls, Schannel, Secure Transport and wolfSSL (added
+        in 7.87.0).</p>
+    <p class="Pp">Unrecognized and unsupported proxy protocols cause an error
+        (added in 7.52.0). Ancient curl versions ignored unknown schemes and
+        used http:// instead.</p>
+    <p class="Pp">If the port number is not specified in the proxy string, it is
+        assumed to be 1080.</p>
+    <p class="Pp">This option overrides existing environment variables that set
+        the proxy to use. If there is an environment variable setting a proxy,
+        you can set proxy to &quot;&quot; to override it.</p>
+    <p class="Pp">All operations that are performed over an HTTP proxy are
+        transparently converted to HTTP. It means that certain protocol specific
+        operations might not be available. This is not the case if you can
+        tunnel through the proxy, as one with the <i>-p, --proxytunnel</i>
+        option.</p>
+    <p class="Pp">User and password that might be provided in the proxy string
+        are URL decoded by curl. This allows you to pass in special characters
+        such as @ by using %40 or pass in a colon with %3a.</p>
+    <p class="Pp">The proxy host can be specified the same way as the proxy
+        environment variables, including the protocol prefix (http://) and the
+        embedded user + password.</p>
+    <p class="Pp">When a proxy is used, the active FTP mode as set with <i>-P,
+        --ftp-port</i>, cannot be used.</p>
+    <p class="Pp">If --proxy is provided several times, the last set value is
+        used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --proxy http://proxy.example https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i> and <i>--proxy-basic</i>.</p>
   </dd>
   <dt id="proxy"><a class="permalink" href="#proxy">--proxy-anyauth</a></dt>
   <dd>Automatically pick a suitable authentication method when communicating
@@ -3303,18 +3388,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--proxy-cacert</i>, <i>-x, --proxy</i> and
         <i>--capath</i>. Added in 7.52.0.</p>
   </dd>
-  <dt id="proxy~6"><a class="permalink" href="#proxy~6">--proxy-cert-type
-    &lt;type&gt;</a></dt>
-  <dd>Same as <i>--cert-type</i> but used in HTTPS proxy context.
-    <p class="Pp">If --proxy-cert-type is provided several times, the last set
-        value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-cert-type PEM --proxy-cert file -x https://proxy https://example.com</pre>
-    <p class="Pp">See also <i>--proxy-cert</i>. Added in 7.52.0.</p>
-  </dd>
-  <dt id="proxy~7"><a class="permalink" href="#proxy~7">--proxy-cert
+  <dt id="proxy~6"><a class="permalink" href="#proxy~6">--proxy-cert
     &lt;cert[:passwd]&gt;</a></dt>
   <dd>Same as <i>-E, --cert</i> but used in HTTPS proxy context.
     <p class="Pp">If --proxy-cert is provided several times, the last set value
@@ -3324,6 +3398,17 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --proxy-cert file -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-cert-type</i>. Added in 7.52.0.</p>
+  </dd>
+  <dt id="proxy~7"><a class="permalink" href="#proxy~7">--proxy-cert-type
+    &lt;type&gt;</a></dt>
+  <dd>Same as <i>--cert-type</i> but used in HTTPS proxy context.
+    <p class="Pp">If --proxy-cert-type is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --proxy-cert-type PEM --proxy-cert file -x https://proxy https://example.com</pre>
+    <p class="Pp">See also <i>--proxy-cert</i>. Added in 7.52.0.</p>
   </dd>
   <dt id="proxy~8"><a class="permalink" href="#proxy~8">--proxy-ciphers
     &lt;list&gt;</a></dt>
@@ -3430,19 +3515,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and <i>-k, --insecure</i>. Added
         in 7.52.0.</p>
   </dd>
-  <dt id="proxy~14"><a class="permalink" href="#proxy~14">--proxy-key-type
-    &lt;type&gt;</a></dt>
-  <dd>Same as <i>--key-type</i> but used in HTTPS proxy context.
-    <p class="Pp">If --proxy-key-type is provided several times, the last set
-        value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-key-type DER --proxy-key here -x https://proxy https://example.com</pre>
-    <p class="Pp">See also <i>--proxy-key</i> and <i>-x, --proxy</i>. Added in
-        7.52.0.</p>
-  </dd>
-  <dt id="proxy~15"><a class="permalink" href="#proxy~15">--proxy-key
+  <dt id="proxy~14"><a class="permalink" href="#proxy~14">--proxy-key
     &lt;key&gt;</a></dt>
   <dd>Same as <i>--key</i> but used in HTTPS proxy context.
     <p class="Pp">If --proxy-key is provided several times, the last set value
@@ -3453,6 +3526,18 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --proxy-key here -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-key-type</i> and <i>-x, --proxy</i>. Added
         in 7.52.0.</p>
+  </dd>
+  <dt id="proxy~15"><a class="permalink" href="#proxy~15">--proxy-key-type
+    &lt;type&gt;</a></dt>
+  <dd>Same as <i>--key-type</i> but used in HTTPS proxy context.
+    <p class="Pp">If --proxy-key-type is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --proxy-key-type DER --proxy-key here -x https://proxy https://example.com</pre>
+    <p class="Pp">See also <i>--proxy-key</i> and <i>-x, --proxy</i>. Added in
+        7.52.0.</p>
   </dd>
   <dt id="proxy~16"><a class="permalink" href="#proxy~16">--proxy-negotiate</a></dt>
   <dd>Use HTTP Negotiate (SPNEGO) authentication when communicating with the
@@ -3630,49 +3715,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --proxy-user smith:secret -x proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-pass</i>.</p>
-  </dd>
-  <dt id="x,"><a class="permalink" href="#x,">-x, --proxy
-    [protocol://]host[:port]</a></dt>
-  <dd>Use the specified proxy.
-    <p class="Pp">The proxy string can be specified with a protocol:// prefix.
-        No protocol specified or http:// it is treated as an HTTP proxy. Use
-        socks4://, socks4a://, socks5:// or socks5h:// to request a specific
-        SOCKS version to be used.</p>
-    <p class="Pp">Unix domain sockets are supported for socks proxy. Set
-        localhost for the host part. e.g.
-        socks5h://localhost/path/to/socket.sock</p>
-    <p class="Pp">HTTPS proxy support works set with the https:// protocol
-        prefix for OpenSSL and GnuTLS (added in 7.52.0). It also works for
-        BearSSL, mbedTLS, rustls, Schannel, Secure Transport and wolfSSL (added
-        in 7.87.0).</p>
-    <p class="Pp">Unrecognized and unsupported proxy protocols cause an error
-        (added in 7.52.0). Ancient curl versions ignored unknown schemes and
-        used http:// instead.</p>
-    <p class="Pp">If the port number is not specified in the proxy string, it is
-        assumed to be 1080.</p>
-    <p class="Pp">This option overrides existing environment variables that set
-        the proxy to use. If there is an environment variable setting a proxy,
-        you can set proxy to &quot;&quot; to override it.</p>
-    <p class="Pp">All operations that are performed over an HTTP proxy are
-        transparently converted to HTTP. It means that certain protocol specific
-        operations might not be available. This is not the case if you can
-        tunnel through the proxy, as one with the <i>-p, --proxytunnel</i>
-        option.</p>
-    <p class="Pp">User and password that might be provided in the proxy string
-        are URL decoded by curl. This allows you to pass in special characters
-        such as @ by using %40 or pass in a colon with %3a.</p>
-    <p class="Pp">The proxy host can be specified the same way as the proxy
-        environment variables, including the protocol prefix (http://) and the
-        embedded user + password.</p>
-    <p class="Pp">When a proxy is used, the active FTP mode as set with <i>-P,
-        --ftp-port</i>, cannot be used.</p>
-    <p class="Pp">If --proxy is provided several times, the last set value is
-        used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy http://proxy.example https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i> and <i>--proxy-basic</i>.</p>
   </dd>
   <dt id="proxy1.0"><a class="permalink" href="#proxy1.0">--proxy1.0
     &lt;host[:port]&gt;</a></dt>
@@ -3959,19 +4001,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl -OJ https://example.com/file</pre>
     <p class="Pp">See also <i>-O, --remote-name</i>.</p>
   </dd>
-  <dt id="remote"><a class="permalink" href="#remote">--remote-name-all</a></dt>
-  <dd>Change the default action for all given URLs to be dealt with as if <i>-O,
-      --remote-name</i> were used for each one. If you want to disable that for
-      a specific URL after <i>--remote-name-all</i> has been used, you must use
-      &quot;-o -&quot; or <i>--no-remote-name</i>.
-    <p class="Pp">Providing --remote-name-all multiple times has no extra
-        effect. Disable it again with --no-remote-name-all.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --remote-name-all ftp://example.com/file1 ftp://example.com/file2</pre>
-    <p class="Pp">See also <i>-O, --remote-name</i>.</p>
-  </dd>
   <dt id="O,"><a class="permalink" href="#O,">-O, --remote-name</a></dt>
   <dd>Write output to a local file named like the remote file we get. (Only the
       file part of the remote file is used, the path is cut off.)
@@ -3997,6 +4026,19 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl -O https://example.com/filename</pre>
     <p class="Pp">See also <i>--remote-name-all</i>, <i>--output-dir</i> and
         <i>-J, --remote-header-name</i>.</p>
+  </dd>
+  <dt id="remote"><a class="permalink" href="#remote">--remote-name-all</a></dt>
+  <dd>Change the default action for all given URLs to be dealt with as if <i>-O,
+      --remote-name</i> were used for each one. If you want to disable that for
+      a specific URL after <i>--remote-name-all</i> has been used, you must use
+      &quot;-o -&quot; or <i>--no-remote-name</i>.
+    <p class="Pp">Providing --remote-name-all multiple times has no extra
+        effect. Disable it again with --no-remote-name-all.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --remote-name-all ftp://example.com/file1 ftp://example.com/file2</pre>
+    <p class="Pp">See also <i>-O, --remote-name</i>.</p>
   </dd>
   <dt id="R,"><a class="permalink" href="#R,">-R, --remote-time</a></dt>
   <dd>Makes curl attempt to figure out the timestamp of the remote file that is
@@ -4024,23 +4066,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --remove-on-error -o output https://example.com</pre>
     <p class="Pp">See also <i>-f, --fail</i>. Added in 7.83.0.</p>
-  </dd>
-  <dt id="request"><a class="permalink" href="#request">--request-target
-    &lt;path&gt;</a></dt>
-  <dd>(HTTP) Use an alternative target (path) instead of using the path as
-      provided in the URL. Particularly useful when wanting to issue HTTP
-      requests without leading slash or other data that does not follow the
-      regular URL pattern, like &quot;OPTIONS *&quot;.
-    <p class="Pp">curl passes on the verbatim string you give it its the request
-        without any filter or other safe guards. That includes white space and
-        control characters.</p>
-    <p class="Pp">If --request-target is provided several times, the last set
-        value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --request-target &quot;*&quot; -X OPTIONS https://example.com</pre>
-    <p class="Pp">See also <i>-X, --request</i>. Added in 7.55.0.</p>
   </dd>
   <dt id="X,"><a class="permalink" href="#X,">-X, --request
     &lt;method&gt;</a></dt>
@@ -4099,6 +4124,23 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl -X NLST ftp://example.com/</pre>
     <p class="Pp">See also <i>--request-target</i>.</p>
   </dd>
+  <dt id="request"><a class="permalink" href="#request">--request-target
+    &lt;path&gt;</a></dt>
+  <dd>(HTTP) Use an alternative target (path) instead of using the path as
+      provided in the URL. Particularly useful when wanting to issue HTTP
+      requests without leading slash or other data that does not follow the
+      regular URL pattern, like &quot;OPTIONS *&quot;.
+    <p class="Pp">curl passes on the verbatim string you give it its the request
+        without any filter or other safe guards. That includes white space and
+        control characters.</p>
+    <p class="Pp">If --request-target is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --request-target &quot;*&quot; -X OPTIONS https://example.com</pre>
+    <p class="Pp">See also <i>-X, --request</i>. Added in 7.55.0.</p>
+  </dd>
   <dt id="resolve"><a class="permalink" href="#resolve">--resolve
     &lt;[+]host:port:addr[,addr]...&gt;</a></dt>
   <dd>Provide a custom address for a specific host and port pair. Using this,
@@ -4133,7 +4175,29 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --resolve example.com:443:127.0.0.1 https://example.com</pre>
     <p class="Pp">See also <i>--connect-to</i> and <i>--alt-svc</i>.</p>
   </dd>
-  <dt id="retry"><a class="permalink" href="#retry">--retry-all-errors</a></dt>
+  <dt id="retry"><a class="permalink" href="#retry">--retry &lt;num&gt;</a></dt>
+  <dd>If a transient error is returned when curl tries to perform a transfer, it
+      retries this number of times before giving up. Setting the number to 0
+      makes curl do no retries (which is the default). Transient error means
+      either: a timeout, an FTP 4xx response code or an HTTP 408, 429, 500, 502,
+      503 or 504 response code.
+    <p class="Pp">When curl is about to retry a transfer, it first waits one
+        second and then for all forthcoming retries it doubles the waiting time
+        until it reaches 10 minutes which then remains delay between the rest of
+        the retries. By using <i>--retry-delay</i> you disable this exponential
+        backoff algorithm. See also <i>--retry-max-time</i> to limit the total
+        time allowed for retries.</p>
+    <p class="Pp">curl complies with the Retry-After: response header if one was
+        present to know when to issue the next retry (added in 7.66.0).</p>
+    <p class="Pp">If --retry is provided several times, the last set value is
+        used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --retry 7 https://example.com</pre>
+    <p class="Pp">See also <i>--retry-max-time</i>.</p>
+  </dd>
+  <dt id="retry~2"><a class="permalink" href="#retry~2">--retry-all-errors</a></dt>
   <dd>Retry on any error. This option is used together with <i>--retry</i>.
     <p class="Pp">This option is the &quot;sledgehammer&quot; of retrying. Do
         not use this option by default (for example in your <b>curlrc</b>),
@@ -4165,7 +4229,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --retry 5 --retry-all-errors https://example.com</pre>
     <p class="Pp">See also <i>--retry</i>. Added in 7.71.0.</p>
   </dd>
-  <dt id="retry~2"><a class="permalink" href="#retry~2">--retry-connrefused</a></dt>
+  <dt id="retry~3"><a class="permalink" href="#retry~3">--retry-connrefused</a></dt>
   <dd>In addition to the other conditions, consider ECONNREFUSED as a transient
       error too for <i>--retry</i>. This option is used together with
       <i>--retry</i>.
@@ -4178,7 +4242,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--retry</i> and <i>--retry-all-errors</i>. Added
         in 7.52.0.</p>
   </dd>
-  <dt id="retry~3"><a class="permalink" href="#retry~3">--retry-delay
+  <dt id="retry~4"><a class="permalink" href="#retry~4">--retry-delay
     &lt;seconds&gt;</a></dt>
   <dd>Make curl sleep this amount of time before each retry when a transfer has
       failed with a transient error (it changes the default backoff time
@@ -4193,7 +4257,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --retry-delay 5 --retry 7 https://example.com</pre>
     <p class="Pp">See also <i>--retry</i>.</p>
   </dd>
-  <dt id="retry~4"><a class="permalink" href="#retry~4">--retry-max-time
+  <dt id="retry~5"><a class="permalink" href="#retry~5">--retry-max-time
     &lt;seconds&gt;</a></dt>
   <dd>The retry timer is reset before the first transfer attempt. Retries are
       done as usual (see <i>--retry</i>) as long as the timer has not reached
@@ -4208,29 +4272,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --retry-max-time 30 --retry 10 https://example.com</pre>
     <p class="Pp">See also <i>--retry</i>.</p>
-  </dd>
-  <dt id="retry~5"><a class="permalink" href="#retry~5">--retry
-    &lt;num&gt;</a></dt>
-  <dd>If a transient error is returned when curl tries to perform a transfer, it
-      retries this number of times before giving up. Setting the number to 0
-      makes curl do no retries (which is the default). Transient error means
-      either: a timeout, an FTP 4xx response code or an HTTP 408, 429, 500, 502,
-      503 or 504 response code.
-    <p class="Pp">When curl is about to retry a transfer, it first waits one
-        second and then for all forthcoming retries it doubles the waiting time
-        until it reaches 10 minutes which then remains delay between the rest of
-        the retries. By using <i>--retry-delay</i> you disable this exponential
-        backoff algorithm. See also <i>--retry-max-time</i> to limit the total
-        time allowed for retries.</p>
-    <p class="Pp">curl complies with the Retry-After: response header if one was
-        present to know when to issue the next retry (added in 7.66.0).</p>
-    <p class="Pp">If --retry is provided several times, the last set value is
-        used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry 7 https://example.com</pre>
-    <p class="Pp">See also <i>--retry-max-time</i>.</p>
   </dd>
   <dt id="sasl"><a class="permalink" href="#sasl">--sasl-authzid
     &lt;identity&gt;</a></dt>
@@ -4347,80 +4388,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--socks4</i>, <i>--socks5</i> and
         <i>--socks5-hostname</i>.</p>
   </dd>
-  <dt id="socks5"><a class="permalink" href="#socks5">--socks5-basic</a></dt>
-  <dd>Use username/password authentication when connecting to a SOCKS5 proxy.
-      The username/password authentication is enabled by default. Use
-      <i>--socks5-gssapi</i> to force GSS-API authentication to SOCKS5 proxies.
-    <p class="Pp">Providing --socks5-basic multiple times has no extra
-      effect.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-basic --socks5 hostname:4096 https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i>. Added in 7.55.0.</p>
-  </dd>
-  <dt id="socks5~2"><a class="permalink" href="#socks5~2">--socks5-gssapi-nec</a></dt>
-  <dd>As part of the GSS-API negotiation a protection mode is negotiated. RFC
-      1961 says in section 4.3/4.4 it should be protected, but the NEC reference
-      implementation does not. The option <i>--socks5-gssapi-nec</i> allows the
-      unprotected exchange of the protection mode negotiation.
-    <p class="Pp">Providing --socks5-gssapi-nec multiple times has no extra
-        effect. Disable it again with --no-socks5-gssapi-nec.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi-nec --socks5 hostname:4096 https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i>.</p>
-  </dd>
-  <dt id="socks5~3"><a class="permalink" href="#socks5~3">--socks5-gssapi-service
-    &lt;name&gt;</a></dt>
-  <dd>Set the service name for a socks server. Default is
-      <b>rcmd/server-fqdn</b>.
-    <p class="Pp">If --socks5-gssapi-service is provided several times, the last
-        set value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi-service sockd --socks5 hostname:4096 https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i>.</p>
-  </dd>
-  <dt id="socks5~4"><a class="permalink" href="#socks5~4">--socks5-gssapi</a></dt>
-  <dd>Use GSS-API authentication when connecting to a SOCKS5 proxy. The GSS-API
-      authentication is enabled by default (if curl is compiled with GSS-API
-      support). Use <i>--socks5-basic</i> to force username/password
-      authentication to SOCKS5 proxies.
-    <p class="Pp">Providing --socks5-gssapi multiple times has no extra effect.
-        Disable it again with --no-socks5-gssapi.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi --socks5 hostname:4096 https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i>. Added in 7.55.0.</p>
-  </dd>
-  <dt id="socks5~5"><a class="permalink" href="#socks5~5">--socks5-hostname
-    &lt;host[:port]&gt;</a></dt>
-  <dd>Use the specified SOCKS5 proxy (and let the proxy resolve the hostname).
-      If the port number is not specified, it is assumed at port 1080.
-    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
-        host, e.g. &quot;socks5h://localhost/path/to/socket.sock&quot;</p>
-    <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
-        as they are mutually exclusive.</p>
-    <p class="Pp">This option is superfluous since you can specify a socks5
-        hostname proxy with <i>-x, --proxy</i> using a socks5h:// protocol
-        prefix.</p>
-    <p class="Pp"><i>--preproxy</i> can be used to specify a SOCKS proxy at the
-        same time <i>-x, --proxy</i> is used with an HTTP/HTTPS proxy (added in
-        7.52.0). In such a case, curl first connects to the SOCKS proxy and then
-        connects (through SOCKS) to the HTTP or HTTPS proxy.</p>
-    <p class="Pp">If --socks5-hostname is provided several times, the last set
-        value is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-hostname proxy.example:7000 https://example.com</pre>
-    <p class="Pp">See also <i>--socks5</i> and <i>--socks4a</i>.</p>
-  </dd>
-  <dt id="socks5~6"><a class="permalink" href="#socks5~6">--socks5
+  <dt id="socks5"><a class="permalink" href="#socks5">--socks5
     &lt;host[:port]&gt;</a></dt>
   <dd>Use the specified SOCKS5 proxy - but resolve the hostname locally. If the
       port number is not specified, it is assumed at port 1080.
@@ -4443,6 +4411,79 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --socks5 proxy.example:7000 https://example.com</pre>
     <p class="Pp">See also <i>--socks5-hostname</i> and <i>--socks4a</i>.</p>
+  </dd>
+  <dt id="socks5~2"><a class="permalink" href="#socks5~2">--socks5-basic</a></dt>
+  <dd>Use username/password authentication when connecting to a SOCKS5 proxy.
+      The username/password authentication is enabled by default. Use
+      <i>--socks5-gssapi</i> to force GSS-API authentication to SOCKS5 proxies.
+    <p class="Pp">Providing --socks5-basic multiple times has no extra
+      effect.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --socks5-basic --socks5 hostname:4096 https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i>. Added in 7.55.0.</p>
+  </dd>
+  <dt id="socks5~3"><a class="permalink" href="#socks5~3">--socks5-gssapi</a></dt>
+  <dd>Use GSS-API authentication when connecting to a SOCKS5 proxy. The GSS-API
+      authentication is enabled by default (if curl is compiled with GSS-API
+      support). Use <i>--socks5-basic</i> to force username/password
+      authentication to SOCKS5 proxies.
+    <p class="Pp">Providing --socks5-gssapi multiple times has no extra effect.
+        Disable it again with --no-socks5-gssapi.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --socks5-gssapi --socks5 hostname:4096 https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i>. Added in 7.55.0.</p>
+  </dd>
+  <dt id="socks5~4"><a class="permalink" href="#socks5~4">--socks5-gssapi-nec</a></dt>
+  <dd>As part of the GSS-API negotiation a protection mode is negotiated. RFC
+      1961 says in section 4.3/4.4 it should be protected, but the NEC reference
+      implementation does not. The option <i>--socks5-gssapi-nec</i> allows the
+      unprotected exchange of the protection mode negotiation.
+    <p class="Pp">Providing --socks5-gssapi-nec multiple times has no extra
+        effect. Disable it again with --no-socks5-gssapi-nec.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --socks5-gssapi-nec --socks5 hostname:4096 https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i>.</p>
+  </dd>
+  <dt id="socks5~5"><a class="permalink" href="#socks5~5">--socks5-gssapi-service
+    &lt;name&gt;</a></dt>
+  <dd>Set the service name for a socks server. Default is
+      <b>rcmd/server-fqdn</b>.
+    <p class="Pp">If --socks5-gssapi-service is provided several times, the last
+        set value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --socks5-gssapi-service sockd --socks5 hostname:4096 https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i>.</p>
+  </dd>
+  <dt id="socks5~6"><a class="permalink" href="#socks5~6">--socks5-hostname
+    &lt;host[:port]&gt;</a></dt>
+  <dd>Use the specified SOCKS5 proxy (and let the proxy resolve the hostname).
+      If the port number is not specified, it is assumed at port 1080.
+    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
+        host, e.g. &quot;socks5h://localhost/path/to/socket.sock&quot;</p>
+    <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
+        as they are mutually exclusive.</p>
+    <p class="Pp">This option is superfluous since you can specify a socks5
+        hostname proxy with <i>-x, --proxy</i> using a socks5h:// protocol
+        prefix.</p>
+    <p class="Pp"><i>--preproxy</i> can be used to specify a SOCKS proxy at the
+        same time <i>-x, --proxy</i> is used with an HTTP/HTTPS proxy (added in
+        7.52.0). In such a case, curl first connects to the SOCKS proxy and then
+        connects (through SOCKS) to the HTTP or HTTPS proxy.</p>
+    <p class="Pp">If --socks5-hostname is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --socks5-hostname proxy.example:7000 https://example.com</pre>
+    <p class="Pp">See also <i>--socks5</i> and <i>--socks4a</i>.</p>
   </dd>
   <dt id="Y,"><a class="permalink" href="#Y,">-Y, --speed-limit
     &lt;speed&gt;</a></dt>
@@ -4473,6 +4514,32 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --speed-limit 300 --speed-time 10 https://example.com</pre>
     <p class="Pp">See also <i>-Y, --speed-limit</i> and <i>--limit-rate</i>.</p>
+  </dd>
+  <dt id="ssl"><a class="permalink" href="#ssl">--ssl</a></dt>
+  <dd>(FTP IMAP POP3 SMTP LDAP) Warning: this is considered an insecure option.
+      Consider using <i>--ssl-reqd</i> instead to be sure curl upgrades to a
+      secure connection.
+    <p class="Pp">Try to use SSL/TLS for the connection - often referred to as
+        STARTTLS or STLS because of the involved commands. Reverts to a
+        non-secure connection if the server does not support SSL/TLS. See also
+        <i>--ftp-ssl-control</i> and <i>--ssl-reqd</i> for different levels of
+        encryption required.</p>
+    <p class="Pp">This option is handled in LDAP (added in 7.81.0). It is fully
+        supported by the OpenLDAP backend and ignored by the generic ldap
+        backend.</p>
+    <p class="Pp">Please note that a server may close the connection if the
+        negotiation does not succeed.</p>
+    <p class="Pp">This option was formerly known as <i>--ftp-ssl</i>. That
+        option name can still be used but might be removed in a future
+      version.</p>
+    <p class="Pp">Providing --ssl multiple times has no extra effect. Disable it
+        again with --no-ssl.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --ssl pop3://example.com/</pre>
+    <p class="Pp">See also <i>--ssl-reqd</i>, <i>-k, --insecure</i> and
+        <i>--ciphers</i>.</p>
   </dd>
   <dt>--ssl-allow-beast</dt>
   <dd>(TLS) Do not work around a security flaw in the SSL3 and TLS1.0 protocols
@@ -4517,8 +4584,10 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--crlfile</i>.</p>
   </dd>
   <dt>--ssl-reqd</dt>
-  <dd>(FTP IMAP POP3 SMTP LDAP) Require SSL/TLS for the connection. Terminates
-      the connection if the transfer cannot be upgraded to use SSL/TLS.
+  <dd>(FTP IMAP POP3 SMTP LDAP) Require SSL/TLS for the connection - often
+      referred to as STARTTLS or STLS because of the involved commands.
+      Terminates the connection if the transfer cannot be upgraded to use
+      SSL/TLS.
     <p class="Pp">This option is handled in LDAP (added in 7.81.0). It is fully
         supported by the OpenLDAP backend and rejected by the generic ldap
         backend if explicit TLS is required.</p>
@@ -4546,31 +4615,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --ssl-revoke-best-effort https://example.com</pre>
     <p class="Pp">See also <i>--crlfile</i> and <i>-k, --insecure</i>. Added in
         7.70.0.</p>
-  </dd>
-  <dt id="ssl"><a class="permalink" href="#ssl">--ssl</a></dt>
-  <dd>(FTP IMAP POP3 SMTP LDAP) Warning: this is considered an insecure option.
-      Consider using <i>--ssl-reqd</i> instead to be sure curl upgrades to a
-      secure connection.
-    <p class="Pp">Try to use SSL/TLS for the connection. Reverts to a non-secure
-        connection if the server does not support SSL/TLS. See also
-        <i>--ftp-ssl-control</i> and <i>--ssl-reqd</i> for different levels of
-        encryption required.</p>
-    <p class="Pp">This option is handled in LDAP (added in 7.81.0). It is fully
-        supported by the OpenLDAP backend and ignored by the generic ldap
-        backend.</p>
-    <p class="Pp">Please note that a server may close the connection if the
-        negotiation does not succeed.</p>
-    <p class="Pp">This option was formerly known as <i>--ftp-ssl</i>. That
-        option name can still be used but might be removed in a future
-      version.</p>
-    <p class="Pp">Providing --ssl multiple times has no extra effect. Disable it
-        again with --no-ssl.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl pop3://example.com/</pre>
-    <p class="Pp">See also <i>--ssl-reqd</i>, <i>-k, --insecure</i> and
-        <i>--ciphers</i>.</p>
   </dd>
   <dt>-2, --sslv2</dt>
   <dd>(SSL) This option previously asked curl to use SSLv2, but is now ignored
@@ -4843,6 +4887,19 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --tlspassword pwd --tlsuser user https://example.com</pre>
     <p class="Pp">See also <i>--tlspassword</i>.</p>
   </dd>
+  <dt>-1, --tlsv1</dt>
+  <dd>(TLS) Use at least TLS version 1.x when negotiating with a remote TLS
+      server. That means TLS version 1.0 or higher
+    <p class="Pp">Providing --tlsv1 multiple times has no extra effect.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --tlsv1 https://example.com</pre>
+    <p class="Pp">See also <i>--http1.1</i> and <i>--http2</i>. <i>-1,
+        --tlsv1</i> requires that the underlying libcurl was built to support
+        TLS. This option is mutually exclusive to <i>--tlsv1.1</i> and
+        <i>--tlsv1.2</i> and <i>--tlsv1.3</i>.</p>
+  </dd>
   <dt id="tlsv1.0"><a class="permalink" href="#tlsv1.0">--tlsv1.0</a></dt>
   <dd>(TLS) Forces curl to use TLS version 1.0 or later when connecting to a
       remote TLS server.
@@ -4899,19 +4956,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.2</i> and <i>--tls-max</i>. Added in
         7.52.0.</p>
   </dd>
-  <dt>-1, --tlsv1</dt>
-  <dd>(TLS) Use at least TLS version 1.x when negotiating with a remote TLS
-      server. That means TLS version 1.0 or higher
-    <p class="Pp">Providing --tlsv1 multiple times has no extra effect.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1 https://example.com</pre>
-    <p class="Pp">See also <i>--http1.1</i> and <i>--http2</i>. <i>-1,
-        --tlsv1</i> requires that the underlying libcurl was built to support
-        TLS. This option is mutually exclusive to <i>--tlsv1.1</i> and
-        <i>--tlsv1.2</i> and <i>--tlsv1.3</i>.</p>
-  </dd>
   <dt id="tr"><a class="permalink" href="#tr">--tr-encoding</a></dt>
   <dd>(HTTP) Request a compressed Transfer-Encoding response using one of the
       algorithms curl supports, and uncompress the data while receiving it.
@@ -4923,7 +4967,29 @@ curl --proto-redir -all,http,https http://example.com</pre>
  curl --tr-encoding https://example.com</pre>
     <p class="Pp">See also <i>--compressed</i>.</p>
   </dd>
-  <dt id="trace"><a class="permalink" href="#trace">--trace-ascii
+  <dt id="trace"><a class="permalink" href="#trace">--trace
+    &lt;file&gt;</a></dt>
+  <dd>Save a full trace dump of all incoming and outgoing data, including
+      descriptive information, in the given output file. Use &quot;-&quot; as
+      filename to have the output sent to stdout. Use &quot;%&quot; as filename
+      to have the output sent to stderr.
+    <p class="Pp">Note that verbose output of curl activities and network
+        traffic might contain sensitive data, including usernames, credentials
+        or secret data content. Be aware and be careful when sharing trace logs
+        with others.</p>
+    <p class="Pp">This option is global and does not need to be specified for
+        each use of --next.</p>
+    <p class="Pp">If --trace is provided several times, the last set value is
+        used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --trace log.txt https://example.com</pre>
+    <p class="Pp">See also <i>--trace-ascii</i>, <i>--trace-config</i>,
+        <i>--trace-ids</i> and <i>--trace-time</i>. This option is mutually
+        exclusive to <i>-v, --verbose</i> and <i>--trace-ascii</i>.</p>
+  </dd>
+  <dt id="trace~2"><a class="permalink" href="#trace~2">--trace-ascii
     &lt;file&gt;</a></dt>
   <dd>Save a full trace dump of all incoming and outgoing data, including
       descriptive information, in the given output file. Use &quot;-&quot; as
@@ -4946,7 +5012,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i> and <i>--trace</i>. This option
         is mutually exclusive to <i>--trace</i> and <i>-v, --verbose</i>.</p>
   </dd>
-  <dt id="trace~2"><a class="permalink" href="#trace~2">--trace-config
+  <dt id="trace~3"><a class="permalink" href="#trace~3">--trace-config
     &lt;string&gt;</a></dt>
   <dd>Set configuration for trace output. A comma-separated list of components
       where detailed output can be made available from. Names are
@@ -4966,7 +5032,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i> and <i>--trace</i>. Added in
         8.3.0.</p>
   </dd>
-  <dt id="trace~3"><a class="permalink" href="#trace~3">--trace-ids</a></dt>
+  <dt id="trace~4"><a class="permalink" href="#trace~4">--trace-ids</a></dt>
   <dd>Prepends the transfer and connection identifiers to each trace or verbose
       line that curl displays.
     <p class="Pp">This option is global and does not need to be specified for
@@ -4980,7 +5046,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--trace</i> and <i>-v, --verbose</i>. Added in
         8.2.0.</p>
   </dd>
-  <dt id="trace~4"><a class="permalink" href="#trace~4">--trace-time</a></dt>
+  <dt id="trace~5"><a class="permalink" href="#trace~5">--trace-time</a></dt>
   <dd>Prepends a time stamp to each trace or verbose line that curl displays.
     <p class="Pp">This option is global and does not need to be specified for
         each use of --next.</p>
@@ -4991,28 +5057,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl --trace-time --trace-ascii output https://example.com</pre>
     <p class="Pp">See also <i>--trace</i> and <i>-v, --verbose</i>.</p>
-  </dd>
-  <dt id="trace~5"><a class="permalink" href="#trace~5">--trace
-    &lt;file&gt;</a></dt>
-  <dd>Save a full trace dump of all incoming and outgoing data, including
-      descriptive information, in the given output file. Use &quot;-&quot; as
-      filename to have the output sent to stdout. Use &quot;%&quot; as filename
-      to have the output sent to stderr.
-    <p class="Pp">Note that verbose output of curl activities and network
-        traffic might contain sensitive data, including usernames, credentials
-        or secret data content. Be aware and be careful when sharing trace logs
-        with others.</p>
-    <p class="Pp">This option is global and does not need to be specified for
-        each use of --next.</p>
-    <p class="Pp">If --trace is provided several times, the last set value is
-        used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace log.txt https://example.com</pre>
-    <p class="Pp">See also <i>--trace-ascii</i>, <i>--trace-config</i>,
-        <i>--trace-ids</i> and <i>--trace-time</i>. This option is mutually
-        exclusive to <i>-v, --verbose</i> and <i>--trace-ascii</i>.</p>
   </dd>
   <dt id="unix"><a class="permalink" href="#unix">--unix-socket
     &lt;path&gt;</a></dt>
@@ -5067,6 +5111,27 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>-G, --get</i>, <i>-I, --head</i>, <i>-X,
         --request</i> and <i>-d, --data</i>.</p>
   </dd>
+  <dt>--url &lt;url&gt;</dt>
+  <dd>Specify a URL to fetch.
+    <p class="Pp">If the given URL is missing a scheme name (such as
+        &quot;http://&quot; or &quot;ftp://&quot; etc) then curl makes a guess
+        based on the host. If the outermost subdomain name matches DICT, FTP,
+        IMAP, LDAP, POP3 or SMTP then that protocol is used, otherwise HTTP is
+        used. Guessing can be avoided by providing a full URL including the
+        scheme, or disabled by setting a default protocol (added in 7.45.0), see
+        <i>--proto-default</i> for details.</p>
+    <p class="Pp">To control where this URL is written, use the <i>-o,
+        --output</i> or the <i>-O, --remote-name</i> options.</p>
+    <p class="Pp"><b>WARNING</b>: On Windows, particular &quot;file://&quot;
+        accesses can be converted to network accesses by the operating system.
+        Beware!</p>
+    <p class="Pp">--url can be used several times in a command line</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl --url https://example.com</pre>
+    <p class="Pp">See also <i>-:, --next</i> and <i>-K, --config</i>.</p>
+  </dd>
   <dt>--url-query &lt;data&gt;</dt>
   <dd>(all) Add a piece of data, usually a name + value pair, to the end of the
       URL query part. The syntax is identical to that used for
@@ -5091,27 +5156,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">See also <i>--data-urlencode</i> and <i>-G, --get</i>. Added
         in 7.87.0.</p>
   </dd>
-  <dt>--url &lt;url&gt;</dt>
-  <dd>Specify a URL to fetch.
-    <p class="Pp">If the given URL is missing a scheme name (such as
-        &quot;http://&quot; or &quot;ftp://&quot; etc) then curl makes a guess
-        based on the host. If the outermost subdomain name matches DICT, FTP,
-        IMAP, LDAP, POP3 or SMTP then that protocol is used, otherwise HTTP is
-        used. Guessing can be avoided by providing a full URL including the
-        scheme, or disabled by setting a default protocol (added in 7.45.0), see
-        <i>--proto-default</i> for details.</p>
-    <p class="Pp">To control where this URL is written, use the <i>-o,
-        --output</i> or the <i>-O, --remote-name</i> options.</p>
-    <p class="Pp"><b>WARNING</b>: On Windows, particular &quot;file://&quot;
-        accesses can be converted to network accesses by the operating system.
-        Beware!</p>
-    <p class="Pp">--url can be used several times in a command line</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --url https://example.com</pre>
-    <p class="Pp">See also <i>-:, --next</i> and <i>-K, --config</i>.</p>
-  </dd>
   <dt id="B,"><a class="permalink" href="#B,">-B, --use-ascii</a></dt>
   <dd>(FTP LDAP) Enable ASCII transfer mode. For FTP, this can also be enforced
       by using a URL that ends with &quot;;type=A&quot;. This option causes data
@@ -5123,24 +5167,6 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl -B ftp://example.com/README</pre>
     <p class="Pp">See also <i>--crlf</i> and <i>--data-ascii</i>.</p>
-  </dd>
-  <dt id="A,"><a class="permalink" href="#A,">-A, --user-agent
-    &lt;name&gt;</a></dt>
-  <dd>(HTTP) Specify the User-Agent string to send to the HTTP server. To encode
-      blanks in the string, surround the string with single quote marks. This
-      header can also be set with the <i>-H, --header</i> or the
-      <i>--proxy-header</i> options.
-    <p class="Pp">If you give an empty argument to <i>-A, --user-agent</i>
-        (&quot;&quot;), it removes the header completely from the request. If
-        you prefer a blank header, you can set it to a single space (&quot;
-        &quot;).</p>
-    <p class="Pp">If --user-agent is provided several times, the last set value
-        is used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -A &quot;Agent 007&quot; https://example.com</pre>
-    <p class="Pp">See also <i>-H, --header</i> and <i>--proxy-header</i>.</p>
   </dd>
   <dt id="u,"><a class="permalink" href="#u,">-u, --user
     &lt;user:password&gt;</a></dt>
@@ -5178,6 +5204,24 @@ curl --proto-redir -all,http,https http://example.com</pre>
 <br/>
  curl -u user:secret https://example.com</pre>
     <p class="Pp">See also <i>-n, --netrc</i> and <i>-K, --config</i>.</p>
+  </dd>
+  <dt id="A,"><a class="permalink" href="#A,">-A, --user-agent
+    &lt;name&gt;</a></dt>
+  <dd>(HTTP) Specify the User-Agent string to send to the HTTP server. To encode
+      blanks in the string, surround the string with single quote marks. This
+      header can also be set with the <i>-H, --header</i> or the
+      <i>--proxy-header</i> options.
+    <p class="Pp">If you give an empty argument to <i>-A, --user-agent</i>
+        (&quot;&quot;), it removes the header completely from the request. If
+        you prefer a blank header, you can set it to a single space (&quot;
+        &quot;).</p>
+    <p class="Pp">If --user-agent is provided several times, the last set value
+        is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>
+<br/>
+ curl -A &quot;Agent 007&quot; https://example.com</pre>
+    <p class="Pp">See also <i>-H, --header</i> and <i>--proxy-header</i>.</p>
   </dd>
   <dt id="variable"><a class="permalink" href="#variable">--variable
     &lt;[%]name=text/@file&gt;</a></dt>
@@ -5289,6 +5333,8 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dt>`Debug`</dt>
   <dd>This curl uses a libcurl built with Debug. This enables more
       error-tracking and memory debugging etc. For curl-developers only!</dd>
+  <dt>`ECH`</dt>
+  <dd>ECH support is present.</dd>
   <dt>`gsasl`</dt>
   <dd>The built-in SASL authentication includes extensions to support SCRAM
       because libcurl was built with libgsasl.</dd>
@@ -5710,8 +5756,8 @@ http://somewhere.example.com</pre>
   <dd>If you set this environment variable to a filename, curl stores TLS
       secrets from its connections in that file when invoked to enable you to
       analyze the TLS traffic in real time using network analyzing tools such as
-      Wireshark. This works with the following TLS backends: OpenSSL, libressl,
-      BoringSSL, GnuTLS and wolfSSL.</dd>
+      Wireshark. This works with the following TLS backends: OpenSSL, LibreSSL
+      (TLS 1.2 max), BoringSSL, GnuTLS and wolfSSL.</dd>
   <dt>`USERPROFILE` &lt;dir&gt;</dt>
   <dd>On Windows, this variable is used when trying to find the home directory.
       If the other, primary, variable are all unset. If set, curl uses the path
@@ -5983,8 +6029,8 @@ http://somewhere.example.com</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">March 27 2024</td>
-    <td class="foot-os">curl 8.7.1</td>
+    <td class="foot-date">2024-05-22</td>
+    <td class="foot-os">curl 8.8.0</td>
   </tr>
 </table>
 </body>
