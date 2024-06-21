@@ -21,8 +21,8 @@
 <div class="manual-text">
 <section class="Sh">
 <h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
-<p class="Pp"><code class="Nm">pkgmk</code> &#x2014; <span class="Nd">make
-    software package</span></p>
+<p class="Pp"><code class="Nm">pkgmk</code> &#x2014; <span class="Nd">make an
+    installable software package</span></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
@@ -35,12 +35,26 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp"><code class="Nm">pkgmk</code> is a package management utility,
-    which makes a software package. A package is an archive of files
-    (&#x201C;.pkg.tar.gz&#x201D;, &#x201C;.pkg.tar.bz2&#x201D;,
-    &#x201C;.pkg.tar.lz&#x201D;, &#x201C;.pkg.tar.zst&#x201D;, or
-    &#x201C;.pkg.tar.xz&#x201D;) that can be installed using
-    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a>.</p>
+<p class="Pp">The <code class="Nm">pkgmk</code> utility makes an installable
+    software package to be used as input to the
+    <a class="Xr" href="pkgadd.1.html">pkgadd(1)</a> command. The package itself
+    is an archive of files, and its contents have a directory structure
+  format.</p>
+<p class="Pp">The following archive formats are supported:</p>
+<div class="Bd-indent">
+<dl class="Bl-tag Bl-compact">
+  <dt>&#x2022; .pkg.tar.gz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.bz2</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.lz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.zst</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.xz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+</dl>
+</div>
 <p class="Pp">To prepare to use <code class="Nm">pkgmk</code>, you must write a
     file named <span class="Pa">Pkgfile</span>, that describes how the package
     should be build. See <a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a> for
@@ -114,6 +128,9 @@
   <dd>Package build description. See
       <a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a> for more
     information.</dd>
+  <dt><span class="Pa">.nostrip</span></dt>
+  <dd>Exceptions for <a class="Xr" href="strip.1.html">strip(1)</a> executable
+      binaries and/or libraries.</dd>
   <dt><span class="Pa">.footprint</span></dt>
   <dd>Package footprint (used for regression testing).</dd>
   <dt><span class="Pa">.md5sum</span></dt>

@@ -69,7 +69,8 @@ key=&quot;${key}value&quot;</pre>
 <h2 class="Ss" id="General_Options"><a class="permalink" href="#General_Options">General
   Options</a></h2>
 <dl class="Bl-tag">
-  <dt id="monolith"><a class="permalink" href="#monolith"><b class="Sy">monolith</b></a>=[1]</dt>
+  <dt id="monolith"><a class="permalink" href="#monolith"><b class="Sy">monolith</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Monolithic kernel means kernel with builtin modules. If you didn't build
       kernel yourself, then in most cases you have modular kernel and you don't
       need to enable this option. To check if you have monolithic you need to
@@ -77,7 +78,8 @@ key=&quot;${key}value&quot;</pre>
       exist. If this directory doesn't exist you probably have monolithic kernel
       which means you need to set <b class="Sy">monolith</b> to
       <b class="Sy">1</b>.</dd>
-  <dt id="hostonly"><a class="permalink" href="#hostonly"><b class="Sy">hostonly</b></a>=[1]</dt>
+  <dt id="hostonly"><a class="permalink" href="#hostonly"><b class="Sy">hostonly</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Hostonly mode enumerates <a class="Xr" href="sysfs.5.html">sysfs(5)</a>
       and copies only necessary modules instead of copying all modules. Which
       means that this mode can dramatically reduce initramfs size.
@@ -194,9 +196,11 @@ key=&quot;${key}value&quot;</pre>
   </dd>
   <dt id="lvm_group"><a class="permalink" href="#lvm_group"><b class="Sy">lvm_group</b></a>=&#x27E8;GROUP&#x27E9;</dt>
   <dd>Specify LVM group which will be used to trigger LVM.</dd>
-  <dt id="lvm_config"><a class="permalink" href="#lvm_config"><b class="Sy">lvm_config</b></a>=[1]</dt>
+  <dt id="lvm_config"><a class="permalink" href="#lvm_config"><b class="Sy">lvm_config</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Include <span class="Pa">/etc/lvm/lvm.conf</span> in initramfs.</dd>
-  <dt id="lvm_discard"><a class="permalink" href="#lvm_discard"><b class="Sy">lvm_discard</b></a>=[1]</dt>
+  <dt id="lvm_discard"><a class="permalink" href="#lvm_discard"><b class="Sy">lvm_discard</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Pass &#x201C;issue_discards&#x201D; to LVM. Useful for SSD's.</dd>
 </dl>
 <p class="Pp" id="luks">The
@@ -216,7 +220,8 @@ key=&quot;${key}value&quot;</pre>
   <dd>See <b class="Sy">root</b> (above) for details.</dd>
   <dt id="luks_header"><a class="permalink" href="#luks_header"><b class="Sy">luks_header</b></a>=&#x27E8;PATH&#x27E9;</dt>
   <dd>Specify location to detached header.</dd>
-  <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=[1]</dt>
+  <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Pass &#x201C;--allow-discards&#x201D; to
       <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a>. Useful for
       SSD's, but you must know that security will be decreased.</dd>
@@ -347,7 +352,7 @@ luks_root=/dev/sda2</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 7, 2023</td>
+    <td class="foot-date">May 22, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

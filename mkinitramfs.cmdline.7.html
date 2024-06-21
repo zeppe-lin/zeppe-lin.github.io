@@ -33,19 +33,22 @@
 <h2 class="Ss" id="General_Parameters"><a class="permalink" href="#General_Parameters">General
   Parameters</a></h2>
 <dl class="Bl-tag Bl-compact">
-  <dt id="debug"><a class="permalink" href="#debug"><b class="Sy">debug</b></a>=[1]</dt>
+  <dt id="debug"><a class="permalink" href="#debug"><b class="Sy">debug</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Enable debug mode.
     <p class="Pp"></p>
   </dd>
   <dt id="break"><a class="permalink" href="#break"><b class="Sy">break</b></a>=&#x27E8;BREAKPOINT&#x27E9;</dt>
   <dd>Specify breakpoint where shell should be invoked. Useful for debugging.
     <p class="Pp">List of builtin breakpoints:</p>
+    <div class="Bd-indent">
     <dl class="Bl-tag Bl-compact">
-      <dt>- boot</dt>
+      <dt>&#x2022; boot</dt>
       <dd style="width: auto;">&#x00A0;</dd>
-      <dt>- root</dt>
+      <dt>&#x2022; root</dt>
       <dd style="width: auto;">&#x00A0;</dd>
     </dl>
+    </div>
     <p class="Pp">Hooks can provide their own breakpoints. See source code of
         hooks for more information.</p>
     <p class="Pp"></p>
@@ -109,7 +112,8 @@
   </dd>
   <dt id="lvm_group"><a class="permalink" href="#lvm_group"><b class="Sy">lvm_group</b></a>=&#x27E8;GROUP&#x27E9;</dt>
   <dd>Specify LVM group which will be used to trigger LVM.</dd>
-  <dt id="lvm_discard"><a class="permalink" href="#lvm_discard"><b class="Sy">lvm_discard</b></a>=[1]</dt>
+  <dt id="lvm_discard"><a class="permalink" href="#lvm_discard"><b class="Sy">lvm_discard</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Pass
       <a class="permalink" href="#issue_discards"><i class="Em" id="issue_discards">issue_discards</i></a>
       to LVM. Leave empty to disable. Useful for SSD's.</dd>
@@ -123,7 +127,8 @@
   <dt id="luks_root"><a class="permalink" href="#luks_root"><b class="Sy">luks_root</b></a>=&#x27E8;UUID
     | LABEL | /dev/* | PARTUUID&#x27E9;</dt>
   <dd>See <b class="Sy">root</b> (above) for details.</dd>
-  <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=[1]</dt>
+  <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=&#x27E8;0
+    | 1&#x27E9;</dt>
   <dd>Pass &#x201C;--allow-discards&#x201D; to
       <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a>. Leave empty to
       disable.
@@ -159,7 +164,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 7, 2023</td>
+    <td class="foot-date">May 22, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

@@ -38,10 +38,23 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp"><code class="Nm">pkgadd</code> is a package management utility,
-    which installs a software package. A package is an archive of files
-    (&#x201C;.pkg.tar.gz&#x201D;, &#x201C;.pkg.tar.bz2&#x201D;,
-    &#x201C;.pkg.tar.lz&#x201D;, &#x201C;.pkg.tar.zst&#x201D;, or
-    &#x201C;.pkg.tar.xz&#x201D;).</p>
+    which installs or upgrades a software package. The package itself is an
+    archive of files, and its contents have a directory structure format.</p>
+<p class="Pp">The following archive formats are supported:</p>
+<div class="Bd-indent">
+<dl class="Bl-tag Bl-compact">
+  <dt>&#x2022; .pkg.tar.gz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.bz2</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.lz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.zst</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+  <dt>&#x2022; .pkg.tar.xz</dt>
+  <dd style="width: auto;">&#x00A0;</dd>
+</dl>
+</div>
 <p class="Pp">The options are as follows:</p>
 <dl class="Bl-tag">
   <dt id="c"><a class="permalink" href="#c"><code class="Fl">-c</code></a>
@@ -108,7 +121,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 6, 2023</td>
+    <td class="foot-date">June 19, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

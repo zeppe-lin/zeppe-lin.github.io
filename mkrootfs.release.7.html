@@ -122,15 +122,25 @@
 <p class="Pp">If you haven't modified rootfs/log/tarball location,
     <a class="Xr" href="mkrootfs.8.html">mkrootfs(8)</a> produced the following
     files:</p>
-<dl class="Bl-tag">
-  <dt>* /tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;/</dt>
-  <dd>This is a rootfs directory.</dd>
-  <dt>* /tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;.log</dt>
-  <dd>This is a build/installation log file for the prepared above rootfs
-      directory.</dd>
-  <dt>* /tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;.tar.xz</dt>
-  <dd>This is a rootfs tarball.</dd>
-</dl>
+<p class="Pp"></p>
+<table class="Bl-column Bd-indent Bl-compact">
+  <tr id="File">
+    <td><a class="permalink" href="#File"><b class="Sy">File</b></a></td>
+    <td><a class="permalink" href="#Description"><b class="Sy" id="Description">Description</b></a></td>
+  </tr>
+  <tr>
+    <td>/tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;/</td>
+    <td>rootfs directory (work dir)</td>
+  </tr>
+  <tr>
+    <td>/tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;.log</td>
+    <td>build/installation log file</td>
+  </tr>
+  <tr>
+    <td>/tmp/rootfs-&#x27E8;DATE&#x27E9;-&#x27E8;ARCH&#x27E9;.tar.xz</td>
+    <td>rootfs tarball</td>
+  </tr>
+</table>
 <p class="Pp">You may remove rootfs directory and log file if you no more need
     them.</p>
 </section>
@@ -187,7 +197,7 @@ $ git push</pre>
     </div>
   </li>
 </ul>
-That's it.
+<p class="Pp">That's it.</p>
 </section>
 </section>
 <section class="Sh">
@@ -199,7 +209,7 @@ That's it.
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 4, 2023</td>
+    <td class="foot-date">May 22, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

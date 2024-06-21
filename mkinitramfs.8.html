@@ -34,7 +34,7 @@
       <var class="Ar">hooksdir</var>] [<code class="Fl">-I</code>
       <var class="Ar">initfile</var>] [<code class="Fl">-c</code>
       <var class="Ar">conffile</var>] [<code class="Fl">-k</code>
-      <var class="Ar">kernel_version</var>] [<code class="Fl">-m</code>
+      <var class="Ar">kernelversion</var>] [<code class="Fl">-m</code>
       <var class="Ar">modulesdir</var>] [<code class="Fl">-o</code>
       <var class="Ar">initramfs</var>]</td>
   </tr>
@@ -77,8 +77,8 @@
     <code class="Fl">--force</code></dt>
   <dd>Forcefully overwrite initramfs image.</dd>
   <dt id="k"><a class="permalink" href="#k"><code class="Fl">-k</code></a>
-    <var class="Ar">kernel_version</var>,
-    <code class="Fl">--kernel</code>=<var class="Ar">kernel_version</var></dt>
+    <var class="Ar">kernelversion</var>,
+    <code class="Fl">--kernel</code>=<var class="Ar">kernelversion</var></dt>
   <dd>Specify kernel version instead of using the version of current running
       kernel (&#x201C;uname -r&#x201D;). Useful for bootstrapping future system
       with modular kernel.</dd>
@@ -97,7 +97,7 @@
     <code class="Fl">--output</code>=<var class="Ar">initramfs</var></dt>
   <dd>Specify an alternate output file where initramfs image will be stored
       instead of the default
-      <span class="Pa">mkinitramfs-</span>&quot;<code class="Li">kernel_version</code>&quot;
+      <span class="Pa">mkinitramfs-</span>&quot;<code class="Li">kernelversion</code>&quot;
       directory, created in <code class="Ev">TMPDIR</code> or (if unavailable)
       in <span class="Pa">/tmp</span> directory.</dd>
   <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
@@ -193,7 +193,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 7, 2023</td>
+    <td class="foot-date">May 22, 2023</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>
