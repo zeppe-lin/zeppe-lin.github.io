@@ -13,7 +13,7 @@
 <table class="head">
   <tr>
     <td class="head-ltitle">GPG(1)</td>
-    <td class="head-vol">GNU Privacy Guard 2.4</td>
+    <td class="head-vol">GNU Privacy Guard 2.6</td>
     <td class="head-rtitle">GPG(1)</td>
   </tr>
 </table>
@@ -331,20 +331,20 @@
         below. A &quot;!&quot; indicates that the signature has been
         successfully verified, a &quot;-&quot; denotes a bad signature and a
         &quot;%&quot; is used if an error occurred while checking the signature
-        (e.g. a non supported algorithm). Signatures where the public key is not
-        available are not listed; to see their keyids the command
+        (e.g., a non supported algorithm). Signatures where the public key is
+        not available are not listed; to see their keyids the command
         <b>--list-sigs</b> can be used.</p>
     <p class="Pp">For each signature listed, there are several flags in between
         the signature status flag and keyid. These flags give additional
         information about each key signature. From left to right, they are the
-        numbers 1-3 for certificate check level (see <b>--ask-cert-level</b>),
+        numbers 1--3 for certificate check level (see <b>--ask-cert-level</b>),
         &quot;L&quot; for a local or non-exportable signature (see
         <b>--lsign-key</b>), &quot;R&quot; for a nonRevocable signature (see the
         <b>--edit-key</b> command &quot;nrsign&quot;), &quot;P&quot; for a
         signature that contains a policy URL (see <b>--cert-policy-url</b>),
         &quot;N&quot; for a signature that contains a notation (see
         <b>--cert-notation</b>), &quot;X&quot; for an eXpired signature (see
-        <b>--ask-cert-expire</b>), and the numbers 1-9 or &quot;T&quot; for 10
+        <b>--ask-cert-expire</b>), and the numbers 1--9 or &quot;T&quot; for 10
         and above to indicate trust signature levels (see the <b>--edit-key</b>
         command &quot;tsign&quot;).</p>
     <p class="Pp"></p>
@@ -361,9 +361,9 @@
     <p class="Pp">The variant <b>--locate-external-keys</b> does not consider a
         locally existing key and can thus be used to force the refresh of a key
         via the defined external methods. If a fingerprint is given and and the
-        methods defined by --auto-key-locate define LDAP servers, the key is
-        fetched from these resources; defined non-LDAP keyservers are
-      skipped.</p>
+        methods defined by <b>--auto-key-locate</b> define LDAP servers, the key
+        is fetched from these resources; defined non-LDAP keyservers are
+        skipped.</p>
     <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
@@ -404,7 +404,7 @@
       https://gnupg.org/documentation/howtos.html#GnuPG-cardHOWTO . Please note
       that the command &quot;openpgp&quot; can be used to switch to the OpenPGP
       application of cards which by default are presenting another application
-      (e.g. PIV).
+      (e.g., PIV).
     <p class="Pp"></p>
   </dd>
   <dt id="card-status"><a class="permalink" href="#card-status"><b>--card-status</b></a></dt>
@@ -593,7 +593,7 @@
   <dd>Update the trustdb with the ownertrust values stored in <b>files</b> (or
       STDIN if not given); existing values will be overwritten. In case of a
       severely damaged trustdb and if you have a recent backup of the ownertrust
-      values (e.g. in the file &#x2018;<i>otrust.txt</i>&#x2019;), you may
+      values (e.g., in the file &#x2018;<i>otrust.txt</i>&#x2019;), you may
       re-create the trustdb using these commands:</dd>
 </dl>
 <div class="Bd-indent">
@@ -695,12 +695,14 @@
         the creation of the key will show up.</p>
     <p class="Pp">If <i>algo</i> or <i>usage</i> are given, only the primary key
         is created and no prompts are shown. To specify an expiration date but
-        still create a primary and subkey use ``default'' or ``future-default''
-        for <i>algo</i> and ``default'' for <i>usage</i>. For a description of
-        these optional arguments see the command <b>--quick-add-key</b>. The
-        <i>usage</i> accepts also the value ``cert'' which can be used to create
-        a certification only primary key; the default is to a create
-        certification and signing key.</p>
+        still create a primary and a subkey use ``default'', ``future-default'',
+        or ``pqc'' for <i>algo</i> and ``default'' for <i>usage</i>. For a
+        description of these optional arguments see the command
+        <b>--quick-add-key</b>; the value ``pqc'' create a key with a
+        quantum-resistant encryption encryption subkey. The <i>usage</i> accepts
+        also the value ``cert'' which can be used to create a certification only
+        primary key; the default is to a create certification and signing
+      key.</p>
     <p class="Pp">The <i>expire</i> argument can be used to specify an
         expiration date for the key. Several formats are supported; commonly the
         ISO formats ``YYYY-MM-DD'' or ``YYYYMMDDThhmmss'' are used. To make the
@@ -781,7 +783,8 @@
       encryption subkey. A subkey is commonly used here because by default a
       primary key has no encryption capability. Use the option
       <b>--with-subkey-fingerprint</b> with a list command to display the subkey
-      fingerprints.
+      fingerprints. If the string &quot;default&quot; is used for <i>adskfpr</i>
+      all missing ADSKs configured with <b>--default-new-key-adsk</b> are added.
     <p class="Pp"></p>
   </dd>
   <dt id="generate-key"><a class="permalink" href="#generate-key"><b>--generate-key</b></a></dt>
@@ -894,7 +897,7 @@
 <dl class="Bl-tag">
   <dt id="delsig"><a class="permalink" href="#delsig"><b>delsig</b></a></dt>
   <dd>Delete a signature. Note that it is not possible to retract a signature,
-      once it has been send to the public (i.e. to a keyserver). In that case
+      once it has been send to the public (i.e., to a keyserver). In that case
       you better use <b>revsig</b>.
     <p class="Pp"></p>
   </dd>
@@ -927,7 +930,7 @@
   </dd>
   <dt id="deluid"><a class="permalink" href="#deluid"><b>deluid</b></a></dt>
   <dd>Delete a user ID or photographic user ID. Note that it is not possible to
-      retract a user id, once it has been send to the public (i.e. to a
+      retract a user id, once it has been send to the public (i.e., to a
       keyserver). In that case you better use <b>revuid</b>.
     <p class="Pp"></p>
   </dd>
@@ -1011,9 +1014,9 @@
       replaced by a stub if the key could be stored successfully on the card and
       you use the save command later. Only certain key types may be transferred
       to the card. A sub menu allows you to select on what card to store the
-      key. Note that it is not possible to get that key back from the card - if
-      the card gets broken your secret key will be lost unless you have a backup
-      somewhere.
+      key. Note that it is not possible to get that key back from the card ---
+      if the card gets broken your secret key will be lost unless you have a
+      backup somewhere.
     <p class="Pp"></p>
   </dd>
   <dt id="bkuptocard"><a class="permalink" href="#bkuptocard"><b>bkuptocard
@@ -1047,9 +1050,9 @@
   </dd>
   <dt id="delkey"><a class="permalink" href="#delkey"><b>delkey</b></a></dt>
   <dd>Remove a subkey (secondary key). Note that it is not possible to retract a
-      subkey, once it has been send to the public (i.e. to a keyserver). In that
-      case you better use <b>revkey</b>. Also note that this only deletes the
-      public part of a key.
+      subkey, once it has been send to the public (i.e., to a keyserver). In
+      that case you better use <b>revkey</b>. Also note that this only deletes
+      the public part of a key.
     <p class="Pp"></p>
   </dd>
   <dt id="revkey"><a class="permalink" href="#revkey"><b>revkey</b></a></dt>
@@ -1099,7 +1102,7 @@
   </dd>
   <dt id="clean"><a class="permalink" href="#clean"><b>clean</b></a></dt>
   <dd>Compact (by removing all signatures except the selfsig) any user ID that
-      is no longer usable (e.g. revoked, or expired). Then, remove any
+      is no longer usable (e.g., revoked, or expired). Then, remove any
       signatures that are not usable by the trust calculations. Specifically,
       this removes any signature that does not validate, any signature that is
       superseded by a later signature, revoked signatures, and signatures issued
@@ -1113,7 +1116,7 @@
   </dd>
   <dt id="change-usage"><a class="permalink" href="#change-usage"><b>change-usage</b></a></dt>
   <dd>Change the usage flags (capabilities) of the primary key or of subkeys.
-      These usage flags (e.g. Certify, Sign, Authenticate, Encrypt) are set
+      These usage flags (e.g., Certify, Sign, Authenticate, Encrypt) are set
       during key creation. Sometimes it is useful to have the opportunity to
       change them (for example to add Authenticate) after they have been
       created. Please take care when doing this; the allowed usage flags depend
@@ -1226,11 +1229,20 @@
     <i>user-id</i></b></a></dt>
   <dd>This command updates the preference list of the key to the current default
       value (either built-in or set via <b>--default-preference-list</b>). This
-      is the unattended version of of using &quot;setpref&quot; in the
+      is the unattended version of using &quot;setpref&quot; in the
       <b>--key-edit</b> menu without giving a list. Note that you can show the
       preferences in a key listing by using <b>--list-options show-pref</b> or
       <b>--list-options</b> <b>show-pref-verbose</b>. You should also
       re-distribute updated keys to your peers.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="quick-set-ownertrust"><a class="permalink" href="#quick-set-ownertrust"><b>--quick-set-ownertrust
+    <i>user-id</i> <i>value</i></b></a></dt>
+  <dd>This command sets the ownertrust of a key and can also be used to set the
+      disable flag of a key. This is the unattended version of using
+      &quot;trust&quot;, &quot;disable&quot;, or &quot;enable&quot; in the
+      <b>--key-edit</b> menu.
+    <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
   <dt id="change-passphrase"><a class="permalink" href="#change-passphrase"><b>--change-passphrase
@@ -1256,7 +1268,7 @@
     behaviour and to change the default configuration.</p>
 <p class="Pp"></p>
 <p class="Pp">Long options can be put in an options file (default
-    &quot;~/.gnupg/gpg.conf&quot;). Short option names will not work - for
+    &quot;~/.gnupg/gpg.conf&quot;). Short option names will not work --- for
     example, &quot;armor&quot; is a valid option for the options file, while
     &quot;a&quot; is not. Do not write the 2 dashes, but simply the name of the
     option and any required arguments. Lines with a hash ('#') as the first
@@ -1391,6 +1403,11 @@
       <b>A</b>=authentication). Defaults to yes.
     <p class="Pp"></p>
   </dd>
+  <dt id="show-ownertrust"><a class="permalink" href="#show-ownertrust"><b>show-ownertrust</b></a></dt>
+  <dd>Show the ownertrust value for keys also in the standard key listing.
+      Defaults to no.
+    <p class="Pp"></p>
+  </dd>
   <dt id="show-policy-urls"><a class="permalink" href="#show-policy-urls"><b>show-policy-urls</b></a></dt>
   <dd>Show policy URLs in the <b>--check-signatures</b> listings. Defaults to
       no.
@@ -1403,6 +1420,17 @@
   <dt id="show-user-notations"><a class="permalink" href="#show-user-notations"><b>show-user-notations</b></a></dt>
   <dd>Show all, IETF standard, or user-defined signature notations in the
       <b>--check-signatures</b> listings. Defaults to no.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="show-x509-notations"><a class="permalink" href="#show-x509-notations"><b>show-x509-notations</b></a></dt>
+  <dd>Print X.509 certificates embedded in key signatures as PEM data. This is
+      intended for debugging and the output format may change without notice.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="store-x509-notations"><a class="permalink" href="#store-x509-notations"><b>store-x509-notations</b></a></dt>
+  <dd>Store X.509 certificates embedded in key signatures as PEM data files. The
+      filename consists the 4 byte key ID of the certificate, a dash, the
+      fingerprint of the key or subkey, and the suffix &quot;.pem&quot;.
     <p class="Pp"></p>
   </dd>
   <dt id="show-keyserver-urls"><a class="permalink" href="#show-keyserver-urls"><b>show-keyserver-urls</b></a></dt>
@@ -1451,10 +1479,10 @@
     <p class="Pp"></p>
   </dd>
   <dt id="sort-sigs"><a class="permalink" href="#sort-sigs"><b>sort-sigs</b></a></dt>
-  <dd>With --list-sigs and --check-sigs sort the signatures by keyID and
-      creation time to make it easier to view the history of these signatures.
-      The self-signature is also listed before other signatures. Defaults to
-      yes.
+  <dd>With <b>--list-sigs</b> and <b>--check-sigs</b> sort the signatures by
+      keyID and creation time to make it easier to view the history of these
+      signatures. The self-signature is also listed before other signatures.
+      Defaults to yes.
     <p class="Pp"></p>
   </dd>
 </dl>
@@ -1518,12 +1546,12 @@
   <dt id="enable-large-rsa"><a class="permalink" href="#enable-large-rsa"><b>--enable-large-rsa</b></a></dt>
   <dd></dd>
   <dt id="disable-large-rsa"><a class="permalink" href="#disable-large-rsa"><b>--disable-large-rsa</b></a></dt>
-  <dd>With --generate-key and --batch, enable the creation of RSA secret keys as
-      large as 8192 bit. Note: 8192 bit is more than is generally recommended.
-      These large keys don't significantly improve security, but they are more
-      expensive to use, and their signatures and certifications are larger. This
-      option is only available if the binary was build with large-secmem
-      support.
+  <dd>With <b>--generate-key</b> and <b>--batch</b>, enable the creation of RSA
+      secret keys as large as 8192 bit. Note: 8192 bit is more than is generally
+      recommended. These large keys don't significantly improve security, but
+      they are more expensive to use, and their signatures and certifications
+      are larger. This option is only available if the binary was build with
+      large-secmem support.
     <p class="Pp"></p>
   </dd>
   <dt id="enable-dsa2"><a class="permalink" href="#enable-dsa2"><b>--enable-dsa2</b></a></dt>
@@ -1542,11 +1570,11 @@
       &quot;%I&quot; does the same, except the file will not be deleted once the
       viewer exits. Other flags are &quot;%k&quot; for the key ID,
       &quot;%K&quot; for the long key ID, &quot;%f&quot; for the key
-      fingerprint, &quot;%t&quot; for the extension of the image type (e.g.
-      &quot;jpg&quot;), &quot;%T&quot; for the MIME type of the image (e.g.
+      fingerprint, &quot;%t&quot; for the extension of the image type (e.g.,
+      &quot;jpg&quot;), &quot;%T&quot; for the MIME type of the image (e.g.,
       &quot;image/jpeg&quot;), &quot;%v&quot; for the single-character
-      calculated validity of the image being viewed (e.g. &quot;f&quot;),
-      &quot;%V&quot; for the calculated validity as a string (e.g.
+      calculated validity of the image being viewed (e.g., &quot;f&quot;),
+      &quot;%V&quot; for the calculated validity as a string (e.g.,
       &quot;full&quot;), &quot;%U&quot; for a base32 encoded hash of the user
       ID, and &quot;%%&quot; for an actual percent sign. If neither %i or %I are
       present, then the photo will be supplied to the viewer on standard input.
@@ -1585,7 +1613,7 @@
   </dd>
   <dt id="primary-keyring"><a class="permalink" href="#primary-keyring"><b>--primary-keyring
     <i>file</i></b></a></dt>
-  <dd>This is a varian of <b>--keyring</b> and designates <i>file</i> as the
+  <dd>This is a variant of <b>--keyring</b> and designates <i>file</i> as the
       primary public keyring. This means that newly imported keys (via
       <b>--import</b> or keyserver <b>--recv-from</b>) will go to this keyring.
     <p class="Pp"></p>
@@ -1794,12 +1822,25 @@
     [sensitive:]<i>fingerprint</i></b></a></dt>
   <dd>Add the key specified by <i>fingerprint</i> as a designated revoker to
       newly created keys. If the fingerprint is prefixed with the keyword
-      ``sensitive:'' that info is normally not exported wit the key. This option
-      may be given several time to add more than one designated revoker. If the
-      keyword ``clear'' is used instead of a fingerprint, all designated options
-      previously encountered are discarded. Designated revokers are marked on
-      the key as non-revocable. Note that a designated revoker specified using a
+      ``sensitive:'' that info is normally not exported with the key. This
+      option may be given several times to add more than one designated revoker.
+      If the keyword ``clear'' is used instead of a fingerprint, all previously
+      fiven fingerprints are discarded. Designated revokers are marked on the
+      key as non-revocable. Note that a designated revoker specified using a
       parameter file will also be added to the key.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="default-new-key-adsk"><a class="permalink" href="#default-new-key-adsk"><b>--default-new-key-adsk
+    <i>fingerprint</i></b></a></dt>
+  <dd>Add the subkey specified by <i>fingerprint</i> as an Additional Decryption
+      Subkey (ADSK) to newly created keys. This option may be given several time
+      to add more than one ADSK. It is also possible to give several
+      fingerprints delimited by space or comma as value to this option. If the
+      keyword ``clear'' is used instead of a fingerprint, all previously
+      specified fingerprints are discarded (useful to override options given in
+      a config file). The fingerprint is expected to specify a subkey and it
+      does not need an exclamation mark as suffix; it must be given in cmpact
+      format (40 or 64 hex-digits without any spaces).
     <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
@@ -1978,16 +2019,15 @@
     <p class="Pp"></p>
   </dd>
   <dt id="ldap"><a class="permalink" href="#ldap"><b>ldap</b></a></dt>
-  <dd>Using DNS Service Discovery, check the domain in question for any LDAP
-      keyservers to use. If this fails, attempt to locate the key using the PGP
-      Universal method of checking &#x2018;ldap://keys.(thedomain)&#x2019;.
+  <dd>Locate the key using the configured LDAP servers. This method is similar
+      to the <b>keyserver</b> mechanism but always uses only LDAP servers.
     <p class="Pp"></p>
   </dd>
   <dt id="ntds"><a class="permalink" href="#ntds"><b>ntds</b></a></dt>
   <dd>Locate the key using the Active Directory (Windows only). This method also
       allows one to search by fingerprint using the command
       <b>--locate-external-key</b>. Note that this mechanism is actually a
-      shortcut for the mechanism &#x2018;keyserver&#x2019; but using
+      shortcut for the mechanism &#x2018;ldap&#x2019; using only
       &quot;ldap:///&quot; as the keyserver.
     <p class="Pp"></p>
   </dd>
@@ -2058,7 +2098,7 @@
         default), that keyserver is tried. Note that the creator of the
         signature uses the option <b>--sig-keyserver-url</b> to specify the
         preferred keyserver for data signatures.</p>
-    <p class="Pp">3. If the signature has the Signer's UID set (e.g. using
+    <p class="Pp">3. If the signature has the Signer's UID set (e.g., using
         <b>--sender</b> while creating the signature) a Web Key Directory (WKD)
         lookup is done. This is the default configuration but can be disabled by
         removing WKD from the auto-key-locate list or by using the option
@@ -2086,7 +2126,7 @@
     <p class="Pp"></p>
   </dd>
   <dt><b>--keyserver <i>name</i></b></dt>
-  <dd>This option is deprecated - please use the <b>--keyserver</b> in
+  <dd>This option is deprecated --- please use the <b>--keyserver</b> in
       &#x2018;<i>dirmngr.conf</i>&#x2019; instead.
     <p class="Pp">Use <i>name</i> as your keyserver. This is the server that
         <b>--receive-keys</b>, <b>--send-keys</b>, and <b>--search-keys</b> will
@@ -2151,6 +2191,10 @@
   <dd>When receiving a key, include subkeys as potential targets. Note that this
       option is not used with HKP keyservers, as they do not support retrieving
       keys by subkey id.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="only-pubkeys"><a class="permalink" href="#only-pubkeys"><b>only-pubkeys</b></a></dt>
+  <dd>Do now allow to import secret keys.
     <p class="Pp"></p>
   </dd>
   <dt id="timeout"><a class="permalink" href="#timeout"><b>timeout</b></a></dt>
@@ -2324,8 +2368,8 @@
   <dt id="require-secmem"><a class="permalink" href="#require-secmem"><b>--require-secmem</b></a></dt>
   <dd></dd>
   <dt id="no-require-secmem"><a class="permalink" href="#no-require-secmem"><b>--no-require-secmem</b></a></dt>
-  <dd>Refuse to run if GnuPG cannot get secure memory. Defaults to no (i.e. run,
-      but give a warning).
+  <dd>Refuse to run if GnuPG cannot get secure memory. Defaults to no (i.e.,
+      run, but give a warning).
     <p class="Pp"></p>
     <p class="Pp"></p>
   </dd>
@@ -2471,7 +2515,7 @@
         the created signature (using OpenPGP's ``Signer's User ID'' subpacket).
         If the option is given multiple times a suitable user ID is picked.
         However, if the signing key was specified directly by using a mail
-        address (i.e. not by using a fingerprint or key ID) this option is used
+        address (i.e., not by using a fingerprint or key ID) this option is used
         and the mail address is embedded in the created signature.</p>
     <p class="Pp">When verifying a signature <i>mbox</i> is used to restrict the
         information printed by the TOFU code to matching user IDs. If the option
@@ -2585,7 +2629,7 @@
   <dt id="key-origin"><a class="permalink" href="#key-origin"><b>--key-origin
     <i>string</i>[,<i>url</i>]</b></a></dt>
   <dd>gpg can track the origin of a key. Certain origins are implicitly known
-      (e.g. keyserver, web key directory) and set. For a standard import the
+      (e.g., keyserver, web key directory) and set. For a standard import the
       origin of the keys imported can be set with this option. To list the
       possible values use &quot;help&quot; for <i>string</i>. Some origins can
       store an optional <i>url</i> argument. That URL can appended to
@@ -2727,12 +2771,12 @@
   </dd>
   <dt id="drop-subkey"><a class="permalink" href="#drop-subkey"><b>drop-subkey</b></a></dt>
   <dd>This filter drops the selected subkeys. Currently only implemented for
-      --export-filter.
+      <b>--export-filter</b>.
     <p class="Pp"></p>
   </dd>
   <dt id="drop-sig"><a class="permalink" href="#drop-sig"><b>drop-sig</b></a></dt>
   <dd>This filter drops the selected key signatures on user ids. Self-signatures
-      are not considered. Currently only implemented for --import-filter.
+      are not considered. Currently only implemented for <b>--import-filter</b>.
     <p class="Pp"></p>
   </dd>
   <dt id="select"><a class="permalink" href="#select"><b>select</b></a></dt>
@@ -2784,7 +2828,7 @@
   <dd></dd>
   <dt id="key_created_d"><a class="permalink" href="#key_created_d"><b>key_created_d</b></a></dt>
   <dd>The first is the timestamp a public key or subkey packet was created. The
-      second is the same but given as an ISO string, e.g.
+      second is the same but given as an ISO string, e.g.,
       &quot;2016-08-17&quot;. (drop-subkey)
     <p class="Pp"></p>
   </dd>
@@ -2793,7 +2837,7 @@
   <dt id="key_expires_d"><a class="permalink" href="#key_expires_d"><b>key_expires_d</b></a></dt>
   <dd>The expiration time of a public key or subkey or 0 if it does not expire.
       The second is the same but given as an ISO date string or an empty string
-      e.g. &quot;2038-01-19&quot;.
+      e.g., &quot;2038-01-19&quot;.
     <p class="Pp"></p>
   </dd>
   <dt id="fpr"><a class="permalink" href="#fpr"><b>fpr</b></a></dt>
@@ -2833,7 +2877,7 @@
   <dd></dd>
   <dt id="sig_created_d"><a class="permalink" href="#sig_created_d"><b>sig_created_d</b></a></dt>
   <dd>The first is the timestamp a signature packet was created. The second is
-      the same but given as an ISO date string, e.g. &quot;2016-08-17&quot;.
+      the same but given as an ISO date string, e.g., &quot;2016-08-17&quot;.
       (drop-sig)
     <p class="Pp"></p>
   </dd>
@@ -2864,7 +2908,7 @@
     <p class="Pp"></p>
   </dd>
   <dt id="url"><a class="permalink" href="#url"><b>url</b></a></dt>
-  <dd>A string with the the URL associated wit the last key lookup.
+  <dd>A string with the the URL associated with the last key lookup.
     <p class="Pp"></p>
   </dd>
 </dl>
@@ -2969,9 +3013,9 @@
   </dd>
   <dt id="legacy-list-mode"><a class="permalink" href="#legacy-list-mode"><b>--legacy-list-mode</b></a></dt>
   <dd>Revert to the pre-2.1 public key list mode. This only affects the human
-      readable output and not the machine interface (i.e. <b>--with-colons</b>).
-      Note that the legacy format does not convey suitable information for
-      elliptic curves.
+      readable output and not the machine interface (i.e.,
+      <b>--with-colons</b>). Note that the legacy format does not convey
+      suitable information for elliptic curves.
     <p class="Pp"></p>
   </dd>
   <dt id="with-fingerprint"><a class="permalink" href="#with-fingerprint"><b>--with-fingerprint</b></a></dt>
@@ -2980,10 +3024,14 @@
     <p class="Pp"></p>
   </dd>
   <dt id="with-subkey-fingerprint"><a class="permalink" href="#with-subkey-fingerprint"><b>--with-subkey-fingerprint</b></a></dt>
+  <dd></dd>
+  <dt id="without-subkey-fingerprint"><a class="permalink" href="#without-subkey-fingerprint"><b>--without-subkey-fingerprint</b></a></dt>
   <dd>If a fingerprint is printed for the primary key, this option forces
       printing of the fingerprint for all subkeys. This could also be achieved
       by using the <b>--with-fingerprint</b> twice but by using this option
-      along with keyid-format &quot;none&quot; a compact fingerprint is printed.
+      along with the default keyid-format &quot;none&quot; a compact fingerprint
+      is printed. Since version 2.6.0 this option is active by default; use the
+      ``without'' variant to disable it.
     <p class="Pp"></p>
   </dd>
   <dt id="with-v5-fingerprint"><a class="permalink" href="#with-v5-fingerprint"><b>--with-v5-fingerprint</b></a></dt>
@@ -3089,7 +3137,7 @@
       algorithm chosen by the recipient key preferences, as GPG will only select
       an algorithm that is usable by all recipients. The most highly ranked
       digest algorithm in this list is also used when signing without encryption
-      (e.g. <b>--clear-sign</b> or <b>--sign</b>).
+      (e.g., <b>--clear-sign</b> or <b>--sign</b>).
     <p class="Pp"></p>
   </dd>
   <dt id="personal-compress-preferences"><a class="permalink" href="#personal-compress-preferences"><b>--personal-compress-preferences
@@ -3100,7 +3148,7 @@
       override the algorithm chosen by the recipient key preferences, as GPG
       will only select an algorithm that is usable by all recipients. The most
       highly ranked compression algorithm in this list is also used when there
-      are no recipient keys to consider (e.g. <b>--symmetric</b>).
+      are no recipient keys to consider (e.g., <b>--symmetric</b>).
     <p class="Pp"></p>
   </dd>
   <dt id="s2k-cipher-algo"><a class="permalink" href="#s2k-cipher-algo"><b>--s2k-cipher-algo
@@ -3130,7 +3178,7 @@
   <dd>Specify how many times the passphrases mangling for symmetric encryption
       is repeated. This value may range between 1024 and 65011712 inclusive. The
       default is inquired from gpg-agent. Note that not all values in the
-      1024-65011712 range are legal and if an illegal value is selected, GnuPG
+      1024--65011712 range are legal and if an illegal value is selected, GnuPG
       will round up to the nearest legal value. This option is only meaningful
       if <b>--s2k-mode</b> is set to the default of 3.
     <p class="Pp"></p>
@@ -3221,6 +3269,15 @@
       keys into non-VS-NfD compliant keys.
     <p class="Pp"></p>
   </dd>
+  <dt id="require-pqc-encryption"><a class="permalink" href="#require-pqc-encryption"><b>--require-pqc-encryption</b></a></dt>
+  <dd>This option forces the use of quantum-resistant encryption algorithms. If
+      not all public keys are quantum-resistant the encryption will fail. On
+      decryption a warning is printed for all non-quantum-resistant keys. As of
+      now the Kyber (ML-KEM768 and ML-KEM1024) algorithms are considered
+      quantum-resistant; Kyber is always used in a composite scheme along with a
+      classic ECC algorithm.
+    <p class="Pp"></p>
+  </dd>
   <dt id="require-compliance"><a class="permalink" href="#require-compliance"><b>--require-compliance</b></a></dt>
   <dd>To check that data has been encrypted according to the rules of the
       current compliance mode, a gpg user needs to evaluate the status lines.
@@ -3306,7 +3363,7 @@
 <dl class="Bl-tag">
   <dt><b>--debug <i>flags</i></b></dt>
   <dd>Set debug flags. All flags are or-ed and <i>flags</i> may be given in C
-      syntax (e.g. 0x0042) or as a comma separated list of flag names. To get a
+      syntax (e.g., 0x0042) or as a comma separated list of flag names. To get a
       list of all supported flags the single word &quot;help&quot; can be used.
       This option is only useful for debugging and the behavior may change at
       any time without notice.
@@ -3343,7 +3400,7 @@
   <dd>This option is only useful for testing; it sets the system time back or
       forth to <i>epoch</i> which is the number of seconds elapsed since the
       year 1970. Alternatively <i>epoch</i> may be given as a full ISO time
-      string (e.g. &quot;20070924T154812&quot;).
+      string (e.g., &quot;20070924T154812&quot;).
     <p class="Pp">If you suffix <i>epoch</i> with an exclamation mark (!), the
         system time will appear to be frozen at the specified time.</p>
     <p class="Pp"></p>
@@ -3882,8 +3939,12 @@
     <p class="Pp"></p>
   </dd>
   <dt id="show-session-key"><a class="permalink" href="#show-session-key"><b>--show-session-key</b></a></dt>
+  <dd></dd>
+  <dt id="show-only-session-key"><a class="permalink" href="#show-only-session-key"><b>--show-only-session-key</b></a></dt>
   <dd>Display the session key used for one message. See
-      <b>--override-session-key</b> for the counterpart of this option.
+      <b>--override-session-key</b> for the counterpart of this option. The
+      variant <b>--show-only-session-key</b> does not actually use the session
+      key but stops processing after having printed the session key.
     <p class="Pp">We think that Key Escrow is a Bad Thing; however the user
         should have the freedom to decide whether to go to prison or to reveal
         the content of one specific message without compromising all messages
@@ -3990,6 +4051,12 @@
   <dd>This option enables a mode in which filenames of the form
       &#x2018;<i>-&amp;n</i>&#x2019;, where n is a non-negative decimal number,
       refer to the file descriptor n and not to a file with that name.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="disable-fd-translation"><a class="permalink" href="#disable-fd-translation"><b>--disable-fd-translation</b></a></dt>
+  <dd>This option changes the behaviour for all following options to expect libc
+      file descriptors instead of HANDLE values on the command line. The option
+      has an effect only on Windows.
     <p class="Pp"></p>
   </dd>
   <dt id="no-expensive-trust-checks"><a class="permalink" href="#no-expensive-trust-checks"><b>--no-expensive-trust-checks</b></a></dt>
@@ -4233,7 +4300,7 @@
     fingerprint.</b></a></dt>
   <dd>This format is deduced from the length of the string and its content or
       the <b>0x</b> prefix. Note, that only the 20 byte version fingerprint is
-      available with <b>gpgsm</b> (i.e. the SHA-1 hash of the certificate).
+      available with <b>gpgsm</b> (i.e., the SHA-1 hash of the certificate).
     <p class="Pp">When using <b>gpg</b> an exclamation mark (!) may be appended
         to force using the specified primary or secondary key and not to try and
         calculate which primary or secondary key to use.</p>
@@ -4284,7 +4351,7 @@
   <dt id="By~5"><a class="permalink" href="#By~5"><b>By partial match on an
     email address.</b></a></dt>
   <dd>This is indicated by prefixing the search string with an <b>@</b>. This
-      uses a substring search but considers only the mail address (i.e. inside
+      uses a substring search but considers only the mail address (i.e., inside
       the angle brackets).
     <p class="Pp"></p>
   </dd>
@@ -5022,8 +5089,8 @@ $ gpg --import-ownertrust otrust.lst</pre>
   <dt id="Expire-Date:"><a class="permalink" href="#Expire-Date:"><b>Expire-Date:
     <i>iso-date</i>|(<i>number</i>[d|w|m|y])</b></a></dt>
   <dd>Set the expiration date for the key (and the subkey). It may either be
-      entered in ISO date format (e.g. &quot;20000815T145012&quot;) or as number
-      of days, weeks, month or years after the creation date. The special
+      entered in ISO date format (e.g., &quot;20000815T145012&quot;) or as
+      number of days, weeks, month or years after the creation date. The special
       notation &quot;seconds=N&quot; is also allowed to specify a number of
       seconds since creation. Without a letter days are assumed. Note that there
       is no check done on the overflow of the type used by OpenPGP for
@@ -5192,8 +5259,8 @@ ssb   elg1024 2016-12-16 [E]</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-03-04</td>
-    <td class="foot-os">GnuPG 2.4.5</td>
+    <td class="foot-date">2024-06-28</td>
+    <td class="foot-os">GnuPG 2.5.0</td>
   </tr>
 </table>
 </body>

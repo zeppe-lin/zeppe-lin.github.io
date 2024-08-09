@@ -22,7 +22,7 @@
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
 <p class="Pp"><b>crond [-s dir] [-c dir] [-t dir] [-m user@host] [-M
-    mailhandler] [-S|-L file] [-l loglevel] [-b|-f|-d]</b></p>
+    mailhandler] [-S|-L file] [-P|-p file] [-l loglevel] [-b|-f|-d]</b></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
@@ -80,6 +80,16 @@
 <dl class="Bl-tag">
   <dt id="L"><a class="permalink" href="#L"><b>-L file</b></a></dt>
   <dd>log to specified file instead of syslog.</dd>
+</dl>
+<div class="Bd-indent"></div>
+<dl class="Bl-tag">
+  <dt id="P"><a class="permalink" href="#P"><b>-P</b></a></dt>
+  <dd>do not create a process-id file.</dd>
+</dl>
+<div class="Bd-indent"></div>
+<dl class="Bl-tag">
+  <dt id="L~2"><a class="permalink" href="#L~2"><b>-L file</b></a></dt>
+  <dd>Write process-id to specified file instead of /var/run/crond.pi</dd>
 </dl>
 <div class="Bd-indent"></div>
 <dl class="Bl-tag">

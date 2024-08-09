@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-        Date: 2024-05-30
+        Date: 2024-07-29
       Manual: Git Manual
-      Source: Git 2.45.2
+      Source: Git 2.46.0
     Language: English
    -->
 <head>
@@ -35,11 +35,13 @@
 <br/>
     [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
 <br/>
-    [-p|--paginate|-P|--no-pager] [--no-replace-objects] [--bare]
+    [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
 <br/>
-    [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+    [--no-optional-locks] [--no-advice] [--bare] [--git-dir=&lt;path&gt;]
 <br/>
-    [--config-env=&lt;name&gt;=&lt;envvar&gt;] &lt;command&gt; [&lt;args&gt;]</pre>
+    [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;] [--config-env=&lt;name&gt;=&lt;envvar&gt;]
+<br/>
+    &lt;command&gt; [&lt;args&gt;]</pre>
 <p class="Pp"></p>
 </section>
 <section class="Sh">
@@ -185,6 +187,11 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   demand. Useful together with <b>git cat-file -e &lt;object&gt;</b> to see if
   the object is locally available. This is equivalent to setting the
   <b>GIT_NO_LAZY_FETCH</b> environment variable to <b>1</b>.</div>
+<p class="Pp">--no-optional-locks</p>
+<div class="Bd-indent">Do not perform optional operations that require locks.
+  This is equivalent to setting the <b>GIT_OPTIONAL_LOCKS</b> to <b>0</b>.</div>
+<p class="Pp">--no-advice</p>
+<div class="Bd-indent">Disable all advice hints from being printed.</div>
 <p class="Pp">--literal-pathspecs</p>
 <div class="Bd-indent">Treat pathspecs literally (i.e. no globbing, no pathspec
   magic). This is equivalent to setting the <b>GIT_LITERAL_PATHSPECS</b>
@@ -203,9 +210,6 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">Add &quot;icase&quot; magic to all pathspec. This is
   equivalent to setting the <b>GIT_ICASE_PATHSPECS</b> environment variable to
   <b>1</b>.</div>
-<p class="Pp">--no-optional-locks</p>
-<div class="Bd-indent">Do not perform optional operations that require locks.
-  This is equivalent to setting the <b>GIT_OPTIONAL_LOCKS</b> to <b>0</b>.</div>
 <p class="Pp">--list-cmds=&lt;group&gt;[,&lt;group&gt;...]</p>
 <div class="Bd-indent">List commands by group. This is an internal/experimental
   option and may change or be removed in the future. Supported groups are:
@@ -357,6 +361,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   database.</div>
 <p class="Pp"><b>git-reflog</b>(1)</p>
 <div class="Bd-indent">Manage reflog information.</div>
+<p class="Pp"><b>git-refs</b>(1)</p>
+<div class="Bd-indent">Low-level access to refs.</div>
 <p class="Pp"><b>git-remote</b>(1)</p>
 <div class="Bd-indent">Manage set of tracked repositories.</div>
 <p class="Pp"><b>git-repack</b>(1)</p>
@@ -978,6 +984,13 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     variables, <b>GIT_DIFF_PATH_COUNTER</b> and <b>GIT_DIFF_PATH_TOTAL</b> are
     set.</p>
 </div>
+<p class="Pp"><b>GIT_EXTERNAL_DIFF_TRUST_EXIT_CODE</b></p>
+<div class="Bd-indent">If this Boolean environment variable is set to true then
+  the <b>GIT_EXTERNAL_DIFF</b> command is expected to return exit code 0 if it
+  considers the input files to be equal or 1 if it considers them to be
+  different, like <b>diff(1)</b>. If it is set to false, which is the default,
+  then the command is expected to return exit code 0 regardless of equality. Any
+  other exit code causes Git to report a fatal error.</div>
 <p class="Pp"><b>GIT_DIFF_PATH_COUNTER</b></p>
 <div class="Bd-indent">A 1-based counter incremented by one for every
   path.</div>
@@ -1454,8 +1467,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-05-30</td>
-    <td class="foot-os">Git 2.45.2</td>
+    <td class="foot-date">2024-07-29</td>
+    <td class="foot-os">Git 2.46.0</td>
   </tr>
 </table>
 </body>

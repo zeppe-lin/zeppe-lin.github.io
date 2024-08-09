@@ -5,9 +5,9 @@
        Title: mkswap
       Author: [see the "AUTHOR(S)" section]
    Generator: Asciidoctor 2.0.20
-        Date: 2024-05-01
+        Date: 2024-05-28
       Manual: System Administration
-      Source: util-linux 2.40.1
+      Source: util-linux 2.40.2
     Language: English
    -->
 <head>
@@ -155,15 +155,17 @@
 <p class="Pp"><b>mkswap</b> refuses areas smaller than 10 pages.</p>
 <p class="Pp">If you don&#x2019;t know the page size that your machine uses, you
     can look it up with <b>getconf PAGESIZE</b>.</p>
-<p class="Pp">To set up a swap file, it is necessary to create that file before
-    initializing it with <b>mkswap</b>, e.g. using a command like</p>
+<p class="Pp">Aside from <b>mkswap --file</b>, it is also possible to create the
+    swapfile manually before initializing it with <b>mkswap</b>, e.g. using a
+    command like</p>
 <p class="Pp"></p>
 <div class="Bd-indent">
 <pre># dd if=/dev/zero of=swapfile bs=1MiB count=$((8*1024))</pre>
 </div>
 <p class="Pp">to create 8GiB swapfile.</p>
-<p class="Pp">Please read notes from <b>swapon</b>(8) about <b>the swap file use
-    restrictions</b> (holes, preallocation and copy-on-write issues).</p>
+<p class="Pp">In such a case, please read notes from <b>swapon</b>(8) about
+    <b>the swap file use restrictions</b> (holes, preallocation and
+    copy-on-write issues).</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
@@ -185,8 +187,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-05-01</td>
-    <td class="foot-os">util-linux 2.40.1</td>
+    <td class="foot-date">2024-05-28</td>
+    <td class="foot-os">util-linux 2.40.2</td>
   </tr>
 </table>
 </body>
