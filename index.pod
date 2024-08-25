@@ -20,7 +20,7 @@ a straightforward tar.gz-based package system, BSD-style initscripts,
 and a relatively small collection of trimmed packages.  The secondary
 focus is the utilization of new Linux features and recent tools and
 libraries.  Zeppe-Lin also has a
-L<pkgsrc|http://zeppel.ink/handbook.7.html#THE-PACKAGES-SOURCES-SYSTEM>
+L<pkgsrc|https://zeppe-lin.github.io/handbook.7.html#THE-PACKAGES-SOURCES-SYSTEM>
 system which makes it easy to install and upgrade applications.
 
 =begin html
