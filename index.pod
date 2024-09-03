@@ -36,7 +36,7 @@ system which makes it easy to install and upgrade applications.
 
 =head2 Handbook
 
-The L<handbook(7)|https://zeppel.ink/handbook.7.html>
+The L<handbook(7)|https://zeppe-lin.github.io/handbook.7.html>
 covers the installation, configuration, and administration of
 Zeppe-Lin.
 
@@ -51,7 +51,7 @@ contains the tasks and issues for current and next release.
 =head1 DOWNLOAD
 
 Before downloading Zeppe-Lin, please read the
-L<handbook(7)|https://zeppel.ink/handbook.7.html> to be sure your
+L<handbook(7)|https://zeppe-lin.github.io/handbook.7.html> to be sure your
 hardware is supported, and you know how to install it.  Then look at
 the release L<announcements|https://github.com/orgs/zeppe-lin/discussions/categories/announcements>
 for important information about the latest Zeppe-Lin release and
