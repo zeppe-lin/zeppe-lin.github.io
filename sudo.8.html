@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <!-- This is an automatically generated file.  Do not edit.
+   Automatically generated from the sudo.mdoc.in file.  Do not edit.
+  
    SPDX-License-Identifier: ISC
   
    Copyright (c) 1994-1996, 1998-2005, 2007-2023
@@ -812,6 +814,8 @@ Path askpass /usr/X11R6/bin/ssh-askpass</pre>
   <dd>Default editor to use in <code class="Fl">-e</code> (sudoedit) mode.</dd>
   <dt id="SUDO_GID"><a class="permalink" href="#SUDO_GID"><code class="Ev">SUDO_GID</code></a></dt>
   <dd>Set to the group-ID of the user who invoked sudo.</dd>
+  <dt id="SUDO_HOME"><a class="permalink" href="#SUDO_HOME"><code class="Ev">SUDO_HOME</code></a></dt>
+  <dd>Set to the home directory of the user who invoked sudo.</dd>
   <dt id="SUDO_PROMPT"><a class="permalink" href="#SUDO_PROMPT"><code class="Ev">SUDO_PROMPT</code></a></dt>
   <dd>Used as the default password prompt unless the <code class="Fl">-p</code>
       option was specified.</dd>
@@ -1035,8 +1039,16 @@ Path askpass /usr/X11R6/bin/ssh-askpass</pre>
 <section class="Sh">
 <h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
 <p class="Pp">If you believe you have found a bug in
-    <code class="Nm">sudo</code>, you can submit a bug report at
-    https://bugzilla.sudo.ws/</p>
+    <code class="Nm">sudo</code>, you can either file a bug report in the sudo
+    bug database, https://bugzilla.sudo.ws/, or open an issue at
+    https://github.com/sudo-project/sudo/issues. If you would prefer to use
+    email, messages may be sent to the sudo-workers mailing list,
+    https://www.sudo.ws/mailman/listinfo/sudo-workers (public) or
+    &lt;sudo@sudo.ws&gt; (private).</p>
+<p class="Pp">Please not report security vulnerabilities through public GitHub
+    issues, Bugzilla or mailing lists. Instead, report them via email to
+    &lt;Todd.Miller@sudo.ws&gt;. You may encrypt your message with PGP if you
+    would like, using the key found at https://www.sudo.ws/dist/PGPKEYS.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SUPPORT"><a class="permalink" href="#SUPPORT">SUPPORT</a></h1>
@@ -1057,7 +1069,7 @@ Path askpass /usr/X11R6/bin/ssh-askpass</pre>
 <table class="foot">
   <tr>
     <td class="foot-date">August 9, 2023</td>
-    <td class="foot-os">Sudo 1.9.15p5</td>
+    <td class="foot-os">Sudo 1.9.16</td>
   </tr>
 </table>
 </body>
