@@ -152,8 +152,8 @@ case $PKGMK_ARCH in
         export PKG_CONFIG_LIBDIR=&quot;/usr/lib32/pkgconfig&quot;
         ;;
 *)
-        echo &quot;Unknown architecture selected! Exiting.&quot;
-        exit 1
+        error &quot;Unknown architecture selected! Exiting.&quot;
+        exit $E_GENERAL
         ;;
 esac
 

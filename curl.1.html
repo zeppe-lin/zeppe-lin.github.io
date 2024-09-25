@@ -79,8 +79,8 @@
     performed between separate curl runs.</p>
 <p class="Pp">Provide an IPv6 zone id in the URL with an escaped percentage
     sign. Like in</p>
-<pre>
-&quot;http://[fe80::3%25eth0]/&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;http://[fe80::3%25eth0]/&quot;</pre>
 <p class="Pp">Everything provided on the command line that is not a command line
     option or its argument, curl assumes is a URL and treats it as such.</p>
 </section>
@@ -90,25 +90,25 @@
     within braces or ranges within brackets. We call this
   &quot;globbing&quot;.</p>
 <p class="Pp">Provide a list with three different names like this:</p>
-<pre>
-&quot;http://site.{one,two,three}.com&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;http://site.{one,two,three}.com&quot;</pre>
 <p class="Pp">Do sequences of alphanumeric series by using [] as in:</p>
-<pre>
-&quot;ftp://ftp.example.com/file[1-100].txt&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;ftp://ftp.example.com/file[1-100].txt&quot;</pre>
 <p class="Pp">With leading zeroes:</p>
-<pre>
-&quot;ftp://ftp.example.com/file[001-100].txt&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;ftp://ftp.example.com/file[001-100].txt&quot;</pre>
 <p class="Pp">With letters through the alphabet:</p>
-<pre>
-&quot;ftp://ftp.example.com/file[a-z].txt&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;ftp://ftp.example.com/file[a-z].txt&quot;</pre>
 <p class="Pp">Nested sequences are not supported, but you can use several ones
     next to each other:</p>
-<pre>
-&quot;http://example.com/archive[1996-1999]/vol[1-4]/part{a,b,c}.html&quot;</pre>
+<p class="Pp"></p>
+<pre>&quot;http://example.com/archive[1996-1999]/vol[1-4]/part{a,b,c}.html&quot;</pre>
 <p class="Pp">You can specify a step counter for the ranges to get every Nth
     number or letter:</p>
-<pre>
-&quot;http://example.com/file[1-100:10].txt&quot;
+<p class="Pp"></p>
+<pre>&quot;http://example.com/file[1-100:10].txt&quot;
 &quot;http://example.com/file[a-z:2].txt&quot;</pre>
 <p class="Pp">When using [] or {} sequences when invoked from a command line
     prompt, you probably have to put the full URL within double quotes to avoid
@@ -127,17 +127,18 @@
     &quot;name&quot; inserted, or a blank if the name does not exist as a
     variable. Insert &quot;{{&quot; verbatim in the string by prefixing it with
     a backslash, like &quot;\{{&quot;.</p>
-<p class="Pp">You an access and expand environment variables by first importing
-    them. You can select to either require the environment variable to be set or
-    you can provide a default value in case it is not already set. Plain
-    <i>--variable</i> %name imports the variable called 'name' but exits with an
-    error if that environment variable is not already set. To provide a default
-    value if it is not set, use <i>--variable</i> %name=content or
-    <i>--variable</i> %name@content.</p>
+<p class="Pp">You access and expand environment variables by first importing
+    them. You select to either require the environment variable to be set or you
+    can provide a default value in case it is not already set. Plain
+    &quot;<i>--variable</i> %name&quot; imports the variable called
+    &quot;name&quot; but exits with an error if that environment variable is not
+    already set. To provide a default value if it is not set, use
+    &quot;<i>--variable</i> %name=content&quot; or &quot;<i>--variable</i>
+    %name@content&quot;.</p>
 <p class="Pp">Example. Get the USER environment variable into the URL, fail if
     USER is not set:</p>
-<pre>
---variable '%USER'
+<p class="Pp"></p>
+<pre>--variable '%USER'
 --expand-url = &quot;https://example.com/api/{{USER}}/method&quot;</pre>
 <p class="Pp">When expanding variables, curl supports a set of functions that
     can make the variable contents more convenient to use. It can trim leading
@@ -150,8 +151,8 @@
 <p class="Pp">Example: get the contents of a file called $HOME/.secret into a
     variable called &quot;fix&quot;. Make sure that the content is trimmed and
     percent-encoded when sent as POST data:</p>
-<pre>
---variable %HOME
+<p class="Pp"></p>
+<pre>--variable %HOME
 --expand-variable fix@{{HOME}}/.secret
 --expand-data &quot;{{fix:trim:url}}&quot;
 https://example.com/</pre>
@@ -246,14 +247,14 @@ https://example.com/</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="VERSION"><a class="permalink" href="#VERSION">VERSION</a></h1>
-<p class="Pp">This man page describes curl 8.9.1. If you use a later version,
+<p class="Pp">This man page describes curl 8.10.1. If you use a later version,
     chances are this man page does not fully document it. If you use an earlier
     version, this document tries to include version information about which
     specific version that introduced changes.</p>
 <p class="Pp">You can always learn which the latest curl version is by
   running</p>
-<pre>
-curl https://curl.se/info</pre>
+<p class="Pp"></p>
+<pre>curl https://curl.se/info</pre>
 <p class="Pp">The online version of this man page is always showing the latest
     incarnation: https://curl.se/docs/manpage.html</p>
 </section>
@@ -284,6 +285,10 @@ curl https://curl.se/info</pre>
     --show-error</i>, <i>--stderr</i>, <i>--styled-output</i>,
     <i>--trace-ascii</i>, <i>--trace-config</i>, <i>--trace-ids</i>,
     <i>--trace-time</i>, <i>--trace</i> and <i>-v, --verbose</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ALL_OPTIONS"><a class="permalink" href="#ALL_OPTIONS">ALL
+  OPTIONS</a></h1>
 <dl class="Bl-tag">
   <dt id="abstract"><a class="permalink" href="#abstract">--abstract-unix-socket
     &lt;path&gt;</a></dt>
@@ -294,9 +299,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --abstract-unix-socket is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --abstract-unix-socket socketpath https://example.com</pre>
+    <pre>curl --abstract-unix-socket socketpath https://example.com</pre>
     <p class="Pp">See also <i>--unix-socket</i>.</p>
   </dd>
   <dt id="alt"><a class="permalink" href="#alt">--alt-svc
@@ -310,9 +313,7 @@ curl https://curl.se/info</pre>
         all the files but the last one is used for saving.</p>
     <p class="Pp">--alt-svc can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --alt-svc svc.txt https://example.com</pre>
+    <pre>curl --alt-svc svc.txt https://example.com</pre>
     <p class="Pp">Added in 7.64.1. See also <i>--resolve</i> and
         <i>--connect-to</i>.</p>
   </dd>
@@ -330,9 +331,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Used together with <i>-u, --user</i>.</p>
     <p class="Pp">Providing --anyauth multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --anyauth --user me:pwd https://example.com</pre>
+    <pre>curl --anyauth --user me:pwd https://example.com</pre>
     <p class="Pp">See also <i>--proxy-anyauth</i>, <i>--basic</i> and
         <i>--digest</i>.</p>
   </dd>
@@ -344,9 +343,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Providing --append multiple times has no extra effect. Disable
         it again with --no-append.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --upload-file local --append ftp://example.com/</pre>
+    <pre>curl --upload-file local --append ftp://example.com/</pre>
     <p class="Pp">See also <i>-r, --range</i> and <i>-C, --continue-at</i>.</p>
   </dd>
   <dt id="aws"><a class="permalink" href="#aws">--aws-sigv4
@@ -363,9 +360,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --aws-sigv4 is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --aws-sigv4 &quot;aws:amz:us-east-2:es&quot; --user &quot;key:secret&quot; https://example.com</pre>
+    <pre>curl --aws-sigv4 &quot;aws:amz:us-east-2:es&quot; --user &quot;key:secret&quot; https://example.com</pre>
     <p class="Pp">Added in 7.75.0. See also <i>--basic</i> and <i>-u,
         --user</i>.</p>
   </dd>
@@ -377,9 +372,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Used together with <i>-u, --user</i>.</p>
     <p class="Pp">Providing --basic multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -u name:password --basic https://example.com</pre>
+    <pre>curl -u name:password --basic https://example.com</pre>
     <p class="Pp">See also <i>--proxy-basic</i>.</p>
   </dd>
   <dt id="ca"><a class="permalink" href="#ca">--ca-native</a></dt>
@@ -394,11 +387,9 @@ curl https://curl.se/info</pre>
     <p class="Pp">Providing --ca-native multiple times has no extra effect.
         Disable it again with --no-ca-native.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ca-native https://example.com</pre>
-    <p class="Pp">Added in 8.2.0. See also <i>--cacert</i>, <i>--capath</i> and
-        <i>-k, --insecure</i>.</p>
+    <pre>curl --ca-native https://example.com</pre>
+    <p class="Pp">Added in 8.2.0. See also <i>--cacert</i>, <i>--capath</i>,
+        <i>--dump-ca-embed</i> and <i>-k, --insecure</i>.</p>
   </dd>
   <dt id="cacert"><a class="permalink" href="#cacert">--cacert
     &lt;file&gt;</a></dt>
@@ -410,7 +401,7 @@ curl https://curl.se/info</pre>
         'CURL_CA_BUNDLE' if it is set and the TLS backend is not Schannel, and
         uses the given path as a path to a CA cert bundle. This option overrides
         that variable.</p>
-    <p class="Pp">The windows version of curl automatically looks for a CA certs
+    <p class="Pp">The Windows version of curl automatically looks for a CA certs
         file named 'curl-ca-bundle.crt', either in the same directory as
         curl.exe, or in the Current Working Directory, or in any folder along
         your PATH.</p>
@@ -428,10 +419,9 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --cacert is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cacert CA-file.txt https://example.com</pre>
-    <p class="Pp">See also <i>--capath</i> and <i>-k, --insecure</i>.</p>
+    <pre>curl --cacert CA-file.txt https://example.com</pre>
+    <p class="Pp">See also <i>--capath</i>, <i>--dump-ca-embed</i> and <i>-k,
+        --insecure</i>.</p>
   </dd>
   <dt id="capath"><a class="permalink" href="#capath">--capath
     &lt;dir&gt;</a></dt>
@@ -448,10 +438,9 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --capath is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --capath /local/directory https://example.com</pre>
-    <p class="Pp">See also <i>--cacert</i> and <i>-k, --insecure</i>.</p>
+    <pre>curl --capath /local/directory https://example.com</pre>
+    <p class="Pp">See also <i>--cacert</i>, <i>--dump-ca-embed</i> and <i>-k,
+        --insecure</i>.</p>
   </dd>
   <dt id="E,"><a class="permalink" href="#E,">-E, --cert
     &lt;certificate[:password]&gt;</a></dt>
@@ -494,9 +483,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --cert is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert certfile --key keyfile https://example.com</pre>
+    <pre>curl --cert certfile --key keyfile https://example.com</pre>
     <p class="Pp">See also <i>--cert-type</i>, <i>--key</i> and
         <i>--key-type</i>.</p>
   </dd>
@@ -512,9 +499,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Providing --cert-status multiple times has no extra effect.
         Disable it again with --no-cert-status.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert-status https://example.com</pre>
+    <pre>curl --cert-status https://example.com</pre>
     <p class="Pp">See also <i>--pinnedpubkey</i>.</p>
   </dd>
   <dt id="cert~2"><a class="permalink" href="#cert~2">--cert-type
@@ -527,26 +512,22 @@ curl https://curl.se/info</pre>
     <p class="Pp">If --cert-type is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert-type PEM --cert file https://example.com</pre>
+    <pre>curl --cert-type PEM --cert file https://example.com</pre>
     <p class="Pp">See also <i>-E, --cert</i>, <i>--key</i> and
         <i>--key-type</i>.</p>
   </dd>
-  <dt id="ciphers"><a class="permalink" href="#ciphers">--ciphers &lt;list of
-    ciphers&gt;</a></dt>
-  <dd>(TLS) Specifies which ciphers to use in the connection. The list of
-      ciphers must specify valid ciphers. Read up on SSL cipher list details on
-      this URL:
+  <dt id="ciphers"><a class="permalink" href="#ciphers">--ciphers
+    &lt;list&gt;</a></dt>
+  <dd>(TLS) Specifies which cipher suites to use in the connection if it
+      negotiates TLS 1.2 (1.1, 1.0). The list of ciphers suites must specify
+      valid ciphers. Read up on cipher suite details on this URL:
     <p class="Pp">https://curl.se/docs/ssl-ciphers.html</p>
     <p class="Pp">If --ciphers is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ciphers ECDHE-ECDSA-AES256-CCM8 https://example.com</pre>
-    <p class="Pp">See also <i>--tlsv1.3</i>, <i>--tls13-ciphers</i> and
-        <i>--proxy-ciphers</i>.</p>
+    <pre>curl --ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256 https://example.com</pre>
+    <p class="Pp">See also <i>--tls13-ciphers</i>, <i>--proxy-ciphers</i> and
+        <i>--curves</i>.</p>
   </dd>
   <dt id="compressed"><a class="permalink" href="#compressed">--compressed</a></dt>
   <dd>(HTTP) Request a compressed response using one of the algorithms curl
@@ -561,9 +542,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Providing --compressed multiple times has no extra effect.
         Disable it again with --no-compressed.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --compressed https://example.com</pre>
+    <pre>curl --compressed https://example.com</pre>
     <p class="Pp">See also <i>--compressed-ssh</i>.</p>
   </dd>
   <dt>--compressed-ssh</dt>
@@ -572,9 +551,7 @@ curl https://curl.se/info</pre>
     <p class="Pp">Providing --compressed-ssh multiple times has no extra effect.
         Disable it again with --no-compressed-ssh.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --compressed-ssh sftp://example.com/</pre>
+    <pre>curl --compressed-ssh sftp://example.com/</pre>
     <p class="Pp">See also <i>--compressed</i>.</p>
   </dd>
   <dt id="K,"><a class="permalink" href="#K,">-K, --config &lt;file&gt;</a></dt>
@@ -603,8 +580,8 @@ curl https://curl.se/info</pre>
     <p class="Pp">Note that to be able to specify a URL in the config file, you
         need to specify it using the <i>--url</i> option, and not by simply
         writing the URL on its own line. So, it could look similar to this:</p>
-    <pre>
-url = &quot;https://curl.se/docs/&quot;
+    <p class="Pp"></p>
+    <pre>url = &quot;https://curl.se/docs/&quot;
 # --- Example file ---
 # this is a comment
 url = &quot;example.com&quot;
@@ -636,9 +613,7 @@ referer = &quot;http://nowhereatall.example.com/&quot;
         on Windows checked for <i>_curlrc</i> only.</p>
     <p class="Pp">--config can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --config file.txt https://example.com</pre>
+    <pre>curl --config file.txt https://example.com</pre>
     <p class="Pp">See also <i>-q, --disable</i>.</p>
   </dd>
   <dt id="connect"><a class="permalink" href="#connect">--connect-timeout
@@ -654,11 +629,8 @@ referer = &quot;http://nowhereatall.example.com/&quot;
     <p class="Pp">If --connect-timeout is provided several times, the last set
         value is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --connect-timeout 20 https://example.com
-<br/>
- curl --connect-timeout 3.14 https://example.com</pre>
+    <pre>curl --connect-timeout 20 https://example.com
+curl --connect-timeout 3.14 https://example.com</pre>
     <p class="Pp">See also <i>-m, --max-time</i>.</p>
   </dd>
   <dt id="connect~2"><a class="permalink" href="#connect~2">--connect-to
@@ -678,17 +650,15 @@ referer = &quot;http://nowhereatall.example.com/&quot;
         &quot;example.org&quot;.</p>
     <p class="Pp">Example: redirect connects from the example.com hostname to
         127.0.0.1 independently of port number:</p>
-    <pre>
-curl --connect-to example.com::127.0.0.1: https://example.com/</pre>
+    <p class="Pp"></p>
+    <pre>curl --connect-to example.com::127.0.0.1: https://example.com/</pre>
     <p class="Pp">Example: redirect connects from all hostnames to 127.0.0.1
         independently of port number:</p>
-    <pre>
-curl --connect-to ::127.0.0.1: http://example.com/</pre>
+    <p class="Pp"></p>
+    <pre>curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">--connect-to can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --connect-to example.com:443:example.net:8443 https://example.com</pre>
+    <pre>curl --connect-to example.com:443:example.net:8443 https://example.com</pre>
     <p class="Pp">See also <i>--resolve</i> and <i>-H, --header</i>.</p>
   </dd>
   <dt id="C,"><a class="permalink" href="#C,">-C, --continue-at
@@ -703,25 +673,22 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --continue-at is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -C - https://example.com
-<br/>
- curl -C 400 https://example.com</pre>
+    <pre>curl -C - https://example.com
+curl -C 400 https://example.com</pre>
     <p class="Pp">See also <i>-r, --range</i>.</p>
   </dd>
   <dt id="b,"><a class="permalink" href="#b,">-b, --cookie
     &lt;data|filename&gt;</a></dt>
-  <dd>(HTTP) Pass the data to the HTTP server in the Cookie header. It is
-      supposedly the data previously received from the server in a
-      &quot;Set-Cookie:&quot; line. The data should be in the format
-      &quot;NAME1=VALUE1; NAME2=VALUE2&quot; or as a single filename.
-    <p class="Pp">When given a set of specific cookies and not a filename, it
-        makes curl use the cookie header with this content explicitly in all
-        outgoing request(s). If multiple requests are done due to
+  <dd>(HTTP) This option has two slightly separate cookie sending functions.
+    <p class="Pp">Either: pass the exact data to send to the HTTP server in the
+        Cookie header. It is supposedly data previously received from the server
+        in a &quot;Set-Cookie:&quot; line. The data should be in the format
+        &quot;NAME1=VALUE1; NAME2=VALUE2&quot;. When given a set of specific
+        cookies, curl populates its cookie header with this content explicitly
+        in all outgoing request(s). If multiple requests are done due to
         authentication, followed redirects or similar, they all get this cookie
         header passed on.</p>
-    <p class="Pp">If no &quot;=&quot; symbol is used in the argument, it is
+    <p class="Pp">Or: If no &quot;=&quot; symbol is used in the argument, it is
         instead treated as a filename to read previously stored cookie from.
         This option also activates the cookie engine which makes curl record
         incoming cookies, which may be handy if you are using this in
@@ -751,15 +718,10 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
         cookies.</p>
     <p class="Pp">--cookie can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -b &quot;&quot; https://example.com
-<br/>
- curl -b cookiefile https://example.com
-<br/>
- curl -b cookiefile -c cookiefile https://example.com
-<br/>
- curl -b name=Jane https://example.com</pre>
+    <pre>curl -b &quot;&quot; https://example.com
+curl -b cookiefile https://example.com
+curl -b cookiefile -c cookiefile https://example.com
+curl -b name=Jane https://example.com</pre>
     <p class="Pp">See also <i>-c, --cookie-jar</i> and <i>-j,
         --junk-session-cookies</i>.</p>
   </dd>
@@ -785,11 +747,8 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --cookie-jar is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -c store-here.txt https://example.com
-<br/>
- curl -c store-here.txt -b read-these https://example.com</pre>
+    <pre>curl -c store-here.txt https://example.com
+curl -c store-here.txt -b read-these https://example.com</pre>
     <p class="Pp">See also <i>-b, --cookie</i> and <i>-j,
         --junk-session-cookies</i>.</p>
   </dd>
@@ -800,16 +759,14 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
       the path possibly set with <i>--output-dir</i>. If the combined output
       filename uses no directory, or if the directories it mentions already
       exist, no directories are created.
-    <p class="Pp">Created directories are made with mode 0750 on unix style file
+    <p class="Pp">Created directories are made with mode 0750 on Unix-style file
         systems.</p>
     <p class="Pp">To create remote directories when using FTP or SFTP, try
         <i>--ftp-create-dirs</i>.</p>
     <p class="Pp">Providing --create-dirs multiple times has no extra effect.
         Disable it again with --no-create-dirs.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --create-dirs --output local/dir/file https://example.com</pre>
+    <pre>curl --create-dirs --output local/dir/file https://example.com</pre>
     <p class="Pp">See also <i>--ftp-create-dirs</i> and <i>--output-dir</i>.</p>
   </dd>
   <dt id="create~2"><a class="permalink" href="#create~2">--create-file-mode
@@ -821,9 +778,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --create-file-mode is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --create-file-mode 0777 -T localfile sftp://example.com/new</pre>
+    <pre>curl --create-file-mode 0777 -T localfile sftp://example.com/new</pre>
     <p class="Pp">Added in 7.75.0. See also <i>--ftp-create-dirs</i>.</p>
   </dd>
   <dt id="crlf"><a class="permalink" href="#crlf">--crlf</a></dt>
@@ -832,9 +787,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --crlf multiple times has no extra effect. Disable
         it again with --no-crlf.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --crlf -T file ftp://example.com/</pre>
+    <pre>curl --crlf -T file ftp://example.com/</pre>
     <p class="Pp">See also <i>-B, --use-ascii</i>.</p>
   </dd>
   <dt id="crlfile"><a class="permalink" href="#crlfile">--crlfile
@@ -844,9 +797,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --crlfile is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --crlfile rejects.txt https://example.com</pre>
+    <pre>curl --crlfile rejects.txt https://example.com</pre>
     <p class="Pp">See also <i>--cacert</i> and <i>--capath</i>.</p>
   </dd>
   <dt id="curves"><a class="permalink" href="#curves">--curves
@@ -864,9 +815,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --curves is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --curves X25519 https://example.com</pre>
+    <pre>curl --curves X25519 https://example.com</pre>
     <p class="Pp">Added in 7.73.0. See also <i>--ciphers</i>.</p>
   </dd>
   <dt id="d,"><a class="permalink" href="#d,">-d, --data &lt;data&gt;</a></dt>
@@ -895,13 +844,9 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
         it. It is up to the user to provide the data in the correct form.</p>
     <p class="Pp">--data can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -d &quot;name=curl&quot; https://example.com
-<br/>
- curl -d &quot;name=curl&quot; -d &quot;tool=cmdline&quot; https://example.com
-<br/>
- curl -d @filename https://example.com</pre>
+    <pre>curl -d &quot;name=curl&quot; https://example.com
+curl -d &quot;name=curl&quot; -d &quot;tool=cmdline&quot; https://example.com
+curl -d @filename https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-F, --form</i>,
         <i>-I, --head</i> and <i>-T, --upload-file</i>. See also
         <i>--data-binary</i>, <i>--data-urlencode</i> and <i>--data-raw</i>.</p>
@@ -911,9 +856,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
   <dd>(HTTP) This option is just an alias for <i>-d, --data</i>.
     <p class="Pp">--data-ascii can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --data-ascii @file https://example.com</pre>
+    <pre>curl --data-ascii @file https://example.com</pre>
     <p class="Pp">See also <i>--data-binary</i>, <i>--data-raw</i> and
         <i>--data-urlencode</i>.</p>
   </dd>
@@ -921,9 +864,10 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     &lt;data&gt;</a></dt>
   <dd>(HTTP) Post data exactly as specified with no extra processing whatsoever.
     <p class="Pp">If you start the data with the letter @, the rest should be a
-        filename. Data is posted in a similar manner as <i>-d, --data</i> does,
-        except that newlines and carriage returns are preserved and conversions
-        are never done.</p>
+        filename. &quot;@-&quot; makes curl read the data from stdin. Data is
+        posted in a similar manner as <i>-d, --data</i> does, except that
+        newlines and carriage returns are preserved and conversions are never
+        done.</p>
     <p class="Pp">Like <i>-d, --data</i> the default content-type sent to the
         server is application/x-www-form-urlencoded. If you want the data to be
         treated as arbitrary binary data by the server then set the content-type
@@ -933,9 +877,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
         first append data as described in <i>-d, --data</i>.</p>
     <p class="Pp">--data-binary can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --data-binary @filename https://example.com</pre>
+    <pre>curl --data-binary @filename https://example.com</pre>
     <p class="Pp">See also <i>--data-ascii</i>.</p>
   </dd>
   <dt id="data~3"><a class="permalink" href="#data~3">--data-raw
@@ -944,11 +886,8 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
       interpretation of the @ character.
     <p class="Pp">--data-raw can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --data-raw &quot;hello&quot; https://example.com
-<br/>
- curl --data-raw &quot;@at@at@&quot; https://example.com</pre>
+    <pre>curl --data-raw &quot;hello&quot; https://example.com
+curl --data-raw &quot;@at@at@&quot; https://example.com</pre>
     <p class="Pp">See also <i>-d, --data</i>.</p>
   </dd>
   <dt id="data~4"><a class="permalink" href="#data~4">--data-urlencode
@@ -975,7 +914,8 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
       expected to be URL-encoded already.</dd>
   <dt>@filename</dt>
   <dd>load data from the given file (including any newlines), URL-encode that
-      data and pass it on in the POST.</dd>
+      data and pass it on in the POST. Using &quot;@-&quot; makes curl read the
+      data from stdin.</dd>
   <dt id="name@filename"><a class="permalink" href="#name@filename">name@filename</a></dt>
   <dd>load data from the given file (including any newlines), URL-encode that
       data and pass it on in the POST. The name part gets an equal sign
@@ -989,15 +929,10 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">--data-urlencode can be used several times in a command
       line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --data-urlencode name=val https://example.com
-<br/>
- curl --data-urlencode =encodethis https://example.com
-<br/>
- curl --data-urlencode name@file https://example.com
-<br/>
- curl --data-urlencode @fileonly https://example.com</pre>
+    <pre>curl --data-urlencode name=val https://example.com
+curl --data-urlencode =encodethis https://example.com
+curl --data-urlencode name@file https://example.com
+curl --data-urlencode @fileonly https://example.com</pre>
     <p class="Pp">See also <i>-d, --data</i> and <i>--data-raw</i>.</p>
   </dd>
   <dt id="delegation"><a class="permalink" href="#delegation">--delegation
@@ -1022,9 +957,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --delegation is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --delegation &quot;none&quot; https://example.com</pre>
+    <pre>curl --delegation &quot;none&quot; https://example.com</pre>
     <p class="Pp">See also <i>-k, --insecure</i> and <i>--ssl</i>.</p>
   </dd>
   <dt id="digest"><a class="permalink" href="#digest">--digest</a></dt>
@@ -1035,9 +968,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --digest multiple times has no extra effect. Disable
         it again with --no-digest.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -u name:password --digest https://example.com</pre>
+    <pre>curl -u name:password --digest https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--basic</i>,
         <i>--ntlm</i> and <i>--negotiate</i>. See also <i>-u, --user</i>,
         <i>--proxy-digest</i> and <i>--anyauth</i>.</p>
@@ -1049,9 +980,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --disable multiple times has no extra effect.
         Disable it again with --no-disable.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -q https://example.com</pre>
+    <pre>curl -q https://example.com</pre>
     <p class="Pp">See also <i>-K, --config</i>.</p>
   </dd>
   <dt id="disable"><a class="permalink" href="#disable">--disable-eprt</a></dt>
@@ -1070,9 +999,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --disable-eprt multiple times has no extra effect.
         Disable it again with --no-disable-eprt.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --disable-eprt ftp://example.com/</pre>
+    <pre>curl --disable-eprt ftp://example.com/</pre>
     <p class="Pp">See also <i>--disable-epsv</i> and <i>-P, --ftp-port</i>.</p>
   </dd>
   <dt id="disable~2"><a class="permalink" href="#disable~2">--disable-epsv</a></dt>
@@ -1088,9 +1015,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --disable-epsv multiple times has no extra effect.
         Disable it again with --no-disable-epsv.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --disable-epsv ftp://example.com/</pre>
+    <pre>curl --disable-epsv ftp://example.com/</pre>
     <p class="Pp">See also <i>--disable-eprt</i> and <i>-P, --ftp-port</i>.</p>
   </dd>
   <dt id="disallow"><a class="permalink" href="#disallow">--disallow-username-in-url</a></dt>
@@ -1099,9 +1024,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --disallow-username-in-url multiple times has no
         extra effect. Disable it again with --no-disallow-username-in-url.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --disallow-username-in-url https://example.com</pre>
+    <pre>curl --disallow-username-in-url https://example.com</pre>
     <p class="Pp">Added in 7.61.0. See also <i>--proto</i>.</p>
   </dd>
   <dt id="dns"><a class="permalink" href="#dns">--dns-interface
@@ -1112,9 +1035,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --dns-interface is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --dns-interface eth0 https://example.com</pre>
+    <pre>curl --dns-interface eth0 https://example.com</pre>
     <p class="Pp"><i>--dns-interface</i> requires that libcurl is built to
         support c-ares. See also <i>--dns-ipv4-addr</i> and
         <i>--dns-ipv6-addr</i>.</p>
@@ -1127,9 +1048,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --dns-ipv4-addr is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --dns-ipv4-addr 10.1.2.3 https://example.com</pre>
+    <pre>curl --dns-ipv4-addr 10.1.2.3 https://example.com</pre>
     <p class="Pp"><i>--dns-ipv4-addr</i> requires that libcurl is built to
         support c-ares. See also <i>--dns-interface</i> and
         <i>--dns-ipv6-addr</i>.</p>
@@ -1142,9 +1061,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --dns-ipv6-addr is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --dns-ipv6-addr 2a04:4e42::561 https://example.com</pre>
+    <pre>curl --dns-ipv6-addr 2a04:4e42::561 https://example.com</pre>
     <p class="Pp"><i>--dns-ipv6-addr</i> requires that libcurl is built to
         support c-ares. See also <i>--dns-interface</i> and
         <i>--dns-ipv4-addr</i>.</p>
@@ -1158,11 +1075,8 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --dns-servers is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --dns-servers 192.168.0.1,192.168.0.2 https://example.com
-<br/>
- curl --dns-servers 10.0.0.1:53 https://example.com</pre>
+    <pre>curl --dns-servers 192.168.0.1,192.168.0.2 https://example.com
+curl --dns-servers 10.0.0.1:53 https://example.com</pre>
     <p class="Pp"><i>--dns-servers</i> requires that libcurl is built to support
         c-ares. See also <i>--dns-interface</i> and <i>--dns-ipv4-addr</i>.</p>
   </dd>
@@ -1179,9 +1093,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --doh-cert-status multiple times has no extra
         effect. Disable it again with --no-doh-cert-status.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --doh-cert-status --doh-url https://doh.example https://example.com</pre>
+    <pre>curl --doh-cert-status --doh-url https://doh.example https://example.com</pre>
     <p class="Pp">Added in 7.76.0. See also <i>--doh-insecure</i>.</p>
   </dd>
   <dt id="doh~2"><a class="permalink" href="#doh~2">--doh-insecure</a></dt>
@@ -1195,9 +1107,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --doh-insecure multiple times has no extra effect.
         Disable it again with --no-doh-insecure.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --doh-insecure --doh-url https://doh.example https://example.com</pre>
+    <pre>curl --doh-insecure --doh-url https://doh.example https://example.com</pre>
     <p class="Pp">Added in 7.76.0. See also <i>--doh-url</i>, <i>-k,
         --insecure</i> and <i>--proxy-insecure</i>.</p>
   </dd>
@@ -1210,22 +1120,38 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
         to DoH since the name lookups take place over SSL. However, the
         certificate verification settings are not inherited but are controlled
         separately via <i>--doh-insecure</i> and <i>--doh-cert-status</i>.</p>
+    <p class="Pp">By default, DoH is bypassed when initially looking up DNS
+        records of the DoH server. You can specify the IP address(es) of the DoH
+        server with <i>--resolve</i> to avoid this.</p>
     <p class="Pp">This option is unset if an empty string &quot;&quot; is used
         as the URL. (Added in 7.85.0)</p>
     <p class="Pp">If --doh-url is provided several times, the last set value is
         used.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --doh-url https://doh.example https://example.com</pre>
+    <p class="Pp">Examples:</p>
+    <pre>curl --doh-url https://doh.example https://example.com
+curl --doh-url https://doh.example --resolve doh.example:443:192.0.2.1 https://example.com</pre>
     <p class="Pp">Added in 7.62.0. See also <i>--doh-insecure</i>.</p>
+  </dd>
+  <dt id="dump"><a class="permalink" href="#dump">--dump-ca-embed</a></dt>
+  <dd>(TLS) Write the CA bundle embedded in curl to standard output, then quit.
+    <p class="Pp">If curl was not built with a default CA bundle embedded, the
+        output is empty.</p>
+    <p class="Pp">Providing --dump-ca-embed multiple times has no extra effect.
+        Disable it again with --no-dump-ca-embed.</p>
+    <p class="Pp">Example:</p>
+    <pre>curl --dump-ca-embed</pre>
+    <p class="Pp">Added in 8.10.0. See also <i>--ca-native</i>, <i>--cacert</i>,
+        <i>--capath</i>, <i>--proxy-ca-native</i>, <i>--proxy-cacert</i> and
+        <i>--proxy-capath</i>.</p>
   </dd>
   <dt id="D,"><a class="permalink" href="#D,">-D, --dump-header
     &lt;filename&gt;</a></dt>
   <dd>(HTTP FTP) Write the received protocol headers to the specified file. If
       no headers are received, the use of this option creates an empty file.
-      Specify &quot;-&quot; as file name (a single minus) to have it written to
+      Specify &quot;-&quot; as filename (a single minus) to have it written to
       stdout.
+    <p class="Pp">Starting in curl 8.10.0, specify &quot;%&quot; (a single
+        percent sign) as filename writes the output to stderr.</p>
     <p class="Pp">When used in FTP, the FTP server response lines are considered
         being &quot;headers&quot; and thus are saved there.</p>
     <p class="Pp">Having multiple transfers in one set of operations (i.e. the
@@ -1234,11 +1160,8 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --dump-header is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --dump-header store.txt https://example.com
-<br/>
- curl --dump-header - https://example.com -o save</pre>
+    <pre>curl --dump-header store.txt https://example.com
+curl --dump-header - https://example.com -o save</pre>
     <p class="Pp">See also <i>-o, --output</i>.</p>
   </dd>
   <dt id="ech"><a class="permalink" href="#ech">--ech &lt;config&gt;</a></dt>
@@ -1274,9 +1197,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --ech is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ech true https://example.com</pre>
+    <pre>curl --ech true https://example.com</pre>
     <p class="Pp">Added in 8.8.0. See also <i>--doh-url</i>.</p>
   </dd>
   <dt id="egd"><a class="permalink" href="#egd">--egd-file &lt;file&gt;</a></dt>
@@ -1287,9 +1208,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --egd-file is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --egd-file /random/here https://example.com</pre>
+    <pre>curl --egd-file /random/here https://example.com</pre>
     <p class="Pp">See also <i>--random-file</i>.</p>
   </dd>
   <dt id="engine"><a class="permalink" href="#engine">--engine
@@ -1301,9 +1220,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --engine is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --engine flavor https://example.com</pre>
+    <pre>curl --engine flavor https://example.com</pre>
     <p class="Pp">See also <i>--ciphers</i> and <i>--curves</i>.</p>
   </dd>
   <dt id="etag"><a class="permalink" href="#etag">--etag-compare
@@ -1319,9 +1236,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --etag-compare is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --etag-compare etag.txt https://example.com</pre>
+    <pre>curl --etag-compare etag.txt https://example.com</pre>
     <p class="Pp">Added in 7.68.0. See also <i>--etag-save</i> and <i>-z,
         --time-cond</i>.</p>
   </dd>
@@ -1334,9 +1249,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">If --etag-save is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --etag-save storetag.txt https://example.com</pre>
+    <pre>curl --etag-save storetag.txt https://example.com</pre>
     <p class="Pp">Added in 7.68.0. See also <i>--etag-compare</i>.</p>
   </dd>
   <dt id="expect100"><a class="permalink" href="#expect100">--expect100-timeout
@@ -1346,15 +1259,13 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
       its request. By default curl waits one second. This option accepts decimal
       values. When curl stops waiting, it continues as if a response was
       received.
-    <p class="Pp">The decimal value needs to provided using a dot
+    <p class="Pp">The decimal value needs to be provided using a dot
         (&quot;.&quot;) as decimal separator - not the local version even if it
         might be using another separator.</p>
     <p class="Pp">If --expect100-timeout is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --expect100-timeout 2.5 -T file https://example.com</pre>
+    <pre>curl --expect100-timeout 2.5 -T file https://example.com</pre>
     <p class="Pp">See also <i>--connect-timeout</i>.</p>
   </dd>
   <dt id="f,"><a class="permalink" href="#f,">-f, --fail</a></dt>
@@ -1374,9 +1285,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --fail multiple times has no extra effect. Disable
         it again with --no-fail.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --fail https://example.com</pre>
+    <pre>curl --fail https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with
         <i>--fail-with-body</i>. See also <i>--fail-with-body</i> and
         <i>--fail-early</i>.</p>
@@ -1401,9 +1310,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --fail-early multiple times has no extra effect.
         Disable it again with --no-fail-early.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --fail-early https://example.com https://two.example</pre>
+    <pre>curl --fail-early https://example.com https://two.example</pre>
     <p class="Pp">See also <i>-f, --fail</i> and <i>--fail-with-body</i>.</p>
   </dd>
   <dt id="fail~2"><a class="permalink" href="#fail~2">--fail-with-body</a></dt>
@@ -1417,9 +1324,7 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Providing --fail-with-body multiple times has no extra effect.
         Disable it again with --no-fail-with-body.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --fail-with-body https://example.com</pre>
+    <pre>curl --fail-with-body https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-f, --fail</i>.
         Added in 7.76.0. See also <i>-f, --fail</i> and <i>--fail-early</i>.</p>
   </dd>
@@ -1429,13 +1334,11 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
       server's Finished message, thus saving a round trip when performing a full
       handshake.
     <p class="Pp">This functionality is currently only implemented in the Secure
-        Transport (on iOS 7.0 or later, or OS X 10.9 or later) backend.</p>
+        Transport (on iOS 7.0 or later, or macOS 10.9 or later) backend.</p>
     <p class="Pp">Providing --false-start multiple times has no extra effect.
         Disable it again with --no-false-start.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --false-start https://example.com</pre>
+    <pre>curl --false-start https://example.com</pre>
     <p class="Pp">See also <i>--tcp-fastopen</i>.</p>
   </dd>
   <dt id="F,"><a class="permalink" href="#F,">-F, --form
@@ -1462,57 +1365,63 @@ curl --connect-to ::127.0.0.1: http://example.com/</pre>
     <p class="Pp">Example: send an image to an HTTP server, where 'profile' is
         the name of the form-field to which the file <b>portrait.jpg</b> is the
         input:</p>
-    <pre>
-curl -F profile=@portrait.jpg https://example.com/upload.cgi</pre>
+    <p class="Pp"></p>
+    <pre>curl -F profile=@portrait.jpg https://example.com/upload.cgi</pre>
     <p class="Pp">Example: send your name and shoe size in two text fields to
         the server:</p>
-    <pre>
-curl -F name=John -F shoesize=11 https://example.com/</pre>
+    <p class="Pp"></p>
+    <pre>curl -F name=John -F shoesize=11 https://example.com/</pre>
     <p class="Pp">Example: send your essay in a text field to the server. Send
         it as a plain text field, but get the contents for it from a local
       file:</p>
-    <pre>
-curl -F &quot;story=&lt;hugefile.txt&quot; https://example.com/</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;story=&lt;hugefile.txt&quot; https://example.com/</pre>
     <p class="Pp">You can also instruct curl what Content-Type to use by using
         &quot;type=&quot;, in a manner similar to:</p>
-    <pre>
-curl -F &quot;web=@index.html;type=text/html&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;web=@index.html;type=text/html&quot; example.com</pre>
     <p class="Pp">or</p>
-    <pre>
-curl -F &quot;name=daniel;type=text/foo&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;name=daniel;type=text/foo&quot; example.com</pre>
     <p class="Pp">You can also explicitly change the name field of a file upload
         part by setting filename=, like this:</p>
-    <pre>
-curl -F &quot;file=@localfile;filename=nameinpost&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;file=@localfile;filename=nameinpost&quot; example.com</pre>
     <p class="Pp">If filename/path contains ',' or ';', it must be quoted by
         double-quotes like:</p>
-    <pre>
-curl -F &quot;file=@\&quot;local,file\&quot;;filename=\&quot;name;in;post\&quot;&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;file=@\&quot;local,file\&quot;;filename=\&quot;name;in;post\&quot;&quot; \
+<br/>
+    https://example.com</pre>
     <p class="Pp">or</p>
-    <pre>
-curl -F 'file=@&quot;local,file&quot;;filename=&quot;name;in;post&quot;' example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F 'file=@&quot;local,file&quot;;filename=&quot;name;in;post&quot;' \
+<br/>
+    https://example.com</pre>
     <p class="Pp">Note that if a filename/path is quoted by double-quotes, any
         double-quote or backslash within the filename must be escaped by
         backslash.</p>
     <p class="Pp">Quoting must also be applied to non-file data if it contains
         semicolons, leading/trailing spaces or leading double quotes:</p>
-    <pre>
-curl -F 'colors=&quot;red; green; blue&quot;;type=text/x-myapp' example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F 'colors=&quot;red; green; blue&quot;;type=text/x-myapp' \
+<br/>
+   https://example.com</pre>
     <p class="Pp">You can add custom headers to the field by setting headers=,
         like</p>
-    <pre>
-curl -F &quot;submit=OK;headers=\&quot;X-submit-type: OK\&quot;&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;submit=OK;headers=\&quot;X-submit-type: OK\&quot;&quot; example.com</pre>
     <p class="Pp">or</p>
-    <pre>
-curl -F &quot;submit=OK;headers=@headerfile&quot; example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl -F &quot;submit=OK;headers=@headerfile&quot; example.com</pre>
     <p class="Pp">The headers= keyword may appear more that once and above notes
         about quoting apply. When headers are read from a file, Empty lines and
         lines starting with '#' are comments and ignored; each header can be
         folded by splitting between two words and starting the continuation line
         with a space; embedded carriage-returns and trailing spaces are
         stripped. Here is an example of a header file contents:</p>
-    <pre>
-# This file contain two headers.
+    <p class="Pp"></p>
+    <pre># This file contain two headers.
 X-header-1: this is a header
 # The following header is folded.
 X-header-2: this is
@@ -1528,8 +1437,8 @@ X-header-2: this is
     <p class="Pp">Example: the following command sends an SMTP mime email
         consisting in an inline part in two alternative formats: plain text and
         HTML. It attaches a text file:</p>
-    <pre>
-curl -F '=(;type=multipart/alternative' \
+    <p class="Pp"></p>
+    <pre>curl -F '=(;type=multipart/alternative' \
 <br/>
      -F '=plain text message' \
 <br/>
@@ -1544,16 +1453,14 @@ curl -F '=(;type=multipart/alternative' \
         the corresponding schemes, limiting lines length to 76 characters.</p>
     <p class="Pp">Example: send multipart mail with a quoted-printable text
         message and a base64 attached file:</p>
-    <pre>
-curl -F '=text message;encoder=quoted-printable' \
+    <p class="Pp"></p>
+    <pre>curl -F '=text message;encoder=quoted-printable' \
 <br/>
      -F '=@localfile;encoder=base64' ... smtp://example.com</pre>
     <p class="Pp">See further examples and details in the MANUAL.</p>
     <p class="Pp">--form can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --form &quot;name=curl&quot; --form &quot;file=@loadthis&quot; https://example.com</pre>
+    <pre>curl --form &quot;name=curl&quot; --form &quot;file=@loadthis&quot; https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-d, --data</i>,
         <i>-I, --head</i> and <i>-T, --upload-file</i>. See also <i>-d,
         --data</i>, <i>--form-string</i> and <i>--form-escape</i>.</p>
@@ -1564,9 +1471,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --form-escape is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --form-escape -F 'field\name=curl' -F 'file=@load&quot;this' https://example.com</pre>
+    <pre>curl --form-escape -F 'field\name=curl' -F 'file=@load&quot;this' https://example.com</pre>
     <p class="Pp">Added in 7.81.0. See also <i>-F, --form</i>.</p>
   </dd>
   <dt id="form~2"><a class="permalink" href="#form~2">--form-string
@@ -1579,9 +1484,7 @@ curl -F '=text message;encoder=quoted-printable' \
       <i>-F, --form</i>.
     <p class="Pp">--form-string can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --form-string &quot;name=data&quot; https://example.com</pre>
+    <pre>curl --form-string &quot;name=data&quot; https://example.com</pre>
     <p class="Pp">See also <i>-F, --form</i>.</p>
   </dd>
   <dt id="ftp"><a class="permalink" href="#ftp">--ftp-account
@@ -1592,9 +1495,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --ftp-account is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-account &quot;mr.robot&quot; ftp://example.com/</pre>
+    <pre>curl --ftp-account &quot;mr.robot&quot; ftp://example.com/</pre>
     <p class="Pp">See also <i>-u, --user</i>.</p>
   </dd>
   <dt id="ftp~2"><a class="permalink" href="#ftp~2">--ftp-alternative-to-user
@@ -1606,9 +1507,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --ftp-alternative-to-user is provided several times, the
         last set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-alternative-to-user &quot;U53r&quot; ftp://example.com</pre>
+    <pre>curl --ftp-alternative-to-user &quot;U53r&quot; ftp://example.com</pre>
     <p class="Pp">See also <i>--ftp-account</i> and <i>-u, --user</i>.</p>
   </dd>
   <dt id="ftp~3"><a class="permalink" href="#ftp~3">--ftp-create-dirs</a></dt>
@@ -1618,9 +1517,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-create-dirs multiple times has no extra
         effect. Disable it again with --no-ftp-create-dirs.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-create-dirs -T file ftp://example.com/remote/path/file</pre>
+    <pre>curl --ftp-create-dirs -T file ftp://example.com/remote/path/file</pre>
     <p class="Pp">See also <i>--create-dirs</i>.</p>
   </dd>
   <dt id="ftp~4"><a class="permalink" href="#ftp~4">--ftp-method
@@ -1652,13 +1549,9 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --ftp-method is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --ftp-method multicwd ftp://example.com/dir1/dir2/file
-<br/>
- curl --ftp-method nocwd ftp://example.com/dir1/dir2/file
-<br/>
- curl --ftp-method singlecwd ftp://example.com/dir1/dir2/file</pre>
+    <pre>curl --ftp-method multicwd ftp://example.com/dir1/dir2/file
+curl --ftp-method nocwd ftp://example.com/dir1/dir2/file
+curl --ftp-method singlecwd ftp://example.com/dir1/dir2/file</pre>
     <p class="Pp">See also <i>-l, --list-only</i>.</p>
   </dd>
   <dt id="ftp~5"><a class="permalink" href="#ftp~5">--ftp-pasv</a></dt>
@@ -1672,9 +1565,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-pasv multiple times has no extra effect.
         Disable it again with --no-ftp-pasv.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-pasv ftp://example.com/</pre>
+    <pre>curl --ftp-pasv ftp://example.com/</pre>
     <p class="Pp">See also <i>--disable-epsv</i>.</p>
   </dd>
   <dt id="P,"><a class="permalink" href="#P,">-P, --ftp-port
@@ -1713,13 +1604,9 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --ftp-port is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -P - ftp:/example.com
-<br/>
- curl -P eth0 ftp:/example.com
-<br/>
- curl -P 192.168.0.2 ftp:/example.com</pre>
+    <pre>curl -P - ftp:/example.com
+curl -P eth0 ftp:/example.com
+curl -P 192.168.0.2 ftp:/example.com</pre>
     <p class="Pp">See also <i>--ftp-pasv</i> and <i>--disable-eprt</i>.</p>
   </dd>
   <dt id="ftp~6"><a class="permalink" href="#ftp~6">--ftp-pret</a></dt>
@@ -1729,9 +1616,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-pret multiple times has no extra effect.
         Disable it again with --no-ftp-pret.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-pret ftp://example.com/</pre>
+    <pre>curl --ftp-pret ftp://example.com/</pre>
     <p class="Pp">See also <i>-P, --ftp-port</i> and <i>--ftp-pasv</i>.</p>
   </dd>
   <dt id="ftp~7"><a class="permalink" href="#ftp~7">--ftp-skip-pasv-ip</a></dt>
@@ -1744,9 +1629,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-skip-pasv-ip multiple times has no extra
         effect. Disable it again with --no-ftp-skip-pasv-ip.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-skip-pasv-ip ftp://example.com/</pre>
+    <pre>curl --ftp-skip-pasv-ip ftp://example.com/</pre>
     <p class="Pp">See also <i>--ftp-pasv</i>.</p>
   </dd>
   <dt id="ftp~8"><a class="permalink" href="#ftp~8">--ftp-ssl-ccc</a></dt>
@@ -1757,9 +1640,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-ssl-ccc multiple times has no extra effect.
         Disable it again with --no-ftp-ssl-ccc.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-ssl-ccc ftps://example.com/</pre>
+    <pre>curl --ftp-ssl-ccc ftps://example.com/</pre>
     <p class="Pp">See also <i>--ssl</i> and <i>--ftp-ssl-ccc-mode</i>.</p>
   </dd>
   <dt id="ftp~9"><a class="permalink" href="#ftp~9">--ftp-ssl-ccc-mode
@@ -1771,9 +1652,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-ssl-ccc-mode multiple times has no extra
         effect. Disable it again with --no-ftp-ssl-ccc-mode.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-ssl-ccc-mode active --ftp-ssl-ccc ftps://example.com/</pre>
+    <pre>curl --ftp-ssl-ccc-mode active --ftp-ssl-ccc ftps://example.com/</pre>
     <p class="Pp">See also <i>--ftp-ssl-ccc</i>.</p>
   </dd>
   <dt id="ftp~10"><a class="permalink" href="#ftp~10">--ftp-ssl-control</a></dt>
@@ -1783,9 +1662,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ftp-ssl-control multiple times has no extra
         effect. Disable it again with --no-ftp-ssl-control.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ftp-ssl-control ftp://example.com</pre>
+    <pre>curl --ftp-ssl-control ftp://example.com</pre>
     <p class="Pp">See also <i>--ssl</i>.</p>
   </dd>
   <dt id="G,"><a class="permalink" href="#G,">-G, --get</a></dt>
@@ -1798,13 +1675,9 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --get multiple times has no extra effect. Disable it
         again with --no-get.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --get https://example.com
-<br/>
- curl --get -d &quot;tool=curl&quot; -d &quot;age=old&quot; https://example.com
-<br/>
- curl --get -I -d &quot;tool=curl&quot; https://example.com</pre>
+    <pre>curl --get https://example.com
+curl --get -d &quot;tool=curl&quot; -d &quot;age=old&quot; https://example.com
+curl --get -I -d &quot;tool=curl&quot; https://example.com</pre>
     <p class="Pp">See also <i>-d, --data</i> and <i>-X, --request</i>.</p>
   </dd>
   <dt id="g,"><a class="permalink" href="#g,">-g, --globoff</a></dt>
@@ -1815,9 +1688,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --globoff multiple times has no extra effect.
         Disable it again with --no-globoff.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -g &quot;https://example.com/{[]}}}}&quot;</pre>
+    <pre>curl -g &quot;https://example.com/{[]}}}}&quot;</pre>
     <p class="Pp">See also <i>-K, --config</i> and <i>-q, --disable</i>.</p>
   </dd>
   <dt id="happy"><a class="permalink" href="#happy">--happy-eyeballs-timeout-ms
@@ -1836,9 +1707,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --happy-eyeballs-timeout-ms is provided several times, the
         last set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --happy-eyeballs-timeout-ms 500 https://example.com</pre>
+    <pre>curl --happy-eyeballs-timeout-ms 500 https://example.com</pre>
     <p class="Pp">See also <i>-m, --max-time</i> and
       <i>--connect-timeout</i>.</p>
   </dd>
@@ -1863,9 +1732,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --haproxy-clientip is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --haproxy-clientip $IP</pre>
+    <pre>curl --haproxy-clientip $IP</pre>
     <p class="Pp">Added in 8.2.0. See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="haproxy~2"><a class="permalink" href="#haproxy~2">--haproxy-protocol</a></dt>
@@ -1877,9 +1744,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --haproxy-protocol multiple times has no extra
         effect. Disable it again with --no-haproxy-protocol.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --haproxy-protocol https://example.com</pre>
+    <pre>curl --haproxy-protocol https://example.com</pre>
     <p class="Pp">Added in 7.60.0. See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="I,"><a class="permalink" href="#I,">-I, --head</a></dt>
@@ -1890,9 +1755,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --head multiple times has no extra effect. Disable
         it again with --no-head.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -I https://example.com</pre>
+    <pre>curl -I https://example.com</pre>
     <p class="Pp">See also <i>-G, --get</i>, <i>-v, --verbose</i> and
         <i>--trace-ascii</i>.</p>
   </dd>
@@ -1940,31 +1803,34 @@ curl -F '=text message;encoder=quoted-printable' \
         caution combined with following redirects.</p>
     <p class="Pp">--header can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -H &quot;X-First-Name: Joe&quot; https://example.com
-<br/>
- curl -H &quot;User-Agent: yes-please/2000&quot; https://example.com
-<br/>
- curl -H &quot;Host:&quot; https://example.com
-<br/>
- curl -H @headers.txt https://example.com</pre>
+    <pre>curl -H &quot;X-First-Name: Joe&quot; https://example.com
+curl -H &quot;User-Agent: yes-please/2000&quot; https://example.com
+curl -H &quot;Host:&quot; https://example.com
+curl -H @headers.txt https://example.com</pre>
     <p class="Pp">See also <i>-A, --user-agent</i> and <i>-e, --referer</i>.</p>
   </dd>
   <dt id="h,"><a class="permalink" href="#h,">-h, --help
-    &lt;category&gt;</a></dt>
-  <dd>Usage help. List all curl command line options within the given
-      <b>category</b>.
+    &lt;subject&gt;</a></dt>
+  <dd>Usage help. Provide help for the subject given as an optional argument.
     <p class="Pp">If no argument is provided, curl displays the most important
         command line arguments.</p>
-    <p class="Pp">For category <b>all</b>, curl displays help for all
-      options.</p>
-    <p class="Pp">If <b>category</b> is specified, curl displays all available
-        help categories.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --help all</pre>
+    <p class="Pp">The argument can either be a <b>category</b> or a <b>command
+        line option</b>. When a category is provided, curl shows all command
+        line options within the given category. Specify category &quot;all&quot;
+        to list all available options.</p>
+    <p class="Pp">If &quot;category&quot; is specified, curl displays all
+        available help categories.</p>
+    <p class="Pp">If the provided subject is instead an existing command line
+        option, specified either in its short form with a single dash and a
+        single letter, or in the long form with two dashes and a longer name,
+        curl displays a help text for that option in the terminal.</p>
+    <p class="Pp">The help output is extensive for some options.</p>
+    <p class="Pp">If the provided command line option is not known, curl says
+        so.</p>
+    <p class="Pp">Examples:</p>
+    <pre>curl --help all
+curl --help --insecure
+curl --help -f</pre>
     <p class="Pp">See also <i>-v, --verbose</i>.</p>
   </dd>
   <dt id="hostpubmd5"><a class="permalink" href="#hostpubmd5">--hostpubmd5
@@ -1975,9 +1841,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --hostpubmd5 is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --hostpubmd5 e5c1c49020640a5ab0f2034854c321a8 sftp://example.com/</pre>
+    <pre>curl --hostpubmd5 e5c1c49020640a5ab0f2034854c321a8 sftp://example.com/</pre>
     <p class="Pp">See also <i>--hostpubsha256</i>.</p>
   </dd>
   <dt id="hostpubsha256"><a class="permalink" href="#hostpubsha256">--hostpubsha256
@@ -1990,9 +1854,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --hostpubsha256 is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --hostpubsha256 NDVkMTQxMGQ1ODdmMjQ3MjczYjAyOTY5MmRkMjVmNDQ= sftp://example.com/</pre>
+    <pre>curl --hostpubsha256 NDVkMTQxMGQ1ODdmMjQ3MjczYjAyOTY5MmRkMjVmNDQ= sftp://example.com/</pre>
     <p class="Pp">Added in 7.80.0. See also <i>--hostpubmd5</i>.</p>
   </dd>
   <dt id="hsts"><a class="permalink" href="#hsts">--hsts
@@ -2010,9 +1872,7 @@ curl -F '=text message;encoder=quoted-printable' \
         all the files but the last one is used for saving.</p>
     <p class="Pp">--hsts can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --hsts cache.txt https://example.com</pre>
+    <pre>curl --hsts cache.txt https://example.com</pre>
     <p class="Pp">Added in 7.74.0. See also <i>--proto</i>.</p>
   </dd>
   <dt id="http0.9"><a class="permalink" href="#http0.9">--http0.9</a></dt>
@@ -2024,9 +1884,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --http0.9 multiple times has no extra effect.
         Disable it again with --no-http0.9.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http0.9 https://example.com</pre>
+    <pre>curl --http0.9 https://example.com</pre>
     <p class="Pp">Added in 7.64.0. See also <i>--http1.1</i>, <i>--http2</i> and
         <i>--http3</i>.</p>
   </dd>
@@ -2035,9 +1893,7 @@ curl -F '=text message;encoder=quoted-printable' \
       version.
     <p class="Pp">Providing --http1.0 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http1.0 https://example.com</pre>
+    <pre>curl --http1.0 https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--http1.1</i>,
         <i>--http2</i>, <i>--http2-prior-knowledge</i> and <i>--http3</i>. See
         also <i>--http0.9</i> and <i>--http1.1</i>.</p>
@@ -2046,9 +1902,7 @@ curl -F '=text message;encoder=quoted-printable' \
   <dd>(HTTP) Use HTTP version 1.1. This is the default with HTTP:// URLs.
     <p class="Pp">Providing --http1.1 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http1.1 https://example.com</pre>
+    <pre>curl --http1.1 https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--http1.0</i>,
         <i>--http2</i>, <i>--http2-prior-knowledge</i> and <i>--http3</i>. See
         also <i>--http1.0</i> and <i>--http0.9</i>.</p>
@@ -2064,9 +1918,7 @@ curl -F '=text message;encoder=quoted-printable' \
         user can add this version requirement with <i>--tlsv1.2</i>.</p>
     <p class="Pp">Providing --http2 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http2 https://example.com</pre>
+    <pre>curl --http2 https://example.com</pre>
     <p class="Pp"><i>--http2</i> requires that libcurl is built to support
         HTTP/2. This option is mutually exclusive with <i>--http1.1</i>,
         <i>--http1.0</i>, <i>--http2-prior-knowledge</i> and <i>--http3</i>. See
@@ -2077,12 +1929,13 @@ curl -F '=text message;encoder=quoted-printable' \
       HTTP/1.1 Upgrade. It requires prior knowledge that the server supports
       HTTP/2 straight away. HTTPS requests still do HTTP/2 the standard way with
       negotiated protocol version in the TLS handshake.
+    <p class="Pp">Since 8.10.0 if this option is set for an HTTPS request then
+        the application layer protocol version (ALPN) offered to the server is
+        only HTTP/2. Prior to that both HTTP/1.1 and HTTP/2 were offered.</p>
     <p class="Pp">Providing --http2-prior-knowledge multiple times has no extra
         effect. Disable it again with --no-http2-prior-knowledge.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http2-prior-knowledge https://example.com</pre>
+    <pre>curl --http2-prior-knowledge https://example.com</pre>
     <p class="Pp"><i>--http2-prior-knowledge</i> requires that libcurl is built
         to support HTTP/2. This option is mutually exclusive with
         <i>--http1.1</i>, <i>--http1.0</i>, <i>--http2</i> and <i>--http3</i>.
@@ -2090,22 +1943,21 @@ curl -F '=text message;encoder=quoted-printable' \
   </dd>
   <dt id="http3"><a class="permalink" href="#http3">--http3</a></dt>
   <dd>(HTTP) Attempt HTTP/3 to the host in the URL, but fallback to earlier HTTP
-      versions if the HTTP/3 connection establishment fails. HTTP/3 is only
-      available for HTTPS and not for HTTP URLs.
+      versions if the HTTP/3 connection establishment fails or is slow. HTTP/3
+      is only available for HTTPS and not for HTTP URLs.
     <p class="Pp">This option allows a user to avoid using the Alt-Svc method of
-        upgrading to HTTP/3 when you know that the target speaks HTTP/3 on the
-        given host and port.</p>
+        upgrading to HTTP/3 when you know or suspect that the target speaks
+        HTTP/3 on the given host and port.</p>
     <p class="Pp">When asked to use HTTP/3, curl issues a separate attempt to
         use older HTTP versions with a slight delay, so if the HTTP/3 transfer
         fails or is slow, curl still tries to proceed with an older HTTP
-        version.</p>
+        version. The fallback performs the regular negotiation between HTTP/1
+        and HTTP/2.</p>
     <p class="Pp">Use <i>--http3-only</i> for similar functionality
         <i>without</i> a fallback.</p>
     <p class="Pp">Providing --http3 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http3 https://example.com</pre>
+    <pre>curl --http3 https://example.com</pre>
     <p class="Pp"><i>--http3</i> requires that libcurl is built to support
         HTTP/3. This option is mutually exclusive with <i>--http1.1</i>,
         <i>--http1.0</i>, <i>--http2</i>, <i>--http2-prior-knowledge</i> and
@@ -2124,9 +1976,7 @@ curl -F '=text message;encoder=quoted-printable' \
         <i>--http3</i> for similar functionality <i>with</i> a fallback.</p>
     <p class="Pp">Providing --http3-only multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --http3-only https://example.com</pre>
+    <pre>curl --http3-only https://example.com</pre>
     <p class="Pp"><i>--http3-only</i> requires that libcurl is built to support
         HTTP/3. This option is mutually exclusive with <i>--http1.1</i>,
         <i>--http1.0</i>, <i>--http2</i>, <i>--http2-prior-knowledge</i> and
@@ -2144,25 +1994,8 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --ignore-content-length multiple times has no extra
         effect. Disable it again with --no-ignore-content-length.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ignore-content-length https://example.com</pre>
+    <pre>curl --ignore-content-length https://example.com</pre>
     <p class="Pp">See also <i>--ftp-skip-pasv-ip</i>.</p>
-  </dd>
-  <dt id="i,"><a class="permalink" href="#i,">-i, --include</a></dt>
-  <dd>(HTTP FTP) Include response headers in the output. HTTP response headers
-      can include things like server name, cookies, date of the document, HTTP
-      version and more... With non-HTTP protocols, the &quot;headers&quot; are
-      other server communication.
-    <p class="Pp">To view the request headers, consider the <i>-v, --verbose</i>
-        option.</p>
-    <p class="Pp">Providing --include multiple times has no extra effect.
-        Disable it again with --no-include.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -i https://example.com</pre>
-    <p class="Pp">See also <i>-v, --verbose</i>.</p>
   </dd>
   <dt id="k,"><a class="permalink" href="#k,">-k, --insecure</a></dt>
   <dd>(TLS SFTP SCP) By default, every secure connection curl makes is verified
@@ -2187,9 +2020,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">Providing --insecure multiple times has no extra effect.
         Disable it again with --no-insecure.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --insecure https://example.com</pre>
+    <pre>curl --insecure https://example.com</pre>
     <p class="Pp">See also <i>--proxy-insecure</i>, <i>--cacert</i> and
         <i>--capath</i>.</p>
   </dd>
@@ -2226,13 +2057,9 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --interface is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --interface eth0 https://example.com
-<br/>
- curl --interface &quot;host!10.0.0.1&quot; https://example.com
-<br/>
- curl --interface &quot;if!enp3s0&quot; https://example.com</pre>
+    <pre>curl --interface eth0 https://example.com
+curl --interface &quot;host!10.0.0.1&quot; https://example.com
+curl --interface &quot;if!enp3s0&quot; https://example.com</pre>
     <p class="Pp">See also <i>--dns-interface</i>.</p>
   </dd>
   <dt id="ip"><a class="permalink" href="#ip">--ip-tos &lt;string&gt;</a></dt>
@@ -2246,9 +2073,7 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If --ip-tos is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ip-tos CS5 https://example.com</pre>
+    <pre>curl --ip-tos CS5 https://example.com</pre>
     <p class="Pp">Added in 8.9.0. See also <i>--tcp-nodelay</i> and
         <i>--vlan-priority</i>.</p>
   </dd>
@@ -2261,8 +2086,10 @@ curl -F '=text message;encoder=quoted-printable' \
     <p class="Pp">If you run a local IPFS node, this gateway is by default
         available under &quot;http://localhost:8080&quot;. A full example URL
         would look like:</p>
-    <pre>
-curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydrevyr2mzarwidgadawmamiteydbzi</pre>
+    <p class="Pp"></p>
+    <pre>curl --ipfs-gateway http://localhost:8080 \
+<br/>
+   ipfs://bafybeigagd5nmnn2iys2f3</pre>
     <p class="Pp">There are many public IPFS gateways. See for example:
         https://ipfs.github.io/public-gateway-checker/</p>
     <p class="Pp">If you opt to go for a remote gateway you need to be aware
@@ -2277,9 +2104,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --ipfs-gateway is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ipfs-gateway https://example.com ipfs://</pre>
+    <pre>curl --ipfs-gateway https://example.com ipfs://</pre>
     <p class="Pp">Added in 8.4.0. See also <i>-h, --help</i> and <i>-M,
         --manual</i>.</p>
   </dd>
@@ -2288,9 +2113,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
       IPv6.
     <p class="Pp">Providing --ipv4 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ipv4 https://example.com</pre>
+    <pre>curl --ipv4 https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-6, --ipv6</i>. See
         also <i>--http1.1</i> and <i>--http2</i>.</p>
   </dd>
@@ -2302,17 +2125,15 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
         for compatibility purposes. macOS is known to do this.</p>
     <p class="Pp">Providing --ipv6 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ipv6 https://example.com</pre>
+    <pre>curl --ipv6 https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-4, --ipv4</i>. See
         also <i>--http1.1</i> and <i>--http2</i>.</p>
   </dd>
   <dt>--json &lt;data&gt;</dt>
   <dd>(HTTP) Sends the specified JSON data in a POST request to the HTTP server.
       <i>--json</i> works as a shortcut for passing on these three options:
-    <pre>
---data [arg]
+    <p class="Pp"></p>
+    <pre>--data [arg]
 --header &quot;Content-Type: application/json&quot;
 --header &quot;Accept: application/json&quot;</pre>
     <p class="Pp">There is <b>no verification</b> that the passed in data is
@@ -2329,15 +2150,10 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
         --header</i> as usual.</p>
     <p class="Pp">--json can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --json '{ &quot;drink&quot;: &quot;coffe&quot; }' https://example.com
-<br/>
- curl --json '{ &quot;drink&quot;:' --json ' &quot;coffe&quot; }' https://example.com
-<br/>
- curl --json @prepared https://example.com
-<br/>
- curl --json @- https://example.com &lt; json.txt</pre>
+    <pre>curl --json '{ &quot;drink&quot;: &quot;coffe&quot; }' https://example.com
+curl --json '{ &quot;drink&quot;:' --json ' &quot;coffe&quot; }' https://example.com
+curl --json @prepared https://example.com
+curl --json @- https://example.com &lt; json.txt</pre>
     <p class="Pp">This option is mutually exclusive with <i>-F, --form</i>,
         <i>-I, --head</i> and <i>-T, --upload-file</i>. Added in 7.82.0. See
         also <i>--data-binary</i> and <i>--data-raw</i>.</p>
@@ -2351,9 +2167,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">Providing --junk-session-cookies multiple times has no extra
         effect. Disable it again with --no-junk-session-cookies.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --junk-session-cookies -b cookies.txt https://example.com</pre>
+    <pre>curl --junk-session-cookies -b cookies.txt https://example.com</pre>
     <p class="Pp">See also <i>-b, --cookie</i> and <i>-c, --cookie-jar</i>.</p>
   </dd>
   <dt id="keepalive"><a class="permalink" href="#keepalive">--keepalive-cnt
@@ -2368,9 +2182,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --keepalive-cnt is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --keepalive-cnt 3 https://example.com</pre>
+    <pre>curl --keepalive-cnt 3 https://example.com</pre>
     <p class="Pp">Added in 8.9.0. See also <i>--keepalive-time</i> and
         <i>--no-keepalive</i>.</p>
   </dd>
@@ -2391,9 +2203,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --keepalive-time is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --keepalive-time 20 https://example.com</pre>
+    <pre>curl --keepalive-time 20 https://example.com</pre>
     <p class="Pp">See also <i>--no-keepalive</i>, <i>--keepalive-cnt</i> and
         <i>-m, --max-time</i>.</p>
   </dd>
@@ -2416,9 +2226,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --key is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --cert certificate --key here https://example.com</pre>
+    <pre>curl --cert certificate --key here https://example.com</pre>
     <p class="Pp">See also <i>--key-type</i> and <i>-E, --cert</i>.</p>
   </dd>
   <dt id="key~2"><a class="permalink" href="#key~2">--key-type
@@ -2429,9 +2237,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --key-type is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --key-type DER --key here https://example.com</pre>
+    <pre>curl --key-type DER --key here https://example.com</pre>
     <p class="Pp">See also <i>--key</i>.</p>
   </dd>
   <dt id="krb"><a class="permalink" href="#krb">--krb &lt;level&gt;</a></dt>
@@ -2441,9 +2247,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --krb is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --krb clear ftp://example.com/</pre>
+    <pre>curl --krb clear ftp://example.com/</pre>
     <p class="Pp"><i>--krb</i> requires that libcurl is built to support
         Kerberos. See also <i>--delegation</i> and <i>--ssl</i>.</p>
   </dd>
@@ -2457,9 +2261,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --libcurl is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --libcurl client.c https://example.com</pre>
+    <pre>curl --libcurl client.c https://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i>.</p>
   </dd>
   <dt id="limit"><a class="permalink" href="#limit">--limit-rate
@@ -2481,13 +2283,9 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --limit-rate is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --limit-rate 100K https://example.com
-<br/>
- curl --limit-rate 1000 https://example.com
-<br/>
- curl --limit-rate 10M https://example.com</pre>
+    <pre>curl --limit-rate 100K https://example.com
+curl --limit-rate 1000 https://example.com
+curl --limit-rate 10M https://example.com</pre>
     <p class="Pp">See also <i>--rate</i>, <i>-Y, --speed-limit</i> and <i>-y,
         --speed-time</i>.</p>
   </dd>
@@ -2515,9 +2313,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">Providing --list-only multiple times has no extra effect.
         Disable it again with --no-list-only.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --list-only ftp://example.com/dir/</pre>
+    <pre>curl --list-only ftp://example.com/dir/</pre>
     <p class="Pp">See also <i>-Q, --quote</i> and <i>-X, --request</i>.</p>
   </dd>
   <dt id="local"><a class="permalink" href="#local">--local-port
@@ -2529,21 +2325,19 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --local-port is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --local-port 1000-3000 https://example.com</pre>
+    <pre>curl --local-port 1000-3000 https://example.com</pre>
     <p class="Pp">See also <i>-g, --globoff</i>.</p>
   </dd>
   <dt id="L,"><a class="permalink" href="#L,">-L, --location</a></dt>
   <dd>(HTTP) If the server reports that the requested page has moved to a
       different location (indicated with a Location: header and a 3XX response
       code), this option makes curl redo the request on the new place. If used
-      together with <i>-i, --include</i> or <i>-I, --head</i>, headers from all
-      requested pages are shown.
-    <p class="Pp">When authentication is used, curl only sends its credentials
-        to the initial host. If a redirect takes curl to a different host, it
-        does not get the user+password pass on. See also
-        <i>--location-trusted</i> on how to change this.</p>
+      together with <i>-i, --show-headers</i> or <i>-I, --head</i>, headers from
+      all requested pages are shown.
+    <p class="Pp">When authentication is used, or send cookie with &quot;-H
+        Cookie:&quot;, curl only sends its credentials to the initial host. If a
+        redirect takes curl to a different host, it does not get the credentials
+        pass on. See <i>--location-trusted</i> on how to change this.</p>
     <p class="Pp">Limit the amount of redirects to follow by using the
         <i>--max-redirs</i> option.</p>
     <p class="Pp">When curl follows a redirect and if the request is a POST, it
@@ -2558,23 +2352,24 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">Providing --location multiple times has no extra effect.
         Disable it again with --no-location.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -L https://example.com</pre>
+    <pre>curl -L https://example.com</pre>
     <p class="Pp">See also <i>--resolve</i> and <i>--alt-svc</i>.</p>
   </dd>
   <dt id="location"><a class="permalink" href="#location">--location-trusted</a></dt>
-  <dd>(HTTP) Like <i>-L, --location</i>, but allows sending the name + password
-      to all hosts that the site may redirect to. This may or may not introduce
-      a security breach if the site redirects you to a site to which you send
-      your authentication info (which is clear-text in the case of HTTP Basic
-      authentication).
+  <dd>(HTTP) Instructs curl to like <i>-L, --location</i> follow HTTP redirects,
+      but permits it to send credentials and other secrets along to other hosts
+      than the initial one.
+    <p class="Pp">This may or may not introduce a security breach if the site
+        redirects you to a site to which you send this sensitive data to.
+        Another host means that one or more of hostname, protocol scheme or port
+        number changed.</p>
+    <p class="Pp">This option also allows curl to pass long cookies set
+        explicitly with <i>-H, --header</i>.</p>
     <p class="Pp">Providing --location-trusted multiple times has no extra
         effect. Disable it again with --no-location-trusted.</p>
-    <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --location-trusted -u user:password https://example.com</pre>
+    <p class="Pp">Examples:</p>
+    <pre>curl --location-trusted -u user:password https://example.com
+curl --location-trusted -H &quot;Cookie: session=abc&quot; https://example.com</pre>
     <p class="Pp">See also <i>-u, --user</i>.</p>
   </dd>
   <dt id="login"><a class="permalink" href="#login">--login-options
@@ -2596,9 +2391,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --login-options is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --login-options 'AUTH=*' imap://example.com</pre>
+    <pre>curl --login-options 'AUTH=*' imap://example.com</pre>
     <p class="Pp">See also <i>-u, --user</i>.</p>
   </dd>
   <dt id="mail"><a class="permalink" href="#mail">--mail-auth
@@ -2609,9 +2402,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --mail-auth is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mail-auth user@example.com -T mail smtp://example.com/</pre>
+    <pre>curl --mail-auth user@example.com -T mail smtp://example.com/</pre>
     <p class="Pp">See also <i>--mail-rcpt</i> and <i>--mail-from</i>.</p>
   </dd>
   <dt id="mail~2"><a class="permalink" href="#mail~2">--mail-from
@@ -2620,9 +2411,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --mail-from is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mail-from user@example.com -T mail smtp://example.com/</pre>
+    <pre>curl --mail-from user@example.com -T mail smtp://example.com/</pre>
     <p class="Pp">See also <i>--mail-rcpt</i> and <i>--mail-auth</i>.</p>
   </dd>
   <dt id="mail~3"><a class="permalink" href="#mail~3">--mail-rcpt
@@ -2638,9 +2427,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp"></p>
     <p class="Pp">--mail-rcpt can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mail-rcpt user@example.net smtp://example.com</pre>
+    <pre>curl --mail-rcpt user@example.net smtp://example.com</pre>
     <p class="Pp">See also <i>--mail-rcpt-allowfails</i>.</p>
   </dd>
   <dt id="mail~4"><a class="permalink" href="#mail~4">--mail-rcpt-allowfails</a></dt>
@@ -2656,25 +2443,23 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">Providing --mail-rcpt-allowfails multiple times has no extra
         effect. Disable it again with --no-mail-rcpt-allowfails.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mail-rcpt-allowfails --mail-rcpt dest@example.com smtp://example.com</pre>
+    <pre>curl --mail-rcpt-allowfails --mail-rcpt dest@example.com smtp://example.com</pre>
     <p class="Pp">Added in 7.69.0. See also <i>--mail-rcpt</i>.</p>
   </dd>
   <dt id="M,"><a class="permalink" href="#M,">-M, --manual</a></dt>
   <dd>Manual. Display the huge help text.
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --manual</pre>
+    <pre>curl --manual</pre>
     <p class="Pp">See also <i>-v, --verbose</i>, <i>--libcurl</i> and
         <i>--trace</i>.</p>
   </dd>
   <dt id="max"><a class="permalink" href="#max">--max-filesize
     &lt;bytes&gt;</a></dt>
-  <dd>(FTP HTTP MQTT) Specify the maximum size (in bytes) of a file to download.
-      If the file requested is larger than this value, the transfer does not
-      start and curl returns with exit code 63.
+  <dd>(FTP HTTP MQTT) When set to a non-zero value, it specifies the maximum
+      size (in bytes) of a file to download. If the file requested is larger
+      than this value, the transfer does not start and curl returns with exit
+      code 63.
+    <p class="Pp">Setting the maximum value to zero disables the limit.</p>
     <p class="Pp">A size modifier may be used. For example, Appending 'k' or 'K'
         counts the number as kilobytes, 'm' or 'M' makes it megabytes, while 'g'
         or 'G' makes it gigabytes. Examples: 200K, 3m and 1G.</p>
@@ -2686,9 +2471,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --max-filesize is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --max-filesize 100K https://example.com</pre>
+    <pre>curl --max-filesize 100K https://example.com</pre>
     <p class="Pp">See also <i>--limit-rate</i>.</p>
   </dd>
   <dt id="max~2"><a class="permalink" href="#max~2">--max-redirs
@@ -2700,9 +2483,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --max-redirs is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --max-redirs 3 --location https://example.com</pre>
+    <pre>curl --max-redirs 3 --location https://example.com</pre>
     <p class="Pp">See also <i>-L, --location</i>.</p>
   </dd>
   <dt id="m,"><a class="permalink" href="#m,">-m, --max-time
@@ -2713,17 +2494,14 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If you enable retrying the transfer (<i>--retry</i>) then the
         maximum time counter is reset each time the transfer is retried. You can
         use <i>--retry-max-time</i> to limit the retry time.</p>
-    <p class="Pp">The decimal value needs to provided using a dot (.) as decimal
-        separator - not the local version even if it might be using another
-        separator.</p>
+    <p class="Pp">The decimal value needs to be provided using a dot (.) as
+        decimal separator - not the local version even if it might be using
+        another separator.</p>
     <p class="Pp">If --max-time is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --max-time 10 https://example.com
-<br/>
- curl --max-time 2.92 https://example.com</pre>
+    <pre>curl --max-time 10 https://example.com
+curl --max-time 2.92 https://example.com</pre>
     <p class="Pp">See also <i>--connect-timeout</i> and
       <i>--retry-max-time</i>.</p>
   </dd>
@@ -2733,9 +2511,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">If --metalink is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --metalink file https://example.com</pre>
+    <pre>curl --metalink file https://example.com</pre>
     <p class="Pp">See also <i>-Z, --parallel</i>.</p>
   </dd>
   <dt id="mptcp"><a class="permalink" href="#mptcp">--mptcp</a></dt>
@@ -2756,9 +2532,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">Providing --mptcp multiple times has no extra effect. Disable
         it again with --no-mptcp.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --mptcp https://example.com</pre>
+    <pre>curl --mptcp https://example.com</pre>
     <p class="Pp">Added in 8.9.0. See also <i>--tcp-fastopen</i>.</p>
   </dd>
   <dt id="negotiate"><a class="permalink" href="#negotiate">--negotiate</a></dt>
@@ -2772,9 +2546,7 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
         --user</i> option are not actually used.</p>
     <p class="Pp">Providing --negotiate multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --negotiate -u : https://example.com</pre>
+    <pre>curl --negotiate -u : https://example.com</pre>
     <p class="Pp">See also <i>--basic</i>, <i>--ntlm</i>, <i>--anyauth</i> and
         <i>--proxy-negotiate</i>.</p>
   </dd>
@@ -2792,16 +2564,14 @@ curl --ipfs-gateway http://localhost:8080 ipfs://bafybeigagd5nmnn2iys2f3doro7ydr
     <p class="Pp">A quick and simple example of how to setup a <i>.netrc</i> to
         allow curl to FTP to the machine host.domain.com with username 'myself'
         and password 'secret' could look similar to:</p>
-    <pre>
-machine host.domain.com
+    <p class="Pp"></p>
+    <pre>machine host.domain.com
 login myself
 password secret</pre>
     <p class="Pp">Providing --netrc multiple times has no extra effect. Disable
         it again with --no-netrc.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --netrc https://example.com</pre>
+    <pre>curl --netrc https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--netrc-file</i> and
         <i>--netrc-optional</i>. See also <i>--netrc-file</i>, <i>-K,
         --config</i> and <i>-u, --user</i>.</p>
@@ -2814,9 +2584,7 @@ password secret</pre>
     <p class="Pp">If --netrc-file is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --netrc-file netrc https://example.com</pre>
+    <pre>curl --netrc-file netrc https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-n, --netrc</i>. See
         also <i>-n, --netrc</i>, <i>-u, --user</i> and <i>-K, --config</i>.</p>
   </dd>
@@ -2826,9 +2594,7 @@ password secret</pre>
     <p class="Pp">Providing --netrc-optional multiple times has no extra effect.
         Disable it again with --no-netrc-optional.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --netrc-optional https://example.com</pre>
+    <pre>curl --netrc-optional https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-n, --netrc</i>. See
         also <i>--netrc-file</i>.</p>
   </dd>
@@ -2844,15 +2610,12 @@ password secret</pre>
         <i>--fail-early</i>.</p>
     <p class="Pp">For example, you can do both a GET and a POST in a single
         command line:</p>
-    <pre>
-curl www1.example.com --next -d postthis www2.example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">--next can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl https://example.com --next -d postthis www2.example.com
-<br/>
- curl -I https://example.com --next https://example.net/</pre>
+    <pre>curl https://example.com --next -d postthis www2.example.com
+curl -I https://example.com --next https://example.net/</pre>
     <p class="Pp">See also <i>-Z, --parallel</i> and <i>-K, --config</i>.</p>
   </dd>
   <dt id="no"><a class="permalink" href="#no">--no-alpn</a></dt>
@@ -2865,9 +2628,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-alpn multiple times has no extra effect.
         Disable it again with --alpn.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-alpn https://example.com</pre>
+    <pre>curl --no-alpn https://example.com</pre>
     <p class="Pp"><i>--no-alpn</i> requires that libcurl is built to support
         TLS. See also <i>--no-npn</i> and <i>--http2</i>.</p>
   </dd>
@@ -2881,9 +2642,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-buffer multiple times has no extra effect.
         Disable it again with --buffer.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-buffer https://example.com</pre>
+    <pre>curl --no-buffer https://example.com</pre>
     <p class="Pp">See also <i>-#, --progress-bar</i>.</p>
   </dd>
   <dt id="no~2"><a class="permalink" href="#no~2">--no-clobber</a></dt>
@@ -2899,9 +2658,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-clobber multiple times has no extra effect.
         Disable it again with --clobber.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-clobber --output local/dir/file https://example.com</pre>
+    <pre>curl --no-clobber --output local/dir/file https://example.com</pre>
     <p class="Pp">Added in 7.83.0. See also <i>-o, --output</i> and <i>-O,
         --remote-name</i>.</p>
   </dd>
@@ -2913,9 +2670,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-keepalive multiple times has no extra effect.
         Disable it again with --keepalive.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-keepalive https://example.com</pre>
+    <pre>curl --no-keepalive https://example.com</pre>
     <p class="Pp">See also <i>--keepalive-time</i> and
       <i>--keepalive-cnt</i>.</p>
   </dd>
@@ -2928,9 +2683,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-npn multiple times has no extra effect. Disable
         it again with --npn.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-npn https://example.com</pre>
+    <pre>curl --no-npn https://example.com</pre>
     <p class="Pp"><i>--no-npn</i> requires that libcurl is built to support TLS.
         See also <i>--no-alpn</i> and <i>--http2</i>.</p>
   </dd>
@@ -2943,9 +2696,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-progress-meter multiple times has no extra
         effect. Disable it again with --progress-meter.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-progress-meter -o store https://example.com</pre>
+    <pre>curl --no-progress-meter -o store https://example.com</pre>
     <p class="Pp">Added in 7.67.0. See also <i>-v, --verbose</i> and <i>-s,
         --silent</i>.</p>
   </dd>
@@ -2960,9 +2711,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">Providing --no-sessionid multiple times has no extra effect.
         Disable it again with --sessionid.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --no-sessionid https://example.com</pre>
+    <pre>curl --no-sessionid https://example.com</pre>
     <p class="Pp">See also <i>-k, --insecure</i>.</p>
   </dd>
   <dt id="noproxy"><a class="permalink" href="#noproxy">--noproxy
@@ -2986,9 +2735,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">If --noproxy is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --noproxy &quot;www.example&quot; https://example.com</pre>
+    <pre>curl --noproxy &quot;www.example&quot; https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="ntlm"><a class="permalink" href="#ntlm">--ntlm</a></dt>
@@ -3002,9 +2749,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
         use <i>--proxy-ntlm</i>.</p>
     <p class="Pp">Providing --ntlm multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ntlm -u user:password https://example.com</pre>
+    <pre>curl --ntlm -u user:password https://example.com</pre>
     <p class="Pp"><i>--ntlm</i> requires that libcurl is built to support TLS.
         This option is mutually exclusive with <i>--basic</i>,
         <i>--negotiate</i>, <i>--digest</i> and <i>--anyauth</i>. See also
@@ -3017,9 +2762,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
         needed.</p>
     <p class="Pp">Providing --ntlm-wb multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ntlm-wb -u user:password https://example.com</pre>
+    <pre>curl --ntlm-wb -u user:password https://example.com</pre>
     <p class="Pp">See also <i>--ntlm</i> and <i>--proxy-ntlm</i>.</p>
   </dd>
   <dt id="oauth2"><a class="permalink" href="#oauth2">--oauth2-bearer
@@ -3033,9 +2776,7 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
     <p class="Pp">If --oauth2-bearer is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --oauth2-bearer &quot;mF_9.B5f-4.1JqM&quot; https://example.com</pre>
+    <pre>curl --oauth2-bearer &quot;mF_9.B5f-4.1JqM&quot; https://example.com</pre>
     <p class="Pp">See also <i>--basic</i>, <i>--ntlm</i> and
       <i>--digest</i>.</p>
   </dd>
@@ -3044,48 +2785,43 @@ curl www1.example.com --next -d postthis www2.example.com</pre>
       globbing to fetch multiple documents, you should quote the URL and you can
       use &quot;#&quot; followed by a number in the filename. That variable is
       then replaced with the current string for the URL being fetched. Like in:
-    <pre>
-curl &quot;http://{one,two}.example.com&quot; -o &quot;file_#1.txt&quot;</pre>
+    <p class="Pp"></p>
+    <pre>curl &quot;http://{one,two}.example.com&quot; -o &quot;file_#1.txt&quot;</pre>
     <p class="Pp">or use several variables like:</p>
-    <pre>
-curl &quot;http://{site,host}.host[1-5].example&quot; -o &quot;#1_#2&quot;</pre>
+    <p class="Pp"></p>
+    <pre>curl &quot;http://{site,host}.host[1-5].example&quot; -o &quot;#1_#2&quot;</pre>
     <p class="Pp">You may use this option as many times as the number of URLs
         you have. For example, if you specify two URLs on the same command line,
         you can use it like this:</p>
-    <pre>
-curl -o aa example.com -o bb example.net</pre>
+    <p class="Pp"></p>
+    <pre>curl -o aa example.com -o bb example.net</pre>
     <p class="Pp">and the order of the -o options and the URLs does not matter,
         just that the first -o is for the first URL and so on, so the above
         command line can also be written as</p>
-    <pre>
-curl example.com example.net -o aa -o bb</pre>
+    <p class="Pp"></p>
+    <pre>curl example.com example.net -o aa -o bb</pre>
     <p class="Pp">See also the <i>--create-dirs</i> option to create the local
         directories dynamically. Specifying the output as '-' (a single dash)
         passes the output to stdout.</p>
     <p class="Pp">To suppress response bodies, you can redirect output to
         /dev/null:</p>
-    <pre>
-curl example.com -o /dev/null</pre>
+    <p class="Pp"></p>
+    <pre>curl example.com -o /dev/null</pre>
     <p class="Pp">Or for Windows:</p>
-    <pre>
-curl example.com -o nul</pre>
+    <p class="Pp"></p>
+    <pre>curl example.com -o nul</pre>
     <p class="Pp">Specify the filename as single minus to force the output to
         stdout, to override curl's internal binary output in terminal
         prevention:</p>
-    <pre>
-curl https://example.com/jpeg -o -</pre>
+    <p class="Pp"></p>
+    <pre>curl https://example.com/jpeg -o -</pre>
     <p class="Pp">--output is associated with a single URL. Use it once per URL
         when you use several URLs in a command line.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -o file https://example.com
-<br/>
- curl &quot;http://{one,two}.example.com&quot; -o &quot;file_#1.txt&quot;
-<br/>
- curl &quot;http://{site,host}.host[1-5].example&quot; -o &quot;#1_#2&quot;
-<br/>
- curl -o file https://example.com -o file2 https://example.net</pre>
+    <pre>curl -o file https://example.com
+curl &quot;http://{one,two}.example.com&quot; -o &quot;file_#1.txt&quot;
+curl &quot;http://{site,host}.host[1-5].example&quot; -o &quot;#1_#2&quot;
+curl -o file https://example.com -o file2 https://example.net</pre>
     <p class="Pp">See also <i>-O, --remote-name</i>, <i>--remote-name-all</i>
         and <i>-J, --remote-header-name</i>.</p>
   </dd>
@@ -3100,9 +2836,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --output-dir is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --output-dir &quot;tmp&quot; -O https://example.com</pre>
+    <pre>curl --output-dir &quot;tmp&quot; -O https://example.com</pre>
     <p class="Pp">Added in 7.73.0. See also <i>-O, --remote-name</i> and <i>-J,
         --remote-header-name</i>.</p>
   </dd>
@@ -3121,9 +2855,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --parallel multiple times has no extra effect.
         Disable it again with --no-parallel.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --parallel https://example.com -o file1 https://example.com -o file2</pre>
+    <pre>curl --parallel https://example.com -o file1 https://example.com -o file2</pre>
     <p class="Pp">Added in 7.66.0. See also <i>-:, --next</i>, <i>-v,
         --verbose</i>, <i>--parallel-max</i> and
       <i>--parallel-immediate</i>.</p>
@@ -3142,9 +2874,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --parallel-immediate multiple times has no extra
         effect. Disable it again with --no-parallel-immediate.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --parallel-immediate -Z https://example.com -o file1 https://example.com -o file2</pre>
+    <pre>curl --parallel-immediate -Z https://example.com -o file1 https://example.com -o file2</pre>
     <p class="Pp">Added in 7.68.0. See also <i>-Z, --parallel</i> and
         <i>--parallel-max</i>.</p>
   </dd>
@@ -3158,9 +2888,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --parallel-max is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --parallel-max 100 -Z https://example.com ftp://example.com/</pre>
+    <pre>curl --parallel-max 100 -Z https://example.com ftp://example.com/</pre>
     <p class="Pp">Added in 7.66.0. See also <i>-Z, --parallel</i>.</p>
   </dd>
   <dt id="pass"><a class="permalink" href="#pass">--pass &lt;phrase&gt;</a></dt>
@@ -3168,9 +2896,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --pass is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --pass secret --key file https://example.com</pre>
+    <pre>curl --pass secret --key file https://example.com</pre>
     <p class="Pp">See also <i>--key</i> and <i>-u, --user</i>.</p>
   </dd>
   <dt id="path"><a class="permalink" href="#path">--path-as-is</a></dt>
@@ -3180,9 +2906,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --path-as-is multiple times has no extra effect.
         Disable it again with --no-path-as-is.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --path-as-is https://example.com/../../etc/passwd</pre>
+    <pre>curl --path-as-is https://example.com/../../etc/passwd</pre>
     <p class="Pp">See also <i>--request-target</i>.</p>
   </dd>
   <dt id="pinnedpubkey"><a class="permalink" href="#pinnedpubkey">--pinnedpubkey
@@ -3210,11 +2934,8 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --pinnedpubkey is provided several times, the last set
         value is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --pinnedpubkey keyfile https://example.com
-<br/>
- curl --pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
+    <pre>curl --pinnedpubkey keyfile https://example.com
+curl --pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
     <p class="Pp">See also <i>--hostpubsha256</i>.</p>
   </dd>
   <dt id="post301"><a class="permalink" href="#post301">--post301</a></dt>
@@ -3227,9 +2948,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --post301 multiple times has no extra effect.
         Disable it again with --no-post301.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --post301 --location -d &quot;data&quot; https://example.com</pre>
+    <pre>curl --post301 --location -d &quot;data&quot; https://example.com</pre>
     <p class="Pp">See also <i>--post302</i>, <i>--post303</i> and <i>-L,
         --location</i>.</p>
   </dd>
@@ -3243,9 +2962,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --post302 multiple times has no extra effect.
         Disable it again with --no-post302.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --post302 --location -d &quot;data&quot; https://example.com</pre>
+    <pre>curl --post302 --location -d &quot;data&quot; https://example.com</pre>
     <p class="Pp">See also <i>--post301</i>, <i>--post303</i> and <i>-L,
         --location</i>.</p>
   </dd>
@@ -3257,9 +2974,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --post303 multiple times has no extra effect.
         Disable it again with --no-post303.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --post303 --location -d &quot;data&quot; https://example.com</pre>
+    <pre>curl --post303 --location -d &quot;data&quot; https://example.com</pre>
     <p class="Pp">See also <i>--post302</i>, <i>--post301</i> and <i>-L,
         --location</i>.</p>
   </dd>
@@ -3281,9 +2996,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --preproxy is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --preproxy socks5://proxy.example -x http://http.example https://example.com</pre>
+    <pre>curl --preproxy socks5://proxy.example -x http://http.example https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and <i>--socks5</i>.</p>
   </dd>
   <dt>-#, --progress-bar</dt>
@@ -3299,9 +3012,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">Providing --progress-bar multiple times has no extra effect.
         Disable it again with --no-progress-bar.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -# -O https://example.com</pre>
+    <pre>curl -# -O https://example.com</pre>
     <p class="Pp">See also <i>--styled-output</i>.</p>
   </dd>
   <dt id="proto"><a class="permalink" href="#proto">--proto
@@ -3343,9 +3054,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --proto is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proto =http,https,sftp https://example.com</pre>
+    <pre>curl --proto =http,https,sftp https://example.com</pre>
     <p class="Pp">See also <i>--proto-redir</i> and <i>--proto-default</i>.</p>
   </dd>
   <dt id="proto~2"><a class="permalink" href="#proto~2">--proto-default
@@ -3360,9 +3069,7 @@ curl https://example.com/jpeg -o -</pre>
     <p class="Pp">If --proto-default is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proto-default https ftp.example.com</pre>
+    <pre>curl --proto-default https ftp.example.com</pre>
     <p class="Pp">See also <i>--proto</i> and <i>--proto-redir</i>.</p>
   </dd>
   <dt id="proto~3"><a class="permalink" href="#proto~3">--proto-redir
@@ -3371,17 +3078,15 @@ curl https://example.com/jpeg -o -</pre>
       <i>--proto</i> are not overridden by this option. See <i>--proto</i> for
       how protocols are represented.
     <p class="Pp">Example, allow only HTTP and HTTPS on redirect:</p>
-    <pre>
-curl --proto-redir -all,http,https http://example.com</pre>
+    <p class="Pp"></p>
+    <pre>curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">By default curl only allows HTTP, HTTPS, FTP and FTPS on
         redirects (added in 7.65.2). Specifying <i>all</i> or <i>+all</i>
         enables all protocols on redirects, which is not good for security.</p>
     <p class="Pp">If --proto-redir is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proto-redir =http,https https://example.com</pre>
+    <pre>curl --proto-redir =http,https https://example.com</pre>
     <p class="Pp">See also <i>--proto</i>.</p>
   </dd>
   <dt id="x,"><a class="permalink" href="#x,">-x, --proxy
@@ -3396,7 +3101,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
         socks5h://localhost/path/to/socket.sock</p>
     <p class="Pp">HTTPS proxy support works set with the https:// protocol
         prefix for OpenSSL and GnuTLS. It also works for BearSSL, mbedTLS,
-        rustls, Schannel, Secure Transport and wolfSSL (added in 7.87.0).</p>
+        Rustls, Schannel, Secure Transport and wolfSSL (added in 7.87.0).</p>
     <p class="Pp">Unrecognized and unsupported proxy protocols cause an error.
         Ancient curl versions ignored unknown schemes and used http://
       instead.</p>
@@ -3421,9 +3126,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy http://proxy.example https://example.com</pre>
+    <pre>curl --proxy http://proxy.example https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i> and <i>--proxy-basic</i>.</p>
   </dd>
   <dt id="proxy"><a class="permalink" href="#proxy">--proxy-anyauth</a></dt>
@@ -3433,9 +3136,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-anyauth multiple times has no extra
       effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-anyauth --proxy-user user:passwd -x proxy https://example.com</pre>
+    <pre>curl --proxy-anyauth --proxy-user user:passwd -x proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--proxy-basic</i> and
         <i>--proxy-digest</i>.</p>
   </dd>
@@ -3446,9 +3147,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-basic multiple times has no extra
       effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-basic --proxy-user user:passwd -x proxy https://example.com</pre>
+    <pre>curl --proxy-basic --proxy-user user:passwd -x proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--proxy-anyauth</i> and
         <i>--proxy-digest</i>.</p>
   </dd>
@@ -3464,11 +3163,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-ca-native multiple times has no extra
         effect. Disable it again with --no-proxy-ca-native.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-ca-native https://example.com</pre>
-    <p class="Pp">Added in 8.2.0. See also <i>--cacert</i>, <i>--capath</i> and
-        <i>-k, --insecure</i>.</p>
+    <pre>curl --proxy-ca-native https://example.com</pre>
+    <p class="Pp">Added in 8.2.0. See also <i>--cacert</i>, <i>--capath</i>,
+        <i>--dump-ca-embed</i> and <i>-k, --insecure</i>.</p>
   </dd>
   <dt id="proxy~4"><a class="permalink" href="#proxy~4">--proxy-cacert
     &lt;file&gt;</a></dt>
@@ -3482,11 +3179,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-cacert is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-cacert CA-file.txt -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-cacert CA-file.txt -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-capath</i>, <i>--cacert</i>,
-        <i>--capath</i> and <i>-x, --proxy</i>.</p>
+        <i>--capath</i>, <i>--dump-ca-embed</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~5"><a class="permalink" href="#proxy~5">--proxy-capath
     &lt;dir&gt;</a></dt>
@@ -3504,11 +3199,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-capath is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-capath /local/directory -x https://proxy https://example.com</pre>
-    <p class="Pp">See also <i>--proxy-cacert</i>, <i>-x, --proxy</i> and
-        <i>--capath</i>.</p>
+    <pre>curl --proxy-capath /local/directory -x https://proxy https://example.com</pre>
+    <p class="Pp">See also <i>--proxy-cacert</i>, <i>-x, --proxy</i>,
+        <i>--capath</i> and <i>--dump-ca-embed</i>.</p>
   </dd>
   <dt id="proxy~6"><a class="permalink" href="#proxy~6">--proxy-cert
     &lt;cert[:passwd]&gt;</a></dt>
@@ -3522,9 +3215,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-cert is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-cert file -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-cert file -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--proxy-key</i> and
         <i>--proxy-cert-type</i>.</p>
   </dd>
@@ -3540,26 +3231,23 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-cert-type is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-cert-type PEM --proxy-cert file -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-cert-type PEM --proxy-cert file -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-cert</i> and <i>--proxy-key</i>.</p>
   </dd>
   <dt id="proxy~8"><a class="permalink" href="#proxy~8">--proxy-ciphers
     &lt;list&gt;</a></dt>
-  <dd>Same as <i>--ciphers</i> but used in HTTPS proxy context.
-    <p class="Pp">Specifies which ciphers to use in the connection to the HTTPS
-        proxy. The list of ciphers must specify valid ciphers. Read up on SSL
-        cipher list details on this URL:</p>
+  <dd>(TLS) Same as <i>--ciphers</i> but used in HTTPS proxy context.
+    <p class="Pp">Specify which cipher suites to use in the connection to your
+        HTTPS proxy when it negotiates TLS 1.2 (1.1, 1.0). The list of ciphers
+        suites must specify valid ciphers. Read up on cipher suite details on
+        this URL:</p>
     <p class="Pp">https://curl.se/docs/ssl-ciphers.html</p>
     <p class="Pp">If --proxy-ciphers is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-ciphers ECDHE-ECDSA-AES256-CCM8 -x https://proxy https://example.com</pre>
-    <p class="Pp">See also <i>--ciphers</i>, <i>--curves</i> and <i>-x,
-        --proxy</i>.</p>
+    <pre>curl --proxy-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256 -x https://proxy https://example.com</pre>
+    <p class="Pp">See also <i>--proxy-tls13-ciphers</i>, <i>--ciphers</i> and
+        <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~9"><a class="permalink" href="#proxy~9">--proxy-crlfile
     &lt;file&gt;</a></dt>
@@ -3571,9 +3259,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-crlfile is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-crlfile rejects.txt -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-crlfile rejects.txt -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--crlfile</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~10"><a class="permalink" href="#proxy~10">--proxy-digest</a></dt>
@@ -3582,9 +3268,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-digest multiple times has no extra
       effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-digest --proxy-user user:passwd -x proxy https://example.com</pre>
+    <pre>curl --proxy-digest --proxy-user user:passwd -x proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--proxy-anyauth</i> and
         <i>--proxy-basic</i>.</p>
   </dd>
@@ -3608,13 +3292,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
         multiple headers.</p>
     <p class="Pp">--proxy-header can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --proxy-header &quot;X-First-Name: Joe&quot; -x http://proxy https://example.com
-<br/>
- curl --proxy-header &quot;User-Agent: surprise&quot; -x http://proxy https://example.com
-<br/>
- curl --proxy-header &quot;Host:&quot; -x http://proxy https://example.com</pre>
+    <pre>curl --proxy-header &quot;X-First-Name: Joe&quot; -x http://proxy https://example.com
+curl --proxy-header &quot;User-Agent: surprise&quot; -x http://proxy https://example.com
+curl --proxy-header &quot;Host:&quot; -x http://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~12"><a class="permalink" href="#proxy~12">--proxy-http2</a></dt>
@@ -3624,9 +3304,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-http2 multiple times has no extra effect.
         Disable it again with --no-proxy-http2.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-http2 -x proxy https://example.com</pre>
+    <pre>curl --proxy-http2 -x proxy https://example.com</pre>
     <p class="Pp"><i>--proxy-http2</i> requires that libcurl is built to support
         HTTP/2. Added in 8.1.0. See also <i>-x, --proxy</i>.</p>
   </dd>
@@ -3646,9 +3324,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-insecure multiple times has no extra effect.
         Disable it again with --no-proxy-insecure.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-insecure -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-insecure -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and <i>-k, --insecure</i>.</p>
   </dd>
   <dt id="proxy~14"><a class="permalink" href="#proxy~14">--proxy-key
@@ -3659,9 +3335,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-key is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-key here -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-key here -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-key-type</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~15"><a class="permalink" href="#proxy~15">--proxy-key-type
@@ -3674,9 +3348,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-key-type is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-key-type DER --proxy-key here -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-key-type DER --proxy-key here -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-key</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~16"><a class="permalink" href="#proxy~16">--proxy-negotiate</a></dt>
@@ -3686,9 +3358,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-negotiate multiple times has no extra
         effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-negotiate --proxy-user user:passwd -x proxy https://example.com</pre>
+    <pre>curl --proxy-negotiate --proxy-user user:passwd -x proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-anyauth</i>, <i>--proxy-basic</i> and
         <i>--proxy-service-name</i>.</p>
   </dd>
@@ -3697,9 +3367,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       <i>--ntlm</i> for enabling NTLM with a remote host.
     <p class="Pp">Providing --proxy-ntlm multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-ntlm --proxy-user user:passwd -x http://proxy https://example.com</pre>
+    <pre>curl --proxy-ntlm --proxy-user user:passwd -x http://proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-negotiate</i>, <i>--proxy-anyauth</i> and
         <i>-U, --proxy-user</i>.</p>
   </dd>
@@ -3711,9 +3379,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-pass is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-pass secret --proxy-key here -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-pass secret --proxy-key here -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and <i>--proxy-key</i>.</p>
   </dd>
   <dt id="proxy~19"><a class="permalink" href="#proxy~19">--proxy-pinnedpubkey
@@ -3727,14 +3393,12 @@ curl --proto-redir -all,http,https http://example.com</pre>
         certificate and if it does not exactly match the public key provided to
         this option, curl aborts the connection before sending or receiving any
         data.</p>
+    <p class="Pp">Before curl 8.10.0 this option did not work due to a bug.</p>
     <p class="Pp">If --proxy-pinnedpubkey is provided several times, the last
         set value is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --proxy-pinnedpubkey keyfile https://example.com
-<br/>
- curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
+    <pre>curl --proxy-pinnedpubkey keyfile https://example.com
+curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
     <p class="Pp">See also <i>--pinnedpubkey</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~20"><a class="permalink" href="#proxy~20">--proxy-service-name
@@ -3743,9 +3407,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-service-name is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-service-name &quot;shrubbery&quot; -x proxy https://example.com</pre>
+    <pre>curl --proxy-service-name &quot;shrubbery&quot; -x proxy https://example.com</pre>
     <p class="Pp">See also <i>--service-name</i>, <i>-x, --proxy</i> and
         <i>--proxy-negotiate</i>.</p>
   </dd>
@@ -3763,9 +3425,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-ssl-allow-beast multiple times has no extra
         effect. Disable it again with --no-proxy-ssl-allow-beast.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-ssl-allow-beast -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-ssl-allow-beast -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>--ssl-allow-beast</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~22"><a class="permalink" href="#proxy~22">--proxy-ssl-auto-client-cert</a></dt>
@@ -3774,30 +3434,28 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-ssl-auto-client-cert multiple times has no
         extra effect. Disable it again with --no-proxy-ssl-auto-client-cert.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-ssl-auto-client-cert -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-ssl-auto-client-cert -x https://proxy https://example.com</pre>
     <p class="Pp">Added in 7.77.0. See also <i>--ssl-auto-client-cert</i> and
         <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~23"><a class="permalink" href="#proxy~23">--proxy-tls13-ciphers
-    &lt;ciphersuite list&gt;</a></dt>
-  <dd>(TLS) Specify which cipher suites to use in the connection to your HTTPS
-      proxy when it negotiates TLS 1.3. The list of ciphers suites must specify
-      valid ciphers. Read up on TLS 1.3 cipher suite details on this URL:
+    &lt;list&gt;</a></dt>
+  <dd>(TLS) Same as <i>--tls13-ciphers</i> but used in HTTPS proxy context.
+    <p class="Pp">Specify which cipher suites to use in the connection to your
+        HTTPS proxy when it negotiates TLS 1.3. The list of ciphers suites must
+        specify valid ciphers. Read up on TLS 1.3 cipher suite details on this
+        URL:</p>
     <p class="Pp">https://curl.se/docs/ssl-ciphers.html</p>
-    <p class="Pp">This option is currently used only when curl is built to use
-        OpenSSL 1.1.1 or later. If you are using a different SSL backend you can
-        try setting TLS 1.3 cipher suites by using the <i>--proxy-ciphers</i>
-        option.</p>
+    <p class="Pp">This option is used when curl is built to use OpenSSL 1.1.1 or
+        later, Schannel, wolfSSL, or mbedTLS 3.6.0 or later.</p>
+    <p class="Pp">Before curl 8.10.0 with mbedTLS or wolfSSL, TLS 1.3 cipher
+        suites where set by using the <i>--proxy-ciphers</i> option.</p>
     <p class="Pp">If --proxy-tls13-ciphers is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-tls13-ciphers TLS_AES_128_GCM_SHA256 -x proxy https://example.com</pre>
-    <p class="Pp">Added in 7.61.0. See also <i>--tls13-ciphers</i>,
-        <i>--curves</i> and <i>--proxy-ciphers</i>.</p>
+    <pre>curl --proxy-tls13-ciphers TLS_AES_128_GCM_SHA256 -x proxy https://example.com</pre>
+    <p class="Pp">Added in 7.61.0. See also <i>--proxy-ciphers</i>,
+        <i>--tls13-ciphers</i> and <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="proxy~24"><a class="permalink" href="#proxy~24">--proxy-tlsauthtype
     &lt;type&gt;</a></dt>
@@ -3809,9 +3467,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-tlsauthtype is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-tlsauthtype SRP -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-tlsauthtype SRP -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--proxy-tlsuser</i> and
         <i>--proxy-tlspassword</i>.</p>
   </dd>
@@ -3826,9 +3482,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-tlspassword is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-tlspassword passwd -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-tlspassword passwd -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and <i>--proxy-tlsuser</i>.</p>
   </dd>
   <dt id="proxy~26"><a class="permalink" href="#proxy~26">--proxy-tlsuser
@@ -3840,9 +3494,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-tlsuser is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-tlsuser smith -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-tlsuser smith -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i> and
       <i>--proxy-tlspassword</i>.</p>
   </dd>
@@ -3854,9 +3506,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxy-tlsv1 multiple times has no extra
       effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-tlsv1 -x https://proxy https://example.com</pre>
+    <pre>curl --proxy-tlsv1 -x https://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="U,"><a class="permalink" href="#U,">-U, --proxy-user
@@ -3875,9 +3525,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --proxy-user is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy-user smith:secret -x proxy https://example.com</pre>
+    <pre>curl --proxy-user smith:secret -x proxy https://example.com</pre>
     <p class="Pp">See also <i>--proxy-pass</i>.</p>
   </dd>
   <dt id="proxy1.0"><a class="permalink" href="#proxy1.0">--proxy1.0
@@ -3889,9 +3537,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
         specifies an HTTP 1.0 protocol instead of the default HTTP 1.1.</p>
     <p class="Pp">Providing --proxy1.0 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxy1.0 http://proxy https://example.com</pre>
+    <pre>curl --proxy1.0 http://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>, <i>--socks5</i> and
         <i>--preproxy</i>.</p>
   </dd>
@@ -3905,9 +3551,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --proxytunnel multiple times has no extra effect.
         Disable it again with --no-proxytunnel.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --proxytunnel -x http://proxy https://example.com</pre>
+    <pre>curl --proxytunnel -x http://proxy https://example.com</pre>
     <p class="Pp">See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="pubkey"><a class="permalink" href="#pubkey">--pubkey
@@ -3922,9 +3566,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --pubkey is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --pubkey file.pub sftp://example.com/</pre>
+    <pre>curl --pubkey file.pub sftp://example.com/</pre>
     <p class="Pp">See also <i>--pass</i>.</p>
   </dd>
   <dt id="Q,"><a class="permalink" href="#Q,">-Q, --quote
@@ -4005,9 +3647,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dd>
     <p class="Pp">--quote can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --quote &quot;DELE file&quot; ftp://example.com/foo</pre>
+    <pre>curl --quote &quot;DELE file&quot; ftp://example.com/foo</pre>
     <p class="Pp">See also <i>-X, --request</i>.</p>
   </dd>
   <dt id="random"><a class="permalink" href="#random">--random-file
@@ -4019,9 +3659,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --random-file is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --random-file rubbish https://example.com</pre>
+    <pre>curl --random-file rubbish https://example.com</pre>
     <p class="Pp">See also <i>--egd-file</i>.</p>
   </dd>
   <dt id="r,"><a class="permalink" href="#r,">-r, --range &lt;range&gt;</a></dt>
@@ -4063,9 +3701,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --range is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --range 22-44 https://example.com</pre>
+    <pre>curl --range 22-44 https://example.com</pre>
     <p class="Pp">See also <i>-C, --continue-at</i> and <i>-a, --append</i>.</p>
   </dd>
   <dt id="rate"><a class="permalink" href="#rate">--rate &lt;max request
@@ -4090,18 +3726,18 @@ curl --proto-redir -all,http,https http://example.com</pre>
         unrestricted.</p>
     <p class="Pp">When retrying transfers, enabled with <i>--retry</i>, the
         separate retry delay logic is used and not this setting.</p>
+    <p class="Pp">Starting in version 8.10.0, you can specify number of time
+        units in the rate expression. Make curl do no more than 5 transfers per
+        15 seconds with &quot;5/15s&quot; or limit it to 3 transfers per 4 hours
+        with &quot;3/4h&quot;. No spaces allowed.</p>
     <p class="Pp">This option is global and does not need to be specified for
         each use of --next.</p>
     <p class="Pp">If --rate is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --rate 2/s https://example.com ...
-<br/>
- curl --rate 3/h https://example.com ...
-<br/>
- curl --rate 14/m https://example.com ...</pre>
+    <pre>curl --rate 2/s https://example.com ...
+curl --rate 3/h https://example.com ...
+curl --rate 14/m https://example.com ...</pre>
     <p class="Pp">Added in 7.84.0. See also <i>--limit-rate</i> and
         <i>--retry-delay</i>.</p>
   </dd>
@@ -4111,9 +3747,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --raw multiple times has no extra effect. Disable it
         again with --no-raw.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --raw https://example.com</pre>
+    <pre>curl --raw https://example.com</pre>
     <p class="Pp">See also <i>--tr-encoding</i>.</p>
   </dd>
   <dt id="e,"><a class="permalink" href="#e,">-e, --referer &lt;URL&gt;</a></dt>
@@ -4126,13 +3760,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --referer is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --referer &quot;https://fake.example&quot; https://example.com
-<br/>
- curl --referer &quot;https://fake.example;auto&quot; -L https://example.com
-<br/>
- curl --referer &quot;;auto&quot; -L https://example.com</pre>
+    <pre>curl --referer &quot;https://fake.example&quot; https://example.com
+curl --referer &quot;https://fake.example;auto&quot; -L https://example.com
+curl --referer &quot;;auto&quot; -L https://example.com</pre>
     <p class="Pp">See also <i>-A, --user-agent</i> and <i>-H, --header</i>.</p>
   </dd>
   <dt id="J,"><a class="permalink" href="#J,">-J, --remote-header-name</a></dt>
@@ -4160,9 +3790,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --remote-header-name multiple times has no extra
         effect. Disable it again with --no-remote-header-name.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -OJ https://example.com/file</pre>
+    <pre>curl -OJ https://example.com/file</pre>
     <p class="Pp">See also <i>-O, --remote-name</i>.</p>
   </dd>
   <dt id="O,"><a class="permalink" href="#O,">-O, --remote-name</a></dt>
@@ -4183,14 +3811,16 @@ curl --proto-redir -all,http,https http://example.com</pre>
       filename.</p>
     <p class="Pp">You may use this option as many times as the number of URLs
         you have.</p>
+    <p class="Pp">Before curl 8.10.0, curl returned an error if the URL ended
+        with a slash, which means that there is no filename part in the URL.
+        Starting in 8.10.0, curl sets the filename to the last directory part of
+        the URL or if that also is missing to &quot;curl_response&quot; (without
+        extension) for this situation.</p>
     <p class="Pp">--remote-name is associated with a single URL. Use it once per
         URL when you use several URLs in a command line.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -O https://example.com/filename
-<br/>
- curl -O https://example.com/filename -O https://example.com/file2</pre>
+    <pre>curl -O https://example.com/filename
+curl -O https://example.com/filename -O https://example.com/file2</pre>
     <p class="Pp">See also <i>--remote-name-all</i>, <i>--output-dir</i> and
         <i>-J, --remote-header-name</i>.</p>
   </dd>
@@ -4202,9 +3832,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --remote-name-all multiple times has no extra
         effect. Disable it again with --no-remote-name-all.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --remote-name-all ftp://example.com/file1 ftp://example.com/file2</pre>
+    <pre>curl --remote-name-all ftp://example.com/file1 ftp://example.com/file2</pre>
     <p class="Pp">See also <i>-O, --remote-name</i>.</p>
   </dd>
   <dt id="R,"><a class="permalink" href="#R,">-R, --remote-time</a></dt>
@@ -4214,9 +3842,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --remote-time multiple times has no extra effect.
         Disable it again with --no-remote-time.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --remote-time -o foo https://example.com</pre>
+    <pre>curl --remote-time -o foo https://example.com</pre>
     <p class="Pp">See also <i>-O, --remote-name</i> and <i>-z,
       --time-cond</i>.</p>
   </dd>
@@ -4229,9 +3855,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --remove-on-error multiple times has no extra
         effect. Disable it again with --no-remove-on-error.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --remove-on-error -o output https://example.com</pre>
+    <pre>curl --remove-on-error -o output https://example.com</pre>
     <p class="Pp">Added in 7.83.0. See also <i>-f, --fail</i>.</p>
   </dd>
   <dt id="X,"><a class="permalink" href="#X,">-X, --request
@@ -4284,11 +3908,8 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --request is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -X &quot;DELETE&quot; https://example.com
-<br/>
- curl -X NLST ftp://example.com/</pre>
+    <pre>curl -X &quot;DELETE&quot; https://example.com
+curl -X NLST ftp://example.com/</pre>
     <p class="Pp">See also <i>--request-target</i>.</p>
   </dd>
   <dt id="request"><a class="permalink" href="#request">--request-target
@@ -4303,9 +3924,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --request-target is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --request-target &quot;*&quot; -X OPTIONS https://example.com</pre>
+    <pre>curl --request-target &quot;*&quot; -X OPTIONS https://example.com</pre>
     <p class="Pp">See also <i>-X, --request</i>.</p>
   </dd>
   <dt id="resolve"><a class="permalink" href="#resolve">--resolve
@@ -4336,9 +3955,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Support for the '+' prefix was added in 7.75.0.</p>
     <p class="Pp">--resolve can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --resolve example.com:443:127.0.0.1 https://example.com</pre>
+    <pre>curl --resolve example.com:443:127.0.0.1 https://example.com</pre>
     <p class="Pp">See also <i>--connect-to</i> and <i>--alt-svc</i>.</p>
   </dd>
   <dt id="retry"><a class="permalink" href="#retry">--retry &lt;num&gt;</a></dt>
@@ -4358,9 +3975,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --retry is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry 7 https://example.com</pre>
+    <pre>curl --retry 7 https://example.com</pre>
     <p class="Pp">See also <i>--retry-max-time</i>.</p>
   </dd>
   <dt id="retry~2"><a class="permalink" href="#retry~2">--retry-all-errors</a></dt>
@@ -4390,9 +4005,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --retry-all-errors multiple times has no extra
         effect. Disable it again with --no-retry-all-errors.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry 5 --retry-all-errors https://example.com</pre>
+    <pre>curl --retry 5 --retry-all-errors https://example.com</pre>
     <p class="Pp">Added in 7.71.0. See also <i>--retry</i>.</p>
   </dd>
   <dt id="retry~3"><a class="permalink" href="#retry~3">--retry-connrefused</a></dt>
@@ -4402,9 +4015,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --retry-connrefused multiple times has no extra
         effect. Disable it again with --no-retry-connrefused.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry-connrefused --retry 7 https://example.com</pre>
+    <pre>curl --retry-connrefused --retry 7 https://example.com</pre>
     <p class="Pp">See also <i>--retry</i> and <i>--retry-all-errors</i>.</p>
   </dd>
   <dt id="retry~4"><a class="permalink" href="#retry~4">--retry-delay
@@ -4417,9 +4028,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --retry-delay is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry-delay 5 --retry 7 https://example.com</pre>
+    <pre>curl --retry-delay 5 --retry 7 https://example.com</pre>
     <p class="Pp">See also <i>--retry</i>.</p>
   </dd>
   <dt id="retry~5"><a class="permalink" href="#retry~5">--retry-max-time
@@ -4433,9 +4042,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --retry-max-time is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --retry-max-time 30 --retry 10 https://example.com</pre>
+    <pre>curl --retry-max-time 30 --retry 10 https://example.com</pre>
     <p class="Pp">See also <i>--retry</i>.</p>
   </dd>
   <dt id="sasl"><a class="permalink" href="#sasl">--sasl-authzid
@@ -4451,9 +4058,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --sasl-authzid is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --sasl-authzid zid imap://example.com/</pre>
+    <pre>curl --sasl-authzid zid imap://example.com/</pre>
     <p class="Pp">Added in 7.66.0. See also <i>--login-options</i>.</p>
   </dd>
   <dt id="sasl~2"><a class="permalink" href="#sasl~2">--sasl-ir</a></dt>
@@ -4461,9 +4066,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --sasl-ir multiple times has no extra effect.
         Disable it again with --no-sasl-ir.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --sasl-ir imap://example.com/</pre>
+    <pre>curl --sasl-ir imap://example.com/</pre>
     <p class="Pp">See also <i>--sasl-authzid</i>.</p>
   </dd>
   <dt id="service"><a class="permalink" href="#service">--service-name
@@ -4472,9 +4075,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --service-name is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --service-name sockd/server https://example.com</pre>
+    <pre>curl --service-name sockd/server https://example.com</pre>
     <p class="Pp">See also <i>--negotiate</i> and
       <i>--proxy-service-name</i>.</p>
   </dd>
@@ -4486,10 +4087,26 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --show-error multiple times has no extra effect.
         Disable it again with --no-show-error.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --show-error --silent https://example.com</pre>
+    <pre>curl --show-error --silent https://example.com</pre>
     <p class="Pp">See also <i>--no-progress-meter</i>.</p>
+  </dd>
+  <dt id="i,"><a class="permalink" href="#i,">-i, --show-headers</a></dt>
+  <dd>(HTTP FTP) Show response headers in the output. HTTP response headers can
+      include things like server name, cookies, date of the document, HTTP
+      version and more. With non-HTTP protocols, the &quot;headers&quot; are
+      other server communication.
+    <p class="Pp">To view the request headers, consider the <i>-v, --verbose</i>
+        option.</p>
+    <p class="Pp">Prior to 7.75.0 curl did not print the headers if <i>-f,
+        --fail</i> was used in combination with this option and there was error
+        reported by server.</p>
+    <p class="Pp">This option was called <i>--include</i> before 8.10.0. The
+        previous name remains functional.</p>
+    <p class="Pp">Providing --show-headers multiple times has no extra effect.
+        Disable it again with --no-show-headers.</p>
+    <p class="Pp">Example:</p>
+    <pre>curl -i https://example.com</pre>
+    <p class="Pp">See also <i>-v, --verbose</i>.</p>
   </dd>
   <dt id="s,"><a class="permalink" href="#s,">-s, --silent</a></dt>
   <dd>Silent or quiet mode. Do not show progress meter or error messages. Makes
@@ -4500,18 +4117,29 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --silent multiple times has no extra effect. Disable
         it again with --no-silent.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -s https://example.com</pre>
+    <pre>curl -s https://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i>, <i>--stderr</i> and
         <i>--no-progress-meter</i>.</p>
+  </dd>
+  <dt id="skip"><a class="permalink" href="#skip">--skip-existing</a></dt>
+  <dd>If there is a local file present when a download is requested, the
+      operation is skipped. Note that curl cannot know if the local file was
+      previously downloaded fine, or if it is incomplete etc, it just knows if
+      there is a filename present in the file system or not and it skips the
+      transfer if it is.
+    <p class="Pp">Providing --skip-existing multiple times has no extra effect.
+        Disable it again with --no-skip-existing.</p>
+    <p class="Pp">Example:</p>
+    <pre>curl --skip-existing --output local/dir/file https://example.com</pre>
+    <p class="Pp">Added in 8.10.0. See also <i>-o, --output</i>, <i>-O,
+        --remote-name</i> and <i>--no-clobber</i>.</p>
   </dd>
   <dt id="socks4"><a class="permalink" href="#socks4">--socks4
     &lt;host[:port]&gt;</a></dt>
   <dd>Use the specified SOCKS4 proxy. If the port number is not specified, it is
       assumed at port 1080. Using this socket type make curl resolve the
       hostname and passing the address on to the proxy.
-    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
+    <p class="Pp">To specify proxy on a Unix domain socket, use localhost for
         host, e.g. &quot;socks4://localhost/path/to/socket.sock&quot;</p>
     <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
         as they are mutually exclusive.</p>
@@ -4524,9 +4152,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --socks4 is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks4 hostname:4096 https://example.com</pre>
+    <pre>curl --socks4 hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks4a</i>, <i>--socks5</i> and
         <i>--socks5-hostname</i>.</p>
   </dd>
@@ -4534,7 +4160,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     &lt;host[:port]&gt;</a></dt>
   <dd>Use the specified SOCKS4a proxy. If the port number is not specified, it
       is assumed at port 1080. This asks the proxy to resolve the hostname.
-    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
+    <p class="Pp">To specify proxy on a Unix domain socket, use localhost for
         host, e.g. &quot;socks4a://localhost/path/to/socket.sock&quot;</p>
     <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
         as they are mutually exclusive.</p>
@@ -4547,9 +4173,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --socks4a is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks4a hostname:4096 https://example.com</pre>
+    <pre>curl --socks4a hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks4</i>, <i>--socks5</i> and
         <i>--socks5-hostname</i>.</p>
   </dd>
@@ -4557,7 +4181,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     &lt;host[:port]&gt;</a></dt>
   <dd>Use the specified SOCKS5 proxy - but resolve the hostname locally. If the
       port number is not specified, it is assumed at port 1080.
-    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
+    <p class="Pp">To specify proxy on a Unix domain socket, use localhost for
         host, e.g. &quot;socks5://localhost/path/to/socket.sock&quot;</p>
     <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
         as they are mutually exclusive.</p>
@@ -4571,9 +4195,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --socks5 is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5 proxy.example:7000 https://example.com</pre>
+    <pre>curl --socks5 proxy.example:7000 https://example.com</pre>
     <p class="Pp">See also <i>--socks5-hostname</i> and <i>--socks4a</i>.</p>
   </dd>
   <dt id="socks5~2"><a class="permalink" href="#socks5~2">--socks5-basic</a></dt>
@@ -4583,9 +4205,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --socks5-basic multiple times has no extra
       effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-basic --socks5 hostname:4096 https://example.com</pre>
+    <pre>curl --socks5-basic --socks5 hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i>.</p>
   </dd>
   <dt id="socks5~3"><a class="permalink" href="#socks5~3">--socks5-gssapi</a></dt>
@@ -4596,9 +4216,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --socks5-gssapi multiple times has no extra effect.
         Disable it again with --no-socks5-gssapi.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi --socks5 hostname:4096 https://example.com</pre>
+    <pre>curl --socks5-gssapi --socks5 hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i>.</p>
   </dd>
   <dt id="socks5~4"><a class="permalink" href="#socks5~4">--socks5-gssapi-nec</a></dt>
@@ -4609,9 +4227,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --socks5-gssapi-nec multiple times has no extra
         effect. Disable it again with --no-socks5-gssapi-nec.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi-nec --socks5 hostname:4096 https://example.com</pre>
+    <pre>curl --socks5-gssapi-nec --socks5 hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i>.</p>
   </dd>
   <dt id="socks5~5"><a class="permalink" href="#socks5~5">--socks5-gssapi-service
@@ -4621,16 +4237,14 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --socks5-gssapi-service is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-gssapi-service sockd --socks5 hostname:4096 https://example.com</pre>
+    <pre>curl --socks5-gssapi-service sockd --socks5 hostname:4096 https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i>.</p>
   </dd>
   <dt id="socks5~6"><a class="permalink" href="#socks5~6">--socks5-hostname
     &lt;host[:port]&gt;</a></dt>
   <dd>Use the specified SOCKS5 proxy (and let the proxy resolve the hostname).
       If the port number is not specified, it is assumed at port 1080.
-    <p class="Pp">To specify proxy on a unix domain socket, use localhost for
+    <p class="Pp">To specify proxy on a Unix domain socket, use localhost for
         host, e.g. &quot;socks5h://localhost/path/to/socket.sock&quot;</p>
     <p class="Pp">This option overrides any previous use of <i>-x, --proxy</i>,
         as they are mutually exclusive.</p>
@@ -4644,9 +4258,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --socks5-hostname is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --socks5-hostname proxy.example:7000 https://example.com</pre>
+    <pre>curl --socks5-hostname proxy.example:7000 https://example.com</pre>
     <p class="Pp">See also <i>--socks5</i> and <i>--socks4a</i>.</p>
   </dd>
   <dt id="Y,"><a class="permalink" href="#Y,">-Y, --speed-limit
@@ -4657,9 +4269,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --speed-limit is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --speed-limit 300 --speed-time 10 https://example.com</pre>
+    <pre>curl --speed-limit 300 --speed-time 10 https://example.com</pre>
     <p class="Pp">See also <i>-y, --speed-time</i>, <i>--limit-rate</i> and
         <i>-m, --max-time</i>.</p>
   </dd>
@@ -4674,9 +4284,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --speed-time is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --speed-limit 300 --speed-time 10 https://example.com</pre>
+    <pre>curl --speed-limit 300 --speed-time 10 https://example.com</pre>
     <p class="Pp">See also <i>-Y, --speed-limit</i> and <i>--limit-rate</i>.</p>
   </dd>
   <dt id="ssl"><a class="permalink" href="#ssl">--ssl</a></dt>
@@ -4699,9 +4307,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl multiple times has no extra effect. Disable it
         again with --no-ssl.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl pop3://example.com/</pre>
+    <pre>curl --ssl pop3://example.com/</pre>
     <p class="Pp">See also <i>--ssl-reqd</i>, <i>-k, --insecure</i> and
         <i>--ciphers</i>.</p>
   </dd>
@@ -4716,9 +4322,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl-allow-beast multiple times has no extra
         effect. Disable it again with --no-ssl-allow-beast.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl-allow-beast https://example.com</pre>
+    <pre>curl --ssl-allow-beast https://example.com</pre>
     <p class="Pp">See also <i>--proxy-ssl-allow-beast</i> and <i>-k,
         --insecure</i>.</p>
   </dd>
@@ -4730,9 +4334,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl-auto-client-cert multiple times has no extra
         effect. Disable it again with --no-ssl-auto-client-cert.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl-auto-client-cert https://example.com</pre>
+    <pre>curl --ssl-auto-client-cert https://example.com</pre>
     <p class="Pp">Added in 7.77.0. See also
       <i>--proxy-ssl-auto-client-cert</i>.</p>
   </dd>
@@ -4743,9 +4345,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl-no-revoke multiple times has no extra effect.
         Disable it again with --no-ssl-no-revoke.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl-no-revoke https://example.com</pre>
+    <pre>curl --ssl-no-revoke https://example.com</pre>
     <p class="Pp">See also <i>--crlfile</i>.</p>
   </dd>
   <dt>--ssl-reqd</dt>
@@ -4764,9 +4364,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl-reqd multiple times has no extra effect.
         Disable it again with --no-ssl-reqd.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl-reqd ftp://example.com</pre>
+    <pre>curl --ssl-reqd ftp://example.com</pre>
     <p class="Pp">See also <i>--ssl</i> and <i>-k, --insecure</i>.</p>
   </dd>
   <dt>--ssl-revoke-best-effort</dt>
@@ -4775,9 +4373,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --ssl-revoke-best-effort multiple times has no extra
         effect. Disable it again with --no-ssl-revoke-best-effort.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --ssl-revoke-best-effort https://example.com</pre>
+    <pre>curl --ssl-revoke-best-effort https://example.com</pre>
     <p class="Pp">Added in 7.70.0. See also <i>--crlfile</i> and <i>-k,
         --insecure</i>.</p>
   </dd>
@@ -4786,9 +4382,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       (added in 7.77.0). SSLv2 is widely considered insecure (see RFC 6176).
     <p class="Pp">Providing --sslv2 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --sslv2 https://example.com</pre>
+    <pre>curl --sslv2 https://example.com</pre>
     <p class="Pp"><i>-2, --sslv2</i> requires that libcurl is built to support
         TLS. This option is mutually exclusive with <i>-3, --sslv3</i>, <i>-1,
         --tlsv1</i>, <i>--tlsv1.1</i> and <i>--tlsv1.2</i>. See also
@@ -4799,9 +4393,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       (added in 7.77.0). SSLv3 is widely considered insecure (see RFC 7568).
     <p class="Pp">Providing --sslv3 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --sslv3 https://example.com</pre>
+    <pre>curl --sslv3 https://example.com</pre>
     <p class="Pp"><i>-3, --sslv3</i> requires that libcurl is built to support
         TLS. This option is mutually exclusive with <i>-2, --sslv2</i>, <i>-1,
         --tlsv1</i>, <i>--tlsv1.1</i> and <i>--tlsv1.2</i>. See also
@@ -4815,9 +4407,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --stderr is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --stderr output.txt https://example.com</pre>
+    <pre>curl --stderr output.txt https://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i> and <i>-s, --silent</i>.</p>
   </dd>
   <dt id="styled"><a class="permalink" href="#styled">--styled-output</a></dt>
@@ -4831,26 +4421,22 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --styled-output multiple times has no extra effect.
         Disable it again with --no-styled-output.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --styled-output -I https://example.com</pre>
+    <pre>curl --styled-output -I https://example.com</pre>
     <p class="Pp">Added in 7.61.0. See also <i>-I, --head</i> and <i>-v,
         --verbose</i>.</p>
   </dd>
   <dt id="suppress"><a class="permalink" href="#suppress">--suppress-connect-headers</a></dt>
   <dd>When <i>-p, --proxytunnel</i> is used and a CONNECT request is made do not
       output proxy CONNECT response headers. This option is meant to be used
-      with <i>-D, --dump-header</i> or <i>-i, --include</i> which are used to
-      show protocol headers in the output. It has no effect on debug options
+      with <i>-D, --dump-header</i> or <i>-i, --show-headers</i> which are used
+      to show protocol headers in the output. It has no effect on debug options
       such as <i>-v, --verbose</i> or <i>--trace</i>, or any statistics.
     <p class="Pp">Providing --suppress-connect-headers multiple times has no
         extra effect. Disable it again with --no-suppress-connect-headers.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --suppress-connect-headers --include -x proxy https://example.com</pre>
-    <p class="Pp">See also <i>-D, --dump-header</i>, <i>-i, --include</i> and
-        <i>-p, --proxytunnel</i>.</p>
+    <pre>curl --suppress-connect-headers --show-headers -x proxy https://example.com</pre>
+    <p class="Pp">See also <i>-D, --dump-header</i>, <i>-i, --show-headers</i>
+        and <i>-p, --proxytunnel</i>.</p>
   </dd>
   <dt id="tcp"><a class="permalink" href="#tcp">--tcp-fastopen</a></dt>
   <dd>Enable use of TCP Fast Open (RFC 7413). TCP Fast Open is a TCP extension
@@ -4859,9 +4445,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --tcp-fastopen multiple times has no extra effect.
         Disable it again with --no-tcp-fastopen.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tcp-fastopen https://example.com</pre>
+    <pre>curl --tcp-fastopen https://example.com</pre>
     <p class="Pp">See also <i>--false-start</i>.</p>
   </dd>
   <dt id="tcp~2"><a class="permalink" href="#tcp~2">--tcp-nodelay</a></dt>
@@ -4872,9 +4456,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --tcp-nodelay multiple times has no extra effect.
         Disable it again with --no-tcp-nodelay.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tcp-nodelay https://example.com</pre>
+    <pre>curl --tcp-nodelay https://example.com</pre>
     <p class="Pp">See also <i>-N, --no-buffer</i>.</p>
   </dd>
   <dt id="t,"><a class="permalink" href="#t,">-t, --telnet-option
@@ -4898,9 +4480,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">--telnet-option can be used several times in a command
       line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -t TTYPE=vt100 telnet://example.com/</pre>
+    <pre>curl -t TTYPE=vt100 telnet://example.com/</pre>
     <p class="Pp">See also <i>-K, --config</i>.</p>
   </dd>
   <dt id="tftp"><a class="permalink" href="#tftp">--tftp-blksize
@@ -4911,9 +4491,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --tftp-blksize is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tftp-blksize 1024 tftp://example.com/file</pre>
+    <pre>curl --tftp-blksize 1024 tftp://example.com/file</pre>
     <p class="Pp">See also <i>--tftp-no-options</i>.</p>
   </dd>
   <dt id="tftp~2"><a class="permalink" href="#tftp~2">--tftp-no-options</a></dt>
@@ -4923,9 +4501,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --tftp-no-options multiple times has no extra
         effect. Disable it again with --no-tftp-no-options.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tftp-no-options tftp://192.168.0.1/</pre>
+    <pre>curl --tftp-no-options tftp://192.168.0.1/</pre>
     <p class="Pp">See also <i>--tftp-blksize</i>.</p>
   </dd>
   <dt id="z,"><a class="permalink" href="#z,">-z, --time-cond
@@ -4944,13 +4520,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --time-cond is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -z &quot;Wed 01 Sep 2021 12:18:00&quot; https://example.com
-<br/>
- curl -z &quot;-Wed 01 Sep 2021 12:18:00&quot; https://example.com
-<br/>
- curl -z file https://example.com</pre>
+    <pre>curl -z &quot;Wed 01 Sep 2021 12:18:00&quot; https://example.com
+curl -z &quot;-Wed 01 Sep 2021 12:18:00&quot; https://example.com
+curl -z file https://example.com</pre>
     <p class="Pp">See also <i>--etag-compare</i> and <i>-R,
       --remote-time</i>.</p>
   </dd>
@@ -4982,11 +4554,8 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --tls-max is provided several times, the last set value is
         used.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --tls-max 1.2 https://example.com
-<br/>
- curl --tls-max 1.3 --tlsv1.2 https://example.com</pre>
+    <pre>curl --tls-max 1.2 https://example.com
+curl --tls-max 1.3 --tlsv1.2 https://example.com</pre>
     <p class="Pp"><i>--tls-max</i> requires that libcurl is built to support
         TLS. See also <i>--tlsv1.0</i>, <i>--tlsv1.1</i>, <i>--tlsv1.2</i> and
         <i>--tlsv1.3</i>.</p>
@@ -4997,18 +4566,16 @@ curl --proto-redir -all,http,https http://example.com</pre>
       negotiates TLS 1.3. The list of ciphers suites must specify valid ciphers.
       Read up on TLS 1.3 cipher suite details on this URL:
     <p class="Pp">https://curl.se/docs/ssl-ciphers.html</p>
-    <p class="Pp">This option is currently used only when curl is built to use
-        OpenSSL 1.1.1 or later, or Schannel. If you are using a different SSL
-        backend you can try setting TLS 1.3 cipher suites by using the
-        <i>--ciphers</i> option.</p>
+    <p class="Pp">This option is used when curl is built to use OpenSSL 1.1.1 or
+        later, Schannel, wolfSSL, or mbedTLS 3.6.0 or later.</p>
+    <p class="Pp">Before curl 8.10.0 with mbedTLS or wolfSSL, TLS 1.3 cipher
+        suites where set by using the <i>--ciphers</i> option.</p>
     <p class="Pp">If --tls13-ciphers is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tls13-ciphers TLS_AES_128_GCM_SHA256 https://example.com</pre>
-    <p class="Pp">Added in 7.61.0. See also <i>--ciphers</i>, <i>--curves</i>
-        and <i>--proxy-tls13-ciphers</i>.</p>
+    <pre>curl --tls13-ciphers TLS_AES_128_GCM_SHA256 https://example.com</pre>
+    <p class="Pp">Added in 7.61.0. See also <i>--ciphers</i>,
+        <i>--proxy-tls13-ciphers</i> and <i>--curves</i>.</p>
   </dd>
   <dt id="tlsauthtype"><a class="permalink" href="#tlsauthtype">--tlsauthtype
     &lt;type&gt;</a></dt>
@@ -5021,9 +4588,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --tlsauthtype is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsauthtype SRP https://example.com</pre>
+    <pre>curl --tlsauthtype SRP https://example.com</pre>
     <p class="Pp">See also <i>--tlsuser</i>.</p>
   </dd>
   <dt id="tlspassword"><a class="permalink" href="#tlspassword">--tlspassword
@@ -5034,9 +4599,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --tlspassword is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlspassword pwd --tlsuser user https://example.com</pre>
+    <pre>curl --tlspassword pwd --tlsuser user https://example.com</pre>
     <p class="Pp">See also <i>--tlsuser</i>.</p>
   </dd>
   <dt id="tlsuser"><a class="permalink" href="#tlsuser">--tlsuser
@@ -5047,9 +4610,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --tlsuser is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlspassword pwd --tlsuser user https://example.com</pre>
+    <pre>curl --tlspassword pwd --tlsuser user https://example.com</pre>
     <p class="Pp">See also <i>--tlspassword</i>.</p>
   </dd>
   <dt>-1, --tlsv1</dt>
@@ -5057,9 +4618,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       server. That means TLS version 1.0 or higher
     <p class="Pp">Providing --tlsv1 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1 https://example.com</pre>
+    <pre>curl --tlsv1 https://example.com</pre>
     <p class="Pp"><i>-1, --tlsv1</i> requires that libcurl is built to support
         TLS. This option is mutually exclusive with <i>--tlsv1.1</i>,
         <i>--tlsv1.2</i> and <i>--tlsv1.3</i>. See also <i>--http1.1</i> and
@@ -5074,9 +4633,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       version.</p>
     <p class="Pp">Providing --tlsv1.0 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1.0 https://example.com</pre>
+    <pre>curl --tlsv1.0 https://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.3</i>.</p>
   </dd>
   <dt id="tlsv1.1"><a class="permalink" href="#tlsv1.1">--tlsv1.1</a></dt>
@@ -5088,9 +4645,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       version.</p>
     <p class="Pp">Providing --tlsv1.1 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1.1 https://example.com</pre>
+    <pre>curl --tlsv1.1 https://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.3</i> and <i>--tls-max</i>.</p>
   </dd>
   <dt id="tlsv1.2"><a class="permalink" href="#tlsv1.2">--tlsv1.2</a></dt>
@@ -5102,9 +4657,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
       version.</p>
     <p class="Pp">Providing --tlsv1.2 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1.2 https://example.com</pre>
+    <pre>curl --tlsv1.2 https://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.3</i> and <i>--tls-max</i>.</p>
   </dd>
   <dt id="tlsv1.3"><a class="permalink" href="#tlsv1.3">--tlsv1.3</a></dt>
@@ -5115,9 +4668,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Note that TLS 1.3 is not supported by all TLS backends.</p>
     <p class="Pp">Providing --tlsv1.3 multiple times has no extra effect.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tlsv1.3 https://example.com</pre>
+    <pre>curl --tlsv1.3 https://example.com</pre>
     <p class="Pp">See also <i>--tlsv1.2</i> and <i>--tls-max</i>.</p>
   </dd>
   <dt id="tr"><a class="permalink" href="#tr">--tr-encoding</a></dt>
@@ -5126,9 +4677,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --tr-encoding multiple times has no extra effect.
         Disable it again with --no-tr-encoding.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --tr-encoding https://example.com</pre>
+    <pre>curl --tr-encoding https://example.com</pre>
     <p class="Pp">See also <i>--compressed</i>.</p>
   </dd>
   <dt id="trace"><a class="permalink" href="#trace">--trace
@@ -5146,9 +4695,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --trace is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace log.txt https://example.com</pre>
+    <pre>curl --trace log.txt https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>-v, --verbose</i>
         and <i>--trace-ascii</i>. See also <i>--trace-ascii</i>,
         <i>--trace-config</i>, <i>--trace-ids</i> and <i>--trace-time</i>.</p>
@@ -5171,9 +4718,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --trace-ascii is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace-ascii log.txt https://example.com</pre>
+    <pre>curl --trace-ascii log.txt https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--trace</i> and
         <i>-v, --verbose</i>. See also <i>-v, --verbose</i> and
       <i>--trace</i>.</p>
@@ -5192,9 +4737,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
         each use of --next.</p>
     <p class="Pp">--trace-config can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace-config ids,http/2 https://example.com</pre>
+    <pre>curl --trace-config ids,http/2 https://example.com</pre>
     <p class="Pp">Added in 8.3.0. See also <i>-v, --verbose</i> and
         <i>--trace</i>.</p>
   </dd>
@@ -5206,9 +4749,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --trace-ids multiple times has no extra effect.
         Disable it again with --no-trace-ids.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace-ids --trace-ascii output https://example.com</pre>
+    <pre>curl --trace-ids --trace-ascii output https://example.com</pre>
     <p class="Pp">Added in 8.2.0. See also <i>--trace</i> and <i>-v,
         --verbose</i>.</p>
   </dd>
@@ -5219,9 +4760,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --trace-time multiple times has no extra effect.
         Disable it again with --no-trace-time.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --trace-time --trace-ascii output https://example.com</pre>
+    <pre>curl --trace-time --trace-ascii output https://example.com</pre>
     <p class="Pp">See also <i>--trace</i> and <i>-v, --verbose</i>.</p>
   </dd>
   <dt id="unix"><a class="permalink" href="#unix">--unix-socket
@@ -5231,9 +4770,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --unix-socket is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --unix-socket socket-path https://example.com</pre>
+    <pre>curl --unix-socket socket-path https://example.com</pre>
     <p class="Pp">See also <i>--abstract-unix-socket</i>.</p>
   </dd>
   <dt id="T,"><a class="permalink" href="#T,">-T, --upload-file
@@ -5268,15 +4805,10 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">--upload-file is associated with a single URL. Use it once per
         URL when you use several URLs in a command line.</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl -T file https://example.com
-<br/>
- curl -T &quot;img[1-1000].png&quot; ftp://ftp.example.com/
-<br/>
- curl --upload-file &quot;{file1,file2}&quot; https://example.com
-<br/>
- curl -T file -T file2 https://example.com https://example.com</pre>
+    <pre>curl -T file https://example.com
+curl -T &quot;img[1-1000].png&quot; ftp://ftp.example.com/
+curl --upload-file &quot;{file1,file2}&quot; https://example.com
+curl -T file -T file2 https://example.com https://example.com</pre>
     <p class="Pp">See also <i>-G, --get</i>, <i>-I, --head</i>, <i>-X,
         --request</i> and <i>-d, --data</i>.</p>
   </dd>
@@ -5296,9 +4828,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
         Beware!</p>
     <p class="Pp">--url can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --url https://example.com</pre>
+    <pre>curl --url https://example.com</pre>
     <p class="Pp">See also <i>-:, --next</i> and <i>-K, --config</i>.</p>
   </dd>
   <dt>--url-query &lt;data&gt;</dt>
@@ -5311,30 +4841,22 @@ curl --proto-redir -all,http,https http://example.com</pre>
         on the right end.</p>
     <p class="Pp">--url-query can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
-    <pre>
-<br/>
- curl --url-query name=val https://example.com
-<br/>
- curl --url-query =encodethis http://example.net/foo
-<br/>
- curl --url-query name@file https://example.com
-<br/>
- curl --url-query @fileonly https://example.com
-<br/>
- curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
+    <pre>curl --url-query name=val https://example.com
+curl --url-query =encodethis http://example.net/foo
+curl --url-query name@file https://example.com
+curl --url-query @fileonly https://example.com
+curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
     <p class="Pp">Added in 7.87.0. See also <i>--data-urlencode</i> and <i>-G,
         --get</i>.</p>
   </dd>
   <dt id="B,"><a class="permalink" href="#B,">-B, --use-ascii</a></dt>
   <dd>(FTP LDAP) Enable ASCII transfer mode. For FTP, this can also be enforced
       by using a URL that ends with &quot;;type=A&quot;. This option causes data
-      sent to stdout to be in text mode for win32 systems.
+      sent to stdout to be in text mode for Win32 systems.
     <p class="Pp">Providing --use-ascii multiple times has no extra effect.
         Disable it again with --no-use-ascii.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -B ftp://example.com/README</pre>
+    <pre>curl -B ftp://example.com/README</pre>
     <p class="Pp">See also <i>--crlf</i> and <i>--data-ascii</i>.</p>
   </dd>
   <dt id="u,"><a class="permalink" href="#u,">-u, --user
@@ -5369,9 +4891,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --user is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -u user:secret https://example.com</pre>
+    <pre>curl -u user:secret https://example.com</pre>
     <p class="Pp">See also <i>-n, --netrc</i> and <i>-K, --config</i>.</p>
   </dd>
   <dt id="A,"><a class="permalink" href="#A,">-A, --user-agent
@@ -5387,9 +4907,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --user-agent is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -A &quot;Agent 007&quot; https://example.com</pre>
+    <pre>curl -A &quot;Agent 007&quot; https://example.com</pre>
     <p class="Pp">See also <i>-H, --header</i> and <i>--proxy-header</i>.</p>
   </dd>
   <dt id="variable"><a class="permalink" href="#variable">--variable
@@ -5441,9 +4959,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dd>
     <p class="Pp">--variable can be used several times in a command line</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --variable name=smith --expand-url &quot;https://example.com/{{name}}&quot;</pre>
+    <pre>curl --variable name=smith --expand-url &quot;https://example.com/{{name}}&quot;</pre>
     <p class="Pp">Added in 8.3.0. See also <i>-K, --config</i>.</p>
   </dd>
   <dt id="v,"><a class="permalink" href="#v,">-v, --verbose</a></dt>
@@ -5453,11 +4969,29 @@ curl --proto-redir -all,http,https http://example.com</pre>
       in normal cases, and a line starting with * means additional info provided
       by curl.
     <p class="Pp">If you only want HTTP headers in the output, <i>-i,
-        --include</i> or <i>-D, --dump-header</i> might be more suitable
+        --show-headers</i> or <i>-D, --dump-header</i> might be more suitable
         options.</p>
-    <p class="Pp">If you think this option still does not give you enough
-        details, consider using <i>--trace</i> or <i>--trace-ascii</i>
-      instead.</p>
+    <p class="Pp">Since curl 8.10, mentioning this option several times in the
+        same argument increases the level of the trace output. However, as
+        before, a single <i>-v, --verbose</i> or <i>--no-verbose</i> reverts any
+        additions by previous &quot;-vv&quot; again. This means that &quot;-vv
+        -v&quot; is equivalent to a single -v. This avoids unwanted verbosity
+        when the option is mentioned in the command line <i>and</i> curl config
+        files.</p>
+    <p class="Pp">Using it twice, e.g. &quot;-vv&quot;, outputs time
+        (<i>--trace-time</i>) and transfer ids (<i>--trace-ids</i>), as well as
+        enable tracing for all protocols (<i>--trace-config</i> protocol).</p>
+    <p class="Pp">Adding a third verbose outputs transfer content
+        (<i>--trace-ascii</i> %) and enable tracing of more components
+        (<i>--trace-config</i> read,write,ssl).</p>
+    <p class="Pp">A forth time adds tracing of all network components.
+        (<i>--trace-config</i> network).</p>
+    <p class="Pp">Any addition of the verbose option after that has no
+      effect.</p>
+    <p class="Pp">If you think this option does not give you the right details,
+        consider using <i>--trace</i> or <i>--trace-ascii</i> instead. Or use it
+        only once and use <i>--trace-config</i> to trace the specific components
+        you wish to see.</p>
     <p class="Pp">Note that verbose output of curl activities and network
         traffic might contain sensitive data, including usernames, credentials
         or secret data content. Be aware and be careful when sharing trace logs
@@ -5467,11 +5001,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --verbose multiple times has no extra effect.
         Disable it again with --no-verbose.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --verbose https://example.com</pre>
+    <pre>curl --verbose https://example.com</pre>
     <p class="Pp">This option is mutually exclusive with <i>--trace</i> and
-        <i>--trace-ascii</i>. See also <i>-i, --include</i>, <i>-s,
+        <i>--trace-ascii</i>. See also <i>-i, --show-headers</i>, <i>-s,
         --silent</i>, <i>--trace</i> and <i>--trace-ascii</i>.</p>
   </dd>
   <dt id="V,"><a class="permalink" href="#V,">-V, --version</a></dt>
@@ -5533,7 +5065,8 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dt id="NTLM"><a class="permalink" href="#NTLM">NTLM</a></dt>
   <dd>NTLM authentication is supported.</dd>
   <dt id="NTLM_WB"><a class="permalink" href="#NTLM_WB">NTLM_WB</a></dt>
-  <dd>NTLM delegation to winbind helper is supported.</dd>
+  <dd>NTLM delegation to winbind helper is supported. This feature was removed
+      from curl in 8.8.0.</dd>
   <dt id="PSL"><a class="permalink" href="#PSL">PSL</a></dt>
   <dd>PSL is short for Public Suffix List and means that this curl has been
       built with knowledge about &quot;public suffixes&quot;.</dd>
@@ -5561,9 +5094,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dt></dt>
   <dd>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --version</pre>
+    <pre>curl --version</pre>
     <p class="Pp">See also <i>-h, --help</i> and <i>-M, --manual</i>.</p>
   </dd>
   <dt id="vlan"><a class="permalink" href="#vlan">--vlan-priority
@@ -5575,9 +5106,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --vlan-priority is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --vlan-priority 4 https://example.com</pre>
+    <pre>curl --vlan-priority 4 https://example.com</pre>
     <p class="Pp">Added in 8.9.0. See also <i>--ip-tos</i>.</p>
   </dd>
   <dt id="w,"><a class="permalink" href="#w,">-w, --write-out
@@ -5747,6 +5276,9 @@ curl --proto-redir -all,http,https http://example.com</pre>
   <dt id="time_namelookup"><a class="permalink" href="#time_namelookup">time_namelookup</a></dt>
   <dd>The time, in seconds, it took from the start until the name resolving was
       completed.</dd>
+  <dt id="time_posttransfer"><a class="permalink" href="#time_posttransfer">time_posttransfer</a></dt>
+  <dd>The time it took from the start until the last byte is sent by libcurl. In
+      microseconds. (Added in 8.10.0)</dd>
   <dt id="time_pretransfer"><a class="permalink" href="#time_pretransfer">time_pretransfer</a></dt>
   <dd>The time, in seconds, it took from the start until the file transfer was
       just about to begin. This includes all pre-transfer commands and
@@ -5836,9 +5368,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">If --write-out is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl -w '%{response_code}\n' https://example.com</pre>
+    <pre>curl -w '%{response_code}\n' https://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i> and <i>-I, --head</i>.</p>
   </dd>
   <dt id="xattr"><a class="permalink" href="#xattr">--xattr</a></dt>
@@ -5850,9 +5380,7 @@ curl --proto-redir -all,http,https http://example.com</pre>
     <p class="Pp">Providing --xattr multiple times has no extra effect. Disable
         it again with --no-xattr.</p>
     <p class="Pp">Example:</p>
-    <pre>
-<br/>
- curl --xattr -o storage https://example.com</pre>
+    <pre>curl --xattr -o storage https://example.com</pre>
     <p class="Pp">See also <i>-R, --remote-time</i>, <i>-w, --write-out</i> and
         <i>-v, --verbose</i>.</p>
   </dd>
@@ -5892,12 +5420,12 @@ curl --proto-redir -all,http,https http://example.com</pre>
       itself.
     <p class="Pp">This environment variable disables use of the proxy even when
         specified with the <i>-x, --proxy</i> option. That is</p>
-    <pre>
-NO_PROXY=direct.example.com curl -x http://proxy.example.com
+    <p class="Pp"></p>
+    <pre>NO_PROXY=direct.example.com curl -x http://proxy.example.com
 http://direct.example.com</pre>
     <p class="Pp">accesses the target URL directly, and</p>
-    <pre>
-NO_PROXY=direct.example.com curl -x http://proxy.example.com
+    <p class="Pp"></p>
+    <pre>NO_PROXY=direct.example.com curl -x http://proxy.example.com
 http://somewhere.example.com</pre>
     <p class="Pp">accesses the target URL through the proxy.</p>
     <p class="Pp">The list of hostnames can also be include numerical IP
@@ -5949,7 +5477,7 @@ http://somewhere.example.com</pre>
       note that these files can become rather large. Works with the ngtcp2 and
       quiche QUIC backends.</dd>
   <dt id="SHELL"><a class="permalink" href="#SHELL">SHELL</a></dt>
-  <dd>Used on VMS when trying to detect if using a <b>DCL</b> or a <b>unix</b>
+  <dd>Used on VMS when trying to detect if using a <b>DCL</b> or a <b>Unix</b>
       shell.</dd>
   <dt id="SSL_CERT_DIR"><a class="permalink" href="#SSL_CERT_DIR">SSL_CERT_DIR
     &lt;dir&gt;</a></dt>
@@ -6239,8 +5767,8 @@ http://somewhere.example.com</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-07-31</td>
-    <td class="foot-os">curl 8.9.1</td>
+    <td class="foot-date">2024-09-19</td>
+    <td class="foot-os">curl 8.10.1</td>
   </tr>
 </table>
 </body>
