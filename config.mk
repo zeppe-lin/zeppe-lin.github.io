@@ -16,11 +16,25 @@ HANDBOOK = ${CURDIR}/../handbook
 
 # paths to the man pages for conversion to html
 MANS = \
+       /usr/share/man/man1/bash.1.gz                              \
+       /usr/share/man/man1/chown.1.gz                             \
+       /usr/share/man/man1/curl.1.gz                              \
+       /usr/share/man/man1/dash.1.gz                              \
+       /usr/share/man/man1/diff.1.gz                              \
+       /usr/share/man/man1/fakeroot.1.gz                          \
        /usr/share/man/man1/finddeps-distmeta.1.gz                 \
        /usr/share/man/man1/finddeps-linked.1.gz                   \
        /usr/share/man/man1/finddisappeared.1.gz                   \
        /usr/share/man/man1/finddisowned.1.gz                      \
        /usr/share/man/man1/findredundantdeps.1.gz                 \
+       /usr/share/man/man1/git.1.gz                               \
+       /usr/share/man/man1/gpg.1.gz                               \
+       /usr/share/man/man1/grep.1.gz                              \
+       /usr/share/man/man1/killall.1.gz                           \
+       /usr/share/man/man1/ldd.1.gz                               \
+       /usr/share/man/man1/loadkeys.1.gz                          \
+       /usr/share/man/man1/make.1.gz                              \
+       /usr/share/man/man1/more.1.gz                              \
        /usr/share/man/man1/pkgdiff.1.gz                           \
        /usr/share/man/man1/pkginfo.1.gz                           \
        /usr/share/man/man1/pkglint.1.gz                           \
@@ -45,9 +59,25 @@ MANS = \
        /usr/share/man/man1/pkgman-readme.1.gz                     \
        /usr/share/man/man1/pkgman-search.1.gz                     \
        /usr/share/man/man1/pkgman.1.gz                            \
+       /usr/share/man/man1/pod2html.1pm.gz                        \
        /usr/share/man/man1/revdep.1.gz                            \
+       /usr/share/man/man1/sdiff.1.gz                             \
+       /usr/share/man/man1/setterm.1.gz                           \
+       /usr/share/man/man1/sh.1.gz                                \
+       /usr/share/man/man1/strip.1.gz                             \
+       /usr/share/man/man1/tar.1.gz                               \
+       /usr/share/man/man1/vi.1.gz                                \
+       /usr/share/man/man1/wget.1.gz                              \
+       /usr/share/man/man1p/sh.1p.gz                              \
+       /usr/share/man/man1p/strip.1p.gz                           \
+       /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
+       /usr/share/man/man3/crypt.3.gz                             \
+       /usr/share/man/man3/fnmatch.3.gz                           \
+       /usr/share/man/man3/regex.3.gz                             \
        /usr/share/man/man5/Pkgfile.5.gz                           \
        /usr/share/man/man5/crypttab.5.gz                          \
+       /usr/share/man/man5/fstab.5.gz                             \
+       /usr/share/man/man5/inittab.5.gz                           \
        /usr/share/man/man5/mkinitramfs.config.5.gz                \
        /usr/share/man/man5/mkrootfs.config.5.gz                   \
        /usr/share/man/man5/pkgadd.conf.5.gz                       \
@@ -55,12 +85,22 @@ MANS = \
        /usr/share/man/man5/pkgmk.conf.5.gz                        \
        /usr/share/man/man5/rc.conf.5.gz                           \
        /usr/share/man/man5/rejmerge.conf.5.gz                     \
+       /usr/share/man/man5/sysfs.5.gz                             \
+       /usr/share/man/man5/tmpfs.5.gz                             \
        /usr/share/man/man7/mkinitramfs.cmdline.7.gz               \
        /usr/share/man/man7/mkinitramfs.hooks.7.gz                 \
        /usr/share/man/man7/mkrootfs.release.7.gz                  \
+       /usr/share/man/man8/blkid.8.gz                             \
+       /usr/share/man/man8/crond.8.gz                             \
        /usr/share/man/man8/cryptmount.8.gz                        \
+       /usr/share/man/man8/cryptsetup.8.gz                        \
+       /usr/share/man/man8/init.8.gz                              \
+       /usr/share/man/man8/ld.so.8.gz                             \
+       /usr/share/man/man8/mkfs.8.gz                              \
        /usr/share/man/man8/mkinitramfs.8.gz                       \
        /usr/share/man/man8/mkrootfs.8.gz                          \
+       /usr/share/man/man8/mkswap.8.gz                            \
+       /usr/share/man/man8/parted.8.gz                            \
        /usr/share/man/man8/pkgadd.8.gz                            \
        /usr/share/man/man8/pkgman-edit.8.gz                       \
        /usr/share/man/man8/pkgman-install.8.gz                    \
@@ -72,55 +112,16 @@ MANS = \
        /usr/share/man/man8/pkgmk.8.gz                             \
        /usr/share/man/man8/pkgrm.8.gz                             \
        /usr/share/man/man8/rc.8.gz                                \
-       /usr/share/man/man8/rejmerge.8.gz                          \
-       /usr/share/man/man8/seedrng.8.gz                           \
-       /usr/share/man/man8/start-stop-daemon.8.gz                 \
-       /usr/share/man/man8/blkid.8.gz                             \
-       /usr/share/man/man1/chown.1.gz                             \
-       /usr/share/man/man3/crypt.3.gz                             \
-       /usr/share/man/man8/cryptsetup.8.gz                        \
-       /usr/share/man/man1/curl.1.gz                              \
-       /usr/share/man/man1/fakeroot.1.gz                          \
-       /usr/share/man/man3/fnmatch.3.gz                           \
-       /usr/share/man/man5/fstab.5.gz                             \
-       /usr/share/man/man1/gpg.1.gz                               \
-       /usr/share/man/man1/git.1.gz                               \
-       /usr/share/man/man1/grep.1.gz                              \
-       /usr/share/man/man1/killall.1.gz                           \
-       /usr/share/man/man8/ld.so.8.gz                             \
-       /usr/share/man/man1/ldd.1.gz                               \
-       /usr/share/man/man1/loadkeys.1.gz                          \
-       /usr/share/man/man1/make.1.gz                              \
-       /usr/share/man/man8/mkfs.8.gz                              \
-       /usr/share/man/man8/mkswap.8.gz                            \
-       /usr/share/man/man8/parted.8.gz                            \
-       /usr/share/man/man1/pod2html.1pm.gz                        \
-       /usr/share/man/man3/regex.3.gz                             \
-       /usr/share/man/man8/rfkill.8.gz                            \
-       /usr/share/man/man8/setfont.8.gz                           \
-       /usr/share/man/man1/sh.1.gz                                \
-       /usr/share/man/man1p/sh.1p.gz                              \
-       /usr/share/man/man1p/strip.1p.gz                           \
-       /usr/share/man/man8/sudo.8.gz                              \
-       /usr/share/man/man5/sysfs.5.gz                             \
-       /usr/share/man/man5/tmpfs.5.gz                             \
-       /usr/share/man/man8/udevd.8.gz                             \
-       /usr/share/man/man1/wget.1.gz                              \
-       /usr/share/man/man8/wpa_passphrase.8.gz                    \
-       /usr/share/man/man8/init.8.gz                              \
-       /usr/share/man/man5/inittab.5.gz                           \
        /usr/share/man/man8/reboot.8.gz                            \
+       /usr/share/man/man8/rejmerge.8.gz                          \
+       /usr/share/man/man8/rfkill.8.gz                            \
+       /usr/share/man/man8/seedrng.8.gz                           \
+       /usr/share/man/man8/setfont.8.gz                           \
        /usr/share/man/man8/shutdown.8.gz                          \
-       /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
-       /usr/share/man/man8/crond.8.gz                             \
-       /usr/share/man/man1/setterm.1.gz                           \
-       /usr/share/man/man1/vi.1.gz                                \
-       /usr/share/man/man1/more.1.gz                              \
-       /usr/share/man/man1/diff.1.gz                              \
-       /usr/share/man/man1/sdiff.1.gz                             \
-       /usr/share/man/man1/dash.1.gz                              \
-       /usr/share/man/man1/bash.1.gz                              \
-       /usr/share/man/man1/tar.1.gz                               \
+       /usr/share/man/man8/start-stop-daemon.8.gz                 \
+       /usr/share/man/man8/sudo.8.gz                              \
+       /usr/share/man/man8/udevd.8.gz                             \
+       /usr/share/man/man8/wpa_passphrase.8.gz                    \
 
 # path to the output (generated) html files
 DESTDIR = ${CURDIR}/www
