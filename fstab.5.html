@@ -5,9 +5,9 @@
        Title: fstab
       Author: [see the "AUTHOR(S)" section]
    Generator: Asciidoctor 2.0.20
-        Date: 2024-05-28
+        Date: 2025-01-07
       Manual: File formats
-      Source: util-linux 2.40.2
+      Source: util-linux 2.40.3
     Language: English
    -->
 <head>
@@ -46,9 +46,12 @@
     additional steps. For example, on systemd-based systems, it&#x2019;s
     recommended to use <b>systemctl daemon-reload</b> after <b>fstab</b>
     modification.</p>
-<p class="Pp">Each filesystem is described on a separate line. Fields on each
-    line are separated by tabs or spaces. Lines starting with '#' are comments.
-    Blank lines are ignored.</p>
+<p class="Pp">Each filesystem is described on a separate line, with fields
+    separated by tabs or spaces. The line is split into fields before being
+    parsed. This means that any spaces or tabs within the fields must be escaped
+    using \040 or \011, even within quoted strings (e.g.
+    LABEL=&quot;foo\040bar&quot;).</p>
+<p class="Pp">Lines starting with '#' are comments. Blank lines are ignored.</p>
 <p class="Pp">The following is a typical example of an <b>fstab</b> entry:</p>
 <p class="Pp"></p>
 <div class="Bd-indent">
@@ -204,8 +207,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-05-28</td>
-    <td class="foot-os">util-linux 2.40.2</td>
+    <td class="foot-date">2025-01-07</td>
+    <td class="foot-os">util-linux 2.40.3</td>
   </tr>
 </table>
 </body>

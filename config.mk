@@ -76,6 +76,7 @@ MANS = \
        /usr/share/man/man3/libelf.3.gz                            \
        /usr/share/man/man3/regex.3.gz                             \
        /usr/share/man/man5/Pkgfile.5.gz                           \
+       /usr/share/man/man5/acl.5.gz                               \
        /usr/share/man/man5/crypttab.5.gz                          \
        /usr/share/man/man5/fstab.5.gz                             \
        /usr/share/man/man5/inittab.5.gz                           \
@@ -92,6 +93,7 @@ MANS = \
        /usr/share/man/man7/mkinitramfs.cmdline.7.gz               \
        /usr/share/man/man7/mkinitramfs.hooks.7.gz                 \
        /usr/share/man/man7/mkrootfs.release.7.gz                  \
+       /usr/share/man/man7/xattr.7.gz                             \
        /usr/share/man/man8/blkid.8.gz                             \
        /usr/share/man/man8/crond.8.gz                             \
        /usr/share/man/man8/cryptmount.8.gz                        \
