@@ -1,128 +1,285 @@
 <!DOCTYPE html>
 <html>
 <!-- This is an automatically generated file.  Do not edit.
-   t
-   Michael Haardt (michael@cantor.informatik.rwth.aachen.de)
-       Sat Sep  3 22:00:30 MET DST 1994
+   Written and revised by Solar Designer <solar at openwall.com> in 2000-2011.
+   Revised by Zack Weinberg <zackw at panix.com> in 2017.
+   Converted to mdoc format by Zack Weinberg in 2018.
   
-   SPDX-License-Identifier: GPL-2.0-or-later
+   No copyright is claimed, and this man page is hereby placed in the public
+   domain.  In case this attempt to disclaim copyright and place the man page
+   in the public domain is deemed null and void, then the man page is
+   Copyright 2000-2011 Solar Designer, 2017, 2018 Zack Weinberg, and it is
+   hereby released to the general public under the following terms:
   
-   Sun Feb 19 21:32:25 1995, faith@cs.unc.edu edited details away
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted.
   
-   TO DO: This manual page should go more into detail how DES is perturbed,
-   which string will be encrypted, and what determines the repetition factor.
-   Is a simple repetition using ECB used, or something more advanced?  I hope
-   the presented explanations are at least better than nothing, but by no
-   means enough.
-  
-   added _XOPEN_SOURCE, aeb, 970705
-   added GNU MD5 stuff, aeb, 011223
+   There's ABSOLUTELY NO WARRANTY, express or implied.
    -->
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="mandoc.css" type="text/css" media="all"/>
-  <title>crypt(3)</title>
+  <title>CRYPT(3)</title>
 </head>
 <body>
 <table class="head">
   <tr>
-    <td class="head-ltitle">crypt(3)</td>
+    <td class="head-ltitle">CRYPT(3)</td>
     <td class="head-vol">Library Functions Manual</td>
-    <td class="head-rtitle">crypt(3)</td>
+    <td class="head-rtitle">CRYPT(3)</td>
   </tr>
 </table>
 <div class="manual-text">
 <section class="Sh">
 <h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
-<p class="Pp">crypt, crypt_r - password hashing</p>
+<p class="Pp"><code class="Nm">crypt</code>, <code class="Nm">crypt_r</code>,
+    <code class="Nm">crypt_rn</code>, <code class="Nm">crypt_ra</code> &#x2014;
+    <span class="Nd">passphrase hashing</span></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
-<p class="Pp">Password hashing library (<i>libcrypt</i>, <i>-lcrypt</i>)</p>
+<p class="Pp"><span class="Lb">Crypt Library (libcrypt, -lcrypt)</span></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<pre><b>#include &lt;unistd.h&gt;</b></pre>
-<pre><b>char *crypt(const char *</b><i>key</i><b>, const char *</b><i>salt</i><b>);</b></pre>
-<pre><b>#include &lt;crypt.h&gt;</b></pre>
-<pre><b>char *crypt_r(const char *</b><i>key</i><b>, const char *</b><i>salt</i><b>,</b>
-<b>              struct crypt_data *restrict </b><i>data</i><b>);</b></pre>
-<p class="Pp"></p>
-<div class="Bd-indent">Feature Test Macro Requirements for glibc (see
-  <b>feature_test_macros</b>(7)):</div>
-<p class="Pp"><b>crypt</b>():</p>
-<pre>
-<br/>
-    Since glibc 2.28:
-<br/>
-        _DEFAULT_SOURCE
-<br/>
-    glibc 2.27 and earlier:
-<br/>
-        _XOPEN_SOURCE</pre>
-<p class="Pp"><b>crypt_r</b>():</p>
-<pre>
-<br/>
-    _GNU_SOURCE</pre>
+<p class="Pp"><code class="In">#include
+    &lt;<a class="In" href="%N.%S.html">crypt.h</a>&gt;</code></p>
+<p class="Pp"><var class="Ft">char *</var>
+  <br/>
+  <code class="Fn">crypt</code>(<var class="Fa">const char *phrase</var>,
+    <var class="Fa">const char *setting</var>);</p>
+<p class="Pp"><var class="Ft">char *</var>
+  <br/>
+  <code class="Fn">crypt_r</code>(<var class="Fa">const char *phrase</var>,
+    <var class="Fa">const char *setting</var>, <var class="Fa">struct crypt_data
+    *data</var>);</p>
+<p class="Pp"><var class="Ft">char *</var>
+  <br/>
+  <code class="Fn">crypt_rn</code>(<var class="Fa">const char *phrase</var>,
+    <var class="Fa">const char *setting</var>, <var class="Fa">struct crypt_data
+    *data</var>, <var class="Fa">int size</var>);</p>
+<p class="Pp"><var class="Ft">char *</var>
+  <br/>
+  <code class="Fn">crypt_ra</code>(<var class="Fa">const char *phrase</var>,
+    <var class="Fa">const char *setting</var>, <var class="Fa">void
+    **data</var>, <var class="Fa">int *size</var>);</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp"><b>crypt</b>() is the password hashing function. It is based on
-    the Data Encryption Standard algorithm with variations intended (among other
-    things) to discourage use of hardware implementations of a key search.</p>
-<p class="Pp"><i>key</i> is a user's typed password.</p>
-<p class="Pp"><i>salt</i> is a two-character string chosen from the set
-    [<b>a-zA-Z0-9./</b>]. This string is used to perturb the algorithm in one of
-    4096 different ways.</p>
-<p class="Pp">By taking the lowest 7 bits of each of the first eight characters
-    of the <i>key</i>, a 56-bit key is obtained. This 56-bit key is used to
-    encrypt repeatedly a constant string (usually a string consisting of all
-    zeros). The returned value points to the hashed password, a series of 13
-    printable ASCII characters (the first two characters represent the salt
-    itself). The return value points to static data whose content is overwritten
-    by each call.</p>
-<p class="Pp">Warning: the key space consists of 2**56 equal 7.2e16 possible
-    values. Exhaustive searches of this key space are possible using massively
-    parallel computers. Software, such as <b>crack</b>(1), is available which
-    will search the portion of this key space that is generally used by humans
-    for passwords. Hence, password selection should, at minimum, avoid common
-    words and names. The use of a <b>passwd</b>(1) program that checks for
-    crackable passwords during the selection process is recommended.</p>
-<p class="Pp">The DES algorithm itself has a few quirks which make the use of
-    the <b>crypt</b>() interface a very poor choice for anything other than
-    password authentication. If you are planning on using the <b>crypt</b>()
-    interface for a cryptography project, don't do it: get a good book on
-    encryption and one of the widely available DES libraries.</p>
-<p class="Pp"><b>crypt_r</b>() is a reentrant version of <b>crypt</b>(). The
-    structure pointed to by <i>data</i> is used to store result data and
-    bookkeeping information. Other than allocating it, the only thing that the
-    caller should do with this structure is to set <i>data-&gt;initialized</i>
-    to zero before the first call to <b>crypt_r</b>().</p>
+<p class="Pp">The <code class="Nm">crypt</code>,
+    <code class="Nm">crypt_r</code>, <code class="Nm">crypt_rn</code>, and
+    <code class="Nm">crypt_ra</code> functions irreversibly &#x201C;hash&#x201D;
+    <var class="Fa">phrase</var> for storage in the system password database
+    (<a class="Xr" href="shadow.5.html">shadow(5)</a>) using a cryptographic
+    &#x201C;hashing method.&#x201D; The result of this operation is called a
+    &#x201C;hashed passphrase&#x201D; or just a &#x201C;hash.&#x201D; Hashing
+    methods are described in <a class="Xr" href="crypt.5.html">crypt(5)</a>.</p>
+<p class="Pp"><var class="Fa">setting</var> controls which hashing method to
+    use, and also supplies various parameters to the chosen method, most
+    importantly a random &#x201C;salt&#x201D; which ensures that no two stored
+    hashes are the same, even if the <var class="Fa">phrase</var> strings are
+    the same.</p>
+<p class="Pp">The <var class="Fa">data</var> argument to
+    <code class="Nm">crypt_r</code> is a structure of type
+    <var class="Vt">struct crypt_data</var>. It has at least these fields:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>struct crypt_data {
+    char output[CRYPT_OUTPUT_SIZE];
+    char setting[CRYPT_OUTPUT_SIZE];
+    char input[CRYPT_MAX_PASSPHRASE_SIZE];
+    char initialized;
+};</pre>
+</div>
+<p class="Pp">Upon a successful return from <code class="Nm">crypt_r</code>, the
+    hashed passphrase will be stored in <var class="Fa">output</var>.
+    Applications are encouraged, but not required, to use the
+    <var class="Fa">input</var> and <var class="Fa">setting</var> fields to
+    store the strings that they will pass as <var class="Fa">input phrase</var>
+    and <var class="Fa">setting</var> to <code class="Nm">crypt_r</code>. This
+    will make it easier to erase all sensitive data after it is no longer
+    needed.</p>
+<p class="Pp" id="crypt_r">The <var class="Fa">initialized</var> field must be
+    set to zero before the first time a <var class="Vt">struct crypt_data</var>
+    object is first used in a call to
+    <a class="permalink" href="#crypt_r"><code class="Fn">crypt_r</code></a>().
+    We recommend zeroing the entire object, not just
+    <var class="Fa">initialized</var> and not just the documented fields, before
+    the first use. (Of course, do this before storing anything in
+    <var class="Fa">setting</var> and <var class="Fa">input</var>.)</p>
+<p class="Pp">The <var class="Fa">data</var> argument to
+    <code class="Nm">crypt_rn</code> should also point to a
+    <var class="Vt">struct crypt_data</var> object, and
+    <var class="Fa">size</var> should be the size of that object, cast to
+    <var class="Vt">int</var>. When used with <code class="Nm">crypt_rn</code>,
+    the entire <var class="Fa">data</var> object (except for the
+    <var class="Fa">input</var> and <var class="Fa">setting</var> fields) must
+    be zeroed before its first use; this is not just a recommendation, as it is
+    for <code class="Nm">crypt_r</code>. Otherwise, the fields of the object
+    have the same uses that they do for <code class="Nm">crypt_r</code>.</p>
+<p class="Pp">On the first call to <code class="Nm">crypt_ra</code>,
+    <var class="Fa">data</var> should be the address of a <var class="Vt">void
+    *</var> variable set to NULL, and <var class="Fa">size</var> should be the
+    address of an <var class="Vt">int</var> variable set to zero.
+    <code class="Nm">crypt_ra</code> will allocate and initialize a
+    <var class="Vt">struct crypt_data</var> object, using
+    <a class="Xr" href="malloc.3.html">malloc(3)</a>, and write its address and
+    size into the variables pointed to by <var class="Fa">data</var> and
+    <var class="Fa">size</var>. These can be reused in subsequent calls. After
+    the application is done hashing passphrases, it should deallocate the
+    <var class="Vt">struct crypt_data</var> object using
+    <a class="Xr" href="free.3.html">free(3)</a>.</p>
 </section>
 <section class="Sh">
-<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
-  VALUE</a></h1>
-<p class="Pp">On success, a pointer to the hashed password is returned. On
-    error, NULL is returned.</p>
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">Upon successful completion, <code class="Nm">crypt</code>,
+    <code class="Nm">crypt_r</code>, <code class="Nm">crypt_rn</code>, and
+    <code class="Nm">crypt_ra</code> return a pointer to a string which encodes
+    both the hashed passphrase, and the settings that were used to encode it.
+    This string is directly usable as <var class="Fa">setting</var> in other
+    calls to <code class="Nm">crypt</code>, <code class="Nm">crypt_r</code>,
+    <code class="Nm">crypt_rn</code>, and <code class="Nm">crypt_ra</code>, and
+    as <var class="Fa">prefix</var> in calls to
+    <code class="Nm">crypt_gensalt</code>,
+    <code class="Nm">crypt_gensalt_rn</code>, and
+    <code class="Nm">crypt_gensalt_ra</code>. It will be entirely printable
+    ASCII, and will not contain whitespace or the characters
+    &#x2018;<code class="Li">:</code>&#x2019;,
+    &#x2018;<code class="Li">;</code>&#x2019;,
+    &#x2018;<code class="Li">*</code>&#x2019;,
+    &#x2018;<code class="Li">!</code>&#x2019;, or
+    &#x2018;<code class="Li">\</code>&#x2019;. See
+    <a class="Xr" href="crypt.5.html">crypt(5)</a> for more detail on the format
+    of hashed passphrases.</p>
+<p class="Pp"><code class="Nm">crypt</code> places its result in a static
+    storage area, which will be overwritten by subsequent calls to
+    <code class="Nm">crypt</code>. It is not safe to call
+    <code class="Nm">crypt</code> from multiple threads simultaneously.</p>
+<p class="Pp"><code class="Nm">crypt_r</code>, <code class="Nm">crypt_rn</code>,
+    and <code class="Nm">crypt_ra</code> place their result in the
+    <var class="Fa">output</var> field of their <var class="Fa">data</var>
+    argument. It is safe to call them from multiple threads simultaneously, as
+    long as a separate <var class="Fa">data</var> object is used for each
+    thread.</p>
+<p class="Pp" id="invalid">Upon error, <code class="Nm">crypt_r</code>,
+    <code class="Nm">crypt_rn</code>, and <code class="Nm">crypt_ra</code> write
+    an <a class="permalink" href="#invalid"><i class="Em">invalid</i></a> hash
+    to the <var class="Fa">output</var> field of their
+    <var class="Fa">data</var> argument, and <code class="Nm">crypt</code>
+    writes an invalid hash to its static storage area. This string will be
+    shorter than 13 characters, will begin with a
+    &#x2018;<code class="Li">*</code>&#x2019;, and will not compare equal to
+    <var class="Fa">setting</var>.</p>
+<p class="Pp">Upon error, <code class="Nm">crypt_rn</code> and
+    <code class="Nm">crypt_ra</code> return a null pointer.
+    <code class="Nm">crypt_r</code> and <code class="Nm">crypt</code> may also
+    return a null pointer, or they may return a pointer to the invalid hash,
+    depending on how libcrypt was configured. (The option to return the invalid
+    hash is for compatibility with old applications that assume that
+    <code class="Nm">crypt</code> cannot return a null pointer. See
+    <a class="Sx" href="#PORTABILITY_NOTES">PORTABILITY NOTES</a> below.)</p>
+<p class="Pp">All four functions set <var class="Va">errno</var> when they fail.
+    When the functions succeed, the value of <var class="Va">errno</var> is
+    unspecified and must not be relied upon.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
 <dl class="Bl-tag">
-  <dt id="EINVAL"><a class="permalink" href="#EINVAL"><b>EINVAL</b></a></dt>
-  <dd><i>salt</i> has the wrong format.</dd>
-  <dt id="ENOSYS"><a class="permalink" href="#ENOSYS"><b>ENOSYS</b></a></dt>
-  <dd>The <b>crypt</b>() function was not implemented, probably because of
-      U.S.A. export restrictions.</dd>
-  <dt id="EPERM"><a class="permalink" href="#EPERM"><b>EPERM</b></a></dt>
-  <dd><i>/proc/sys/crypto/fips_enabled</i> has a nonzero value, and an attempt
-      was made to use a weak hashing type, such as DES.</dd>
+  <dt id="EINVAL"><a class="permalink" href="#EINVAL"><code class="Er">EINVAL</code></a></dt>
+  <dd><var class="Fa">setting</var> is invalid, or requests a hashing method
+      that is not supported.</dd>
+  <dt id="ERANGE"><a class="permalink" href="#ERANGE"><code class="Er">ERANGE</code></a></dt>
+  <dd><var class="Fa">phrase</var> is too long (more than
+      <code class="Dv">CRYPT_MAX_PASSPHRASE_SIZE</code> characters; some hashing
+      methods may have lower limits).
+    <br/>
+    <code class="Nm">crypt_rn</code> only: <var class="Fa">size</var> is too
+      small for the hashing method requested by
+    <var class="Fa">setting</var>.</dd>
+  <dt id="ENOMEM"><a class="permalink" href="#ENOMEM"><code class="Er">ENOMEM</code></a></dt>
+  <dd>Failed to allocate internal scratch memory.
+    <br/>
+    <code class="Nm">crypt_ra</code> only: failed to allocate memory for
+      <var class="Fa">data</var>.</dd>
+  <dt id="ENOSYS"><a class="permalink" href="#ENOSYS"><code class="Er">ENOSYS</code></a>
+    <span class="No">or</span>
+    <a class="permalink" href="#EOPNOTSUPP"><code class="Er" id="EOPNOTSUPP">EOPNOTSUPP</code></a></dt>
+  <dd>Hashing passphrases is not supported at all on this installation, or the
+      hashing method requested by <var class="Fa">setting</var> is not
+      supported. These error codes are not used by this version of libcrypt, but
+      may be encountered on other systems.</dd>
 </dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="PORTABILITY_NOTES"><a class="permalink" href="#PORTABILITY_NOTES">PORTABILITY
+  NOTES</a></h1>
+<p class="Pp"><code class="Nm">crypt</code> is included in POSIX, but
+    <code class="Nm">crypt_r</code>, <code class="Nm">crypt_rn</code>, and
+    <code class="Nm">crypt_ra</code> are not part of any standard.</p>
+<p class="Pp">POSIX does not specify any hashing methods, and does not require
+    hashed passphrases to be portable between systems. In practice, hashed
+    passphrases are portable as long as both systems support the hashing method
+    that was used. However, the set of supported hashing methods varies
+    considerably from system to system.</p>
+<p class="Pp">The behavior of <code class="Nm">crypt</code> on errors isn't well
+    standardized. Some implementations simply can't fail (except by crashing the
+    program), others return a null pointer or a fixed string. Most
+    implementations don't set <var class="Va">errno</var>, but some do. POSIX
+    specifies returning a null pointer and setting <var class="Va">errno</var>,
+    but it defines only one possible error, <code class="Er">ENOSYS</code>, in
+    the case where <code class="Nm">crypt</code> is not supported at all. Some
+    older applications are not prepared to handle null pointers returned by
+    <code class="Nm">crypt</code>. The behavior described above for this
+    implementation, setting <var class="Va">errno</var> and returning an invalid
+    hash different from <var class="Fa">setting</var>, is chosen to make these
+    applications fail closed when an error occurs.</p>
+<p class="Pp">Due to historical restrictions on the export of cryptographic
+    software from the USA, <code class="Nm">crypt</code> is an optional POSIX
+    component. Applications should therefore be prepared for
+    <code class="Nm">crypt</code> not to be available, or to always fail
+    (setting <var class="Va">errno</var> to <code class="Er">ENOSYS</code>) at
+    runtime.</p>
+<p class="Pp">POSIX specifies that <code class="Nm">crypt</code> is declared in
+    <code class="In">&lt;<a class="In" href="%N.%S.html">unistd.h</a>&gt;</code>,
+    but only if the macro <code class="Dv">_XOPEN_CRYPT</code> is defined and
+    has a value greater than or equal to zero. Since libcrypt does not provide
+    <code class="In">&lt;<a class="In" href="%N.%S.html">unistd.h</a>&gt;</code>,
+    it declares <code class="Nm">crypt</code>, <code class="Nm">crypt_r</code>,
+    <code class="Nm">crypt_rn</code>, and <code class="Nm">crypt_ra</code> in
+    <code class="In">&lt;<a class="In" href="%N.%S.html">crypt.h</a>&gt;</code>
+    instead.</p>
+<p class="Pp">On a minority of systems (notably recent versions of Solaris),
+    <code class="Nm">crypt</code> uses a thread-specific static storage buffer,
+    which makes it safe to call from multiple threads simultaneously, but does
+    not prevent each call within a thread from overwriting the results of the
+    previous one.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">Some implementations of <code class="Nm">crypt</code>, upon error,
+    return an invalid hash that is stored in a read-only location or only
+    initialized once, which means that it is only safe to erase the buffer
+    pointed to by the <code class="Nm">crypt</code> return value if an error did
+    not occur.</p>
+<p class="Pp"><var class="Vt">struct crypt_data</var> may be quite large (32kB
+    in this implementation of libcrypt; over 128kB in some other
+    implementations). This is large enough that it may be unwise to allocate it
+    on the stack.</p>
+<p class="Pp">Some recently designed hashing methods need even more scratch
+    memory, but the <code class="Nm">crypt_r</code> interface makes it
+    impossible to change the size of <var class="Vt">struct crypt_data</var>
+    without breaking binary compatibility. The <code class="Nm">crypt_rn</code>
+    interface could accommodate larger allocations for specific hashing methods,
+    but the caller of <code class="Nm">crypt_rn</code> has no way of knowing how
+    much memory to allocate. <code class="Nm">crypt_ra</code> does the
+    allocation itself, but can only make a single call to
+    <a class="Xr" href="malloc.3.html">malloc(3)</a>.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
 <p class="Pp">For an explanation of the terms used in this section, see
-    <b>attributes</b>(7).</p>
+    <a class="Xr" href="attributes.7.html">attributes(7)</a>.</p>
 <table class="tbl" border="1" style="border-style: solid;">
   <tr>
     <td><b>Interface</b></td>
@@ -130,139 +287,49 @@
     <td><b>Value</b></td>
   </tr>
   <tr>
-    <td>crypt ()</td>
+    <td>crypt</td>
     <td>Thread safety</td>
     <td>MT-Unsafe race:crypt</td>
   </tr>
   <tr>
-    <td>crypt_r ()</td>
+    <td>crypt_r , crypt_rn , crypt_ra</td>
     <td>Thread safety</td>
     <td>MT-Safe</td>
   </tr>
 </table>
-</section>
-<section class="Sh">
-<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
-<dl class="Bl-tag">
-  <dt id="crypt"><a class="permalink" href="#crypt"><b>crypt</b>()</a></dt>
-  <dd>POSIX.1-2008.</dd>
-  <dt id="crypt_r"><a class="permalink" href="#crypt_r"><b>crypt_r</b>()</a></dt>
-  <dd>GNU.</dd>
-</dl>
+<p class="Pp"></p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
-<dl class="Bl-tag">
-  <dt id="crypt~2"><a class="permalink" href="#crypt~2"><b>crypt</b>()</a></dt>
-  <dd>POSIX.1-2001, SVr4, 4.3BSD.</dd>
-</dl>
-<section class="Ss">
-<h2 class="Ss" id="Availability_in_glibc"><a class="permalink" href="#Availability_in_glibc">Availability
-  in glibc</a></h2>
-<p class="Pp">The <b>crypt</b>(), <b>encrypt</b>(3), and <b>setkey</b>(3)
-    functions are part of the POSIX.1-2008 XSI Options Group for Encryption and
-    are optional. If the interfaces are not available, then the symbolic
-    constant <b>_XOPEN_CRYPT</b> is either not defined, or it is defined to -1
-    and availability can be checked at run time with <b>sysconf</b>(3). This may
-    be the case if the downstream distribution has switched from glibc crypt to
-    <i>libxcrypt</i>. When recompiling applications in such distributions, the
-    programmer must detect if <b>_XOPEN_CRYPT</b> is not available and include
-    <i>&lt;crypt.h&gt;</i> for the function prototypes; otherwise
-    <i>libxcrypt</i> is an ABI-compatible drop-in replacement.</p>
-</section>
-</section>
-<section class="Sh">
-<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
-<section class="Ss">
-<h2 class="Ss" id="Features_in_glibc"><a class="permalink" href="#Features_in_glibc">Features
-  in glibc</a></h2>
-<p class="Pp">The glibc version of this function supports additional hashing
-    algorithms.</p>
-<p class="Pp">If <i>salt</i> is a character string starting with the characters
-    &quot;$<i>id</i>$&quot; followed by a string optionally terminated by
-    &quot;$&quot;, then the result has the form:</p>
-<div class="Bd-indent">
-<p class="Pp">$<i>id</i>$<i>salt</i>$<i>hashed</i></p>
-</div>
-<p class="Pp"><i>id</i> identifies the hashing method used instead of DES and
-    this then determines how the rest of the password string is interpreted. The
-    following values of <i>id</i> are supported:</p>
-<div class="Bd-indent">
-<table class="tbl">
-  <tr style="border-bottom-style: solid;">
-    <td><b>ID</b></td>
-    <td><b>Method</b></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>MD5</td>
-  </tr>
-  <tr>
-    <td>2a</td>
-    <td>Blowfish (not in mainline glibc; added in some Linux distributions)</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>SHA-256 (since glibc 2.7)</td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td>SHA-512 (since glibc 2.7)</td>
-  </tr>
-</table>
-</div>
-<p class="Pp">Thus, $5$<i>salt</i>$<i>hashed</i> and
-    $6$<i>salt</i>$<i>hashed</i> contain the password hashed with, respectively,
-    functions based on SHA-256 and SHA-512.</p>
-<p class="Pp">&quot;<i>salt</i>&quot; stands for the up to 16 characters
-    following &quot;$<i>id</i>$&quot; in the salt. The &quot;<i>hashed</i>&quot;
-    part of the password string is the actual computed password. The size of
-    this string is fixed:</p>
-<div class="Bd-indent">
-<table class="tbl">
-  <tr>
-    <td><b>MD5</b></td>
-    <td>22 characters</td>
-  </tr>
-  <tr>
-    <td><b>SHA-256</b></td>
-    <td>43 characters</td>
-  </tr>
-  <tr>
-    <td><b>SHA-512</b></td>
-    <td>86 characters</td>
-  </tr>
-</table>
-</div>
-<p class="Pp">The characters in &quot;<i>salt</i>&quot; and
-    &quot;<i>hashed</i>&quot; are drawn from the set [<b>a-zA-Z0-9./</b>]. In
-    the MD5 and SHA implementations the entire <i>key</i> is significant
-    (instead of only the first 8 bytes in DES).</p>
-<p class="Pp">Since glibc 2.7, the SHA-256 and SHA-512 implementations support a
-    user-supplied number of hashing rounds, defaulting to 5000. If the
-    &quot;$<i>id</i>$&quot; characters in the salt are followed by
-    &quot;rounds=<i>xxx</i>$&quot;, where <i>xxx</i> is an integer, then the
-    result has the form</p>
-<div class="Bd-indent">
-<p class="Pp">$<i>id</i>$<i>rounds=yyy</i>$<i>salt</i>$<i>hashed</i></p>
-</div>
-<p class="Pp">where <i>yyy</i> is the number of hashing rounds actually used.
-    The number of rounds actually used is 1000 if <i>xxx</i> is less than 1000,
-    999999999 if <i>xxx</i> is greater than 999999999, and is equal to
-    <i>xxx</i> otherwise.</p>
-</section>
+<p class="Pp">A rotor-based <code class="Nm">crypt</code> function appeared in
+    <span class="Ux">Version&#x00A0;6 AT&amp;T UNIX</span>. The
+    &#x201C;traditional&#x201D; DES-based <code class="Nm">crypt</code> first
+    appeared in <span class="Ux">Version&#x00A0;7 AT&amp;T UNIX</span>.</p>
+<p class="Pp"><code class="Nm">crypt_r</code> originates with the GNU C Library.
+    There's also a <code class="Nm">crypt_r</code> function on HP-UX and MKS
+    Toolkit, but the prototypes and semantics differ.</p>
+<p class="Pp"><code class="Nm">crypt_rn</code> and
+    <code class="Nm">crypt_ra</code> originate with the Openwall project.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
   ALSO</a></h1>
-<p class="Pp"><b>login</b>(1), <b>passwd</b>(1), <b>encrypt</b>(3),
-    <b>getpass</b>(3), <b>passwd</b>(5)</p>
+<p class="Pp"><a class="Xr" href="crypt_gensalt.3.html">crypt_gensalt(3)</a>,
+    <a class="Xr" href="getpass.3.html">getpass(3)</a>,
+    <a class="Xr" href="getpwent.3.html">getpwent(3)</a>,
+    <a class="Xr" href="shadow.3.html">shadow(3)</a>,
+    <a class="Xr" href="login.1.html">login(1)</a>,
+    <a class="Xr" href="passwd.1.html">passwd(1)</a>,
+    <a class="Xr" href="crypt.5.html">crypt(5)</a>,
+    <a class="Xr" href="passwd.5.html">passwd(5)</a>,
+    <a class="Xr" href="shadow.5.html">shadow(5)</a>,
+    <a class="Xr" href="pam.8.html">pam(8)</a></p>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-05-02</td>
-    <td class="foot-os">Linux man-pages 6.9.1</td>
+    <td class="foot-date">October 11, 2017</td>
+    <td class="foot-os">Openwall Project</td>
   </tr>
 </table>
 </body>

@@ -75,7 +75,8 @@
 <h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
 <p class="Pp">The following environment variables affect the execution of
     <code class="Nm">rejmerge</code>:</p>
-<dl class="Bl-tag">
+<p class="Pp"></p>
+<dl class="Bl-tag Bl-compact">
   <dt id="EDITOR"><a class="permalink" href="#EDITOR"><code class="Ev">EDITOR</code></a></dt>
   <dd>The editor to use instead of
     <a class="Xr" href="vi.1.html">vi(1)</a>.</dd>
@@ -94,9 +95,23 @@
 <h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
 <dl class="Bl-tag Bl-compact">
   <dt><span class="Pa">/etc/rejmerge.conf</span></dt>
-  <dd>Configuration file.</dd>
+  <dd>Default <code class="Nm">rejmerge</code> configuration file.</dd>
   <dt><span class="Pa">/var/lib/pkg/rejected/</span></dt>
   <dd>Directory where rejected files are stored.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag Bl-compact">
+  <dt>0</dt>
+  <dd>No error occurred.</dd>
+  <dt>&gt;0</dt>
+  <dd>Generic error code.</dd>
+  <dt>126</dt>
+  <dd>Command invoked cannot execute.</dd>
+  <dt>130</dt>
+  <dd>Script interrupted or terminated by CTRL+C.</dd>
 </dl>
 </section>
 <section class="Sh">
@@ -106,19 +121,18 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
-<p class="Pp">The original implementation of <code class="Nm">rejmerge</code>
-    was done by <span class="An">Per Lid&#x00E9;n</span>
-    &lt;<a class="Mt" href="mailto:per@fukt.bth.se">per@fukt.bth.se</a>&gt;, the
-    author of <a class="Lk" href="http://crux.nu">CRUX</a>, as part of
-    &#x201C;pkgutils&#x201D; package, and was maintained for years (and still
-    maintaining) by CRUX team.</p>
-<p class="Pp">This implementation was extensively re-worked for
-    <a class="Lk" href="https://zeppe-lin.github.io">Zeppe-Lin</a> by
-    <span class="An">Alexandr Savca</span>
+<p class="Pp">Originally written by <span class="An">Per Lid&#x00E9;n</span>
+    &lt;<a class="Mt" href="mailto:per@fukt.bth.se">per@fukt.bth.se</a>&gt; as
+    part of
+    &#x201C;<a class="permalink" href="#pkgutils"><b class="Sy" id="pkgutils">pkgutils</b></a>&#x201D;
+    package for <a class="Lk" href="http://crux.nu">CRUX</a>.</p>
+<p class="Pp">This implementation was extensively re-worked for Zeppe-Lin by
+  <br/>
+  <span class="An">Alexandr Savca</span>
     &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
 </section>
 <section class="Sh">
-<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
 <p class="Pp">While only root can merge system files, the
     <b class="Sy">-n</b>/<a class="permalink" href="#-dry-run"><b class="Sy" id="-dry-run">--dry-run</b></a>
     option allows running <code class="Nm">rejmerge</code> as a regular user to
@@ -139,7 +153,7 @@ diff: /var/lib/pkg/rejected/etc/tor/torrc: Permission denied
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">June 19, 2024</td>
+    <td class="foot-date">December 27, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

@@ -47,11 +47,11 @@
 <p class="Pp">If the <i>-d</i> (or <i>--default</i> ) option is given,
     <b>loadkeys</b> loads a default keymap, probably the file
     <i>defkeymap.map</i> either in <i>/usr/share/kbd/keymaps</i> or in
-    <i>/usr/src/linux/drivers/char</i>. (Probably the former was user-defined,
+    <i>/usr/src/linux/drivers/tty/vt</i>. (Probably the former was user-defined,
     while the latter is a qwerty keyboard map for PCs - maybe not what was
     desired.) Sometimes, with a strange keymap loaded (with the minus on some
     obscure unknown modifier combination) it is easier to type `loadkeys
-    defkeymap'.</p>
+    defkeymap.map'.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="LOAD_KERNEL_KEYMAP"><a class="permalink" href="#LOAD_KERNEL_KEYMAP">LOAD
@@ -108,7 +108,7 @@ string F71 = &quot;Goodbye!&quot;</div>
   KERNEL SOURCE TABLE</a></h1>
 <p class="Pp">If the <i>-m</i> (or <i>--mktable</i> ) option is given
     <b>loadkeys</b> prints to the standard output a file that may be used as
-    <i>/usr/src/linux/drivers/char/defkeymap.c,</i> specifying the default key
+    <i>/usr/src/linux/drivers/tty/vt/defkeymap.c,</i> specifying the default key
     bindings for a kernel (and does not modify the current keymap).</p>
 </section>
 <section class="Sh">
@@ -167,7 +167,7 @@ string F71 = &quot;Goodbye!&quot;</div>
 <dl class="Bl-tag">
   <dt><i>/usr/share/kbd/keymaps</i></dt>
   <dd>default directory for keymaps.</dd>
-  <dt><i>/usr/src/linux/drivers/char/defkeymap.map</i></dt>
+  <dt><i>/usr/src/linux/drivers/tty/vt/defkeymap.map</i></dt>
   <dd>default kernel keymap.</dd>
 </dl>
 </section>

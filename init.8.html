@@ -67,9 +67,9 @@
     allows only a selected group of processes to exist. The processes spawned by
     <b>init</b> for each of these runlevels are defined in the
     <i>/etc/inittab</i> file. <b>init</b> can be in one of eight runlevels:
-    <b>0&#x2013;6</b> and <b>S</b> (a.k.a. <b>s</b>). The runlevel is changed by
-    having a privileged user run <b>telinit</b>, which sends appropriate signals
-    to <b>init</b>, telling it which runlevel to change to.</p>
+    <b>0&#x2013;6</b> and <b>S</b> (a.k.a., <b>s</b>). The runlevel is changed
+    by having a privileged user run <b>telinit</b>, which sends appropriate
+    signals to <b>init</b>, telling it which runlevel to change to.</p>
 <p class="Pp">Runlevels <b>S</b>, <b>0</b>, <b>1</b>, and <b>6</b> are reserved.
     Runlevel S is used to initialize the system on boot. When starting runlevel
     S (on boot) or runlevel 1 (switching from a multi-user runlevel) the system
@@ -83,8 +83,8 @@
     reboots the system.</p>
 <p class="Pp">For more information, see the manpages for <b>shutdown</b>(8) and
     <b>inittab</b>(5).</p>
-<p class="Pp">Runlevels 7-9 are also valid, though not really documented. This
-    is because &quot;traditional&quot; Unix variants don't use them.</p>
+<p class="Pp">Runlevels 7&#x2013;9 are also valid, though not really documented.
+    This is because &quot;traditional&quot; Unix variants don't use them.</p>
 <p class="Pp">Runlevels <i>S</i> and <i>s</i> are the same. Internally they are
     aliases for the same runlevel.</p>
 </section>
@@ -144,8 +144,8 @@
     if it has read the letter <b>F</b>.</p>
 <p class="Pp">Usage of <b>SIGPWR</b> and <i>/etc/powerstatus</i> is discouraged.
     Someone wanting to interact with <b>init</b> should use the
-    <i>/run/initctl</i> control channel - see the <b>initctl</b>(5) manual page
-    for more documentation about this.</p>
+    <i>/run/initctl</i> control channel &#x2013; see the <b>initctl</b>(5)
+    manual page for more documentation about this.</p>
 <p class="Pp">When <b>init</b> is requested to change the runlevel, it sends the
     warning signal <b>SIGTERM</b> to all processes that are undefined in the new
     runlevel. It then waits 3 seconds before forcibly terminating these
@@ -215,14 +215,14 @@
 <section class="Sh">
 <h1 class="Sh" id="BOOTFLAGS"><a class="permalink" href="#BOOTFLAGS">BOOTFLAGS</a></h1>
 <p class="Pp">It is possible to pass a number of flags to <b>init</b> from the
-    boot monitor (eg. LILO or GRUB). <b>init</b> accepts the following
+    boot monitor (e.g., LILO or GRUB). <b>init</b> accepts the following
   flags:</p>
 <dl class="Bl-tag">
   <dt id="s,"><a class="permalink" href="#s,"><b>-s, S, single</b></a></dt>
   <dd>Single user mode boot. In this mode <i>/etc/inittab</i> is examined and
       the bootup rc scripts are usually run before the single user mode shell is
       started.</dd>
-  <dt><b>1-5</b></dt>
+  <dt><b>1&#x2013;5</b></dt>
   <dd>Runlevel to boot into.</dd>
   <dt id="b,"><a class="permalink" href="#b,"><b>-b, emergency</b></a></dt>
   <dd>Boot directly into a single user shell without running any other startup
@@ -232,8 +232,8 @@
       it booted the kernel with the default command line (without user
       intervention). If this is found <b>init</b> sets the &quot;AUTOBOOT&quot;
       environment variable to &quot;yes&quot;. Note that you cannot use this for
-      any security measures - of course the user could specify &quot;auto&quot;
-      or <b>-a</b> on the command line manually.</dd>
+      any security measures &#x2013; of course the user could specify
+      &quot;auto&quot; or <b>-a</b> on the command line manually.</dd>
   <dt id="z"><a class="permalink" href="#z"><b>-z </b><i>xxx</i></a></dt>
   <dd>The argument to <b>-z</b> is ignored. You can use this to expand the
       command line a bit, so that it takes some more space on the stack.

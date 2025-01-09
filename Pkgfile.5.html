@@ -146,7 +146,7 @@
     &#x201C;/usr/share/doc&#x201D;, &#x201C;README&#x201D;,
     &#x201C;*.info&#x201D;, &#x201C;*.html&#x201D;, etc).</p>
 <p class="Pp">Also should be removed:</p>
-<ul class="Bl-bullet">
+<ul class="Bl-bullet Bd-indent">
   <li>Files related to NLS (National Language Support), always use
       &#x201C;--disable-nls&#x201D; and similar build options when available and
       remove <span class="Pa">/usr/share/locale</span> when not.</li>
@@ -195,7 +195,7 @@
 <section class="Ss">
 <h2 class="Ss" id="Header"><a class="permalink" href="#Header">Header</a></h2>
 <p class="Pp">Provide a header including the following fields:</p>
-<table class="Bl-column">
+<table class="Bl-column Bd-indent">
   <tr id="Name">
     <td><a class="permalink" href="#Name"><b class="Sy">Name</b></a></td>
     <td><a class="permalink" href="#Meaning"><b class="Sy" id="Meaning">Meaning</b></a></td>
@@ -225,7 +225,7 @@
 <p class="Pp">Dependencies are supported by
     <a class="Xr" href="pkgman.1.html">pkgman(1)</a>. The following rules should
     be respected:</p>
-<ul class="Bl-bullet">
+<ul class="Bl-bullet Bd-indent">
   <li id="gcc">We list all linked runtime dependencies except for
       <a class="permalink" href="#gcc"><i class="Em">gcc</i></a> (libstdc++),
       <a class="permalink" href="#glibc"><i class="Em" id="glibc">glibc</i></a>,
@@ -235,7 +235,7 @@
       contains essential packages for a system, and our scripts and source
       packages expect the programs provided by <i class="Em">core</i> to be
       installed. This means the following:
-    <ul class="Bl-bullet">
+    <ul class="Bl-bullet Bd-indent">
       <li>Build dependencies provided by <i class="Em">core</i> are not listed
           in the dependency header.</li>
       <li id="with">Runtime dependencies from <i class="Em">core</i> which
@@ -248,11 +248,12 @@
   </li>
 </ul>
 <p class="Pp">Examples:</p>
+<div class="Bd-indent">
 <dl class="Bl-tag">
   <dt id="core/automake"><a class="permalink" href="#core/automake"><i class="Em">core/automake</i></a></dt>
-  <dd>Does <i class="Em">not</i> list &#x201C;perl&#x201D;, because the program
-      is a Perl script (there is no binary that links to
-      &#x201C;libperl&#x201D;).</dd>
+  <dd>Does <a class="permalink" href="#not"><i class="Em" id="not">not</i></a>
+      list &#x201C;perl&#x201D;, because the program is a Perl script (there is
+      no binary that links to &#x201C;libperl&#x201D;).</dd>
   <dt id="core/bc"><a class="permalink" href="#core/bc"><i class="Em">core/bc</i></a></dt>
   <dd><a class="permalink" href="#Does"><i class="Em" id="Does">Does</i></a>
       list &#x201C;readline&#x201D;, because &#x201C;bc&#x201D; is linked to
@@ -262,6 +263,7 @@
       list &#x201C;python3&#x201D;, because the package contains the specific
       interpreter version in its <span class="Pa">.footprint</span> file.</dd>
 </dl>
+</div>
 <p class="Pp">The reasoning for this policy is that you can use
     <a class="Xr" href="revdep.1.html">revdep(1)</a> to find packages that need
     to be updated if one of the dependent libraries has become binary
@@ -298,8 +300,9 @@
 <p class="Pp">If a package adds an user to the system using
     &#x201C;pre-install&#x201D;, a &#x201C;pre-remove&#x201D; script must remove
     that user.</p>
-<p class="Pp">What these scripts should <i class="Em">not</i> do:</p>
-<ul class="Bl-bullet">
+<p class="Pp" id="NOT">What these scripts should
+    <a class="permalink" href="#NOT"><i class="Em">NOT</i></a> do:</p>
+<ul class="Bl-bullet Bd-indent Bl-compact">
   <li>Edit configuration files.</li>
   <li>Remove other packages.</li>
   <li>Restart servers.</li>
@@ -421,12 +424,10 @@ esac
 </section>
 <section class="Sh">
 <h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
-<p class="Pp">The initial version of this manual page was written by
-    <span class="An">Just-The-Real-Fun</span>
-    &lt;<a class="Mt" href="mailto:just.the.real.fun@gmail.com">just.the.real.fun@gmail.com</a>&gt;
-    for <a class="Lk" href="http://crux.nu">CRUX</a>.</p>
-<p class="Pp">This implementation was extensively re-worked and adapted for
-    <a class="Lk" href="https://zeppe-lin.github.io">Zeppe-Lin</a> by
+<p class="Pp">The initial version of this manual page was written for CRUX Linux
+    by <span class="An">Just-The-Real-Fun</span>
+    &lt;<a class="Mt" href="mailto:just.the.real.fun@gmail.com">just.the.real.fun@gmail.com</a>&gt;.</p>
+<p class="Pp">This implementation was extensively re-worked for Zeppe-Lin by
     <span class="An">Alexandr Savca</span>
     &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
 </section>

@@ -247,7 +247,7 @@ https://example.com/</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="VERSION"><a class="permalink" href="#VERSION">VERSION</a></h1>
-<p class="Pp">This man page describes curl 8.10.1. If you use a later version,
+<p class="Pp">This man page describes curl 8.11.1. If you use a later version,
     chances are this man page does not fully document it. If you use an earlier
     version, this document tries to include version information about which
     specific version that introduced changes.</p>
@@ -401,10 +401,12 @@ https://example.com/</pre>
         'CURL_CA_BUNDLE' if it is set and the TLS backend is not Schannel, and
         uses the given path as a path to a CA cert bundle. This option overrides
         that variable.</p>
-    <p class="Pp">The Windows version of curl automatically looks for a CA certs
-        file named 'curl-ca-bundle.crt', either in the same directory as
-        curl.exe, or in the Current Working Directory, or in any folder along
-        your PATH.</p>
+    <p class="Pp">(Windows) curl automatically looks for a CA certs file named
+        'curl-ca-bundle.crt', either in the same directory as curl.exe, or in
+        the Current Working Directory, or in any folder along your PATH.</p>
+    <p class="Pp">curl 8.11.0 added a build-time option to disable this search
+        behavior, and another option to restrict search to the application's
+        directory.</p>
     <p class="Pp">(iOS and macOS only) If curl is built against Secure
         Transport, then this option is supported for backward compatibility with
         other SSL engines, but it should not be set. If the option is not set,
@@ -463,6 +465,9 @@ https://example.com/</pre>
         URI is provided, then the <i>--engine</i> option is set as
         &quot;pkcs11&quot; if none was provided and the <i>--cert-type</i>
         option is set as &quot;ENG&quot; if none was provided.</p>
+    <p class="Pp">If curl is built against GnuTLS library, a PKCS#11 URI can be
+        used to specify a certificate located in a PKCS#11 device. A string
+        beginning with &quot;pkcs11:&quot; is interpreted as a PKCS#11 URI.</p>
     <p class="Pp">(iOS and macOS only) If curl is built against Secure
         Transport, then the certificate string can either be the name of a
         certificate/private key in the system or user keychain, or the path to a
@@ -670,6 +675,10 @@ curl --connect-timeout 3.14 https://example.com</pre>
     <p class="Pp">Use &quot;-C -&quot; to instruct curl to automatically find
         out where/how to resume the transfer. It then uses the given
         output/input files to figure that out.</p>
+    <p class="Pp">This command line option is mutually exclusive with <i>-r,
+        --range</i>: you can only use one of them for a single transfer.</p>
+    <p class="Pp">The <i>--no-clobber</i> and <i>--remove-on-error</i> options
+        cannot be used together with <i>-C, --continue-at</i>.</p>
     <p class="Pp">If --continue-at is provided several times, the last set value
         is used.</p>
     <p class="Pp">Examples:</p>
@@ -905,7 +914,7 @@ curl --data-raw &quot;@at@at@&quot; https://example.com</pre>
   <dt id="content"><a class="permalink" href="#content">content</a></dt>
   <dd>URL-encode the content and pass that on. Just be careful so that the
       content does not contain any &quot;=&quot; or &quot;@&quot; symbols, as
-      that makes the syntax match one of the other cases below!</dd>
+      that makes the syntax match one of the other cases below.</dd>
   <dt>=content</dt>
   <dd>URL-encode the content and pass that on. The preceding &quot;=&quot;
       symbol is not included in the data.</dd>
@@ -1154,6 +1163,9 @@ curl --doh-url https://doh.example --resolve doh.example:443:192.0.2.1 https://e
         percent sign) as filename writes the output to stderr.</p>
     <p class="Pp">When used in FTP, the FTP server response lines are considered
         being &quot;headers&quot; and thus are saved there.</p>
+    <p class="Pp">Starting in curl 8.11.0, using the <i>--create-dirs</i> option
+        can also create missing directory components for the path provided in
+        <i>-D, --dump-header</i>.</p>
     <p class="Pp">Having multiple transfers in one set of operations (i.e. the
         URLs in one <i>-:, --next</i> clause), appends them to the same file,
         separated by a blank line.</p>
@@ -1172,7 +1184,7 @@ curl --dump-header - https://example.com -o save</pre>
 <div class="Bd-indent">
 <dl class="Bl-tag">
   <dt id="false"><a class="permalink" href="#false">false</a></dt>
-  <dd>Do not attempt ECH</dd>
+  <dd>Do not attempt ECH. The is the default.</dd>
   <dt id="grease"><a class="permalink" href="#grease">grease</a></dt>
   <dd>Send a GREASE ECH extension</dd>
   <dt id="true"><a class="permalink" href="#true">true</a></dt>
@@ -1187,13 +1199,11 @@ curl --dump-header - https://example.com -o save</pre>
   <dt id="pn:_name_"><a class="permalink" href="#pn:_name_">pn:&lt;name&gt;</a></dt>
   <dd>A name to use to over-ride the &quot;public_name&quot; field of an
       ECHConfigList (only available with OpenSSL TLS support)</dd>
-  <dt id="Errors"><a class="permalink" href="#Errors">Errors</a></dt>
-  <dd>Most errors cause error <i>CURLE_ECH_REQUIRED</i> (101).</dd>
 </dl>
 </div>
 <dl class="Bl-tag">
   <dt></dt>
-  <dd>
+  <dd>Most ECH related errors cause error <i>CURLE_ECH_REQUIRED</i> (101).
     <p class="Pp">If --ech is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
@@ -1748,9 +1758,9 @@ curl --get -I -d &quot;tool=curl&quot; https://example.com</pre>
     <p class="Pp">Added in 7.60.0. See also <i>-x, --proxy</i>.</p>
   </dd>
   <dt id="I,"><a class="permalink" href="#I,">-I, --head</a></dt>
-  <dd>(HTTP FTP FILE) Fetch the headers only! HTTP-servers feature the command
+  <dd>(HTTP FTP FILE) Fetch the headers only. HTTP-servers feature the command
       HEAD which this uses to get nothing but the header of a document. When
-      used on an FTP or FILE file, curl displays the file size and last
+      used on an FTP or FILE URL, curl displays the file size and last
       modification time only.
     <p class="Pp">Providing --head multiple times has no extra effect. Disable
         it again with --no-head.</p>
@@ -2133,7 +2143,7 @@ curl --interface &quot;if!enp3s0&quot; https://example.com</pre>
   <dd>(HTTP) Sends the specified JSON data in a POST request to the HTTP server.
       <i>--json</i> works as a shortcut for passing on these three options:
     <p class="Pp"></p>
-    <pre>--data [arg]
+    <pre>--data-binary [arg]
 --header &quot;Content-Type: application/json&quot;
 --header &quot;Accept: application/json&quot;</pre>
     <p class="Pp">There is <b>no verification</b> that the passed in data is
@@ -2255,7 +2265,7 @@ curl --json @- https://example.com &lt; json.txt</pre>
     &lt;file&gt;</a></dt>
   <dd>Append this option to any ordinary curl command line, and you get
       libcurl-using C source code written to the file that does the equivalent
-      of what your command-line operation does!
+      of what your command-line operation does.
     <p class="Pp">This option is global and does not need to be specified for
         each use of --next.</p>
     <p class="Pp">If --libcurl is provided several times, the last set value is
@@ -2655,6 +2665,8 @@ curl -I https://example.com --next https://example.net/</pre>
     <p class="Pp">Note that this is the negated option name documented. You can
         thus use <i>--clobber</i> to enforce the clobbering, even if <i>-J,
         --remote-header-name</i> is specified.</p>
+    <p class="Pp">The <i>-C, --continue-at</i> option cannot be used together
+        with <i>--no-clobber</i>.</p>
     <p class="Pp">Providing --no-clobber multiple times has no extra effect.
         Disable it again with --clobber.</p>
     <p class="Pp">Example:</p>
@@ -3123,6 +3135,10 @@ curl --pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
         embedded user + password.</p>
     <p class="Pp">When a proxy is used, the active FTP mode as set with <i>-P,
         --ftp-port</i>, cannot be used.</p>
+    <p class="Pp">Doing FTP over an HTTP proxy without <i>-p, --proxytunnel</i>
+        makes curl do HTTP with an FTP URL over the proxy. For such transfers,
+        common FTP specific options do not work, including <i>--ftp-ssl-reqd</i>
+        and <i>--ftp-ssl-control</i>.</p>
     <p class="Pp">If --proxy is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
@@ -3449,7 +3465,7 @@ curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
     <p class="Pp">This option is used when curl is built to use OpenSSL 1.1.1 or
         later, Schannel, wolfSSL, or mbedTLS 3.6.0 or later.</p>
     <p class="Pp">Before curl 8.10.0 with mbedTLS or wolfSSL, TLS 1.3 cipher
-        suites where set by using the <i>--proxy-ciphers</i> option.</p>
+        suites were set by using the <i>--proxy-ciphers</i> option.</p>
     <p class="Pp">If --proxy-tls13-ciphers is provided several times, the last
         set value is used.</p>
     <p class="Pp">Example:</p>
@@ -3686,7 +3702,7 @@ curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
 <dl class="Bl-tag">
   <dt></dt>
   <dd>(*) = NOTE that these make the server reply with a multipart response,
-      which is returned as-is by curl! Parsing or otherwise transforming this
+      which is returned as-is by curl. Parsing or otherwise transforming this
       response is the responsibility of the caller.
     <p class="Pp">Only digit characters (0-9) are valid in the 'start' and
         'stop' fields of the 'start-stop' range syntax. If a non-digit character
@@ -3698,6 +3714,9 @@ curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
     <p class="Pp">FTP and SFTP range downloads only support the simple
         'start-stop' syntax (optionally with one of the numbers omitted). FTP
         use depends on the extended FTP command SIZE.</p>
+    <p class="Pp">This command line option is mutually exclusive with <i>-C,
+        --continue-at</i>: you can only use one of them for a single
+      transfer.</p>
     <p class="Pp">If --range is provided several times, the last set value is
         used.</p>
     <p class="Pp">Example:</p>
@@ -3852,6 +3871,8 @@ curl -O https://example.com/filename -O https://example.com/file2</pre>
       file in the case of an error during transfer.
     <p class="Pp">If the output is not a regular file, this option has no
         effect.</p>
+    <p class="Pp">The <i>-C, --continue-at</i> option cannot be used together
+        with <i>--remove-on-error</i>.</p>
     <p class="Pp">Providing --remove-on-error multiple times has no extra
         effect. Disable it again with --no-remove-on-error.</p>
     <p class="Pp">Example:</p>
@@ -4095,6 +4116,9 @@ curl -X NLST ftp://example.com/</pre>
       include things like server name, cookies, date of the document, HTTP
       version and more. With non-HTTP protocols, the &quot;headers&quot; are
       other server communication.
+    <p class="Pp">This option makes the response headers get saved in the same
+        stream/output as the data. <i>-D, --dump-header</i> exists to save
+        headers in a separate stream.</p>
     <p class="Pp">To view the request headers, consider the <i>-v, --verbose</i>
         option.</p>
     <p class="Pp">Prior to 7.75.0 curl did not print the headers if <i>-f,
@@ -4106,7 +4130,8 @@ curl -X NLST ftp://example.com/</pre>
         Disable it again with --no-show-headers.</p>
     <p class="Pp">Example:</p>
     <pre>curl -i https://example.com</pre>
-    <p class="Pp">See also <i>-v, --verbose</i>.</p>
+    <p class="Pp">See also <i>-v, --verbose</i> and <i>-D,
+      --dump-header</i>.</p>
   </dd>
   <dt id="s,"><a class="permalink" href="#s,">-s, --silent</a></dt>
   <dd>Silent or quiet mode. Do not show progress meter or error messages. Makes
@@ -4526,7 +4551,35 @@ curl -z file https://example.com</pre>
     <p class="Pp">See also <i>--etag-compare</i> and <i>-R,
       --remote-time</i>.</p>
   </dd>
-  <dt id="tls"><a class="permalink" href="#tls">--tls-max
+  <dt id="tls"><a class="permalink" href="#tls">--tls-earlydata</a></dt>
+  <dd>(TLS) Enable the use of TLSv1.3 early data, also known as '0RTT' where
+      possible. This has security implications for the requests sent that way.
+    <p class="Pp">This option is used when curl is built to use GnuTLS.</p>
+    <p class="Pp">If a server supports this TLSv1.3 feature, and to what extent,
+        is announced as part of the TLS &quot;session&quot; sent back to curl.
+        Until curl has seen such a session in a previous request, early data
+        cannot be used.</p>
+    <p class="Pp">When a new connection is initiated with a known TLSv1.3
+        session, and that session announced early data support, the first
+        request on this connection is sent <i>before</i> the TLS handshake is
+        complete. While the early data is also encrypted, it is not protected
+        against replays. An attacker can send your early data to the server
+        again and the server would accept it.</p>
+    <p class="Pp">If your request contacts a public server and only retrieves a
+        file, there may be no harm in that. If the first request orders a
+        refrigerator for you, it is probably not a good idea to use early data
+        for it. curl cannot deduce what the security implications of your
+        requests actually are and make this decision for you.</p>
+    <p class="Pp"><b>WARNING</b>: this option has security implications. See
+        above for more details.</p>
+    <p class="Pp">Providing --tls-earlydata multiple times has no extra effect.
+        Disable it again with --no-tls-earlydata.</p>
+    <p class="Pp">Example:</p>
+    <pre>curl --tls-earlydata https://example.com</pre>
+    <p class="Pp">Added in 8.11.0. See also <i>--tlsv1.3</i> and
+        <i>--tls-max</i>.</p>
+  </dd>
+  <dt id="tls~2"><a class="permalink" href="#tls~2">--tls-max
     &lt;VERSION&gt;</a></dt>
   <dd>(TLS) VERSION defines maximum supported TLS version. The minimum
       acceptable version is set by tlsv1.0, tlsv1.1, tlsv1.2 or tlsv1.3.
@@ -4567,9 +4620,9 @@ curl --tls-max 1.3 --tlsv1.2 https://example.com</pre>
       Read up on TLS 1.3 cipher suite details on this URL:
     <p class="Pp">https://curl.se/docs/ssl-ciphers.html</p>
     <p class="Pp">This option is used when curl is built to use OpenSSL 1.1.1 or
-        later, Schannel, wolfSSL, or mbedTLS 3.6.0 or later.</p>
+        later, wolfSSL, or mbedTLS 3.6.0 or later.</p>
     <p class="Pp">Before curl 8.10.0 with mbedTLS or wolfSSL, TLS 1.3 cipher
-        suites where set by using the <i>--ciphers</i> option.</p>
+        suites were set by using the <i>--ciphers</i> option.</p>
     <p class="Pp">If --tls13-ciphers is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
@@ -4813,19 +4866,21 @@ curl -T file -T file2 https://example.com https://example.com</pre>
         --request</i> and <i>-d, --data</i>.</p>
   </dd>
   <dt>--url &lt;url&gt;</dt>
-  <dd>Specify a URL to fetch.
-    <p class="Pp">If the given URL is missing a scheme name (such as
-        &quot;http://&quot; or &quot;ftp://&quot; etc) then curl makes a guess
-        based on the host. If the outermost subdomain name matches DICT, FTP,
-        IMAP, LDAP, POP3 or SMTP then that protocol is used, otherwise HTTP is
-        used. Guessing can be avoided by providing a full URL including the
-        scheme, or disabled by setting a default protocol, see
-        <i>--proto-default</i> for details.</p>
-    <p class="Pp">To control where this URL is written, use the <i>-o,
-        --output</i> or the <i>-O, --remote-name</i> options.</p>
-    <p class="Pp"><b>WARNING</b>: On Windows, particular &quot;file://&quot;
-        accesses can be converted to network accesses by the operating system.
-        Beware!</p>
+  <dd>Specify a URL to fetch or send data to.
+    <p class="Pp">If the given URL is missing a scheme (such as
+        &quot;http://&quot; or &quot;ftp://&quot; etc) curl guesses which scheme
+        to use based on the hostname. If the outermost subdomain name matches
+        DICT, FTP, IMAP, LDAP, POP3 or SMTP case insensitively, then that
+        protocol is used, otherwise it assumes HTTP. Scheme guessing can be
+        avoided by providing a full URL including the scheme, or disabled by
+        setting a default protocol, see <i>--proto-default</i> for details.</p>
+    <p class="Pp">To control where the contents of a retrieved URL is written
+        instead of the default stdout, use the <i>-o, --output</i> or the <i>-O,
+        --remote-name</i> options. When retrieving multiple URLs in a single
+        invoke, each provided URL needs its own dedicated destination option
+        unless <i>--remote-name-all</i> is used.</p>
+    <p class="Pp">On Windows, &quot;file://&quot; accesses can be converted to
+        network accesses by the operating system.</p>
     <p class="Pp">--url can be used several times in a command line</p>
     <p class="Pp">Example:</p>
     <pre>curl --url https://example.com</pre>
@@ -4904,6 +4959,8 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
         (&quot;&quot;), it removes the header completely from the request. If
         you prefer a blank header, you can set it to a single space (&quot;
         &quot;).</p>
+    <p class="Pp">By default, curl uses curl/VERSION, such as User-Agent:
+        curl/8.11.1.</p>
     <p class="Pp">If --user-agent is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
@@ -5033,7 +5090,7 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
     EBCDIC)</dd>
   <dt id="Debug"><a class="permalink" href="#Debug">Debug</a></dt>
   <dd>This curl uses a libcurl built with Debug. This enables more
-      error-tracking and memory debugging etc. For curl-developers only!</dd>
+      error-tracking and memory debugging etc. For curl-developers only.</dd>
   <dt id="ECH"><a class="permalink" href="#ECH">ECH</a></dt>
   <dd>ECH support is present.</dd>
   <dt id="gsasl"><a class="permalink" href="#gsasl">gsasl</a></dt>
@@ -5373,7 +5430,8 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
   </dd>
   <dt id="xattr"><a class="permalink" href="#xattr">--xattr</a></dt>
   <dd>When saving output to a file, tell curl to store file metadata in extended
-      file attributes. Currently, the URL is stored in the
+      file attributes. Currently, &quot;curl&quot; is stored in the
+      &quot;creator&quot; attribute, the URL is stored in the
       &quot;xdg.origin.url&quot; attribute and, for HTTP, the content type is
       stored in the &quot;mime_type&quot; attribute. If the file system does not
       support extended attributes, a warning is issued.
@@ -5645,7 +5703,7 @@ http://somewhere.example.com</pre>
   <dt>48</dt>
   <dd>Unknown option specified to libcurl. This indicates that you passed a
       weird option to curl that was passed on to libcurl and rejected. Read up
-      in the manual!</dd>
+      in the manual.</dd>
   <dt>49</dt>
   <dd>Malformed telnet option.</dd>
   <dt>52</dt>
@@ -5767,8 +5825,8 @@ http://somewhere.example.com</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-09-19</td>
-    <td class="foot-os">curl 8.10.1</td>
+    <td class="foot-date">2024-12-23</td>
+    <td class="foot-os">curl 8.11.1</td>
   </tr>
 </table>
 </body>

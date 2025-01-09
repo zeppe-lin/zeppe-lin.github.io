@@ -22,8 +22,8 @@ MANS = \
        /usr/share/man/man1/dash.1.gz                              \
        /usr/share/man/man1/diff.1.gz                              \
        /usr/share/man/man1/fakeroot.1.gz                          \
-       /usr/share/man/man1/finddeps-distmeta.1.gz                 \
-       /usr/share/man/man1/finddeps-linked.1.gz                   \
+       /usr/share/man/man1/finddepsdistmeta.1.gz                  \
+       /usr/share/man/man1/finddepslinked.1.gz                    \
        /usr/share/man/man1/finddisappeared.1.gz                   \
        /usr/share/man/man1/finddisowned.1.gz                      \
        /usr/share/man/man1/findredundantdeps.1.gz                 \

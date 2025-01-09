@@ -55,6 +55,13 @@
   <dd style="width: auto;">&#x00A0;</dd>
 </dl>
 </div>
+<p class="Pp" id="pkgadd">By default, <code class="Nm">pkgadd</code> does not
+    preserve packages' Access Control Lists
+    (<a class="Xr" href="acl.5.html">acl(5)</a>) and Extended attributes
+    (<a class="Xr" href="xattr.7.html">xattr(7)</a>) unless it has been compiled
+    with that support. To see if these options are enabled, check the command
+    output of <a class="permalink" href="#pkgadd"><b class="Sy">pkgadd
+    -v</b></a>.</p>
 <p class="Pp">The options are as follows:</p>
 <dl class="Bl-tag">
   <dt id="c"><a class="permalink" href="#c"><code class="Fl">-c</code></a>
@@ -68,8 +75,8 @@
     <p class="Pp">If the package that is about to be installed contains files
         that are already installed this option will cause all those files to be
         overwritten.</p>
-    <p class="Pp" id="This"><a class="permalink" href="#This"><i class="Em">This
-        option should be used with care, preferably not at all</i></a>.</p>
+    <p class="Pp" id="This"><a class="permalink" href="#This"><b class="Sy">This
+        option should be used with care, preferably not at all</b></a>.</p>
   </dd>
   <dt id="r"><a class="permalink" href="#r"><code class="Fl">-r</code></a>
     <var class="Ar">rootdir</var>,
@@ -112,6 +119,12 @@
 </dl>
 </section>
 <section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<p class="Pp">The <code class="Nm">pkgadd</code> utility exits&#x00A0;0 on
+    success, and&#x00A0;&gt;0 if an error occurs.</p>
+</section>
+<section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
   ALSO</a></h1>
 <p class="Pp"><a class="Xr" href="pkginfo.1.html">pkginfo(1)</a>,
@@ -121,7 +134,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">June 19, 2024</td>
+    <td class="foot-date">January 4, 2024</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

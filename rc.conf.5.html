@@ -93,6 +93,19 @@
       default.
     <p class="Pp">Example: &#x201C;SEEDRNG_SKIP_CREDIT=false&#x201D;</p>
   </dd>
+  <dt id="BOOTLOG"><a class="permalink" href="#BOOTLOG"><b class="Sy">BOOTLOG</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies the boot logging daemon to run at startup. The daemon specified
+      in this string must have a matching start/stop script in
+      <span class="Pa">/etc/rc.d</span>.
+    <p class="Pp">Example: &#x201C;BOOTLOG=bootlogd&#x201D;</p>
+  </dd>
+  <dt id="DEVMGR"><a class="permalink" href="#DEVMGR"><b class="Sy">DEVMGR</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
+  <dd>Specifies the device manager to run at startup instead of default
+      <a class="Xr" href="udevd.8.html">udevd(8)</a>. The daemon specified in
+      this string must have a matching start/stop script in
+      <span class="Pa">/etc/rc.d</span>.
+    <p class="Pp">Example: &#x201C;DEVMGR=udevd&#x201D;</p>
+  </dd>
   <dt id="SYSLOG"><a class="permalink" href="#SYSLOG"><b class="Sy">SYSLOG</b></a>=&#x27E8;<var class="Ar">STRING</var>&#x27E9;</dt>
   <dd>Specifies the system logging daemon to run at startup. The daemon
       specified in this string must have a matching start/stop script in

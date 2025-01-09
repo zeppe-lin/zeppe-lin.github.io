@@ -35,7 +35,9 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Print the package's README file if it exists.</p>
+<p class="Pp">Print the package's README.md/README file if it exists. If the
+    package source directory contains both files README.md and README, the
+    markdown markup (README.md) takes precedence.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
@@ -43,7 +45,7 @@
     by <a class="Xr" href="pkgman.1.html">pkgman(1)</a>:</p>
 <dl class="Bl-tag">
   <dt id="PAGER"><a class="permalink" href="#PAGER"><code class="Ev">PAGER</code></a></dt>
-  <dd>If the package source directory has a README file, then
+  <dd>If the package source directory has a README.md/README file, then
       <code class="Nm">pkgman-readme</code> will try to open it using a
       <code class="Ev">PAGER</code>. If <code class="Ev">PAGER</code> is unset,
       then <code class="Nm">pkgman-readme</code> prints the README to

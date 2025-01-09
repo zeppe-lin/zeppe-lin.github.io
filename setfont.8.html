@@ -142,37 +142,55 @@
 <section class="Sh">
 <h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
 <dl class="Bl-tag">
-  <dt id="h"><a class="permalink" href="#h"><b>-h </b><i>H</i></a></dt>
-  <dd>Override font height.</dd>
-  <dt id="d"><a class="permalink" href="#d"><b>-d</b></a></dt>
+  <dt id="N"><a class="permalink" href="#N"><b>-</b><i>N</i>,
+    <b>--default8x</b>=<i>N</i></a></dt>
+  <dd>Load default font (default8x<i>N</i>).</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b><i>N</i>,
+    <b>--font-height</b>=<i>N</i></a></dt>
+  <dd>Override font height. The short option must not have a space between the
+      prefix and the number.</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--double</b></a></dt>
   <dd>Doubles the size of the font, by replicating all of its pixels vertically
       and horizontally. This is suitable for high pixel density (e.g.
       &quot;4k&quot;) displays on which the standard fonts are too small to be
       easily legible. Due to kernel limitations, this is suitable only for 16x16
       or smaller fonts.</dd>
-  <dt id="m"><a class="permalink" href="#m"><b>-m </b><i>file</i></a></dt>
-  <dd>Load console map or Unicode console map from <i>file</i>.</dd>
-  <dt id="o"><a class="permalink" href="#o"><b>-o </b><i>file</i></a></dt>
-  <dd>Save previous font in <i>file</i>.</dd>
-  <dt id="O"><a class="permalink" href="#O"><b>-O </b><i>file</i></a></dt>
-  <dd>Save previous font and Unicode map in <i>file</i>.</dd>
-  <dt id="om"><a class="permalink" href="#om"><b>-om </b><i>file</i></a></dt>
-  <dd>Store console map in <i>file</i>.</dd>
-  <dt id="ou"><a class="permalink" href="#ou"><b>-ou </b><i>file</i></a></dt>
-  <dd>Save previous Unicode map in <i>file</i>.</dd>
-  <dt id="u"><a class="permalink" href="#u"><b>-u </b><i>file</i></a></dt>
-  <dd>Load Unicode table describing the font from <i>file</i>.</dd>
-  <dt id="C"><a class="permalink" href="#C"><b>-C </b><i>console</i></a></dt>
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b>,
+    <b>--output-font</b>=<i>FILE</i></a></dt>
+  <dd>Save previous font in <i>FILE</i>.</dd>
+  <dt id="om"><a class="permalink" href="#om"><b>-om</b>,
+    <b>--output-consolemap</b>=<i>FILE</i></a></dt>
+  <dd>Store console map in <i>FILE</i>.</dd>
+  <dt id="ou"><a class="permalink" href="#ou"><b>-ou</b>,
+    <b>--output-unicodemap</b>=<i>FILE</i></a></dt>
+  <dd>Save previous Unicode map in <i>FILE</i>.</dd>
+  <dt id="O"><a class="permalink" href="#O"><b>-O</b>,
+    <b>--output-fullfont</b>=<i>FILE</i></a></dt>
+  <dd>Save previous font and Unicode map in <i>FILE</i>.</dd>
+  <dt id="m"><a class="permalink" href="#m"><b>-m</b>,
+    <b>--consolemap</b>=<i>FILE</i></a></dt>
+  <dd>Load console map or Unicode console map from <i>FILE</i>.</dd>
+  <dt id="u"><a class="permalink" href="#u"><b>-u</b>,
+    <b>--unicodemap</b>=<i>FILE</i></a></dt>
+  <dd>Load Unicode table describing the font from <i>FILE</i>.</dd>
+  <dt id="C"><a class="permalink" href="#C"><b>-C</b>,
+    <b>--console</b>=<i>DEVICE</i></a></dt>
   <dd>Set the font for the indicated console. (May require root
     permissions.)</dd>
-  <dt id="f"><a class="permalink" href="#f"><b>-f</b></a></dt>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b>, <b>--force</b></a></dt>
   <dd>Force-load unicode map: Setfont`issues the system call to load the unicode
       map even if the specified map is empty. This may be useful in unusual
       cases.</dd>
-  <dt id="v"><a class="permalink" href="#v"><b>-v</b></a></dt>
+  <dt id="R"><a class="permalink" href="#R"><b>-R</b>, <b>--reset</b></a></dt>
+  <dd>Reset the screen font, size, and Unicode mapping to the bootup
+    defaults.</dd>
+  <dt id="v"><a class="permalink" href="#v"><b>-v</b>, <b>--verbose</b></a></dt>
   <dd>Be verbose.</dd>
-  <dt id="V"><a class="permalink" href="#V"><b>-V</b></a></dt>
-  <dd>Print version and exit.
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Print version and exit.</dd>
+  <dt id="h~2"><a class="permalink" href="#h~2"><b>-h</b>,
+    <b>--help</b></a></dt>
+  <dd>Print a message describing the options and exit.
     <p class="Pp"></p>
   </dd>
 </dl>
@@ -208,7 +226,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">11 Feb 2001</td>
+    <td class="foot-date">24 October 2024</td>
     <td class="foot-os">kbd</td>
   </tr>
 </table>

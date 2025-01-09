@@ -118,14 +118,21 @@
     | bz2 | xz | lz&#x27E9;</dt>
   <dd>Option to select the mode used to compress the packages. By default is set
       to &#x201C;gz&#x201D;.</dd>
+  <dt id="PKGMK_ARCHIVE_FORMAT"><a class="permalink" href="#PKGMK_ARCHIVE_FORMAT"><b class="Sy">PKGMK_ARCHIVE_FORMAT</b></a>=&#x27E8;gnutar
+    | pax | ustar | v7&#x27E9;</dt>
+  <dd>Option to select the specified format for the created archive of package.
+      By default is set to &#x201C;gnutar&#x201D;.
+    <p class="Pp">See
+        <a class="Xr" href="libarchive-formats.5.html">libarchive-formats(5)</a>
+        for more information about currently-supported formats.</p>
+  </dd>
 </dl>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
 <dl class="Bl-tag">
   <dt><span class="Pa">/etc/pkgmk.conf</span></dt>
-  <dd>Configuration file for
-    <a class="Xr" href="pkgmk.8.html">pkgmk(8)</a>.</dd>
+  <dd>Default location for the file described in this manual page.</dd>
 </dl>
 </section>
 <section class="Sh">

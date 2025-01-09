@@ -191,7 +191,7 @@ $ git log --oneline $PREVTAG..$CURTAG . |
     <p class="Pp">Also, after that, regenerate the website:</p>
     <div class="Bd Pp Bd-indent Li">
     <pre>$ cd /usr/src/zeppe-lin.github.io
-$ make -j`nproc`
+$ make -j$(nproc)
 $ make update
 $ git push</pre>
     </div>

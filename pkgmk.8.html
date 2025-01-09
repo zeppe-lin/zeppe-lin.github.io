@@ -37,7 +37,7 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">The <code class="Nm">pkgmk</code> utility makes an installable
     software package to be used as input to the
-    <a class="Xr" href="pkgadd.1.html">pkgadd(1)</a> command. The package itself
+    <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> command. The package itself
     is an archive of files, and its contents have a directory structure
   format.</p>
 <p class="Pp">The following archive formats are supported:</p>
@@ -113,6 +113,16 @@
     <code class="Fl">--config-file</code>=<var class="Ar">conffile</var></dt>
   <dd>Specify an alternate configuration file instead of the default
       <span class="Pa">/etc/pkgmk.conf</span>.</dd>
+  <dt id="af"><a class="permalink" href="#af"><code class="Fl">-af</code></a>
+    <var class="Ar">format</var>,
+    <code class="Fl">--archive-format</code>=<var class="Ar">format</var></dt>
+  <dd>Use the specified format for the created archive instead of the default
+      &#x201C;gnutar&#x201D;.
+    <p class="Pp">Supported formats include &#x201C;gnutar&#x201D;,
+        &#x201C;pax&#x201D;, &#x201C;ustar&#x201D;, and &#x201C;v7&#x201D;. See
+        <a class="Xr" href="libarchive-formats.5.html">libarchive-formats(5)</a>
+        for more information about currently-supported formats.</p>
+  </dd>
   <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
     <code class="Fl">--version</code></dt>
   <dd>Print version and exit.</dd>
@@ -144,7 +154,7 @@
 <section class="Sh">
 <h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
   STATUS</a></h1>
-<dl class="Bl-tag">
+<dl class="Bl-tag Bl-compact">
   <dt>0</dt>
   <dd>No error occurred.</dd>
   <dt>1</dt>
@@ -176,21 +186,20 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
-<p class="Pp">The original implementation of <code class="Nm">pkgmk</code> was
-    done by <span class="An">Per Lid&#x00E9;n</span>
-    &lt;<a class="Mt" href="mailto:per@fukt.bth.se">per@fukt.bth.se</a>&gt;, the
-    author of <a class="Lk" href="http://crux.nu">CRUX</a>, as part of
-    &#x201C;pkgutils&#x201D; package, and was maintained for years (and still
-    maintaining) by CRUX team.</p>
-<p class="Pp">This implementation was extensively re-worked for
-    <a class="Lk" href="https://zeppe-lin.github.io">Zeppe-Lin</a> by
-    <span class="An">Alexandr Savca</span>
+<p class="Pp">Originally written by <span class="An">Per Lid&#x00E9;n</span>
+    &lt;<a class="Mt" href="mailto:per@fukt.bth.se">per@fukt.bth.se</a>&gt; as
+    part of
+    &#x201C;<a class="permalink" href="#pkgutils"><b class="Sy" id="pkgutils">pkgutils</b></a>&#x201D;
+    package for <a class="Lk" href="http://crux.nu">CRUX</a>.</p>
+<p class="Pp">This implementation was extensively re-worked for Zeppe-Lin by
+  <br/>
+  <span class="An">Alexandr Savca</span>
     &lt;<a class="Mt" href="mailto:alexandr.savca89@gmail.com">alexandr.savca89@gmail.com</a>&gt;.</p>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 6, 2023</td>
+    <td class="foot-date">January 8, 2025</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>
