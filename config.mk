@@ -73,6 +73,7 @@ MANS = \
        /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
        /usr/share/man/man3/crypt.3.gz                             \
        /usr/share/man/man3/fnmatch.3.gz                           \
+       /usr/share/man/man3/libelf.3.gz                            \
        /usr/share/man/man3/regex.3.gz                             \
        /usr/share/man/man5/Pkgfile.5.gz                           \
        /usr/share/man/man5/crypttab.5.gz                          \
