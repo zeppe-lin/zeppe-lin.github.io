@@ -85,6 +85,7 @@ MANS = \
        /usr/share/man/man5/pkgmk.conf.5.gz                        \
        /usr/share/man/man5/rc.conf.5.gz                           \
        /usr/share/man/man5/rejmerge.conf.5.gz                     \
+       /usr/share/man/man5/revdep.d.5.gz                          \
        /usr/share/man/man5/sysfs.5.gz                             \
        /usr/share/man/man5/tmpfs.5.gz                             \
        /usr/share/man/man7/mkinitramfs.cmdline.7.gz               \
