@@ -30,8 +30,16 @@
 <table class="Nm">
   <tr>
     <td><code class="Nm">pkglint</code></td>
-    <td>[<code class="Fl">-dhijsvw</code>] [<var class="Ar">pkgsrcdir
+    <td>[<code class="Fl">-dhijsvw</code>] [<var class="Ar">pkgsrc
       ...</var>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">pkglint</code></td>
+    <td>[<code class="Fl">-dhijsvw</code>] <code class="Fl">-R</code>
+      [<var class="Ar">pkgsrc-collection ...</var>]</td>
   </tr>
 </table>
 </section>
@@ -68,6 +76,9 @@
     <code class="Fl">--world-writeable</code></dt>
   <dd>Check &#x201C;.footprint&#x201D; file for world-writeable files and
       directories.</dd>
+  <dt id="R"><a class="permalink" href="#R"><code class="Fl">-R</code></a>,
+    <code class="Fl">--recursive</code></dt>
+  <dd>Search for and check pkgsrc directories recursively.</dd>
   <dt id="v"><a class="permalink" href="#v"><code class="Fl">-v</code></a>,
     <code class="Fl">--version</code></dt>
   <dd>Print version and exit.</dd>
@@ -81,6 +92,23 @@
   STATUS</a></h1>
 <p class="Pp">The <code class="Nm">pkglint</code> utility exits&#x00A0;0 on
     success, and&#x00A0;&gt;0 if an error occurs.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Lint package source located in the current/working directory:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ pwd
+/usr/src/pkgsrc-core/acl
+$ pkglint -dijsw</pre>
+</div>
+<p class="Pp">Lint specific package source:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ pkglint -dijsw /usr/src/pkgsrc-core/acl</pre>
+</div>
+<p class="Pp">Lint all pkgsrc-core collection recursively:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ pkglint -dijsw -R /usr/src/pkgsrc-core</pre>
+</div>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE

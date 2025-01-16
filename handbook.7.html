@@ -225,7 +225,7 @@
 
 <p>Since Zeppe-Lin is distributed in the form of a compiled tarball containing a root filesystem, you will first need to boot your computer using a Linux-based image, so called &quot;Live CD/DVD/USB&quot; operating system.</p>
 
-<p>Boot from the live CD/DVD/USB, open a terminal and get root privileges (e.g. <code>sudo su</code>).</p>
+<p>Boot your preferred Live system, open a terminal and get root privileges (e.g. <code>sudo su</code>).</p>
 
 <h2 id="Disk-Partitions-and-Filesystems">4.3. Disk Partitions and Filesystems</h2>
 
@@ -365,21 +365,21 @@
 <p>As mentioned before, the <code>/mnt</code> directory is the default mountpoint for our system. Let&#39;s download the rootfs tarball into this directory so we won&#39;t pollute live CD/DVD/USB RAM:</p>
 
 <pre><code># cd /mnt
-# wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz{,.sig}</code></pre>
+# wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz{,.sig}</code></pre>
 
 <h3 id="Verify-downloaded-tarball"><b>4.4.2. Verify downloaded tarball</b></h3>
 
 <p>Zeppe-Lin rootfs tarball is signed using GPG. It&#39;s a good practice to verify authenticity and integrity of downloaded files when possible.</p>
 
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-v0.99.1-x86_64.tar.xz{.sig,}</code></pre>
+# gpg --verify rootfs-v1.0-x86_64.tar.xz{.sig,}</code></pre>
 
 <h3 id="Extract-rootfs-tarball"><b>4.4.3. Extract rootfs tarball</b></h3>
 
 <p>Once the rootfs tarball is downloaded and verified, extract the contents with the following command:</p>
 
 <pre><code># tar --numeric-owner --xattrs --xattrs-include=&#39;*&#39; -xpf \
-    rootfs-v0.99.1-x86_64.tar.xz</code></pre>
+    rootfs-v1.0-x86_64.tar.xz</code></pre>
 
 <dl>
 
@@ -525,10 +525,16 @@ If you setup to build packages in RAM:
 <p>Clone the collections you need, but keep in mind that each subsequent collection depends on the previous ones.</p>
 
 <pre><code>(chrooted) # cd /usr/src/
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core    \
+                --branch 1.x
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system  \
+                --branch 1.x
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg    \
+                --branch 1.x
+(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop \
+                --branch 1.x</code></pre>
+
+<p>Where <code>--branch 1.x</code> corresponds to the current Zeppe-Lin release branch.</p>
 
 <p>Edit <i>/etc/pkgman.conf</i> (see <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information) and enable the collections you cloned. By default, only <code>pkgsrc-core</code> collection is enabled. Also, you may like to edit <i>/etc/pkgmk.conf</i> (see <a href="pkgmk.conf.5.html">pkgmk.conf(5)</a> for more information).</p>
 
@@ -766,7 +772,7 @@ GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
 
 <p>When a new package is installed using <a href="pkgadd.8.html">pkgadd(8)</a>, a new record is added to the package database (stored in <i>/var/lib/pkg/db</i>). The basic package system does not have any kind of dependency checking, this will not warn you if you install a package that requires other packages to be installed. The included <a href="pkgman.1.html">pkgman(1)</a> tool (<b>pkgman</b>), however, does support dependencies.</p>
 
-<p>The following sections will describe in short how to use the package utilities. Additional information about these utilities can be found on their respective manpage.</p>
+<p>The following sections will describe in short how to use the package utilities. Additional information about these utilities can be found on their respective manual page.</p>
 
 <h2 id="Using-the-Package-System">5.2. Using the Package System</h2>
 
@@ -891,23 +897,23 @@ pkgadd: rejecting etc/profile, keeping existing version
             <th>Description</th>
         </tr>
         <tr>
-            <td>-f, --footprint=FILE</td>
-            <td>print footprint for FILE</td>
+            <td>-f, --footprint=file</td>
+            <td>print footprint for file</td>
         </tr>
         <tr>
             <td>-i, --installed</td>
             <td>list installed packages and their version</td>
         </tr>
         <tr>
-            <td>-l, --list=PACKAGE|FILE</td>
-            <td>list files in PACKAGE or FILE</td>
+            <td>-l, --list=package|file</td>
+            <td>list files in package or file</td>
         </tr>
         <tr>
-            <td>-o, --owner=PATTERN</td>
-            <td>list owner(s) of file(s) matching PATTERN</td>
+            <td>-o, --owner=pattern</td>
+            <td>list owner(s) of file(s) matching pattern</td>
         </tr>
         <tr>
-            <td>-r, --root=DIR</td>
+            <td>-r, --root=rootdir</td>
             <td>specify an alternate root directory</td>
         </tr>
         <tr>
@@ -935,7 +941,7 @@ zip 2.3-1
 zlib 1.1.4-1</code></pre>
 
 </dd>
-<dt id="List-files-in-PACKAGE-or-FILE">List files in PACKAGE or FILE:</dt>
+<dt id="List-files-in-package-or-file">List files in package or file:</dt>
 <dd>
 
 <pre><code>$ pkginfo -l bash
@@ -1059,18 +1065,21 @@ $ pkgman search -vv --regex &#39;^(glib)c?$&#39;
 <dt id="Viewing-dependency-lists">Viewing dependency lists:</dt>
 <dd>
 
-<pre><code>$ pkgman dep bash
-readline
+<pre><code>$ pkgman dep vim
+acl
+ncurses
 
-$ pkgman dep bash --recursive
-readline
- ncurses
+$ pkgman dep vim --resursive
+acl
+ attr
+ncurses
 
-$ pkgman dep bash --recursive --tree -vv
+$ pkgman dep vim --recursive --tree -vv
 -- dependencies ([i] = installed, --&gt; seen before)
-[i] bash 5.1.8-1: GNU Bourne Again Shell
-[i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
-[i]     ncurses 6.3-1: System V Release 4.0 curses emulation library</code></pre>
+[i] vim 9.1.0889-1: Highly configurable text editor
+[i]   acl 2.3.2-1: Access Control List filesystem support
+[i]     attr 2.5.2-1: Extended attribute support library for ACL support
+[i]   ncurses 6.5-1: System V Release 4.0 curses emulation library</code></pre>
 
 </dd>
 <dt id="Installing-packages">Installing packages:</dt>
@@ -1358,10 +1367,12 @@ build() {
 <p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtain the collection you need the first time, use <code>git clone</code>. Example:</p>
 
 <pre><code># cd /usr/src/
-# git clone https://github.com/zeppe-lin/pkgsrc-core
-# git clone https://github.com/zeppe-lin/pkgsrc-system
-# git clone https://github.com/zeppe-lin/pkgsrc-xorg
-# git clone https://github.com/zeppe-lin/pkgsrc-desktop</code></pre>
+# git clone https://github.com/zeppe-lin/pkgsrc-core    --branch 1.x
+# git clone https://github.com/zeppe-lin/pkgsrc-system  --branch 1.x
+# git clone https://github.com/zeppe-lin/pkgsrc-xorg    --branch 1.x
+# git clone https://github.com/zeppe-lin/pkgsrc-desktop --branch 1.x</code></pre>
+
+<p>Where <code>--branch 1.x</code> corresponds to the current Zeppe-Lin release branch.</p>
 
 <p>Edit <i>/etc/pkgman.conf</i> and enable the collections you cloned. By default, only <code>pkgsrc-core</code> collection is enabled. See <a href="pkgman.conf.5.html">pkgman.conf(5)</a> for more information.</p>
 
@@ -1418,7 +1429,8 @@ automake/         glibc/         libtool/          rdate/
 [i] /usr/src/pkgsrc-core/acl
 [i] /usr/src/pkgsrc-system/alsa-lib
 [ ] /usr/src/pkgsrc-system/alsa-ucm-conf
-[i] /usr/src/pkgsrc-system/alsa-utils</code></pre>
+[i] /usr/src/pkgsrc-system/alsa-utils
+...</code></pre>
 
 <p>If you are looking for a specific package source, it might be easier to use <b>search</b> command instead of <code>list | grep</code>:</p>
 
@@ -1522,9 +1534,9 @@ No differences found</code></pre>
 
 <p>Third, specify these directories in <i>/etc/pkgmk.conf</i>, so that when you call <a href="pkgmk.8.html">pkgmk(8)</a>, these directories will be used.</p>
 
-<pre><code>PKGMK_SOURCE_DIR=/var/cache/pkgmk/sources
-PKGMK_PACKAGE_DIR=/var/cache/pkgmk/packages
-PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$</code></pre>
+<pre><code>PKGMK_SOURCE_DIR=&quot;/var/cache/pkgmk/sources&quot;
+PKGMK_PACKAGE_DIR=&quot;/var/cache/pkgmk/packages&quot;
+PKGMK_WORD_DIR=&quot;/var/cache/pkgmk/work/$name-$$&quot;</code></pre>
 
 <p>Fourth, tell <a href="pkgman.1.html">pkgman(1)</a> to call <a href="pkgmk.8.html">pkgmk(8)</a> on behalf of <code>pkgmk</code> user. To do that, edit variable <code>makecommand</code> in the <i>/etc/pkgman.conf</i> file as the following:</p>
 

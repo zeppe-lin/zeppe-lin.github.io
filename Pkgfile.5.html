@@ -273,8 +273,12 @@
 <p class="Pp">Also, in the case of updating the major version of
     Perl/Python/etc, it will be useful that the libraries or programs that
     create Perl/Python bindings have a dependency on them. We will have to
-    rebuild everything that depends on Perl/Python with one command. See
-    <a class="Xr" href="pkgman-rdep.1.html">pkgman-rdep(1)</a>.</p>
+    rebuild everything that depends on Perl/Python with one command, e.g.:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>pkgman update -fr --deps --depsort $(pkgman rdep perl)</pre>
+</div>
+<p class="Pp">See <a class="Xr" href="pkgman-rdep.1.html">pkgman-rdep(1)</a> for
+    more information.</p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="RC_Scripts"><a class="permalink" href="#RC_Scripts">RC

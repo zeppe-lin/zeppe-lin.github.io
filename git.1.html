@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets v1.79.2 <http://docbook.sf.net/>
-        Date: 2024-11-25
+        Date: 2025-01-10
       Manual: Git Manual
-      Source: Git 2.47.1
+      Source: Git 2.48.0
     Language: English
    -->
 <head>
@@ -64,8 +64,8 @@
 <p class="Pp">-v, --version</p>
 <div class="Bd-indent">Prints the Git suite version that the <i>git</i> program
   came from.
-<p class="Pp">This option is internally converted to <b>git version ...</b> and
-    accepts the same options as the <b>git-version</b>(1) command. If
+<p class="Pp">This option is internally converted to <b>git</b> <b>version</b>
+    ... and accepts the same options as the <b>git-version</b>(1) command. If
     <b>--help</b> is also given, it takes precedence over <b>--version</b>.</p>
 </div>
 <p class="Pp">-h, --help</p>
@@ -74,16 +74,17 @@
   commands are printed. If a Git command is named this option will bring up the
   manual page for that command.
 <p class="Pp">Other options are available to control how the manual page is
-    displayed. See <b>git-help</b>(1) for more information, because <b>git
-    --help ...</b> is converted internally into <b>git help ...</b>.</p>
+    displayed. See <b>git-help</b>(1) for more information, because <b>git</b>
+    <b>--help</b> ... is converted internally into <b>git</b> <b>help</b>
+  ....</p>
 </div>
 <p class="Pp">-C &lt;path&gt;</p>
 <div class="Bd-indent">Run as if git was started in <i>&lt;path&gt;</i> instead
   of the current working directory. When multiple <b>-C</b> options are given,
-  each subsequent non-absolute <b>-C &lt;path&gt;</b> is interpreted relative to
-  the preceding <b>-C &lt;path&gt;</b>. If <i>&lt;path&gt;</i> is present but
-  empty, e.g. <b>-C &quot;&quot;</b>, then the current working directory is left
-  unchanged.
+  each subsequent non-absolute <b>-C</b> <i>&lt;path&gt;</i> is interpreted
+  relative to the preceding <b>-C</b> <i>&lt;path&gt;</i>. If
+  <i>&lt;path&gt;</i> is present but empty, e.g. <b>-C</b> &quot;&quot;, then
+  the current working directory is left unchanged.
 <p class="Pp">This option affects options that expect path name like
     <b>--git-dir</b> and <b>--work-tree</b> in that their interpretations of the
     path names would be made relative to the working directory caused by the
@@ -99,22 +100,24 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   given will override values from configuration files. The &lt;name&gt; is
   expected in the same format as listed by <i>git config</i> (subkeys separated
   by dots).
-<p class="Pp">Note that omitting the <b>=</b> in <b>git -c foo.bar ...</b> is
-    allowed and sets <b>foo.bar</b> to the boolean true value (just like
-    <b>[foo]bar</b> would in a config file). Including the equals but with an
-    empty value (like <b>git -c foo.bar= ...</b>) sets <b>foo.bar</b> to the
-    empty string which <b>git config --type=bool</b> will convert to
-    <b>false</b>.</p>
+<p class="Pp">Note that omitting the <b>=</b> in <b>git</b> <b>-c</b>
+    <b>foo.bar</b> ... is allowed and sets <b>foo.bar</b> to the boolean true
+    value (just like [<b>foo</b>]<b>bar</b> would in a config file). Including
+    the equals but with an empty value (like <b>git</b> <b>-c</b>
+    <b>foo.bar=</b> ...) sets <b>foo.bar</b> to the empty string which
+    <b>git</b> <b>config</b> <b>--type=bool</b> will convert to
+  <b>false</b>.</p>
 </div>
 <p class="Pp">--config-env=&lt;name&gt;=&lt;envvar&gt;</p>
-<div class="Bd-indent">Like <b>-c &lt;name&gt;=&lt;value&gt;</b>, give
-  configuration variable <i>&lt;name&gt;</i> a value, where &lt;envvar&gt; is
-  the name of an environment variable from which to retrieve the value. Unlike
-  <b>-c</b> there is no shortcut for directly setting the value to an empty
-  string, instead the environment variable itself must be set to the empty
-  string. It is an error if the <b>&lt;envvar&gt;</b> does not exist in the
-  environment. <b>&lt;envvar&gt;</b> may not contain an equals sign to avoid
-  ambiguity with <b>&lt;name&gt;</b> containing one.
+<div class="Bd-indent">Like <b>-c</b>
+  <i>&lt;name&gt;</i><b>=</b><i>&lt;value&gt;</i>, give configuration variable
+  <i>&lt;name&gt;</i> a value, where &lt;envvar&gt; is the name of an
+  environment variable from which to retrieve the value. Unlike <b>-c</b> there
+  is no shortcut for directly setting the value to an empty string, instead the
+  environment variable itself must be set to the empty string. It is an error if
+  the <i>&lt;envvar&gt;</i> does not exist in the environment.
+  <i>&lt;envvar&gt;</i> may not contain an equals sign to avoid ambiguity with
+  <i>&lt;name&gt;</i> containing one.
 <p class="Pp">This is useful for cases where you want to pass transitory
     configuration options to git, but are doing so on operating systems where
     other processes might be able to read your command line (e.g.
@@ -123,8 +126,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     not be on your system.</p>
 <p class="Pp">Note that this might add security for variables such as
     <b>http.extraHeader</b> where the sensitive information is part of the
-    value, but not e.g. <b>url.&lt;base&gt;.insteadOf</b> where the sensitive
-    information can be part of the key.</p>
+    value, but not e.g. <b>url.</b><i>&lt;base&gt;</i><b>.insteadOf</b> where
+    the sensitive information can be part of the key.</p>
 </div>
 <p class="Pp">--exec-path[=&lt;path&gt;]</p>
 <div class="Bd-indent">Path to wherever your core Git programs are installed.
@@ -135,16 +138,16 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">Print the path, without trailing slash, where
   Git&#x2019;s HTML documentation is installed and exit.</div>
 <p class="Pp">--man-path</p>
-<div class="Bd-indent">Print the manpath (see <b>man(1)</b>) for the man pages
-  for this version of Git and exit.</div>
+<div class="Bd-indent">Print the manpath (see <b>man</b>(<b>1</b>)) for the man
+  pages for this version of Git and exit.</div>
 <p class="Pp">--info-path</p>
 <div class="Bd-indent">Print the path where the Info files documenting this
   version of Git are installed and exit.</div>
 <p class="Pp">-p, --paginate</p>
 <div class="Bd-indent">Pipe all output into <i>less</i> (or if set, $PAGER) if
-  standard output is a terminal. This overrides the <b>pager.&lt;cmd&gt;</b>
-  configuration options (see the &quot;Configuration Mechanism&quot; section
-  below).</div>
+  standard output is a terminal. This overrides the
+  <b>pager.</b><i>&lt;cmd&gt;</i> configuration options (see the
+  &quot;Configuration Mechanism&quot; section below).</div>
 <p class="Pp">-P, --no-pager</p>
 <div class="Bd-indent">Do not pipe Git output into a pager.</div>
 <p class="Pp">--git-dir=&lt;path&gt;</p>
@@ -159,10 +162,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     tree are discovered), and tells Git that you are at the top level of the
     working tree. If you are not at the top-level directory of the working tree,
     you should tell Git where the top-level of the working tree is, with the
-    <b>--work-tree=&lt;path&gt;</b> option (or <b>GIT_WORK_TREE</b> environment
-    variable)</p>
+    <b>--work-tree=</b><i>&lt;path&gt;</i> option (or <b>GIT_WORK_TREE</b>
+    environment variable)</p>
 <p class="Pp">If you just want to run git as if it was started in
-    <b>&lt;path&gt;</b> then use <b>git -C &lt;path&gt;</b>.</p>
+    <i>&lt;path&gt;</i> then use <b>git</b> <b>-C</b> <i>&lt;path&gt;</i>.</p>
 </div>
 <p class="Pp">--work-tree=&lt;path&gt;</p>
 <div class="Bd-indent">Set the path to the working tree. It can be an absolute
@@ -183,9 +186,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   variable with any value. See <b>git-replace</b>(1) for more information.</div>
 <p class="Pp">--no-lazy-fetch</p>
 <div class="Bd-indent">Do not fetch missing objects from the promisor remote on
-  demand. Useful together with <b>git cat-file -e &lt;object&gt;</b> to see if
-  the object is locally available. This is equivalent to setting the
-  <b>GIT_NO_LAZY_FETCH</b> environment variable to <b>1</b>.</div>
+  demand. Useful together with <b>git</b> <b>cat-file</b> <b>-e</b>
+  <i>&lt;object&gt;</i> to see if the object is locally available. This is
+  equivalent to setting the <b>GIT_NO_LAZY_FETCH</b> environment variable to
+  <b>1</b>.</div>
 <p class="Pp">--no-optional-locks</p>
 <div class="Bd-indent">Do not perform optional operations that require locks.
   This is equivalent to setting the <b>GIT_OPTIONAL_LOCKS</b> to <b>0</b>.</div>
@@ -441,8 +445,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <section class="Ss">
 <h2 class="Ss" id="Reset,_restore_and_revert"><a class="permalink" href="#Reset,_restore_and_revert">Reset,
   restore and revert</a></h2>
-<p class="Pp">There are three commands with similar names: <b>git reset</b>,
-    <b>git restore</b> and <b>git revert</b>.</p>
+<p class="Pp">There are three commands with similar names: <b>git</b>
+    <b>reset</b>, <b>git</b> <b>restore</b> and <b>git</b> <b>revert</b>.</p>
 <p class="Pp"></p>
 <div class="Bd-indent">&#x2022;<b>git-revert</b>(1) is about making a new commit
   that reverts the changes made by other commits.</div>
@@ -455,8 +459,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">&#x2022;<b>git-reset</b>(1) is about updating your
   branch, moving the tip in order to add or remove commits from the branch. This
   operation changes the commit history.
-<p class="Pp"><b>git reset</b> can also be used to restore the index,
-    overlapping with <b>git restore</b>.</p>
+<p class="Pp"><b>git</b> <b>reset</b> can also be used to restore the index,
+    overlapping with <b>git</b> <b>restore</b>.</p>
 </div>
 </section>
 </section>
@@ -805,10 +809,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">indicates the head of the current branch.</div>
 <p class="Pp">&lt;tag&gt;</p>
 <div class="Bd-indent">a valid tag <i>name</i> (i.e. a
-  <b>refs/tags/&lt;tag&gt;</b> reference).</div>
+  <b>refs/tags/</b><i>&lt;tag&gt;</i> reference).</div>
 <p class="Pp">&lt;head&gt;</p>
 <div class="Bd-indent">a valid head <i>name</i> (i.e. a
-  <b>refs/heads/&lt;head&gt;</b> reference).</div>
+  <b>refs/heads/</b><i>&lt;head&gt;</i> reference).</div>
 <p class="Pp">For a more complete list of ways to spell object names, see
     &quot;SPECIFYING REVISIONS&quot; section in <b>gitrevisions</b>(7).</p>
 </section>
@@ -834,6 +838,14 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     &quot;on&quot; and positive numbers are taken as &quot;yes&quot;.</p>
 <p class="Pp">Here are the variables:</p>
 <section class="Ss">
+<h2 class="Ss" id="System"><a class="permalink" href="#System">System</a></h2>
+<p class="Pp"><b>HOME</b></p>
+<div class="Bd-indent">Specifies the path to the user&#x2019;s home directory.
+  On Windows, if unset, Git will set a process environment variable equal to:
+  <b>$HOMEDRIVE$HOMEPATH</b> if both <b>$HOMEDRIVE</b> and <b>$HOMEPATH</b>
+  exist; otherwise <b>$USERPROFILE</b> if <b>$USERPROFILE</b> exists.</div>
+</section>
+<section class="Ss">
 <h2 class="Ss" id="The_Git_Repository"><a class="permalink" href="#The_Git_Repository">The
   Git Repository</a></h2>
 <p class="Pp">These environment variables apply to <i>all</i> core Git commands.
@@ -857,15 +869,15 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   &quot;:&quot; separated (on Windows &quot;;&quot; separated) list of Git
   object directories which can be used to search for Git objects. New objects
   will not be written to these directories.
-<p class="Pp">Entries that begin with <b>&quot;</b> (double-quote) will be
-    interpreted as C-style quoted paths, removing leading and trailing
-    double-quotes and respecting backslash escapes. E.g., the value
-    <b>&quot;path-with-\&quot;-and-:-in-it&quot;:vanilla-path</b> has two paths:
-    <b>path-with-&quot;-and-:-in-it</b> and <b>vanilla-path</b>.</p>
+<p class="Pp">Entries that begin with &quot; (double-quote) will be interpreted
+    as C-style quoted paths, removing leading and trailing double-quotes and
+    respecting backslash escapes. E.g., the value
+    &quot;path-with-\&quot;-and-:-in-it&quot;:vanilla-path has two paths:
+    <b>path-with-</b>&quot;-and-:-in-it and <b>vanilla-path</b>.</p>
 </div>
 <p class="Pp"><b>GIT_DIR</b></p>
 <div class="Bd-indent">If the <b>GIT_DIR</b> environment variable is set then it
-  specifies a path to use instead of the default <b>.git</b> for the base of the
+  specifies a path to use instead of the default .<b>git</b> for the base of the
   repository. The <b>--git-dir</b> command-line option also sets this
   value.</div>
 <p class="Pp"><b>GIT_WORK_TREE</b></p>
@@ -986,9 +998,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">If this Boolean environment variable is set to true then
   the <b>GIT_EXTERNAL_DIFF</b> command is expected to return exit code 0 if it
   considers the input files to be equal or 1 if it considers them to be
-  different, like <b>diff(1)</b>. If it is set to false, which is the default,
-  then the command is expected to return exit code 0 regardless of equality. Any
-  other exit code causes Git to report a fatal error.</div>
+  different, like <b>diff</b>(<b>1</b>). If it is set to false, which is the
+  default, then the command is expected to return exit code 0 regardless of
+  equality. Any other exit code causes Git to report a fatal error.</div>
 <p class="Pp"><b>GIT_DIFF_PATH_COUNTER</b></p>
 <div class="Bd-indent">A 1-based counter incremented by one for every
   path.</div>
@@ -1030,7 +1042,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     program (which can be a wrapper shell script, if additional arguments are
     needed).</p>
 <p class="Pp">Usually it is easier to configure any desired options through your
-    personal <b>.ssh/config</b> file. Please consult your ssh documentation for
+    personal .<b>ssh/config</b> file. Please consult your ssh documentation for
     further details.</p>
 </div>
 <p class="Pp"><b>GIT_SSH_VARIANT</b></p>
@@ -1066,11 +1078,11 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
   files of the respective level.</div>
 <p class="Pp"><b>GIT_CONFIG_NOSYSTEM</b></p>
 <div class="Bd-indent">Whether to skip reading settings from the system-wide
-  <b>$(prefix)/etc/gitconfig</b> file. This Boolean environment variable can be
-  used along with <b>$HOME</b> and <b>$XDG_CONFIG_HOME</b> to create a
-  predictable environment for a picky script, or you can set it to true to
-  temporarily avoid using a buggy <b>/etc/gitconfig</b> file while waiting for
-  someone with sufficient permissions to fix it.</div>
+  <b>$</b>(<b>prefix</b>)<b>/etc/gitconfig</b> file. This Boolean environment
+  variable can be used along with <b>$HOME</b> and <b>$XDG_CONFIG_HOME</b> to
+  create a predictable environment for a picky script, or you can set it to true
+  to temporarily avoid using a buggy <b>/etc/gitconfig</b> file while waiting
+  for someone with sufficient permissions to fix it.</div>
 <p class="Pp"><b>GIT_FLUSH</b></p>
 <div class="Bd-indent">If this Boolean environment variable is set to true, then
   commands such as <i>git blame</i> (in incremental mode), <i>git rev-list</i>,
@@ -1160,9 +1172,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     process) in that directory, named according to the last component of the SID
     and an optional counter (to avoid filename collisions).</p>
 <p class="Pp">In addition, if the variable is set to
-    <b>af_unix:[&lt;socket-type&gt;:]&lt;absolute-pathname&gt;</b>, Git will try
-    to open the path as a Unix Domain Socket. The socket type can be either
-    <b>stream</b> or <b>dgram</b>.</p>
+    <b>af_unix:</b>[<i>&lt;socket-type&gt;</i><b>:</b>]<i>&lt;absolute-pathname&gt;</i>,
+    Git will try to open the path as a Unix Domain Socket. The socket type can
+    be either <b>stream</b> or <b>dgram</b>.</p>
 <p class="Pp">Unsetting the variable, or setting it to empty, &quot;0&quot; or
     &quot;false&quot; (case insensitive) disables trace messages.</p>
 <p class="Pp">See <b>Trace2 documentation</b>[2] for full details.</p>
@@ -1187,11 +1199,11 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp"><b>GIT_LITERAL_PATHSPECS</b></p>
 <div class="Bd-indent">Setting this Boolean environment variable to true will
   cause Git to treat all pathspecs literally, rather than as glob patterns. For
-  example, running <b>GIT_LITERAL_PATHSPECS=1 git log -- '*.c'</b> will search
-  for commits that touch the path <b>*.c</b>, not any paths that the glob
-  <b>*.c</b> matches. You might want this if you are feeding literal paths to
-  Git (e.g., paths previously given to you by <b>git ls-tree</b>, <b>--raw</b>
-  diff output, etc).</div>
+  example, running <b>GIT_LITERAL_PATHSPECS=1</b> <b>git</b> <b>log</b>
+  <b>--</b> '*.<b>c</b>' will search for commits that touch the path *.<b>c</b>,
+  not any paths that the glob *.<b>c</b> matches. You might want this if you are
+  feeding literal paths to Git (e.g., paths previously given to you by
+  <b>git</b> <b>ls-tree</b>, <b>--raw</b> diff output, etc).</div>
 <p class="Pp"><b>GIT_GLOB_PATHSPECS</b></p>
 <div class="Bd-indent">Setting this Boolean environment variable to true will
   cause Git to treat all pathspecs as glob patterns (aka &quot;glob&quot;
@@ -1238,8 +1250,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp"><b>GIT_ALLOW_PROTOCOL</b></p>
 <div class="Bd-indent">If set to a colon-separated list of protocols, behave as
   if <b>protocol.allow</b> is set to <b>never</b>, and each of the listed
-  protocols has <b>protocol.&lt;name&gt;.allow</b> set to <b>always</b>
-  (overriding any existing configuration). See the description of
+  protocols has <b>protocol.</b><i>&lt;name&gt;</i><b>.allow</b> set to
+  <b>always</b> (overriding any existing configuration). See the description of
   <b>protocol.allow</b> in <b>git-config</b>(1) for more details.</div>
 <p class="Pp"><b>GIT_PROTOCOL_FROM_USER</b></p>
 <div class="Bd-indent">Set this Boolean environment variable to false to prevent
@@ -1259,7 +1271,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     automatically in most configurations, but see the discussion in
     <b>git-http-backend</b>(1). For git-over-ssh, the ssh server may need to be
     configured to allow clients to pass this variable (e.g., by using
-    <b>AcceptEnv GIT_PROTOCOL</b> with OpenSSH).</p>
+    <b>AcceptEnv</b> <b>GIT_PROTOCOL</b> with OpenSSH).</p>
 <p class="Pp">This configuration is optional. If the variable is not propagated,
     then clients will fall back to the original &quot;v0&quot; protocol (but may
     miss out on some performance improvements or features). This variable
@@ -1270,8 +1282,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">If this Boolean environment variable is set to false, Git
   will complete any requested operation without performing any optional
   sub-operations that require taking a lock. For example, this will prevent
-  <b>git status</b> from refreshing the index as a side effect. This is useful
-  for processes running in the background which do not want to cause lock
+  <b>git</b> <b>status</b> from refreshing the index as a side effect. This is
+  useful for processes running in the background which do not want to cause lock
   contention with other operations on the repository. Defaults to
   <b>1</b>.</div>
 <p class="Pp"><b>GIT_REDIRECT_STDIN</b>, <b>GIT_REDIRECT_STDOUT</b>,
@@ -1279,14 +1291,14 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">Windows-only: allow redirecting the standard
   input/output/error handles to paths specified by the environment variables.
   This is particularly useful in multi-threaded applications where the canonical
-  way to pass standard handles via <b>CreateProcess()</b> is not an option
+  way to pass standard handles via <b>CreateProcess</b>() is not an option
   because it would require the handles to be marked inheritable (and
   consequently <b>every</b> spawned process would inherit them, possibly
   blocking regular Git operations). The primary intended use case is to use
-  named pipes for communication (e.g. <b>\\.\pipe\my-git-stdin-123</b>).
+  named pipes for communication (e.g. \\.\pipe\my-git-stdin-123).
 <p class="Pp">Two special values are supported: <b>off</b> will simply close the
     corresponding standard handle, and if <b>GIT_REDIRECT_STDERR</b> is
-    <b>2&gt;&amp;1</b>, standard error will be redirected to the same handle as
+    <b>2</b>&gt;&amp;1, standard error will be redirected to the same handle as
     standard output.</p>
 </div>
 <p class="Pp"><b>GIT_PRINT_SHA1_ELLIPSIS</b> (deprecated)</p>
@@ -1300,7 +1312,7 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">If set to <b>0</b>, then disable all advice messages.
   These messages are intended to provide hints to human users that may help them
   get out of problematic situations or take advantage of new features. Users can
-  disable individual messages using the <b>advice.*</b> config keys. These
+  disable individual messages using the <b>advice.</b>* config keys. These
   messages may be disruptive to tools that execute Git processes, so this
   variable is available to disable the messages. (The <b>--no-advice</b> global
   option is also available, but old Git versions may fail when this option is
@@ -1358,10 +1370,11 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <h1 class="Sh" id="SECURITY"><a class="permalink" href="#SECURITY">SECURITY</a></h1>
 <p class="Pp">Some configuration options and hook files may cause Git to run
     arbitrary shell commands. Because configuration and hooks are not copied
-    using <b>git clone</b>, it is generally safe to clone remote repositories
-    with untrusted content, inspect them with <b>git log</b>, and so on.</p>
-<p class="Pp">However, it is not safe to run Git commands in a <b>.git</b>
-    directory (or the working tree that surrounds it) when that <b>.git</b>
+    using <b>git</b> <b>clone</b>, it is generally safe to clone remote
+    repositories with untrusted content, inspect them with <b>git</b>
+    <b>log</b>, and so on.</p>
+<p class="Pp">However, it is not safe to run Git commands in a .<b>git</b>
+    directory (or the working tree that surrounds it) when that .<b>git</b>
     directory itself comes from an untrusted source. The commands in its config
     and hooks are executed in the usual way.</p>
 <p class="Pp">By default, Git will refuse to run when the repository is owned by
@@ -1371,9 +1384,9 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
     repositories that are owned by you (for example, if you extract a zip file
     or tarball from an untrusted source). In such cases, you&#x2019;d need to
     &quot;sanitize&quot; the untrusted repository first.</p>
-<p class="Pp">If you have an untrusted <b>.git</b> directory, you should first
-    clone it with <b>git clone --no-local</b> to obtain a clean copy. Git does
-    restrict the set of options and hooks that will be run by
+<p class="Pp">If you have an untrusted .<b>git</b> directory, you should first
+    clone it with <b>git</b> <b>clone</b> <b>--no-local</b> to obtain a clean
+    copy. Git does restrict the set of options and hooks that will be run by
     <b>upload-pack</b>, which handles the server side of a clone or fetch, but
     beware that the surface area for attack against <b>upload-pack</b> is large,
     so this does carry some risk. The safest thing is to serve the repository as
@@ -1475,8 +1488,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-11-25</td>
-    <td class="foot-os">Git 2.47.1</td>
+    <td class="foot-date">2025-01-10</td>
+    <td class="foot-os">Git 2.48.0</td>
   </tr>
 </table>
 </body>
