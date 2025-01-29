@@ -35,7 +35,7 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
-<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+<p class="Pp">Standard C library (<i>libc</i>,&#x00A0;<i>-lc</i>)</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
@@ -105,7 +105,7 @@
 <h2 class="Ss" id="Matching"><a class="permalink" href="#Matching">Matching</a></h2>
 <p class="Pp"><b>regexec</b>() is used to match a null-terminated string against
     the compiled pattern buffer in <i>*preg</i>, which must have been
-    initialised with <b>regexec</b>(). <i>eflags</i> is the bitwise OR of zero
+    initialised with <b>regcomp</b>(). <i>eflags</i> is the bitwise OR of zero
     or more of the following flags:</p>
 <dl class="Bl-tag">
   <dt id="REG_NOTBOL"><a class="permalink" href="#REG_NOTBOL"><b>REG_NOTBOL</b></a></dt>
@@ -321,8 +321,8 @@ int main(void)
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-06-15</td>
-    <td class="foot-os">Linux man-pages 6.9.1</td>
+    <td class="foot-date">2024-08-21</td>
+    <td class="foot-os">Linux man-pages 6.10</td>
   </tr>
 </table>
 </body>

@@ -40,21 +40,6 @@
     <a class="Xr" href="pkgadd.8.html">pkgadd(8)</a> command. The package itself
     is an archive of files, and its contents have a directory structure
   format.</p>
-<p class="Pp">The following archive formats are supported:</p>
-<div class="Bd-indent">
-<dl class="Bl-tag Bl-compact">
-  <dt>&#x2022; .pkg.tar.gz</dt>
-  <dd style="width: auto;">&#x00A0;</dd>
-  <dt>&#x2022; .pkg.tar.bz2</dt>
-  <dd style="width: auto;">&#x00A0;</dd>
-  <dt>&#x2022; .pkg.tar.lz</dt>
-  <dd style="width: auto;">&#x00A0;</dd>
-  <dt>&#x2022; .pkg.tar.zst</dt>
-  <dd style="width: auto;">&#x00A0;</dd>
-  <dt>&#x2022; .pkg.tar.xz</dt>
-  <dd style="width: auto;">&#x00A0;</dd>
-</dl>
-</div>
 <p class="Pp">To prepare to use <code class="Nm">pkgmk</code>, you must write a
     file named <span class="Pa">Pkgfile</span>, that describes how the package
     should be build. See <a class="Xr" href="Pkgfile.5.html">Pkgfile(5)</a> for
@@ -117,9 +102,32 @@
     <var class="Ar">format</var>,
     <code class="Fl">--archive-format</code>=<var class="Ar">format</var></dt>
   <dd>Use the specified format for the created archive instead of the default
-      &#x201C;gnutar&#x201D;.
-    <p class="Pp">Supported formats include &#x201C;gnutar&#x201D;,
-        &#x201C;pax&#x201D;, &#x201C;ustar&#x201D;, and &#x201C;v7&#x201D;. See
+      &#x201C;gnutar&#x201D; or the one defined in the configuration file as
+      &#x201C;PKGMK_ARCHIVE_FORMAT&#x201D;.
+    <p class="Pp">The following archive formats are supported:</p>
+    <table class="Bl-column">
+      <tr id="Format">
+        <td><a class="permalink" href="#Format"><b class="Sy">Format</b></a></td>
+        <td><a class="permalink" href="#Description"><b class="Sy" id="Description">Description</b></a></td>
+      </tr>
+      <tr>
+        <td>gnutar</td>
+        <td>GNU tar format</td>
+      </tr>
+      <tr>
+        <td>pax</td>
+        <td>POSIX 1003.1-2001 (pax) format</td>
+      </tr>
+      <tr>
+        <td>ustar</td>
+        <td>POSIX 1003.1-1988 (ustar) format</td>
+      </tr>
+      <tr>
+        <td>v7</td>
+        <td>Old V7 tar format</td>
+      </tr>
+    </table>
+    <p class="Pp">See
         <a class="Xr" href="libarchive-formats.5.html">libarchive-formats(5)</a>
         for more information about currently-supported formats.</p>
   </dd>

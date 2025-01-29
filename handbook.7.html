@@ -1507,7 +1507,7 @@ No differences found</code></pre>
         </tr>
     </table>
 
-<p>If you will build packages with non-root privileges, the installed files will have user permissions. This is wrong, both in terms of security and distribution of these packages. It is better to use <a href="fakeroot.1.html">fakeroot(1)</a>, to run <a href="pkgmk.8.html">pkgmk(8)</a> in an environment faking root privileges. Example:</p>
+<p>If you will build packages with unprivileged user, the installed files will have user permissions. This is wrong, both in terms of security and distribution of these packages. It is better to use <a href="fakeroot.1.html">fakeroot(1)</a> to run <a href="pkgmk.8.html">pkgmk(8)</a> in an environment faking root privileges. Example:</p>
 
 <pre><code>$ fakeroot pkgmk -d</code></pre>
 
@@ -1576,7 +1576,7 @@ PKGMK_WORD_DIR=&quot;/var/cache/pkgmk/work/$name-$$&quot;</code></pre>
 
 <p>Edit <i>/etc/pkgmk.conf</i>:</p>
 
-<p>Set where you put your RAM file system from <i>/etc/fstab</i> file:</p>
+<p>Set where you put your RAM filesystem from <i>/etc/fstab</i> file:</p>
 
 <pre><code>PKGMK_WORK_DIR=&quot;/var/cache/pkgmk/work/$name&quot;</code></pre>
 

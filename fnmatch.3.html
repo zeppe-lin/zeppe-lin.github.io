@@ -30,7 +30,7 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
-<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+<p class="Pp">Standard C library (<i>libc</i>,&#x00A0;<i>-lc</i>)</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
@@ -66,8 +66,10 @@
       followed by a slash. This flag is mainly for the internal use of glibc and
       is implemented only in certain cases.</dd>
   <dt id="FNM_CASEFOLD"><a class="permalink" href="#FNM_CASEFOLD"><b>FNM_CASEFOLD</b></a></dt>
-  <dd>If this flag (a GNU extension) is set, the pattern is matched
-      case-insensitively.</dd>
+  <dd></dd>
+  <dt id="FNM_IGNORECASE"><a class="permalink" href="#FNM_IGNORECASE"><b>FNM_IGNORECASE</b>
+    (same as <b>FNM_CASEFOLD</b>)</a></dt>
+  <dd>If this flag is set, the pattern is matched case-insensitively.</dd>
   <dt id="FNM_EXTMATCH"><a class="permalink" href="#FNM_EXTMATCH"><b>FNM_EXTMATCH</b></a></dt>
   <dd>If this flag (a GNU extension) is set, extended patterns are supported, as
       introduced by 'ksh' and now supported by other shells. The extended format
@@ -118,11 +120,13 @@
 <dl class="Bl-tag">
   <dt id="fnmatch"><a class="permalink" href="#fnmatch"><b>fnmatch</b>()</a></dt>
   <dd>POSIX.1-2008.</dd>
+  <dt id="FNM_CASEFOLD~2"><a class="permalink" href="#FNM_CASEFOLD~2"><b>FNM_CASEFOLD</b></a></dt>
+  <dd></dd>
+  <dt id="FNM_IGNORECASE~2"><a class="permalink" href="#FNM_IGNORECASE~2"><b>FNM_IGNORECASE</b></a></dt>
+  <dd>POSIX.1-2024.</dd>
   <dt id="FNM_FILE_NAME~2"><a class="permalink" href="#FNM_FILE_NAME~2"><b>FNM_FILE_NAME</b></a></dt>
   <dd></dd>
   <dt id="FNM_LEADING_DIR~2"><a class="permalink" href="#FNM_LEADING_DIR~2"><b>FNM_LEADING_DIR</b></a></dt>
-  <dd></dd>
-  <dt id="FNM_CASEFOLD~2"><a class="permalink" href="#FNM_CASEFOLD~2"><b>FNM_CASEFOLD</b></a></dt>
   <dd>GNU.</dd>
 </dl>
 </section>
@@ -131,6 +135,8 @@
 <dl class="Bl-tag">
   <dt id="fnmatch~2"><a class="permalink" href="#fnmatch~2"><b>fnmatch</b>()</a></dt>
   <dd>POSIX.1-2001, POSIX.2.</dd>
+  <dt id="FNM_CASEFOLD~3"><a class="permalink" href="#FNM_CASEFOLD~3"><b>FNM_CASEFOLD</b></a></dt>
+  <dd>has been available on many systems even before POSIX.1-2024.</dd>
 </dl>
 </section>
 <section class="Sh">
@@ -142,8 +148,8 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-05-02</td>
-    <td class="foot-os">Linux man-pages 6.9.1</td>
+    <td class="foot-date">2024-07-23</td>
+    <td class="foot-os">Linux man-pages 6.10</td>
   </tr>
 </table>
 </body>

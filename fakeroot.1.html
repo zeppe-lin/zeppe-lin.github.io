@@ -28,11 +28,11 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>fakeroot</b> <b>[-l|--lib</b> <i>library]</i> <b>[--faked</b>
-    <i>faked-binary</i><b>]</b> <b>[-i</b> <i>load-file</i><b>]</b> <b>[-s</b>
-    <i>save-file</i><b>]</b> <b>[-u|--unknown-is-real]</b> <b>[-b|--fd-base
-    ]</b> <b>[-h|--help ]</b> <b>[-v|--version ]</b> <b>[--]</b>
-    <b>[command]</b></p>
+<p class="Pp"><b>fakeroot</b> [<b>-l</b>|<b>--lib</b> <i>library</i>]
+    [<b>--faked</b> <i>faked-binary</i>] [<b>-i</b> <i>load-file</i>] [<b>-s</b>
+    <i>save-file</i>] [<b>-u</b>|<b>--unknown-is-real</b>]
+    [<b>-b</b>|<b>--fd-base</b>] [<b>-h</b>|<b>--help</b>]
+    [<b>-v</b>|<b>--version</b>] [<b>--</b>] [<i>command</i>]</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -138,7 +138,7 @@
 <p class="Pp">Only the effects that user <b>joost</b> could do anyway happen for
     real.</p>
 <p class="Pp"><b>fakeroot</b> was specifically written to enable users to create
-    Debian GNU/Linux packages (in the <b>deb(5)</b> format) without giving them
+    Debian GNU/Linux packages (in the <b>deb</b>(5) format) without giving them
     root privileges. This can be done by commands like <b>dpkg-buildpackage
     -rfakeroot</b> or <b>debuild -rfakeroot</b> (actually, -rfakeroot is default
     in debuild nowadays, so you don't need that argument).</p>
@@ -209,11 +209,11 @@
         creates other problems, as demonstrated by the libtricks package. This
         package wrapped many more functions, and tried to do a lot more than
         <b>fakeroot .</b> It turned out that a minor upgrade of libc (from one
-        where the <b>stat()</b> function didn't use <b>open()</b> to one with a
-        <b>stat()</b> function that did (in some cases) use <b>open()</b>),
-        would cause unexplainable segfaults (that is, the libc6 <b>stat()</b>
-        called the wrapped <b>open()</b>, which would then call the libc6
-        <b>stat()</b>, etc). Fixing them wasn't all that easy, but once fixed,
+        where the <b>stat</b>() function didn't use <b>open</b>() to one with a
+        <b>stat</b>() function that did (in some cases) use <b>open</b>() ),
+        would cause unexplainable segfaults (that is, the libc6 <b>stat</b>()
+        called the wrapped <b>open</b>() , which would then call the libc6
+        <b>stat</b>() , etc). Fixing them wasn't all that easy, but once fixed,
         it was just a matter of time before another function started to use
         open(), never mind trying to port it to a different operating system.
         Thus I decided to keep the number of functions wrapped by fakeroot as
@@ -262,8 +262,9 @@
 <section class="Sh">
 <h1 class="Sh" id="MANUAL_PAGE"><a class="permalink" href="#MANUAL_PAGE">MANUAL
   PAGE</a></h1>
-<p class="Pp">mostly by J.H.M. Dassen &lt;jdassen@debian.org&gt;, with rather a
-    lot of modifications and additions by joost and Clint.</p>
+<p class="Pp">mostly by J.H.M. Dassen
+    <b>&lt;</b><i>jdassen@debian.org</i><b>&gt;</b> with rather a lot of
+    modsifications and additions by joost and Clint.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
