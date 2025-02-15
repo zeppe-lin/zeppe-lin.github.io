@@ -247,7 +247,7 @@ https://example.com/</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="VERSION"><a class="permalink" href="#VERSION">VERSION</a></h1>
-<p class="Pp">This man page describes curl 8.11.1. If you use a later version,
+<p class="Pp">This man page describes curl 8.12.1. If you use a later version,
     chances are this man page does not fully document it. If you use an earlier
     version, this document tries to include version information about which
     specific version that introduced changes.</p>
@@ -279,6 +279,9 @@ https://example.com/</pre>
     start again with a clean option state, except for the options that are
     global. Global options retain their values and meaning even after <i>-:,
     --next</i>.</p>
+<p class="Pp">The first argument that is exactly two dashes (&quot;--&quot;),
+    marks the end of options; any argument after the end of options is
+    interpreted as a URL argument even if it starts with a dash.</p>
 <p class="Pp">The following options are global: <i>--fail-early</i>,
     <i>--libcurl</i>, <i>--parallel-immediate</i>, <i>--parallel-max</i>, <i>-Z,
     --parallel</i>, <i>-#, --progress-bar</i>, <i>--rate</i>, <i>-S,
@@ -459,12 +462,13 @@ https://example.com/</pre>
         double quote character as \&quot; so that it is not recognized as an
         escape character.</p>
     <p class="Pp">If curl is built against OpenSSL library, and the engine
-        pkcs11 is available, then a PKCS#11 URI (RFC 7512) can be used to
-        specify a certificate located in a PKCS#11 device. A string beginning
-        with &quot;pkcs11:&quot; is interpreted as a PKCS#11 URI. If a PKCS#11
-        URI is provided, then the <i>--engine</i> option is set as
-        &quot;pkcs11&quot; if none was provided and the <i>--cert-type</i>
-        option is set as &quot;ENG&quot; if none was provided.</p>
+        pkcs11 or pkcs11 provider is available, then a PKCS#11 URI (RFC 7512)
+        can be used to specify a certificate located in a PKCS#11 device. A
+        string beginning with &quot;pkcs11:&quot; is interpreted as a PKCS#11
+        URI. If a PKCS#11 URI is provided, then the <i>--engine</i> option is
+        set as &quot;pkcs11&quot; if none was provided and the
+        <i>--cert-type</i> option is set as &quot;ENG&quot; or &quot;PROV&quot;
+        if none was provided (depending on OpenSSL version).</p>
     <p class="Pp">If curl is built against GnuTLS library, a PKCS#11 URI can be
         used to specify a certificate located in a PKCS#11 device. A string
         beginning with &quot;pkcs11:&quot; is interpreted as a PKCS#11 URI.</p>
@@ -509,11 +513,12 @@ https://example.com/</pre>
   </dd>
   <dt id="cert~2"><a class="permalink" href="#cert~2">--cert-type
     &lt;type&gt;</a></dt>
-  <dd>(TLS) Set type of the provided client certificate. PEM, DER, ENG and P12
-      are recognized types.
+  <dd>(TLS) Set type of the provided client certificate. PEM, DER, ENG, PROV and
+      P12 are recognized types.
     <p class="Pp">The default type depends on the TLS backend and is usually
         PEM, however for Secure Transport and Schannel it is P12. If <i>-E,
-        --cert</i> is a pkcs11: URI then ENG is the default type.</p>
+        --cert</i> is a pkcs11: URI then ENG or PROV is the default type
+        (depending on OpenSSL version).</p>
     <p class="Pp">If --cert-type is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
@@ -737,7 +742,7 @@ curl -b name=Jane https://example.com</pre>
   <dt id="c,"><a class="permalink" href="#c,">-c, --cookie-jar
     &lt;filename&gt;</a></dt>
   <dd>(HTTP) Specify to which file you want curl to write all cookies after a
-      completed operation. Curl writes all cookies from its in-memory cookie
+      completed operation. curl writes all cookies from its in-memory cookie
       storage to the given file at the end of operations. Even if no cookies are
       known, a file is created so that it removes any formerly existing cookies
       from the file. The file uses the Netscape cookie file format. If you set
@@ -994,7 +999,7 @@ curl --data-urlencode @fileonly https://example.com</pre>
   </dd>
   <dt id="disable"><a class="permalink" href="#disable">--disable-eprt</a></dt>
   <dd>(FTP) Disable the use of the EPRT and LPRT commands when doing active FTP
-      transfers. Curl normally first attempts to use EPRT before using PORT, but
+      transfers. curl normally first attempts to use EPRT before using PORT, but
       with this option, it uses PORT right away. EPRT is an extension to the
       original FTP protocol, and does not work on all servers, but enables more
       functionality in a better way than the traditional PORT command.
@@ -1013,7 +1018,7 @@ curl --data-urlencode @fileonly https://example.com</pre>
   </dd>
   <dt id="disable~2"><a class="permalink" href="#disable~2">--disable-epsv</a></dt>
   <dd>(FTP) Disable the use of the EPSV command when doing passive FTP
-      transfers. Curl normally first attempts to use EPSV before PASV, but with
+      transfers. curl normally first attempts to use EPSV before PASV, but with
       this option, it does not try EPSV.
     <p class="Pp"><i>--epsv</i> can be used to explicitly enable EPSV again and
         <i>--no-epsv</i> is an alias for <i>--disable-epsv</i>.</p>
@@ -1238,11 +1243,12 @@ curl --dump-header - https://example.com -o save</pre>
   <dd>(HTTP) Make a conditional HTTP request for the specific ETag read from the
       given file by sending a custom If-None-Match header using the stored ETag.
     <p class="Pp">For correct results, make sure that the specified file
-        contains only a single line with the desired ETag. An empty file is
-        parsed as an empty ETag.</p>
+        contains only a single line with the desired ETag. A non-existing or
+        empty file is treated as an empty ETag.</p>
     <p class="Pp">Use the option <i>--etag-save</i> to first save the ETag from
         a response, and then use this option to compare against the saved ETag
         in a subsequent request.</p>
+    <p class="Pp">Use this option with a single URL only.</p>
     <p class="Pp">If --etag-compare is provided several times, the last set
         value is used.</p>
     <p class="Pp">Example:</p>
@@ -1253,9 +1259,13 @@ curl --dump-header - https://example.com -o save</pre>
   <dt id="etag~2"><a class="permalink" href="#etag~2">--etag-save
     &lt;file&gt;</a></dt>
   <dd>(HTTP) Save an HTTP ETag to the specified file. An ETag is a caching
-      related header, usually returned in a response.
+      related header, usually returned in a response. Use this option with a
+      single URL only.
     <p class="Pp">If no ETag is sent by the server, an empty file is
       created.</p>
+    <p class="Pp">Starting in curl 8.12.0, using the <i>--create-dirs</i> option
+        can also create missing directory components for the path provided in
+        <i>--etag-save</i>.</p>
     <p class="Pp">If --etag-save is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
@@ -1811,6 +1821,10 @@ curl --get -I -d &quot;tool=curl&quot; https://example.com</pre>
         <i>-L, --location</i>. This can lead to the header being sent to other
         hosts than the original host, so sensitive headers should be used with
         caution combined with following redirects.</p>
+    <p class="Pp">&quot;Authorization:&quot; and &quot;Cookie:&quot; headers are
+        explicitly <i>not</i> passed on in HTTP requests when following
+        redirects to other origins, unless <i>--location-trusted</i> is
+      used.</p>
     <p class="Pp">--header can be used several times in a command line</p>
     <p class="Pp">Examples:</p>
     <pre>curl -H &quot;X-First-Name: Joe&quot; https://example.com
@@ -1857,7 +1871,7 @@ curl --help -f</pre>
   <dt id="hostpubsha256"><a class="permalink" href="#hostpubsha256">--hostpubsha256
     &lt;sha256&gt;</a></dt>
   <dd>(SFTP SCP) Pass a string containing a Base64-encoded SHA256 hash of the
-      remote host's public key. Curl refuses the connection with the host unless
+      remote host's public key. curl refuses the connection with the host unless
       the hashes match.
     <p class="Pp">This feature requires libcurl to be built with libssh2 and
         does not work with other SSH backends.</p>
@@ -1994,13 +2008,11 @@ curl --help -f</pre>
         <i>--http2</i> and <i>--http3</i>.</p>
   </dd>
   <dt id="ignore"><a class="permalink" href="#ignore">--ignore-content-length</a></dt>
-  <dd>(FTP HTTP) For HTTP, Ignore the Content-Length header. This is
+  <dd>(FTP HTTP) For HTTP, ignore the Content-Length header. This is
       particularly useful for servers running Apache 1.x, which reports
       incorrect Content-Length for files larger than 2 gigabytes.
     <p class="Pp">For FTP, this makes curl skip the SIZE command to figure out
         the size before downloading a file.</p>
-    <p class="Pp">This option does not work for HTTP if libcurl was built to use
-        hyper.</p>
     <p class="Pp">Providing --ignore-content-length multiple times has no extra
         effect. Disable it again with --no-ignore-content-length.</p>
     <p class="Pp">Example:</p>
@@ -2223,12 +2235,13 @@ curl --json @- https://example.com &lt; json.txt</pre>
       candidates in order: &quot;~/.ssh/id_rsa&quot;, &quot;~/.ssh/id_dsa&quot;,
       &quot;./id_rsa&quot;, &quot;./id_dsa&quot;.
     <p class="Pp">If curl is built against OpenSSL library, and the engine
-        pkcs11 is available, then a PKCS#11 URI (RFC 7512) can be used to
-        specify a private key located in a PKCS#11 device. A string beginning
-        with &quot;pkcs11:&quot; is interpreted as a PKCS#11 URI. If a PKCS#11
-        URI is provided, then the <i>--engine</i> option is set as
-        &quot;pkcs11&quot; if none was provided and the <i>--key-type</i> option
-        is set as &quot;ENG&quot; if none was provided.</p>
+        pkcs11 or pkcs11 provider is available, then a PKCS#11 URI (RFC 7512)
+        can be used to specify a private key located in a PKCS#11 device. A
+        string beginning with &quot;pkcs11:&quot; is interpreted as a PKCS#11
+        URI. If a PKCS#11 URI is provided, then the <i>--engine</i> option is
+        set as &quot;pkcs11&quot; if none was provided and the <i>--key-type</i>
+        option is set as &quot;ENG&quot; or &quot;PROV&quot; if none was
+        provided (depending on OpenSSL version).</p>
     <p class="Pp">If curl is built against Secure Transport or Schannel then
         this option is ignored for TLS protocols (HTTPS, etc). Those backends
         expect the private key to be already present in the keychain or PKCS#12
@@ -2341,13 +2354,14 @@ curl --limit-rate 10M https://example.com</pre>
   <dt id="L,"><a class="permalink" href="#L,">-L, --location</a></dt>
   <dd>(HTTP) If the server reports that the requested page has moved to a
       different location (indicated with a Location: header and a 3XX response
-      code), this option makes curl redo the request on the new place. If used
+      code), this option makes curl redo the request to the new place. If used
       together with <i>-i, --show-headers</i> or <i>-I, --head</i>, headers from
       all requested pages are shown.
-    <p class="Pp">When authentication is used, or send cookie with &quot;-H
-        Cookie:&quot;, curl only sends its credentials to the initial host. If a
-        redirect takes curl to a different host, it does not get the credentials
-        pass on. See <i>--location-trusted</i> on how to change this.</p>
+    <p class="Pp">When authentication is used, or when sending a cookie with
+        &quot;-H Cookie:&quot;, curl only sends its credentials to the initial
+        host. If a redirect takes curl to a different host, it does not get the
+        credentials passed on. See <i>--location-trusted</i> on how to change
+        this.</p>
     <p class="Pp">Limit the amount of redirects to follow by using the
         <i>--max-redirs</i> option.</p>
     <p class="Pp">When curl follows a redirect and if the request is a POST, it
@@ -2564,7 +2578,7 @@ curl --max-time 2.92 https://example.com</pre>
   <dd>Make curl scan the <i>.netrc</i> file in the user's home directory for
       login name and password. This is typically used for FTP on Unix. If used
       with HTTP, curl enables user authentication. See <i>netrc(5)</i> and
-      <i>ftp(1)</i> for details on the file format. Curl does not complain if
+      <i>ftp(1)</i> for details on the file format. curl does not complain if
       that file does not have the right permissions (it should be neither world-
       nor group-readable). The environment variable &quot;HOME&quot; is used to
       find the home directory.
@@ -2572,10 +2586,10 @@ curl --max-time 2.92 https://example.com</pre>
         <i>.netrc</i> and <i>_netrc</i>, preferring the former. Older versions
         on Windows checked for <i>_netrc</i> only.</p>
     <p class="Pp">A quick and simple example of how to setup a <i>.netrc</i> to
-        allow curl to FTP to the machine host.domain.com with username 'myself'
+        allow curl to FTP to the machine host.example.com with username 'myself'
         and password 'secret' could look similar to:</p>
     <p class="Pp"></p>
-    <pre>machine host.domain.com
+    <pre>machine host.example.com
 login myself
 password secret</pre>
     <p class="Pp">Providing --netrc multiple times has no extra effect. Disable
@@ -3238,10 +3252,11 @@ curl --pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
   <dt id="proxy~7"><a class="permalink" href="#proxy~7">--proxy-cert-type
     &lt;type&gt;</a></dt>
   <dd>Set type of the provided client certificate when using HTTPS proxy. PEM,
-      DER, ENG and P12 are recognized types.
+      DER, ENG, PROV and P12 are recognized types.
     <p class="Pp">The default type depends on the TLS backend and is usually
         PEM, however for Secure Transport and Schannel it is P12. If
-        <i>--proxy-cert</i> is a pkcs11: URI then ENG is the default type.</p>
+        <i>--proxy-cert</i> is a pkcs11: URI then ENG or PROV is the default
+        type (depending on OpenSSL version).</p>
     <p class="Pp">Equivalent to <i>--cert-type</i> but used in HTTPS proxy
         context.</p>
     <p class="Pp">If --proxy-cert-type is provided several times, the last set
@@ -3701,9 +3716,10 @@ curl --proxy-pinnedpubkey 'sha256//ce118b51897f4452dc' https://example.com</pre>
 </div>
 <dl class="Bl-tag">
   <dt></dt>
-  <dd>(*) = NOTE that these make the server reply with a multipart response,
-      which is returned as-is by curl. Parsing or otherwise transforming this
-      response is the responsibility of the caller.
+  <dd>(*) = NOTE that if specifying multiple ranges and the server supports it
+      then it replies with a multiple part response that curl returns as-is. It
+      contains meta information in addition to the requested bytes. Parsing or
+      otherwise transforming this response is the responsibility of the caller.
     <p class="Pp">Only digit characters (0-9) are valid in the 'start' and
         'stop' fields of the 'start-stop' range syntax. If a non-digit character
         is given in the range, the server's response is unspecified, depending
@@ -4135,7 +4151,7 @@ curl -X NLST ftp://example.com/</pre>
   </dd>
   <dt id="s,"><a class="permalink" href="#s,">-s, --silent</a></dt>
   <dd>Silent or quiet mode. Do not show progress meter or error messages. Makes
-      Curl mute. It still outputs the data you ask for, potentially even to the
+      curl mute. It still outputs the data you ask for, potentially even to the
       terminal/stdout unless you redirect it.
     <p class="Pp">Use <i>-S, --show-error</i> in addition to this option to
         disable progress meter but still show error messages.</p>
@@ -4402,6 +4418,30 @@ curl -X NLST ftp://example.com/</pre>
     <p class="Pp">Added in 7.70.0. See also <i>--crlfile</i> and <i>-k,
         --insecure</i>.</p>
   </dd>
+  <dt>--ssl-sessions &lt;filename&gt;</dt>
+  <dd>(TLS) Use the given file to load SSL session tickets into curl's cache
+      before starting any transfers. At the end of a successful curl run, the
+      cached SSL sessions tickets are save to the file, replacing any previous
+      content.
+    <p class="Pp">The file does not have to exist, but curl reports an error if
+        it is unable to create it. Unused loaded tickets are saved again, unless
+        they get replaced or purged from the cache for space reasons.</p>
+    <p class="Pp">Using a session file allows &quot;<i>--tls-earlydata</i>&quot;
+        to send the first request in &quot;0-RTT&quot; mode, should an SSL
+        session with the feature be found. Note that a server may not support
+        early data. Also note that early data does not provide forward secrecy,
+        e.g. is not as secure.</p>
+    <p class="Pp">The SSL session tickets are stored as base64 encoded text,
+        each ticket on its own line. The hostnames are cryptographically salted
+        and hashed. While this prevents someone to easily see the hosts you
+        contacted, they could still check if a specific hostname matches one of
+        the values.</p>
+    <p class="Pp">If --ssl-sessions is provided several times, the last set
+        value is used.</p>
+    <p class="Pp">Example:</p>
+    <pre>curl --ssl-sessions sessions.txt https://example.com</pre>
+    <p class="Pp">Added in 8.12.0. See also <i>--tls-earlydata</i>.</p>
+  </dd>
   <dt>-2, --sslv2</dt>
   <dd>(SSL) This option previously asked curl to use SSLv2, but is now ignored
       (added in 7.77.0). SSLv2 is widely considered insecure (see RFC 6176).
@@ -4424,7 +4464,8 @@ curl -X NLST ftp://example.com/</pre>
         --tlsv1</i>, <i>--tlsv1.1</i> and <i>--tlsv1.2</i>. See also
         <i>--http1.1</i> and <i>--http2</i>.</p>
   </dd>
-  <dt>--stderr &lt;file&gt;</dt>
+  <dt id="stderr"><a class="permalink" href="#stderr">--stderr
+    &lt;file&gt;</a></dt>
   <dd>Redirect all writes to stderr to the specified file instead. If the
       filename is a plain '-', it is instead written to stdout.
     <p class="Pp">This option is global and does not need to be specified for
@@ -4576,8 +4617,8 @@ curl -z file https://example.com</pre>
         Disable it again with --no-tls-earlydata.</p>
     <p class="Pp">Example:</p>
     <pre>curl --tls-earlydata https://example.com</pre>
-    <p class="Pp">Added in 8.11.0. See also <i>--tlsv1.3</i> and
-        <i>--tls-max</i>.</p>
+    <p class="Pp">Added in 8.11.0. See also <i>--tlsv1.3</i>, <i>--tls-max</i>
+        and <i>--ssl-sessions</i>.</p>
   </dd>
   <dt id="tls~2"><a class="permalink" href="#tls~2">--tls-max
     &lt;VERSION&gt;</a></dt>
@@ -4960,7 +5001,7 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
         you prefer a blank header, you can set it to a single space (&quot;
         &quot;).</p>
     <p class="Pp">By default, curl uses curl/VERSION, such as User-Agent:
-        curl/8.11.1.</p>
+        curl/8.12.1.</p>
     <p class="Pp">If --user-agent is provided several times, the last set value
         is used.</p>
     <p class="Pp">Example:</p>
@@ -4990,6 +5031,26 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
         is not set, use <i>--variable</i> %name=content or <i>--variable</i>
         %name@content. Note that on some systems - but not all - environment
         variables are case insensitive.</p>
+    <p class="Pp">Added in curl 8.12.0: you can get a byte range from the source
+        by appending &quot;[start-end]&quot; to the variable name, where
+        <i>start</i> and <i>end</i> are byte offsets to include from the
+        contents. For example, asking for offset &quot;2-10&quot; means offset
+        two to offset ten, inclusive, resulting in 9 bytes in total.
+        &quot;2-2&quot; means a single byte at offset 2. Not providing a second
+        number implies to the end of data. The start offset cannot be larger
+        than the end offset. Asking for a range that is outside of the file size
+        makes the variable contents empty. For example, getting the first one
+        hundred bytes from a given file:</p>
+    <p class="Pp"></p>
+    <pre>curl --variable &quot;fraction[0-99]@filename&quot;</pre>
+    <p class="Pp">Given a byte range that has no data results in an empty
+        string. Asking for a range that is larger than the content makes curl
+        use the piece of the data that exists.</p>
+    <p class="Pp">To assign a variable using contents from another variable, use
+        <i>--expand-variable</i>. Like for example assigning a new variable
+        using contents from two other:</p>
+    <p class="Pp"></p>
+    <pre>curl --expand-variable &quot;user={{firstname}} {{lastname}}&quot;</pre>
     <p class="Pp">When expanding variables, curl supports a set of functions
         that can make the variable contents more convenient to use. You apply a
         function to a variable expansion by adding a colon and then list the
@@ -5002,13 +5063,35 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
 <div class="Bd-indent">
 <dl class="Bl-tag">
   <dt id="trim"><a class="permalink" href="#trim">trim</a></dt>
-  <dd>removes all leading and trailing white space.</dd>
+  <dd>removes all leading and trailing white space.
+    <p class="Pp">Example:</p>
+    <p class="Pp"></p>
+    <pre>curl --expand-url https.//example.com/{{url:trim}}</pre>
+  </dd>
   <dt id="json"><a class="permalink" href="#json">json</a></dt>
-  <dd>outputs the content using JSON string quoting rules.</dd>
+  <dd>
+    <pre></pre>
+    outputs the content using JSON string quoting rules.
+    <p class="Pp">Example:</p>
+    <p class="Pp"></p>
+    <pre>curl --expand-data {{data:json}} https://example.com</pre>
+  </dd>
   <dt id="url"><a class="permalink" href="#url">url</a></dt>
-  <dd>shows the content URL (percent) encoded.</dd>
+  <dd>
+    <pre></pre>
+    shows the content URL (percent) encoded.
+    <p class="Pp">Example:</p>
+    <p class="Pp"></p>
+    <pre>curl --expand-url https://example.com/{{path:url}}</pre>
+  </dd>
   <dt id="b64"><a class="permalink" href="#b64">b64</a></dt>
-  <dd>expands the variable base64 encoded</dd>
+  <dd>
+    <pre></pre>
+    expands the variable base64 encoded
+    <p class="Pp">Example:</p>
+    <p class="Pp"></p>
+    <pre>curl --expand-url https://example.com/{{var:b64}}</pre>
+  </dd>
 </dl>
 </div>
 <dl class="Bl-tag">
@@ -5053,6 +5136,10 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
         traffic might contain sensitive data, including usernames, credentials
         or secret data content. Be aware and be careful when sharing trace logs
         with others.</p>
+    <p class="Pp">When the output contains protocol headers, those lines might
+        include carriage return (ASCII code 13) characters, even on platforms
+        that otherwise normally only use linefeed to signify line separations -
+        as curl shows the exact contents arriving from the server.</p>
     <p class="Pp">This option is global and does not need to be specified for
         each use of --next.</p>
     <p class="Pp">Providing --verbose multiple times has no extra effect.
@@ -5067,6 +5154,16 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
   <dd>Displays information about curl and the libcurl version it uses.
     <p class="Pp">The first line includes the full version of curl, libcurl and
         other 3rd party libraries linked with the executable.</p>
+    <p class="Pp">This line may contain one or more TLS libraries. curl can be
+        built to support more than one TLS library which then makes curl - at
+        start-up - select which particular backend to use for this
+      invocation.</p>
+    <p class="Pp">If curl supports more than one TLS library like this, the ones
+        that are <i>not</i> selected by default are listed within parentheses.
+        Thus, if you do not specify which backend to use (with the
+        &quot;CURL_SSL_BACKEND&quot; environment variable) the one listed
+        without parentheses is used. Such builds also has &quot;MultiSSL&quot;
+        set as a feature.</p>
     <p class="Pp">The second line (starts with &quot;Release-Date:&quot;) shows
         the release date.</p>
     <p class="Pp">The third line (starts with &quot;Protocols:&quot;) shows all
@@ -5132,6 +5229,9 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
   <dt id="SSL"><a class="permalink" href="#SSL">SSL</a></dt>
   <dd>SSL versions of various protocols are supported, such as HTTPS, FTPS,
       POP3S and so on.</dd>
+  <dt id="SSLS-EXPORT"><a class="permalink" href="#SSLS-EXPORT">SSLS-EXPORT</a></dt>
+  <dd>This build supports TLS session export/import, like with the
+      <i>--ssl-sessions</i>.</dd>
   <dt id="SSPI"><a class="permalink" href="#SSPI">SSPI</a></dt>
   <dd>SSPI is supported.</dd>
   <dt id="TLS-SRP"><a class="permalink" href="#TLS-SRP">TLS-SRP</a></dt>
@@ -5168,262 +5268,7 @@ curl --url-query &quot;+name=%20foo&quot; https://example.com</pre>
   </dd>
   <dt id="w,"><a class="permalink" href="#w,">-w, --write-out
     &lt;format&gt;</a></dt>
-  <dd>Make curl display information on stdout after a completed transfer. The
-      format is a string that may contain plain text mixed with any number of
-      variables. The format can be specified as a literal &quot;string&quot;, or
-      you can have curl read the format from a file with &quot;@filename&quot;
-      and to tell curl to read the format from stdin you write &quot;@-&quot;.
-    <p class="Pp">The variables present in the output format are substituted by
-        the value or text that curl thinks fit, as described below. All
-        variables are specified as %{variable_name} and to output a normal % you
-        just write them as %%. You can output a newline by using \n, a carriage
-        return with \r and a tab space with \t.</p>
-    <p class="Pp">The output is by default written to standard output, but can
-        be changed with %{stderr} and %output{}.</p>
-    <p class="Pp">Output HTTP headers from the most recent request by using
-        <i>%header{name}</i> where <i>name</i> is the case insensitive name of
-        the header (without the trailing colon). The header contents are exactly
-        as sent over the network, with leading and trailing whitespace trimmed
-        (added in 7.84.0).</p>
-    <p class="Pp">Select a specific target destination file to write the output
-        to, by using <i>%output{name}</i> (added in curl 8.3.0) where
-        <i>name</i> is the full filename. The output following that instruction
-        is then written to that file. More than one <i>%output{}</i> instruction
-        can be specified in the same write-out argument. If the filename cannot
-        be created, curl leaves the output destination to the one used prior to
-        the <i>%output{}</i> instruction. Use <i>%output{&gt;&gt;name}</i> to
-        append data to an existing file.</p>
-    <p class="Pp">This output is done independently of if the file transfer was
-        successful or not.</p>
-    <p class="Pp">If the specified action or output specified with this option
-        fails in any way, it does not make curl return a (different) error.</p>
-    <p class="Pp"><b>NOTE:</b> On Windows, the %-symbol is a special symbol used
-        to expand environment variables. In batch files, all occurrences of %
-        must be doubled when using this option to properly escape. If this
-        option is used at the command prompt then the % cannot be escaped and
-        unintended expansion is possible.</p>
-    <p class="Pp">The variables available are:</p>
-  </dd>
-</dl>
-<div class="Bd-indent">
-<dl class="Bl-tag">
-  <dt id="certs"><a class="permalink" href="#certs">certs</a></dt>
-  <dd>Output the certificate chain with details. Supported only by the OpenSSL,
-      GnuTLS, Schannel and Secure Transport backends. (Added in 7.88.0)</dd>
-  <dt id="conn_id"><a class="permalink" href="#conn_id">conn_id</a></dt>
-  <dd>The connection identifier last used by the transfer. The connection id is
-      unique number among all connections using the same connection cache.
-      (Added in 8.2.0)</dd>
-  <dt id="content_type"><a class="permalink" href="#content_type">content_type</a></dt>
-  <dd>The Content-Type of the requested document, if there was any.</dd>
-  <dt id="errormsg"><a class="permalink" href="#errormsg">errormsg</a></dt>
-  <dd>The error message. (Added in 7.75.0)</dd>
-  <dt id="exitcode"><a class="permalink" href="#exitcode">exitcode</a></dt>
-  <dd>The numerical exit code of the transfer. (Added in 7.75.0)</dd>
-  <dt id="filename_effective"><a class="permalink" href="#filename_effective">filename_effective</a></dt>
-  <dd>The ultimate filename that curl writes out to. This is only meaningful if
-      curl is told to write to a file with the <i>-O, --remote-name</i> or
-      <i>-o, --output</i> option. It is most useful in combination with the
-      <i>-J, --remote-header-name</i> option.
-    <p class="Pp"></p>
-  </dd>
-  <dt id="ftp_entry_path"><a class="permalink" href="#ftp_entry_path">ftp_entry_path</a></dt>
-  <dd>The initial path curl ended up in when logging on to the remote FTP
-      server.</dd>
-  <dt id="header_json"><a class="permalink" href="#header_json">header_json</a></dt>
-  <dd>A JSON object with all HTTP response headers from the recent transfer.
-      Values are provided as arrays, since in the case of multiple headers there
-      can be multiple values. (Added in 7.83.0)
-    <p class="Pp">The header names provided in lowercase, listed in order of
-        appearance over the wire. Except for duplicated headers. They are
-        grouped on the first occurrence of that header, each value is presented
-        in the JSON array.</p>
-  </dd>
-  <dt id="http_code"><a class="permalink" href="#http_code">http_code</a></dt>
-  <dd>The numerical response code that was found in the last retrieved HTTP(S)
-      or FTP(s) transfer.</dd>
-  <dt id="http_connect"><a class="permalink" href="#http_connect">http_connect</a></dt>
-  <dd>The numerical code that was found in the last response (from a proxy) to a
-      curl CONNECT request.</dd>
-  <dt id="http_version"><a class="permalink" href="#http_version">http_version</a></dt>
-  <dd>The http version that was effectively used.</dd>
-  <dt id="json~2"><a class="permalink" href="#json~2">json</a></dt>
-  <dd>A JSON object with all available keys. (Added in 7.70.0)</dd>
-  <dt id="local_ip"><a class="permalink" href="#local_ip">local_ip</a></dt>
-  <dd>The IP address of the local end of the most recently done connection - can
-      be either IPv4 or IPv6.</dd>
-  <dt id="local_port"><a class="permalink" href="#local_port">local_port</a></dt>
-  <dd>The local port number of the most recently done connection.</dd>
-  <dt id="method"><a class="permalink" href="#method">method</a></dt>
-  <dd>The http method used in the most recent HTTP request. (Added in
-    7.72.0)</dd>
-  <dt id="num_certs"><a class="permalink" href="#num_certs">num_certs</a></dt>
-  <dd>Number of server certificates received in the TLS handshake. Supported
-      only by the OpenSSL, GnuTLS, Schannel and Secure Transport backends.
-      (Added in 7.88.0)</dd>
-  <dt id="num_connects"><a class="permalink" href="#num_connects">num_connects</a></dt>
-  <dd>Number of new connects made in the recent transfer.</dd>
-  <dt id="num_headers"><a class="permalink" href="#num_headers">num_headers</a></dt>
-  <dd>The number of response headers in the most recent request (restarted at
-      each redirect). Note that the status line IS NOT a header. (Added in
-      7.73.0)</dd>
-  <dt id="num_redirects"><a class="permalink" href="#num_redirects">num_redirects</a></dt>
-  <dd>Number of redirects that were followed in the request.</dd>
-  <dt id="num_retries"><a class="permalink" href="#num_retries">num_retries</a></dt>
-  <dd>Number of retries actually performed when &quot;<i>--retry</i>&quot; has
-      been used. (Added in 8.9.0)</dd>
-  <dt id="onerror"><a class="permalink" href="#onerror">onerror</a></dt>
-  <dd>The rest of the output is only shown if the transfer returned a non-zero
-      error. (Added in 7.75.0)</dd>
-  <dt id="proxy_ssl_verify_result"><a class="permalink" href="#proxy_ssl_verify_result">proxy_ssl_verify_result</a></dt>
-  <dd>The result of the HTTPS proxy's SSL peer certificate verification that was
-      requested. 0 means the verification was successful.</dd>
-  <dt id="proxy_used"><a class="permalink" href="#proxy_used">proxy_used</a></dt>
-  <dd>Returns 1 if the previous transfer used a proxy, otherwise 0. Useful to
-      for example determine if a &quot;NOPROXY&quot; pattern matched the
-      hostname or not. (Added in 8.7.0)</dd>
-  <dt id="redirect_url"><a class="permalink" href="#redirect_url">redirect_url</a></dt>
-  <dd>When an HTTP request was made without <i>-L, --location</i> to follow
-      redirects (or when <i>--max-redirs</i> is met), this variable shows the
-      actual URL a redirect <i>would</i> have gone to.</dd>
-  <dt id="referer"><a class="permalink" href="#referer">referer</a></dt>
-  <dd>The Referer: header, if there was any. (Added in 7.76.0)</dd>
-  <dt id="remote_ip"><a class="permalink" href="#remote_ip">remote_ip</a></dt>
-  <dd>The remote IP address of the most recently done connection - can be either
-      IPv4 or IPv6.</dd>
-  <dt id="remote_port"><a class="permalink" href="#remote_port">remote_port</a></dt>
-  <dd>The remote port number of the most recently done connection.</dd>
-  <dt id="response_code"><a class="permalink" href="#response_code">response_code</a></dt>
-  <dd>The numerical response code that was found in the last transfer (formerly
-      known as &quot;http_code&quot;).</dd>
-  <dt id="scheme"><a class="permalink" href="#scheme">scheme</a></dt>
-  <dd>The URL scheme (sometimes called protocol) that was effectively used.</dd>
-  <dt id="size_download"><a class="permalink" href="#size_download">size_download</a></dt>
-  <dd>The total amount of bytes that were downloaded. This is the size of the
-      body/data that was transferred, excluding headers.</dd>
-  <dt id="size_header"><a class="permalink" href="#size_header">size_header</a></dt>
-  <dd>The total amount of bytes of the downloaded headers.</dd>
-  <dt id="size_request"><a class="permalink" href="#size_request">size_request</a></dt>
-  <dd>The total amount of bytes that were sent in the HTTP request.</dd>
-  <dt id="size_upload"><a class="permalink" href="#size_upload">size_upload</a></dt>
-  <dd>The total amount of bytes that were uploaded. This is the size of the
-      body/data that was transferred, excluding headers.</dd>
-  <dt id="speed_download"><a class="permalink" href="#speed_download">speed_download</a></dt>
-  <dd>The average download speed that curl measured for the complete download.
-      Bytes per second.</dd>
-  <dt id="speed_upload"><a class="permalink" href="#speed_upload">speed_upload</a></dt>
-  <dd>The average upload speed that curl measured for the complete upload. Bytes
-      per second.</dd>
-  <dt id="ssl_verify_result"><a class="permalink" href="#ssl_verify_result">ssl_verify_result</a></dt>
-  <dd>The result of the SSL peer certificate verification that was requested. 0
-      means the verification was successful.</dd>
-  <dt id="stderr"><a class="permalink" href="#stderr">stderr</a></dt>
-  <dd>From this point on, the <i>-w, --write-out</i> output is written to
-      standard error. (Added in 7.63.0)</dd>
-  <dt id="stdout"><a class="permalink" href="#stdout">stdout</a></dt>
-  <dd>From this point on, the <i>-w, --write-out</i> output is written to
-      standard output. This is the default, but can be used to switch back after
-      switching to stderr. (Added in 7.63.0)</dd>
-  <dt id="time_appconnect"><a class="permalink" href="#time_appconnect">time_appconnect</a></dt>
-  <dd>The time, in seconds, it took from the start until the SSL/SSH/etc
-      connect/handshake to the remote host was completed.</dd>
-  <dt id="time_connect"><a class="permalink" href="#time_connect">time_connect</a></dt>
-  <dd>The time, in seconds, it took from the start until the TCP connect to the
-      remote host (or proxy) was completed.</dd>
-  <dt id="time_namelookup"><a class="permalink" href="#time_namelookup">time_namelookup</a></dt>
-  <dd>The time, in seconds, it took from the start until the name resolving was
-      completed.</dd>
-  <dt id="time_posttransfer"><a class="permalink" href="#time_posttransfer">time_posttransfer</a></dt>
-  <dd>The time it took from the start until the last byte is sent by libcurl. In
-      microseconds. (Added in 8.10.0)</dd>
-  <dt id="time_pretransfer"><a class="permalink" href="#time_pretransfer">time_pretransfer</a></dt>
-  <dd>The time, in seconds, it took from the start until the file transfer was
-      just about to begin. This includes all pre-transfer commands and
-      negotiations that are specific to the particular protocol(s)
-    involved.</dd>
-  <dt id="time_redirect"><a class="permalink" href="#time_redirect">time_redirect</a></dt>
-  <dd>The time, in seconds, it took for all redirection steps including name
-      lookup, connect, pretransfer and transfer before the final transaction was
-      started. &quot;time_redirect&quot; shows the complete execution time for
-      multiple redirections.</dd>
-  <dt id="time_starttransfer"><a class="permalink" href="#time_starttransfer">time_starttransfer</a></dt>
-  <dd>The time, in seconds, it took from the start until the first byte is
-      received. This includes time_pretransfer and also the time the server
-      needed to calculate the result.</dd>
-  <dt id="time_total"><a class="permalink" href="#time_total">time_total</a></dt>
-  <dd>The total time, in seconds, that the full operation lasted.</dd>
-  <dt id="url~2"><a class="permalink" href="#url~2">url</a></dt>
-  <dd>The URL that was fetched. (Added in 7.75.0)</dd>
-  <dt id="url.scheme"><a class="permalink" href="#url.scheme">url.scheme</a></dt>
-  <dd>The scheme part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.user"><a class="permalink" href="#url.user">url.user</a></dt>
-  <dd>The user part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.password"><a class="permalink" href="#url.password">url.password</a></dt>
-  <dd>The password part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.options"><a class="permalink" href="#url.options">url.options</a></dt>
-  <dd>The options part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.host"><a class="permalink" href="#url.host">url.host</a></dt>
-  <dd>The host part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.port"><a class="permalink" href="#url.port">url.port</a></dt>
-  <dd>The port number of the URL that was fetched. If no port number was
-      specified and the URL scheme is known, that scheme's default port number
-      is shown. (Added in 8.1.0)</dd>
-  <dt id="url.path"><a class="permalink" href="#url.path">url.path</a></dt>
-  <dd>The path part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.query"><a class="permalink" href="#url.query">url.query</a></dt>
-  <dd>The query part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.fragment"><a class="permalink" href="#url.fragment">url.fragment</a></dt>
-  <dd>The fragment part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="url.zoneid"><a class="permalink" href="#url.zoneid">url.zoneid</a></dt>
-  <dd>The zone id part of the URL that was fetched. (Added in 8.1.0)</dd>
-  <dt id="urle.scheme"><a class="permalink" href="#urle.scheme">urle.scheme</a></dt>
-  <dd>The scheme part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.user"><a class="permalink" href="#urle.user">urle.user</a></dt>
-  <dd>The user part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.password"><a class="permalink" href="#urle.password">urle.password</a></dt>
-  <dd>The password part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.options"><a class="permalink" href="#urle.options">urle.options</a></dt>
-  <dd>The options part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.host"><a class="permalink" href="#urle.host">urle.host</a></dt>
-  <dd>The host part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.port"><a class="permalink" href="#urle.port">urle.port</a></dt>
-  <dd>The port number of the effective (last) URL that was fetched. If no port
-      number was specified, but the URL scheme is known, that scheme's default
-      port number is shown. (Added in 8.1.0)</dd>
-  <dt id="urle.path"><a class="permalink" href="#urle.path">urle.path</a></dt>
-  <dd>The path part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.query"><a class="permalink" href="#urle.query">urle.query</a></dt>
-  <dd>The query part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.fragment"><a class="permalink" href="#urle.fragment">urle.fragment</a></dt>
-  <dd>The fragment part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urle.zoneid"><a class="permalink" href="#urle.zoneid">urle.zoneid</a></dt>
-  <dd>The zone id part of the effective (last) URL that was fetched. (Added in
-      8.1.0)</dd>
-  <dt id="urlnum"><a class="permalink" href="#urlnum">urlnum</a></dt>
-  <dd>The URL index number of this transfer, 0-indexed. Unglobbed URLs share the
-      same index number as the origin globbed URL. (Added in 7.75.0)</dd>
-  <dt id="url_effective"><a class="permalink" href="#url_effective">url_effective</a></dt>
-  <dd>The URL that was fetched last. This is most meaningful if you have told
-      curl to follow location: headers.</dd>
-  <dt id="xfer_id"><a class="permalink" href="#xfer_id">xfer_id</a></dt>
-  <dd>The numerical identifier of the last transfer done. -1 if no transfer has
-      been started yet for the handle. The transfer id is unique among all
-      transfers performed using the same connection cache. (Added in 8.2.0)</dd>
-</dl>
-</div>
-<dl class="Bl-tag">
-  <dt></dt>
-  <dd>
-    <p class="Pp">If --write-out is provided several times, the last set value
-        is used.</p>
+  <dd>3 If --write-out is provided several times, the last set value is used.
     <p class="Pp">Example:</p>
     <pre>curl -w '%{response_code}\n' https://example.com</pre>
     <p class="Pp">See also <i>-v, --verbose</i> and <i>-I, --head</i>.</p>
@@ -5498,7 +5343,7 @@ http://somewhere.example.com</pre>
   <dt id="APPDATA"><a class="permalink" href="#APPDATA">APPDATA
     &lt;dir&gt;</a></dt>
   <dd>On Windows, this variable is used when trying to find the home directory.
-      If the primary home variable are all unset.</dd>
+      If the primary home variables are all unset.</dd>
   <dt id="COLUMNS"><a class="permalink" href="#COLUMNS">COLUMNS &lt;terminal
     width&gt;</a></dt>
   <dd>If set, the specified number of characters is used as the terminal width
@@ -5625,16 +5470,16 @@ http://somewhere.example.com</pre>
       active FTP session is used, an error code was sent over the control
       connection or similar.</dd>
   <dt>11</dt>
-  <dd>FTP weird PASS reply. Curl could not parse the reply sent to the PASS
+  <dd>FTP weird PASS reply. curl could not parse the reply sent to the PASS
       request.</dd>
   <dt>12</dt>
   <dd>During an active FTP session while waiting for the server to connect back
       to curl, the timeout expired.</dd>
   <dt>13</dt>
-  <dd>FTP weird PASV reply, Curl could not parse the reply sent to the PASV
+  <dd>FTP weird PASV reply, curl could not parse the reply sent to the PASV
       request.</dd>
   <dt>14</dt>
-  <dd>FTP weird 227 format. Curl could not parse the 227-line the server
+  <dd>FTP weird 227 format. curl could not parse the 227-line the server
     sent.</dd>
   <dt>15</dt>
   <dd>FTP cannot use host. Could not resolve the host IP we got in the
@@ -5657,7 +5502,7 @@ http://somewhere.example.com</pre>
       another error with the HTTP error code being 400 or above. This return
       code only appears if <i>-f, --fail</i> is used.</dd>
   <dt>23</dt>
-  <dd>Write error. Curl could not write data to a local filesystem or
+  <dd>Write error. curl could not write data to a local filesystem or
     similar.</dd>
   <dt>25</dt>
   <dd>Failed starting the upload. For FTP, the server typically denied the STOR
@@ -5825,8 +5670,8 @@ http://somewhere.example.com</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2024-12-23</td>
-    <td class="foot-os">curl 8.11.1</td>
+    <td class="foot-date">2025-02-13</td>
+    <td class="foot-os">curl 8.12.1</td>
   </tr>
 </table>
 </body>

@@ -144,7 +144,13 @@
           <li><a href="#Wireless-network">7.3.3. Wireless network</a></li>
         </ul>
       </li>
-      <li><a href="#Passwords">7.4. Passwords</a></li>
+      <li><a href="#Passwords-User-environment-and-PAM-modules">7.4. Passwords, User environment, and PAM modules</a>
+        <ul>
+          <li><a href="#Passwords">7.4.1. Passwords</a></li>
+          <li><a href="#User-environment">7.4.2. User environment</a></li>
+          <li><a href="#PAM-modules">7.4.3. PAM modules</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#REPORTING-BUGS">8. REPORTING BUGS</a></li>
@@ -1749,11 +1755,97 @@ nameserver &lt;your DNS server&gt;
     auth_alg=SHARED
 }</code></pre>
 
-<h2 id="Passwords">7.4. Passwords</h2>
+<h2 id="Passwords-User-environment-and-PAM-modules">7.4. Passwords, User environment, and PAM modules</h2>
+
+<h3 id="Passwords"><b>7.4.1. Passwords</b></h3>
 
 <p>Zeppe-Lin uses <code>SHA512</code> passwords by default. To change the password encryption method set the <code>ENCRYPT_METHOD</code> variable in <i>/etc/login.defs</i> to <code>DES</code>, <code>MD5</code>, or <code>SHA256</code>.</p>
 
 <p>Furthermore, when compiling programs that use the <a href="crypt.3.html">crypt(3)</a> function to authenticate users you should make sure that these programs are linked against the <b>libcrypt</b> library (i.e. use <code>-lcrypt</code> when linking) which contains the <code>SHA512</code> version of the crypt function (this version is backward compatible and understands <code>DES</code> passwords as well).</p>
+
+<h3 id="User-environment"><b>7.4.2. User environment</b></h3>
+
+<p>Configuration settings in <i>/etc/login.defs</i> like <code>CREATE_HOME</code> and <code>USERGROUPS_ENAB</code> control the behaviour of <a href="useradd.8.html">useradd(8)</a> when creating new users.</p>
+
+<p>Creating a new user via <code>useradd -m</code> will not populate the home directory with a basic shell startup file, like other distributions whose <i>/etc/skel</i> contains the idea of an initial home directory.</p>
+
+<p>The <code>PATH</code> value for shells that use <i>/etc/profile</i> is consistent regardless of <code>UID</code> and is set to <code>/sbin:/usr/sbin:/bin:/usr/bin</code>. This configuration allows unprivileged users easy access to administrative commands without needing to type the full path, provided they use <a href="bash.1.html">bash(1)</a> or <a href="dash.1.html">dash(1)</a>/<a href="sh.1p.html">sh(1p)</a> and have appropriate <a href="sudo.8.html">sudo(8)</a> permissions.</p>
+
+<dl>
+
+<dt id="Note6"><b>Note</b>:</dt>
+<dd>
+
+<p>Zeppe-Lin users can create <i>/etc/skel</i> skeletons, choose different shells and manage <code>PATH</code> themselves. The default setup aims to reduce confusion.</p>
+
+</dd>
+</dl>
+
+<h3 id="PAM-modules"><b>7.4.3. PAM modules</b></h3>
+
+<p>The core packages <code>linux-pam</code> and <code>dumb-runtime-dir</code> provide a variety of modules that can be loaded upon logging in. The files in <i>/etc/pam.d</i> govern the association between the type of login (e.g., tty, SSH, su, X Display Manager) and the modules that get loaded (e.g., pam_env, pam_exec, pam_limits). Typical situations that can be handled cleanly with PAM modules are listed in the table below.</p>
+
+    <table>
+        <tr>
+            <th>File in /etc/pam.d</th>
+            <th>Typical usage</th>
+        </tr>
+        <tr>
+            <th>pam_dumb_runtime_dir.so</th>
+            <th>
+                Create an XDG_RUNTIME_DIR for apps
+                that confirm to the freedesktop.org
+                specification.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_env.so</th>
+            <th>
+                Export some common environment
+                variables, no matter what login
+                shell the user has chosen.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_limits.so</th>
+            <th>
+                Increate the allowed number of
+                opened files, to ensure proper
+                operation of some games.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_xauth.so</th>
+            <th>
+                Grant another user access to the
+                X display of the logged-in user,
+                so that programs invoked with su
+                can work properly.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_mount.so</th>
+            <th>
+                Automatically mount a LUKS-encrypted
+                home partition after successful
+                authentication.
+            </th>
+        </tr>
+    </table>
+
+<dl>
+
+<dt id="Note7"><b>Note</b>:</dt>
+<dd>
+
+<p>The existence of a writable <code>XDG_RUNTIME_DIR</code> is required for proper operation of many desktop applications. A <b>clean</b> Zeppe-Lin installation (starting from <code>v1.0</code>) will place a line in <i>/etc/pam.d/common-session</i> that loads the module <i>pam_dumb_runtime_dir.so</i> to satisfy this requirement. An <b>upgrade</b> to Zeppe-Lin <code>v1.0</code> might not do so, depending on your <code>UPGRADE</code> directives in <i>/etc/pkgadd.conf</i> or may require <a href="rejmerge.8.html">rejmerge(8)</a> to update your <i>/etc/pam.d</i> configuration.</p>
+
+<p><i>pam_dumb_runtime_dir.so</i> has a simple design and is limited to creating the runtime directory and exporting <code>XDG_RUNTIME_DIR</code>. It&#39;s not managing all environment variables defined in the freedesktop.org specification.</p>
+
+<p>If you find yourself in one of the other situations in the table above, read the man page for the corresponding PAM module to learn how to accomplish the desired configuration.</p>
+
+</dd>
+</dl>
 
 <h1 id="REPORTING-BUGS">8. REPORTING BUGS</h1>
 
