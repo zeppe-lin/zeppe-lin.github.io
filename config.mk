@@ -60,6 +60,8 @@ MANS = \
        /usr/share/man/man1/pkgman-search.1.gz                     \
        /usr/share/man/man1/pkgman.1.gz                            \
        /usr/share/man/man1/pod2html.1pm.gz                        \
+       /usr/share/man/man1/qemuconf-import.1.gz                   \
+       /usr/share/man/man1/qemuconf.1.gz                          \
        /usr/share/man/man1/revdep.1.gz                            \
        /usr/share/man/man1/sdiff.1.gz                             \
        /usr/share/man/man1/setterm.1.gz                           \
