@@ -60,6 +60,7 @@ MANS = \
        /usr/share/man/man1/pkgman-search.1.gz                     \
        /usr/share/man/man1/pkgman.1.gz                            \
        /usr/share/man/man1/pod2html.1pm.gz                        \
+       /usr/share/man/man1/qemu.1.gz                              \
        /usr/share/man/man1/qemuconf-import.1.gz                   \
        /usr/share/man/man1/qemuconf.1.gz                          \
        /usr/share/man/man1/revdep.1.gz                            \
@@ -72,6 +73,7 @@ MANS = \
        /usr/share/man/man1/wget.1.gz                              \
        /usr/share/man/man1p/sh.1p.gz                              \
        /usr/share/man/man1p/strip.1p.gz                           \
+       /usr/share/man/man2/chdir.2.gz                             \
        /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
        /usr/share/man/man3/crypt.3.gz                             \
        /usr/share/man/man3/fnmatch.3.gz                           \
