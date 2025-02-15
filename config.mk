@@ -17,7 +17,9 @@ HANDBOOK = ${CURDIR}/../handbook
 # paths to the man pages for conversion to html
 MANS = \
        /usr/share/man/man1/bash.1.gz                              \
+       /usr/share/man/man1/chmod.1.gz                             \
        /usr/share/man/man1/chown.1.gz                             \
+       /usr/share/man/man1/cp.1.gz                                \
        /usr/share/man/man1/curl.1.gz                              \
        /usr/share/man/man1/dash.1.gz                              \
        /usr/share/man/man1/diff.1.gz                              \
@@ -27,14 +29,18 @@ MANS = \
        /usr/share/man/man1/finddisappeared.1.gz                   \
        /usr/share/man/man1/finddisowned.1.gz                      \
        /usr/share/man/man1/findredundantdeps.1.gz                 \
+       /usr/share/man/man1/getfacl.1.gz                           \
        /usr/share/man/man1/git.1.gz                               \
        /usr/share/man/man1/gpg.1.gz                               \
        /usr/share/man/man1/grep.1.gz                              \
        /usr/share/man/man1/killall.1.gz                           \
        /usr/share/man/man1/ldd.1.gz                               \
        /usr/share/man/man1/loadkeys.1.gz                          \
+       /usr/share/man/man1/ls.1.gz                                \
        /usr/share/man/man1/make.1.gz                              \
        /usr/share/man/man1/more.1.gz                              \
+       /usr/share/man/man1/mv.1.gz                                \
+       /usr/share/man/man1/newuidmap.1.gz                         \
        /usr/share/man/man1/pkgdiff.1.gz                           \
        /usr/share/man/man1/pkginfo.1.gz                           \
        /usr/share/man/man1/pkglint.1.gz                           \
@@ -65,6 +71,7 @@ MANS = \
        /usr/share/man/man1/qemuconf.1.gz                          \
        /usr/share/man/man1/revdep.1.gz                            \
        /usr/share/man/man1/sdiff.1.gz                             \
+       /usr/share/man/man1/setfacl.1.gz                           \
        /usr/share/man/man1/setterm.1.gz                           \
        /usr/share/man/man1/sh.1.gz                                \
        /usr/share/man/man1/strip.1.gz                             \
@@ -74,10 +81,18 @@ MANS = \
        /usr/share/man/man1p/sh.1p.gz                              \
        /usr/share/man/man1p/strip.1p.gz                           \
        /usr/share/man/man2/chdir.2.gz                             \
+       /usr/share/man/man2/chmod.2.gz                             \
+       /usr/share/man/man2/creat.2.gz                             \
+       /usr/share/man/man2/mkdir.2.gz                             \
+       /usr/share/man/man2/mknod.2.gz                             \
+       /usr/share/man/man2/open.2.gz                              \
+       /usr/share/man/man2/stat.2.gz                              \
+       /usr/share/man/man2/umask.2.gz                             \
        /usr/share/man/man3/ExtUtils\:\:MakeMaker.3pm.gz           \
        /usr/share/man/man3/crypt.3.gz                             \
        /usr/share/man/man3/fnmatch.3.gz                           \
        /usr/share/man/man3/libelf.3.gz                            \
+       /usr/share/man/man3/putenv.3.gz                            \
        /usr/share/man/man3/regex.3.gz                             \
        /usr/share/man/man5/Pkgfile.5.gz                           \
        /usr/share/man/man5/acl.5.gz                               \
@@ -108,6 +123,7 @@ MANS = \
        /usr/share/man/man8/mkinitramfs.8.gz                       \
        /usr/share/man/man8/mkrootfs.8.gz                          \
        /usr/share/man/man8/mkswap.8.gz                            \
+       /usr/share/man/man8/mount.8.gz                             \
        /usr/share/man/man8/parted.8.gz                            \
        /usr/share/man/man8/pkgadd.8.gz                            \
        /usr/share/man/man8/pkgman-edit.8.gz                       \
