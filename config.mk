@@ -99,6 +99,7 @@ MANS = \
        /usr/share/man/man5/crypttab.5.gz                          \
        /usr/share/man/man5/fstab.5.gz                             \
        /usr/share/man/man5/inittab.5.gz                           \
+       /usr/share/man/man5/libarchive-formats.5.gz                \
        /usr/share/man/man5/mkinitramfs.config.5.gz                \
        /usr/share/man/man5/mkrootfs.config.5.gz                   \
        /usr/share/man/man5/pkgadd.conf.5.gz                       \
