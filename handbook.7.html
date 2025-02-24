@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="pod2html.css" type="text/css" />
 <link rel="shortcut icon" href="https://raw.githubusercontent.com/zeppe-lin/artwork/master/logo-small.png">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rev="made" href="mailto:root@v1r91n.nonet" />
+<link rev="made" href="mailto:root@k4v3r1.nonet" />
 </head>
 
 <body>
@@ -1333,35 +1333,55 @@ build() {
 
 <h3 id="The-pkgsrc-collections"><b>6.1.3. The pkgsrc collections</b></h3>
 
-<p>Packages&#39; sources are organized in so-called collections. There are five different layers (or five categories) of packages.</p>
+<p>Packages&#39; sources are organized in so-called collections. There are four official collections:</p>
 
-<ul>
+<dl>
 
-<li><p><i>pkgsrc-core</i></p>
+<dt id="pkgsrc-core">1. <i>pkgsrc-core</i></dt>
+<dd>
 
 <p>This collection contains build scripts and files for the packages required to create a basic system, on the basis of which you can build your installation. The official rootfs images are built based on this collection.</p>
 
 <p>Of course, this collection shouldn&#39;t have dependencies outside itself. To enforce this rule during maintenance see <a href="https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile">Makefile</a> in the collection root directory. This <i>Makefile</i> checks collection files for typical errors, including misconfigured dependencies, and is included in the other collections too. Also, see <a href="https://github.com/zeppe-lin/pkgmaint">pkgmaint</a> and corresponding <b>system/pkgmaint</b> package for various package maintaining utilities. It will not be superfluous to mention <a href="revdep.1.html">revdep(1)</a>.</p>
 
-</li>
-<li><p><i>pkgsrc-system</i></p>
+</dd>
+<dt id="pkgsrc-system">2. <i>pkgsrc-system</i></dt>
+<dd>
 
 <p>This collection contains build scripts and files for the packages required for minimal installation on real hardware: boot loader, filesystem utilities, hw-monitors, servers, and so on. Packages in this collection depend <b>only</b> on the <code>pkgsrc-core</code> collection.</p>
 
-</li>
-<li><p><i>pkgsrc-xorg</i></p>
+</dd>
+<dt id="pkgsrc-xorg">3. <i>pkgsrc-xorg</i></dt>
+<dd>
 
 <p>This collection contains build scripts and files for the packages required for X Window System applications. Packages in this collection depend on the <code>pkgsrc-system</code> collection.</p>
 
-</li>
-<li><p><i>pkgsrc-desktop</i></p>
+</dd>
+<dt id="pkgsrc-desktop">4. <i>pkgsrc-desktop</i></dt>
+<dd>
 
 <p>This collection contains build scripts and files for the packages typically used on a desktop: web browser, music/video player, file manager, chat messenger, etc. Packages in this collection depend on the <code>pkgsrc-xorg</code> collection.</p>
 
-</li>
+</dd>
+</dl>
+
+<p>In addition to the official ones, there are unofficial collections of packages:</p>
+
+<ul>
+
 <li><p><i>pkgsrc-stuff</i></p>
 
 <p>This collection contains build scripts and files for the packages that do not fit into the above categories. Packages in this collection may depend on any of the collections listed above. Since this collection contains packages of different (often dubious) quality and purpose, we will not use it in the examples and warn you that if you can live without it - it&#39;s better to do so.</p>
+
+</li>
+<li><p><i>pkgsrc-games</i></p>
+
+<p>This collection contains build scripts and files for the games and emulators.</p>
+
+</li>
+<li><p><i>pkgsrc-wmaker</i></p>
+
+<p>This collection contains build scripts and files for Window Maker &amp; dockapps packages.</p>
 
 </li>
 </ul>
@@ -1370,7 +1390,7 @@ build() {
 
 <h3 id="Synchronizing-your-local-pkgsrc-repositories"><b>6.2.1. Synchronizing your local pkgsrc repositories</b></h3>
 
-<p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>usr/src/pkgsrc*</i>). To obtain the collection you need the first time, use <code>git clone</code>. Example:</p>
+<p>When Zeppe-Lin is installed for the first time there are no local pkgsrc collections (<i>/usr/src/pkgsrc*</i>). To obtain the collection you need the first time, use <code>git clone</code>. Example:</p>
 
 <pre><code># cd /usr/src/
 # git clone https://github.com/zeppe-lin/pkgsrc-core    --branch 1.x
