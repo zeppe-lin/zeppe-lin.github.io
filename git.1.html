@@ -5,9 +5,9 @@
        Title: git
       Author: [see the "Authors" section]
    Generator: DocBook XSL Stylesheets v1.79.2 <http://docbook.sf.net/>
-        Date: 2025-01-13
+        Date: 2025-03-14
       Manual: Git Manual
-      Source: Git 2.48.1
+      Source: Git 2.49.0
     Language: English
    -->
 <head>
@@ -246,6 +246,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <div class="Bd-indent">Apply a series of patches from a mailbox.</div>
 <p class="Pp"><b>git-archive</b>(1)</p>
 <div class="Bd-indent">Create an archive of files from a named tree.</div>
+<p class="Pp"><b>git-backfill</b>(1)</p>
+<div class="Bd-indent">Download missing objects in a partial clone.</div>
 <p class="Pp"><b>git-bisect</b>(1)</p>
 <div class="Bd-indent">Use binary search to find the commit that introduced a
   bug.</div>
@@ -834,8 +836,10 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 <p class="Pp">Various Git commands pay attention to environment variables and
     change their behavior. The environment variables marked as
     &quot;Boolean&quot; take their values the same way as Boolean valued
-    configuration variables, e.g. &quot;true&quot;, &quot;yes&quot;,
-    &quot;on&quot; and positive numbers are taken as &quot;yes&quot;.</p>
+    configuration variables, i.e., &quot;true&quot;, &quot;yes&quot;,
+    &quot;on&quot; and positive numbers are taken as &quot;yes&quot;, while
+    &quot;false&quot;, &quot;no&quot;, &quot;off&quot;, and &quot;0&quot; are
+    taken as &quot;no&quot;.</p>
 <p class="Pp">Here are the variables:</p>
 <section class="Ss">
 <h2 class="Ss" id="System"><a class="permalink" href="#System">System</a></h2>
@@ -1488,8 +1492,8 @@ git --git-dir=c/a.git --work-tree=c/b status</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">2025-01-13</td>
-    <td class="foot-os">Git 2.48.1</td>
+    <td class="foot-date">2025-03-14</td>
+    <td class="foot-os">Git 2.49.0</td>
   </tr>
 </table>
 </body>

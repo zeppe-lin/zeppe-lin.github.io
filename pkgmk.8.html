@@ -82,7 +82,7 @@
   <dd>Check md5sum without building the package.</dd>
   <dt id="ns"><a class="permalink" href="#ns"><code class="Fl">-ns</code></a>,
     <code class="Fl">--no-strip</code></dt>
-  <dd>Do not strip executable binaries or libraries.</dd>
+  <dd>Do not strip executable binaries and/or libraries.</dd>
   <dt id="f"><a class="permalink" href="#f"><code class="Fl">-f</code></a>,
     <code class="Fl">--force</code></dt>
   <dd>Build package even if it appears to be up to date.</dd>
@@ -164,26 +164,25 @@
   STATUS</a></h1>
 <dl class="Bl-tag Bl-compact">
   <dt>0</dt>
-  <dd>No error occurred.</dd>
+  <dd>Success.</dd>
   <dt>1</dt>
-  <dd>A general error has occurred.</dd>
+  <dd>General error.</dd>
   <dt>2</dt>
-  <dd>The <span class="Pa">Pkgfile</span> is invalid.</dd>
+  <dd>Invalid Pkgfile (missing variables/functions).</dd>
   <dt>3</dt>
-  <dd>The source or build directory is missing or is lacking read/write
-      permissions.</dd>
+  <dd>Directory missing or permission error (source/build directories).</dd>
   <dt>4</dt>
-  <dd>An error occurred during the download of source files.</dd>
+  <dd>Error during source file download.</dd>
   <dt>5</dt>
-  <dd>An error occurred during unpacking of source files.</dd>
+  <dd>Error during source file unpacking.</dd>
   <dt>6</dt>
-  <dd>An md5sum mismatch occurred.</dd>
+  <dd>MD5 checksum verification failed.</dd>
   <dt>7</dt>
-  <dd>A footprint mismatch occurred.</dd>
-  <dt id="build">8</dt>
-  <dd>An error occurred while running the
-      <a class="permalink" href="#build"><b class="Sy">build</b></a>
-    function.</dd>
+  <dd>Package footprint check failure.</dd>
+  <dt>8</dt>
+  <dd>Error during package 'build()' function execution.</dd>
+  <dt>130</dt>
+  <dd>Script interrupted or terminated by <code class="Ic">C-c</code>.</dd>
 </dl>
 </section>
 <section class="Sh">

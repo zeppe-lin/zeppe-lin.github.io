@@ -39,14 +39,7 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Print an overview of packages that are installed and have a
-    different version than they are in the packages sources directories. If you
-    would like to compare the packages using version comparison and show only
-    packages with higher version, then use
-    <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
-    configuration settings:</p>
-<div class="Bd Pp Bd-indent Li">
-<pre>pkgman --config-set=&quot;preferhigher yes&quot; diff</pre>
-</div>
+    different version than they are in the packages sources directories.</p>
 <p class="Pp">The options are as follows:</p>
 <dl class="Bl-tag">
   <dt id="all"><a class="permalink" href="#all"><code class="Fl">--all</code></a></dt>
@@ -63,11 +56,23 @@
       <a class="Xr" href="fnmatch.3.html">fnmatch(3)</a> format, or regex in
       <a class="Xr" href="regex.3.html">regex(3)</a> format.</dd>
 </dl>
+<p class="Pp" id="Note"><a class="permalink" href="#Note"><b class="Sy">Note</b></a>:
+    The comparison behaviour is influenced by the
+    <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
+    configuration setting in
+    <a class="Xr" href="pkgman.conf.5.html">pkgman.conf(5)</a>. To modify the
+    comparison behaviour for this operation only (e.g. to compare the packages
+    using version comparison and show only packages with higher version) then
+    call <a class="Xr" href="pkgman.1.html">pkgman(1)</a> with custom
+    <code class="Fl">--config-append</code> settings as shown below:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>pkgman --config-append=&quot;preferhigher yes&quot; diff ...</pre>
+</div>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-date">February 26, 2025</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

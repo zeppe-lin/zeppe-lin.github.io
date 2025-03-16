@@ -29,9 +29,7 @@
 <table class="Nm">
   <tr>
     <td><code class="Nm">pkgman</code></td>
-    <td><code class="Cm">list-dup</code>
-      [<code class="Fl">--prefer-higher</code> |
-      <code class="Fl">--strict-diff</code>] [<var class="Ar">format</var>]</td>
+    <td><code class="Cm">list-dup</code> [<var class="Ar">format</var>]</td>
   </tr>
 </table>
 </section>
@@ -45,13 +43,6 @@
     %c %p2 %v2\n&#x201D;.</p>
 <p class="Pp">The options are as follows:</p>
 <dl class="Bl-tag">
-  <dt id="prefer-higher"><a class="permalink" href="#prefer-higher"><code class="Fl">--prefer-higher</code></a></dt>
-  <dd>Prefer higher installed versions over lower ones in the packages sources
-      directories.</dd>
-  <dt id="strict-diff"><a class="permalink" href="#strict-diff"><code class="Fl">--strict-diff</code></a></dt>
-  <dd>Override <code class="Fl">--prefer-higher</code> command-line option or
-      <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
-      configuration setting in <span class="Pa">pkgman.conf</span>.</dd>
   <dt><var class="Ar">format</var></dt>
   <dd>The string that contain variables, which are replaced like this:
     <p class="Pp"></p>
@@ -91,11 +82,22 @@
         output. No additional format specifier is supported.</p>
   </dd>
 </dl>
+<p class="Pp" id="Note"><a class="permalink" href="#Note"><b class="Sy">Note</b></a>:
+    The comparison sign &#x201C;%c&#x201D; is influenced by the
+    <a class="permalink" href="#preferhigher"><b class="Sy" id="preferhigher">preferhigher</b></a>
+    configuration setting in
+    <a class="Xr" href="pkgman.conf.5.html">pkgman.conf(5)</a>. To modify the
+    comparison behaviour for this operation only, call
+    <a class="Xr" href="pkgman.1.html">pkgman(1)</a> with custom
+    <code class="Fl">--config-append</code> settings as shown below:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>pkgman --config-append=&quot;preferhigher no&quot; list-dup [format]</pre>
+</div>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">September 9, 2023</td>
+    <td class="foot-date">February 26, 2025</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>

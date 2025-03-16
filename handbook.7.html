@@ -474,7 +474,7 @@
 <dt id="Note"><b>Note</b>:</dt>
 <dd>
 
-<p>You can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=xxx</code> instead of <code>/dev/*</code> used above to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s UUID:</p>
+<p>You can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=...</code> instead of <code>/dev/*</code> used above to prevent boot failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s UUID:</p>
 
 <pre><code>(chrooted) # blkid -o value -s UUID &lt;DEVICE&gt;
 ...</code></pre>
@@ -572,9 +572,9 @@ If you setup to build packages in RAM:
 
 <pre><code>(chrooted) # revdep</code></pre>
 
-<p>If <b>revdep(1)</b> showed anything rebuild them as follows:</p>
+<p>If <a href="revdep.1.html">revdep(1)</a> showed anything rebuild them as follows:</p>
 
-<pre><code>(chrooted) # pkgman update -fr --depsort `revdep`</code></pre>
+<pre><code>(chrooted) # pkgman update -fr --depsort $(revdep)</code></pre>
 
 <h2 id="Install-essential-packages">4.9. Install essential packages</h2>
 
@@ -727,6 +727,19 @@ luks_root=/dev/sda2
 <pre><code>GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR=ZPLN
 GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;</code></pre>
+
+<dl>
+
+<dt id="Note4"><b>Note</b>:</dt>
+<dd>
+
+<p>As in case of <i>/etc/fstab</i>, you can use <code>/dev/disk/by-uuid/*</code> or <code>UUID=...</code> instead of <code>/dev/*</code> to specify resume partition and prevent resume from hibernation failures on machines with multiple disks. Use <a href="blkid.8.html">blkid(8)</a> to verify the disk&#39;s <code>UUID</code>:</p>
+
+<pre><code>(chrooted) # blkid -o value -s UUID &lt;DEVICE&gt;
+...</code></pre>
+
+</dd>
+</dl>
 
 <p>Next, install <b>GRUB</b> on <code>/dev/sda</code> (your case may differ) drive:</p>
 
@@ -1264,7 +1277,7 @@ build() {
             <th>Description</th>
         </tr>
         <tr>
-            <td>CFLAGS CXXFLAGS</td>
+            <td>CFLAGS, CXXFLAGS</td>
             <td>
                 Define optimization and architecture options for
                 package compilation.  It's best NOT change these
@@ -1440,7 +1453,7 @@ automake/         glibc/         libtool/          rdate/
 
 <dl>
 
-<dt id="Note4"><b>Note</b>:</dt>
+<dt id="Note5"><b>Note</b>:</dt>
 <dd>
 
 <p><b>pkgman</b> will list the packages&#39; sources from all <code>pkgsrc</code> collections indicated in <i>/etc/pkgman.conf</i> as <code>pkgsrcdir</code>.</p>
@@ -1503,7 +1516,7 @@ No differences found</code></pre>
 
 <dl>
 
-<dt id="Note5"><b>Note</b>:</dt>
+<dt id="Note6"><b>Note</b>:</dt>
 <dd>
 
 <p>The recommended way is to use <a href="pkgman-install.8.html">pkgman-install(8)</a>. Here we will only describe the steps to better understand the build process.</p>
@@ -1793,7 +1806,7 @@ nameserver &lt;your DNS server&gt;
 
 <dl>
 
-<dt id="Note6"><b>Note</b>:</dt>
+<dt id="Note7"><b>Note</b>:</dt>
 <dd>
 
 <p>Zeppe-Lin users can create <i>/etc/skel</i> skeletons, choose different shells and manage <code>PATH</code> themselves. The default setup aims to reduce confusion.</p>
@@ -1855,7 +1868,7 @@ nameserver &lt;your DNS server&gt;
 
 <dl>
 
-<dt id="Note7"><b>Note</b>:</dt>
+<dt id="Note8"><b>Note</b>:</dt>
 <dd>
 
 <p>The existence of a writable <code>XDG_RUNTIME_DIR</code> is required for proper operation of many desktop applications. A <b>clean</b> Zeppe-Lin installation (starting from <code>v1.0</code>) will place a line in <i>/etc/pam.d/common-session</i> that loads the module <i>pam_dumb_runtime_dir.so</i> to satisfy this requirement. An <b>upgrade</b> to Zeppe-Lin <code>v1.0</code> might not do so, depending on your <code>UPGRADE</code> directives in <i>/etc/pkgadd.conf</i> or may require <a href="rejmerge.8.html">rejmerge(8)</a> to update your <i>/etc/pam.d</i> configuration.</p>
@@ -1869,7 +1882,7 @@ nameserver &lt;your DNS server&gt;
 
 <h1 id="REPORTING-BUGS">8. REPORTING BUGS</h1>
 
-<p>For bug reports, use the issue tracker at: <a href="https://github.com/zeppe-lin/handbook/issues">https://github.com/zeppe-lin/handbook/issues</a>.</p>
+<p>For bug reports regarding this handbook, please use the issue tracker at <a href="https://github.com/zeppe-lin/handbook/issues">https://github.com/zeppe-lin/handbook/issues</a>.</p>
 
 
 </body>

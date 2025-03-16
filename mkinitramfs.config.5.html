@@ -164,7 +164,8 @@ key=&quot;${key}value&quot;</pre>
       <li>proc (CONFIG_UEVENT_HELPER)</li>
       <li><a class="Lk" href="https://skarnet.org/software/mdevd/">mdevd</a></li>
       <li><a class="Lk" href="https://github.com/eudev-project/eudev">eudev</a></li>
-      <li>keymap</li>
+      <li>loadkeys</li>
+      <li>loadkmap</li>
       <li>resume (resume from hibernation)</li>
       <li>systemd-udevd</li>
     </ol>
@@ -223,18 +224,24 @@ key=&quot;${key}value&quot;</pre>
   <dt id="luks_discard"><a class="permalink" href="#luks_discard"><b class="Sy">luks_discard</b></a>=&#x27E8;0
     | 1&#x27E9;</dt>
   <dd>Pass &#x201C;--allow-discards&#x201D; to
-      <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a>. Useful for
-      SSD's, but you must know that security will be decreased.</dd>
+      <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a>, that allows the
+      use of discard (TRIM) requests for your luks device.
+    <p class="Pp" id="Warning"><a class="permalink" href="#Warning"><b class="Sy">Warning</b></a>:
+        This option may have a negative security impact. See
+        <a class="Xr" href="cryptsetup.8.html">cryptsetup(8)</a> for more
+        information.</p>
+  </dd>
 </dl>
-<p class="Pp">The <b class="Sy">keymap</b> hook has the following options:</p>
+<p class="Pp">The <b class="Sy">loadkeys</b> and <b class="Sy">loadkmap</b>
+    hooks has the following options:</p>
 <dl class="Bl-tag">
   <dt id="keymap_path"><a class="permalink" href="#keymap_path"><b class="Sy">keymap_path</b></a>=&#x27E8;PATH&#x27E9;</dt>
   <dd>Specify location to binary keymap.
-    <p class="Pp" id="busybox'">Currently, this hook supports loading keymap
-        only via <a class="permalink" href="#busybox'"><b class="Sy">busybox'
-        loadkmap</b></a>.</p>
-    <p class="Pp" id="kbd's"><a class="permalink" href="#kbd's"><b class="Sy">kbd's
-        loadkeys</b></a> not supported.</p>
+    <p class="Pp">Both hooks are for the same purpose. One of them
+        (<b class="Sy">loadkeys</b>) uses <b class="Sy">GNU kmod's
+        loadkeys(8)</b>, and another (<b class="Sy">loadkmap</b>) uses
+        <b class="Sy">busybox's loadkmap</b>. Use the appropriate, not both of
+        them.</p>
   </dd>
 </dl>
 <p class="Pp">The <b class="Sy">resume</b> hook has the following options:</p>
@@ -293,12 +300,20 @@ root=PARTUUID=8e05009d-a1d5-4fdb-b407-b0e79360555c</pre>
     <p class="Pp"></p>
   </li>
   <li>Specify root device and root filesystem type, add <b class="Sy">eudev</b>
-      and <b class="Sy">keymap</b> hooks, and specify keymap path:
+      and <b class="Sy">loadkmap</b> hooks, and specify keymap path:
     <div class="Bd Pp Bd-indent Li">
     <pre>root_type=f2fs
-hooks=&quot;eudev keymap&quot;
+hooks=&quot;eudev loadkmap&quot;
 root=UUID=13bcb7cc-8fe5-4f8e-a1fe-e4b5b336f3ef
 keymap_path=/usr/share/bkeymaps/colemak/en-latin9.bmap</pre>
+    </div>
+    <p class="Pp">The same example as above, but use <b class="Sy">GNU kbd's
+        loadkeys</b> instead of <b class="Sy">busybox's loadkmap</b>:</p>
+    <div class="Bd Pp Bd-indent Li">
+    <pre>root_type=f2fs
+hooks=&quot;eudev loadkeys&quot;
+root=UUID=13bcb7cc-8fe5-4f8e-a1fe-e4b5b336f3ef
+keymap_path=/usr/share/kbd/keymaps/i386/colemak/en-latin9.map.gz</pre>
     </div>
     <p class="Pp"></p>
   </li>
@@ -352,7 +367,7 @@ luks_root=/dev/sda2</pre>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">May 22, 2024</td>
+    <td class="foot-date">February 22, 2025</td>
     <td class="foot-os">Zeppe-Lin</td>
   </tr>
 </table>
