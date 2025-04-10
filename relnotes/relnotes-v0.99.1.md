@@ -134,7 +134,7 @@ breaking compatibility change.
 
 The release cover for Zeppe-Lin v0.99.1:
 
-- Cover Image: [Direct Link](https://github.com/zeppe-lin/artwork/blob/master/release-v0.99.1.png?raw=true)
+- Cover Image: [Direct Link](https://github.com/zeppe-lin/artwork/blob/master/v0.99.1.png?raw=true)
 - Artwork Concept: None
 
 The cover artwork is licensed under the Creative Commons

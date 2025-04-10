@@ -248,7 +248,7 @@ please review the transitional notes in
 
 Our release cover is an artful expression of Zeppe-Lin's spirit:
 
-- Cover Image: [Direct Link](https://github.com/zeppe-lin/artwork/blob/master/release-v1.x.png?raw=true)
+- Cover Image: [Direct Link](https://github.com/zeppe-lin/artwork/blob/master/v1.0.png?raw=true)
 
 - Artwork Concept:
   A weathered zeppelin, a symbol of enduring flight through changing
