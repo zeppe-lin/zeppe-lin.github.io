@@ -97,7 +97,7 @@ recommended).
 
 ##### 2.3.1.2. Create Partitions
 
-Use `parted(8)` to partition the disk:
+Use ***parted(8)*** to partition the disk:
 
     # parted /dev/sda
     (parted) mklabel gpt
@@ -207,7 +207,7 @@ extraction. Here's what each option does:
   system.
 * `--xattrs --xattrs-include='*'`
   Preserves filesystem extended attributes, which are used for Linux
-  capabilities (e.g., allowing programs like ping(8) enhanced
+  capabilities (e.g., allowing programs like ***ping(8)*** enhanced
   privileges without requiring 'suid root').
 * `-xpf`
   Extracts (x), preserves permissions and ownership (p), and uses
@@ -256,8 +256,8 @@ Ensure proper ownership and permissions:
 
 Generate necessary locales (see [8.1. Generating Locales](#81-generating-locales)).
 
-Edit `/etc/fstab` to configure filesystems (see fstab(5)). Example for
-[2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
+Edit `/etc/fstab` to configure filesystems (see ***fstab(5)***).
+Example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
 
     /dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
     /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
@@ -279,7 +279,7 @@ EFI variables (UEFI setup only):
 
     (chrooted) # mount /sys/firmware/efi/efivars
 
-If using tmpfs(5) for `/tmp`:
+If using ***tmpfs(5)*** for `/tmp`:
 
     (chrooted) # mount /tmp
 
@@ -291,11 +291,11 @@ For building packages in RAM (if enabled):
 Mount `/var/cache/pkgmk/work` only if you have enough RAM and intend
 to build packages there.
 
-Edit /etc/rc.conf (see rc.conf(5)) to configure system settings like
-font, keyboard, timezone, hostname, and services.
+Edit */etc/rc.conf* (see ***rc.conf(5)***) to configure system
+settings like font, keyboard, timezone, hostname, and services.
 
-Configure network settings in /etc/rc.d/net, /etc/hosts, and
-/etc/resolv.conf (see [8.3. Networking](#83-networking)).
+Configure network settings in */etc/rc.d/net*, */etc/hosts*, and
+*/etc/resolv.conf* (see [8.3. Networking](#83-networking)).
 
 Add a regular user (set a specific user ID now if needed):
 
@@ -338,10 +338,10 @@ the previous one:
 
 Where `--branch 1.x` corresponds to the current Zeppe-Lin release branch.
 
-Edit _/etc/pkgman.conf_ (see pkgman.conf(5) for more information) and
-enable the cloned collections. By default, only `pkgsrc-core` is
-enabled. Additionally, consider editing _/etc/pkgmk.conf_ (see
-pkgmk.conf(5) for more information).
+Edit */etc/pkgman.conf* (see ***pkgman.conf(5)*** for more
+information) and enable the cloned collections. By default, only
+`pkgsrc-core` is enabled. Additionally, consider editing
+*/etc/pkgmk.conf* (see ***pkgmk.conf(5)*** for more information).
 
 ### 2.8. Update Base System
 
@@ -369,7 +369,7 @@ Check for broken packages, and if any are identified, rebuild them:
 
     (chrooted) # pkgman update -fr --depsort $(revdep)
 
-Here, revdep(1) checks for broken dependencies, and if any are
+Here, ***revdep(1)*** checks for broken dependencies, and if any are
 reported, `pkgman update -fr` rebuilds the affected packages.
 
 ### 2.9. Install Essential Packages
@@ -386,8 +386,8 @@ require based on their specific needs.
 **Note:**
 For network setup and configuration details, see
 [8.3. Networking](#83-networking). If you set up a networking bridge,
-ensure you specify the bridge interface in the _/etc/rc.d/dhcpcd_
-and/or _/etc/rc.d/wpa_supplicant_ service scripts.
+ensure you specify the bridge interface in the */etc/rc.d/dhcpcd*
+and/or */etc/rc.d/wpa_supplicant* service scripts.
 
 ### 2.10. Kernel Setup
 
@@ -402,32 +402,30 @@ Build and install Linux kernel:
         --config-append="runscripts no" linux
 
 The linux package includes a post-install script that runs
-mkinitramfs(8) and updates the GRUB config. This script is disabled here
-for manual execution later.
+***mkinitramfs(8)*** and updates the GRUB config. This script is
+disabled here for manual execution later.
 
-**FIXME**
-Important:
-    When you update the linux package through the package manager, the
-    old kernel and its modules are removed as part of the update
-    process. This can cause issues if the system is still using the old
-    kernel while the new one is being installed. For example:
+**Important:**
+When you update the linux package through the package manager, the
+old kernel and its modules are removed as part of the update
+process. This can cause issues if the system is still using the old
+kernel while the new one is being installed. For example:
 
-      * If the new kernel fails to install correctly, the system may be
-        left without a working kernel.
+* If the new kernel fails to install correctly, the system may be left
+  without a working kernel.
 
-      * The running system might encounter issues due to missing modules
-        after the update, as the kernel modules corresponding to the old
-        kernel are removed.
+* The running system might encounter issues due to missing modules
+  after the update, as the kernel modules corresponding to the old
+  kernel are removed.
 
-    To avoid these problems, it is recommended to lock the linux package
-    from automatic updates and handle kernel updates separately using
-    pkgman-update(8). This ensures that the current working kernel
-    remains intact until the new one is fully installed and tested. For
-    more details, see pkgman-lock(8).
-
-    If you installed the kernel using this method, proceed to "3.11. Kernel
-    Firmware" if your system requires additional firmware, or "3.12.
-    Initramfs" otherwise.
+To avoid these problems, it is recommended to lock the linux package
+from automatic updates and handle kernel updates separately using
+***pkgman-update(8)***. This ensures that the current working kernel
+remains intact until the new one is fully installed and tested. For
+more details, see ***pkgman-lock(8)***.
+If you installed the kernel using this method, proceed to [2.11.
+Kernel Firmware](#211-kernel-firmware) if your system requires
+additional firmware, or [2.12. Initramfs](#212-initramfs) otherwise.
 
 #### 2.10.2. Manual Kernel Compilation
 
@@ -528,7 +526,7 @@ settings like the root device and filesystem. Here's an example for
     luks_root=/dev/sda2
     # End of file.
 
-See mkinitramfs.config(5) for more information.
+See ***mkinitramfs.config(5)*** for more information.
 
 **Important:**
 `hostonly` creates a smaller initramfs with only necessary modules.
@@ -639,8 +637,8 @@ To install Window Maker, first clone the repository:
     # git clone https://github.com/zeppe-lin/pkgsrc-wmaker \
         --branch 1.x
 
-Next, you need to tell pkgman(1) about this new repository by adding
-the following line to _/etc/pkgman.conf_:
+Next, you need to tell ***pkgman(1)*** about this new repository by
+adding the following line to */etc/pkgman.conf*:
 
     pkgsrcdir /usr/src/pkgsrc-wmaker
 
@@ -725,7 +723,7 @@ Download the tarball and its signature for your upgrade, replacing
     $ URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
     $ wget -c ${URL}/v1.0/binpkgs-v1.0-x86_64.tar.xz{,.sig}
 
-Verify the tarball with gpg(1):
+Verify the tarball with ***gpg(1)***:
 
     $ gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
     $ gpg --verify binpkgs-v1.0-x86_64.tar.xz{.sig,}
@@ -839,26 +837,27 @@ Example entry for ed:
 
 **Note:**
 This database enables essential operations like installation
-(pkgadd(8)), removal (pkgrm(8)), and inspection (pkginfo(8)).
+(***pkgadd(8)***), removal (***pkgrm(8)***), and inspection
+(***pkginfo(8)***).
 
 ### 6.3. Low-level Tools: pkgutils
 
 pkgutils provides the core utilities to handle packages:
 
-- pkgadd(8): Installs or upgrades packages.
-- pkgrm(8): Removes packages.
-- pkginfo(1): Displays package details.
+- ***pkgadd(8)***: Installs or upgrades packages.
+- ***pkgrm(8)***: Removes packages.
+- ***pkginfo(1)***: Displays package details.
 
 #### 6.3.1. Using pkgutils
 
 ##### 6.3.1.1. Installing a Package
 
-Install a package file with pkgadd(8):
+Install a package file with ***pkgadd(8)***:
 
     # pkgadd bash#5.0.18-1.pkg.tar.gz
 
-By default, pkgadd(8) prevents overwriting existing files. Use `-f` or
-`--force` to override this behavior (use with caution!):
+By default, ***pkgadd(8)*** prevents overwriting existing files. Use
+`-f` or `--force` to override this behavior (use with caution!):
 
     # pkgadd -f bash#5.0.18-1.pkg.tar.gz
 
@@ -876,7 +875,7 @@ placed in */var/lib/pkg/rejected/*.
 
 ##### 6.3.1.4. Removing a Package
 
-To remove a package, use pkgrm(8) followed by the package name:
+To remove a package, use ***pkgrm(8)*** followed by the package name:
 
     # pkgrm bash
 
@@ -885,7 +884,7 @@ cautious!
 
 ##### 6.3.1.5. Inspecting Packages
 
-Use pkginfo(1) to get information about packages.
+Use ***pkginfo(1)*** to get information about packages.
 
 List installed packages and versions:
 
@@ -903,13 +902,13 @@ Find which package owns a file:
 
     $ pkginfo -o /usr/bin/ls
 
-See pkgadd(8), pkgrm(8), and pkginfo(1) for details.
+See ***pkgadd(8)***, ***pkgrm(8)***, and ***pkginfo(1)*** for details.
 
 #### 6.3.4. Configuring pkgadd
 
-You can customize pkgadd(8) behavior during package upgrades using
-*/etc/pkgadd.conf*. Rules define whether files should be upgraded or
-preserved.
+You can customize ***pkgadd(8)*** behavior during package upgrades
+using */etc/pkgadd.conf*. Rules define whether files should be
+upgraded or preserved.
 
 ##### 6.3.4.1. Rule Format
 
@@ -944,19 +943,19 @@ This setup will:
 Patterns match filenames inside the package, not full system paths.
 Do not use `/` at the start!
 
-See pkgadd.conf(5) for details.
+See ***pkgadd.conf(5)*** for details.
 
 ### 6.4. Low-level Tools: rejmerge
 
-rejmerge(8) resolves files rejected during upgrades using `pkgadd -u`.
-Rejected files are moved to */var/lib/pkg/rejected/* for manual
-handling, while rejmerge(8) provides a way to manage these files
-semi-automatically.
+***rejmerge(8)*** resolves files rejected during upgrades using
+`pkgadd -u`.  Rejected files are moved to */var/lib/pkg/rejected/* for
+manual handling, while ***rejmerge(8)*** provides a way to manage
+these files semi-automatically.
 
 #### 6.4.1. Using rejmerge
 
-If files are present in */var/lib/pkg/rejected*, rejmerge(8) prompts
-you to decide their fate. For each file, you can choose:
+If files are present in */var/lib/pkg/rejected*, ***rejmerge(8)***
+prompts you to decide their fate. For each file, you can choose:
 
     =======> file
     (diff output between installed file and rejected file)
@@ -970,11 +969,11 @@ Legend:
 - [D]iff: Display differences between the current and new versions.
 - [S]kip: Defer the decision and revisit it later.
 
-See rejmerge(8) for details.
+See ***rejmerge(8)*** for details.
 
 #### 6.4.2. Configuring rejmerge
 
-Configurations for rejmerge(8) can be adjusted in
+Configurations for ***rejmerge(8)*** can be adjusted in
 */etc/rejmerge.conf*.  Key settings:
 
 - `rejmerge_diff`: Defines how differences are displayed.
@@ -992,12 +991,12 @@ Use sdiff for merging files:
 
     rejmerge_merge() { sdiff -o $3 $1 $2 ; }
 
-See rejmerge.conf(5) for more details.
+See ***rejmerge.conf(5)*** for more details.
 
 ### 6.5. Low-level Tools: pkgmk
 
-pkgmk(8) builds Zeppe-Lin packages (compressed archives) from source
-files using a Pkgfile. These files, along with the supporting
+***pkgmk(8)*** builds Zeppe-Lin packages (compressed archives) from
+source files using a Pkgfile. These files, along with the supporting
 directory, form a Package Source -- a self-contained unit that
 includes all files needed to build and install software.
 
@@ -1036,7 +1035,7 @@ The Pkgfile defines:
         rm -rf $PKG/usr/info
     }
 
-See Pkgfile(5) for details.
+See ***Pkgfile(5)*** for details.
 
 #### 6.5.2. Using pkgmk
 
@@ -1051,7 +1050,7 @@ into this directory, place the Pkgfile inside, and run:
 `-d`: Downloads missing source files.
 `-cf /dev/null`: Ignores /etc/pkgmk.conf and uses defaults.
 
-On the first build, pkgmk(8) generates:
+On the first build, ***pkgmk(8)*** generates:
 
 - .footprint: Tracks package contents.
 - .md5sum: Ensures source files integrity.
@@ -1061,7 +1060,7 @@ current directory.
 
 #### 6.5.3. Configuring pkgmk
 
-Customize pkgmk(8) with */etc/pkgmk.conf*. Key settings:
+Customize ***pkgmk(8)*** with */etc/pkgmk.conf*. Key settings:
 
 - `CFLAGS`, `CXXFLAGS`: Compiler optimization flags.
 - `PKGMK_SOURCE_MIRRORS`: Backup URLs for source archives.
