@@ -1,0 +1,40 @@
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Uses full history which is useful for some deployments
+
+      - name: Build Smu
+        run: |
+          echo "Cloning and building Smu..."
+          git clone https://github.com/karlb/smu.git
+          cd smu
+          make
+          sudo cp smu /usr/local/bin/
+          cd ..
+
+      - name: Build Documentation
+        run: |
+          echo "Building documentation..."
+          make
+          mkdir -p public
+          mv *.html public/ || echo "No HTML files found to deploy."
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+
