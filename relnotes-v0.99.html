@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Zeppe-Lin Linux</title>
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div style="float:right; margin: 0 0 1em 15px; text-align:center;">
+<img src="https://github.com/zeppe-lin/artwork/blob/master/release-v0.99.png?raw=true"
+     alt="Zeppe-Lin v0.99 Cover Artwork" width="320" height="320">
+<br>
+<span style="font-size: 0.9em; font-style: italic; color: #444;">
+Zeppe-Lin v0.99: Happy Birthday!
+</span>
+</div>
+<ul id="index">
+  <li><a href="index.html">Home</a>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#incompatible-changes">Incompatible Changes</a></li>
+  <li><a href="#new-features">New Features</a></li>
+  <li><a href="#package-changes">Package Changes</a></li>
+  <li><a href="#pkgsrc-core">pkgsrc-core</a></li>
+  <li><a href="#pkgsrc-desktop">pkgsrc-desktop</a></li>
+  <li><a href="#cover-artwork">Cover Artwork</a></li>
+  <li><a href="#kernel">Kernel</a></li>
+  <li><a href="#toolchain">Toolchain</a></li>
+  <li><a href="#x11">X11</a></li>
+  <li><a href="#changelogs">Changelogs</a></li>
+  <li><a href="#download">Download</a></li>
+</ul>
+<h1 id="zeppe-lin-v099-release-notes">Zeppe-Lin v0.99: Release Notes</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The Zeppe-Lin project is happy to announce the first stable release
+v0.99! <strong>Happy Birthday, Zeppe-Lin!</strong></p>
+<p>This version represents a selected subset of fixes and updates for the
+beta release from 2023-01-02 and has no breaking compatibility
+changes.  Therefore, a simple update should not cause any issues:</p>
+<pre><code># pkgman sysup --deps --depsort
+</code></pre>
+<p><em>Most likely</em>.</p>
+<h2 id="incompatible-changes">Incompatible Changes</h2>
+<p>There are no breaking compatibility changes in this release.</p>
+<h2 id="new-features">New Features</h2>
+<ul>
+<li><em>None in this release beyond what might be implicitly included in
+the base system.</em></li>
+</ul>
+<h2 id="package-changes">Package Changes</h2>
+<h3 id="pkgsrc-core">pkgsrc-core</h3>
+<p><strong>New Packages:</strong></p>
+<ul>
+<li><em>None in this release for pkgsrc-core beyond what might be
+implicitly included in the base system.</em></li>
+</ul>
+<p><strong>Removed Packages:</strong></p>
+<ul>
+<li><em>None in this release for pkgsrc-core.</em></li>
+</ul>
+<p><strong>Key Changes:</strong></p>
+<ul>
+<li><p>Improved <em>pkgman.conf</em> configuration file: added an example of how
+to renice build packages.</p>
+</li>
+<li><p>Made screen blanking timeout configurable via the <code>BLANKTIME</code>
+variable in <em>rc.conf</em>.</p>
+</li>
+</ul>
+<h3 id="pkgsrc-desktop">pkgsrc-desktop</h3>
+<p><strong>New Packages:</strong></p>
+<ul>
+<li>wgetpaste</li>
+</ul>
+<p><strong>Removed Packages:</strong></p>
+<ul>
+<li><em>None in this release for pkgsrc-desktop.</em></li>
+</ul>
+<p><strong>Key Changes:</strong></p>
+<ul>
+<li><em>None in this release for pkgsrc-desktop beyond the new package.</em></li>
+</ul>
+<h2 id="cover-artwork">Cover Artwork</h2>
+<p>The release cover for Zeppe-Lin v0.99:</p>
+<ul>
+<li>Cover Image: <a href="https://github.com/zeppe-lin/artwork/blob/master/release-v0.99.png?raw=true">Direct Link</a></li>
+<li>Artwork Concept: None.</li>
+</ul>
+<p>The cover artwork is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
+<h2 id="kernel">Kernel</h2>
+<ul>
+<li><strong>linux</strong> 5.3.238 (LTS until Dec 2025)</li>
+</ul>
+<p>Includes <a href="https://github.com/sighook/lwpp">Wi-Fi pentest patches</a>.</p>
+<h2 id="toolchain">Toolchain</h2>
+<ul>
+<li><strong>glibc</strong> 2.36</li>
+<li><strong>gcc</strong> 12.2.0</li>
+<li><strong>binutils</strong> 2.39</li>
+</ul>
+<h2 id="x11">X11</h2>
+<ul>
+<li><strong>Xorg</strong> 7.7</li>
+<li><strong>xorg-server</strong> 21.1.8</li>
+<li><strong>mesa</strong> 23.0.3</li>
+<li><strong>amdgpu</strong> 23.0.0</li>
+<li><strong>ati</strong> 22.0.0</li>
+<li><strong>intel</strong> 2.99.917-916</li>
+</ul>
+<h2 id="changelogs">Changelogs</h2>
+<p>For a comprehensive list of changes in this release, please refer to
+the detailed changelogs available for each component:</p>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99">pkgsrc-core ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99">pkgsrc-system ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99">pkgsrc-xorg ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99">pkgsrc-desktop ChangeLog</a></li>
+</ul>
+<h2 id="download">Download</h2>
+<p>Before downloading Zeppe-Lin, please read the
+<a href="https://zeppe-lin.github.io/handbook.html">handbook</a> to be sure
+your hardware is supported and you know how to install it.</p>
+<p><strong>Root Filesystem Archive &amp; Signature</strong>:</p>
+
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz">Root Filesystem Archive</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz.sig">Root Filesystem Signature</a></li>
+</ul>
+<p>You might also want to check out:</p>
+<p><strong>mkrootfs</strong> - tool to build custom rootfs image:</p>
+
+<ul>
+<li><a href="https://github.com/zeppe-lin/mkrootfs">https://github.com/zeppe-lin/mkrootfs</a></li>
+</ul>
+<p><strong>dockerfile</strong> - instructions to build docker image:</p>
+
+<ul>
+<li><a href="https://github.com/zeppe-lin/dockerfile">https://github.com/zeppe-lin/dockerfile</a></li>
+</ul>
+<div class="footer-separator"></div>
+<div class="footer">
+  Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
+  <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</div>
+</body>
+</html>

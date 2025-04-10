@@ -1,0 +1,243 @@
+<html>
+<head>
+<title>Zeppe-Lin Linux</title>
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div style="float:right; margin: 0 0 1em 15px; text-align:center;">
+<img src="https://github.com/zeppe-lin/artwork/blob/master/release-v0.99.1.png?raw=true"
+     alt="Zeppe-Lin v0.99.1 Cover Artwork" width="320" height="320">
+<br>
+<span style="font-size: 0.9em; font-style: italic; color: #444;">
+Zeppe-Lin v0.99.1
+</span>
+</div>
+<ul id="index">
+  <li><a href="index.html">Home</a>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#incompatible-changes">Incompatible Changes</a></li>
+  <li><a href="#new-features">New Features</a></li>
+  <li><a href="#package-changes">Package Changes</a></li>
+  <li><a href="#pkgsrc-core">pkgsrc-core</a></li>
+  <li><a href="#pkgsrc-system">pkgsrc-system</a></li>
+  <li><a href="#pkgsrc-xorg">pkgsrc-xorg</a></li>
+  <li><a href="#pkgsrc-desktop">pkgsrc-desktop</a></li>
+  <li><a href="#cover-artwork">Cover Artwork</a></li>
+  <li><a href="#kernel">Kernel</a></li>
+  <li><a href="#toolchain">Toolchain</a></li>
+  <li><a href="#x11">X11</a></li>
+  <li><a href="#changelogs">Changelogs</a></li>
+  <li><a href="#download">Download</a></li>
+</ul>
+<h1 id="zeppe-lin-v0991-release-notes">Zeppe-Lin v0.99.1: Release Notes</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The Zeppe-Lin project is happy to announce the second stable release
+v0.99.1!
+It represents a selected subset of fixes and updates for
+<a href="relnotes-v0.99.html">v0.99</a> and has one small (and not painful)
+breaking compatibility change.</p>
+<h2 id="incompatible-changes">Incompatible Changes</h2>
+<ul>
+<li><p><strong>pkgutils Footprint File Changes</strong>:
+During performance optimizations for pkgutils, the generation and
+sorting order of footprint files has been changed.  This may break
+system updates via <code>sysup</code>.  To avoid this, perform a forced upgrade
+of pkgutils and pkgmk before running a system upgrade:</p>
+<pre><code># pkgman update -f pkgmk pkgutils
+# rejmerge
+</code></pre>
+</li>
+<li><p><strong>New traceroute conflicts with inetutils</strong>:
+New package <strong>traceroute</strong>, introduced to replace buggy
+traceroute(8) utility provided by <strong>inetutils</strong>.  Make sure you
+update <strong>inetutils</strong> before you install <strong>traceroute</strong>.</p>
+</li>
+</ul>
+<h2 id="new-features">New Features</h2>
+<ul>
+<li><strong>pkgsrc-core/traceroute</strong>: New package.  Previously, the buggy
+traceroute(8) utility was provided by <strong>inetutils</strong>.</li>
+<li><strong>pkgsrc-system/tree</strong>: Switched to the maintained fork.</li>
+<li><strong>pkgsrc-system/ntfs-3g</strong>: Added <code>fsck.ntfs</code>, a wrapper script
+around ntfsfix(8) that silently discards any unsupported flags from
+<em>/etc/rc</em>'s fsck(8).  Also added fsck.ntfs(8) manual page.</li>
+<li><strong>pkgsrc-system/p11-kit</strong>: Added a custom update-ca-trust(1) manual
+page.</li>
+<li><strong>pkgsrc-system/rdfind</strong>: New package (needed by
+<strong>linux-firmware</strong>).</li>
+<li><strong>pkgsrc-system/alsa-ucm-conf</strong>: New package.</li>
+<li><strong>pkgsrc-xorg/vulkan-{header,loader,tools}</strong>: New packages (needed
+by <strong>mesa</strong> for zink support).</li>
+<li><strong>pkgsrc-xorg/xcompmgr</strong>: New package.</li>
+<li><strong>pkgsrc-xorg/ttf-font-jetbrains-mono{,-nerd}</strong>: New packages.</li>
+<li><strong>pkgsrc-xorg/gxmessage</strong>: New package.</li>
+<li><strong>pkgsrc-xorg/libxpresent</strong>: New package (needed by <strong>mpv</strong>).</li>
+<li><strong>pkgsrc-desktop/lsw</strong>: New package.</li>
+<li><strong>pkgsrc-desktop/ratpoison</strong>: New package.</li>
+<li><strong>pkgsrc-desktop/firefox-{darkreader,vimium}</strong>: New packages.</li>
+<li><strong>pkgsrc-desktop/alsa-{firmware,plugins}</strong>: New packages.</li>
+<li><strong>pkgsrc-desktop/ladspa</strong>: New package.</li>
+<li><strong>pkgsrc-desktop/lxrandr</strong>: New package.</li>
+<li><strong>pkgsrc-desktop/json-glib</strong>: New package (needed by <strong>zathura</strong>).</li>
+<li><strong>pkgsrc-desktop/pick</strong>: New package.</li>
+<li><strong>pkgsrc-desktop/broodwar-cursor-theme</strong>: New package.</li>
+</ul>
+<h2 id="package-changes">Package Changes</h2>
+<h3 id="pkgsrc-core">pkgsrc-core</h3>
+<ul>
+<li><p><strong>New Packages</strong>:</p>
+
+<ul>
+<li><strong>traceroute</strong></li>
+</ul>
+</li>
+<li><p><strong>Removed Packages</strong>:
+None in this release for pkgsrc-core.</p>
+</li>
+<li><p><strong>Key Changes</strong>:</p>
+
+<ul>
+<li><strong>capstone</strong> moved to <strong>pkgsrc-system</strong></li>
+<li><em>/etc/pkgadd.conf</em> updated to silently upgrade <em>/etc/revdep.d</em>
+files</li>
+<li>rejmerge(8) now allows redefining <code>PAGER</code> and <code>EDITOR</code> from
+command-line</li>
+<li>small fixes and cleanups for sysklogd's rotatelog</li>
+<li>added rotatelog(8) man page to sysklogd</li>
+</ul>
+</li>
+</ul>
+<h3 id="pkgsrc-system">pkgsrc-system</h3>
+<ul>
+<li><p><strong>New Packages</strong>:</p>
+
+<ul>
+<li><strong>alsa-ucm-conf</strong></li>
+<li><strong>rdfind</strong></li>
+</ul>
+</li>
+<li><p><strong>Removed Packages</strong>:
+None in this release for pkgsrc-system.</p>
+</li>
+<li><p><strong>Key Changes</strong>:</p>
+
+<ul>
+<li><strong>tree</strong> switched to the maintained fork</li>
+<li><strong>capstone</strong> imported from the <strong>pkgsrc-core</strong></li>
+<li><strong>ntfs-3g</strong>: added <code>fsck.ntfs</code> (wrapper for ntfsfix(8)) and
+fsck.ntfs(8) man page</li>
+<li><strong>lm-sensors</strong>: configurations moved from <em>/usr/etc</em> to <em>/etc</em></li>
+<li><strong>freetype</strong>: no longer pollutes <em>/etc/profile.d</em></li>
+<li><strong>p11-kit</strong>: added update-ca-trust(1) man page</li>
+</ul>
+</li>
+</ul>
+<h3 id="pkgsrc-xorg">pkgsrc-xorg</h3>
+<ul>
+<li><p><strong>New Packages</strong>:</p>
+
+<ul>
+<li><strong>gxmessage</strong></li>
+<li><strong>libxpresent</strong></li>
+<li><strong>ttf-font-jetbrains-mono</strong></li>
+<li><strong>ttf-font-jetbrains-mono-nerd</strong></li>
+<li><strong>vulkan-header</strong></li>
+<li><strong>vulkan-loader</strong></li>
+<li><strong>vulkan-tools</strong></li>
+<li><strong>xcompmgr</strong></li>
+</ul>
+</li>
+<li><p><strong>Removed Packages</strong>:
+None in this release for pkgsrc-xorg.</p>
+</li>
+<li><p><strong>Key Changes</strong>:
+None in this release for pkgsrc-xorg beyond new packages.</p>
+</li>
+</ul>
+<h3 id="pkgsrc-desktop">pkgsrc-desktop</h3>
+<ul>
+<li><p><strong>New Packages</strong>:</p>
+
+<ul>
+<li><strong>lsw</strong></li>
+<li><strong>ratpoison</strong></li>
+<li><strong>firefox-darkreader</strong></li>
+<li><strong>firefox-vimium</strong></li>
+<li><strong>alsa-firmware</strong></li>
+<li><strong>alsa-plugins</strong></li>
+<li><strong>ladspa</strong></li>
+<li><strong>lxrandr</strong></li>
+<li><strong>json-glib</strong></li>
+<li><strong>pick</strong></li>
+<li><strong>broodwar-cursor-theme</strong></li>
+</ul>
+</li>
+<li><p><strong>Removed Packages</strong>:
+None in this release for pkgsrc-desktop.</p>
+</li>
+<li><p><strong>Key Changes</strong>:
+None in this release for pkgsrc-desktop beyond new packages.</p>
+</li>
+</ul>
+<h2 id="cover-artwork">Cover Artwork</h2>
+<p>The release cover for Zeppe-Lin v0.99.1:</p>
+<ul>
+<li>Cover Image: <a href="https://github.com/zeppe-lin/artwork/blob/master/release-v0.99.1.png?raw=true">Direct Link</a></li>
+<li>Artwork Concept: None</li>
+</ul>
+<p>The cover artwork is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
+<h2 id="kernel">Kernel</h2>
+<ul>
+<li><strong>linux</strong> 5.4.244 (LTS until Dec 2025)</li>
+</ul>
+<p>Included <a href="https://github.com/sighook/lwpp">Wi-Fi pentest patches</a>.</p>
+<h2 id="toolchain">Toolchain</h2>
+<ul>
+<li><strong>glibc</strong> 2.36 + CVE patches</li>
+<li><strong>gcc</strong> 12.2.0</li>
+<li><strong>binutils</strong> 2.39</li>
+</ul>
+<h2 id="x11">X11</h2>
+<ul>
+<li><strong>Xorg</strong> 7.7</li>
+<li><strong>xorg-server</strong> 21.1.9</li>
+<li><strong>mesa</strong> 23.3.0</li>
+<li><strong>amdgpu</strong> 23.0.0</li>
+<li><strong>ati</strong> 22.0.0</li>
+<li><strong>intel</strong> 2.99.917-923</li>
+</ul>
+<h2 id="changelogs">Changelogs</h2>
+<p>For a comprehensive list of changes in this release, please refer to
+the detailed changelogs available for each component:</p>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99.1">pkgsrc-core ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99.1">pkgsrc-system ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99.1">pkgsrc-xorg ChangeLog</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99.1">pkgsrc-desktop ChangeLog</a></li>
+</ul>
+<h2 id="download">Download</h2>
+<p>Before downloading Zeppe-Lin, please read the
+<a href="https://zeppe-lin.github.io/handbook.html">handbook</a> to be sure
+your hardware is supported and you know how to install it.</p>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz">Root Filesystem Archive</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz.sig">Root Filesystem Signature</a></li>
+</ul>
+<p>You might also want to check out:</p>
+<ul>
+<li><a href="https://github.com/zeppe-lin/mkrootfs&gt;">mkrootfs</a>
+(tool to build custom rootfs image)</li>
+<li><a href="https://github.com/zeppe-lin/dockerfile">dockerfile</a>
+(instructions to build docker image)</li>
+</ul>
+<p><em>Hack fun,<br />
+sighook</em></p>
+<div class="footer-separator"></div>
+<div class="footer">
+  Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
+  <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</div>
+</body>
+</html>
