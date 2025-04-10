@@ -27,7 +27,7 @@ jobs:
       - name: Build Documentation
         run: |
           echo "Building documentation..."
-          make
+          make all
           mkdir -p public
           mv *.html public/ || echo "No HTML files found to deploy."
 
