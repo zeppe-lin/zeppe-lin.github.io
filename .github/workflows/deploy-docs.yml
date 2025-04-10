@@ -30,6 +30,7 @@ jobs:
           make all
           mkdir -p public
           mv *.html public/ || echo "No HTML files found to deploy."
+          cp -r assets public/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
