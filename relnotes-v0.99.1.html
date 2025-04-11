@@ -15,6 +15,7 @@ Zeppe-Lin v0.99.1
 </div>
 <ul id="index">
   <li><a href="index.html">Home</a>
+  <li><a href="#zeppe-lin-v0991-release-notes">Zeppe-Lin v0.99.1: Release Notes</a></li>
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#incompatible-changes">Incompatible Changes</a></li>
   <li><a href="#new-features">New Features</a></li>
@@ -31,6 +32,7 @@ Zeppe-Lin v0.99.1
   <li><a href="#download">Download</a></li>
 </ul>
 <h1 id="zeppe-lin-v0991-release-notes">Zeppe-Lin v0.99.1: Release Notes</h1>
+<p>Released Dec 11, 2023. 2nd Zeppe-Lin Release.</p>
 <h2 id="introduction">Introduction</h2>
 <p>The Zeppe-Lin project is happy to announce the second stable release
 v0.99.1!
@@ -40,57 +42,54 @@ breaking compatibility change.</p>
 <h2 id="incompatible-changes">Incompatible Changes</h2>
 <ul>
 <li><p><strong>pkgutils Footprint File Changes</strong>:
-During performance optimizations for pkgutils, the generation and
+During performance optimizations for <code>pkgutils</code>, the generation and
 sorting order of footprint files has been changed.  This may break
 system updates via <code>sysup</code>.  To avoid this, perform a forced upgrade
-of pkgutils and pkgmk before running a system upgrade:</p>
+of <code>pkgutils</code> and <code>pkgmk</code> before running a system upgrade:</p>
 <pre><code># pkgman update -f pkgmk pkgutils
 # rejmerge
 </code></pre>
 </li>
 <li><p><strong>New traceroute conflicts with inetutils</strong>:
-New package <strong>traceroute</strong>, introduced to replace buggy
-traceroute(8) utility provided by <strong>inetutils</strong>.  Make sure you
-update <strong>inetutils</strong> before you install <strong>traceroute</strong>.</p>
+New package <code>traceroute</code>, introduced to replace buggy
+<code>traceroute(8)</code> utility provided by <code>inetutils</code>.  Make sure you
+update <code>inetutils</code> before you install <code>traceroute</code>.</p>
 </li>
 </ul>
 <h2 id="new-features">New Features</h2>
 <ul>
-<li><strong>pkgsrc-core/traceroute</strong>: New package.  Previously, the buggy
-traceroute(8) utility was provided by <strong>inetutils</strong>.</li>
-<li><strong>pkgsrc-system/tree</strong>: Switched to the maintained fork.</li>
-<li><strong>pkgsrc-system/ntfs-3g</strong>: Added <code>fsck.ntfs</code>, a wrapper script
-around ntfsfix(8) that silently discards any unsupported flags from
-<em>/etc/rc</em>'s fsck(8).  Also added fsck.ntfs(8) manual page.</li>
-<li><strong>pkgsrc-system/p11-kit</strong>: Added a custom update-ca-trust(1) manual
+<li><code>pkgsrc-core/traceroute</code>: New package.  Previously, the buggy
+<code>traceroute(8)</code> utility was provided by <code>inetutils</code>.</li>
+<li><code>pkgsrc-system/tree</code>: Switched to the maintained fork.</li>
+<li><code>pkgsrc-system/ntfs-3g</code>: Added <code>fsck.ntfs</code>, a wrapper script around
+<code>ntfsfix(8)</code> that silently discards any unsupported flags from
+<code>/etc/rc</code>'s <code>fsck(8)</code>.  Also added <code>fsck.ntfs(8)</code> manual page.</li>
+<li><code>pkgsrc-system/p11-kit</code>: Added a custom <code>update-ca-trust(1)</code> manual
 page.</li>
-<li><strong>pkgsrc-system/rdfind</strong>: New package (needed by
-<strong>linux-firmware</strong>).</li>
-<li><strong>pkgsrc-system/alsa-ucm-conf</strong>: New package.</li>
-<li><strong>pkgsrc-xorg/vulkan-{header,loader,tools}</strong>: New packages (needed
-by <strong>mesa</strong> for zink support).</li>
-<li><strong>pkgsrc-xorg/xcompmgr</strong>: New package.</li>
-<li><strong>pkgsrc-xorg/ttf-font-jetbrains-mono{,-nerd}</strong>: New packages.</li>
-<li><strong>pkgsrc-xorg/gxmessage</strong>: New package.</li>
-<li><strong>pkgsrc-xorg/libxpresent</strong>: New package (needed by <strong>mpv</strong>).</li>
-<li><strong>pkgsrc-desktop/lsw</strong>: New package.</li>
-<li><strong>pkgsrc-desktop/ratpoison</strong>: New package.</li>
-<li><strong>pkgsrc-desktop/firefox-{darkreader,vimium}</strong>: New packages.</li>
-<li><strong>pkgsrc-desktop/alsa-{firmware,plugins}</strong>: New packages.</li>
-<li><strong>pkgsrc-desktop/ladspa</strong>: New package.</li>
-<li><strong>pkgsrc-desktop/lxrandr</strong>: New package.</li>
-<li><strong>pkgsrc-desktop/json-glib</strong>: New package (needed by <strong>zathura</strong>).</li>
-<li><strong>pkgsrc-desktop/pick</strong>: New package.</li>
-<li><strong>pkgsrc-desktop/broodwar-cursor-theme</strong>: New package.</li>
+<li><code>pkgsrc-system/rdfind</code>: New package (needed by <code>linux-firmware</code>).</li>
+<li><code>pkgsrc-system/alsa-ucm-conf</code>: New package.</li>
+<li><code>pkgsrc-xorg/vulkan-{header,loader,tools}</code>: New packages (needed by
+<code>mesa</code> for <code>zink</code> support).</li>
+<li><code>pkgsrc-xorg/xcompmgr</code>: New package.</li>
+<li><code>pkgsrc-xorg/ttf-font-jetbrains-mono{,-nerd}</code>: New packages.</li>
+<li><code>pkgsrc-xorg/gxmessage</code>: New package.</li>
+<li><code>pkgsrc-xorg/libxpresent</code>: New package (needed by <code>mpv</code>).</li>
+<li><code>pkgsrc-desktop/lsw</code>: New package.</li>
+<li><code>pkgsrc-desktop/ratpoison</code>: New package.</li>
+<li><code>pkgsrc-desktop/firefox-{darkreader,vimium}</code>: New packages.</li>
+<li><code>pkgsrc-desktop/alsa-{firmware,plugins}</code>: New packages.</li>
+<li><code>pkgsrc-desktop/ladspa</code>: New package.</li>
+<li><code>pkgsrc-desktop/lxrandr</code>: New package.</li>
+<li><code>pkgsrc-desktop/json-glib</code>: New package (needed by <code>zathura</code>).</li>
+<li><code>pkgsrc-desktop/pick</code>: New package.</li>
+<li><code>pkgsrc-desktop/broodwar-cursor-theme</code>: New package.</li>
 </ul>
 <h2 id="package-changes">Package Changes</h2>
 <h3 id="pkgsrc-core">pkgsrc-core</h3>
 <ul>
 <li><p><strong>New Packages</strong>:</p>
-
-<ul>
-<li><strong>traceroute</strong></li>
-</ul>
+<pre><code>traceroute
+</code></pre>
 </li>
 <li><p><strong>Removed Packages</strong>:
 None in this release for pkgsrc-core.</p>
@@ -98,24 +97,22 @@ None in this release for pkgsrc-core.</p>
 <li><p><strong>Key Changes</strong>:</p>
 
 <ul>
-<li><strong>capstone</strong> moved to <strong>pkgsrc-system</strong></li>
-<li><em>/etc/pkgadd.conf</em> updated to silently upgrade <em>/etc/revdep.d</em>
+<li><code>capstone</code> moved to <code>pkgsrc-system</code></li>
+<li><code>/etc/pkgadd.conf</code> updated to silently upgrade <code>/etc/revdep.d</code>
 files</li>
-<li>rejmerge(8) now allows redefining <code>PAGER</code> and <code>EDITOR</code> from
+<li><code>rejmerge(8)</code> now allows redefining <code>PAGER</code> and <code>EDITOR</code> from
 command-line</li>
-<li>small fixes and cleanups for sysklogd's rotatelog</li>
-<li>added rotatelog(8) man page to sysklogd</li>
+<li>small fixes and cleanups for <code>sysklogd</code>'s <code>rotatelog</code></li>
+<li>added <code>rotatelog(8)</code> man page to sysklogd</li>
 </ul>
 </li>
 </ul>
 <h3 id="pkgsrc-system">pkgsrc-system</h3>
 <ul>
 <li><p><strong>New Packages</strong>:</p>
-
-<ul>
-<li><strong>alsa-ucm-conf</strong></li>
-<li><strong>rdfind</strong></li>
-</ul>
+<pre><code>alsa-ucm-conf
+rdfind
+</code></pre>
 </li>
 <li><p><strong>Removed Packages</strong>:
 None in this release for pkgsrc-system.</p>
@@ -123,61 +120,57 @@ None in this release for pkgsrc-system.</p>
 <li><p><strong>Key Changes</strong>:</p>
 
 <ul>
-<li><strong>tree</strong> switched to the maintained fork</li>
-<li><strong>capstone</strong> imported from the <strong>pkgsrc-core</strong></li>
-<li><strong>ntfs-3g</strong>: added <code>fsck.ntfs</code> (wrapper for ntfsfix(8)) and
-fsck.ntfs(8) man page</li>
-<li><strong>lm-sensors</strong>: configurations moved from <em>/usr/etc</em> to <em>/etc</em></li>
-<li><strong>freetype</strong>: no longer pollutes <em>/etc/profile.d</em></li>
-<li><strong>p11-kit</strong>: added update-ca-trust(1) man page</li>
+<li><code>tree</code> switched to the maintained fork</li>
+<li><code>capstone</code> imported from the <code>pkgsrc-core</code></li>
+<li><code>ntfs-3g</code>: added <code>fsck.ntfs</code> (wrapper for <code>ntfsfix(8)</code>) and
+<code>fsck.ntfs(8)</code> man page</li>
+<li><code>lm-sensors</code>: configurations moved from <code>/usr/etc</code> to <code>/etc</code></li>
+<li><code>freetype</code>: no longer pollutes <code>/etc/profile.d</code></li>
+<li><code>p11-kit</code>: added <code>update-ca-trust(1)</code> man page</li>
 </ul>
 </li>
 </ul>
 <h3 id="pkgsrc-xorg">pkgsrc-xorg</h3>
 <ul>
 <li><p><strong>New Packages</strong>:</p>
-
-<ul>
-<li><strong>gxmessage</strong></li>
-<li><strong>libxpresent</strong></li>
-<li><strong>ttf-font-jetbrains-mono</strong></li>
-<li><strong>ttf-font-jetbrains-mono-nerd</strong></li>
-<li><strong>vulkan-header</strong></li>
-<li><strong>vulkan-loader</strong></li>
-<li><strong>vulkan-tools</strong></li>
-<li><strong>xcompmgr</strong></li>
-</ul>
+<pre><code>gxmessage
+libxpresent
+ttf-font-jetbrains-mono
+ttf-font-jetbrains-mono-nerd
+vulkan-header
+vulkan-loader
+vulkan-tools
+xcompmgr
+</code></pre>
 </li>
 <li><p><strong>Removed Packages</strong>:
-None in this release for pkgsrc-xorg.</p>
+None in this release for <code>pkgsrc-xorg</code>.</p>
 </li>
 <li><p><strong>Key Changes</strong>:
-None in this release for pkgsrc-xorg beyond new packages.</p>
+None in this release for <code>pkgsrc-xorg</code> beyond new packages.</p>
 </li>
 </ul>
 <h3 id="pkgsrc-desktop">pkgsrc-desktop</h3>
 <ul>
 <li><p><strong>New Packages</strong>:</p>
-
-<ul>
-<li><strong>lsw</strong></li>
-<li><strong>ratpoison</strong></li>
-<li><strong>firefox-darkreader</strong></li>
-<li><strong>firefox-vimium</strong></li>
-<li><strong>alsa-firmware</strong></li>
-<li><strong>alsa-plugins</strong></li>
-<li><strong>ladspa</strong></li>
-<li><strong>lxrandr</strong></li>
-<li><strong>json-glib</strong></li>
-<li><strong>pick</strong></li>
-<li><strong>broodwar-cursor-theme</strong></li>
-</ul>
+<pre><code>lsw
+ratpoison
+firefox-darkreader
+firefox-vimium
+alsa-firmware
+alsa-plugins
+ladspa
+lxrandr
+json-glib
+pick
+broodwar-cursor-theme
+</code></pre>
 </li>
 <li><p><strong>Removed Packages</strong>:
-None in this release for pkgsrc-desktop.</p>
+None in this release for <code>pkgsrc-desktop</code>.</p>
 </li>
 <li><p><strong>Key Changes</strong>:
-None in this release for pkgsrc-desktop beyond new packages.</p>
+None in this release for <code>pkgsrc-desktop</code> beyond new packages.</p>
 </li>
 </ul>
 <h2 id="cover-artwork">Cover Artwork</h2>
@@ -190,23 +183,23 @@ None in this release for pkgsrc-desktop beyond new packages.</p>
 Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
 <h2 id="kernel">Kernel</h2>
 <ul>
-<li><strong>linux</strong> 5.4.244 (LTS until Dec 2025)</li>
+<li><code>linux</code> 5.4.244 (LTS until Dec 2025)</li>
 </ul>
 <p>Included <a href="https://github.com/sighook/lwpp">Wi-Fi pentest patches</a>.</p>
 <h2 id="toolchain">Toolchain</h2>
 <ul>
-<li><strong>glibc</strong> 2.36 + CVE patches</li>
-<li><strong>gcc</strong> 12.2.0</li>
-<li><strong>binutils</strong> 2.39</li>
+<li><code>glibc</code> 2.36 + CVE patches</li>
+<li><code>gcc</code> 12.2.0</li>
+<li><code>binutils</code> 2.39</li>
 </ul>
 <h2 id="x11">X11</h2>
 <ul>
-<li><strong>Xorg</strong> 7.7</li>
-<li><strong>xorg-server</strong> 21.1.9</li>
-<li><strong>mesa</strong> 23.3.0</li>
-<li><strong>amdgpu</strong> 23.0.0</li>
-<li><strong>ati</strong> 22.0.0</li>
-<li><strong>intel</strong> 2.99.917-923</li>
+<li><code>Xorg</code> 7.7</li>
+<li><code>xorg-server</code> 21.1.9</li>
+<li><code>mesa</code> 23.3.0</li>
+<li><code>amdgpu</code> 23.0.0</li>
+<li><code>ati</code> 22.0.0</li>
+<li><code>intel</code> 2.99.917-923</li>
 </ul>
 <h2 id="changelogs">Changelogs</h2>
 <p>For a comprehensive list of changes in this release, please refer to
@@ -221,19 +214,17 @@ the detailed changelogs available for each component:</p>
 <p>Before downloading Zeppe-Lin, please read the
 <a href="https://zeppe-lin.github.io/handbook.html">handbook</a> to be sure
 your hardware is supported and you know how to install it.</p>
+<p>The release files are available at:</p>
 <ul>
-<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz">Root Filesystem Archive</a></li>
-<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz.sig">Root Filesystem Signature</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz"><strong>Root Filesystem Archive</strong></a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz.sig"><strong>Root Filesystem Signature</strong></a></li>
 </ul>
 <p>You might also want to check out:</p>
 <ul>
-<li><a href="https://github.com/zeppe-lin/mkrootfs&gt;">mkrootfs</a>
-(tool to build custom rootfs image)</li>
-<li><a href="https://github.com/zeppe-lin/dockerfile">dockerfile</a>
-(instructions to build docker image)</li>
+<li><a href="https://github.com/zeppe-lin/mkrootfs&gt;"><code>mkrootfs</code></a> (tool to build custom rootfs image)</li>
+<li><a href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a> (instructions to build docker image)</li>
 </ul>
-<p><em>Hack fun,<br />
-sighook</em></p>
+<p><em>sighook // Until the next entry... Zeppe-Lin awaits.</em></p>
 <div class="footer-separator"></div>
 <div class="footer">
   Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
