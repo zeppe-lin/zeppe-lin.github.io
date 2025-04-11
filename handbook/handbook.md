@@ -2146,6 +2146,7 @@ Zeppe-Lin uses a BSD-style init system with these key files:
 | /etc/rc.shutdown | System shutdown script          |
 | /etc/rc.conf     | System configuration file       |
 | /etc/rc.d/       | Service start/stop directory    |
+| /etc/inittab     | System runlevel configuration   |
 
 Customize system behavior by editing:
 
@@ -2155,7 +2156,101 @@ Customize system behavior by editing:
 
 See `rc.conf(5)` and `rc(8)` for more information.
 
-#### 8.2.3. Automatic Kernel Module Loading
+#### 8.2.3. The Role of `/etc/inittab`
+
+The foundation of Zeppe-Lin's init system lies in the traditional
+SysVinit, configured through the `/etc/inittab` file.  This file
+directs the `init` process, the first process started by the kernel,
+on how to manage the system at various operational stages.
+
+Before we examine the specific entries in Zeppe-Lin's `/etc/inittab`,
+it's helpful to understand the general format of each line. An entry
+typically follows this structure: `id:runlevels:action:command`.
+
+* `id`: A unique identifier for the entry (usually 2-4 characters).
+* `runlevels`: Specifies the runlevels in which the command should be
+  executed (can be a single digit, multiple digits, or special
+  characters like `S`).
+* `action`: Defines when the command should be executed (e.g.,
+  `sysinit` for system initialization, `wait` to wait for the command
+  to complete, `respawn` to restart the command if it terminates).
+* `command`: The command to be executed.
+
+Here's a typical configuration found in Zeppe-Lin:
+
+    #
+    # /etc/inittab: system runlevel description
+    #
+    # See inittab(5) for more information.
+    #
+    
+    # Runlevels:
+    #  0     Halt
+    #  1(S)  Single-user
+    #  2     Multi-user
+    #  3-5   Not used
+    #  6     Reboot
+    
+    # id:runlevels:action:command
+    
+    id:2:initdefault:
+    
+    rc::sysinit:/etc/rc
+    rs:S1:wait:/etc/rc.single
+    rm:2:wait:/etc/rc.multi
+    rd:06:wait:/etc/rc.shutdown
+    su:S:wait:/sbin/sulogin -p
+    
+    c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+    c2:2:respawn:/sbin/agetty 38400 tty2 linux
+    c3:2:respawn:/sbin/agetty 38400 tty3 linux
+    c4:2:respawn:/sbin/agetty 38400 tty4 linux
+    c5:2:respawn:/sbin/agetty 38400 tty5 linux
+    c6:2:respawn:/sbin/agetty 38400 tty6 linux
+    #s1:2:respawn:/sbin/agetty 38400 ttyS0 vt100
+    
+    ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+    pf::powerfail:/sbin/shutdown -t3 -h now
+    
+    # vim: ft=inittab nospell
+    # End of file.
+
+These key entries in `/etc/inittab` define the following system's
+behavior:
+
+* `id:2:initdefault`: Sets the default runlevel to `2` (Multi-user
+  mode), the standard operating state for Zeppe-Lin.
+
+* `rc::sysinit:/etc/rc`: Executes the primary system initialization
+  script, `/etc/rc`, once at boot.  This script orchestrates the
+  subsequent boot process.
+
+* `rs:S1:wait:/etc/rc.single`: Defines the actions for single-user
+  mode (runlevel `1` or `S`), executing `/etc/rc.single` and waiting
+  for its completion.
+
+* `rm:2:wait:/etc/rc.multi`: Defines the actions for multi-user mode
+  (runlevel `2`), executing `/etc/rc.multi`, which is responsible for
+  starting most system services.
+
+* `rd:06:wait:/etc/rc.shutdown`: Defines the actions for shutdown
+  (runlevel `0`) and reboot (runlevel `6`), executing
+  `/etc/rc.shutdown` to manage service termination.
+
+* `su:S:wait:/sbin/sulogin -p`: Provides a login prompt for the root
+  user in single-user mode.
+
+* `c1-c6:2:respawn:/sbin/agetty ...`: Sets up virtual consoles (TTYs)
+  accessible via Ctrl+Alt+F1 through F6, ensuring a login prompt
+  (`agetty`) is always available.
+
+* `ca::ctrlaltdel:/sbin/shutdown -t3 -r now`: Configures the system to
+  reboot after a 3-second delay when Ctrl+Alt+Delete is pressed.
+
+* `pf::powerfail:/sbin/shutdown -t3 -h now`: Configures the system to
+  halt after a 3-second delay upon detecting a power failure.
+
+#### 8.2.4. Automatic Kernel Module Loading
 
 Zeppe-Lin loads kernel modules at boot via `/etc/rc.modules`. This
 script runs `/sbin/depmod -a` first to manage dependencies.
@@ -2165,7 +2260,7 @@ To load modules automatically, add `/sbin/modprobe` commands to
 
     /sbin/modprobe virtio_net
 
-##### 8.2.3.1. Specifying Module Parameters
+##### 8.2.4.1. Specifying Module Parameters
 
 You can add parameters directly in `/etc/rc.modules` using
 `/sbin/modprobe`. Example:
