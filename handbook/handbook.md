@@ -2113,141 +2113,192 @@ Set the system default locale by adding it to `/etc/profile`:
 
 This ensures consistent locale settings across your system.
 
-### 8.2. Initialization Scripts
+### 8.2. System Initialization and Configuration
 
-Zeppe-Lin uses a BSD-style init system to manage startup, services,
-and shutdown. It relies on shell scripts in `/etc` and `/etc/rc.d`,
-configured through files like `/etc/rc.conf` and `/etc/inittab`,
-offering a simple and efficient way to control processes.
+Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
+services, and shutdown. This system relies on shell scripts located in
+`/etc` and `/etc/rc.d`, offering an efficient and flexible way to
+control processes.
 
-#### 8.2.1. Runlevels
+#### 8.2.1. System States (Runlevels)
 
-Runlevels define the system's operating state and are configured in
-`/etc/inittab`. Zeppe-Lin uses these runlevels:
+Runlevels define the operating state of the system, such as halting,
+rebooting, or normal operation. Zeppe-Lin's runlevels are configured
+in `/etc/inittab`:
 
-| Runlevel | Description      |
-| -------- | ---------------- |
-| 0        | Halt             |
-| 1 (S)    | Single-User Mode |
-| 2        | Multi-User Mode  |
-| 3-5      | (Not Used)       |
-| 6        | Reboot           |
+| Runlevel | Description      | Purpose                                   |
+| -------- | ---------------- | ----------------------------------------- |
+| 0        | Halt             | Shut down the system completely           |
+| 1 (S)    | Single-User Mode | Maintenance mode with minimal setup       |
+| 2        | Multi-User Mode  | Full system operation with multiple users |
+| 3-5      | (Not Used)       | Reserved for custom use                   |
+| 6        | Reboot           | Restart the system                        |
 
-Runlevels manage system states during startup, runtime, and shutdown.
-See `inittab(5)` for details.
+By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
+enables all services and user access. Single-user mode (runlevel 1 or
+S) is ideal for system maintenance, providing a minimal environment.
 
-#### 8.2.2. Layout
+#### 8.2.2. Core Init Scripts
 
-Zeppe-Lin uses a BSD-style init system with these key files:
+Zeppe-Lin’s init system uses the following scripts to manage system
+processes:
 
-| File             | Description                     |
+| File             | Function                        |
 | ---------------- | ------------------------------- |
-| /etc/rc          | System boot script              |
-| /etc/rc.single   | Single-user startup script      |
-| /etc/rc.multi    | Multi-user startup script       |
-| /etc/rc.modules  | Module initialization script    |
-| /etc/rc.local    | Local multi-user startup script |
-| /etc/rc.shutdown | System shutdown script          |
-| /etc/rc.conf     | System configuration file       |
-| /etc/rc.d/       | Service start/stop directory    |
-| /etc/inittab     | System runlevel configuration   |
+| /etc/rc          | Main system boot script         |
+| /etc/rc.single   | Single-user mode startup        |
+| /etc/rc.multi    | Multi-user mode startup         |
+| /etc/rc.modules  | Kernel module initialization    |
+| /etc/rc.local    | Custom user-defined commands    |
+| /etc/rc.shutdown | Graceful service shutdown       |
 
-Customize system behavior by editing:
+Customize system behavior by modifying `/etc/rc.local` for personal
+commands or `/etc/rc.modules` to load specific kernel modules.
 
-- `/etc/rc.local`: Add custom commands for multi-user mode.
-- `/etc/rc.modules`: Manage kernel module loading during boot.
-- `/etc/rc.conf`: Configure hostname, timezone, services, etc.
+#### 8.2.3. Configuring Runlevels and Init Behavior
 
-See `rc.conf(5)` and `rc(8)` for more information.
+The `/etc/inittab` file determines actions for each runlevel. Each entry
+follows this format: `id:runlevel:action:command`
 
-#### 8.2.3. The Role of `/etc/inittab`
-
-`/etc/inittab`, the configuration file for SysVinit, directs the
-`init` process on how to manage the system at various stages.
-
-Each line typically follows the format: `id:runlevels:action:command`.
+**Key Components:**
 * `id`: Unique entry identifier.
-* `runlevels`: Operating states for the command.
-* `action`: When to execute the command.
-* `command`: The command itself.
+* `runlevel`: Runlevels the command applies to.
+* `action`: Specifies when the command runs (e.g., on boot, shutdown).
+* `command`: The script or program to execute.
 
-Zeppe-Lin's typical `/etc/inittab` configuration:
+**Example `/etc/inittab` Configuration:**
 
-    # Runlevels: 0=Halt, 1(S)=Single, 2=Multi, 6=Reboot
-    
+    # Set default runlevel to multi-user mode
     id:2:initdefault:
     
-    rc::sysinit:/etc/rc
-    rs:S1:wait:/etc/rc.single
-    rm:2:wait:/etc/rc.multi
-    rd:06:wait:/etc/rc.shutdown
-    su:S:wait:/sbin/sulogin -p
+    # Core startup scripts
+    rc::sysinit:/etc/rc       # Main boot script
+    rs:S1:wait:/etc/rc.single # Single-user mode startup
+    rm:2:wait:/etc/rc.multi   # Multi-user mode startup
+    rd:06:wait:/etc/rc.shutdown # Graceful shutdown
     
+    # Virtual console login prompts
     c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
     c2:2:respawn:/sbin/agetty 38400 tty2 linux
-    c3:2:respawn:/sbin/agetty 38400 tty3 linux
-    c4:2:respawn:/sbin/agetty 38400 tty4 linux
-    c5:2:respawn:/sbin/agetty 38400 tty5 linux
-    c6:2:respawn:/sbin/agetty 38400 tty6 linux
-    
-    ca::ctrlaltdel:/sbin/shutdown -t3 -r now
-    pf::powerfail:/sbin/shutdown -t3 -h now
 
-Key entries explained:
+This configuration ensures a smooth startup, runtime, and shutdown
+process.
 
-* `id:2:initdefault`: Sets default runlevel to 2 (Multi-user).
-* `rc::sysinit:/etc/rc`: Runs `/etc/rc` for system initialization at
-  boot.
-* `rs:S1:wait:/etc/rc.single`: Runs `/etc/rc.single` for single-user
-  mode.
-* `rm:2:wait:/etc/rc.multi`: Runs `/etc/rc.multi` for multi-user mode
-  (starts services).
-* `rd:06:wait:/etc/rc.shutdown`: Runs `/etc/rc.shutdown` for
-  shutdown/reboot.
-* `su:S:wait:/sbin/sulogin -p`: Provides root login in single-user
-  mode.
-* `c1-c6:2:respawn:/sbin/agetty ...`: Sets up login prompts on virtual
-  consoles (TTYs 1-6).
-* `ca::ctrlaltdel:/sbin/shutdown -t3 -r now`: Reboots on
-  Ctrl+Alt+Delete.
-* `pf::powerfail:/sbin/shutdown -t3 -h now`: Halts on power failure.
+#### 8.2.4. Configuring System Behavior (`/etc/rc.conf`)
 
-#### 8.2.4. Automatic Kernel Module Loading
+The `/etc/rc.conf` file is the central configuration file for
+Zeppe-Lin's init system. It allows you to customize key system
+settings such as hostname, timezone, and which services start or stop
+during boot and shutdown. Settings are written in the format
+`VARIABLE="value"`.
 
-Zeppe-Lin loads kernel modules at boot via `/etc/rc.modules`. This
-script runs `/sbin/depmod -a` first to manage dependencies.
+**Example `/etc/rc.conf` Configuration:**
 
-To load modules automatically, add `/sbin/modprobe` commands to
-`/etc/rc.modules`. For example:
+    HOSTNAME="myhostname"
+    TIMEZONE="Europe/Berlin"
+    SYSLOG="sysklogd"
+    DEVMGR="udevd"
+    SERVICES="lo crond sshd"
+
+Key Configuration Variables:
+
+* `HOSTNAME`: Sets the system's hostname.
+* `TIMEZONE`: Specifies the system's timezone.
+* `SYSLOG`: Defines the system logging daemon (e.g., `sysklogd`).
+* `DEVMGR`: Specifies the device manager (`udevd` by default).
+* `SERVICES`: Lists services to start at boot, corresponding to
+  scripts in `/etc/rc.d/`.
+
+**Customizing `rc.conf`:**
+
+1. Edit `/etc/rc.conf` as the root user to modify settings.
+
+2. Add or remove services in the `SERVICES` variable, such as:
+
+    SERVICES="lo crond sshd ntpd"
+
+3. Changes typically require a reboot to take effect.
+
+See `rc.conf(5)` for more details and available configuration
+variables.
+
+#### 8.2.5. Service Control Scripts (`/etc/rc.d/`)
+
+Scripts in `/etc/rc.d/` control individual services like networking,
+SSH, or cron jobs. They accept the following commands:
+
+* `start`: Activate the service.
+* `stop`: Terminates the service.
+* `restart`: Stop and then start the service.
+* `status`: Check if the service is running.
+
+Example usage:
+
+    /etc/rc.d/sshd start
+    /etc/rc.d/sshd status
+
+Services listed in `/etc/rc.conf` are started by `/etc/rc.multi`
+during boot and stopped during shutdown.
+
+#### 8.2.6. Kernel Module Management (`/etc/rc.modules`)
+
+The `/etc/rc.modules` file allows you to load specific modules at
+boot. It first runs `/sbin/depmod -a` to map module dependencies.
+Then, add commands like:
 
     /sbin/modprobe virtio_net
 
-##### 8.2.4.1. Specifying Module Parameters
+For module parameters, configure files in `/etc/modprobe.d`
+(e.g., `options snd_hda_intel probe_mask=8` in
+`/etc/modprobe.d/my-modules.conf`).
 
-You can add parameters directly in `/etc/rc.modules` using
-`/sbin/modprobe`. Example:
+### 8.2.7. Custom Startup Commands (`/etc/rc.local`)
 
-    /sbin/modprobe snd_hda_intel probe_mask=8
+Customize your system by adding personal commands or scripts to
+`/etc/rc.local`. These commands run at the very end of the boot
+process.  Ensure the file is executable:
 
-If reloading manually after boot, include parameters:
+    chmod +x /etc/rc.local
 
-    # modprobe -r snd_hda_intel
-    # modprobe snd_hda_intel probe_mask=8
+### 8.2.8. From Boot to Login: System Startup Sequence
 
-Alternatively, define parameters in `/etc/modprobe.d/` (e.g.,
-`/etc/modprobe.d/snd-hda-intel.conf`):
+Here's the sequence from power-up to login. It differs slightly with
+or without `initramfs`.
 
-    options snd_hda_intel probe_mask=8
+**Without `initramfs`:**
 
-When using `/etc/modprobe.d/`, reloading is simpler as parameters are
-applied automatically:
+1. Power On: System starts.
+2. Bootloader: Loads the kernel into memory.
+3. Kernel starts: Initializes hardware and memory.
+4. `/sbin/init` starts: The first user-space process (PID 1).
+5. `/etc/inittab` is read: `init` gets its instructions.
+6. `/etc/rc` runs: The main boot script executes.
+7. Runlevel is set: The default runlevel (usually 2) is chosen.
+8. `/etc/rc.multi` starts services: Services from `/etc/rc.conf` are launched.
+9. `/etc/rc.local` runs: Your custom commands are executed.
+10. Login prompts: The system is ready for you.
 
-    # modprobe -r snd_hda_intel
-    # modprobe snd_hda_intel
+**With `initramfs`:**
 
-Using `/etc/modprobe.d/` ensures consistent parameter management
-across boot and manual reloading. Changes to `/etc/rc.modules` and
-`/etc/modprobe.d/` take effect on the next boot.
+1. Power On: System starts.
+2. Bootloader: Loads kernel and initramfs into memory.
+3. Kernel starts: Initializes basic hardware.
+4. `initramfs` mounts: A temporary root filesystem in RAM.
+5. `/init` from `initramfs` runs: Performs early setup (e.g., storage drivers).
+6. Real root mounts: Your main filesystem is mounted.
+7. Root is switched: System moves from initramfs to your real root.
+8. `/sbin/init` on real root starts: The init process from your main system.
+9. (Steps 5-10 from **Without `initramfs`** follow).
+
+### 8.2.9. Minimal Mode (Single-User Mode)
+
+Runlevel 1 or S boots the system with a minimal setup for maintenance.
+It runs `/etc/rc.single`, providing a root shell for troubleshooting.
+
+### 8.2.10. Graceful Shutdown Procedure
+
+When shutting down or rebooting, `/etc/rc.shutdown` is invoked to stop
+services, unmount filesystems, and safely power off the system.
 
 ### 8.3. Networking
 
