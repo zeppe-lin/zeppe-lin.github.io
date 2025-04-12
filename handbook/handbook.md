@@ -2126,12 +2126,12 @@ Runlevels define the operating state of the system, such as halting,
 rebooting, or normal operation. Zeppe-Lin's runlevels are configured
 in `/etc/inittab`:
 
-| Runlevel | Description      | Purpose                                   |
+| Runlevel | State            | Purpose                                   |
 | -------- | ---------------- | ----------------------------------------- |
 | 0        | Halt             | Shut down the system completely           |
 | 1 (S)    | Single-User Mode | Maintenance mode with minimal setup       |
 | 2        | Multi-User Mode  | Full system operation with multiple users |
-| 3-5      | (Not Used)       | Reserved for custom use                   |
+| 3-5      | Unused           | Reserved for custom use                   |
 | 6        | Reboot           | Restart the system                        |
 
 By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
@@ -2143,17 +2143,20 @@ S) is ideal for system maintenance, providing a minimal environment.
 Zeppe-Lin’s init system uses the following scripts to manage system
 processes:
 
-| File             | Function                        |
-| ---------------- | ------------------------------- |
-| /etc/rc          | Main system boot script         |
-| /etc/rc.single   | Single-user mode startup        |
-| /etc/rc.multi    | Multi-user mode startup         |
-| /etc/rc.modules  | Kernel module initialization    |
-| /etc/rc.local    | Custom user-defined commands    |
-| /etc/rc.shutdown | Graceful service shutdown       |
+| File/Directory   | Purpose                                                           |
+| ---------------- | ----------------------------------------------------------------- |
+| /etc/rc          | Main system boot script, invoked by `init(8)`                     |
+| /etc/rc.modules  | Kernel module initialization, invoked by `/etc/rc`                |
+| /etc/rc.single   | Single-user mode script for maintenance tasks                     |
+| /etc/rc.multi    | Multi-user mode script for normal operation                       |
+| /etc/rc.local    | Custom commands executed after `/etc/rc.multi` during normal boot |
+| /etc/rc.d        | Directory containing scripts to control individual services       |
+| /etc/rc.shutdown | Script invoked by `shutdown(8)` to gracefully stop services       |
 
 Customize system behavior by modifying `/etc/rc.local` for personal
 commands or `/etc/rc.modules` to load specific kernel modules.
+
+See `rc(8)` for details.
 
 #### 8.2.3. Configuring Runlevels and Init Behavior
 
@@ -2172,9 +2175,9 @@ follows this format: `id:runlevel:action:command`
     id:2:initdefault:
     
     # Core startup scripts
-    rc::sysinit:/etc/rc       # Main boot script
-    rs:S1:wait:/etc/rc.single # Single-user mode startup
-    rm:2:wait:/etc/rc.multi   # Multi-user mode startup
+    rc::sysinit:/etc/rc         # Main boot script
+    rs:S1:wait:/etc/rc.single   # Single-user mode startup
+    rm:2:wait:/etc/rc.multi     # Multi-user mode startup
     rd:06:wait:/etc/rc.shutdown # Graceful shutdown
     
     # Virtual console login prompts
@@ -2182,50 +2185,27 @@ follows this format: `id:runlevel:action:command`
     c2:2:respawn:/sbin/agetty 38400 tty2 linux
 
 This configuration ensures a smooth startup, runtime, and shutdown
-process.
+process. See `inittab(5)` for configuration details.
 
 #### 8.2.4. Configuring System Behavior (`/etc/rc.conf`)
 
-The `/etc/rc.conf` file is the central configuration file for
-Zeppe-Lin's init system. It allows you to customize key system
-settings such as hostname, timezone, and which services start or stop
-during boot and shutdown. Settings are written in the format
-`VARIABLE="value"`.
-
-**Example `/etc/rc.conf` Configuration:**
+The `/etc/rc.conf` file centralizes system configuration settings,
+such as hostname, timezone, and services. Example:
 
     HOSTNAME="myhostname"
     TIMEZONE="Europe/Berlin"
-    SYSLOG="sysklogd"
-    DEVMGR="udevd"
     SERVICES="lo crond sshd"
 
-Key Configuration Variables:
+Services listed in `SERVICES` correspond to scripts in `/etc/rc.d/`,
+which are started by `/etc/rc.multi` and stopped by `/etc/rc.shutdown`
+(in reverse order).
 
-* `HOSTNAME`: Sets the system's hostname.
-* `TIMEZONE`: Specifies the system's timezone.
-* `SYSLOG`: Defines the system logging daemon (e.g., `sysklogd`).
-* `DEVMGR`: Specifies the device manager (`udevd` by default).
-* `SERVICES`: Lists services to start at boot, corresponding to
-  scripts in `/etc/rc.d/`.
-
-**Customizing `rc.conf`:**
-
-1. Edit `/etc/rc.conf` as the root user to modify settings.
-
-2. Add or remove services in the `SERVICES` variable, such as:
-
-    SERVICES="lo crond sshd ntpd"
-
-3. Changes typically require a reboot to take effect.
-
-See `rc.conf(5)` for more details and available configuration
-variables.
+See `rc.conf(5)` for additional configuration settings.
 
 #### 8.2.5. Service Control Scripts (`/etc/rc.d/`)
 
-Scripts in `/etc/rc.d/` control individual services like networking,
-SSH, or cron jobs. They accept the following commands:
+The `/etc/rc.d/` directory contains individual scripts to manage
+services. Each script supports commands like:
 
 * `start`: Activate the service.
 * `stop`: Terminates the service.
@@ -2236,9 +2216,6 @@ Example usage:
 
     /etc/rc.d/sshd start
     /etc/rc.d/sshd status
-
-Services listed in `/etc/rc.conf` are started by `/etc/rc.multi`
-during boot and stopped during shutdown.
 
 #### 8.2.6. Kernel Module Management (`/etc/rc.modules`)
 
@@ -2252,13 +2229,15 @@ For module parameters, configure files in `/etc/modprobe.d`
 (e.g., `options snd_hda_intel probe_mask=8` in
 `/etc/modprobe.d/my-modules.conf`).
 
+`/etc/rc.modules` is invoked by `/etc/rc` during boot.
+
 ### 8.2.7. Custom Startup Commands (`/etc/rc.local`)
 
-Customize your system by adding personal commands or scripts to
-`/etc/rc.local`. These commands run at the very end of the boot
-process.  Ensure the file is executable:
+User-defined actions are added to `/etc/rc.local`, executed as last
+step of a normal boot.  Example:
 
-    chmod +x /etc/rc.local
+    # Start a monitoring app
+    /usr/bin/my_monitoring_app &
 
 ### 8.2.8. From Boot to Login: System Startup Sequence
 
