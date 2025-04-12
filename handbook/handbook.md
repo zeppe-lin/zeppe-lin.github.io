@@ -2243,7 +2243,7 @@ process.
 ### 8.2.7. Custom Startup Commands (`/etc/rc.local`)
 
 User-defined actions are added to `/etc/rc.local`, executed as last
-step of a normal boot.  Example:
+step of a normal boot (invoked by `/etc/rc.multi`).  Example:
 
     # Start a monitoring app
     /usr/bin/my_monitoring_app &
