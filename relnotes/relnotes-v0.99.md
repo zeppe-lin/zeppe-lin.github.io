@@ -117,3 +117,6 @@ You might also want to check out:
 
 - [`mkrootfs`](https://github.com/zeppe-lin/mkrootfs) (tool to build custom rootfs image)
 - [`dockerfile`](https://github.com/zeppe-lin/dockerfile) (instructions to build docker image)
+
+
+*sighook // Until the next entry... Zeppe-Lin awaits.*
