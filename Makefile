@@ -5,6 +5,8 @@ HTML_FILES = index.html \
 	     relnotes-v0.99.html \
 	     relhistory.html
 
+all: $(HTML_FILES)
+
 # The file order matters!
 index.html: templates/header.html \
 	index/banner.html \
@@ -42,8 +44,6 @@ relnotes-v0.99.html: templates/header.html \
 	relnotes/relnotes-v0.99.md \
 	templates/footer.html \
 	templates/tail.html
-
-all: $(HTML_FILES)
 
 %.html:
 	./scripts/build_html.sh $^ > $@
