@@ -26,6 +26,10 @@ Zeppe-Lin is for the Linux user who understands the elegance of Plan 9's
 philosophy but still prefers a POSIX-compliant environment they can
 build themselves, brick by digital brick.
 
+While we might not be serving up everything as a file quite yet, the
+spirit of Plan 9's elegance and simplicity resonates deeply within
+Zeppe-Lin.
+
 ### 1.2. Principles
 
 Guiding our philosophy:
