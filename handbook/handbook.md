@@ -2219,17 +2219,26 @@ Example usage:
 
 #### 8.2.6. Kernel Module Management (`/etc/rc.modules`)
 
-The `/etc/rc.modules` file allows you to load specific modules at
-boot. It first runs `/sbin/depmod -a` to map module dependencies.
-Then, add commands like:
+The `/etc/rc.modules` file is used to load specific kernel modules at
+boot. It begins by running `/sbin/depmod -a` to map module
+dependencies, ensuring proper functionality. After this, include
+commands like:
 
     /sbin/modprobe virtio_net
 
-For module parameters, configure files in `/etc/modprobe.d`
-(e.g., `options snd_hda_intel probe_mask=8` in
-`/etc/modprobe.d/my-modules.conf`).
+For modules requiring parameters, it’s better to configure settings in
+`/etc/modprobe.d/` for persistent management. For example, to set
+options for the `snd_hda_intel` module, create a file like
+`/etc/modprobe.d/snd_hda_intel.conf` with the following content:
 
-`/etc/rc.modules` is invoked by `/etc/rc` during boot.
+    options snd_hda_intel probe_mask=8
+
+This approach ensures parameters are automatically applied when the
+module is reloaded, making manual specification unnecessary and
+adhering to best practices.
+
+The `/etc/rc.modules` script is invoked by `/etc/rc` during the boot
+process.
 
 ### 8.2.7. Custom Startup Commands (`/etc/rc.local`)
 
