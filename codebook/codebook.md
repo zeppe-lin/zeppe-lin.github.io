@@ -1,138 +1,104 @@
-# Zeppe-Lin Developers Handbook
+# Zeppe-Lin Codebook
 
 ## PREFACE
 
-Zeppe-Lin Developers Handbook.
+Zeppe-Lin Codebook.
 *Because even pirates need a map to find the treasure (and avoid the kraken).*
 
-This handbook outlines the procedures and best practices for
-developers to contribute to and release new versions of Zeppe-Lin.
+This is your essential guide for shaping the future of Zeppe-Lin.
+Designed to be simple, efficiend and KISS-compliant, this codebook
+streamlines the processes of coding, contributing, and releasing new
+versions. With clarity as its core, this resource is here to empower
+your journey as a contributor.
 
 ## 1. Introduction
 
-Welcome, Zeppe-Linauts! Ready to launch the next release? This
-handbook is your quick guide to navigating our open source,
-KISS-driven release process.
-
-From the depths of the source to the heights of a new version, we'll
-chart the course together. Join the crew of code pirates and let's
-make Zeppe-Lin soar!
+Hello, Zeppe-Linauts! Whether you’re refining workflows, squashing
+bugs, or steering the ship toward the next release, this codebook is
+built to keep the process simple and focused. Zeppe-Lin thrives on
+clean code and open collaboration, and this guide is your map for
+staying on course. Let’s make it lean, powerful, and true to the
+spirit of Zeppe-Lin.
 
 ## 2. Setting Up Your Development Environment
 
 **FIXME**
 
-## 3. Understanding the Zeppe-Lin Release Process (High-level overview)
+## 3. Zeppe-Lin Release Process (Overview)
 
-Creating a new release of Zeppe-Lin is like preparing our trusty
-airship for its next voyage. It involves several key stages, from
-ensuring the engine (toolchain) is in top shape to charting the course
-(release notes) and finally announcing our arrival to the world.
+Releasing a new version of Zeppe-Lin is like preparing an airship for
+its next journey. Here's the streamlined process:
 
-Here's a high-level overview of the journey:
+* **Toolchain Update:** Refresh the core building tools in
+  `pkgsrc-core` to ensure a strong foundation for all packages.
 
-1.  **Toolchain Tune-up:** We start by updating the core building
-    tools within the `pkgsrc-core` repository. This ensures a solid
-    foundation for all other packages. Think of it as upgrading the
-    Zeppe-Lin's engine for better performance.
+* **Package Updates:** Update software sources in `pkgsrc-system`,
+  `pkgsrc-xorg`, and `pkgsrc-desktop` to bring in new features and
+  fixes.
 
-2.  **Package Pampering:** Next, we update the sources for various
-    packages in repositories like `pkgsrc-system`, `pkgsrc-xorg`, and
-    `pkgsrc-desktop`. This brings in the latest features and fixes for
-    the software that makes up Zeppe-Lin.
+* **Rootfs Assembly:** Use `mkrootfs` to build the operating system
+  image -- the core of Zeppe-Lin.
 
-3.  **Rootfs Assembly:** With the packages ready, we use the
-    `mkrootfs` tool to assemble the actual operating system image –
-    the core of our Zeppe-Lin airship.
+* **Finalize Release:** Sign the image, create release notes, and tag
+  the version in `pkgsrc-core`.
 
-4.  **Release Readiness:** This involves signing the assembled image
-    to ensure its authenticity, preparing release notes that detail
-    all the exciting changes, and creating a tag in the `pkgsrc-core`
-    repository to mark this new version.
+* **Announce Release:** Publish on GitHub, update the website, and
+  refresh the docs.
 
-5.  **Announcing the Voyage:** Finally, we announce the new release to
-    the Zeppe-Lin community through a release post on GitHub, an
-    announcement on the Zeppe-Lin website, and by updating our
-    documentation (like this very handbook!).
+**Key Repositories:**
 
-Throughout this process, we'll be working with several key
-repositories:
+* `pkgsrc-core`, `pkgsrc-system`, `pkgsrc-xorg`, `pkgsrc-desktop`:
+  Software collections.
+* `zeppe-lin.github.io`: Website and announcements.
+* `artwork`: Release visuals.
 
-* `pkgsrc-core`:
-  The heart of the system, containing the core build tools.
-
-* `pkgsrc-system`, `pkgsrc-xorg`, `pkgsrc-desktop`:
-  Collections of various software packages.
-
-* `zeppe-lin/zeppe-lin.github.io`:
-  Where the website and release announcements live.
-
-* `zeppe-lin/artwork`:
-  For the visual banners that accompany our releases.
-
-This handbook will guide you through each of these stages in detail,
-providing the charts and compass you need to navigate the Zeppe-Lin
-release process. So, buckle up, and let's prepare for launch!
+This codebook will guide you through each step.
+Let's get Zeppe-Lin ready for takeoff!
 
 ## 4. Creating a Zeppe-Lin Release
 
 ### 4.1. Branching Strategy for Package Source Repositories
 
-Before we begin updating package sources and the toolchain for a new
-Zeppe-Lin release, it's crucial to establish the correct branches in
-our core package source repositories. This allows us to isolate
-changes for the upcoming release and maintain the stability of
-previous versions.
-
-This branching strategy especially applies to the following
-repositories:
+Before updating the toolchain or package sources for a new release,
+create new branches in the pkgsrc repositories to isolate changes and
+maintain stability for previous versions. This strategy applies to:
 
 * `pkgsrc-core`
 * `pkgsrc-system`
 * `pkgsrc-xorg`
 * `pkgsrc-desktop`
+* *(and usually, unofficial ones follow this too)*
 
-*(but usually, and other unofficial ones follow this)*
+**General Approach:**
 
-The general approach is to create a new branch for each major release
-series. Here's how it works:
+1. **For versions 1.x (before 2.0):** Create a branch named `1.x`. It
+   will serve as the development branch for all 1.x releases (e.g.,
+   1.0, 1.1, 1.2).
 
-* **For versions 1.0 and above (before 2.0):** We create a branch
-  named `1.x`. This branch will be the primary development branch for
-  all releases within the 1.x series (e.g., 1.0, 1.1, 1.2, etc.).
-
-* **For versions 2.0 and above:** Similarly, for the 2.x series, we
-  create a branch named `2.x`, and so on for future major releases.
+2. **For versions 2.x and beyond:** Create a branch named `2.x`, and
+   so on for future major versions.
 
 **Creating a New Branch:**
 
-1.  **Identify the target major version** for the upcoming release
-    (e.g., 1.0, 2.0).
-2.  **Based on the current stable release branch**, create a new
-    branch named according to the version series
-    (e.g., `git checkout -b 1.x <current_stable_branch>`).
-    For example, if the last stable release was `0.9`, you would
-    branch `1.x` from `0.9`.
+1. Identify the target major version (e.g., 1.0, 2.0).
 
-**Example:**
+2. Based on the current stable branch, create a new branch:
 
-Let's say the current stable release is `0.9`, and we are preparing
-for Zeppe-Lin `1.0`. You would perform the following steps in each of
-the package source repositories mentioned above:
+       git checkout <current_stable_branch> # Ensure you are on the current stable branch
+       git checkout -b <new_branch>         # Create the new development branch for the 1.x series
+       git push origin <new_branch>         # Push the new branch to the remote repository
 
-```bash
-git checkout <0.9_branch_name>  # Ensure you are on the current stable branch
-git checkout -b 1.x             # Create the new development branch for the 1.x series
-git push origin 1.x             # Push the new branch to the remote repository
-```
+   For example, if the last stable release is `0.9`, create `1.x`:
 
-**Important Note:** All subsequent updates and changes for the `1.x`
-release series will now be done on the `1.x` branch in each of these
-repositories.
+       git checkout <0.9_branch_name>
+       git checkout -b 1.x
+       git push origin 1.x
 
-This branching strategy helps us keep our development organized and
-ensures that stable releases remain unaffected by ongoing work on
-newer versions.
+All updates for the `1.x` series will now be done on the `1.x` branch,
+keeping ongoing work isolated from stable releases.
+
+This strategy ensures stable releases remain unaffected while
+development stays organized.
 
 ### 4.2. Updating Package Sources
 
