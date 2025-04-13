@@ -146,11 +146,17 @@
   <li><a href="#753-unprivileged-builds-in-zeppe-lin">7.5.3. Unprivileged Builds in Zeppe-Lin</a></li>
   <li><a href="#8-configuration">8. CONFIGURATION</a></li>
   <li><a href="#81-generating-locales">8.1. Generating Locales</a></li>
-  <li><a href="#82-initialization-scripts">8.2. Initialization Scripts</a></li>
-  <li><a href="#821-runlevels">8.2.1. Runlevels</a></li>
-  <li><a href="#822-layout">8.2.2. Layout</a></li>
-  <li><a href="#823-automatic-kernel-module-loading">8.2.3. Automatic Kernel Module Loading</a></li>
-  <li><a href="#8231-specifying-module-parameters">8.2.3.1. Specifying Module Parameters</a></li>
+  <li><a href="#82-system-initialization-and-configuration">8.2. System Initialization and Configuration</a></li>
+  <li><a href="#821-system-states-runlevels">8.2.1. System States (Runlevels)</a></li>
+  <li><a href="#822-core-init-scripts">8.2.2. Core Init Scripts</a></li>
+  <li><a href="#823-configuring-runlevels-and-init-behavior">8.2.3. Configuring Runlevels and Init Behavior</a></li>
+  <li><a href="#824-configuring-system-behavior-etcrcconf">8.2.4. Configuring System Behavior (`/etc/rc.conf`)</a></li>
+  <li><a href="#825-service-control-scripts-etcrcd">8.2.5. Service Control Scripts (`/etc/rc.d/`)</a></li>
+  <li><a href="#826-kernel-module-management-etcrcmodules">8.2.6. Kernel Module Management (`/etc/rc.modules`)</a></li>
+  <li><a href="#827-custom-startup-commands-etcrclocal">8.2.7. Custom Startup Commands (`/etc/rc.local`)</a></li>
+  <li><a href="#828-from-boot-to-login-system-startup-sequence">8.2.8. From Boot to Login: System Startup Sequence</a></li>
+  <li><a href="#829-minimal-mode-single-user-mode">8.2.9. Minimal Mode (Single-User Mode)</a></li>
+  <li><a href="#8210-graceful-shutdown-procedure">8.2.10. Graceful Shutdown Procedure</a></li>
   <li><a href="#83-networking">8.3. Networking</a></li>
   <li><a href="#831-hostname-configuration">8.3.1. Hostname Configuration</a></li>
   <li><a href="#832-static-address">8.3.2. Static Address</a></li>
@@ -192,6 +198,9 @@ simplicity and control to build a clear, transparent system.</p>
 <p>Zeppe-Lin is for the Linux user who understands the elegance of Plan 9's
 philosophy but still prefers a POSIX-compliant environment they can
 build themselves, brick by digital brick.</p>
+<p>While we might not be serving up everything as a file quite yet, the
+spirit of Plan 9's elegance and simplicity resonates deeply within
+Zeppe-Lin.</p>
 <h3 id="12-principles">1.2. Principles</h3>
 <p>Guiding our philosophy:</p>
 <ol>
@@ -1873,72 +1882,151 @@ and run:</p>
 <pre><code>export LANG=en_US.UTF-8
 </code></pre>
 <p>This ensures consistent locale settings across your system.</p>
-<h3 id="82-initialization-scripts">8.2. Initialization Scripts</h3>
-<p>Zeppe-Lin uses a BSD-style init system to manage startup, services,
-and shutdown. It relies on shell scripts in <code>/etc</code> and <code>/etc/rc.d</code>,
-configured through files like <code>/etc/rc.conf</code> and <code>/etc/inittab</code>,
-offering a simple and efficient way to control processes.</p>
-<h4 id="821-runlevels">8.2.1. Runlevels</h4>
-<p>Runlevels define the system's operating state and are configured in
-<code>/etc/inittab</code>. Zeppe-Lin uses these runlevels:</p>
+<h3 id="82-system-initialization-and-configuration">8.2. System Initialization and Configuration</h3>
+<p>Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
+services, and shutdown. This system relies on shell scripts located in
+<code>/etc</code> and <code>/etc/rc.d</code>, offering an efficient and flexible way to
+control processes.</p>
+<h4 id="821-system-states-runlevels">8.2.1. System States (Runlevels)</h4>
+<p>Runlevels define the operating state of the system, such as halting,
+rebooting, or normal operation. Zeppe-Lin's runlevels are configured
+in <code>/etc/inittab</code>:</p>
 <table>
-<tr><th>Runlevel </th><th>Description      </th></tr>
-<tr><td>0        </td><td>Halt             </td></tr>
-<tr><td>1 (S)    </td><td>Single-User Mode </td></tr>
-<tr><td>2        </td><td>Multi-User Mode  </td></tr>
-<tr><td>3-5      </td><td>(Not Used)       </td></tr>
-<tr><td>6        </td><td>Reboot           </td></tr>
+<tr><th>Runlevel </th><th>State            </th><th>Purpose                                   </th></tr>
+<tr><td>0        </td><td>Halt             </td><td>Shut down the system completely           </td></tr>
+<tr><td>1 (S)    </td><td>Single-User Mode </td><td>Maintenance mode with minimal setup       </td></tr>
+<tr><td>2        </td><td>Multi-User Mode  </td><td>Full system operation with multiple users </td></tr>
+<tr><td>3-5      </td><td>Unused           </td><td>Reserved for custom use                   </td></tr>
+<tr><td>6        </td><td>Reboot           </td><td>Restart the system                        </td></tr>
 </table>
-<p>Runlevels manage system states during startup, runtime, and shutdown.
-See <code>inittab(5)</code> for details.</p>
-<h4 id="822-layout">8.2.2. Layout</h4>
-<p>Zeppe-Lin uses a BSD-style init system with these key files:</p>
+<p>By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
+enables all services and user access. Single-user mode (runlevel 1 or
+S) is ideal for system maintenance, providing a minimal environment.</p>
+<h4 id="822-core-init-scripts">8.2.2. Core Init Scripts</h4>
+<p>Zeppe-Lin’s init system uses the following scripts to manage system
+processes:</p>
 <table>
-<tr><th>File             </th><th>Description                     </th></tr>
-<tr><td>/etc/rc          </td><td>System boot script              </td></tr>
-<tr><td>/etc/rc.single   </td><td>Single-user startup script      </td></tr>
-<tr><td>/etc/rc.multi    </td><td>Multi-user startup script       </td></tr>
-<tr><td>/etc/rc.modules  </td><td>Module initialization script    </td></tr>
-<tr><td>/etc/rc.local    </td><td>Local multi-user startup script </td></tr>
-<tr><td>/etc/rc.shutdown </td><td>System shutdown script          </td></tr>
-<tr><td>/etc/rc.conf     </td><td>System configuration file       </td></tr>
-<tr><td>/etc/rc.d/       </td><td>Service start/stop directory    </td></tr>
+<tr><th>File/Directory   </th><th>Purpose                                                           </th></tr>
+<tr><td>/etc/rc          </td><td>Main system boot script, invoked by <code>init(8)</code>                     </td></tr>
+<tr><td>/etc/rc.modules  </td><td>Kernel module initialization, invoked by <code>/etc/rc</code>                </td></tr>
+<tr><td>/etc/rc.single   </td><td>Single-user mode script for maintenance tasks                     </td></tr>
+<tr><td>/etc/rc.multi    </td><td>Multi-user mode script for normal operation                       </td></tr>
+<tr><td>/etc/rc.local    </td><td>Custom commands executed after <code>/etc/rc.multi</code> during normal boot </td></tr>
+<tr><td>/etc/rc.d        </td><td>Directory containing scripts to control individual services       </td></tr>
+<tr><td>/etc/rc.shutdown </td><td>Script invoked by <code>shutdown(8)</code> to gracefully stop services       </td></tr>
 </table>
-<p>Customize system behavior by editing:</p>
+<p>Customize system behavior by modifying <code>/etc/rc.local</code> for personal
+commands or <code>/etc/rc.modules</code> to load specific kernel modules.</p>
+<p>See <code>rc(8)</code> for details.</p>
+<h4 id="823-configuring-runlevels-and-init-behavior">8.2.3. Configuring Runlevels and Init Behavior</h4>
+<p>The <code>/etc/inittab</code> file determines actions for each runlevel. Each entry
+follows this format: <code>id:runlevel:action:command</code></p>
+<p><strong>Key Components:</strong></p>
+
 <ul>
-<li><code>/etc/rc.local</code>: Add custom commands for multi-user mode.</li>
-<li><code>/etc/rc.modules</code>: Manage kernel module loading during boot.</li>
-<li><code>/etc/rc.conf</code>: Configure hostname, timezone, services, etc.</li>
+<li><code>id</code>: Unique entry identifier.</li>
+<li><code>runlevel</code>: Runlevels the command applies to.</li>
+<li><code>action</code>: Specifies when the command runs (e.g., on boot, shutdown).</li>
+<li><code>command</code>: The script or program to execute.</li>
 </ul>
-<p>See <code>rc.conf(5)</code> and <code>rc(8)</code> for more information.</p>
-<h4 id="823-automatic-kernel-module-loading">8.2.3. Automatic Kernel Module Loading</h4>
-<p>Zeppe-Lin loads kernel modules at boot via <code>/etc/rc.modules</code>. This
-script runs <code>/sbin/depmod -a</code> first to manage dependencies.</p>
-<p>To load modules automatically, add <code>/sbin/modprobe</code> commands to
-<code>/etc/rc.modules</code>. For example:</p>
+<p><strong>Example <code>/etc/inittab</code> Configuration:</strong></p>
+<pre><code># Set default runlevel to multi-user mode
+id:2:initdefault:
+
+# Core startup scripts
+rc::sysinit:/etc/rc         # Main boot script
+rs:S1:wait:/etc/rc.single   # Single-user mode startup
+rm:2:wait:/etc/rc.multi     # Multi-user mode startup
+rd:06:wait:/etc/rc.shutdown # Graceful shutdown
+
+# Virtual console login prompts
+c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+c2:2:respawn:/sbin/agetty 38400 tty2 linux
+</code></pre>
+<p>This configuration ensures a smooth startup, runtime, and shutdown
+process. See <code>inittab(5)</code> for configuration details.</p>
+<h4 id="824-configuring-system-behavior-codeetcrcconfcode">8.2.4. Configuring System Behavior (<code>/etc/rc.conf</code>)</h4>
+<p>The <code>/etc/rc.conf</code> file centralizes system configuration settings,
+such as hostname, timezone, and services. Example:</p>
+<pre><code>HOSTNAME=&quot;myhostname&quot;
+TIMEZONE=&quot;Europe/Berlin&quot;
+SERVICES=&quot;lo crond sshd&quot;
+</code></pre>
+<p>Services listed in <code>SERVICES</code> correspond to scripts in <code>/etc/rc.d/</code>,
+which are started by <code>/etc/rc.multi</code> and stopped by <code>/etc/rc.shutdown</code>
+(in reverse order).</p>
+<p>See <code>rc.conf(5)</code> for additional configuration settings.</p>
+<h4 id="825-service-control-scripts-codeetcrcdcode">8.2.5. Service Control Scripts (<code>/etc/rc.d/</code>)</h4>
+<p>The <code>/etc/rc.d/</code> directory contains individual scripts to manage
+services. Each script supports commands like:</p>
+<ul>
+<li><code>start</code>: Activate the service.</li>
+<li><code>stop</code>: Terminates the service.</li>
+<li><code>restart</code>: Stop and then start the service.</li>
+<li><code>status</code>: Check if the service is running.</li>
+</ul>
+<p>Example usage:</p>
+<pre><code>/etc/rc.d/sshd start
+/etc/rc.d/sshd status
+</code></pre>
+<h4 id="826-kernel-module-management-codeetcrcmodulescode">8.2.6. Kernel Module Management (<code>/etc/rc.modules</code>)</h4>
+<p>The <code>/etc/rc.modules</code> file is used to load specific kernel modules at
+boot. It begins by running <code>/sbin/depmod -a</code> to map module
+dependencies, ensuring proper functionality. After this, include
+commands like:</p>
 <pre><code>/sbin/modprobe virtio_net
 </code></pre>
-<h5 id="8231-specifying-module-parameters">8.2.3.1. Specifying Module Parameters</h5>
-<p>You can add parameters directly in <code>/etc/rc.modules</code> using
-<code>/sbin/modprobe</code>. Example:</p>
-<pre><code>/sbin/modprobe snd_hda_intel probe_mask=8
-</code></pre>
-<p>If reloading manually after boot, include parameters:</p>
-<pre><code># modprobe -r snd_hda_intel
-# modprobe snd_hda_intel probe_mask=8
-</code></pre>
-<p>Alternatively, define parameters in <code>/etc/modprobe.d/</code> (e.g.,
-<code>/etc/modprobe.d/snd-hda-intel.conf</code>):</p>
+<p>For modules requiring parameters, it’s better to configure settings in
+<code>/etc/modprobe.d/</code> for persistent management. For example, to set
+options for the <code>snd_hda_intel</code> module, create a file like
+<code>/etc/modprobe.d/snd_hda_intel.conf</code> with the following content:</p>
 <pre><code>options snd_hda_intel probe_mask=8
 </code></pre>
-<p>When using <code>/etc/modprobe.d/</code>, reloading is simpler as parameters are
-applied automatically:</p>
-<pre><code># modprobe -r snd_hda_intel
-# modprobe snd_hda_intel
+<p>This approach ensures parameters are automatically applied when the
+module is reloaded, making manual specification unnecessary and
+adhering to best practices.</p>
+<p>The <code>/etc/rc.modules</code> script is invoked by <code>/etc/rc</code> during the boot
+process.</p>
+<h3 id="827-custom-startup-commands-codeetcrclocalcode">8.2.7. Custom Startup Commands (<code>/etc/rc.local</code>)</h3>
+<p>User-defined actions are added to <code>/etc/rc.local</code>, executed as last
+step of a normal boot (invoked by <code>/etc/rc.multi</code>).  Example:</p>
+<pre><code># Start a monitoring app
+/usr/bin/my_monitoring_app &amp;
 </code></pre>
-<p>Using <code>/etc/modprobe.d/</code> ensures consistent parameter management
-across boot and manual reloading. Changes to <code>/etc/rc.modules</code> and
-<code>/etc/modprobe.d/</code> take effect on the next boot.</p>
+<h3 id="828-from-boot-to-login-system-startup-sequence">8.2.8. From Boot to Login: System Startup Sequence</h3>
+<p>Here's the sequence from power-up to login. It differs slightly with
+or without <code>initramfs</code>.</p>
+<p><strong>Without <code>initramfs</code>:</strong></p>
+<ol>
+<li>Power On: System starts.</li>
+<li>Bootloader: Loads the kernel into memory.</li>
+<li>Kernel starts: Initializes hardware and memory.</li>
+<li><code>/sbin/init</code> starts: The first user-space process (PID 1).</li>
+<li><code>/etc/inittab</code> is read: <code>init</code> gets its instructions.</li>
+<li><code>/etc/rc</code> runs: The main boot script executes.</li>
+<li>Runlevel is set: The default runlevel (usually 2) is chosen.</li>
+<li><code>/etc/rc.multi</code> starts services: Services from <code>/etc/rc.conf</code> are launched.</li>
+<li><code>/etc/rc.local</code> runs: Your custom commands are executed.</li>
+<li> Login prompts: The system is ready for you.</li>
+</ol>
+<p><strong>With <code>initramfs</code>:</strong></p>
+<ol>
+<li>Power On: System starts.</li>
+<li>Bootloader: Loads kernel and initramfs into memory.</li>
+<li>Kernel starts: Initializes basic hardware.</li>
+<li><code>initramfs</code> mounts: A temporary root filesystem in RAM.</li>
+<li><code>/init</code> from <code>initramfs</code> runs: Performs early setup (e.g., storage drivers).</li>
+<li>Real root mounts: Your main filesystem is mounted.</li>
+<li>Root is switched: System moves from initramfs to your real root.</li>
+<li><code>/sbin/init</code> on real root starts: The init process from your main system.</li>
+<li>(Steps 5-10 from <strong>Without <code>initramfs</code></strong> follow).</li>
+</ol>
+<h3 id="829-minimal-mode-single-user-mode">8.2.9. Minimal Mode (Single-User Mode)</h3>
+<p>Runlevel 1 or S boots the system with a minimal setup for maintenance.
+It runs <code>/etc/rc.single</code>, providing a root shell for troubleshooting.</p>
+<h3 id="8210-graceful-shutdown-procedure">8.2.10. Graceful Shutdown Procedure</h3>
+<p>When shutting down or rebooting, <code>/etc/rc.shutdown</code> is invoked to stop
+services, unmount filesystems, and safely power off the system.</p>
 <h3 id="83-networking">8.3. Networking</h3>
 <h4 id="831-hostname-configuration">8.3.1. Hostname Configuration</h4>
 <p>The hostname identifies your system on the network.</p>
