@@ -1,4 +1,5 @@
 HTML_FILES = index.html \
+	     codebook.html \
 	     handbook.html \
 	     relnotes-v1.0.html \
 	     relnotes-v0.99.1.html \
@@ -11,6 +12,11 @@ all: $(HTML_FILES)
 index.html: templates/header.html \
 	index/banner.html \
 	index/index.md \
+	templates/footer.html \
+	templates/tail.html
+
+codebook.html: templates/header.html \
+	codebook/codebook.md \
 	templates/footer.html \
 	templates/tail.html
 
