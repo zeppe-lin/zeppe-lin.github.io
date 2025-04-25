@@ -771,9 +771,9 @@ Install new core packages introduced in the release:
 `pkgadd` installs each package.  Already installed packages return an
 error, which the loop skips to ensure all new packages are installed.
 
-## 6. PACKAGE MANAGEMENT
+## 4. PACKAGE MANAGEMENT
 
-### 6.1. Introduction
+### 4.1. Introduction
 
 Zeppe-Lin's package management system revolves around packages and
 package sources.  Low-level tools handle atomic operations like
@@ -803,13 +803,13 @@ To work with packages and package sources, Zeppe-Lin provides:
   - `pkgman`: Orchestrates package sources, dependencies, and system
     updates, integrating `pkgutils` and `pkgmk`.
 
-###  6.2. What is a Package?
+###  4.2. What is a Package?
 
 A Zeppe-Lin package is a compressed archive (e.g., `tar.gz`) that
 contains only the software files.  It avoids any kind of embedded
 metadata, ensuring simplicity and transparency in its structure.
 
-#### 6.2.1. Package Naming
+#### 4.2.1. Package Naming
 
 Zeppe-Lin packages follow a clear naming convention:
 
@@ -828,7 +828,7 @@ The extension `.pkg.tar.gz` denotes a Zeppe-Lin package.  Other common
 compression formats like `tar.bz2`, `tar.xz`, and `tar.zst` are also
 supported.
 
-#### 6.2.2. Package Database
+#### 4.2.2. Package Database
 
 The package database, located at `/var/lib/pkg/db`, tracks installed
 packages and their contents.  Each package entry follows this format:
@@ -857,7 +857,7 @@ Example entry for `ed`:
 This database enables essential operations like installation
 (`pkgadd(8)`), removal (`pkgrm(8)`), and inspection (`pkginfo(8)`).
 
-### 6.3. Low-level Tools: pkgutils
+### 4.3. Low-level Tools: pkgutils
 
 `pkgutils` provides the core utilities to handle packages:
 
@@ -865,9 +865,9 @@ This database enables essential operations like installation
 - `pkgrm(8)`: Removes packages.
 - `pkginfo(1)`: Displays package details.
 
-#### 6.3.1. Using pkgutils
+#### 4.3.1. Using pkgutils
 
-##### 6.3.1.1. Installing a Package
+##### 4.3.1.1. Installing a Package
 
 Install a package file with `pkgadd(8)`:
 
@@ -878,7 +878,7 @@ or `--force` to override this behavior (**use with caution!**):
 
     # pkgadd -f bash#5.0.18-1.pkg.tar.gz
 
-##### 6.3.1.2. Upgrading a Package
+##### 4.3.1.2. Upgrading a Package
 
 Upgrade a package with the `-u` or `--upgrade` option:
 
@@ -890,7 +890,7 @@ it will return an error.  You can even "upgrade" to an older version.
 Files that should not be upgraded (based on `/etc/pkgadd.conf`) are
 placed in `/var/lib/pkg/rejected/`.
 
-##### 6.3.1.3. Removing a Package
+##### 4.3.1.3. Removing a Package
 
 To remove a package, use `pkgrm(8)` followed by the package name:
 
@@ -899,7 +899,7 @@ To remove a package, use `pkgrm(8)` followed by the package name:
 This removes all files owned by the package without confirmation.
 **Be cautious!**
 
-##### 6.3.1.4. Inspecting Packages
+##### 4.3.1.4. Inspecting Packages
 
 Use `pkginfo(1)` to get information about packages.
 
@@ -921,13 +921,13 @@ Find which package owns a file:
 
 See `pkgadd(8)`, `pkgrm(8)`, and `pkginfo(1)` for details.
 
-#### 6.3.2. Configuring pkgadd
+#### 4.3.2. Configuring pkgadd
 
 You can customize `pkgadd(8)` behavior during package upgrades using
 `/etc/pkgadd.conf`.  Rules define whether files should be upgraded or
 preserved.
 
-##### 6.3.2.1. Rule Format
+##### 4.3.2.1. Rule Format
 
 Each rule in `/etc/pkgadd.conf` follows this format:
 
@@ -940,7 +940,7 @@ Each rule in `/etc/pkgadd.conf` follows this format:
 Rules are processed sequentially, with the last matching rule taking
 priority.
 
-##### 6.3.2.2. Example
+##### 4.3.2.2. Example
 
 Example `/etc/pkgadd.conf`:
 
@@ -962,14 +962,14 @@ Do not use `/` at the start!
 
 See `pkgadd.conf(5)` for details.
 
-### 6.4. Low-level Tools: rejmerge
+### 4.4. Low-level Tools: rejmerge
 
 `rejmerge(8)` resolves files rejected during upgrades using
 `pkgadd -u`.  Rejected files are moved to `/var/lib/pkg/rejected/`
 for manual handling, while `rejmerge(8)` provides a way to manage
 these files semi-automatically.
 
-#### 6.4.1. Using rejmerge
+#### 4.4.1. Using rejmerge
 
 If files are present in `/var/lib/pkg/rejected`, `rejmerge(8)`
 prompts you to decide their fate.  For each file, you can choose:
@@ -988,7 +988,7 @@ Legend:
 
 See `rejmerge(8)` for details.
 
-#### 6.4.2. Configuring rejmerge
+#### 4.4.2. Configuring rejmerge
 
 Configurations for `rejmerge(8)` can be adjusted in
 `/etc/rejmerge.conf`.  Key settings:
@@ -998,7 +998,7 @@ Configurations for `rejmerge(8)` can be adjusted in
 - `EDITOR`: Specifies the editor for merges.
 - `PAGER`: Specifies the pager for differences.
 
-##### 6.4.2.1. Example
+##### 4.4.2.1. Example
 
 Use unified, colorized output for differences:
 
@@ -1010,7 +1010,7 @@ Use `sdiff(1)` for merging files:
 
 See `rejmerge.conf(5)` for more details.
 
-### 6.5. Low-level Tools: pkgmk
+### 4.5. Low-level Tools: pkgmk
 
 `pkgmk(8)` builds Zeppe-Lin packages (compressed archives) from source
 files using a `Pkgfile`.  These files, along with the supporting
@@ -1029,7 +1029,7 @@ context of building packages, Chapter 7 explores their organization
 into Collections and Repositories for broader software management
 workflows.
 
-#### 6.5.1. Pkgfile Format
+#### 4.5.1. Pkgfile Format
 
 The Pkgfile defines:
 
@@ -1037,7 +1037,7 @@ The Pkgfile defines:
 - `source`: URL to download the software's source code.
 - `build()`: Instructions to compile and package the software.
 
-##### 6.5.1.1. Example
+##### 4.5.1.1. Example
 
     name=hello
     version=2.12.1
@@ -1054,9 +1054,9 @@ The Pkgfile defines:
 
 See `Pkgfile(5)` for details.
 
-#### 6.5.2. Using pkgmk
+#### 4.5.2. Using pkgmk
 
-##### 6.5.2.1. Building a Package
+##### 4.5.2.1. Building a Package
 
 To build a package, create a directory named after the package, `cd`
 into this directory, place the `Pkgfile` inside, and run:
@@ -1075,7 +1075,7 @@ On the first build, `pkgmk(8)` generates:
 The final package (e.g., `hello#2.12.1-1.pkg.tar.gz`) will be in the
 current directory.
 
-#### 6.5.3. Configuring pkgmk
+#### 4.5.3. Configuring pkgmk
 
 Customize `pkgmk(8)` with `/etc/pkgmk.conf`.  Key settings:
 
@@ -1085,7 +1085,7 @@ Customize `pkgmk(8)` with `/etc/pkgmk.conf`.  Key settings:
 - `PKGMK_PACKAGE_DIR`: Directory for built packages.
 - `PKGMK_WORK_DIR`: Temporary build directory.
 
-##### 6.5.3.1. Example
+##### 4.5.3.1. Example
 
 Define backup URLs:
 
@@ -1105,7 +1105,7 @@ the database, so simultaneous installations may fail.
 
 See `pkgmk.conf(5)` for full options.
 
-### 6.6. High-level Tool: pkgman
+### 4.6. High-level Tool: pkgman
 
 `pkgman(1)` serves as a versatile interface for managing Zeppe-Lin's
 package ecosystem.  Building on tools like `pkgutils` and `pkgmk`, it
@@ -1122,9 +1122,9 @@ With its adaptable design, `pkgman(1)` integrates seamlessly into
 diverse system management scenarios, making it an indispensable tool
 for maintaining and customizing Zeppe-Lin.
 
-#### 6.6.1. Using pkgman
+#### 4.6.1. Using pkgman
 
-##### 6.6.1.1. List Installed Packages
+##### 4.6.1.1. List Installed Packages
 
 List installed packages:
 
@@ -1138,7 +1138,7 @@ Include versions and descriptions:
 
     $ pkgman list -vv
 
-##### 6.6.1.2. Query Package Information
+##### 4.6.1.2. Query Package Information
 
 Display detailed package information:
 
@@ -1154,7 +1154,7 @@ Example output:
     URL:          http://savannah.nongnu.org/projects/acl
     Dependencies: attr
 
-##### 6.6.1.3. Search Package Sources
+##### 4.6.1.3. Search Package Sources
 
 Search by name:
 
@@ -1168,7 +1168,7 @@ Search by description:
 
     $ pkgman dsearch -vv archive
 
-##### 6.6.1.4. Query Dependencies
+##### 4.6.1.4. Query Dependencies
 
 Show direct dependencies:
 
@@ -1182,7 +1182,7 @@ Show detailed dependency tree:
 
     $ pkgman dep vim --recursive --tree
 
-##### 6.6.1.5. Build and Install Packages
+##### 4.6.1.5. Build and Install Packages
 
 Build and install a package with dependencies (recommended):
 
@@ -1195,7 +1195,7 @@ failed installations:
 
 `--force` skips already installed packages during the retry.
 
-##### 6.6.1.6. Update Installed Packages
+##### 4.6.1.6. Update Installed Packages
 
 Identify outdated packages:
 
@@ -1209,7 +1209,7 @@ Upgrade all packages in the system:
 
     $ pkgman sysup --deps --depsort --group
 
-#### 6.6.2. Configuring pkgman
+#### 4.6.2. Configuring pkgman
 
 `pkgman(1)` is configured via `/etc/pkgman.conf`.  Key settings:
 
@@ -1230,7 +1230,7 @@ Upgrade all packages in the system:
 
 See `pkgman.conf(5)` for more details.
 
-### 6.6. The Essentials (outro)
+### 4.7. The Essentials (outro)
 
 This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.
@@ -1239,9 +1239,9 @@ In the next chapter, we introduce Collections of Package Sources -- a
 modular approach to organizing and managing software -- with pkgman
 serving as the central orchestration tool.
 
-## 7. PACKAGE SOURCES AND COLLECTIONS
+## 5. PACKAGE SOURCES AND COLLECTIONS
 
-### 7.1. Introduction
+### 5.1. Introduction
 
 Zeppe-Lin organizes software sources into three key components:
 
@@ -1266,9 +1266,9 @@ and distributing software on Zeppe-Lin.  Tools like `pkgmk(8)` and
 workflows such as dependency management, package building, and system
 updates.
 
-### 7.2. Organizing Package Sources
+### 5.2. Organizing Package Sources
 
-#### 7.2.1. Package Source: The Core Unit
+#### 5.2.1. Package Source: The Core Unit
 
 In Zeppe-Lin, a Package Source is the fundamental unit for building
 software.  Each one represents a single application, library, or
@@ -1307,7 +1307,7 @@ builds or configurations:
 Together, these files create a self-contained environment for building
 and managing software.
 
-#### 7.2.2. Collections
+#### 5.2.2. Collections
 
 Collections are logical groupings of Package Sources.  A collection is
 simply a directory containing multiple Package Sources with a shared
@@ -1345,7 +1345,7 @@ These Collections form the foundation of Zeppe-Lin's software
 ecosystem, allowing users to selectively enable the software they
 need.
 
-#### 7.2.3. Repositories: Distributing and Versioning Collections
+#### 5.2.3. Repositories: Distributing and Versioning Collections
 
 Collections are organized into Repositories, hosted on systems like
 Git. It's important to note that while a repository **can** contain
@@ -1372,14 +1372,14 @@ one-collection-per-repository approach, include:
 Repositories ensure that collections are both modular and manageable,
 allowing users to selectively clone only the collections they need.
 
-### 7.3. Managing Package Sources
+### 5.3. Managing Package Sources
 
-#### 7.3.1. Setting Up Collections
+#### 5.3.1. Setting Up Collections
 
 To access software for installation in Zeppe-Lin, download the
 official package source collections and enable them for `pkgman(1)`.
 
-##### 7.3.1.1. Syncing Official Repositories
+##### 5.3.1.1. Syncing Official Repositories
 
 Clone the repositories from the Zeppe-Lin GitHub account:
 
@@ -1393,7 +1393,7 @@ Replace `1.x` with the branch matching your Zeppe-Lin release (e.g.,
 `1.x` for version 1.0 or 1.1).  Check the Zeppe-Lin website or release
 notes for the correct branch.
 
-##### 7.3.1.2. Enabling Collections in pkgman.conf
+##### 5.3.1.2. Enabling Collections in pkgman.conf
 
 Edit `/etc/pkgman.conf` to enable package sources collections.  For
 example:
@@ -1406,7 +1406,7 @@ example:
 
 For detailed configuration options, see `pkgman.conf(5)`.
 
-##### 7.3.1.3. Verify Your Setup
+##### 5.3.1.3. Verify Your Setup
 
 Confirm that `pkgman(1)` recognizes the collections:
 
@@ -1414,12 +1414,12 @@ Confirm that `pkgman(1)` recognizes the collections:
 
 This lists all package sources from enabled collections.
 
-#### 7.3.2. Exploring and Installing Packages
+#### 5.3.2. Exploring and Installing Packages
 
 With collections enabled, you can explore and install packages using
 `pkgman(1)`.
 
-##### 7.3.2.1. Listing Available Packages
+##### 5.3.2.1. Listing Available Packages
 
 List all package sources:
 
@@ -1450,7 +1450,7 @@ Example output:
     [i] /usr/src/pkgsrc-core/acl
     [ ] /usr/src/pkgsrc-system/vim
 
-##### 7.3.2.2. Searching for Packages
+##### 5.3.2.2. Searching for Packages
 
 If you're looking for specific software, use the `search` command.
 For example, to search for packages related to `alsa`:
@@ -1471,7 +1471,7 @@ option:
 
     $ pkgman search --path alsa
 
-##### 7.3.2.3. Building and Installing Packages
+##### 5.3.2.3. Building and Installing Packages
 
 Build and install a package with dependencies:
 
@@ -1498,14 +1498,14 @@ Dry run:
 Run `pkgman install --help` or see `pkgman-install(1)` for information
 about all nstallation options.
 
-#### 7.3.3. Keeping Your System Up-to-Date
+#### 5.3.3. Keeping Your System Up-to-Date
 
 Maintaining your Zeppe-Lin system involves two primary tasks:
 
 1. Sync your Repositories regularly to stay up-to-date.
 2. Updating installed packages to their latest versions.
 
-##### 7.3.3.1. Synchronizing Local Collections
+##### 5.3.3.1. Synchronizing Local Collections
 
 Regularly sync local collections with remote repositories using
 `git pull`:
@@ -1539,7 +1539,7 @@ Example script (/root/pkgsrc-sync.sh):
 
 For logging, replace `echo` with `logger`.
 
-##### 7.3.3.2. Checking for Package Updates
+##### 5.3.3.2. Checking for Package Updates
 
 Identify outdated packages with pkgman diff:
 
@@ -1563,7 +1563,7 @@ Review this output to determine which packages need updates.  Packages
 in the "not found" section may have been removed from the collection
 or installed manually from other sources.
 
-##### 7.3.3.3. Updating Packages
+##### 5.3.3.3. Updating Packages
 
 Use `pkgman sysup` for a system upgrade.
 
@@ -1580,7 +1580,7 @@ begins, avoiding interruptions during the build process.
 
 These options ensure proper dependency handling and upgrade order.
 
-##### 7.3.3.4. Updating Specific Packages
+##### 5.3.3.4. Updating Specific Packages
 
 Update individual packages with pkgman update.  For example:
 
@@ -1589,9 +1589,9 @@ Update individual packages with pkgman update.  For example:
 This command updates only the specified packages while resolving their
 dependencies.
 
-#### 7.3.4. Advanced Package Management
+#### 5.3.4. Advanced Package Management
 
-##### 7.3.4.1. Detecting Broken Dependencies with revdep(1)
+##### 5.3.4.1. Detecting Broken Dependencies with revdep(1)
 
 `revdep(1)` checks installed packages for missing or incorrect shared
 libraries.  Use it to verify system stability and identify packages
@@ -1616,7 +1616,7 @@ packages remain functional.
 
 See `revdep(1)` and `revdep.d(5)` for more information.
 
-##### 7.3.4.2. Ignoring Packages During Updates
+##### 5.3.4.2. Ignoring Packages During Updates
 
 Prevent updates to specific packages during system upgrades with
 `--ignore`.  Example:
@@ -1626,7 +1626,7 @@ Prevent updates to specific packages during system upgrades with
 Regularly revisit ignored packages to avoid security risks and
 dependency conflicts.
 
-##### 7.3.4.3. Locking Packages
+##### 5.3.4.3. Locking Packages
 
 Lock a package to prevent upgrades indefinitely:
 
@@ -1639,7 +1639,7 @@ Unlock a package to resume updates:
 Locked packages are useful for maintaining specific software versions
 critical to workflows.
 
-##### 7.3.4.4. Handling Lower Available Versions
+##### 5.3.4.4. Handling Lower Available Versions
 
 Occasionally, a package source may revert to a lower version than the
 one installed on your system.  This often happens when maintainers
@@ -1655,7 +1655,7 @@ This ensures `pkgman` retains the higher installed version during
 upgrades.  Use this feature cautiously, as higher versions might be
 less stable or unsupported.
 
-##### 7.3.4.5. Practical Considerations
+##### 5.3.4.5. Practical Considerations
 
 - Regularly review ignored and locked packages for security and
   compatibility.
@@ -1665,15 +1665,15 @@ less stable or unsupported.
 
 - Check dependency trees carefully to prevent system breakages.
 
-### 7.4. Extending Software Sources
+### 5.4. Extending Software Sources
 
-#### 7.4.1. Adding a Local Collection
+#### 5.4.1. Adding a Local Collection
 
 This section explains how to create custom collections.  A local
 collection allows you to add new packages that are not available in
 the official repositories.
 
-##### 7.4.1.1. Creating the Collection Directory
+##### 5.4.1.1. Creating the Collection Directory
 
 Create your local collection directory in `/usr/src`, alongside
 official Zeppe-Lin collections.  Using directories with broader read
@@ -1685,7 +1685,7 @@ Example:
     # cd /usr/src
     # mkdir mynewcollection
 
-##### 7.4.1.2. Enabling the Collection in `pkgman.conf`
+##### 5.4.1.2. Enabling the Collection in `pkgman.conf`
 
 Add your collection to `/etc/pkgman.conf`.  List it above official
 collections to give it search priority:
@@ -1698,7 +1698,7 @@ collections to give it search priority:
 
 Save the file and proceed to verify the setup.
 
-##### 7.4.1.3. Verifying the Collection Setup
+##### 5.4.1.3. Verifying the Collection Setup
 
 Verify that `pkgman(1)` recognizes your collection:
 
@@ -1716,13 +1716,13 @@ Check the "Packages sources directories" section for your collection:
 If it appears, the setup is complete, and you can start adding package
 sources.
 
-#### 7.4.2. Creating Custom Packages
+#### 5.4.2. Creating Custom Packages
 
 After setting up your local collection, the next step is to add a
 package source.  This involves creating a directory for the package
 and writing a `Pkgfile` with build instructions and metadata.
 
-##### 7.4.2.1. Creating the Package Directory
+##### 5.4.2.1. Creating the Package Directory
 
 Create a subdirectory for the new package in your local collection.
 Ensure the directory name matches the package name in the `Pkgfile`:
@@ -1734,7 +1734,7 @@ Ensure the directory name matches the package name in the `Pkgfile`:
 Naming consistency is critical.  A mismatch between the directory name
 and `name` in the `Pkgfile` cause build error.
 
-##### 7.4.2.2. Writing the Pkgfile
+##### 5.4.2.2. Writing the Pkgfile
 
 The `Pkgfile` serves two purposes:
 
@@ -1764,7 +1764,7 @@ Example `Pkgfile`:
         rm -rf $PKG/usr/share/info
     }
 
-##### 7.4.2.3. Key Metadata Headers for pkgman
+##### 5.4.2.3. Key Metadata Headers for pkgman
 
 Include these headers in the `Pkgfile` for optimal integration with
 `pkgman(1)`:
@@ -1777,7 +1777,7 @@ Include these headers in the `Pkgfile` for optimal integration with
 Without these headers, `pkgman(1)` cannot display metadata or resolve
 dependencies.
 
-##### 7.4.2.4. Verifying the Package Source
+##### 5.4.2.4. Verifying the Package Source
 
 Verify your package metadata with:
 
@@ -1795,13 +1795,13 @@ Expected output:
 
 If metadata is missing, review the `Pkgfile` for errors.
 
-#### 7.4.3. Building and Installing Custom Packages
+#### 5.4.3. Building and Installing Custom Packages
 
 After creating a custom package source, the next step is to build and
 install the package using `pkgman(1)` and `pkgmk(8)`, addressing any
 potential permission issues.
 
-##### 7.4.3.1. Building the Package
+##### 5.4.3.1. Building the Package
 
 Build your custom package with:
 
@@ -1819,7 +1819,7 @@ Warnings about missing `.md5sum` and `.footprint` files like
 occur because packages are built with the unprivileged `pkgmk` user,
 which has not write permissions in `/usr/src/mynewcollection`.
 
-##### 7.4.3.2. Resolving Permissions for Build Files
+##### 5.4.3.2. Resolving Permissions for Build Files
 
 There are at least two options to resolve permissions case.
 
@@ -1841,7 +1841,7 @@ There are at least two options to resolve permissions case.
 
        # pkgman update -fr hello
 
-##### 7.4.3.3. Verifying Generated Files
+##### 5.4.3.3. Verifying Generated Files
 
 After addressing warnings, confirm the presence of required files:
 
@@ -1850,7 +1850,7 @@ After addressing warnings, confirm the presence of required files:
     -rw-r--r--  1 pkgmk pkgmk   54 .md5sum
     -rw-r--r--  1 root  root   359 Pkgfile
 
-##### 7.4.3.4. Verifying the Installation
+##### 5.4.3.4. Verifying the Installation
 
 Ensure the package is installed on your system:
 
@@ -1868,14 +1868,14 @@ Expected output:
 
     Hello, world!
 
-#### 7.4.4. Building Packages from Bleeding-Edge Sources
+#### 5.4.4. Building Packages from Bleeding-Edge Sources
 
 Some packages need to be built directly from version control systems
 (VCS) like Git or Subversion, instead of fixed release archives.  This
 section outlines two approaches: a stable approach and a bleeding-edge
 approach.
 
-##### 7.4.4.1. Stable Commit Approach
+##### 5.4.4.1. Stable Commit Approach
 
 For production, pinning to a specific commit ensures consistent
 builds.  Example:
@@ -1913,7 +1913,7 @@ builds.  Example:
 Pinning builds guarantees stability and shields against upstream
 changes.
 
-##### 7.4.4.2. Bleeding-Edge Approach
+##### 5.4.4.2. Bleeding-Edge Approach
 
 For testing, dynamically set the version to the current date
 (`YYYYMMDD`) to track upstream changes.  Example:
@@ -1957,7 +1957,7 @@ flags it during `pkgman diff`, prompting updates:
 This approach is ideal for development but unsuitable for production
 environments.
 
-##### 7.4.4.3. Subversion Repository Download Function
+##### 5.4.4.3. Subversion Repository Download Function
 
 For Subversion-based builds, use a download function like this:
 
@@ -1979,16 +1979,16 @@ Include `subversion` in dependencies to ensure compatibility.
 `subversion` is not part of `pkgsrc-core`, and must be declared
 explicitly.
 
-##### 7.4.4.4. Best Practices
+##### 5.4.4.4. Best Practices
 
 - Use pinned commits or snapshots for stability in production.
 - Reserve bleeding-edge builds for testing and development.
 - Include download functions (`download_git` or `download_svn`)
   directly in `Pkgfiles` for portability.
 
-### 7.5. Tips and Best Practices
+### 5.5. Tips and Best Practices
 
-#### 7.5.1. Renicing Builds
+#### 5.5.1. Renicing Builds
 
 Package builds can reduce system responsiveness due to high CPU and
 I/O usage.  Mitigate this by adjusting process priorities using
@@ -2010,12 +2010,12 @@ Explanation:
 These changes help the build process interfere less with interactive
 tasks, improving system responsiveness.
 
-#### 7.5.2. RAM Builds for Faster Package Compilation
+#### 5.5.2. RAM Builds for Faster Package Compilation
 
 Using RAM for temporary build files (`tmpfs`) can significantly speed
 up package compilation in Zeppe-Lin.
 
-##### 7.5.2.1. Enable RAM Builds in Zeppe-Lin
+##### 5.5.2.1. Enable RAM Builds in Zeppe-Lin
 
 1. Uncomment this line in `/etc/fstab`:
 
@@ -2030,7 +2030,7 @@ up package compilation in Zeppe-Lin.
 
 3. Remove `-pipe` from `CFLAGS` and `CXXFLAGS` in `/etc/pkgmk.conf`.
 
-##### 7.5.2.2. RAM Build Configuration (Educational)
+##### 5.5.2.2. RAM Build Configuration (Educational)
 
 For users interested in customizing the setup:
 
@@ -2053,7 +2053,7 @@ For users interested in customizing the setup:
 
 5. Removing `-pipe` from `CFLAGS` and `CXXFLAGS` in `/etc/pkgmk.conf`.
 
-#### 7.5.3. Unprivileged Builds in Zeppe-Lin
+#### 5.5.3. Unprivileged Builds in Zeppe-Lin
 
 Zeppe-Lin builds packages as an unprivileged user (typically `pkgmk`)
 by default.  This secure and modular setup isolates the build process
@@ -2096,9 +2096,9 @@ distributions or customizations.
 This structure ensures package builds are securely isolated while
 remaining flexible for adaptations.
 
-## 8. CONFIGURATION
+## 6. CONFIGURATION
 
-### 8.1. Generating Locales
+### 6.1. Generating Locales
 
 In Zeppe-Lin, `glibc` package includes a minimal set of locales by
 default, with `C.UTF-8` generated for compatibility with `pkgmk(8)`.
@@ -2113,14 +2113,14 @@ Set the system default locale by adding it to `/etc/profile`:
 
 This ensures consistent locale settings across your system.
 
-### 8.2. System Initialization and Configuration
+### 6.2. System Initialization and Configuration
 
 Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
 services, and shutdown.  This system relies on shell scripts located
 in `/etc` and `/etc/rc.d`, offering an efficient and flexible way to
 control processes.
 
-#### 8.2.1. System States (Runlevels)
+#### 6.2.1. System States (Runlevels)
 
 Runlevels define the operating state of the system, such as halting,
 rebooting, or normal operation.  Zeppe-Lin's runlevels are configured
@@ -2138,7 +2138,7 @@ By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
 enables all services and user access.  Single-user mode (runlevel 1 or
 S) is ideal for system maintenance, providing a minimal environment.
 
-#### 8.2.2. Core Init Scripts
+#### 6.2.2. Core Init Scripts
 
 Zeppe-Lin's init system uses the following scripts to manage system
 processes:
@@ -2158,7 +2158,7 @@ commands or `/etc/rc.modules` to load specific kernel modules.
 
 See `rc(8)` for details.
 
-#### 8.2.3. Configuring Runlevels and Init Behavior
+#### 6.2.3. Configuring Runlevels and Init Behavior
 
 The `/etc/inittab` file determines actions for each runlevel.  Each
 entry follows this format: `id:runlevel:action:command`
@@ -2188,7 +2188,7 @@ Example `/etc/inittab` Configuration:
 This configuration ensures a smooth startup, runtime, and shutdown
 process.  See `inittab(5)` for configuration details.
 
-#### 8.2.4. Configuring System Behavior (/etc/rc.conf)
+#### 6.2.4. Configuring System Behavior (/etc/rc.conf)
 
 The `/etc/rc.conf` file centralizes system configuration settings,
 such as hostname, timezone, and services.  Example:
@@ -2203,7 +2203,7 @@ which are started by `/etc/rc.multi` and stopped by `/etc/rc.shutdown`
 
 See `rc.conf(5)` for additional configuration settings.
 
-#### 8.2.5. Service Control Scripts (/etc/rc.d/)
+#### 6.2.5. Service Control Scripts (/etc/rc.d/)
 
 The `/etc/rc.d/` directory contains individual scripts to manage
 services.  Each script supports commands like:
@@ -2220,7 +2220,7 @@ Example usage:
 
 See `rc.d(7)` for more information.
 
-#### 8.2.6. Kernel Module Management (/etc/rc.modules)
+#### 6.2.6. Kernel Module Management (/etc/rc.modules)
 
 The `/etc/rc.modules` file is used to load specific kernel modules at
 boot.  It begins by running `/sbin/depmod -a` to map module
@@ -2243,7 +2243,7 @@ adhering to best practices.
 The `/etc/rc.modules` script is invoked by `/etc/rc` during the boot
 process.
 
-#### 8.2.7. Custom Startup Commands (/etc/rc.local)
+#### 6.2.7. Custom Startup Commands (/etc/rc.local)
 
 User-defined actions are added to `/etc/rc.local`, executed as last
 step of a normal boot (invoked by `/etc/rc.multi`).  Example:
@@ -2251,12 +2251,12 @@ step of a normal boot (invoked by `/etc/rc.multi`).  Example:
     # Start a monitoring app
     /usr/bin/my_monitoring_app &
 
-### 8.2.8. From Boot to Login: System Startup Sequence
+#### 6.2.8. From Boot to Login: System Startup Sequence
 
 Here's the sequence from power-up to login.  It differs slightly with
 or without `initramfs`.
 
-#### 8.2.8.1. Without Initramfs
+##### 6.2.8.1. Without Initramfs
 
 1. Power On: System starts.
 2. Bootloader: Loads the kernel into memory.
@@ -2270,7 +2270,7 @@ or without `initramfs`.
 9. `/etc/rc.local` runs: Your custom commands are executed.
 10. Login prompts: The system is ready for you.
 
-#### 8.2.8.2. With Initramfs
+##### 6.2.8.2. With Initramfs
 
 1. Power On: System starts.
 2. Bootloader: Loads kernel and initramfs into memory.
@@ -2284,19 +2284,19 @@ or without `initramfs`.
    The init process from your main system.
 9. (Steps 5-10 from [Without Initramfs](#8281-without-initramfs) follow).
 
-#### 8.2.9. Minimal Mode (Single-User Mode)
+#### 6.2.9. Minimal Mode (Single-User Mode)
 
 Runlevel 1 or S boots the system with a minimal setup for maintenance.
 It runs `/etc/rc.single`, providing a root shell for troubleshooting.
 
-#### 8.2.10. Graceful Shutdown Procedure
+#### 6.2.10. Graceful Shutdown Procedure
 
 When shutting down or rebooting, `/etc/rc.shutdown` is invoked to stop
 services, unmount filesystems, and safely power off the system.
 
-### 8.3. Networking
+### 6.3. Networking
 
-#### 8.3.1. Hostname Configuration
+#### 6.3.1. Hostname Configuration
 
 The hostname identifies your system on the network.
 
@@ -2317,7 +2317,7 @@ to the loopback lines:
 
 This ensures your system recognizes its own name.
 
-#### 8.3.2. Static Address
+#### 6.3.2. Static Address
 
 To configure a static IP, edit `/etc/rc.d/net`.  Set the network
 interface, IP, subnet mask, and gateway.  For example:
@@ -2340,7 +2340,7 @@ Start, stop or restart the service via:
 To auto-start service at boot, add `net` to the `SERVICES` line in
 `/etc/rc.conf`.
 
-#### 8.3.3. Dynamic Address
+#### 6.3.3. Dynamic Address
 
 To get an IP address automatically via DHCP, install the `dhcpcd`
 package and edit `/etc/rc.d/dhcpcd` to specify the network interface
@@ -2360,7 +2360,7 @@ Check `dhcpcd`'s README for potential issues:
 To auto-start service at boot, add `dhcpcd` to the `SERVICES` line in
 `/etc/rc.conf`.
 
-#### 8.3.4. Wireless Network
+#### 6.3.4. Wireless Network
 
 Ensure the wireless interface isn't blocked.  Use `rfkill(8)`:
 
@@ -2374,7 +2374,7 @@ Install the `wpa-supplicant` package and edit
 
 Update `/etc/wpa_supplicant.conf` based on your network:
 
-##### 8.3.4.1. WPA-PSK (Pre-Shared Key)
+##### 6.3.4.1. WPA-PSK (Pre-Shared Key)
 
 Generate a key with `wpa_passphrase(8)`:
 
@@ -2387,7 +2387,7 @@ Example `/etc/wpa_supplicant.conf`:
         psk="THE_GENERATED_KEY"
     }
 
-##### 8.3.4.2. WPA-EAP (Enterprise)
+##### 6.3.4.2. WPA-EAP (Enterprise)
 
 Generate a password hash:
 
@@ -2402,7 +2402,7 @@ Example `/etc/wpa_supplicant.conf`:
         password=hash:<YOUR_PASSWORD_HASH>
     }
 
-##### 8.3.4.3. WEP
+##### 6.3.4.3. WEP
 
 Example `/etc/wpa_supplicant.conf` for WEP:
 
@@ -2424,9 +2424,9 @@ For automatic IP, ensure the wireless interface is set in
 To auto-start service at boot, add `wpa_supplicant` (and `dhcpcd` if
 using dynamic IP) to the `SERVICES` line in `/etc/rc.conf`.
 
-###  8.4. Time and Date Configuration
+### 6.4. Time and Date Configuration
 
-#### 8.4.1. Timezone Setup
+#### 6.4.1. Timezone Setup
 
 Identify your timezone from `/usr/share/zoneinfo` (e.g.,
 `America/New_York`).
@@ -2443,7 +2443,7 @@ To make it persistent, add the timezone to `/etc/rc.conf`:
 
     TIMEZONE='<Your_Timezone>'
 
-#### 8.4.2. System Clock Setup
+#### 6.4.2. System Clock Setup
 
 Manually set the system clock:
 
@@ -2455,7 +2455,7 @@ Example:
 
 For accuracy, use NTP (described next).
 
-#### 8.4.3. Network Time Protocol (NTP) Configuration
+#### 6.4.3. Network Time Protocol (NTP) Configuration
 
 **Note:**
 Accurate time via NTP is crucial for time-sensitive things like OTP.
@@ -2470,12 +2470,12 @@ After installing `chrony`, start the service:
 To enable automatic startup, add `chrony` to the `SERVICES` line in
 `/etc/rc.conf`.
 
-### 8.5. User Authentication and Environment
+### 6.5. User Authentication and Environment
 
 This section explains Zeppe-Lin's approach to user authentication,
 environment setup, and PAM (Pluggable Authentication Modules).
 
-#### 8.5.1. Password Management
+#### 6.5.1. Password Management
 
 Zeppe-Lin uses strong password encryption with `SHA512` for secure
 user accounts.
@@ -2484,7 +2484,7 @@ Applications requiring user authentication via `crypt(3)` must link
 against libcrypt (`-lcrypt`).  Zeppe-Lin's `libcrypt` supports
 `SHA512` and older encryption methods like `DES`.
 
-#### 8.5.2. User Environment Configuration
+#### 6.5.2. User Environment Configuration
 
 User account creation via `useradd(8)` is governed by
 `/etc/login.defs`.  Key settings include:
@@ -2506,7 +2506,7 @@ Default shell `PATH` (via `/etc/profile`) is set to
 `/sbin:/usr/sbin:/bin:/usr/bin`.  This allows access to administrative
 commands (e.g., `sudo(8)`) without specifying full paths.
 
-#### 8.5.3. Pluggable Authentication Modules (PAM)
+#### 6.5.3. Pluggable Authentication Modules (PAM)
 
 Zeppe-Lin uses PAM (`linux-pam` package) for flexible user
 authentication.  PAM's configuration files are in `/etc/pam.d/`, where
@@ -2525,7 +2525,7 @@ Common PAM modules include:
 For advanced configurations, consult module-specific man pages (e.g.,
 `man pam_env`).
 
-## 9. FAQ
+## 7. FAQ
 
 1. Why is the distribution named Zeppe-Lin?
 
@@ -2548,7 +2548,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
    rootfs download...
    (See [2.4.1. Download Rootfs Tarball](#241-download-rootfs-tarball))
 
-## 10. REPORTING BUGS
+## 8. REPORTING BUGS
 
 For bug reports regarding this site and handbook, please use the issue
 tracker at <https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
