@@ -48,7 +48,7 @@
   <li><a href="#2141-install-xorg-and-drivers">2.14.1. Install Xorg and Drivers</a></li>
   <li><a href="#2142-install-a-window-manager">2.14.2. Install a Window Manager</a></li>
   <li><a href="#21421-ratpoison">2.14.2.1. Ratpoison</a></li>
-  <li><a href="#21422-optional-window-maker">2.14.2.2. Optional: Window Maker</a></li>
+  <li><a href="#21422-unofficial-window-maker">2.14.2.2. Unofficial: Window Maker</a></li>
   <li><a href="#215-reboot">2.15. Reboot</a></li>
   <li><a href="#3-upgrading">3. UPGRADING</a></li>
   <li><a href="#31-release-notes">3.1. Release Notes</a></li>
@@ -66,11 +66,11 @@
   <li><a href="#631-using-pkgutils">6.3.1. Using pkgutils</a></li>
   <li><a href="#6311-installing-a-package">6.3.1.1. Installing a Package</a></li>
   <li><a href="#6312-upgrading-a-package">6.3.1.2. Upgrading a Package</a></li>
-  <li><a href="#6314-removing-a-package">6.3.1.4. Removing a Package</a></li>
-  <li><a href="#6315-inspecting-packages">6.3.1.5. Inspecting Packages</a></li>
-  <li><a href="#634-configuring-pkgadd">6.3.4. Configuring pkgadd</a></li>
-  <li><a href="#6341-rule-format">6.3.4.1. Rule Format</a></li>
-  <li><a href="#6342-example">6.3.4.2. Example</a></li>
+  <li><a href="#6313-removing-a-package">6.3.1.3. Removing a Package</a></li>
+  <li><a href="#6314-inspecting-packages">6.3.1.4. Inspecting Packages</a></li>
+  <li><a href="#632-configuring-pkgadd">6.3.2. Configuring pkgadd</a></li>
+  <li><a href="#6321-rule-format">6.3.2.1. Rule Format</a></li>
+  <li><a href="#6322-example">6.3.2.2. Example</a></li>
   <li><a href="#64-low-level-tools-rejmerge">6.4. Low-level Tools: rejmerge</a></li>
   <li><a href="#641-using-rejmerge">6.4.1. Using rejmerge</a></li>
   <li><a href="#642-configuring-rejmerge">6.4.2. Configuring rejmerge</a></li>
@@ -114,14 +114,14 @@
   <li><a href="#7334-updating-specific-packages">7.3.3.4. Updating Specific Packages</a></li>
   <li><a href="#734-advanced-package-management">7.3.4. Advanced Package Management</a></li>
   <li><a href="#7341-detecting-broken-dependencies-with-revdep1">7.3.4.1. Detecting Broken Dependencies with revdep(1)</a></li>
-  <li><a href="#7341-ignoring-packages-during-updates">7.3.4.1. Ignoring Packages During Updates</a></li>
-  <li><a href="#7342-locking-packages">7.3.4.2. Locking Packages</a></li>
-  <li><a href="#7343-handling-lower-available-versions">7.3.4.3. Handling Lower Available Versions</a></li>
-  <li><a href="#7344-practical-considerations">7.3.4.4. Practical Considerations</a></li>
+  <li><a href="#7342-ignoring-packages-during-updates">7.3.4.2. Ignoring Packages During Updates</a></li>
+  <li><a href="#7343-locking-packages">7.3.4.3. Locking Packages</a></li>
+  <li><a href="#7344-handling-lower-available-versions">7.3.4.4. Handling Lower Available Versions</a></li>
+  <li><a href="#7345-practical-considerations">7.3.4.5. Practical Considerations</a></li>
   <li><a href="#74-extending-software-sources">7.4. Extending Software Sources</a></li>
   <li><a href="#741-adding-a-local-collection">7.4.1. Adding a Local Collection</a></li>
   <li><a href="#7411-creating-the-collection-directory">7.4.1.1. Creating the Collection Directory</a></li>
-  <li><a href="#7412-enabling-the-collection-in-pkgmanconf">7.4.1.2. Enabling the Collection in pkgman.conf</a></li>
+  <li><a href="#7412-enabling-the-collection-in-pkgmanconf">7.4.1.2. Enabling the Collection in `pkgman.conf`</a></li>
   <li><a href="#7413-verifying-the-collection-setup">7.4.1.3. Verifying the Collection Setup</a></li>
   <li><a href="#742-creating-custom-packages">7.4.2. Creating Custom Packages</a></li>
   <li><a href="#7421-creating-the-package-directory">7.4.2.1. Creating the Package Directory</a></li>
@@ -150,11 +150,13 @@
   <li><a href="#821-system-states-runlevels">8.2.1. System States (Runlevels)</a></li>
   <li><a href="#822-core-init-scripts">8.2.2. Core Init Scripts</a></li>
   <li><a href="#823-configuring-runlevels-and-init-behavior">8.2.3. Configuring Runlevels and Init Behavior</a></li>
-  <li><a href="#824-configuring-system-behavior-etcrcconf">8.2.4. Configuring System Behavior (`/etc/rc.conf`)</a></li>
-  <li><a href="#825-service-control-scripts-etcrcd">8.2.5. Service Control Scripts (`/etc/rc.d/`)</a></li>
-  <li><a href="#826-kernel-module-management-etcrcmodules">8.2.6. Kernel Module Management (`/etc/rc.modules`)</a></li>
-  <li><a href="#827-custom-startup-commands-etcrclocal">8.2.7. Custom Startup Commands (`/etc/rc.local`)</a></li>
+  <li><a href="#824-configuring-system-behavior-etcrcconf">8.2.4. Configuring System Behavior (/etc/rc.conf)</a></li>
+  <li><a href="#825-service-control-scripts-etcrcd">8.2.5. Service Control Scripts (/etc/rc.d/)</a></li>
+  <li><a href="#826-kernel-module-management-etcrcmodules">8.2.6. Kernel Module Management (/etc/rc.modules)</a></li>
+  <li><a href="#827-custom-startup-commands-etcrclocal">8.2.7. Custom Startup Commands (/etc/rc.local)</a></li>
   <li><a href="#828-from-boot-to-login-system-startup-sequence">8.2.8. From Boot to Login: System Startup Sequence</a></li>
+  <li><a href="#8281-without-initramfs">8.2.8.1. Without Initramfs</a></li>
+  <li><a href="#8282-with-initramfs">8.2.8.2. With Initramfs</a></li>
   <li><a href="#829-minimal-mode-single-user-mode">8.2.9. Minimal Mode (Single-User Mode)</a></li>
   <li><a href="#8210-graceful-shutdown-procedure">8.2.10. Graceful Shutdown Procedure</a></li>
   <li><a href="#83-networking">8.3. Networking</a></li>
@@ -186,13 +188,13 @@
 <p>Zeppe-Lin Handbook. <em>Because figuring it out yourself is overrated</em>.</p>
 <p>This guide gives you everything you need to install, configure, and
 maintain your Zeppe-Lin system.</p>
-<p>Build the Zeppe-Lin system you need. This handbook shows you how
+<p>Build the Zeppe-Lin system you need.  This handbook shows you how
 (<em>because nobody else will</em>).</p>
 <h2 id="1-introduction">1. INTRODUCTION</h2>
 <h3 id="11-about-zeppe-lin">1.1. About Zeppe-Lin</h3>
 <h4 id="111-what-is-zeppe-lin">1.1.1. What is Zeppe-Lin?</h4>
 <p>Zeppe-Lin is a lightweight, source-based GNU/Linux distro for x86-64,
-forked from CRUX. Rooted in KISS and UNIX ideals, it gives you the
+forked from CRUX.  Rooted in KISS and UNIX ideals, it gives you the
 simplicity and control to build a clear, transparent system.</p>
 <h4 id="112-who-is-zeppe-lin-for">1.1.2. Who is Zeppe-Lin For?</h4>
 <p>Zeppe-Lin is for the Linux user who understands the elegance of Plan 9's
@@ -204,7 +206,7 @@ Zeppe-Lin.</p>
 <h3 id="12-principles">1.2. Principles</h3>
 <p>Guiding our philosophy:</p>
 <ol>
-<li><p><strong>Keep It Simple (KISS)</strong>: Design and code with minimalism. No
+<li><p><strong>Keep It Simple (KISS)</strong>: Design and code with minimalism.  No
 fluff -- just what's necessary.</p>
 </li>
 <li><p><strong>Respect the UNIX Spirit</strong>: Craft small, focused tools with
@@ -213,10 +215,10 @@ text-based, modular configurations.</p>
 <li><p><strong>Stay Transparent</strong>: Keep everything clear and understandable.
 Avoid needless abstraction.</p>
 </li>
-<li><p><strong>Give You the Keys</strong>: Enable full user control. Provide flexible
+<li><p><strong>Give You the Keys</strong>: Enable full user control.  Provide flexible
 tools for true customization.</p>
 </li>
-<li><p><strong>Build on a Minimal Base</strong>: Start lean. Only add what is
+<li><p><strong>Build on a Minimal Base</strong>: Start lean.  Only add what is
 absolutely required.</p>
 </li>
 </ol>
@@ -225,11 +227,12 @@ UNIX.</p>
 <h2 id="2-installation">2. INSTALLATION</h2>
 <h3 id="21-supported-hardware">2.1. Supported Hardware</h3>
 <p>Zeppe-Lin Linux supports x86-64 processors (e.g., AMD Athlon 64, Intel
-Core, Intel Atom). Older architectures, such as i686, are incompatible.</p>
+Core, Intel Atom).  Older architectures, such as i686, are
+incompatible.</p>
 <h3 id="22-boot-a-live-system">2.2. Boot a Live System</h3>
 <p>Zeppe-Lin is distributed as a compiled tarball containing a root
-filesystem. To install it, first boot your computer using a Linux-based
-"Live CD/DVD/USB" system.</p>
+filesystem.  To install it, first boot your computer using a
+Linux-based "Live CD/DVD/USB" system.</p>
 <p>Launch your preferred Live system, open a terminal, and gain root
 privileges (e.g., <code>sudo su</code>).</p>
 <h3 id="23-disk-partitions-and-filesystems">2.3. Disk Partitions and Filesystems</h3>
@@ -249,7 +252,7 @@ Ensure these packages are installed on your Live system:</p>
 <li><code>lvm2</code>: Create and manage the LVM container.</li>
 </ul>
 <h5 id="2311-partition-scheme">2.3.1.1. Partition Scheme</h5>
-<p>Example device: <code>/dev/sda</code>. Replace with your actual device (e.g.,
+<p>Example device: <code>/dev/sda</code>.  Replace with your actual device (e.g.,
 <code>/dev/sdb</code>, <code>/dev/nvme0n1</code>).</p>
 <table>
 <tr><th>Partition </th><th>Filesystem </th><th style="text-align: left">Size             </th><th style="text-align: left">Description    </th></tr>
@@ -284,7 +287,7 @@ recommended).</p>
 <tr><td>swap        </td><td>swap       </td><td style="text-align: left">2 x RAM          </td><td style="text-align: left">swap area   </td></tr>
 <tr><td>root        </td><td>ext4       </td><td style="text-align: left">rest of the disk </td><td style="text-align: left">root fs     </td></tr>
 </table>
-<p>Check RAM size: <code># free -m</code>. Create volumes:</p>
+<p>Check RAM size: <code># free -m</code>.  Create volumes:</p>
 <pre><code># lvcreate -L 8G -n swap zpln
 # lvcreate -l 100%FREE -n root zpln
 </code></pre>
@@ -313,9 +316,9 @@ rootfs tarball.</p>
 Download the rootfs tarball directly into this directory to avoid
 using live CD/DVD/USB RAM.</p>
 <p>You can find the download URL for the latest rootfs tarball on the
-Zeppe-Lin releases page:
-<a href="https://github.com/zeppe-lin/pkgsrc-core/releases">https://github.com/zeppe-lin/pkgsrc-core/releases</a>.</p>
-<p>Alternatively, you can use the following commands, replacing version
+Zeppe-Lin <code>pkgsrc-core</code>
+<a href="https://github.com/zeppe-lin/pkgsrc-core/releases">releases page</a>.
+Alternatively, you can use the following commands, replacing version
 <code>v1.0</code> with the desired release version (e.g., <code>v1.0</code>, <code>v1.1</code>, etc):</p>
 <pre><code># cd /mnt
 # VERSION=v1.0
@@ -323,37 +326,39 @@ Zeppe-Lin releases page:
 # wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz{,.sig}
 </code></pre>
 <h4 id="242-verify-downloaded-tarball">2.4.2. Verify Downloaded Tarball</h4>
-<p>The Zeppe-Lin rootfs tarball is signed using GPG. Verifying the
-authenticity and integrity of downloaded files is highly encouraged for
-security purposes but not strictly required. If <code>gpg(1)</code> is available,
-you can verify the tarball using the following commands. Make sure to
-replace <code>${VERSION}</code> with the version you downloaded:</p>
+<p>The Zeppe-Lin rootfs tarball is signed using GPG.  Verifying the
+authenticity and integrity of downloaded files is highly encouraged
+for security purposes but not strictly required.  If <code>gpg(1)</code> is
+available, you can verify the tarball using the following commands.
+Make sure to replace <code>${VERSION}</code> with the version you downloaded:</p>
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
 # gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
 </code></pre>
 <h4 id="243-extract-rootfs-tarball">2.4.3. Extract Rootfs Tarball</h4>
-<p>Once the rootfs tarball is downloaded and verified, extract its contents
-using the following command. Make sure to replace <code>${VERSION}</code> with
-the version you downloaded:</p>
+<p>Once the rootfs tarball is downloaded and verified, extract its
+contents using the following command.  Make sure to replace
+<code>${VERSION}</code> with the version you downloaded:</p>
 <pre><code># tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
-    rootfs-v1.0-x86_64.tar.xz
+    rootfs-${VERSION}-x86_64.tar.xz
 </code></pre>
-<p><strong>Important:</strong>
-It is critical to use all the specified options to ensure proper
-extraction. Here's what each option does:</p>
-
+<p><strong>Important:</strong></p>
+<p>It is critical to use all the specified options to ensure proper
+extraction.  Here's what each option does:</p>
 <ul>
-<li><code>--numeric-owner</code>
+<li><p><code>--numeric-owner</code>
 Ensures numeric UIDs and GIDs from the tarball are preserved,
 avoiding mismatches caused by the UID/GID mappings on the live
-system.</li>
-<li><code>--xattrs --xattrs-include='*'</code>
+system.</p>
+</li>
+<li><p><code>--xattrs --xattrs-include='*'</code>
 Preserves filesystem extended attributes, which are used for Linux
 capabilities (e.g., allowing programs like <code>ping(8)</code> enhanced
-privileges without requiring <code>suid root</code>).</li>
-<li><code>-xpf</code>
+privileges without requiring <code>suid root</code>).</p>
+</li>
+<li><p><code>-xpf</code>
 Extracts (<code>x</code>), preserves permissions and ownership (<code>p</code>), and uses
-the specified file (<code>f</code>).</li>
+the specified file (<code>f</code>).</p>
+</li>
 </ul>
 <h3 id="25-chroot-into-base-system">2.5. Chroot Into Base System</h3>
 <p><strong>Important:</strong>
@@ -397,7 +402,7 @@ Example for <a href="#231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</a>:
 </code></pre>
 <p><strong>Note:</strong>
 Use <code>UUID=...</code> instead of <code>/dev/*</code> for better reliability on
-multi-disk systems. Find UUIDs with:
+multi-disk systems.  Find UUIDs with:
 <code># blkid -o value -s UUID &lt;DEVICE&gt;</code></p>
 <p>Uncomment <code>/var/cache/pkgmk/work</code> to build packages in RAM
 (<strong>if desired</strong>).</p>
@@ -456,17 +461,17 @@ the previous one:</p>
 <p>Where <code>--branch 1.x</code> corresponds to the current Zeppe-Lin release
 branch.</p>
 <p>Edit <code>/etc/pkgman.conf</code> (see <code>pkgman.conf(5)</code> for more information)
-and enable the cloned collections. By default, only <code>pkgsrc-core</code> is
-enabled. Additionally, consider editing <code>/etc/pkgmk.conf</code> (see
+and enable the cloned collections.  By default, only <code>pkgsrc-core</code> is
+enabled.  Additionally, consider editing <code>/etc/pkgmk.conf</code> (see
 <code>pkgmk.conf(5)</code> for more information).</p>
 <h3 id="28-update-base-system">2.8. Update Base System</h3>
 <p>Before installing any packages, it is highly recommended to update the
 freshly installed system.</p>
 <p><strong>Warning:</strong>
 This warning applies if you are installing Zeppe-Lin version earlier
-than 1.0 or upgrading from an older version. Starting from version
+than 1.0 or upgrading from an older version.  Starting from version
 6.0, <code>pkgutils</code> has introduced backward-incompatible changes for
-generating footprint files. Therefore, it's recommended to update
+generating footprint files.  Therefore, it's recommended to update
 <code>pkgmk</code> and <code>pkgutils</code> first:
 <code>(chrooted) # pkgman update -f pkgmk pkgutils</code></p>
 <p>To perform a system update with dependency handling and sorting, and
@@ -492,7 +497,7 @@ reported, <code>pkgman update -fr</code> rebuilds the affected packages.</p>
 require based on their specific needs.</p>
 <p><strong>Note:</strong>
 For network setup and configuration details, see
-<a href="#83-networking">8.3. Networking</a>. If you set up a networking bridge,
+<a href="#83-networking">8.3. Networking</a>.  If you set up a networking bridge,
 ensure you specify the bridge interface in the <code>/etc/rc.d/dhcpcd</code>
 and/or <code>/etc/rc.d/wpa_supplicant</code> service scripts.</p>
 <h3 id="210-kernel-setup">2.10. Kernel Setup</h3>
@@ -504,13 +509,13 @@ kernel.</p>
     --config-append=&quot;runscripts no&quot; linux
 </code></pre>
 <p>The linux package includes a post-install script that runs
-<code>mkinitramfs(8)</code> and updates the GRUB config. This script is
+<code>mkinitramfs(8)</code> and updates the GRUB config.  This script is
 disabled here for manual execution later.</p>
 <p><strong>Important:</strong>
 When you update the linux package through the package manager, the
 old kernel and its modules are removed as part of the update
-process. This can cause issues if the system is still using the old
-kernel while the new one is being installed. For example:</p>
+process.  This can cause issues if the system is still using the old
+kernel while the new one is being installed.  For example:</p>
 <ul>
 <li><p>If the new kernel fails to install correctly, the system may be left
 without a working kernel.</p>
@@ -522,10 +527,10 @@ kernel are removed.</p>
 </ul>
 <p>To avoid these problems, it is recommended to lock the linux package
 from automatic updates and handle kernel updates separately using
-<code>pkgman-update(8)</code>. This ensures that the current working kernel
-remains intact until the new one is fully installed and tested. For
-more details, see <code>pkgman-lock(8)</code>.
-If you installed the kernel using this method, proceed to
+<code>pkgman-update(8)</code>.  This ensures that the current working kernel
+remains intact until the new one is fully installed and tested.  For
+more details, see <code>pkgman-lock(8)</code>.</p>
+<p>If you installed the kernel using this method, proceed to
 <a href="#211-kernel-firmware">2.11. Kernel Firmware</a> if your system requires
 additional firmware, or <a href="#212-initramfs">2.12. Initramfs</a> otherwise.</p>
 <h4 id="2102-manual-kernel-compilation">2.10.2. Manual Kernel Compilation</h4>
@@ -533,7 +538,7 @@ additional firmware, or <a href="#212-initramfs">2.12. Initramfs</a> otherwise.<
 for driver building (e.g., Nvidia, VirtualBox).</p>
 <p><strong>Important:</strong>
 Use the kernel version from Zeppe-Lin's package sources for best
-compatibility. Other versions might cause issues.</p>
+compatibility.  Other versions might cause issues.</p>
 <h5 id="21021-download-and-unpack">2.10.2.1. Download and Unpack</h5>
 <p>Download the kernel source (only download, don't install):</p>
 <pre><code>(chrooted) # pkgman install -do linux
@@ -545,8 +550,8 @@ compatibility. Other versions might cause issues.</p>
     /var/cache/pkgmk/sources/linux-${KV}.tar.?z -C /usr/src/
 </code></pre>
 <h5 id="21022-apply-zeppe-lin-patches-optional">2.10.2.2. Apply Zeppe-Lin Patches (Optional)</h5>
-<p>For better Zeppe-Lin integration, apply patches (if any). First, check
-for errors:</p>
+<p>For better Zeppe-Lin integration, apply patches (if any).  First,
+check for errors:</p>
 <pre><code>(chrooted) # cd linux-${KV}
 (chrooted) # for p in $(pkgman path linux)/*.patch; do \
     [ -f &quot;$p&quot; ] &amp;&amp; patch --dry-run -Np1 -i $p; done
@@ -588,7 +593,7 @@ firmware.</p>
 <pre><code>(chrooted) # pkgman install --deps --group mkinitramfs
 </code></pre>
 <p>The mkinitramfs configuration file (<code>/etc/mkinitramfs/config</code>) defines
-settings like the root device and filesystem. Here's an example for
+settings like the root device and filesystem.  Here's an example for
 <a href="331-uefi-and-lvm-on-luks">3.3.1. UEFI and LVM on LUKS</a>:</p>
 <pre><code># /etc/mkinitramfs/config
 hostonly=1 #(optional, creates smaller initramfs)
@@ -609,7 +614,7 @@ If you move the drive to different hardware later, it might not boot.</p>
 For multi-disk systems, using <code>UUID=...</code> instead of <code>/dev/*</code> in the
 config can prevent boot issues.
 Find UUIDs with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
-<p>Now, prepare an initramfs. If you installed the <code>linux</code> kernel
+<p>Now, prepare an initramfs.  If you installed the <code>linux</code> kernel
 manually, you have already set <code>KV</code> variable to kernel version.
 Otherwise, fetch the kernel version from the package source:</p>
 <pre><code>(chrooted) # KV=$(pkgman printf %v --filter=linux)
@@ -636,11 +641,11 @@ For better reliability on multi-disk systems, use <code>UUID=...</code> instead
 of <code>/dev/*</code> for the resume partition.
 Find the UUID with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
 <p>Next, install GRUB2 on your target drive.</p>
-<p>For UEFI systems (adjust <code>/dev/sda</code> if needed):</p>
+<p><strong>For UEFI systems</strong> (adjust <code>/dev/sda</code> if needed):</p>
 <pre><code>(chrooted) # grub-install --target=x86_64-efi \
     --efi-directory=/boot /dev/sda
 </code></pre>
-<p>For BIOS systems (adjust <code>/dev/sda</code> if needed):</p>
+<p><strong>For BIOS systems</strong> (adjust <code>/dev/sda</code> if needed):</p>
 <pre><code>(chrooted) # grub-install --target=i386-pc /dev/sda
 </code></pre>
 <p>Finally, generate the GRUB2 configuration file based on
@@ -654,10 +659,10 @@ Find the UUID with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
 </code></pre>
 <p>Common video drivers include <code>xorg-xf86-video-intel</code> (Intel),
 <code>xorg-xf86-video-amdgpu</code>/<code>xorg-xf86-video-ati</code> (AMD), and
-<code>xorg-xf86-video-nouveau</code> (NVIDIA). For NVIDIA, consider also building
-<code>nouveau-firmware</code> for better support.</p>
+<code>xorg-xf86-video-nouveau</code> (NVIDIA).  For NVIDIA, consider also
+building <code>nouveau-firmware</code> for better support.</p>
 <p>For input, modern drivers like <code>xorg-xf86-input-libinput</code> and
-<code>xorg-xf86-input-evdev</code> are recommended. Legacy options like
+<code>xorg-xf86-input-evdev</code> are recommended.  Legacy options like
 <code>xorg-xf86-input-keyboard</code> and <code>xorg-xf86-input-mouse</code> are also
 available.</p>
 <p>After selecting drivers for your hardware, install xorg with:</p>
@@ -666,14 +671,17 @@ available.</p>
 <p>Replace <code>[DRIVERS]</code> with the ones matching your system.</p>
 <h4 id="2142-install-a-window-manager">2.14.2. Install a Window Manager</h4>
 <p>Zeppe-Lin focuses on lightweight and efficient window managers rather
-than complex desktop environments like GNOME or KDE. This approach
+than complex desktop environments like GNOME or KDE.  This approach
 avoids unnecessary dependencies and simplifies configuration.</p>
+<p>Zeppe-Lin provides package sources for several window managers, but
+users are welcome to choose and contribute package sources for any
+window manager they prefer.</p>
 <h5 id="21421-ratpoison">2.14.2.1. Ratpoison</h5>
 <p>Currently, the <code>pkgsrc-desktop</code> repository provides the ratpoison
-window manager. You can install it with:</p>
+window manager.  You can install it with:</p>
 <pre><code># pkgman install --deps --group ratpoison
 </code></pre>
-<h5 id="21422-optional-window-maker">2.14.2.2. Optional: Window Maker</h5>
+<h5 id="21422-unofficial-window-maker">2.14.2.2. Unofficial: Window Maker</h5>
 <p>For users interested in a retro, intuitive window manager, you can
 install Window Maker from the unofficial <code>pkgsrc-wmaker</code> repository.</p>
 <p><strong>Warning:</strong>
@@ -694,9 +702,6 @@ adding the following line to <code>/etc/pkgman.conf</code>:</p>
 </code></pre>
 <p>Optional meta-packages for Window Maker include <code>wmaker-dockapps</code> for
 added functionality and <code>wmaker-themes</code> for customization.</p>
-<p>If neither of these options meets your needs, you are welcome to
-create package sources for other desktop environments (DEs) or window
-managers that better suit your preferences.</p>
 <h3 id="215-reboot">2.15. Reboot</h3>
 <p>Exit the chroot, unmount all filesystems, and reboot:</p>
 <pre><code>(chrooted) # exit
@@ -709,8 +714,8 @@ Linux.</p>
 <h2 id="3-upgrading">3. UPGRADING</h2>
 <p><strong>WARNING! THIS SECTION IS UNDER DEVELOPMENT AND CANNOT BE USED AS A
 MANUAL!</strong></p>
-<p>Upgrading Zeppe-Lin requires careful planning. This section outlines
-methods for updating your system. Follow the steps as presented to
+<p>Upgrading Zeppe-Lin requires careful planning.  This section outlines
+methods for updating your system.  Follow the steps as presented to
 ensure a reliable upgrade.</p>
 <p>Upgrade methods:</p>
 <ol>
@@ -720,13 +725,13 @@ ensure a reliable upgrade.</p>
 <p>Before starting, read the release notes for the target version and
 back up important data.</p>
 <h3 id="31-release-notes">3.1. Release Notes</h3>
-<p>Read the release notes for the new Zeppe-Lin version. They contain
+<p>Read the release notes for the new Zeppe-Lin version.  They contain
 essential details about new features, removed packages, and
-compatibility issues. The latest release notes you can obtain
+compatibility issues.  The latest release notes you can obtain
 <a href="https://zeppe-lin.github.io/index.html#latest-release">here</a>.</p>
 <h3 id="32-set-release-and-sync">3.2. Set Release And Sync</h3>
 <p>Synchronize your local pkgsrc collections to match the new release
-branch. Replace <code>1.x</code> with the specific release you are upgrading to:</p>
+branch.  Replace <code>1.x</code> with the specific release you are upgrading to:</p>
 <pre><code>git -C /usr/src/pkgsrc-core    switch 1.x
 git -C /usr/src/pkgsrc-system  switch 1.x
 git -C /usr/src/pkgsrc-xorg    switch 1.x
@@ -737,33 +742,34 @@ git -C /usr/src/pkgsrc-desktop switch 1.x
 especially to avoid build issues during initial updates.</p>
 <p><strong>Important:</strong>
 Upgrades may cause file conflicts, such as a file being reassigned
-between packages. To prevent issues, read the release notes for the
-target Zeppe-Lin version. They detail package changes like removals,
+between packages.  To prevent issues, read the release notes for the
+target Zeppe-Lin version.  They detail package changes like removals,
 merges, or renames that may require manual intervention.</p>
 <h4 id="331-download-and-extract-binpkgs">3.3.1. Download and Extract binpkgs</h4>
 <p><strong>Note:</strong>
 Verify the integrity of the downloaded binpkgs tarball before
-extracting it. It is signed using the same method as the Zeppe-Lin
+extracting it.  It is signed using the same method as the Zeppe-Lin
 root filesystem image.</p>
 <p>Download the tarball and its signature for your upgrade, replacing
 <code>v1.0</code> with the target version:</p>
-<pre><code>$ URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
-$ wget -c ${URL}/v1.0/binpkgs-v1.0-x86_64.tar.xz{,.sig}
+<pre><code>$ VERSION=v1.0
+$ URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
+$ wget -c ${URL}/${VERSION}/binpkgs-${VERSION}-x86_64.tar.xz{,.sig}
 </code></pre>
 <p>Verify the tarball with <code>gpg(1)</code>:</p>
 <pre><code>$ gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-$ gpg --verify binpkgs-v1.0-x86_64.tar.xz{.sig,}
+$ gpg --verify binpkgs-${VERSION}-x86_64.tar.xz{.sig,}
 </code></pre>
 <p>Extract the tarball after successful verification:</p>
 <pre><code>$ mkdir -p ~/tmp/binpkgs
-$ tar -xf binpkgs-v1.0-x86_64.tar.xz -C ~/tmp/binpkgs
+$ tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/tmp/binpkgs
 </code></pre>
 <h4 id="332-upgrade-core-packages">3.3.2. Upgrade Core Packages</h4>
 <p>Navigate to the directory and upgrade core packages:</p>
 <pre><code>$ cd ~/tmp/binpkgs
 $ for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
 </code></pre>
-<p><code>pkgadd -u</code> upgrades each package. New, non-upgradable packages will
+<p><code>pkgadd -u</code> upgrades each package.  New, non-upgradable packages will
 return an error, which the loop skips, ensuring all upgradeable
 packages are updated.</p>
 <h4 id="333-install-new-core-packages">3.3.3. Install New Core Packages</h4>
@@ -771,19 +777,19 @@ packages are updated.</p>
 <pre><code>$ cd ~/tmp/binpkgs
 $ for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
 </code></pre>
-<p><code>pkgadd</code> installs each package. Already installed packages return an
+<p><code>pkgadd</code> installs each package.  Already installed packages return an
 error, which the loop skips to ensure all new packages are installed.</p>
 <h2 id="6-package-management">6. PACKAGE MANAGEMENT</h2>
 <h3 id="61-introduction">6.1. Introduction</h3>
 <p>Zeppe-Lin's package management system revolves around packages and
-package sources. Low-level tools handle atomic operations like
+package sources.  Low-level tools handle atomic operations like
 installation and building, while the high-level tool pkgman bridges
 these workflows into system-wide and Pkgsrc-based management.</p>
 <ul>
-<li><p>Packages:
+<li><p><strong>Packages:</strong>
 Compressed archives (e.g., <code>tar.gz</code>) containing pre-built software.</p>
 </li>
-<li><p>Package Sources:
+<li><p><strong>Package Sources:</strong>
 Files required to create these compressed archives (packages).</p>
 </li>
 </ul>
@@ -808,7 +814,7 @@ updates, integrating <code>pkgutils</code> and <code>pkgmk</code>.</li>
 </ul>
 <h3 id="-62-what-is-a-package"> 6.2. What is a Package?</h3>
 <p>A Zeppe-Lin package is a compressed archive (e.g., <code>tar.gz</code>) that
-contains only the software files. It avoids any kind of embedded
+contains only the software files.  It avoids any kind of embedded
 metadata, ensuring simplicity and transparency in its structure.</p>
 <h4 id="621-package-naming">6.2.1. Package Naming</h4>
 <p>Zeppe-Lin packages follow a clear naming convention:</p>
@@ -824,12 +830,12 @@ metadata, ensuring simplicity and transparency in its structure.</p>
 <p>Example:</p>
 <pre><code>ed#1.21-1.pkg.tar.gz
 </code></pre>
-<p>The extension <code>.pkg.tar.gz</code> denotes a Zeppe-Lin package. Other common
+<p>The extension <code>.pkg.tar.gz</code> denotes a Zeppe-Lin package.  Other common
 compression formats like <code>tar.bz2</code>, <code>tar.xz</code>, and <code>tar.zst</code> are also
 supported.</p>
 <h4 id="622-package-database">6.2.2. Package Database</h4>
 <p>The package database, located at <code>/var/lib/pkg/db</code>, tracks installed
-packages and their contents. Each package entry follows this format:</p>
+packages and their contents.  Each package entry follows this format:</p>
 <pre><code>&lt;name&gt;                 # Package name
 &lt;version&gt;-&lt;release&gt;    # Version and release
 &lt;dir&gt;/                 # Top-level directory
@@ -837,7 +843,7 @@ packages and their contents. Each package entry follows this format:</p>
 &lt;dir&gt;/&lt;subdir&gt;/&lt;file&gt;  # File within subdirectory
 (Blank line)           # Separates package entries
 </code></pre>
-<p>Example entry for ed:</p>
+<p>Example entry for <code>ed</code>:</p>
 <pre><code>ed
 1.21-1
 bin/
@@ -864,25 +870,25 @@ This database enables essential operations like installation
 <p>Install a package file with <code>pkgadd(8)</code>:</p>
 <pre><code># pkgadd bash#5.0.18-1.pkg.tar.gz
 </code></pre>
-<p>By default, <code>pkgadd(8)</code> prevents overwriting existing files. Use
-<code>-f</code> or <code>--force</code> to override this behavior (use with caution!):</p>
+<p>By default, <code>pkgadd(8)</code> prevents overwriting existing files.  Use <code>-f</code>
+or <code>--force</code> to override this behavior (<strong>use with caution!</strong>):</p>
 <pre><code># pkgadd -f bash#5.0.18-1.pkg.tar.gz
 </code></pre>
 <h5 id="6312-upgrading-a-package">6.3.1.2. Upgrading a Package</h5>
 <p>Upgrade a package with the <code>-u</code> or <code>--upgrade</code> option:</p>
 <pre><code># pkgadd -u bash#5.0.18-1.pkg.tar.gz
 </code></pre>
-<p>This replaces the installed package. If the package is not installed,
-it will return an error. You can even "upgrade" to an older version.</p>
+<p>This replaces the installed package.  If the package is not installed,
+it will return an error.  You can even "upgrade" to an older version.</p>
 <p>Files that should not be upgraded (based on <code>/etc/pkgadd.conf</code>) are
 placed in <code>/var/lib/pkg/rejected/</code>.</p>
-<h5 id="6314-removing-a-package">6.3.1.4. Removing a Package</h5>
+<h5 id="6313-removing-a-package">6.3.1.3. Removing a Package</h5>
 <p>To remove a package, use <code>pkgrm(8)</code> followed by the package name:</p>
 <pre><code># pkgrm bash
 </code></pre>
-<p>This removes all files owned by the package without confirmation. Be
-cautious!</p>
-<h5 id="6315-inspecting-packages">6.3.1.5. Inspecting Packages</h5>
+<p>This removes all files owned by the package without confirmation.
+<strong>Be cautious!</strong></p>
+<h5 id="6314-inspecting-packages">6.3.1.4. Inspecting Packages</h5>
 <p>Use <code>pkginfo(1)</code> to get information about packages.</p>
 <p>List installed packages and versions:</p>
 <pre><code>$ pkginfo -i
@@ -897,11 +903,11 @@ cautious!</p>
 <pre><code>$ pkginfo -o /usr/bin/ls
 </code></pre>
 <p>See <code>pkgadd(8)</code>, <code>pkgrm(8)</code>, and <code>pkginfo(1)</code> for details.</p>
-<h4 id="634-configuring-pkgadd">6.3.4. Configuring pkgadd</h4>
-<p>You can customize <code>pkgadd(8)</code> behavior during package upgrades
-using <code>/etc/pkgadd.conf</code>. Rules define whether files should be
-upgraded or preserved.</p>
-<h5 id="6341-rule-format">6.3.4.1. Rule Format</h5>
+<h4 id="632-configuring-pkgadd">6.3.2. Configuring pkgadd</h4>
+<p>You can customize <code>pkgadd(8)</code> behavior during package upgrades using
+<code>/etc/pkgadd.conf</code>.  Rules define whether files should be upgraded or
+preserved.</p>
+<h5 id="6321-rule-format">6.3.2.1. Rule Format</h5>
 <p>Each rule in <code>/etc/pkgadd.conf</code> follows this format:</p>
 <pre><code>EVENT   PATTERN   ACTION
 </code></pre>
@@ -912,7 +918,7 @@ upgraded or preserved.</p>
 </ul>
 <p>Rules are processed sequentially, with the last matching rule taking
 priority.</p>
-<h5 id="6342-example">6.3.4.2. Example</h5>
+<h5 id="6322-example">6.3.2.2. Example</h5>
 <p>Example <code>/etc/pkgadd.conf</code>:</p>
 <pre><code># /etc/pkgadd.conf
 UPGRADE   ^etc/.*$              NO
@@ -931,13 +937,13 @@ Patterns match filenames inside the package, not full system paths.
 Do not use <code>/</code> at the start!</p>
 <p>See <code>pkgadd.conf(5)</code> for details.</p>
 <h3 id="64-low-level-tools-rejmerge">6.4. Low-level Tools: rejmerge</h3>
-<p><code>rejmerge(8)</code> resolves files rejected during upgrades using <code>pkgadd
--u</code>.  Rejected files are moved to <code>/var/lib/pkg/rejected/</code> for manual
-handling, while <code>rejmerge(8)</code> provides a way to manage these files
-semi-automatically.</p>
+<p><code>rejmerge(8)</code> resolves files rejected during upgrades using
+<code>pkgadd -u</code>.  Rejected files are moved to <code>/var/lib/pkg/rejected/</code>
+for manual handling, while <code>rejmerge(8)</code> provides a way to manage
+these files semi-automatically.</p>
 <h4 id="641-using-rejmerge">6.4.1. Using rejmerge</h4>
 <p>If files are present in <code>/var/lib/pkg/rejected</code>, <code>rejmerge(8)</code>
-prompts you to decide their fate. For each file, you can choose:</p>
+prompts you to decide their fate.  For each file, you can choose:</p>
 <pre><code>=======&gt; file
 (diff output between installed file and rejected file)
 [K]eep [U]pgrade [M]erge [D]iff [S]kip
@@ -964,13 +970,13 @@ prompts you to decide their fate. For each file, you can choose:</p>
 <p>Use unified, colorized output for differences:</p>
 <pre><code>rejmerge_diff() { diff -u --color=always $1 $2 &gt; $3 ; }
 </code></pre>
-<p>Use <code>sdiff</code> for merging files:</p>
+<p>Use <code>sdiff(1)</code> for merging files:</p>
 <pre><code>rejmerge_merge() { sdiff -o $3 $1 $2 ; }
 </code></pre>
 <p>See <code>rejmerge.conf(5)</code> for more details.</p>
 <h3 id="65-low-level-tools-pkgmk">6.5. Low-level Tools: pkgmk</h3>
 <p><code>pkgmk(8)</code> builds Zeppe-Lin packages (compressed archives) from source
-files using a <code>Pkgfile</code>. These files, along with the supporting
+files using a <code>Pkgfile</code>.  These files, along with the supporting
 directory, form a Package Source -- a self-contained unit that
 includes all files needed to build and install software.</p>
 <p>A Package Source typically contains:</p>
@@ -980,7 +986,7 @@ includes all files needed to build and install software.</p>
 <li><code>.footprint</code>: Lists expected files in the final package.</li>
 </ul>
 <p>A Package Source is the basic unit of software organization in
-Zeppe-Lin. While this chapter introduces Package Sources in the
+Zeppe-Lin.  While this chapter introduces Package Sources in the
 context of building packages, Chapter 7 explores their organization
 into Collections and Repositories for broader software management
 workflows.</p>
@@ -1012,9 +1018,11 @@ build() {
 into this directory, place the <code>Pkgfile</code> inside, and run:</p>
 <pre><code>$ fakeroot pkgmk -d -cf /dev/null
 </code></pre>
-<p><code>fakeroot</code>: Always use to avoid system risks.
-<code>-d</code>: Downloads missing source files.
-<code>-cf /dev/null</code>: Ignores <code>/etc/pkgmk.conf</code> and uses defaults.</p>
+<ul>
+<li><code>fakeroot</code>: Always use to avoid system risks.</li>
+<li><code>-d</code>: Downloads missing source files.</li>
+<li><code>-cf /dev/null</code>: Ignores <code>/etc/pkgmk.conf</code> and uses defaults.</li>
+</ul>
 <p>On the first build, <code>pkgmk(8)</code> generates:</p>
 <ul>
 <li><code>.footprint</code>: Tracks package contents.</li>
@@ -1023,7 +1031,7 @@ into this directory, place the <code>Pkgfile</code> inside, and run:</p>
 <p>The final package (e.g., <code>hello#2.12.1-1.pkg.tar.gz</code>) will be in the
 current directory.</p>
 <h4 id="653-configuring-pkgmk">6.5.3. Configuring pkgmk</h4>
-<p>Customize <code>pkgmk(8)</code> with <code>/etc/pkgmk.conf</code>. Key settings:</p>
+<p>Customize <code>pkgmk(8)</code> with <code>/etc/pkgmk.conf</code>.  Key settings:</p>
 <ul>
 <li><code>CFLAGS</code>, <code>CXXFLAGS</code>: Compiler optimization flags.</li>
 <li><code>PKGMK_SOURCE_MIRRORS</code>: Backup URLs for source archives.</li>
@@ -1047,7 +1055,7 @@ the database, so simultaneous installations may fail.</p>
 <p>See <code>pkgmk.conf(5)</code> for full options.</p>
 <h3 id="66-high-level-tool-pkgman">6.6. High-level Tool: pkgman</h3>
 <p><code>pkgman(1)</code> serves as a versatile interface for managing Zeppe-Lin's
-package ecosystem. Building on tools like <code>pkgutils</code> and <code>pkgmk</code>, it
+package ecosystem.  Building on tools like <code>pkgutils</code> and <code>pkgmk</code>, it
 unifies and simplifies workflows while supporting a wide range of
 package management tasks.</p>
 <p><code>pkgman(1)</code> empowers users to:</p>
@@ -1062,7 +1070,7 @@ for maintaining and customizing Zeppe-Lin.</p>
 <h4 id="661-using-pkgman">6.6.1. Using pkgman</h4>
 <h5 id="6611-list-installed-packages">6.6.1.1. List Installed Packages</h5>
 <p>List installed packages:</p>
-<pre><code> $ pkgman list
+<pre><code>$ pkgman list
 </code></pre>
 <p>Include versions:</p>
 <pre><code>$ pkgman list -v
@@ -1107,8 +1115,8 @@ Dependencies: attr
 <p>Build and install a package with dependencies (recommended):</p>
 <pre><code># pkgman install --deps --group xterm
 </code></pre>
-<p>Use <code>--group</code> to stop installation if a dependency fails. Retry failed
-installations:</p>
+<p>Use <code>--group</code> to stop installation if a dependency fails.  Retry
+failed installations:</p>
 <pre><code># pkgman install --deps --group --force xterm
 </code></pre>
 <p><code>--force</code> skips already installed packages during the retry.</p>
@@ -1123,20 +1131,20 @@ installations:</p>
 <pre><code>$ pkgman sysup --deps --depsort --group
 </code></pre>
 <h4 id="662-configuring-pkgman">6.6.2. Configuring pkgman</h4>
-<p><code>pkgman(1)</code> is configured via <code>/etc/pkgman.conf</code>. Key settings:</p>
+<p><code>pkgman(1)</code> is configured via <code>/etc/pkgman.conf</code>.  Key settings:</p>
 <ul>
-<li><p><code>pkgsrcdir</code>
+<li><p><code>pkgsrcdir</code>:
 Defines directories for package source collections (you can list
-multiple). The <code>pkgsrc-core</code> collection is enabled by default. See
+multiple).  The <code>pkgsrc-core</code> collection is enabled by default.  See
 <a href="#722-collections">7.2.2. Collections</a> for additional collections.</p>
 <p>Details about <code>pkgsrcdir</code> and how it is used to configure
 Collections and Repositories are explored in Chapter 7.</p>
 </li>
-<li><p><code>runscripts</code>
+<li><p><code>runscripts</code>:
 Enables <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and
 <code>post-remove</code> scripts during operations. <strong>Enable this option.</strong></p>
 </li>
-<li><p><code>logfile</code>
+<li><p><code>logfile</code>:
 Specifies the log file for <code>pkgman(8)</code> operations.</p>
 </li>
 </ul>
@@ -1151,48 +1159,48 @@ serving as the central orchestration tool.</p>
 <h3 id="71-introduction">7.1. Introduction</h3>
 <p>Zeppe-Lin organizes software sources into three key components:</p>
 <ul>
-<li><p>Package Sources:
+<li><p><strong>Package Sources:</strong>
 Self-contained directories that include all files and instructions
-needed to build and install software. These are the foundation of
+needed to build and install software.  These are the foundation of
 Zeppe-Lin's software management.</p>
 </li>
-<li><p>Collections:
+<li><p><strong>Collections:</strong>
 Logical groupings of Package Sources, organized by purpose (e.g.,
-core, system tools, desktop applications). Collections simplify
+core, system tools, desktop applications).  Collections simplify
 software organization and provide modularity.</p>
 </li>
-<li><p>Repositories:
+<li><p><strong>Repositories:</strong>
 Distributed storage systems that host one or more Collections.
 Repositories enable versioning, collaboration, and synchronization
 across systems.</p>
 </li>
 </ul>
 <p>These components provide a structured approach to building, managing,
-and distributing software on Zeppe-Lin. Tools like <code>pkgmk(8)</code> and
+and distributing software on Zeppe-Lin.  Tools like <code>pkgmk(8)</code> and
 <code>pkgman(1)</code> are used to interact with these components, supporting
 workflows such as dependency management, package building, and system
 updates.</p>
 <h3 id="72-organizing-package-sources">7.2. Organizing Package Sources</h3>
 <h4 id="721-package-source-the-core-unit">7.2.1. Package Source: The Core Unit</h4>
 <p>In Zeppe-Lin, a Package Source is the fundamental unit for building
-software. Each one represents a single application, library, or
+software.  Each one represents a single application, library, or
 utility, organized as a directory with all the necessary files to
 build and install the software.</p>
 <p>Essential files include:</p>
 <ul>
 <li><p><code>Pkgfile</code>:
-The main build script. It defines the package's metadata (name,
+The main build script.  It defines the package's metadata (name,
 version, dependencies) and includes the steps for downloading,
 compiling, and packaging the software using <code>pkgmk(8)</code>.</p>
 </li>
 <li><p><code>.md5sum</code>:
 This file contains checksums for verifying the integrity of
-downloaded source files. It ensures that the files have not been
+downloaded source files.  It ensures that the files have not been
 altered or corrupted during transfer.</p>
 </li>
 <li><p><code>.footprint</code>:
 Used for build verification, it lists the files expected in the
-final package. This helps maintain consistency in builds.</p>
+final package.  This helps maintain consistency in builds.</p>
 </li>
 </ul>
 <p>Some Package Sources may include additional files to support custom
@@ -1212,7 +1220,7 @@ automatically.</p>
 <p>Together, these files create a self-contained environment for building
 and managing software.</p>
 <h4 id="722-collections">7.2.2. Collections</h4>
-<p>Collections are logical groupings of Package Sources. A collection is
+<p>Collections are logical groupings of Package Sources.  A collection is
 simply a directory containing multiple Package Sources with a shared
 purpose, like system utilities or desktop applications.</p>
 <p>Example Collection structure:</p>
@@ -1230,9 +1238,9 @@ purpose, like system utilities or desktop applications.</p>
 |
 `-- ... (more Package Sources)
 </code></pre>
-<p>This logical organization enables modular software management. Instead
-of dealing with individual packages in isolation, Collections provide
-a structured approach to grouping and managing related sets of
+<p>This logical organization enables modular software management.
+Instead of dealing with individual packages in isolation, Collections
+provide a structured approach to grouping and managing related sets of
 software.</p>
 <p>Common Collections in Zeppe-Lin:</p>
 <ul>
@@ -1283,10 +1291,10 @@ official package source collections and enable them for <code>pkgman(1)</code>.<
 # git clone https://github.com/zeppe-lin/pkgsrc-desktop --branch 1.x
 </code></pre>
 <p>Replace <code>1.x</code> with the branch matching your Zeppe-Lin release (e.g.,
-<code>1.x</code> for version 1.0 or 1.1). Check the Zeppe-Lin website or release
+<code>1.x</code> for version 1.0 or 1.1).  Check the Zeppe-Lin website or release
 notes for the correct branch.</p>
 <h5 id="7312-enabling-collections-in-pkgmanconf">7.3.1.2. Enabling Collections in pkgman.conf</h5>
-<p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections. For
+<p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections.  For
 example:</p>
 <pre><code># /etc/pkgman.conf
 pkgsrcdir /usr/src/pkgsrc-core
@@ -1330,8 +1338,8 @@ option:</p>
 [ ] /usr/src/pkgsrc-system/vim
 </code></pre>
 <h5 id="7322-searching-for-packages">7.3.2.2. Searching for Packages</h5>
-<p>If you're looking for specific software, use the <code>search</code> command. For
-example, to search for packages related to <code>alsa</code>:</p>
+<p>If you're looking for specific software, use the <code>search</code> command.
+For example, to search for packages related to <code>alsa</code>:</p>
 <pre><code>$ pkgman search alsa
 </code></pre>
 <p>Example output:</p>
@@ -1355,18 +1363,15 @@ option:</p>
 <p>Build and install multiple packages:</p>
 <pre><code># pkgman install --deps --group vim zathura
 </code></pre>
+<p>For verbose output (show building process on stdout):</p>
+<pre><code># pkgman install -vv --deps --group vim zathura
+</code></pre>
+<p>Dry run:</p>
+<pre><code># pkgman install -vv --test --deps --group vim zathura
+</code></pre>
 <p><strong>Tip:</strong> Use <code>pkgman search</code> to locate package names.</p>
-<p>Customize installations:</p>
-<ul>
-<li><p>Verbose output (<code>-vv</code>):</p>
-<p>  # pkgman install --deps -vv vim</p>
-</li>
-<li><p>Dry Run (<code>--test</code>):</p>
-<p>  # pkgman install --deps --test vim</p>
-</li>
-</ul>
-<p>Run <code>pkgman install --help</code> or see <code>pkgman-install(1)</code> for all
-installation options.</p>
+<p>Run <code>pkgman install --help</code> or see <code>pkgman-install(1)</code> for information
+about all nstallation options.</p>
 <h4 id="733-keeping-your-system-up-to-date">7.3.3. Keeping Your System Up-to-Date</h4>
 <p>Maintaining your Zeppe-Lin system involves two primary tasks:</p>
 <ol>
@@ -1416,23 +1421,22 @@ tmux            3.3a-1         3.3a-2
 Package         Installed      Required by
 libncurses      6.2-1          vim
 </code></pre>
-<p>Review this output to determine which packages need updates. Packages
+<p>Review this output to determine which packages need updates.  Packages
 in the "not found" section may have been removed from the collection
 or installed manually from other sources.</p>
 <h5 id="7333-updating-packages">7.3.3.3. Updating Packages</h5>
-<p>Use <code>pkgman sysup</code> for a system upgrade:</p>
-<p><strong>Step 1: Download Source Files</strong></p>
-<p>Download all required source files first:</p>
+<p>Use <code>pkgman sysup</code> for a system upgrade.</p>
+<p><strong>Step 1:</strong> Download all required source files first:</p>
 <pre><code># pkgman sysup -do
 </code></pre>
 <p>This ensures that all necessary files are retrieved before the upgrade
 begins, avoiding interruptions during the build process.</p>
-<p><strong>Step 2: Upgrade Packages</strong></p>
+<p><strong>Step 2:</strong> Upgrade Packages:</p>
 <pre><code># pkgman sysup --deps --depsort --group
 </code></pre>
 <p>These options ensure proper dependency handling and upgrade order.</p>
 <h5 id="7334-updating-specific-packages">7.3.3.4. Updating Specific Packages</h5>
-<p>Update individual packages with pkgman update. For example:</p>
+<p>Update individual packages with pkgman update.  For example:</p>
 <pre><code># pkgman update --deps --depsort --group tmux feh
 </code></pre>
 <p>This command updates only the specified packages while resolving their
@@ -1440,35 +1444,34 @@ dependencies.</p>
 <h4 id="734-advanced-package-management">7.3.4. Advanced Package Management</h4>
 <h5 id="7341-detecting-broken-dependencies-with-revdep1">7.3.4.1. Detecting Broken Dependencies with revdep(1)</h5>
 <p><code>revdep(1)</code> checks installed packages for missing or incorrect shared
-libraries. Use it to verify system stability and identify packages
+libraries.  Use it to verify system stability and identify packages
 needing a rebuild after updates.</p>
 <p>Examples:</p>
-<ul>
+<ol>
 <li><p>Check system-wide for broken libraries:</p>
-<p>  revdep</p>
+<pre><code>$ revdep
+</code></pre>
 </li>
 <li><p>Rebuild affected packages:</p>
-<p>  pkgman update -fr $(revdep)</p>
+<pre><code># pkgman update -fr $(revdep)
+</code></pre>
 </li>
 <li><p>Inspect a specific package:</p>
-<p>  revdep bash</p>
+<pre><code>$ revdep -p bash
+</code></pre>
 </li>
-<li><p>Add non-standard library directories:
-Create a file in <code>/etc/revdep.d/</code> named after the package.
-Example:</p>
-<p>  /usr/lib/firefox</p>
-</li>
-</ul>
+</ol>
 <p>Run <code>revdep</code> regularly after updates or repository syncs to ensure all
 packages remain functional.</p>
-<h5 id="7341-ignoring-packages-during-updates">7.3.4.1. Ignoring Packages During Updates</h5>
+<p>See <code>revdep(1)</code> and <code>revdep.d(5)</code> for more information.</p>
+<h5 id="7342-ignoring-packages-during-updates">7.3.4.2. Ignoring Packages During Updates</h5>
 <p>Prevent updates to specific packages during system upgrades with
-<code>--ignore</code>. Example:</p>
+<code>--ignore</code>.  Example:</p>
 <pre><code># pkgman sysup --deps --depsort --group --ignore=vim,tmux
 </code></pre>
 <p>Regularly revisit ignored packages to avoid security risks and
 dependency conflicts.</p>
-<h5 id="7342-locking-packages">7.3.4.2. Locking Packages</h5>
+<h5 id="7343-locking-packages">7.3.4.3. Locking Packages</h5>
 <p>Lock a package to prevent upgrades indefinitely:</p>
 <pre><code># pkgman lock vim
 </code></pre>
@@ -1477,19 +1480,19 @@ dependency conflicts.</p>
 </code></pre>
 <p>Locked packages are useful for maintaining specific software versions
 critical to workflows.</p>
-<h5 id="7343-handling-lower-available-versions">7.3.4.3. Handling Lower Available Versions</h5>
+<h5 id="7344-handling-lower-available-versions">7.3.4.4. Handling Lower Available Versions</h5>
 <p>Occasionally, a package source may revert to a lower version than the
-one installed on your system. This often happens when maintainers roll
-back to a stable release after issues with a newer version. By
+one installed on your system.  This often happens when maintainers
+roll back to a stable release after issues with a newer version.  By
 default, <code>pkgman</code> does not prioritize installed versions over
 available ones.</p>
 <p>To override this behavior, enable the <code>preferhigher</code> option:</p>
 <pre><code># pkgman --config-set=&quot;preferhigher yes&quot; sysup --deps --depsort
 </code></pre>
 <p>This ensures <code>pkgman</code> retains the higher installed version during
-upgrades. Use this feature cautiously, as higher versions might be
+upgrades.  Use this feature cautiously, as higher versions might be
 less stable or unsupported.</p>
-<h5 id="7344-practical-considerations">7.3.4.4. Practical Considerations</h5>
+<h5 id="7345-practical-considerations">7.3.4.5. Practical Considerations</h5>
 <ul>
 <li><p>Regularly review ignored and locked packages for security and
 compatibility.</p>
@@ -1502,20 +1505,20 @@ using potentially unstable software.</p>
 </ul>
 <h3 id="74-extending-software-sources">7.4. Extending Software Sources</h3>
 <h4 id="741-adding-a-local-collection">7.4.1. Adding a Local Collection</h4>
-<p>This section explains how to create custom collections. A local
+<p>This section explains how to create custom collections.  A local
 collection allows you to add new packages that are not available in
 the official repositories.</p>
 <h5 id="7411-creating-the-collection-directory">7.4.1.1. Creating the Collection Directory</h5>
 <p>Create your local collection directory in <code>/usr/src</code>, alongside
-official Zeppe-Lin collections. Using directories with broader read
-permissions ensures that unprivileged users like pkgmk can access the
-collection.</p>
+official Zeppe-Lin collections.  Using directories with broader read
+permissions ensures that unprivileged users like <code>pkgmk</code> can access
+the collection.</p>
 <p>Example:</p>
 <pre><code># cd /usr/src
 # mkdir mynewcollection
 </code></pre>
-<h5 id="7412-enabling-the-collection-in-pkgmanconf">7.4.1.2. Enabling the Collection in pkgman.conf</h5>
-<p>Add your collection to <code>/etc/pkgman.conf</code>. List it above official
+<h5 id="7412-enabling-the-collection-in-codepkgmanconfcode">7.4.1.2. Enabling the Collection in <code>pkgman.conf</code></h5>
+<p>Add your collection to <code>/etc/pkgman.conf</code>.  List it above official
 collections to give it search priority:</p>
 <pre><code># /etc/pkgman.conf
 pkgsrcdir /usr/src/mynewcollection
@@ -1540,8 +1543,8 @@ pkgsrcdir /usr/src/pkgsrc-xorg
 sources.</p>
 <h4 id="742-creating-custom-packages">7.4.2. Creating Custom Packages</h4>
 <p>After setting up your local collection, the next step is to add a
-package source. This involves creating a directory for the package and
-writing a <code>Pkgfile</code> with build instructions and metadata.</p>
+package source.  This involves creating a directory for the package
+and writing a <code>Pkgfile</code> with build instructions and metadata.</p>
 <h5 id="7421-creating-the-package-directory">7.4.2.1. Creating the Package Directory</h5>
 <p>Create a subdirectory for the new package in your local collection.
 Ensure the directory name matches the package name in the <code>Pkgfile</code>:</p>
@@ -1549,8 +1552,8 @@ Ensure the directory name matches the package name in the <code>Pkgfile</code>:<
 # cd /usr/src/mynewcollection/hello
 </code></pre>
 <p><strong>Important:</strong>
-Naming consistency is critical. A mismatch between the directory
-name and name in the <code>Pkgfile</code> cause build error.</p>
+Naming consistency is critical.  A mismatch between the directory name
+and <code>name</code> in the <code>Pkgfile</code> cause build error.</p>
 <h5 id="7422-writing-the-pkgfile">7.4.2.2. Writing the Pkgfile</h5>
 <p>The <code>Pkgfile</code> serves two purposes:</p>
 <ol>
@@ -1625,19 +1628,15 @@ occur because packages are built with the unprivileged <code>pkgmk</code> user,
 which has not write permissions in <code>/usr/src/mynewcollection</code>.</p>
 <h5 id="7432-resolving-permissions-for-build-files">7.4.3.2. Resolving Permissions for Build Files</h5>
 <p>There are at least two options to resolve permissions case.</p>
-<ul>
-<li><ol>
-<li>Manually Updating Files.</li>
-</ol>
+<ol>
+<li><p><strong>Manually Updating Files.</strong></p>
 <p>Navigate to the package directory and generate the files:</p>
 <pre><code># cd /usr/src/mynewcollection/hello
 # pkgmk -um   # Update .md5sum
 # pkgmk -uf   # Update .footprint
 </code></pre>
 </li>
-<li><ol start="2">
-<li>Adjusting Permissions.</li>
-</ol>
+<li><p><strong>Adjusting Permissions.</strong></p>
 <p>Grant write access to pkgmk using <code>setfacl(1)</code>:</p>
 <pre><code># setfacl -m u:pkgmk:rwx /usr/src/mynewcollection/hello
 </code></pre>
@@ -1645,7 +1644,7 @@ which has not write permissions in <code>/usr/src/mynewcollection</code>.</p>
 <pre><code># pkgman update -fr hello
 </code></pre>
 </li>
-</ul>
+</ol>
 <h5 id="7433-verifying-generated-files">7.4.3.3. Verifying Generated Files</h5>
 <p>After addressing warnings, confirm the presence of required files:</p>
 <pre><code>$ ls -l /usr/src/mynewcollection/hello
@@ -1668,12 +1667,12 @@ which has not write permissions in <code>/usr/src/mynewcollection</code>.</p>
 </code></pre>
 <h4 id="744-building-packages-from-bleeding-edge-sources">7.4.4. Building Packages from Bleeding-Edge Sources</h4>
 <p>Some packages need to be built directly from version control systems
-(VCS) like Git or Subversion, instead of fixed release archives. This
+(VCS) like Git or Subversion, instead of fixed release archives.  This
 section outlines two approaches: a stable approach and a bleeding-edge
 approach.</p>
 <h5 id="7441-stable-commit-approach">7.4.4.1. Stable Commit Approach</h5>
 <p>For production, pinning to a specific commit ensures consistent
-builds. Example:</p>
+builds.  Example:</p>
 <pre><code># Description: Ratpoison window manager
 # URL:         https://www.nongnu.org/ratpoison/
 # Depends on:  xorg-server
@@ -1708,7 +1707,7 @@ build() {
 changes.</p>
 <h5 id="7442-bleeding-edge-approach">7.4.4.2. Bleeding-Edge Approach</h5>
 <p>For testing, dynamically set the version to the current date
-(<code>YYYYMMDD</code>) to track upstream changes. Example:</p>
+(<code>YYYYMMDD</code>) to track upstream changes.  Example:</p>
 <pre><code># Description: Ruby interpreter (bleeding-edge)
 # URL:         http://www.ruby-lang.org
 # Depends on:  gdbm libgmp openssl zlib libffi libyaml
@@ -1774,7 +1773,7 @@ directly in <code>Pkgfiles</code> for portability.</li>
 <h3 id="75-tips-and-best-practices">7.5. Tips and Best Practices</h3>
 <h4 id="751-renicing-builds">7.5.1. Renicing Builds</h4>
 <p>Package builds can reduce system responsiveness due to high CPU and
-I/O usage. Mitigate this by adjusting process priorities using
+I/O usage.  Mitigate this by adjusting process priorities using
 <code>nice(1)</code> and <code>ionice(1)</code>:</p>
 <ul>
 <li><code>nice(1)</code>: Lowers CPU priority (higher number = lower priority).</li>
@@ -1792,17 +1791,19 @@ used).</li>
 <p>These changes help the build process interfere less with interactive
 tasks, improving system responsiveness.</p>
 <h4 id="752-ram-builds-for-faster-package-compilation">7.5.2. RAM Builds for Faster Package Compilation</h4>
-<p>Using RAM for temporary build files (tmpfs) can significantly speed up
-package compilation in Zeppe-Lin.</p>
+<p>Using RAM for temporary build files (<code>tmpfs</code>) can significantly speed
+up package compilation in Zeppe-Lin.</p>
 <h5 id="7521-enable-ram-builds-in-zeppe-lin">7.5.2.1. Enable RAM Builds in Zeppe-Lin</h5>
 <ol>
 <li><p>Uncomment this line in <code>/etc/fstab</code>:</p>
-<p> pkgmk /var/cache/pkgmk/work tmpfs size=<SIZE>,uid=<UID>,defaults 0 0</p>
-<p>Replace <code>SIZE</code> (e.g., <code>16G</code>). The <code>UID</code> for the <code>pkgmk</code> user is
+<pre><code>pkgmk /var/cache/pkgmk/work tmpfs size=&lt;SIZE&gt;,uid=&lt;UID&gt;,defaults 0 0
+</code></pre>
+<p>Replace <code>SIZE</code> (e.g., <code>16G</code>).  The <code>UID</code> for the <code>pkgmk</code> user is
 preconfigured.</p>
 </li>
-<li><p>Mount tmpfs:</p>
-<p>  # mount pkgmk</p>
+<li><p>Mount <code>tmpfs</code>:</p>
+<pre><code># mount pkgmk
+</code></pre>
 </li>
 <li><p>Remove <code>-pipe</code> from <code>CFLAGS</code> and <code>CXXFLAGS</code> in <code>/etc/pkgmk.conf</code>.</p>
 </li>
@@ -1832,9 +1833,9 @@ preconfigured.</p>
 </ol>
 <h4 id="753-unprivileged-builds-in-zeppe-lin">7.5.3. Unprivileged Builds in Zeppe-Lin</h4>
 <p>Zeppe-Lin builds packages as an unprivileged user (typically <code>pkgmk</code>)
-by default. This secure and modular setup isolates the build process
-to mitigate risks. <strong>If you are using Zeppe-Lin, these steps are
-already configured out of the box. There is no need to repeat them.</strong></p>
+by default.  This secure and modular setup isolates the build process
+to mitigate risks.  <strong>If you are using Zeppe-Lin, these steps are
+already configured out of the box.  There is no need to repeat them.</strong></p>
 <p>However, this guide is provided for educational purposes, to show how
 it was achieved, or for users wanting to adapt this approach for other
 distributions or customizations.</p>
@@ -1884,12 +1885,12 @@ and run:</p>
 <p>This ensures consistent locale settings across your system.</p>
 <h3 id="82-system-initialization-and-configuration">8.2. System Initialization and Configuration</h3>
 <p>Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
-services, and shutdown. This system relies on shell scripts located in
-<code>/etc</code> and <code>/etc/rc.d</code>, offering an efficient and flexible way to
+services, and shutdown.  This system relies on shell scripts located
+in <code>/etc</code> and <code>/etc/rc.d</code>, offering an efficient and flexible way to
 control processes.</p>
 <h4 id="821-system-states-runlevels">8.2.1. System States (Runlevels)</h4>
 <p>Runlevels define the operating state of the system, such as halting,
-rebooting, or normal operation. Zeppe-Lin's runlevels are configured
+rebooting, or normal operation.  Zeppe-Lin's runlevels are configured
 in <code>/etc/inittab</code>:</p>
 <table>
 <tr><th>Runlevel </th><th>State            </th><th>Purpose                                   </th></tr>
@@ -1900,10 +1901,10 @@ in <code>/etc/inittab</code>:</p>
 <tr><td>6        </td><td>Reboot           </td><td>Restart the system                        </td></tr>
 </table>
 <p>By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
-enables all services and user access. Single-user mode (runlevel 1 or
+enables all services and user access.  Single-user mode (runlevel 1 or
 S) is ideal for system maintenance, providing a minimal environment.</p>
 <h4 id="822-core-init-scripts">8.2.2. Core Init Scripts</h4>
-<p>Zeppe-Lin’s init system uses the following scripts to manage system
+<p>Zeppe-Lin's init system uses the following scripts to manage system
 processes:</p>
 <table>
 <tr><th>File/Directory   </th><th>Purpose                                                           </th></tr>
@@ -1919,17 +1920,16 @@ processes:</p>
 commands or <code>/etc/rc.modules</code> to load specific kernel modules.</p>
 <p>See <code>rc(8)</code> for details.</p>
 <h4 id="823-configuring-runlevels-and-init-behavior">8.2.3. Configuring Runlevels and Init Behavior</h4>
-<p>The <code>/etc/inittab</code> file determines actions for each runlevel. Each entry
-follows this format: <code>id:runlevel:action:command</code></p>
-<p><strong>Key Components:</strong></p>
-
+<p>The <code>/etc/inittab</code> file determines actions for each runlevel.  Each
+entry follows this format: <code>id:runlevel:action:command</code></p>
+<p>Key Components:</p>
 <ul>
 <li><code>id</code>: Unique entry identifier.</li>
 <li><code>runlevel</code>: Runlevels the command applies to.</li>
 <li><code>action</code>: Specifies when the command runs (e.g., on boot, shutdown).</li>
 <li><code>command</code>: The script or program to execute.</li>
 </ul>
-<p><strong>Example <code>/etc/inittab</code> Configuration:</strong></p>
+<p>Example <code>/etc/inittab</code> Configuration:</p>
 <pre><code># Set default runlevel to multi-user mode
 id:2:initdefault:
 
@@ -1944,10 +1944,10 @@ c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
 c2:2:respawn:/sbin/agetty 38400 tty2 linux
 </code></pre>
 <p>This configuration ensures a smooth startup, runtime, and shutdown
-process. See <code>inittab(5)</code> for configuration details.</p>
-<h4 id="824-configuring-system-behavior-codeetcrcconfcode">8.2.4. Configuring System Behavior (<code>/etc/rc.conf</code>)</h4>
+process.  See <code>inittab(5)</code> for configuration details.</p>
+<h4 id="824-configuring-system-behavior-etcrcconf">8.2.4. Configuring System Behavior (/etc/rc.conf)</h4>
 <p>The <code>/etc/rc.conf</code> file centralizes system configuration settings,
-such as hostname, timezone, and services. Example:</p>
+such as hostname, timezone, and services.  Example:</p>
 <pre><code>HOSTNAME=&quot;myhostname&quot;
 TIMEZONE=&quot;Europe/Berlin&quot;
 SERVICES=&quot;lo crond sshd&quot;
@@ -1956,9 +1956,9 @@ SERVICES=&quot;lo crond sshd&quot;
 which are started by <code>/etc/rc.multi</code> and stopped by <code>/etc/rc.shutdown</code>
 (in reverse order).</p>
 <p>See <code>rc.conf(5)</code> for additional configuration settings.</p>
-<h4 id="825-service-control-scripts-codeetcrcdcode">8.2.5. Service Control Scripts (<code>/etc/rc.d/</code>)</h4>
+<h4 id="825-service-control-scripts-etcrcd">8.2.5. Service Control Scripts (/etc/rc.d/)</h4>
 <p>The <code>/etc/rc.d/</code> directory contains individual scripts to manage
-services. Each script supports commands like:</p>
+services.  Each script supports commands like:</p>
 <ul>
 <li><code>start</code>: Activate the service.</li>
 <li><code>stop</code>: Terminates the service.</li>
@@ -1969,15 +1969,16 @@ services. Each script supports commands like:</p>
 <pre><code>/etc/rc.d/sshd start
 /etc/rc.d/sshd status
 </code></pre>
-<h4 id="826-kernel-module-management-codeetcrcmodulescode">8.2.6. Kernel Module Management (<code>/etc/rc.modules</code>)</h4>
+<p>See <code>rc.d(7)</code> for more information.</p>
+<h4 id="826-kernel-module-management-etcrcmodules">8.2.6. Kernel Module Management (/etc/rc.modules)</h4>
 <p>The <code>/etc/rc.modules</code> file is used to load specific kernel modules at
-boot. It begins by running <code>/sbin/depmod -a</code> to map module
-dependencies, ensuring proper functionality. After this, include
+boot.  It begins by running <code>/sbin/depmod -a</code> to map module
+dependencies, ensuring proper functionality.  After this, include
 commands like:</p>
 <pre><code>/sbin/modprobe virtio_net
 </code></pre>
-<p>For modules requiring parameters, it’s better to configure settings in
-<code>/etc/modprobe.d/</code> for persistent management. For example, to set
+<p>For modules requiring parameters, it's better to configure settings in
+<code>/etc/modprobe.d/</code> for persistent management.  For example, to set
 options for the <code>snd_hda_intel</code> module, create a file like
 <code>/etc/modprobe.d/snd_hda_intel.conf</code> with the following content:</p>
 <pre><code>options snd_hda_intel probe_mask=8
@@ -1987,16 +1988,16 @@ module is reloaded, making manual specification unnecessary and
 adhering to best practices.</p>
 <p>The <code>/etc/rc.modules</code> script is invoked by <code>/etc/rc</code> during the boot
 process.</p>
-<h3 id="827-custom-startup-commands-codeetcrclocalcode">8.2.7. Custom Startup Commands (<code>/etc/rc.local</code>)</h3>
+<h4 id="827-custom-startup-commands-etcrclocal">8.2.7. Custom Startup Commands (/etc/rc.local)</h4>
 <p>User-defined actions are added to <code>/etc/rc.local</code>, executed as last
 step of a normal boot (invoked by <code>/etc/rc.multi</code>).  Example:</p>
 <pre><code># Start a monitoring app
 /usr/bin/my_monitoring_app &amp;
 </code></pre>
 <h3 id="828-from-boot-to-login-system-startup-sequence">8.2.8. From Boot to Login: System Startup Sequence</h3>
-<p>Here's the sequence from power-up to login. It differs slightly with
+<p>Here's the sequence from power-up to login.  It differs slightly with
 or without <code>initramfs</code>.</p>
-<p><strong>Without <code>initramfs</code>:</strong></p>
+<h4 id="8281-without-initramfs">8.2.8.1. Without Initramfs</h4>
 <ol>
 <li>Power On: System starts.</li>
 <li>Bootloader: Loads the kernel into memory.</li>
@@ -2005,26 +2006,29 @@ or without <code>initramfs</code>.</p>
 <li><code>/etc/inittab</code> is read: <code>init</code> gets its instructions.</li>
 <li><code>/etc/rc</code> runs: The main boot script executes.</li>
 <li>Runlevel is set: The default runlevel (usually 2) is chosen.</li>
-<li><code>/etc/rc.multi</code> starts services: Services from <code>/etc/rc.conf</code> are launched.</li>
+<li><code>/etc/rc.multi</code> starts services:
+Services from <code>/etc/rc.conf</code> are launched.</li>
 <li><code>/etc/rc.local</code> runs: Your custom commands are executed.</li>
 <li> Login prompts: The system is ready for you.</li>
 </ol>
-<p><strong>With <code>initramfs</code>:</strong></p>
+<h4 id="8282-with-initramfs">8.2.8.2. With Initramfs</h4>
 <ol>
 <li>Power On: System starts.</li>
 <li>Bootloader: Loads kernel and initramfs into memory.</li>
 <li>Kernel starts: Initializes basic hardware.</li>
 <li><code>initramfs</code> mounts: A temporary root filesystem in RAM.</li>
-<li><code>/init</code> from <code>initramfs</code> runs: Performs early setup (e.g., storage drivers).</li>
+<li><code>/init</code> from <code>initramfs</code> runs:
+Performs early setup (e.g., storage drivers).</li>
 <li>Real root mounts: Your main filesystem is mounted.</li>
 <li>Root is switched: System moves from initramfs to your real root.</li>
-<li><code>/sbin/init</code> on real root starts: The init process from your main system.</li>
-<li>(Steps 5-10 from <strong>Without <code>initramfs</code></strong> follow).</li>
+<li><code>/sbin/init</code> on real root starts:
+The init process from your main system.</li>
+<li>(Steps 5-10 from <a href="#8281-without-initramfs">Without Initramfs</a> follow).</li>
 </ol>
-<h3 id="829-minimal-mode-single-user-mode">8.2.9. Minimal Mode (Single-User Mode)</h3>
+<h4 id="829-minimal-mode-single-user-mode">8.2.9. Minimal Mode (Single-User Mode)</h4>
 <p>Runlevel 1 or S boots the system with a minimal setup for maintenance.
 It runs <code>/etc/rc.single</code>, providing a root shell for troubleshooting.</p>
-<h3 id="8210-graceful-shutdown-procedure">8.2.10. Graceful Shutdown Procedure</h3>
+<h4 id="8210-graceful-shutdown-procedure">8.2.10. Graceful Shutdown Procedure</h4>
 <p>When shutting down or rebooting, <code>/etc/rc.shutdown</code> is invoked to stop
 services, unmount filesystems, and safely power off the system.</p>
 <h3 id="83-networking">8.3. Networking</h3>
@@ -2044,8 +2048,8 @@ to the loopback lines:</p>
 </code></pre>
 <p>This ensures your system recognizes its own name.</p>
 <h4 id="832-static-address">8.3.2. Static Address</h4>
-<p>To configure a static IP, edit <code>/etc/rc.d/net</code>. Set the network
-interface, IP, subnet mask, and gateway. For example:</p>
+<p>To configure a static IP, edit <code>/etc/rc.d/net</code>.  Set the network
+interface, IP, subnet mask, and gateway.  For example:</p>
 <pre><code>DEV=enp11s0
 ADDR=192.168.1.100
 MASK=24
@@ -2077,7 +2081,7 @@ package and edit <code>/etc/rc.d/dhcpcd</code> to specify the network interface
 To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</code> line in
 <code>/etc/rc.conf</code>.</p>
 <h4 id="834-wireless-network">8.3.4. Wireless Network</h4>
-<p>Ensure the wireless interface isn't blocked. Use <code>rfkill(8)</code>:</p>
+<p>Ensure the wireless interface isn't blocked.  Use <code>rfkill(8)</code>:</p>
 <pre><code>$ rfkill list
 # rfkill unblock &lt;ID|TYPE&gt;
 </code></pre>
@@ -2119,7 +2123,7 @@ To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</co
 }
 </code></pre>
 <p>For automatic IP, ensure the wireless interface is set in
-<code>/etc/rc.d/dhcpcd</code>. Start the services:</p>
+<code>/etc/rc.d/dhcpcd</code>.  Start the services:</p>
 <pre><code># /etc/rc.d/wpa_supplicant start
 # /etc/rc.d/dhcpcd start
 </code></pre>
@@ -2164,8 +2168,8 @@ environment setup, and PAM (Pluggable Authentication Modules).</p>
 <p>Zeppe-Lin uses strong password encryption with <code>SHA512</code> for secure
 user accounts.</p>
 <p>Applications requiring user authentication via <code>crypt(3)</code> must link
-against libcrypt (<code>-lcrypt</code>). Zeppe-Lin's <code>libcrypt</code> supports <code>SHA512</code>
-and older encryption methods like <code>DES</code>.</p>
+against libcrypt (<code>-lcrypt</code>).  Zeppe-Lin's <code>libcrypt</code> supports
+<code>SHA512</code> and older encryption methods like <code>DES</code>.</p>
 <h4 id="852-user-environment-configuration">8.5.2. User Environment Configuration</h4>
 <p>User account creation via <code>useradd(8)</code> is governed by
 <code>/etc/login.defs</code>.  Key settings include:</p>
@@ -2176,7 +2180,7 @@ new users.</li>
 new users.</li>
 </ul>
 <p>Zeppe-Lin follows a minimalist approach -- home directories created
-with <code>useradd -m</code> are empty by default. Customize user environments
+with <code>useradd -m</code> are empty by default.  Customize user environments
 by:</p>
 <ul>
 <li>Using <code>/etc/skel</code> for default home directory contents.</li>
@@ -2188,12 +2192,12 @@ by:</p>
 commands (e.g., <code>sudo(8)</code>) without specifying full paths.</p>
 <h4 id="853-pluggable-authentication-modules-pam">8.5.3. Pluggable Authentication Modules (PAM)</h4>
 <p>Zeppe-Lin uses PAM (<code>linux-pam</code> package) for flexible user
-authentication. PAM's configuration files are in <code>/etc/pam.d/</code>, where
+authentication.  PAM's configuration files are in <code>/etc/pam.d/</code>, where
 each file corresponds to a specific login service.</p>
 <p>Common PAM modules include:</p>
 <ul>
 <li><p><code>pam_dumb_runtime_dir.so</code>: Creates <code>XDG_RUNTIME_DIR</code> for desktop
-apps (freedesktop.org). Ensure it's active in
+apps (freedesktop.org).  Ensure it's active in
 <code>/etc/pam.d/common-session</code> during system upgrades.</p>
 </li>
 <li><p><code>pam_env.so</code>: Sets and exports environment variables at login.</p>
@@ -2209,29 +2213,29 @@ apps (freedesktop.org). Ensure it's active in
 <p>It's our 'Whole Lotta Love' for Linux and GNU, just renamed!</p>
 </li>
 <li><p>I've looked everywhere, but I can't find the Zeppe-Lin installation
-CD/DVD. Did I miss something?</p>
+CD/DVD.  Did I miss something?</p>
 <p>Ah, the elusive Zeppe-Lin installation disc! Fear not, intrepid
-user, your eyesight is likely just fine. You see, Zeppe-Lin is so
+user, your eyesight is likely just fine.  You see, Zeppe-Lin is so
 cutting-edge, so <strong>minimal</strong>, that it decided to ditch physical
 media altogether!</p>
 <p>Instead of hunting for a shiny disc, you embark on a digital
-treasure hunt to download the root filesystem. Think of it as our
+treasure hunt to download the root filesystem.  Think of it as our
 way of saving trees... or maybe we just figured you already have a
 perfectly good Live CD lying around.</p>
-<p>So, no, you didn't miss it. There's no disc. Now, about that rootfs
-download...
+<p>So, no, you didn't miss it.  There's no disc.  Now, about that
+rootfs download...
 (See <a href="#241-download-rootfs-tarball">2.4.1. Download Rootfs Tarball</a>)</p>
 </li>
 </ol>
 <h2 id="10-reporting-bugs">10. REPORTING BUGS</h2>
-<p>For bug reports regarding this handbook, please use the issue tracker
-at <a href="https://github.com/zeppe-lin/zeppe-lin.github.io/issues">https://github.com/zeppe-lin/zeppe-lin.github.io/issues</a>.</p>
+<p>For bug reports regarding this site and handbook, please use the issue
+tracker at <a href="https://github.com/zeppe-lin/zeppe-lin.github.io/issues">https://github.com/zeppe-lin/zeppe-lin.github.io/issues</a>.</p>
 <h2 id="appendix-a-legal-notices">Appendix A: Legal Notices</h2>
 <p>This appendix outlines the legal and licensing information for
 Zeppe-Lin, including copyrights, licenses, and disclaimers.</p>
 <h3 id="a1-software-licenses">A.1 Software Licenses</h3>
 <p>Zeppe-Lin integrates open-source software projects, each with its own
-license. For licensing details, consult the source code of the
+license.  For licensing details, consult the source code of the
 respective packages included in your system.</p>
 <h3 id="a2-build-scripts-licensing">A.2 Build Scripts Licensing</h3>
 <p>Zeppe-Lin build scripts retain their original licensing structure and
@@ -2254,9 +2258,9 @@ Creative Commons Attribution-ShareAlike 3.0 Unported License
 <a href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>.</p>
 <h3 id="a4-disclaimer">A.4 Disclaimer</h3>
 <p>Zeppe-Lin and its documentation are distributed "AS IS" without
-warranty of any kind. This includes, but is not limited to, implied
-warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. All
-usage is at your own risk.</p>
+warranty of any kind.  This includes, but is not limited to, implied
+warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+All usage is at your own risk.</p>
 <div class="footer-separator"></div>
 <div class="footer">
   Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
