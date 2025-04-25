@@ -5,1137 +5,590 @@
 Zeppe-Lin Codebook.
 *Because even pirates need a map to find the treasure (and avoid the kraken).*
 
-This is your essential guide for shaping the future of Zeppe-Lin.
-Designed to be simple, efficiend and KISS-compliant, this codebook
-streamlines the processes of coding, contributing, and releasing new
-versions. With clarity as its core, this resource is here to empower
-your journey as a contributor.
+This guide is your essential blueprint for building the future of
+Zeppe-Lin.  Simple, efficient, and stripped of needless complexity --
+it's designed to streamline coding, contributing, and releasing.
+Clarity is our north star, helping you get things done without fuss.
 
 ## 1. Introduction
 
-Hello, Zeppe-Linauts! Whether you’re refining workflows, squashing
-bugs, or steering the ship toward the next release, this codebook is
-built to keep the process simple and focused. Zeppe-Lin thrives on
-clean code and open collaboration, and this guide is your map for
-staying on course. Let’s make it lean, powerful, and true to the
-spirit of Zeppe-Lin.
+Hello, Zeppe-Linauts!  Whether you're tidying up code, squashing bugs,
+or charting the next release, this codebook keeps things lean and
+laser-focused.  Zeppe-Lin lives and breathes clean code and honest
+collaboration.  So, grab your tools, set your course, and let's keep
+it sharp and delightfully simple.
 
-## 2. Setting Up Your Development Environment
-
-**FIXME**
-
-## 3. Zeppe-Lin Release Process (Overview)
+## 2. Zeppe-Lin Release Process (Overview)
 
 Releasing a new version of Zeppe-Lin is like preparing an airship for
-its next journey. Here's the streamlined process:
+its next journey.  Here's the streamlined process:
 
-* **Toolchain Update:** Refresh the core building tools in
-  `pkgsrc-core` to ensure a strong foundation for all packages.
-
-* **Package Updates:** Update software sources in `pkgsrc-system`,
-  `pkgsrc-xorg`, and `pkgsrc-desktop` to bring in new features and
-  fixes.
-
-* **Rootfs Assembly:** Use `mkrootfs` to build the operating system
-  image -- the core of Zeppe-Lin.
-
-* **Finalize Release:** Sign the image, create release notes, and tag
-  the version in `pkgsrc-core`.
-
-* **Announce Release:** Publish on GitHub, update the website, and
-  refresh the docs.
+- **Branching:** Create new release branches in package source
+  repositories.
+- **Toolchain Update:** Refresh and rebuild core build tools in
+  pkgsrc-core.
+- **Package Updates:** Update software sources in pkgsrc-system,
+  pkgsrc-xorg, and pkgsrc-desktop.
+- **Rootfs Assembly:** Use mkrootfs to build and verify the operating
+  system image.
+- **Finalize Assets:** Sign the rootfs image and create the Git tag
+  for the release version.
+- **Prepare Announcements:** Draft release notes and create website
+  assets (banner, release notes file).
+- **Publish Release:** Announce and publish the release on GitHub and
+  the Zeppe-Lin website.
+- **Post-Release Tasks:** Update documentation, announce on
+  discussions, monitor feedback.
 
 **Key Repositories:**
 
-* `pkgsrc-core`, `pkgsrc-system`, `pkgsrc-xorg`, `pkgsrc-desktop`:
-  Software collections.
-* `zeppe-lin.github.io`: Website and announcements.
-* `artwork`: Release visuals.
+- **Software sources collections:**
+  - `pkgsrc-core.git`
+  - `pkgsrc-system.git`
+  - `pkgsrc-xorg.git`
+  - `pkgsrc-desktop.git`
+- **Website & announcements:**
+  - `zeppe-lin.github.io.git`
+- **Release visuals:**
+  - `artwork.git`
 
 This codebook will guide you through each step.
 Let's get Zeppe-Lin ready for takeoff!
 
-## 4. Creating a Zeppe-Lin Release
+## 3. Creating a Zeppe-Lin Release
 
-### 4.1. Branching Strategy for Package Source Repositories
+### 3.1. Preparation
+
+#### 3.1.1. Branching Strategy for Package Source Repositories
 
 Before updating the toolchain or package sources for a new release,
-create new branches in the pkgsrc repositories to isolate changes and
-maintain stability for previous versions. This strategy applies to:
+create new branches to keep changes isolated and protect stable
+releases.  This applies to the main repositories:
 
-* `pkgsrc-core`
-* `pkgsrc-system`
-* `pkgsrc-xorg`
-* `pkgsrc-desktop`
-* *(and usually, unofficial ones follow this too)*
+- `pkgsrc-core.git`
+- `pkgsrc-system.git`
+- `pkgsrc-xorg.git`
+- `pkgsrc-desktop.git`
+
+The branching strategy is generally followed for unofficial
+repositories as well.
 
 **General Approach:**
 
-1. **For versions 1.x (before 2.0):** Create a branch named `1.x`. It
-   will serve as the development branch for all 1.x releases (e.g.,
-   1.0, 1.1, 1.2).
-
-2. **For versions 2.x and beyond:** Create a branch named `2.x`, and
-   so on for future major versions.
+- **For versions 1.x (pre-2.0):** Create a branch named `1.x` to
+  handle all 1.x releases (e.g., 1.0, 1.1, 1.2).
+- **For versions 2.x and beyond:** Create a branch named after the
+  major version (e.g., `2.x`).
 
 **Creating a New Branch:**
 
-1. Identify the target major version (e.g., 1.0, 2.0).
+1. Identify the target major version (e.g., 1.0).
 
-2. Based on the current stable branch, create a new branch:
+2. From the current stable branch, run:
 
-       git checkout <current_stable_branch> # Ensure you are on the current stable branch
-       git checkout -b <new_branch>         # Create the new development branch for the 1.x series
-       git push origin <new_branch>         # Push the new branch to the remote repository
+        git checkout <current_stable_branch>
+        git checkout -b <new_branch>
+        git push origin <new_branch>
 
-   For example, if the last stable release is `0.9`, create `1.x`:
+   For example, if the last stable release is 0.9 (and `0.x` is
+   current stable branch for 0.9), create branch `1.x`:
 
-       git checkout <0.9_branch_name>
-       git checkout -b 1.x
-       git push origin 1.x
+        git checkout 0.x
+        git checkout -b 1.x
+        git push origin 1.x
 
 All updates for the `1.x` series will now be done on the `1.x` branch,
-keeping ongoing work isolated from stable releases.
+keeping ongoing work isolated from stable releases.  This strategy
+ensures stable releases remain unaffected while development stays
+organized.
 
-This strategy ensures stable releases remain unaffected while
-development stays organized.
+#### 3.1.2 Using pkgsrcfeeds to Track Package Updates (Optional)
 
-### 4.2. Updating Package Sources
+The `pkgsrcfeeds.git` repository aggregates updates from all Zeppe-Lin
+pkgsrc collections via an Atom feed (`urls.opml`).  Use any Atom feed
+reader (like the command-line tool `snownews`) to quickly spot new or
+changed packages while updating packages in the following steps.
 
-With the correct branches created in our package source repositories,
-the next step is to update the actual package definitions to the
-versions we want to include in the new release. This process ensures
-we're building with the latest and greatest (or the specifically
-chosen) software.
+If a package update reveals a missing dependency, add it to the
+appropriate pkgsrc repository and update the `urls.opml` feed
+accordingly.  The repository also offers scripts to verify feed
+consistency and flag missing or outdated entries (details in the
+`README.md`).
 
-Here's a general outline of how this is typically done:
+In short, `pkgsrcfeeds` lets you keep tabs on package updates without
+the extra fuss, aiding the update process in Section 3.2.
 
-1. **Navigate to the Relevant Repository:** Depending on the package
-   you want to update, navigate to the corresponding repository on
-   your local machine (`pkgsrc-core`, `pkgsrc-system`, `pkgsrc-xorg`,
-   or `pkgsrc-desktop`).
+### 3.2 Updating Pkgsrc Repositories and Building the Core System
 
-2. **Identify the Package to Update:** Locate the directory for the
-   specific package you intend to update. Packages are usually
-   organized into categories within these repositories.
+#### 3.2.1 Core Toolchain Update (pkgsrc-core)
 
-3. **Update the Package Definition:** This is the core of the process
-   and can involve several actions within the package's directory
-   (often containing files like `Pkgfile`, `.footprint`, `.md5sum` and
-   potentially patches):
+Updating the core toolchain is the first mandatory step before
+modifying any other packages. This ensures a fresh, stable base for
+Zeppe-Lin.  Follow this strict build order:
 
-   * **Bump the Version:** Modify the `version` variable in the
-      `Pkgfile` to reflect the new upstream version.
+**Build Order:**
 
-   * **Update the `.md5sum` File:** This file contains checksums of
-     the source tarballs. When the version changes, you'll need to
-     update these checksums. `pkgmk -um` is available to help with
-     this.
+- `linux-headers` (skip, it's bundled with `glibc` now)
+- `glibc` and `glibc-32`
+- `binutils`
+- `gcc`
+- `libtool`
+- Rebuild `binutils`
+- Rebuild `glibc` and `glibc-32`
+- Rebuild `libtool`
 
-   * **Update the `.footprint` File:** This file lists expected files
-     in the final package. `pkgmk -uf` is available to help with this.
+**Why This Order?**
+`gcc` depends on `binutils`, and both rely on the system libraries
+from `glibc`.  Multiple passes guarantee that every component is built
+against its latest dependencies.
 
-   * **Apply Necessary Patches:** If there are any patches applied to
-     the package to make it work correctly within Zeppe-Lin, you might
-     need to update these patches if the upstream code has changed
-     significantly, or you might need to create new patches.
+**Steps to Update and Build:**
 
-   * **Review Dependencies:** Check if the package's dependencies have
-     changed in the new version and update them in the `Pkgfile` if
-     necessary.
+1. **Navigate to pkgsrc-core:**
+   Open your terminal and head to your local clone.
 
-4. **Toolchain Updates in `pkgsrc-core`:** When updating core
-   toolchain components (like `glibc`, `binutils`, `gcc`) in
-   `pkgsrc-core`, this process requires extra care and thorough
-   testing due to their fundamental role in the system. You'll likely
-   be working with specific build scripts and configurations within
-   those package directories.
+2. **Checkout the Release Branch:**
+   Switch to your release branch (e.g., `1.x`).
 
-5. **Commit Your Changes:** Once you've updated the package
-   definition, commit your changes to the Git repository with a clear
-   and informative commit message (e.g.,
-   `<package_name>: <old_version> -> <new_version>`).
+3. **Update Package Definitions:**
+   Update the `Pkgfile`, `.md5sum`, and `.footprint` files for
+   `glibc`, `glibc-32`, `binutils`, `gcc`, and `libtool` with the new
+   versions.
 
-6.  **Push Your Changes:** Finally, push your committed changes to the
-    remote repository on GitHub.
-
-**Important Considerations:**
-
-* **Consult Upstream Documentation:** Always refer to the upstream
-  project's release notes and documentation to understand the changes
-  in the new version and any potential compatibility issues.
-* **Test Thoroughly:** After updating a package, especially core
-  system packages, it's crucial to build and test it to ensure it
-  functions correctly and doesn't introduce any regressions.
-
-#### 4.2.1. Working with the `pkgsrcfeeds` Repository
-
-The `pkgsrcfeeds` repository (available at
-`github.com/zeppe-lin/pkgsrcfeeds.git`) is an essential tool for
-staying informed about updates to package sources across all the
-Zeppe-Lin package collections (`pkgsrc-core`, `pkgsrc-system`,
-`pkgsrc-xorg`, `pkgsrc-desktop`).
-
-**Contents and Usage:**
-
-* **Atom Feed (`urls.opml`):** The core of this repository is an Atom
-  feed file (`urls.opml`). This feed lists recent updates to packages
-  in the various `pkgsrc-*` repositories.
-* **Feed Readers:** You can use any Atom feed reader to explore this
-  file and see which packages have had changes or new versions
-  committed upstream. A command-line feed reader like `snownews`
-  (available in the `pkgsrc-desktop` collection) is a convenient
-  option for developers.
-* **Identifying Packages for Update:** By regularly checking the
-  `pkgsrcfeeds` Atom feed, you can easily identify packages in the
-  Zeppe-Lin repositories that have newer versions available and might
-  need to be updated for the next release.
-
-**Adding New Dependencies:**
-
-If, while updating a package source, you find that it requires a new
-dependency that is not currently present in the Zeppe-Lin `pkgsrc`
-collections (and therefore not in `pkgsrcfeeds`), it's good practice
-to:
-
-1. First, add the new dependency to the appropriate `pkgsrc-*`
-   repository.
-2. Then, ensure that the `pkgsrcfeeds` repository is updated to
-   include information about this new package. This usually involves
-   modifying the `urls.opml` file.
-
-**Verification and Consistency Scripts:**
-
-The `pkgsrcfeeds` repository also contains scripts (you might want to
-list the specific script names here) that are used to:
-
-* **Verify Consistency:** These scripts can check the `urls.opml` file
-  for consistency and ensure that the listed updates are valid and
-  correctly formatted.
-* **Identify Missing Feeds:** They can detect if there are any
-  packages in the `pkgsrc-*` repositories that have updates but are
-  not yet reflected in the `urls.opml` feed.
-* **Identify Redundant Feeds:** Conversely, they can find entries in
-  the `urls.opml` that might no longer be relevant (e.g., for packages
-  that have been removed).
-
-It's recommended to run these verification scripts regularly to
-maintain the accuracy and integrity of the `pkgsrcfeeds` repository.
-Instructions on how to use these scripts (e.g., any specific commands
-or prerequisites) you can find in `README.md` file.
-
-By utilizing the `pkgsrcfeeds` repository and its associated tools,
-Zeppe-Lin developers can efficiently track and manage package updates
-for new releases.
-
-### 4.2.2. Updating and Building the Toolchain in `pkgsrc-core`
-
-A fundamental part of preparing a new Zeppe-Lin release is updating
-and rebuilding the core toolchain within the `pkgsrc-core` repository.
-This ensures that we have a modern and consistent base for building
-all other packages. Due to the intricate dependencies between these
-components, they must be updated and built in a specific order.
-
-**Important Build Order:**
-
-The following packages within `pkgsrc-core` constitute the core
-toolchain and must be built in this precise sequence:
-
-0. ~`linux-headers`~ *(not really)*
-1. `glibc` and `glibc-32` *(This package also includes the `linux-headers`)*
-2. `binutils`
-3. `gcc`
-4. `libtool`
-5. `binutils` *(built again)*
-6. `glibc` and `glibc-32` *(built again)*
-7. `libtool` *(built again)*
-
-**Why this Order Matters:**
-
-This specific build order is essential due to the dependencies between
-these core components. For instance, `gcc` relies on `binutils` for
-assembling and linking, and both depend on the fundamental system
-libraries provided by `glibc`. The multiple build passes ensure that
-each component is built and linked against the newly updated versions
-of its dependencies.
-
-**Steps to Update and Build the Toolchain:**
-
-1. **Navigate to `pkgsrc-core`:** Open your terminal and navigate to
-   your local clone of the `pkgsrc-core` repository.
-2. **Checkout the Release Branch:** Ensure you are on the correct
-   release branch you created earlier (e.g., `1.x`).
-3. **Update Package Definitions:** Following the process outlined in
-   the previous section, update the `Pkgfile` and related files (like
-   `.md5sum`, `.footprint`) for `glibc`, `glibc-32`, `binutils`,
-   `gcc`, and `libtool` to the desired new versions.
-4. **Build the Toolchain in the Specified Order:** Use the `pkgman`
-   command to build and install each component individually, strictly
-   adhering to the order listed above. For example:
+4. **Build the Toolchain:**
+   Execute:
 
        pkgman update -fr -d --group \
-           glibc{,-32} binutils gcc libtool binutils glibc libtool
+           glibc{,-32} binutils gcc libtool \
+           binutils glibc{,-32} libtool
 
-5. **Thorough Testing:** After the toolchain has been built, it is
-   absolutely critical to perform extensive testing. This involves
-   building other core packages and potentially a rootfs archive
-   to ensure the new toolchain is stable and functioning correctly.
+   This command respects the build order listed above.
 
-**Potential Pitfalls:**
+5. **Test Extensively:** After the build, compile other core packages
+   or create a rootfs archive to ensure everything runs smoothly.
 
-Updating the toolchain can be a complex and time-consuming process. Be
-prepared to encounter build failures, linker errors, or subtle runtime
-issues. Carefully review build logs and don't hesitate to seek help
-from the Zeppe-Lin community if you run into problems, and look at
-Linux From Scratch guys how they resolved it.
+**Potential Issues:** Expect that you may encounter build failures,
+linker errors, or subtle runtime issues.  Check the logs, ask for
+help, and consult relevant resources (e.g., Linux From Scratch
+documentation).
 
-### 4.3. Preparing the Root Filesystem Image
+#### 3.2.2. Standard Package Updates
 
-With the toolchain updated and ready, the next critical step is to
-assemble the core of our Zeppe-Lin system: the root filesystem image.
-This image contains the fundamental files and directories that the
-operating system needs for chroot installation. The primary tool we
-use for this task is called **`mkrootfs`**.
+After the toolchain update, refresh the remaining package definitions
+in your pkgsrc repositories. Begin with updating `pkgsrc-core` -- this
+ensures that the core system packages reflect the new upstream
+changes. Once `pkgsrc-core` is up-to-date, proceed to update the
+remaining repositories in the following order: `pkgsrc-system`, then
+`pkgsrc-xorg`, and finally `pkgsrc-desktop`.
 
-#### 4.3.1. Introduction to `mkrootfs`
+For each package:
+- Update the version, checksums, footprint, and any necessary patches
+  to match the new upstream release.
+- Commit your changes using a clear message (e.g.,
+  `<package>: <old_version> -> <new_version>`) and push the commits to
+  the remote repository.
 
-`mkrootfs` is a powerful utility that builds a customized root
-filesystem for Zeppe-Lin. It operates by calling `pkgman(1)` in the
-background to build and install packages into a specified working
-directory. After installation, it utilizes `revdep(1)` to check this
-directory for any broken libraries (broken `.so` files), ensuring the
-integrity of our root filesystem.
+#### 3.2.3 Preparing the Root Filesystem Image
 
-**Key Concepts and Features of `mkrootfs`:**
+With our toolchain and packages updated, the next step is to create
+Zeppe-Lin’s core: the root filesystem image. This image, used for
+chroot installations, forms the foundation of our OS.
 
-* **Package-Based Installation via `pkgman`:** `mkrootfs` relies on
-  `pkgman` to handle the building and installation of packages into
-  the root filesystem.
-* **Dependency Resolution:** `pkgman` automatically resolves package
-  dependencies, ensuring all necessary components are included.
-* **Integrity Check with `revdep`:** The `revdep` utility is used to
-  verify that no installed libraries have unresolved dependencies,
-  which could lead to runtime errors.
-* **Configuration File (`/etc/mkrootfs/config`):** The behavior of
-  `mkrootfs` is primarily controlled by the configuration file located
-  at `/etc/mkrootfs/config`. This file defines several important
-  parameters, including:
-    * **`ROOTFS_DIR`:** The working directory where the root
-      filesystem is built (defaults to `/tmp/rootfs-$(date
-      +%F)-$(uname -m)/`). **Caution:** If you are using `/tmp` as a
-      `tmpfs` (mounted in memory), be mindful of potential space
-      limitations.
-    * **`PACKAGES`:** The list of packages to be built and installed
-      into the root filesystem (defaults to all packages in the `core`
-      `pkgsrc` collection).
-    * **`ROOTFS_TAR`:** The filename for the resulting compressed
-      tarball of the root filesystem (defaults to
-      `$ROOTFS_DIR.tar.xz`).
-    * **`PKGMK_CONF`:** An optional path to an alternate configuration
-      file for `pkgmk(8)`.
-    * **`PKGMAN_CONF`:** An optional path to an alternate
-      configuration file for `pkgman(1)`.
-* **Command-Line Options:** The `mkrootfs` command itself provides
-  several options to override the configuration file settings or
-  specify additional actions. Some of the key options include:
-    * `-B`: Prepare the rootfs directory.
-    * `-C`: Check the rootfs directory for missing libraries (using
-      `revdep`).
-    * `-T`: Compress the rootfs directory to create the tarball.
-    * `-c <conffile>`: Specify an alternate configuration file.
-    * `-r <rootfsdir>`: Specify an alternate rootfs directory.
-    * `-t <tarball>`: Specify an alternate output tarball filename.
-    * `-x <pkgmk_conffile>`: Specify an alternate `pkgmk.conf` file.
-    * `-y <pkgman_conffile>`: Specify an alternate `pkgman.conf` file.
-    * `<pkgname> ...`: Optionally specify a list of packages to build
-      and install instead of relying on the `PACKAGES` setting in the
-      configuration file.
+##### 3.2.3.1. Introducing mkrootfs
 
-**Why `mkrootfs`?**
+`mkrootfs` is a streamlined utility that automates the creation of a
+customized root filesystem for Zeppe-Lin. It performs two main tasks:
 
-Using `mkrootfs` automates and simplifies the process of creating a
-functional Zeppe-Lin root filesystem. It handles package installation,
-dependency resolution, and basic integrity checking, ensuring a
-consistent and reliable foundation for your Zeppe-Lin release.
+- **Package Installation:** It calls `pkgman(1)` to build and install
+  packages into a designated working directory.
 
-In the next subsection, we will guide you through the step-by-step
-process of using `mkrootfs` to create a Zeppe-Lin root filesystem
-image for your new release, starting with configuring the
-`/etc/mkrootfs/config` file or using command-line options.
+- **Integrity Check:** It then uses `revdep(1)` to scan for broken
+  shared libraries, ensuring that every dependency is correctly
+  resolved.
 
-#### 4.3.2. Step-by-Step Rootfs Creation
+This process is configured via `/etc/mkrootfs/config`, which defines
+key parameters such as:
 
-Now that we've been introduced to `mkrootfs`, let's get our hands
+- `ROOTFS_DIR`: The working directory for the filesystem (default:
+  `/tmp/rootfs-$(date +%F)-$(uname -m)/`).
+
+- `PACKAGES`: The list of packages to install (defaults to the core
+  set).
+
+- `ROOTFS_TAR`: The output tarball filename (default:
+  `$ROOTFS_DIR.tar.xz`).
+
+Command-line options let you override these settings (see
+`mkrootfs(8)`), so you can tailor the build process as needed.
+
+In short, `mkrootfs` takes care of installation, dependency
+resolution, and basic validation, providing a simple yet reliable way
+to package Zeppe-Lin's system image.
+
+##### 3.2.3.2. Step-by-Step Rootfs Creation
+
+Now that we've been introduced to mkrootfs, let's get our hands
 dirty and walk through the process of creating a Zeppe-Lin root
 filesystem image.
 
-**Steps:**
+1. **Configure:**
+   Edit `/etc/mkrootfs/config` (as root) to set key parameters like:
 
-1. **Configure the `mkrootfs` Configuration File:** The primary way to
-   control what goes into our root filesystem is by editing the
-   configuration file located at `/etc/mkrootfs/config`. You'll need
-   root privileges to modify this file. Open it with your favorite
-   text editor.
+   - `ROOTFS_DIR` (working directory)
+   - `ROOTFS_TAR` (output tarball name)
+   - `PACKAGES` (default: all packages from `pkgsrc-core`)
 
-2. **Define Key Variables:** Inside the configuration file, you'll
-    find several variables you can adjust:
+   Save your changes.
 
-   * **`ROOTFS_DIR`:** This specifies the working directory where
-     `mkrootfs` will build the filesystem. The default is usually
-     `/tmp/rootfs-$(date +%F)-$(uname -m)/`. You can change this if
-     you prefer a different location, but be cautious if using `/tmp`
-     as a `tmpfs` with limited space.
+2. **Build:**
+   Run the command below to prepare the filesystem, check
+   dependencies, and create the tarball:
 
-   * **`ROOTFS_TAR`:** This defines the path and filename of the
-     output compressed tarball that will contain your root filesystem.
-     It's good practice to choose a descriptive name that includes the
-     version and architecture (e.g.,
-     `/path/to/output/rootfs-1.0-x86_64.tar.xz`).
+       sudo mkrootfs -BCT
 
-   * **`PACKAGES`:** This is where you list the packages that you want
-     to be installed into your root filesystem. **For official
-     Zeppe-Lin releases, the default setting in `/etc/mkrootfs/config`
-     is typically used, which builds and installs all packages from
-     the `core` `pkgsrc` collection.** This is usually defined as:
+   This invocation instructs mkrootfs to:
 
-         PACKAGES=$(pkgman printf "%n\n" --no-std-config \
-                 --config-set="pkgsrcdir /usr/src/pkgsrc-core")
+   - Build the filesystem directory (`-B`)
+   - Check library dependencies via revdep (`-C`)
+   - Compress the directory into a tarball (`-T`)
 
-     Users can customize this variable to include additional packages
-     for their own builds, for example:
+3. **Verify:**
+   Review the build log (as defined by `ROOTFS_LOG`) to ensure no
+   errors or broken library links.
 
-         PACKAGES="$PACKAGES mycoolpackage1 mycoolpackage2"
+4. **Result:** The finished root filesystem tarball will be located at
+   the path specified by `ROOTFS_TAR`.
 
-     However, for the official Zeppe-Lin release process we are
-     documenting here, we generally rely on the default behavior of
-     including all of `pkgsrc-core`.
+Alternatively, you can override configuration settings on the fly
+using command-line options (refer to `mkrootfs(8)` for details).
 
-   * **`PKGMK_CONF`** and **`PKGMAN_CONF`:** These optional variables
-     allow you to specify alternate configuration files for the
-     `pkgmk` and `pkgman` utilities if you have custom build or
-     installation settings you want to use for the rootfs creation.
+Once complete, you'll have a verified root filesystem image ready for
+the next release steps.
 
-3. **Save the Configuration File:** Once you have made the necessary
-   changes, save the `/etc/mkrootfs/config` file.
+##### 3.2.3.3. Optional Cleanup
 
-4. **Run the `mkrootfs` Command:** Open your terminal and execute the
-   `mkrootfs` command as root (e.g., using `sudo`):
+Once mkrootfs finishes and you've verified the output files, you might
+want to clear out temporary build artifacts to keep your system neat.
+This step is optional but can free up valuable space and reduce
+clutter.
 
-        sudo mkrootfs -BCT
+For example, after confirming that the root filesystem tarball
+(defined by `ROOTFS_TAR`) is intact, you can remove the working
+directory (specified by `ROOTFS_DIR`) and any log files you don't
+need:
 
-   `mkrootfs` will then read the configuration file, create the
-   working directory (if it doesn't exist), and use `pkgman` to build
-   and install the packages listed in the `PACKAGES` variable into
-   this directory. You'll see output from `pkgman` as it progresses.
-   For this is responsible `-B` option passed to `mkrootfs`.
-
-5. **Monitor the Build Process:** Any errors during the package build
-   or installation process will be displayed in the log file specified
-   as `ROOTFS_LOG` in `/etc/mkrootfs/config`. You'll need to
-   investigate and resolve these issues if they occur.
-
-6. **Library Dependency Check:** After the packages are installed,
-   `mkrootfs` will automatically run `revdep` to check for any broken
-   shared library dependencies within the newly created root
-   filesystem. If any are found, you'll need to address them by
-   ensuring the necessary libraries are included in your `PACKAGES`
-   list or by fixing the package definitions.
-   For this is responsible `-C` option passed to `mkrootfs`.
-
-7. **Create the Tarball:** If the process completes without errors and
-   no broken libraries are found, `mkrootfs` will then compress the
-   contents of the `ROOTFS_DIR` into a tarball file named as specified
-   by the `ROOTFS_TAR` variable.
-   For this is responsible `-T` option passed to `mkrootfs`.
-
-8. **Locate the Output Tarball:** Once the command finishes, the
-   resulting root filesystem tarball will be located at the path you
-   defined in the `ROOTFS_TAR` variable in your configuration file.
-
-**Alternative: Using Command-Line Options:**
-
-You can also use command-line options with `mkrootfs` to override the
-configuration file or to specify packages directly. For example:
-
-    sudo mkrootfs -r /my/custom/builddir -t /tmp/myrootfs.tar.xz \
-        $(pkgman printf "%n\n" \
-            --no-std-config \
-            --config-set="pkgsrcdir /usr/src/pkgsrc-core") \
-        mypkg1 mypkg2 ...
-
-You can even specify another `pkgsrc` collection to be built and
-installed, just add, e.g., `--config-append="pkgsrcdir
-/usr/src/pkgsrc-system"` to the example above.
-
-Refer to the `mkrootfs(8)` man page for a complete list of available
-command-line options.
-
-With the successful completion of these steps, you will have a
-Zeppe-Lin root filesystem tarball ready for the next stages of the
-release process!
-
-#### 4.3.3. Understanding the Output Files
-
-Once the `mkrootfs` process has successfully completed, it will have
-produced one or more important output files. Let's take a closer look
-at what these are:
-
-1. **The Root Filesystem Tarball (`ROOTFS_TAR`):** This is the main
-   artifact created by `mkrootfs`. It's a compressed tar archive
-   (typically in the `.tar.xz` format as we configured) containing the
-   entire root filesystem structure that we just built.
-
-   * **Contents:** Inside this tarball, you'll find a hierarchical
-     directory structure starting from the root (`/`). This structure
-     includes all the essential directories like `bin`, `sbin`, `etc`,
-     `lib`, `usr`, `var`, `tmp`, `proc`, `sys`, and `dev`. It also
-     contains the system files, libraries, and applications from all
-     the packages that were built and installed from `pkgsrc-core` (or
-     any other collections you specified).
-
-   * **Filename:** The name of this tarball is determined by the
-     `ROOTFS_TAR` variable in your `/etc/mkrootfs/config` file (e.g.,
-     `rootfs-1.0-x86_64.tar.xz`).
-
-   * **Usage:** This tarball is the core of your Zeppe-Lin release. It
-     will be used for installation purposes.
-
-2. **The `mkrootfs` Log File (`ROOTFS_LOG`):** As defined by the
-   `ROOTFS_LOG` variable in `/etc/mkrootfs/config`, `mkrootfs` also
-   generates a log file. By default, this is often located in `/tmp`
-   and named something like `rootfs-YYYY-MM-DD-ARCH.log`.
-
-   * **Contents:** This log file contains a detailed record of the
-     entire `mkrootfs` process. This includes:
-        * The specific `pkgman` commands that were executed to build
-          and install each package.
-        * Any warnings or error messages that occurred during the
-          build or installation.
-        * The output from the `revdep` check that verifies the
-          integrity of the libraries.
-        * Information about the creation of the final tarball.
-
-   * **Usage:** This log file is invaluable for troubleshooting. If
-     you encounter any issues with the root filesystem image or if the
-     `mkrootfs` process failed, this log file should be your first
-     point of reference to understand what went wrong.
-
-**In essence:**
-
-* The **root filesystem tarball** is the final product – the assembled
-  core of our Zeppe-Lin system.
-* The **`mkrootfs` log file** is the detailed record of how this
-  product was created and can be crucial for debugging.
-
-Now that we know what these output files are, are you ready to talk
-about an optional cleanup step we can take?
-
-#### 4.3.4. Cleanup (Optional)
-
-Once you have successfully created the root filesystem tarball using
-`mkrootfs`, you might want to perform an optional cleanup step. This
-primarily involves removing the working directory that `mkrootfs` used
-to build the filesystem.
-
-**Why Consider Cleanup?**
-
-* **Disk Space:** The working directory specified by the `ROOTFS_DIR`
-  variable in your `/etc/mkrootfs/config` file (typically under
-  `/tmp`) can consume a significant amount of disk space, especially
-  after building all the packages from `pkgsrc-core`. Removing this
-  directory can free up valuable space.
-* **Organization:** If you perform multiple `mkrootfs` runs, cleaning
-  up the old working directories can help keep your `/tmp` directory
-  (or whichever location you used) tidy and prevent confusion.
-
-**How to Perform Cleanup:**
-
-To remove the working directory, you can use the `rm` command with the
-`-rf` options. **Be absolutely sure** that the `mkrootfs` process
-completed successfully and you have the final `.tar.xz` file before
-you proceed with this step, as the working directory will be
-permanently deleted.
-
-Assuming you used the default `ROOTFS_DIR`, you would typically run
-something like:
-
-    sudo rm -rf /tmp/rootfs-*-$(uname -m)/
-
-**Important Notes:**
-
-* **Verify Success:** Double-check the mkrootfs output and ensure you
-  have the root filesystem tarball before running the cleanup command.
-* **Custom ROOTFS_DIR:** If you modified the `ROOTFS_DIR` variable in
-  your `/etc/mkrootfs/config` file, make sure to adjust the path in
-  the `rm` command accordingly.
+    sudo rm -rf /tmp/rootfs-*-$(uname -m){,.log}
 
 **When Might You Skip Cleanup?**
 
-There are a few scenarios where you might choose to skip the cleanup
-step:
+- **Debugging:** If errors occurred during the mkrootfs process,
+  leaving the working directory intact lets you inspect build logs and
+  filesystem contents to diagnose issues.
 
-* **Debugging:** If the `mkrootfs` process encountered any errors,
-  leaving the working directory intact can be helpful for inspecting
-  the partially built filesystem and the `pkgman` logs to diagnose the
-  issue.
-* **Potential for Incremental Builds (Advanced):** In some advanced
-  cases, if you are making small changes and rebuilding the root
-  filesystem, you might be able to leverage some of the already built
-  packages in the working directory to speed up subsequent runs.
-  However, this is not the standard `mkrootfs` workflow and would
-  likely require manual intervention and a good understanding of the
-  build process.
+- **Incremental Builds (Advanced):** For minimal changes, you might
+  reuse parts of the already built filesystem to speed up subsequent
+  builds. (This approach diverges from the standard workflow and
+  requires manual intervention.)
 
-For most standard release preparations, once you have the final root
-filesystem tarball, it's generally safe and recommended to clean up
-the working directory to conserve disk space.
+For most standard release preparations, once your root filesystem
+tarball is verified, it's best to clean up to conserve disk space.
 
-### 4.4. Preparing the Official Release for Distribution
+### 3.3 Finalizing Release Assets
 
-#### 4.4.1. Signing the Rootfs Tarball
+#### 3.3.1 Signing the Rootfs Tarball
 
-To ensure the authenticity and integrity of our Zeppe-Lin release, we
-need to digitally sign the root filesystem tarball. This allows users
-to verify that the file hasn't been tampered with since we created it.
-We'll use the `gpg` (GNU Privacy Guard) tool for this.
+Digitally sign your root filesystem tarball to assure users of its
+authenticity and integrity. We'll use GPG for this purpose.
 
 **Prerequisites:**
 
-* You need to have `gpg` installed on your system. If not, you can
-  usually install it using your package manager (e.g.,
-  `sudo pkgman install --deps --group gnupg`).
-* You need access to the private key that is used to sign Zeppe-Lin
-  releases. This key should be securely stored and protected with a
+- Install GPG if you haven't yet
+  (e.g., `sudo pkgman install --deps --group gnupg`).
+- Ensure you have your official Zeppe-Lin private key, secured with a
   strong passphrase.
 
-**Steps to Sign the Rootfs Tarball:**
-
-1. **Navigate to the Directory:** Open your terminal and navigate to
-   the directory where your root filesystem tarball (`ROOTFS_TAR` from
-   your `mkrootfs.config`, e.g., `rootfs-1.0-x86_64.tar.xz`) is
-   located.
-
-2. **Sign the Tarball:** Use the following command to create a
-   detached ASCII-armored signature file:
-
-        gpg --detach-sig --armor \
-            --output rootfs-1.0-x86_64.tar.xz.sig \
-            rootfs-1.0-x86_64.tar.xz
-
-   Let's break down this command:
-   * `gpg`: Invokes the GNU Privacy Guard tool.
-   * `--detach-sig`: Creates a detached signature file, which is
-     separate from the data being signed. This is generally preferred
-     for distributing signatures of binary files.
-   * `--armor`: Generates an ASCII-armored output, making the
-     signature file text-based and easier to share.
-   * `--output rootfs-1.0-x86_64.tar.xz.sig`: Specifies the name of
-     the output signature file. We typically append `.sig` to the
-     original tarball name.
-   * `rootfs-1.0-x86_64.tar.xz`: The name of the root filesystem
-     tarball you created with `mkrootfs`.
-
-   You might be prompted to enter the passphrase for your private key.
-
-3. **Verify the Signature (Optional but Recommended):** You can verify
-   that the signature was created correctly using the corresponding
-   public key. Assuming you have the Zeppe-Lin public key in your
-   keyring, you can use the following command:
-
-        gpg --verify rootfs-1.0-x86_64.tar.xz.sig rootfs-1.0-x86_64.tar.xz
-
-   This command should output a message indicating that the signature
-   is good and was made by the key associated with Zeppe-Lin.
-
-4. **Distribute the Signature File:** Along with the
-   `rootfs-1.0-x86_64.tar.xz` file, you will also distribute the
-   `rootfs-1.0-x86_64.tar.xz.sig` file. Users can then use this
-   signature file and the official Zeppe-Lin public key to verify the
-   integrity of the downloaded tarball.
-
-**Important Considerations for Zeppe-Lin Releases:**
-
-* **Official Signing Key:** Ensure you are using the correct official
-  Zeppe-Lin private key for signing the release.
-* **Public Key Availability:** The corresponding public key must be
-  readily available on the Zeppe-Lin website
-  (`zeppe-lin/zeppe-lin.github.io`) so that users can easily obtain it
-  for verification.
-
-Once you have successfully signed the root filesystem tarball, you've
-taken a significant step in ensuring the security and trustworthiness
-of your Zeppe-Lin release!
-
-#### 4.4.2. Preparing Release Notes
-
-Ahoy, wordsmith! Now that our treasure is secured with a signature,
-it's time to chart our voyage and tell the world what wonders await in
-this new Zeppe-Lin release! Preparing comprehensive and informative
-release notes is crucial for our users. It's their guide to
-understanding what's new, improved, or changed in this version.
-
-**Why are Release Notes Important?**
-
-* **Transparency:** They inform users about the changes they can
-  expect.
-* **Guidance:** They help users understand how to use new features or
-  adapt to changes.
-* **Attribution:** They provide an opportunity to acknowledge
-  contributors and their efforts.
-* **Historical Record:** They serve as a record of the evolution of
-  Zeppe-Lin.
-
-**What to Include in Zeppe-Lin Release Notes:**
-
-Drawing inspiration from the release notes for **Zeppe-Lin v1.0: The
-Maiden Voyage**, your release notes should aim to cover the following
-key areas:
-
-1. **Introduction:** Begin with a welcoming overview of the release,
-   including the version number, release date, and a catchy name or
-   theme if applicable. Briefly highlight the significance of this
-   release.
-
-2. **Incompatible Changes:** Clearly list any changes that might break
-   compatibility with previous versions and require user intervention
-   during upgrades. Provide specific instructions or workarounds if
-   necessary.
-
-3. **New Features:** Detail the exciting new features and
-   functionalities introduced in this release. Explain their purpose,
-   how to use them, and any potential benefits for the user.
-
-4. **Package Changes:** Provide a structured breakdown of changes
-   within each of the Zeppe-Lin package source repositories
-   (`pkgsrc-core`, `pkgsrc-system`, `pkgsrc-xorg`, `pkgsrc-desktop`,
-   and any other relevant unofficial collections). For each
-   repository, you should list:
-    * **New Packages:** Packages that have been added in this release.
-    * **Removed Packages:** Packages that have been removed.
-    * **Key Changes:** Highlight any significant updates or
-      modifications to existing packages beyond version bumps.
+**Steps:**
 
-5. **Cover Artwork:** Describe the concept and meaning behind the
-   release's visual artwork. Include a link to the artwork if possible
-   and mention the licensing terms.
+- **Navigate to the Tarball Directory:** Go to the directory where
+  your tarball (e.g., `rootfs-v1.0-x86_64.tar.xz`) resides.
 
-6. **Kernel:** Specify the version of the Linux kernel included in
-   this release, along with any notable configurations or patches
-   (e.g., LTS status).
+- **Sign the Tarball:** Create a detached, ASCII-armored signature:
 
-7. **Toolchain:** List the versions of the core toolchain components,
-   such as `glibc`, `gcc`, and `binutils`.
+      gpg --detach-sig --armor --output   \
+            rootfs-v1.0-x86_64.tar.xz.sig \
+            rootfs-v1.0-x86_64.tar.xz
 
-8. **X11:** If applicable, provide the versions of the X Window System
-   components, such as the X server and Mesa.
+  You'll be prompted for your key’s passphrase.
 
-9. **Changelogs:** Include links to detailed changelogs for each of
-   the `pkgsrc` repositories, allowing users to see the complete list
-   of changes.
-
-10. **Download:** Provide clear and direct links to the signed root
-    filesystem archive, its signature file, and any other relevant
-    download files (like binary package archives, if offered).
+3. **Verify the Signature (Optional):** Confirm the signature is
+   valid:
 
-11. **Checksums:** Include checksums (e.g., SHA256) for all the
-    download files to enable users to verify their integrity.
+      gpg --verify rootfs-v1.0-x86_64.tar.xz.sig \
+                   rootfs-v1.0-x86_64.tar.xz
 
-12. **Installation and Upgrade Instructions:** Provide or link to
-    clear instructions on how to install the new release or upgrade
-    from a previous one (usually to the handbook).
 
-13. **Contributors:** Acknowledge and thank the individuals who
-    contributed to the release.
+You will now have the signed tarball and its `.sig` file, ready for
+distribution.
 
-**Format and Location:**
+#### 3.3.2 Creating a Git Tag in pkgsrc-core
 
-As we discussed earlier, release notes are typically written in
-Markdown format and published on the Zeppe-Lin website.
-~~A summary or link should also be included in the Git tag message.~~
+Once all package updates, configuration changes, and build scripts for
+the release are committed and pushed to your release branch (e.g.,
+`1.x`) in `pkgsrc-core` and other relevant repositories, mark the
+release by creating an immutable Git tag in `pkgsrc-core`.  This tag
+serves as the permanent reference for the Zeppe-Lin release and is
+required for the GitHub release step.
 
-By following this structure, inspired by the Zeppe-Lin v1.0 release
-notes, you can create informative and helpful documentation for your
-users.
+**Steps:**
 
-#### 4.4.3. Creating a Git Tag in `pkgsrc-core`
+1. **Switch to the Release Branch:** Make sure you're on and
+   up-to-date with your release branch in the `pkgsrc-core` repository:
 
-Once we have prepared our release notes and are satisfied with the
-state of our release branch (e.g., `1.x`), the next crucial step is to
-create a Git tag in the `pkgsrc-core` repository. This tag acts as a
-permanent marker, pointing to the specific commit that represents our
-new Zeppe-Lin release.
+       git checkout 1.x # Replace 1.x with your release branch
+       git pull origin 1.x
 
-**Why Create a Git Tag?**
+   *Ensure all commits relevant to this release have been pushed to
+   this branch.*
 
-* **Immutable Snapshot:** A tag represents a specific point in the
-  history of the repository. Once created and pushed, it should
-  generally not be moved or changed, providing a stable reference to
-  the release.
-* **Release Identification:** Tags provide a human-readable name (the
-  version number) for the release, making it easy to refer to and
-  check out the exact code that was released.
-* **Historical Record:** Tags serve as important milestones in the
-  project's history.
+2. **Create an Annotated Tag:** Create a tag with a clear message.
+   Include the version number and ideally a brief note or a
+   placeholder for the release notes link (which will be finalized
+   later). For example:
 
-**Steps to Create and Push a Git Tag:**
-
-1. **Navigate to `pkgsrc-core`:** Open your terminal and navigate to
-   your local clone of the `pkgsrc-core` repository.
+       git tag -a v1.0 -m "Zeppe-Lin v1.0 - The Maiden Voyage! ..."
 
-2. **Ensure You Are on the Release Branch:** Make sure you have
-   checked out the correct release branch (e.g., `1.x`) that contains
-   all the changes for this release. It's good practice to ensure your
-   local branch is up-to-date with the remote repository.
-
-        git checkout 1.x
-        git pull origin 1.x
-
-3. **Create an Annotated Tag:** We will create an annotated tag, which
-   includes a message and the tagger information. The tag name should
-   typically be the version number of the release, **prefixed with
-   `v`** (e.g., `v1.0`).
-
-        git tag -a v1.0 -m "Zeppe-Lin v1.0: The Maiden Voyage - See full release notes at [link to your release notes]"
-
-   Replace `[link to your release notes]` with the actual URL of your
-   release notes on the Zeppe-Lin website, e.g.,
-   <https://zeppe-lin.github.io/relnotes-v1.0.html>.
-
-   * `-a`: This option tells Git to create an annotated tag.
-   * `v1.0`: This is the name of the tag.
-   * `-m "..."`: This adds a message to the tag, providing a brief
-     description of the release and a link to the full release notes.
-
-4. **Push the Tag to the Remote Repository:** By default, `git push`
-   only pushes commits, not tags. You need to explicitly push the
-   newly created tag to the remote `pkgsrc-core` repository on GitHub.
-
-        git push origin v1.0
-
-   Alternatively, you can push all local tags that haven't been pushed
-   yet using:
-
-        git push origin --tags
-
-**Important Considerations:**
-
-* **Tag Naming Convention:** Be consistent with your tag naming. Using
-  `v` followed by the version number is a common and recommended
-  practice.
-* **Tag Message:** Write a clear and informative tag message.
-  Including a link to the release notes is very helpful for anyone
-  looking at the tag in the future.
-* **Tag the Correct Commit:** Ensure that your release branch is
-  pointing to the exact commit you want to associate with the release
-  before creating the tag.
-* **Immutability of Tags:** Once a tag is created and pushed, it's
-  generally considered immutable. If you make a mistake, you would
-  typically create a new tag or, with caution, delete and recreate the
-  tag (which is generally discouraged for public repositories).
-
-With the Git tag created and pushed, we have officially marked this
-version of Zeppe-Lin in our source code history!
-
-#### 4.4.4. Creating the Release Announcement on GitHub
-
-GitHub provides a good platform to announce our new Zeppe-Lin
-release to the world. Creating a release on GitHub links our Git tag
-with a dedicated page where we can provide release notes, download
-links, and more.
-
-**Steps to Create a Release Announcement:**
-
-1. **Navigate to the `pkgsrc-core` Repository:** Go to the Zeppe-Lin
-   `pkgsrc-core` repository on GitHub in your web browser.
-
-2. **Go to the "Releases" Section:** On the repository page, look for
-   the "Releases" section. It's usually located on the right sidebar
-   or under the "Code" tab. Click on it.
-
-3. **Click "Create a new release" or "Draft a new release":** You'll
-   likely see a button to create a new release. If you have previous
-   releases, it might say "Draft a new release." Click on the
-   appropriate button.
-
-4. **Choose Your Tag:** In the "Tag version" dropdown menu, select the
-   Git tag you just created and pushed (e.g., `v1.0`).
-
-5. **Give Your Release a Title:** Enter a descriptive title for your
-   release. This could be the version number (e.g., `Zeppe-Lin v1.0`)
-   or something more evocative like `Zeppe-Lin v1.0: The Maiden
-   Voyage`.
-
-6. **Describe Your Release:** In the "Description" field, you can
-   provide the full release notes or a summary. Since we've already
-   crafted detailed release notes, it's a good idea to provide a
-   concise summary here and then link to the full notes on the
-   Zeppe-Lin website. You can use Markdown formatting in this section.
-
-   For example, you might write something like:
-
-    ```markdown
-    We are proud to announce the release of Zeppe-Lin v1.0, codenamed
-    "The Maiden Voyage"! This marks a significant milestone as our
-    first stable major release, bringing numerous improvements and new
-    features.
-
-    **Key Highlights:**
-
-    * Binary package support for `pkgsrc-core`
-    * Enhanced package management with PAX & CAPS in `pkgutils`
-    * Standard C compilers as separate packages (`c89`, `c99`, `c17`)
-    * Improved desktop experience with `dumb_runtime_dir` PAM module
-    * ... (list a few other key highlights)
-
-    For a complete list of changes and download links, please see the
-    full release notes on the Zeppe-Lin website: [Link to your full
-    release notes]
-    ```
-
-7. **Attach Release Files:** You can upload the signed root filesystem
-   tarball (`rootfs-1.0-x86_64.tar.xz`) and its signature file
-   (`rootfs-1.0-x86_64.tar.xz.sig`) to this release. This makes it
-   easy for users to download the official release files directly from
-   GitHub. Drag and drop the files or use the "Attach files" option.
-
-8. **Mark as a Pre-release (If Applicable):** If this is a pre-release
-   (like an alpha or beta), check the box that says "This is a
-   pre-release." For a stable release like v1.0, you'll typically
-   leave this unchecked.
-
-9. **Click "Publish release":** Once you've filled in all the details
-   and attached the files, click the "Publish release" button.
-
-**Benefits of a GitHub Release:**
-
-* **Easy Discovery:** Makes the release easily discoverable for users
-  of the repository.
-* **Linked to the Tag:** Clearly associates the release with the
-  specific version of the code.
-* **Download Management:** Provides a convenient way for users to
-  download the release files.
-* **Notifications:** GitHub can notify users who are watching the
-  repository about new releases.
-
-With our release announced on GitHub, the Zeppe-Lin community can now
-easily find and download our latest creation!
-
-#### 4.4.5. Creating the Release Announcement File (`relnotes`)
-
-For Zeppe-Lin, the official release notes are created and managed
-within the `zeppe-lin.github.io` repository, which hosts our website.
-This allows for richer formatting using Markdown and seamless
-integration with our online presence.
-
-**Process for Creating the Release Announcement:**
-
-1. **Navigate to the `zeppe-lin.github.io` Repository:** Open your
-   terminal and navigate to your local clone of the
-   `zeppe-lin.github.io` repository.
-
-2. **Locate the `/relnotes/` Directory:** Within this repository, you
-   will find a directory named `relnotes`. This is where the Markdown
-   files for our release notes are stored.
-
-3. **Create a Markdown File:** Create a new Markdown file named
-   `relnotes-v<VERSION>.md` (e.g., `relnotes-v1.0.md`) within the
-   `/relnotes/` directory. This file will contain the full content of
-   your release notes, following the structure we outlined in section
-   [4.4.2. Prepare Release Notes](#442-prepare-release-notes).
-   You can use Markdown syntax for formatting.
-
-4. **Include a Banner Link:** Within this Markdown file, you will also
-   include a link or reference to the release banner artwork.
-   Typically, this is done by linking to an HTML file named
-   `banner-v<VERSION>.html` (e.g., `banner-v1.0.html`) which resides
-   in the same `/relnotes/` directory. This HTML file will then
-   contain the necessary code to display the banner image (usually an
-   `<img>` tag).
-
-5. **Commit and Push Changes:** Once you have created and populated
-   the `relnotes-v<VERSION>.md` file (and the corresponding
-   `banner-v<VERSION>.html` file, which we'll discuss in the next
-   section), commit these changes to your local repository and push
-   them to the remote `zeppe-lin.github.io` repository.
-
-6. **CI/CD Process:** Our Continuous Integration and Continuous
-   Deployment (CI/CD) system will automatically detect these changes.
-   It will then process the `relnotes-v<VERSION>.md` file, likely
-   using a static site generator (like Jekyll or Hugo), to convert it
-   into a static HTML page. This page will be published on the
-   Zeppe-Lin website at a URL like
-   `zeppe-lin.github.io/relnotes-v<VERSION>.html`.
-
-**Example:**
-
-For Zeppe-Lin v1.0, the release notes are in
-`/relnotes/relnotes-v1.0.md` and the banner link is in
-`/relnotes/banner-v1.0.html`. These are then published on the website.
-
-**Key Update:**
-
-The official release notes for Zeppe-Lin are managed as Markdown files
-within the website's repository, allowing for version control and
-automated publication to `zeppe-lin.github.io`.
-
-Now that we have the correct understanding of how the release notes
-file is created and managed, are you ready to move on to **4.4.6.
-Creating the Release Banner (Cover Artwork)**, where we'll likely be
-creating that `banner-v<VERSION>.html` file and ensuring our artwork
-is ready?
-
-#### 4.4.6. Creating the Release Banner (Cover Artwork)
-
-A visually appealing release banner (or cover artwork) is an important
-part of announcing a new Zeppe-Lin release. It helps to create a
-distinct identity for the release and can be used in the release
-notes, announcements, and on the website.
-
-**Creating the Artwork:**
-
-The creation of the actual artwork is a creative process. The
-Zeppe-Lin project has a tradition of unique and symbolic cover art.
-The artwork should ideally reflect the theme or key aspects of the
-release.
-
-**Integrating with the Website:**
-
-The banner artwork is integrated into the Zeppe-Lin website in a
-couple of key places within the `zeppe-lin.github.io` repository:
-
-1. **Release-Specific Banner:** As we discussed, in the `/relnotes/`
-   directory, we create a file named `banner-v<VERSION>.html` (e.g.,
-   `banner-v1.0.html`). This file contains the HTML to display the
-   artwork image. The `relnotes-v<VERSION>.md` file then links to this
-   HTML file.
-
-2. **Main Website Banner:** The main page of the Zeppe-Lin website
-   (`zeppe-lin.github.io`) features a prominent hero artwork. This is
-   controlled by the `/index/banner.html` file. **After the release is
-   official, this file needs to be updated to point to the new
-   release's artwork.** This typically involves modifying the `src`
-   attribute of the `<img>` tag within this file to point to the new
-   artwork image (which should also be added to the `artwork`
-   repository).
-
-**Steps to Prepare the Banner Artwork:**
-
-1. **Create the Artwork:** Design and create the visual artwork for
-   the release. Ensure it is in a web-friendly format (e.g., PNG,
-   JPEG).
-
-2. **Store the Artwork:** Place the artwork image file within the
-   `artwork` repository.
-
-3. **Create `banner-v<VERSION>.html`:** In the `/relnotes/` directory
-   of the `zeppe-lin.github.io` repository, create the HTML file to
-   display the release-specific banner, as we discussed before.
-
-4. **Link in Release Notes:** Ensure your `relnotes-v<VERSION>.md`
-   file links to the `banner-v<VERSION>.html` file.
-
-5. **Commit and Push:** Commit these changes to the
-   `zeppe-lin.github.io` repository and push them.
-
-**Updating the Main Website Banner (Post-Release Step):**
-
-After the release is officially out, remember to **edit the
-`/index/banner.html` file** to update the hero artwork on the main
-website. This will likely involve changing the path to the new artwork
-image.
-
-By taking these steps, we ensure our release has compelling visual
-representation across both the release notes and the main Zeppe-Lin
+3. **Push the Tag:** Push the new tag to the remote repository:
+
+       git push origin v1.0
+
+   Or push all local tags (be cautious with this command if you have
+   other local tags):
+
+       git push origin --tags
+
+**Notes:**
+
+- Use a consistent naming convention (e.g., prefix with `v` followed
+  by the version number).
+- The tag message should be informative. The full release notes link
+  can be added to the GitHub Release description later.
+- Once pushed, tags are considered immutable -- review carefully
+  before tagging.
+
+With these steps, the exact source code state for your release is
+officially marked in the source history.
+
+### 3.4 Preparing and Publishing Announcements
+
+#### 3.4.1 Drafting Release Notes Content
+
+Release notes are your guide for users, outlining what's new, what's
+changed, and how to upgrade. Draft the content for these notes. This
+draft will be used for the official release notes file on the website
+and the GitHub Release description.
+
+Essential Contents:
+
+- **Introduction:** Briefly describe the release (version, date, and
+  theme).
+
+- **Incompatible Changes:** List any breaking changes or adjustments
+  needed for upgrades.
+
+- **New Features:** Highlight new functionalities and improvements.
+
+- **Package Changes:** Summarize package updates for each repository
+  (added, removed, updated).
+
+- **Artwork:** Describe the release's visual design, including a link
+  and licensing info if necessary (mention the banner created in
+  4.4.2.2).
+
+- **Kernel & Toolchain:** Specify the Linux kernel version and list
+  core toolchain components (e.g., glibc, gcc, binutils). Include X11
+  details if relevant.
+
+- **Changelogs:** Provide links to detailed changelogs for each pkgsrc
+  repository.
+
+- **Downloads & Checksums:** Supply direct download links for the
+  signed tarball and signature file, along with checksum values (e.g.,
+  SHA256). (Make sure these links and checksums are accurate based on
+  your generated files).
+
+- **Installation/Upgrade Instructions:** Offer or link to clear
+  instructions for installing or upgrading (usually point to the
+  handbook, which you will update later in 4.5.1).
+
+- **Contributors:** Acknowledge those who contributed to the release.
+
+Draft your release notes content in a temporary file. This content
+will be formatted and published in the following steps.
+
+#### 3.4.2 Creating Website Announcement Files and Assets
+
+For Zeppe-Lin, we manage official release notes and related assets in
+the `zeppe-lin.github.io` repository — our website's home. This
+involves creating the Markdown file for the full notes and preparing
+the release banner.
+
+##### 3.4.2.1 Creating the Markdown Release Notes File (relnotes)
+
+1. **Access the Repository:** Open your local clone of
+   `zeppe-lin.github.io.git`.
+
+2. **Navigate to /relnotes/:** This directory stores our release notes
+   in Markdown.
+
+3. **Create the Markdown File:** Create a file named
+   `relnotes-v<VERSION>.md` (e.g., `relnotes-v1.0.md`) and paste/adapt
+   the content drafted in 4.4.1 into it, formatting it in Markdown.
+
+4. **Reference the Banner:** Include a link (or embed code, typically
+   referencing an HTML include if your static site generator supports
+   it) to display your release banner within this Markdown file. The
+   banner file will be created in the next step.
+
+##### 3.4.2.2 Creating the Release Banner (Cover Artwork)
+
+A distinct release banner helps your audience instantly recognize the
+new Zeppe-Lin release. It appears on both the release notes page and
+the main website.
+
+1. **Design and Store Artwork:** Create a web-friendly image (e.g.,
+   PNG or JPEG) that reflects this release's theme. Place the artwork
+   file(s) in the artwork repository and push them.
+
+2. **Prepare the Release Banner File:** In the `/relnotes/` directory
+   of the zeppe-lin.github.io repository, create a file named
+   `banner-v<VERSION>.html` (e.g., `banner-v1.0.html`). This HTML file
+   should contain the code (e.g., an <img> tag referencing the artwork
+   in the artwork repo) to display the banner.
+
+3. **Update Main Website Banner Pointer (Optional - can be done
+   Post-Release):** Once the release is official, you will need to
+   edit `/index/banner.html` on the `zeppe-lin.github.io` website so
+   that its hero image points to the new artwork.  This step can be
+   done just before or after publishing the main website updates.
+
+#### 3.4.3 Publishing the Release
+
+Now that the release assets (signed tarball, signature, Git tag) are
+ready and announcement content/files are drafted, it's time to make
+the release public.
+
+##### 3.4.3.1 Announcing on GitHub Releases
+
+Use GitHub's Releases feature to link your Git tag to a dedicated
+release page, providing a central hub for the release.
+
+**Steps:**
+
+1. **Open the Repository:** Navigate to the Zeppe-Lin `pkgsrc-core`
+   repository on GitHub.
+
+2. **Go to Releases:** Click the "Releases" tab (or section).
+
+3. **Draft a Release:** Click "Create a new release" (or "Draft a new
+   release").
+
+4. **Select Your Tag:** In the "Tag version" dropdown, choose your Git
+   tag created in 4.3.2 (e.g., `v1.0`).
+
+5. **Set the Title and Description:**
+
+   - **Title:** Enter a release title
+     (e.g., `Zeppe-Lin v1.0: The Maiden Voyage`).
+
+   - **Description:** Copy/paste the summary and key highlights from
+     your drafted release notes (4.4.1). **Crucially, include a link to
+     the full release notes page on the Zeppe-Lin website** (this page
+     will become live once you push the website changes).
+
+6. **Attach Files:** Upload the signed root filesystem tarball
+   (`rootfs-v1.0-x86_64.tar.xz`) and its signature
+   (`rootfs-v1.0-x86_64.tar.xz.sig`) generated in 4.3.1.
+
+7. **Pre-release Option:** If applicable, mark the release as a
+   pre-release; otherwise, leave it unchecked.
+
+8. **Publish:** Click "Publish release" to make it official on GitHub.
+
+##### 3.4.3.2 Updating the Zeppe-Lin Website
+
+Publish the release notes and banner on the official Zeppe-Lin
 website.
 
-## 4.5. Post-Release Steps
+1. **Commit and Push Website Changes:** In your local clone of
+   `zeppe-lin.github.io`, commit the changes for:
 
-Once the new Zeppe-Lin release is out, our work isn't quite finished.
-Here are some important post-release steps to ensure a smooth
-experience for our users and to prepare for the future:
+   - The new release notes Markdown file
+     (`/relnotes/relnotes-v<VERSION>.md`) created in 4.4.2.1.
 
-##### 4.5.1. Updating the User Handbook
+   - The new banner HTML file (`/relnotes/banner-v<VERSION>.html`)
+     created in 4.4.2.2.
 
-As discussed, the user handbook (`handbook/handbook.md` in the
-`zeppe-lin.github.io` repository) needs to be updated to reflect the
-new release. This includes verifying generic instructions, updating
-version-specific information, adding new content for new features, and
-checking download links.
+   - (If you didn't do it in 4.4.2.2) The update to
+     `/index/banner.html` to point to the new artwork.
 
-By default, the handbook does not contain release-specific things. But
-it never hurts to double-check.
+   - The update to `/index/index.md` so that the latest release
+     version and its corresponding links (e.g., to the release notes
+     page) are correctly displayed. Push these changes to the remote
+     `zeppe-lin.github.io` repository.
 
-##### 4.5.2. Announcing on GitHub Discussions
+2. **Verify Website Build:** Our CI/CD pipeline will detect the new
+   and changed files, convert the Markdown (using `smu(1)`), and
+   publish the updated website.  Verify that the new release notes
+   page (e.g., `https://zeppe-lin.github.io/relnotes-v1.0.html`) and
+   the main page are displaying correctly and linking to the new
+   release information.
 
-To ensure the Zeppe-Lin community is aware of the new release, we
-should announce it on our official forum, which is
-**GitHub Discussions** located at
-[https://github.com/orgs/zeppe-lin/discussions/](https://github.com/orgs/zeppe-lin/discussions/).
-A new thread should be started in the **Announcements** category:
-[https://github.com/orgs/zeppe-lin/discussions/categories/announcements/](https://github.com/orgs/zeppe-lin/discussions/categories/announcements/).
-The announcement should typically include:
+With your release published on GitHub and the website, the community
+can quickly find, review, and download the new Zeppe-Lin release.
 
-* The release name and version number.
-* A brief summary of the key highlights and new features.
-* A link to the official release notes on the Zeppe-Lin website.
-* Links to download the root filesystem archive and its signature from
-  the GitHub releases page (and potentially any other mirrors).
+### 3.5 Post-Release Tasks
 
-Since, our `relnotes-v<VERSION>.md` is already prepared, it can be
-just copied there.
+After successfully publishing the new version of Zeppe-Lin, complete
+these steps to keep everything current and the community informed.
 
-##### 4.5.3. **Updating the Main Website's Latest Release Pointer**
+1. **Updating the User Handbook:** Review and update
+   handbook/handbook.md in the zeppe-lin.github.io repository. Ensure
+   that version data, installation/upgrade instructions, and download
+   links reflect the new release. Commit and push these changes.
 
-The main Zeppe-Lin website (`zeppe-lin.github.io`) has a section that
-points to the latest release. This needs to be updated in the
-`index/index.md` file within the `zeppe-lin.github.io` repository.
-Ensure that the version number and links to the release notes are
-correct for the new release.
+2. **Announcing on GitHub Discussions:** Create a new announcement
+   thread in the GitHub Discussions Announcements category. Include
+   the release name and version, a brief summary of key highlights, a
+   link to the full release notes on the website, and download links
+   (linking to the GitHub release is often best for downloads).
 
-##### 4.5.4. **Ensuring Accurate Download Links in Release Notes**
+3. **Verifying Download Links:** Double-check all download links in
+   the release notes file (`relnotes-v<VERSION>.md`) and on the
+   website to ensure they accurately point to the signed root
+   filesystem tarball, its signature, and any other release artifacts.
 
-Since the Zeppe-Lin website doesn't have a separate download page, all
-download links for the root filesystem archive, signature file, and
-any other release artifacts are included directly within the
-`relnotes-v<VERSION>.md` file. **It is therefore critical to
-meticulously double-check that all these links within the release
-notes file are correct and point to the actual location of the release
-files on GitHub (or any other distribution mirrors).**
+4. **Updating Documentation Links:** Review all documentation --
+   including the user handbook and developer's codebook -- to update
+   any links that reference older releases, pointing them to the new
+   release where appropriate.
 
-##### 4.5.5. Updating Documentation Links
+5. **Monitoring Feedback:** Keep an eye on GitHub Discussions and
+   Issues for user feedback and bug reports. Address any critical
+   issues through patch releases if necessary (which would follow a
+   similar, albeit potentially abbreviated, process).
 
-Review all documentation, including the user handbook and this
-developer handbook, to ensure that any links to specific releases or
-versions are updated to point to the new release where appropriate.
-This might involve checking links within the text as well as any
-version selection mechanisms on the website.
+6. **Planning for the Next Release:** Begin planning the next release
+   by discussing new features, improvements, and bug fixes based on
+   community feedback and internal priorities.
 
-##### 4.5.6. Monitoring Feedback and Bug Reports
+### 3.6 Conclusion
 
-After the release, it's crucial to monitor feedback from users through
-GitHub Discussions and the GitHub Issues tracker. Pay close attention
-to bug reports and address any critical issues that arise. This might
-lead to patch releases or updates in the future.
+Congratulations, Captain! You've navigated every key step—from
+preparing our pkgsrc repositories and building the core system to
+finalizing assets, publishing announcements, and completing
+post-release tasks. By sticking to this guide, you're ensuring each
+Zeppe-Lin release is stable, secure, and clearly communicated to our
+community.
 
-##### 4.5.7. Starting Development on the Next Release
-
-With the current release successfully launched, the development team
-can begin planning and working on the next version of Zeppe-Lin. This
-involves discussing new features, bug fixes, and improvements to be
-included in the subsequent release cycle.
-
-#### 4.6. Conclusion
-
-Congratulations, Captain! We have now navigated through all the
-essential steps for preparing and releasing a new version of
-Zeppe-Lin. From the initial preparations in our `pkgsrc` repositories
-to the final announcements and post-release tasks, we have a
-comprehensive guide to ensure a smooth and successful release process.
-
-Remember that meticulous attention to detail at each stage is crucial
-for delivering a stable and well-received release to our users. By
-following these guidelines, we can continue to provide a
-high-quality operating system to the Zeppe-Lin community.
-
-Fair winds and following seas on your next release voyage!
+Fair winds and smooth sailing on your next release voyage!
 
