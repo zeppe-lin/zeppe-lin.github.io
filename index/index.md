@@ -31,6 +31,9 @@ See the [full list of previous releases](relhistory.html).
 
 Contribute to Zeppe-Lin Linux! Here's how:
 
+- [Codebook](codebook.html)
+  -- Your guide to the Zeppe-Lin development process and structure.
+
 - [GitHub Repository](https://github.com/zeppe-lin)
   -- Browse code, report issues, submit pull requests.
 
