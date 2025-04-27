@@ -425,7 +425,7 @@ to build packages there.</p>
 <p>Edit <code>/etc/rc.conf</code> (see <code>rc.conf(5)</code>) to configure system settings
 like font, keyboard, timezone, hostname, and services.</p>
 <p>Configure network settings in <code>/etc/rc.d/net</code>, <code>/etc/hosts</code>, and
-<code>/etc/resolv.conf</code> (see <a href="#83-networking">8.3. Networking</a>).</p>
+<code>/etc/resolv.conf</code> (see <a href="#63-networking">6.3. Networking</a>).</p>
 <p>Add a regular user (set a specific user ID now if needed):</p>
 <pre><code>(chrooted) # useradd --shell /bin/bash --create-home  \
     --groups audio,video,scanner,cdrom,input,users    \
@@ -445,7 +445,7 @@ to add your <code>USERNAME</code> to the <code>wheel</code> group:</p>
 </code></pre>
 <h3 id="27-prepare-the-pkgsrc-collections">2.7. Prepare the Pkgsrc Collections</h3>
 <p>Packages' sources are organized into collections
-(see <a href="#722-collections">7.2.2. Collections</a> for details).</p>
+(see <a href="#522-collections">5.2.2. Collections</a> for details).</p>
 <p>Clone the necessary collections, keeping in mind that each depends on
 the previous one:</p>
 <pre><code>(chrooted) # cd /usr/src/
@@ -497,7 +497,7 @@ reported, <code>pkgman update -fr</code> rebuilds the affected packages.</p>
 require based on their specific needs.</p>
 <p><strong>Note:</strong>
 For network setup and configuration details, see
-<a href="#83-networking">8.3. Networking</a>.  If you set up a networking bridge,
+<a href="#63-networking">6.3. Networking</a>.  If you set up a networking bridge,
 ensure you specify the bridge interface in the <code>/etc/rc.d/dhcpcd</code>
 and/or <code>/etc/rc.d/wpa_supplicant</code> service scripts.</p>
 <h3 id="210-kernel-setup">2.10. Kernel Setup</h3>
@@ -579,8 +579,8 @@ check for errors:</p>
 (chrooted) # make modules_install
 </code></pre>
 <p>Next steps:</p>
-<p>Firmware needed? See <a href="211-kernel-firmware">2.11. Kernel Firmware</a>.</p>
-<p>No firmware needed? Go to <a href="212-initramfs">2.12. Initramfs</a>.</p>
+<p>Firmware needed? See <a href="#211-kernel-firmware">2.11. Kernel Firmware</a>.</p>
+<p>No firmware needed? Go to <a href="#212-initramfs">2.12. Initramfs</a>.</p>
 <h3 id="211-kernel-firmware">2.11. Kernel Firmware</h3>
 <p>Some hardware (like certain Wi-Fi or graphics cards) needs extra
 firmware.</p>
@@ -594,7 +594,7 @@ firmware.</p>
 </code></pre>
 <p>The mkinitramfs configuration file (<code>/etc/mkinitramfs/config</code>) defines
 settings like the root device and filesystem.  Here's an example for
-<a href="331-uefi-and-lvm-on-luks">3.3.1. UEFI and LVM on LUKS</a>:</p>
+<a href="#231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</a>:</p>
 <pre><code># /etc/mkinitramfs/config
 hostonly=1 #(optional, creates smaller initramfs)
 compress=&quot;gzip --fast&quot;
@@ -1136,7 +1136,7 @@ failed installations:</p>
 <li><p><code>pkgsrcdir</code>:
 Defines directories for package source collections (you can list
 multiple).  The <code>pkgsrc-core</code> collection is enabled by default.  See
-<a href="#722-collections">7.2.2. Collections</a> for additional collections.</p>
+<a href="#522-collections">5.2.2. Collections</a> for additional collections.</p>
 <p>Details about <code>pkgsrcdir</code> and how it is used to configure
 Collections and Repositories are explored in Chapter 7.</p>
 </li>
@@ -2023,7 +2023,7 @@ Performs early setup (e.g., storage drivers).</li>
 <li>Root is switched: System moves from initramfs to your real root.</li>
 <li><code>/sbin/init</code> on real root starts:
 The init process from your main system.</li>
-<li>(Steps 5-10 from <a href="#8281-without-initramfs">Without Initramfs</a> follow).</li>
+<li>(Steps 5-10 from <a href="#6281-without-initramfs">6.2.8.1. Without Initramfs</a> follow).</li>
 </ol>
 <h4 id="629-minimal-mode-single-user-mode">6.2.9. Minimal Mode (Single-User Mode)</h4>
 <p>Runlevel 1 or S boots the system with a minimal setup for maintenance.
