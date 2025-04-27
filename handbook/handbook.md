@@ -306,7 +306,7 @@ Edit `/etc/rc.conf` (see `rc.conf(5)`) to configure system settings
 like font, keyboard, timezone, hostname, and services.
 
 Configure network settings in `/etc/rc.d/net`, `/etc/hosts`, and
-`/etc/resolv.conf` (see [8.3. Networking](#83-networking)).
+`/etc/resolv.conf` (see [6.3. Networking](#63-networking)).
 
 Add a regular user (set a specific user ID now if needed):
 
@@ -332,7 +332,7 @@ And second, grant the users in the `whell` group to be root:
 ### 2.7. Prepare the Pkgsrc Collections
 
 Packages' sources are organized into collections
-(see [7.2.2. Collections](#722-collections) for details).
+(see [5.2.2. Collections](#522-collections) for details).
 
 Clone the necessary collections, keeping in mind that each depends on
 the previous one:
@@ -398,7 +398,7 @@ require based on their specific needs.
 
 **Note:**
 For network setup and configuration details, see
-[8.3. Networking](#83-networking).  If you set up a networking bridge,
+[6.3. Networking](#63-networking).  If you set up a networking bridge,
 ensure you specify the bridge interface in the `/etc/rc.d/dhcpcd`
 and/or `/etc/rc.d/wpa_supplicant` service scripts.
 
@@ -504,9 +504,9 @@ Install:
 
 Next steps:
 
-Firmware needed? See [2.11. Kernel Firmware](211-kernel-firmware).
+Firmware needed? See [2.11. Kernel Firmware](#211-kernel-firmware).
 
-No firmware needed? Go to [2.12. Initramfs](212-initramfs).
+No firmware needed? Go to [2.12. Initramfs](#212-initramfs).
 
 ### 2.11. Kernel Firmware
 
@@ -527,7 +527,7 @@ First, install mkinitramfs:
 
 The mkinitramfs configuration file (`/etc/mkinitramfs/config`) defines
 settings like the root device and filesystem.  Here's an example for
-[3.3.1. UEFI and LVM on LUKS](331-uefi-and-lvm-on-luks):
+[2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
 
     # /etc/mkinitramfs/config
     hostonly=1 #(optional, creates smaller initramfs)
@@ -1216,7 +1216,7 @@ Upgrade all packages in the system:
 - `pkgsrcdir`:
   Defines directories for package source collections (you can list
   multiple).  The `pkgsrc-core` collection is enabled by default.  See
-  [7.2.2. Collections](#722-collections) for additional collections.
+  [5.2.2. Collections](#522-collections) for additional collections.
 
   Details about `pkgsrcdir` and how it is used to configure
   Collections and Repositories are explored in Chapter 7.
@@ -2282,7 +2282,7 @@ or without `initramfs`.
 7. Root is switched: System moves from initramfs to your real root.
 8. `/sbin/init` on real root starts:
    The init process from your main system.
-9. (Steps 5-10 from [Without Initramfs](#8281-without-initramfs) follow).
+9. (Steps 5-10 from [6.2.8.1. Without Initramfs](#6281-without-initramfs) follow).
 
 #### 6.2.9. Minimal Mode (Single-User Mode)
 
