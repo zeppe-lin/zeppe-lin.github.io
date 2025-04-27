@@ -1760,9 +1760,9 @@ environments.</p>
 <p>Example usage in a <code>Pkgfile</code>:</p>
 <pre><code>download_svn https://svn.project.org/svn/program/trunk
 </code></pre>
-<p>Include <code>subversion</code> in dependencies to ensure compatibility.
-<code>subversion</code> is not part of <code>pkgsrc-core</code>, and must be declared
-explicitly.</p>
+<p>Add <code>subversion</code> to dependencies for compatibility.  Unlike <code>git</code>,
+which resides in <code>pkgsrc-core</code>, <code>subversion</code> requires explicit
+declaration.</p>
 <h5 id="5444-best-practices">5.4.4.4. Best Practices</h5>
 <ul>
 <li>Use pinned commits or snapshots for stability in production.</li>
@@ -1900,9 +1900,10 @@ in <code>/etc/inittab</code>:</p>
 <tr><td>3-5      </td><td>Unused           </td><td>Reserved for custom use                   </td></tr>
 <tr><td>6        </td><td>Reboot           </td><td>Restart the system                        </td></tr>
 </table>
-<p>By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
-enables all services and user access.  Single-user mode (runlevel 1 or
-S) is ideal for system maintenance, providing a minimal environment.</p>
+<p>By default, Zeppe-Lin boots into multi-user mode (runlevel <strong>2</strong>),
+which enables all services and user access.  Single-user mode
+(runlevel <strong>1</strong> or <strong>S</strong>) is ideal for system maintenance, providing a
+minimal environment.</p>
 <h4 id="622-core-init-scripts">6.2.2. Core Init Scripts</h4>
 <p>Zeppe-Lin's init system uses the following scripts to manage system
 processes:</p>
@@ -2005,7 +2006,7 @@ or without <code>initramfs</code>.</p>
 <li><code>/sbin/init</code> starts: The first user-space process (PID 1).</li>
 <li><code>/etc/inittab</code> is read: <code>init</code> gets its instructions.</li>
 <li><code>/etc/rc</code> runs: The main boot script executes.</li>
-<li>Runlevel is set: The default runlevel (usually 2) is chosen.</li>
+<li>Runlevel is set: The default runlevel (usually <strong>2</strong>) is chosen.</li>
 <li><code>/etc/rc.multi</code> starts services:
 Services from <code>/etc/rc.conf</code> are launched.</li>
 <li><code>/etc/rc.local</code> runs: Your custom commands are executed.</li>
@@ -2023,11 +2024,12 @@ Performs early setup (e.g., storage drivers).</li>
 <li>Root is switched: System moves from initramfs to your real root.</li>
 <li><code>/sbin/init</code> on real root starts:
 The init process from your main system.</li>
-<li>(Steps 5-10 from <a href="#6281-without-initramfs">6.2.8.1. Without Initramfs</a> follow).</li>
+<li><em>(Steps 5-10 from <a href="#6281-without-initramfs">6.2.8.1. Without Initramfs</a> follow).</em></li>
 </ol>
 <h4 id="629-minimal-mode-single-user-mode">6.2.9. Minimal Mode (Single-User Mode)</h4>
-<p>Runlevel 1 or S boots the system with a minimal setup for maintenance.
-It runs <code>/etc/rc.single</code>, providing a root shell for troubleshooting.</p>
+<p>Runlevel <strong>1</strong> or <strong>S</strong> boots the system with a minimal setup for
+maintenance.  It runs <code>/etc/rc.single</code>, providing a root shell for
+troubleshooting.</p>
 <h4 id="6210-graceful-shutdown-procedure">6.2.10. Graceful Shutdown Procedure</h4>
 <p>When shutting down or rebooting, <code>/etc/rc.shutdown</code> is invoked to stop
 services, unmount filesystems, and safely power off the system.</p>
