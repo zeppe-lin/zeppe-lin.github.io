@@ -1975,9 +1975,9 @@ Example usage in a `Pkgfile`:
 
     download_svn https://svn.project.org/svn/program/trunk
 
-Include `subversion` in dependencies to ensure compatibility.
-`subversion` is not part of `pkgsrc-core`, and must be declared
-explicitly.
+Add `subversion` to dependencies for compatibility.  Unlike `git`,
+which resides in `pkgsrc-core`, `subversion` requires explicit
+declaration.
 
 ##### 5.4.4.4. Best Practices
 
@@ -2134,9 +2134,10 @@ in `/etc/inittab`:
 | 3-5      | Unused           | Reserved for custom use                   |
 | 6        | Reboot           | Restart the system                        |
 
-By default, Zeppe-Lin boots into multi-user mode (runlevel 2), which
-enables all services and user access.  Single-user mode (runlevel 1 or
-S) is ideal for system maintenance, providing a minimal environment.
+By default, Zeppe-Lin boots into multi-user mode (runlevel **2**),
+which enables all services and user access.  Single-user mode
+(runlevel **1** or **S**) is ideal for system maintenance, providing a
+minimal environment.
 
 #### 6.2.2. Core Init Scripts
 
@@ -2264,7 +2265,7 @@ or without `initramfs`.
 4. `/sbin/init` starts: The first user-space process (PID 1).
 5. `/etc/inittab` is read: `init` gets its instructions.
 6. `/etc/rc` runs: The main boot script executes.
-7. Runlevel is set: The default runlevel (usually 2) is chosen.
+7. Runlevel is set: The default runlevel (usually **2**) is chosen.
 8. `/etc/rc.multi` starts services:
    Services from `/etc/rc.conf` are launched.
 9. `/etc/rc.local` runs: Your custom commands are executed.
@@ -2282,12 +2283,13 @@ or without `initramfs`.
 7. Root is switched: System moves from initramfs to your real root.
 8. `/sbin/init` on real root starts:
    The init process from your main system.
-9. (Steps 5-10 from [6.2.8.1. Without Initramfs](#6281-without-initramfs) follow).
+9. *(Steps 5-10 from [6.2.8.1. Without Initramfs](#6281-without-initramfs) follow).*
 
 #### 6.2.9. Minimal Mode (Single-User Mode)
 
-Runlevel 1 or S boots the system with a minimal setup for maintenance.
-It runs `/etc/rc.single`, providing a root shell for troubleshooting.
+Runlevel **1** or **S** boots the system with a minimal setup for
+maintenance.  It runs `/etc/rc.single`, providing a root shell for
+troubleshooting.
 
 #### 6.2.10. Graceful Shutdown Procedure
 
