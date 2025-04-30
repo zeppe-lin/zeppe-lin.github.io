@@ -132,7 +132,10 @@ Logical volume scheme:
 | swap        | swap       | 2 x RAM          | swap area   |
 | root        | ext4       | rest of the disk | root fs     |
 
-Check RAM size: `# free -m`.  Create volumes:
+Check RAM size: `# free -m`.  For example, if you have 4GB RAM, a swap of 8G
+(2 x RAM) is recommended.
+
+Create volumes:
 
     # lvcreate -L 8G -n swap zpln
     # lvcreate -l 100%FREE -n root zpln
