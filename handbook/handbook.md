@@ -165,20 +165,17 @@ Mount the boot partition:
 
 ### 2.4. Install Base System
 
-Prepare the base system by downloading, verifying, and extracting the
-rootfs tarball.
+Download, verify, and extract the rootfs tarball to set up your base
+system.
 
 #### 2.4.1. Download Rootfs Tarball
 
-As mentioned, `/mnt` is the default mount point for the system.
-Download the rootfs tarball directly into this directory to avoid
-using live CD/DVD/USB RAM.
+Download the tarball directly into the `/mnt` directory (the default
+mount point) to avoid using live media RAM.
 
-You can find the download URL for the latest rootfs tarball on the
-Zeppe-Lin `pkgsrc-core`
-[releases page](https://github.com/zeppe-lin/pkgsrc-core/releases).
-Alternatively, you can use the following commands, replacing version
-`v1.0` with the desired release version (e.g., `v1.0`, `v1.1`, etc):
+Get the latest rootfs release from the
+[Zeppe-Lin pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases)
+or run these commands (replace `v1.0` with the version you need):
 
     # cd /mnt
     # VERSION=v1.0
@@ -187,11 +184,9 @@ Alternatively, you can use the following commands, replacing version
 
 #### 2.4.2. Verify Downloaded Tarball
 
-The Zeppe-Lin rootfs tarball is signed using GPG.  Verifying the
-authenticity and integrity of downloaded files is highly encouraged
-for security purposes but not strictly required.  If `gpg(1)` is
-available, you can verify the tarball using the following commands.
-Make sure to replace `${VERSION}` with the version you downloaded:
+The tarball is signed with GPG.  For security, it's highly recommended
+(but not required) to verify its integrity.  Replace `${VERSION}` with
+your version and run:
 
     # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
     # gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
