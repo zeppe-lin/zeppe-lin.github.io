@@ -495,11 +495,11 @@ Choose one of the following:
 
 ##### 2.10.2.4. Build and Install
 
-Compile:
+Compile the kernel:
 
     (chrooted) # make -j$(nproc) all
 
-Install:
+Install the compiled kernel and configuration:
 
     (chrooted) # KV=$(pkgman printf %v --filter=linux)
     (chrooted) # cp arch/x86/boot/bzImage /boot/vmlinuz-${KV}
@@ -508,7 +508,7 @@ Install:
 
 Next steps:
 
-Firmware needed? See [2.11. Kernel Firmware](#211-kernel-firmware).
+Firmware needed? Proceed to [2.11. Kernel Firmware](#211-kernel-firmware).
 
 No firmware needed? Go to [2.12. Initramfs](#212-initramfs).
 
