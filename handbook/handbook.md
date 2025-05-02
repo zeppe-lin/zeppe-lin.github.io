@@ -478,14 +478,20 @@ If no errors, apply them:
 
 ##### 2.10.2.3. Configure the Kernel
 
-Custom:
+Choose one of the following:
 
-    (chrooted) # make menuconfig
+- **Custom Configuration**
 
-Package Default:
+  Run the menu-based kernel configurator:
 
-    (chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
-    (chrooted) # make olddefconfig
+      (chrooted) # make menuconfig
+
+- **Use Package Defaults**
+
+  Apply the default configuration from the package:
+
+      (chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
+      (chrooted) # make olddefconfig
 
 ##### 2.10.2.4. Build and Install
 
