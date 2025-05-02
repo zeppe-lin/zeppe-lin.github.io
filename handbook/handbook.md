@@ -412,12 +412,12 @@ Build and install Linux kernel:
     (chrooted) # pkgman install --deps --group \
         --config-append="runscripts no" linux
 
-The linux package includes a post-install script that runs
+The `linux` package includes a `post-install` script that runs
 `mkinitramfs(8)` and updates the GRUB config.  This script is
 disabled here for manual execution later.
 
 **Important:**
-When you update the linux package through the package manager, the
+When you update the `linux` package through the package manager, the
 old kernel and its modules are removed as part of the update
 process.  This can cause issues if the system is still using the old
 kernel while the new one is being installed.  For example:
@@ -429,7 +429,7 @@ kernel while the new one is being installed.  For example:
   after the update, as the kernel modules corresponding to the old
   kernel are removed.
 
-To avoid these problems, it is recommended to lock the linux package
+To avoid these problems, it is recommended to lock the `linux` package
 from automatic updates and handle kernel updates separately using
 `pkgman-update(8)`.  This ensures that the current working kernel
 remains intact until the new one is fully installed and tested.  For
@@ -622,7 +622,7 @@ For input, modern drivers like `xorg-xf86-input-libinput` and
 `xorg-xf86-input-keyboard` and `xorg-xf86-input-mouse` are also
 available.
 
-After selecting drivers for your hardware, install xorg with:
+After selecting drivers for your hardware, install `xorg` with:
 
     # pkgman install --deps --group xorg [DRIVERS]
 
@@ -1526,7 +1526,7 @@ Automate Syncing: Set up a cron job with `crond(8)`:
     # Weekly sync at 3:00 AM on Sundays
     0 3 * * 0 /root/pkgsrc-sync.sh
 
-Example script (/root/pkgsrc-sync.sh):
+Example script (`/root/pkgsrc-sync.sh`):
 
     #!/bin/sh
     LOCKFILE="/var/lock/pkgsrc-sync.lock"
@@ -1545,7 +1545,7 @@ For logging, replace `echo` with `logger`.
 
 ##### 5.3.3.2. Checking for Package Updates
 
-Identify outdated packages with pkgman diff:
+Identify outdated packages with `pkgman diff`:
 
     $ pkgman diff --deps --full
 
@@ -1586,7 +1586,7 @@ These options ensure proper dependency handling and upgrade order.
 
 ##### 5.3.3.4. Updating Specific Packages
 
-Update individual packages with pkgman update.  For example:
+Update individual packages with `pkgman update`.  For example:
 
     # pkgman update --deps --depsort --group tmux feh
 
@@ -1837,7 +1837,7 @@ There are at least two options to resolve permissions case.
 
 2. **Adjusting Permissions.**
 
-   Grant write access to pkgmk using `setfacl(1)`:
+   Grant write access to `pkgmk` using `setfacl(1)`:
 
        # setfacl -m u:pkgmk:rwx /usr/src/mynewcollection/hello
 
