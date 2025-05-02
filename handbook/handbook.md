@@ -1500,7 +1500,7 @@ Dry run:
 **Tip:** Use `pkgman search` to locate package names.
 
 Run `pkgman install --help` or see `pkgman-install(1)` for information
-about all nstallation options.
+about all installation options.
 
 #### 5.3.3. Keeping Your System Up-to-Date
 
