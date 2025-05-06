@@ -236,7 +236,7 @@ Mount necessary pseudo-filesystems:
     # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
         /mnt/dev/pts
 
-**For UEFI only**: Mount EFI variables:
+Mount EFI variables (**for UEFI setup only**):
 
     # mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
 
@@ -284,7 +284,7 @@ Shared memory, required for some builds (e.g., `python3`):
 
     (chrooted) # mount /dev/shm
 
-EFI variables (**UEFI setup only**):
+EFI variables (**for UEFI setup only**):
 
     (chrooted) # mount /sys/firmware/efi/efivars
 
