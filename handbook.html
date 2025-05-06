@@ -371,7 +371,7 @@ chroot, which is needed for updates and installing software:
 # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
     /mnt/dev/pts
 </code></pre>
-<p><strong>For UEFI only</strong>: Mount EFI variables:</p>
+<p>Mount EFI variables (<strong>for UEFI setup only</strong>):</p>
 <pre><code># mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
 </code></pre>
 <p>Enter the chroot:</p>
@@ -407,7 +407,7 @@ multi-disk systems.  Find UUIDs with:
 <p>Shared memory, required for some builds (e.g., <code>python3</code>):</p>
 <pre><code>(chrooted) # mount /dev/shm
 </code></pre>
-<p>EFI variables (<strong>UEFI setup only</strong>):</p>
+<p>EFI variables (<strong>for UEFI setup only</strong>):</p>
 <pre><code>(chrooted) # mount /sys/firmware/efi/efivars
 </code></pre>
 <p>If using <code>tmpfs(5)</code> for <code>/tmp</code>:</p>
