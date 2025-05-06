@@ -261,7 +261,7 @@ Ensure proper ownership and permissions:
     (chrooted) # chmod 755 /
 
 Generate necessary locales
-(see [8.1. Generating Locales](#81-generating-locales)).
+(see [6.1. Generating Locales](#61-generating-locales)).
 
 Edit `/etc/fstab` to configure filesystems (see `fstab(5)`).
 Example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
