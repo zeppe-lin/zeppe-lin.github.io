@@ -13,8 +13,8 @@ world, this release takes flight!
 Symbolized by our iconic post-apocalyptic airship within the gear,
 it marks the beginning of a stable and enduring adventure.
 
-Chart your course through the full [release notes](relnotes-v1.0.html)
-to discover all the new features and improvements aboard this maiden
+Chart your course through [release notes](relnotes-v1.0.html) to
+discover all the new features and improvements aboard this maiden
 voyage.
 
 ## Documentation
