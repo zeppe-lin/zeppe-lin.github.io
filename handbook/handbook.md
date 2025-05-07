@@ -95,7 +95,7 @@ Example device: `/dev/sda`.  Replace with your actual device (e.g.,
 | Partition | Filesystem | Size             | Description    |
 | --------- | ---------- | :--------------- | :------------- |
 | /dev/sda1 | FAT32      | 512MiB           | boot partition |
-| /dev/sda2 | -          | rest of the disk | luks partition |
+| /dev/sda2 | -          | rest of the disk | LUKS partition |
 
 **For UEFI systems**, the boot partition should be an ESP (512 MiB
 recommended).
@@ -129,7 +129,7 @@ Logical volume scheme:
 
 | Volume name | Filesystem | Size             | Description |
 | ----------- | ---------- | :--------------- | :---------- |
-| swap        | swap       | 2 x RAM          | swap area   |
+| swap        | -          | 2 x RAM          | swap area   |
 | root        | ext4       | rest of the disk | root fs     |
 
 Check RAM size: `# free -m`.  For example, if you have 4GB RAM, a swap of 8G
@@ -140,7 +140,7 @@ Create volumes:
     # lvcreate -L 8G -n swap zpln
     # lvcreate -l 100%FREE -n root zpln
 
-##### 2.3.1.4. Create Filesystems
+##### 2.3.1.4. Create Filesystems and Swap
 
 Format partitions and volumes:
 
