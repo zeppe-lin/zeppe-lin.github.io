@@ -1689,7 +1689,7 @@ Example:
     # cd /usr/src
     # mkdir mynewcollection
 
-##### 5.4.1.2. Enabling the Collection in `pkgman.conf`
+##### 5.4.1.2. Enabling the Collection in pkgman.conf
 
 Add your collection to `/etc/pkgman.conf`.  List it above official
 collections to give it search priority:
