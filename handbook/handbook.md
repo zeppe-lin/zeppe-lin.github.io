@@ -94,8 +94,8 @@ Example device: `/dev/sda`.  Replace with your actual device (e.g.,
 
 | Partition | Filesystem | Size             | Description    |
 | --------- | ---------- | :--------------- | :------------- |
-| /dev/sda1 | fat32      | 512MB            | boot partition |
-| /dev/sda2 | luks       | rest of the disk | luks partition |
+| /dev/sda1 | FAT32      | 512MiB           | boot partition |
+| /dev/sda2 | -          | rest of the disk | luks partition |
 
 **For UEFI systems**, the boot partition should be an ESP (512 MiB
 recommended).
