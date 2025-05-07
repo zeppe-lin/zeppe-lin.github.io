@@ -108,7 +108,7 @@ This approach also applies to unofficial repositories.
 
 This strategy keeps the new release work isolated from stable code.
 
-#### 3.1.2 Using pkgsrcfeeds to Track Package Updates (Optional)
+#### 3.1.2. Using pkgsrcfeeds to Track Package Updates (Optional)
 
 The `pkgsrcfeeds.git` repository gathers update information from all
 Zeppe-Lin pkgsrc collections into one helpful feed.  Use your favorite
@@ -121,9 +121,9 @@ also provides scripts to check for consistency and flag any issues.
 In short, `pkgsrcfeeds` handles the tracking for you, letting you
 focus on the software you want to update.
 
-### 3.2 Updating Pkgsrc Repositories and Building the Core System
+### 3.2. Updating Pkgsrc Repositories and Building the Core System
 
-#### 3.2.1 Core Toolchain Update (pkgsrc-core)
+#### 3.2.1. Core Toolchain Update (pkgsrc-core)
 
 Before updating other packages, refresh the core toolchain for a
 fresh, stable base.  Follow this build order:
@@ -182,7 +182,7 @@ needed patches.  Commit your changes with a clear message (e.g.,
 `<package>: <old_version> -> <new_version>`) and push them to the
 remote repository.
 
-#### 3.2.3 Preparing the Root Filesystem Image
+#### 3.2.3. Preparing the Root Filesystem Image
 
 Once the toolchain and packages are updated, you can create the root
 filesystem image -- Zeppe-Lin's core for chroot installations.
@@ -246,9 +246,9 @@ artifacts to save space.  For example:
 
 Skip cleanup if you need to debug or perform incremental builds.
 
-### 3.3 Finalizing Release Assets
+### 3.3. Finalizing Release Assets
 
-#### 3.3.1 Signing the Rootfs Tarball
+#### 3.3.1. Signing the Rootfs Tarball
 
 Sign your root filesystem tarball with GPG to prove its authenticity
 and integrity.  Make sure GPG is installed (e.g., with
@@ -279,7 +279,7 @@ official Zeppe-Lin private key secured with a strong passphrase.
 After these steps, your signed tarball and its signature file are
 ready for distribution.
 
-#### 3.3.2 Creating a Git Tag in pkgsrc-core
+#### 3.3.2. Creating a Git Tag in pkgsrc-core
 
 Once all package updates, configuration changes, and build scripts for
 the release are committed and pushed to your release branch (e.g.,
@@ -321,9 +321,9 @@ for the Zeppe-Lin release and is required for the GitHub release step.
 This simple process officially marks the source code state for your
 release.
 
-### 3.4 Preparing and Publishing Announcements
+### 3.4. Preparing and Publishing Announcements
 
-#### 3.4.1 Drafting Release Notes Content
+#### 3.4.1. Drafting Release Notes Content
 
 Release notes communicate what's new, changed, and required for
 upgrading.  They will form the official website release notes and the
@@ -370,14 +370,14 @@ Include the following:
 Draft these notes in a temporary file.  This content will be formatted
 and published in the following steps.
 
-#### 3.4.2 Creating Website Announcement Files and Assets
+#### 3.4.2. Creating Website Announcement Files and Assets
 
 For Zeppe-Lin, we manage official release notes and related assets in
 the `zeppe-lin.github.io` repository -- our website's home.  This
 involves creating the Markdown file for the full notes and preparing
 the release banner.
 
-##### 3.4.2.1 Creating the Markdown Release Notes File (relnotes)
+##### 3.4.2.1. Creating the Markdown Release Notes File (relnotes)
 
 1. **Access the Repository:**
    Open your local clone of `zeppe-lin.github.io.git`.
@@ -396,7 +396,7 @@ the release banner.
    release banner within this Markdown file.  The banner file will be
    created in the next step.
 
-##### 3.4.2.2 Creating the Release Banner (Cover Artwork)
+##### 3.4.2.2. Creating the Release Banner (Cover Artwork)
 
 A distinct release banner helps your audience instantly recognize the
 new Zeppe-Lin release.  It appears on both the release notes page and
@@ -420,12 +420,12 @@ the main website.
    points to the new artwork.  This step can be done just before or
    after publishing the main website updates.
 
-#### 3.4.3 Publishing the Release
+#### 3.4.3. Publishing the Release
 
 Once your assets (signed tarball, signature, Git tag) and announcement
 files are ready, it’s time to go public.
 
-##### 3.4.3.1 Announcing on GitHub Releases
+##### 3.4.3.1. Announcing on GitHub Releases
 
 1. **Open the Repository:**
    Navigate to the Zeppe-Lin
@@ -464,7 +464,7 @@ files are ready, it’s time to go public.
 8. **Publish:**
    Click "Publish release" to make it official on GitHub.
 
-##### 3.4.3.2 Updating the Zeppe-Lin Website
+##### 3.4.3.2. Updating the Zeppe-Lin Website
 
 Publish the release notes and banner on the official Zeppe-Lin
 website.
@@ -497,7 +497,7 @@ website.
 This process ensures that the release is prominently published on both
 GitHub and the Zeppe-Lin website for the community to access.
 
-### 3.5 Post-Release Tasks
+### 3.5. Post-Release Tasks
 
 After successfully publishing the new version of Zeppe-Lin, complete
 these steps to keep everything current and the community informed.
@@ -537,7 +537,7 @@ these steps to keep everything current and the community informed.
    improvements, and bug fixes based on community feedback and
    internal priorities.
 
-### 3.6 Conclusion
+### 3.6. Conclusion
 
 Congratulations, Captain! You've navigated every key step—from
 preparing our pkgsrc repositories and building the core system to
