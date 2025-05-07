@@ -57,7 +57,7 @@ please review the transitional notes in
   `gcc`.  This improves system development standards.  Check their
   man pages for details (thanks to NetBSD for them).
 
-- **dumb_runtime_dir PAM Module**:
+- **dumb\_runtime\_dir PAM Module**:
   Zeppe-Lin v1.0 now uses the `dumb-runtime-dir` PAM module by default
   to manage `XDG_RUNTIME_DIR`, improving how user-specific runtime
   directories are handled for desktop applications.  See
