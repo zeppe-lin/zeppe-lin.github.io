@@ -2,7 +2,7 @@
 
 ## PREFACE
 
-Zeppe-Lin Handbook. *Because figuring it out yourself is overrated*.
+Zeppe-Lin Handbook.  *Because figuring it out yourself is overrated*.
 
 This guide gives you everything you need to install, configure, and
 maintain your Zeppe-Lin system.
@@ -22,9 +22,9 @@ simplicity and control to build a clear, transparent system.
 
 #### 1.1.2. Who is Zeppe-Lin For?
 
-Zeppe-Lin is for the Linux user who understands the elegance of Plan 9's
-philosophy but still prefers a POSIX-compliant environment they can
-build themselves, brick by digital brick.
+Zeppe-Lin is for the Linux user who understands the elegance of Plan
+9's philosophy but still prefers a POSIX-compliant environment they
+can build themselves, brick by digital brick.
 
 While we might not be serving up everything as a file quite yet, the
 spirit of Plan 9's elegance and simplicity resonates deeply within
@@ -653,7 +653,7 @@ install Window Maker from the unofficial `pkgsrc-wmaker` repository.
 **Warning:**
 Using unofficial repositories means the packages might not follow the
 same update schedule or quality standards as the official
-repositories. **Use with caution.**
+repositories.  **Use with caution.**
 
 To install Window Maker, first clone the repository:
 
@@ -1227,7 +1227,7 @@ Upgrade all packages in the system:
 
 - `runscripts`:
   Enables `pre-install`, `post-install`, `pre-remove`, and
-  `post-remove` scripts during operations. **Enable this option.**
+  `post-remove` scripts during operations.  **Enable this option.**
 
 - `logfile`:
   Specifies the log file for `pkgman(8)` operations.
@@ -1352,10 +1352,10 @@ need.
 #### 5.2.3. Repositories: Distributing and Versioning Collections
 
 Collections are organized into Repositories, hosted on systems like
-Git. It's important to note that while a repository **can** contain
+Git.  It's important to note that while a repository **can** contain
 multiple collections, Zeppe-Lin's official repositories adopt a
 strategy where each repository primarily focuses on a single
-collection. This design choice is driven by the benefits of allowing
+collection.  This design choice is driven by the benefits of allowing
 users to selectively clone only the collections they need.
 Repositories provide:
 
