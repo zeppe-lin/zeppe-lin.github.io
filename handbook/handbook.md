@@ -525,13 +525,13 @@ Skip this if you prefer a completely free software system.
 
 ### 2.12. Initramfs
 
-First, install mkinitramfs:
+First, install `mkinitramfs`:
 
     (chrooted) # pkgman install --deps --group mkinitramfs
 
-The mkinitramfs configuration file (`/etc/mkinitramfs/config`) defines
-settings like the root device and filesystem.  Here's an example for
-[2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
+The `mkinitramfs` configuration file (`/etc/mkinitramfs/config`)
+defines settings like the root device and filesystem.  Here's an
+example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
 
     # /etc/mkinitramfs/config
     hostonly=1 #(optional, creates smaller initramfs)
@@ -547,7 +547,7 @@ settings like the root device and filesystem.  Here's an example for
 See `mkinitramfs.config(5)` for more information.
 
 **Important:**
-`hostonly` creates a smaller initramfs with only necessary modules.
+`hostonly=1` creates a smaller initramfs with only necessary modules.
 If you move the drive to different hardware later, it might not boot.
 
 **Note:**
@@ -1359,11 +1359,11 @@ collection.  This design choice is driven by the benefits of allowing
 users to selectively clone only the collections they need.
 Repositories provide:
 
-- Versioning: Branches manage package sources for specific Zeppe-Lin
-  releases (e.g., `1.x`, `2.x`), ensuring compatibility.
+- **Versioning**: Branches manage package sources for specific
+  Zeppe-Lin releases (e.g., `1.x`, `2.x`), ensuring compatibility.
 
-- Distribution: Users can clone repositories to access collections and
-  package sources.
+- **Distribution**: Users can clone repositories to access collections
+  and package sources.
 
 The official Zeppe-Lin repositories, following this
 one-collection-per-repository approach, include:
@@ -1555,7 +1555,7 @@ Example output:
 -- Differences between installed packages and packages sources tree
 Package         Installed      Available
 feh             3.7.2-1        3.7.2-2
-tmux            3.3a-1         3.3a-2
+screen          4.9.0-1        5.0.0-0
 ...
 
 -- Packages not found in the packages sources tree
@@ -1588,7 +1588,7 @@ These options ensure proper dependency handling and upgrade order.
 
 Update individual packages with `pkgman update`.  For example:
 
-    # pkgman update --deps --depsort --group tmux feh
+    # pkgman update --deps --depsort --group screen feh
 
 This command updates only the specified packages while resolving their
 dependencies.
@@ -1625,7 +1625,7 @@ See `revdep(1)` and `revdep.d(5)` for more information.
 Prevent updates to specific packages during system upgrades with
 `--ignore`.  Example:
 
-    # pkgman sysup --deps --depsort --group --ignore=vim,tmux
+    # pkgman sysup --deps --depsort --group --ignore=vim,screen
 
 Regularly revisit ignored packages to avoid security risks and
 dependency conflicts.
