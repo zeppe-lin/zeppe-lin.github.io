@@ -292,7 +292,7 @@ If using `tmpfs(5)` for `/tmp`:
 
     (chrooted) # mount /tmp
 
-For building packages in RAM (if enabled):
+For building packages in RAM (**if enabled**):
 
     (chrooted) # mount /var/cache/pkgmk/work
 
@@ -321,7 +321,7 @@ to add your `USERNAME` to the `wheel` group:
 
     (chrooted) # usermod -aG wheel USERNAME
 
-And second, grant the users in the `whell` group to be root:
+And second, grant the users in the `wheel` group to be root:
 
     # /etc/sudoers.d/00_wheel: grant users in the wheel group to be root
     %wheel ALL=(ALL:ALL) ALL
