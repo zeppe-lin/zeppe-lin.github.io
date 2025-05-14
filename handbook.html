@@ -663,8 +663,8 @@ Find the UUID with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
 </code></pre>
 <p>Common video drivers include <code>xorg-xf86-video-intel</code> (Intel),
 <code>xorg-xf86-video-amdgpu</code>/<code>xorg-xf86-video-ati</code> (AMD), and
-<code>xorg-xf86-video-nouveau</code> (NVIDIA).  For NVIDIA, consider also
-building <code>nouveau-firmware</code> for better support.</p>
+<code>xorg-xf86-video-nouveau</code> (NVIDIA).  For NVIDIA, the
+<code>nouveau-firmware</code> is also recommended.</p>
 <p>For input, modern drivers like <code>xorg-xf86-input-libinput</code> and
 <code>xorg-xf86-input-evdev</code> are recommended.  Legacy options like
 <code>xorg-xf86-input-keyboard</code> and <code>xorg-xf86-input-mouse</code> are also
@@ -787,8 +787,10 @@ error, which the loop skips to ensure all new packages are installed.</p>
 <h3 id="41-introduction">4.1. Introduction</h3>
 <p>Zeppe-Lin's package management system revolves around packages and
 package sources.  Low-level tools handle atomic operations like
-installation and building, while the high-level tool pkgman bridges
-these workflows into system-wide and Pkgsrc-based management.</p>
+building and installation, working with individual package sources or
+packages as instructed.  The high-level tool <code>pkgman</code> manages the
+package source collections and orchestrates these low-level tasks for
+system-wide software management.</p>
 <ul>
 <li><p><strong>Packages:</strong>
 Compressed archives (e.g., <code>tar.gz</code>) containing pre-built software.</p>
@@ -990,10 +992,11 @@ includes all files needed to build and install software.</p>
 <li><code>.footprint</code>: Lists expected files in the final package.</li>
 </ul>
 <p>A Package Source is the basic unit of software organization in
-Zeppe-Lin.  While this chapter introduces Package Sources in the
-context of building packages, Chapter 7 explores their organization
-into Collections and Repositories for broader software management
-workflows.</p>
+Zeppe-Lin.  While this section introduces Package Sources in the
+context of building packages,
+<a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>
+explores their organization into Collections and Repositories for
+broader software management workflows.</p>
 <h4 id="451-pkgfile-format">4.5.1. Pkgfile Format</h4>
 <p>The Pkgfile defines:</p>
 <ul>
@@ -1142,7 +1145,8 @@ Defines directories for package source collections (you can list
 multiple).  The <code>pkgsrc-core</code> collection is enabled by default.  See
 <a href="#522-collections">5.2.2. Collections</a> for additional collections.</p>
 <p>Details about <code>pkgsrcdir</code> and how it is used to configure
-Collections and Repositories are explored in Chapter 7.</p>
+Collections and Repositories are explored in next chapter:
+<a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>.</p>
 </li>
 <li><p><code>runscripts</code>:
 Enables <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and
@@ -1157,7 +1161,7 @@ Specifies the log file for <code>pkgman(8)</code> operations.</p>
 <p>This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.</p>
 <p>In the next chapter, we introduce Collections of Package Sources -- a
-modular approach to organizing and managing software -- with pkgman
+modular approach to organizing and managing software -- with <code>pkgman</code>
 serving as the central orchestration tool.</p>
 <h2 id="5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</h2>
 <h3 id="51-introduction">5.1. Introduction</h3>
