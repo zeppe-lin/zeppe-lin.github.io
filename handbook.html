@@ -1214,6 +1214,12 @@ final package.  This helps maintain consistency in builds.</p>
 <p>Some Package Sources may include additional files to support custom
 builds or configurations:</p>
 <ul>
+<li><p><code>.32bit</code>: flag file to trigger 32-bit build mode in <code>pkgmk(8)</code>.
+See <code>pkgmk-32bit(5)</code> for details.</p>
+</li>
+<li><p><code>.nostrip</code>: exceptions for stripping executable binaries and
+libraries.  See <code>pkgmk-nostrip(5)</code> for details.</p>
+</li>
 <li><p>Patch files (<code>*.patch</code>): Modify the source code before building.</p>
 </li>
 <li><p>Configuration files for scheduled tasks (<code>cron.*</code>): Useful for
