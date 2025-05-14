@@ -1302,6 +1302,12 @@ Essential files include:
 Some Package Sources may include additional files to support custom
 builds or configurations:
 
+- `.32bit`: flag file to trigger 32-bit build mode in `pkgmk(8)`.
+  See `pkgmk-32bit(5)` for details.
+
+- `.nostrip`: exceptions for stripping executable binaries and
+  libraries.  See `pkgmk-nostrip(5)` for details.
+
 - Patch files (`*.patch`): Modify the source code before building.
 
 - Configuration files for scheduled tasks (`cron.*`): Useful for
