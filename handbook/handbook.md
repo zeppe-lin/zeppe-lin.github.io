@@ -614,8 +614,8 @@ To find video and input drivers, run:
 
 Common video drivers include `xorg-xf86-video-intel` (Intel),
 `xorg-xf86-video-amdgpu`/`xorg-xf86-video-ati` (AMD), and
-`xorg-xf86-video-nouveau` (NVIDIA).  For NVIDIA, consider also
-building `nouveau-firmware` for better support.
+`xorg-xf86-video-nouveau` (NVIDIA).  For NVIDIA, the
+`nouveau-firmware` is also recommended.
 
 For input, modern drivers like `xorg-xf86-input-libinput` and
 `xorg-xf86-input-evdev` are recommended.  Legacy options like
@@ -781,8 +781,10 @@ error, which the loop skips to ensure all new packages are installed.
 
 Zeppe-Lin's package management system revolves around packages and
 package sources.  Low-level tools handle atomic operations like
-installation and building, while the high-level tool pkgman bridges
-these workflows into system-wide and Pkgsrc-based management.
+building and installation, working with individual package sources or
+packages as instructed.  The high-level tool `pkgman` manages the
+package source collections and orchestrates these low-level tasks for
+system-wide software management.
 
 - **Packages:**
   Compressed archives (e.g., `tar.gz`) containing pre-built software.
@@ -1028,10 +1030,11 @@ A Package Source typically contains:
 - `.footprint`: Lists expected files in the final package.
 
 A Package Source is the basic unit of software organization in
-Zeppe-Lin.  While this chapter introduces Package Sources in the
-context of building packages, Chapter 7 explores their organization
-into Collections and Repositories for broader software management
-workflows.
+Zeppe-Lin.  While this section introduces Package Sources in the
+context of building packages,
+[5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections)
+explores their organization into Collections and Repositories for
+broader software management workflows.
 
 #### 4.5.1. Pkgfile Format
 
@@ -1223,7 +1226,8 @@ Upgrade all packages in the system:
   [5.2.2. Collections](#522-collections) for additional collections.
 
   Details about `pkgsrcdir` and how it is used to configure
-  Collections and Repositories are explored in Chapter 7.
+  Collections and Repositories are explored in next chapter:
+  [5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections).
 
 - `runscripts`:
   Enables `pre-install`, `post-install`, `pre-remove`, and
@@ -1240,7 +1244,7 @@ This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.
 
 In the next chapter, we introduce Collections of Package Sources -- a
-modular approach to organizing and managing software -- with pkgman
+modular approach to organizing and managing software -- with `pkgman`
 serving as the central orchestration tool.
 
 ## 5. PACKAGE SOURCES AND COLLECTIONS
