@@ -1314,7 +1314,7 @@ builds or configurations:
   automating processes.
 
 - Scripts for managing services (`rc.*`): Enable or disable services
-  automatically.
+  automatically.  See `rc.d(7)` for details.
 
 - PAM configuration files (`pam.*`): Handle user authentication.
 
