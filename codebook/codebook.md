@@ -423,7 +423,7 @@ the main website.
 #### 3.4.3. Publishing the Release
 
 Once your assets (signed tarball, signature, Git tag) and announcement
-files are ready, it’s time to go public.
+files are ready, it's time to go public.
 
 ##### 3.4.3.1. Announcing on GitHub Releases
 
@@ -539,7 +539,7 @@ these steps to keep everything current and the community informed.
 
 ### 3.6. Conclusion
 
-Congratulations, Captain! You've navigated every key step—from
+Congratulations, Captain! You've navigated every key step -- from
 preparing our pkgsrc repositories and building the core system to
 finalizing assets, publishing announcements, and completing
 post-release tasks.  By sticking to this guide, you're ensuring each
