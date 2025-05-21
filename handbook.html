@@ -631,14 +631,12 @@ Otherwise, fetch the kernel version from the package source:</p>
 Support for other bootloaders may be added later.</p>
 <h4 id="2131-grub2">2.13.1. GRUB2</h4>
 <p>Create <code>/etc/default/grub</code> with:</p>
-<pre><code># /etc/default/grub
-# Set the delay before booting.
+<pre><code># Set the delay before booting:
 GRUB_TIMEOUT=3
-# Show ZPLN in the GRUB menu.
+# Show ZPLN in the GRUB menu:
 GRUB_DISTRIBUTOR=ZPLN
-# Set kernel parameters (quiet boot, swap for hibernation)
+# Set kernel parameters (quiet boot, swap for hibernation):
 GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;
-# End of file.
 </code></pre>
 <p><strong>Important:</strong>
 For better reliability on multi-disk systems, use <code>UUID=...</code> instead
@@ -925,13 +923,12 @@ preserved.</p>
 <p>Rules are processed sequentially, with the last matching rule taking
 priority.</p>
 <h5 id="4322-example">4.3.2.2. Example</h5>
-<p>Example <code>/etc/pkgadd.conf</code>:</p>
-<pre><code># /etc/pkgadd.conf
-UPGRADE   ^etc/.*$              NO
+<p>Example <code>/etc/pkgadd.conf</code> entries:</p>
+<pre><code>UPGRADE   ^etc/.*$              NO
 UPGRADE   ^var/log/.*$          NO
 UPGRADE   ^etc/X11/xorg.conf$   YES
 </code></pre>
-<p>This setup will:</p>
+<p>These rules will:</p>
 <ul>
 <li>Keep all files in <code>/etc</code> and its subdirectories.</li>
 <li>Keep all files in <code>/var/log</code> and its subdirectories.</li>
@@ -1310,8 +1307,7 @@ notes for the correct branch.</p>
 <h5 id="5312-enabling-collections-in-pkgmanconf">5.3.1.2. Enabling Collections in pkgman.conf</h5>
 <p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections.  For
 example:</p>
-<pre><code># /etc/pkgman.conf
-pkgsrcdir /usr/src/pkgsrc-core
+<pre><code>pkgsrcdir /usr/src/pkgsrc-core
 pkgsrcdir /usr/src/pkgsrc-system
 pkgsrcdir /usr/src/pkgsrc-xorg
 pkgsrcdir /usr/src/pkgsrc-desktop
@@ -1534,8 +1530,7 @@ the collection.</p>
 <h5 id="5412-enabling-the-collection-in-pkgmanconf">5.4.1.2. Enabling the Collection in pkgman.conf</h5>
 <p>Add your collection to <code>/etc/pkgman.conf</code>.  List it above official
 collections to give it search priority:</p>
-<pre><code># /etc/pkgman.conf
-pkgsrcdir /usr/src/mynewcollection
+<pre><code>pkgsrcdir /usr/src/mynewcollection
 pkgsrcdir /usr/src/pkgsrc-core
 pkgsrcdir /usr/src/pkgsrc-system
 pkgsrcdir /usr/src/pkgsrc-xorg
@@ -2058,8 +2053,7 @@ services, unmount filesystems, and safely power off the system.</p>
 </code></pre>
 <p>For proper network function, edit <code>/etc/hosts</code> and add your hostname
 to the loopback lines:</p>
-<pre><code># /etc/hosts
-127.0.0.1 localhost &lt;new_hostname&gt;
+<pre><code>127.0.0.1 localhost &lt;new_hostname&gt;
 ::1 localhost &lt;new_hostname&gt;
 </code></pre>
 <p>This ensures your system recognizes its own name.</p>
