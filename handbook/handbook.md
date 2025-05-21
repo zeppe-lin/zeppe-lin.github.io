@@ -574,14 +574,12 @@ Support for other bootloaders may be added later.
 
 Create `/etc/default/grub` with:
 
-    # /etc/default/grub
-    # Set the delay before booting.
+    # Set the delay before booting:
     GRUB_TIMEOUT=3
-    # Show ZPLN in the GRUB menu.
+    # Show ZPLN in the GRUB menu:
     GRUB_DISTRIBUTOR=ZPLN
-    # Set kernel parameters (quiet boot, swap for hibernation)
+    # Set kernel parameters (quiet boot, swap for hibernation):
     GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
-    # End of file.
 
 **Important:**
 For better reliability on multi-disk systems, use `UUID=...` instead
@@ -948,14 +946,13 @@ priority.
 
 ##### 4.3.2.2. Example
 
-Example `/etc/pkgadd.conf`:
+Example `/etc/pkgadd.conf` entries:
 
-    # /etc/pkgadd.conf
     UPGRADE   ^etc/.*$              NO
     UPGRADE   ^var/log/.*$          NO
     UPGRADE   ^etc/X11/xorg.conf$   YES
 
-This setup will:
+These rules will:
 
 - Keep all files in `/etc` and its subdirectories.
 - Keep all files in `/var/log` and its subdirectories.
@@ -1412,7 +1409,6 @@ notes for the correct branch.
 Edit `/etc/pkgman.conf` to enable package sources collections.  For
 example:
 
-    # /etc/pkgman.conf
     pkgsrcdir /usr/src/pkgsrc-core
     pkgsrcdir /usr/src/pkgsrc-system
     pkgsrcdir /usr/src/pkgsrc-xorg
@@ -1704,7 +1700,6 @@ Example:
 Add your collection to `/etc/pkgman.conf`.  List it above official
 collections to give it search priority:
 
-    # /etc/pkgman.conf
     pkgsrcdir /usr/src/mynewcollection
     pkgsrcdir /usr/src/pkgsrc-core
     pkgsrcdir /usr/src/pkgsrc-system
@@ -2327,7 +2322,6 @@ For a permanent setting, edit `/etc/rc.conf` and set:
 For proper network function, edit `/etc/hosts` and add your hostname
 to the loopback lines:
 
-    # /etc/hosts
     127.0.0.1 localhost <new_hostname>
     ::1 localhost <new_hostname>
 
