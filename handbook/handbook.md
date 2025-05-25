@@ -2560,8 +2560,9 @@ For advanced configurations, consult module-specific man pages (e.g.,
 
 ## 8. REPORTING BUGS
 
-For bug reports regarding this site and handbook, please use the issue
-tracker at <https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
+For bug reports regarding **this site** and **handbook**, please use
+the issue tracker at
+<https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
 
 ## Appendix A: Legal Notices
 
@@ -2579,22 +2580,20 @@ respective packages included in your system.
 Zeppe-Lin build scripts retain their original licensing structure and
 are attributed to:
 
-- Copyright (C) 2000-2021 by Per Lidén <mailto:per@fukt.bth.se> and
-  the CRUX Team <http://crux.nu>.
+- Copyright (C) 2000-2021 by [Per Lidén](mailto:per@fukt.bth.se)
+  and [CRUX Team](https://crux.nu).
 
-- Copyright (C) 2022-2025 by Alexandr Savca
-  <mailto:alexandr.savca89@gmail.com> and the Zeppe-Lin Team
-  <https://zeppe-lin.github.io>.
+- Copyright (C) 2022-2025 by [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
+  and [Zeppe-Lin Team](https://zeppe-lin.github.io).
 
-These scripts are released under the GNU General Public License
-version 3 or later (GPLv3+) <https://gnu.org/licenses/gpl.html>.
+These scripts are released under the
+[GNU General Public License version 3 or later (GPLv3+)](https://gnu.org/licenses/gpl.html).
 
 ### A.3 Handbook Licensing
 
 The Zeppe-Lin Handbook, an original work by Alexandr Savca and the
 Zeppe-Lin Team, is licensed under the
-Creative Commons Attribution-ShareAlike 3.0 Unported License
-<https://creativecommons.org/licenses/by-sa/3.0/>.
+[Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/).
 
 ### A.4 Disclaimer
 
