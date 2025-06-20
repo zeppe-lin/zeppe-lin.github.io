@@ -731,7 +731,7 @@ merges, or renames that may require manual intervention.
 #### 3.3.1. Download and Extract binpkgs
 
 **Note:**
-Verify the integrity of the downloaded binpkgs tarball before
+Verify the integrity of the downloaded `binpkgs` tarball before
 extracting it.  It is signed using the same method as the Zeppe-Lin
 root filesystem image.
 
@@ -1017,25 +1017,25 @@ See `rejmerge.conf(5)` for more details.
 
 `pkgmk(8)` builds Zeppe-Lin packages (compressed archives) from source
 files using a `Pkgfile`.  These files, along with the supporting
-directory, form a Package Source -- a self-contained unit that
+directory, form a **Package Source** -- a self-contained unit that
 includes all files needed to build and install software.
 
-A Package Source typically contains:
+A **Package Source** typically contains:
 
 - `Pkgfile`: Defines metadata and build steps.
 - `.md5sum`: Ensures the integrity of downloaded files.
 - `.footprint`: Lists expected files in the final package.
 
-A Package Source is the basic unit of software organization in
-Zeppe-Lin.  While this section introduces Package Sources in the
+A **Package Source** is the basic unit of software organization in
+Zeppe-Lin.  While this section introduces **Package Sources** in the
 context of building packages,
 [5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections)
-explores their organization into Collections and Repositories for
-broader software management workflows.
+explores their organization into **Collections** and **Repositories**
+for broader software management workflows.
 
 #### 4.5.1. Pkgfile Format
 
-The Pkgfile defines:
+The `Pkgfile` defines:
 
 - `name`, `version`, `release`: Package identity.
 - `source`: URL to download the software's source code.
@@ -1056,7 +1056,7 @@ The Pkgfile defines:
         rm -rf $PKG/usr/info
     }
 
-See `Pkgfile(5)` for details.
+See `pkgmk.Pkgfile(5)` for details.
 
 #### 4.5.2. Using pkgmk
 
@@ -1223,7 +1223,7 @@ Upgrade all packages in the system:
   [5.2.2. Collections](#522-collections) for additional collections.
 
   Details about `pkgsrcdir` and how it is used to configure
-  Collections and Repositories are explored in next chapter:
+  **Collections** and **Repositories** are explored in next chapter:
   [5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections).
 
 - `runscripts`:
@@ -1240,9 +1240,9 @@ See `pkgman.conf(5)` for more details.
 This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.
 
-In the next chapter, we introduce Collections of Package Sources -- a
-modular approach to organizing and managing software -- with `pkgman`
-serving as the central orchestration tool.
+In the next chapter, we introduce **Collections** of **Package Sources**
+-- a modular approach to organizing and managing software -- with
+`pkgman` serving as the central orchestration tool.
 
 ## 5. PACKAGE SOURCES AND COLLECTIONS
 
@@ -1256,14 +1256,14 @@ Zeppe-Lin organizes software sources into three key components:
   Zeppe-Lin's software management.
 
 - **Collections:**
-  Logical groupings of Package Sources, organized by purpose (e.g.,
-  core, system tools, desktop applications).  Collections simplify
-  software organization and provide modularity.
+  Logical groupings of **Package Sources**, organized by purpose
+  (e.g., core, system tools, desktop applications).  **Collections**
+  simplify software organization and provide modularity.
 
 - **Repositories:**
-  Distributed storage systems that host one or more Collections.
-  Repositories enable versioning, collaboration, and synchronization
-  across systems.
+  Distributed storage systems that host one or more **Collections**.
+  **Repositories** enable versioning, collaboration, and
+  synchronization across systems.
 
 These components provide a structured approach to building, managing,
 and distributing software on Zeppe-Lin.  Tools like `pkgmk(8)` and
@@ -1275,9 +1275,9 @@ updates.
 
 #### 5.2.1. Package Source: The Core Unit
 
-In Zeppe-Lin, a Package Source is the fundamental unit for building
-software.  Each one represents a single application, library, or
-utility, organized as a directory with all the necessary files to
+In Zeppe-Lin, a **Package Source** is the fundamental unit for
+building software.  Each one represents a single application, library,
+or utility, organized as a directory with all the necessary files to
 build and install the software.
 
 Essential files include:
@@ -1287,44 +1287,59 @@ Essential files include:
   version, dependencies) and includes the steps for downloading,
   compiling, and packaging the software using `pkgmk(8)`.
 
+  See `pkgmk.Pkgfile(5)` for details.
+
 - `.md5sum`:
   This file contains checksums for verifying the integrity of
   downloaded source files.  It ensures that the files have not been
   altered or corrupted during transfer.
 
+  See `pkgmk.md5sum(5)` for details.
+
 - `.footprint`:
   Used for build verification, it lists the files expected in the
   final package.  This helps maintain consistency in builds.
 
-Some Package Sources may include additional files to support custom
-builds or configurations:
+  See `pkgmk.footprint(5)` for details.
 
-- `.32bit`: flag file to trigger 32-bit build mode in `pkgmk(8)`.
-  See `pkgmk-32bit(5)` for details.
+Some **Package Sources** may include additional files to support
+custom builds or configurations:
 
-- `.nostrip`: exceptions for stripping executable binaries and
-  libraries.  See `pkgmk-nostrip(5)` for details.
+- `.32bit`:
+  Flag file to trigger 32-bit build mode in `pkgmk(8)`.
 
-- Patch files (`*.patch`): Modify the source code before building.
+  See `pkgmk.32bit(5)` for details.
 
-- Configuration files for scheduled tasks (`cron.*`): Useful for
-  automating processes.
+- `.nostrip`:
+  Exceptions for stripping executable binaries and libraries.
 
-- Scripts for managing services (`rc.*`): Enable or disable services
-  automatically.  See `rc.d(7)` for details.
+  See `pkgmk.nostrip(5)` for details.
 
-- PAM configuration files (`pam.*`): Handle user authentication.
+- Patch files (`*.patch`):
+  Modify the source code before building.
+
+- Configuration files for scheduled tasks (`cron.*`):
+  Useful for automating processes.
+
+- Scripts for managing services (`rc.*`):
+  Enable or disable services automatically.
+
+  See `rc.d(7)` for details.
+
+- PAM configuration files (`pam.*`):
+  Handle user authentication.
 
 Together, these files create a self-contained environment for building
 and managing software.
 
 #### 5.2.2. Collections
 
-Collections are logical groupings of Package Sources.  A collection is
-simply a directory containing multiple Package Sources with a shared
-purpose, like system utilities or desktop applications.
+**Collections** are logical groupings of **Package Sources**.
+A **Collection** is simply a directory containing multiple
+**Package Sources** with a shared purpose, like system utilities or
+desktop applications.
 
-Example Collection structure:
+Example **Collection** structure:
 
     Collection (e.g., pkgsrc-core)
     |
@@ -1341,30 +1356,30 @@ Example Collection structure:
     `-- ... (more Package Sources)
 
 This logical organization enables modular software management.
-Instead of dealing with individual packages in isolation, Collections
-provide a structured approach to grouping and managing related sets of
-software.
+Instead of dealing with individual packages in isolation,
+**Collections** provide a structured approach to grouping and managing
+related sets of software.
 
-Common Collections in Zeppe-Lin:
+Common **Collections** in Zeppe-Lin:
 
 - `pkgsrc-core`: Core packages for a minimal system.
 - `pkgsrc-system`: Utilities and system-specific tools.
 - `pkgsrc-xorg`: X Window System and related tools.
 - `pkgsrc-desktop`: Desktop applications.
 
-These Collections form the foundation of Zeppe-Lin's software
+These **Collections** form the foundation of Zeppe-Lin's software
 ecosystem, allowing users to selectively enable the software they
 need.
 
 #### 5.2.3. Repositories: Distributing and Versioning Collections
 
-Collections are organized into Repositories, hosted on systems like
-Git.  It's important to note that while a repository **can** contain
-multiple collections, Zeppe-Lin's official repositories adopt a
-strategy where each repository primarily focuses on a single
+**Collections** are organized into **Repositories**, hosted on systems
+like Git.  It's important to note that while a repository **can**
+contain multiple collections, Zeppe-Lin's official repositories adopt
+a strategy where each repository primarily focuses on a single
 collection.  This design choice is driven by the benefits of allowing
 users to selectively clone only the collections they need.
-Repositories provide:
+**Repositories** provide:
 
 - **Versioning**: Branches manage package sources for specific
   Zeppe-Lin releases (e.g., `1.x`, `2.x`), ensuring compatibility.
@@ -1380,8 +1395,9 @@ one-collection-per-repository approach, include:
 - `pkgsrc-xorg.git`: X Window System and related tools.
 - `pkgsrc-desktop.git`: Desktop applications.
 
-Repositories ensure that collections are both modular and manageable,
-allowing users to selectively clone only the collections they need.
+**Repositories** ensure that collections are both modular and
+manageable, allowing users to selectively clone only the collections
+they need.
 
 ### 5.3. Managing Package Sources
 
@@ -1505,14 +1521,14 @@ Dry run:
 
 **Tip:** Use `pkgman search` to locate package names.
 
-Run `pkgman install --help` or see `pkgman-install(1)` for information
+Run `pkgman install --help` or see `pkgman-install(8)` for information
 about all installation options.
 
 #### 5.3.3. Keeping Your System Up-to-Date
 
 Maintaining your Zeppe-Lin system involves two primary tasks:
 
-1. Sync your Repositories regularly to stay up-to-date.
+1. Sync your **Repositories** regularly to stay up-to-date.
 2. Updating installed packages to their latest versions.
 
 ##### 5.3.3.1. Synchronizing Local Collections
@@ -1557,17 +1573,15 @@ Identify outdated packages with `pkgman diff`:
 
 Example output:
 
-```
--- Differences between installed packages and packages sources tree
-Package         Installed      Available
-feh             3.7.2-1        3.7.2-2
-screen          4.9.0-1        5.0.0-0
-...
-
--- Packages not found in the packages sources tree
-Package         Installed      Required by
-libncurses      6.2-1          vim
-```
+    -- Differences between installed packages and packages sources tree
+    Package         Installed      Available
+    feh             3.7.2-1        3.7.2-2
+    screen          4.9.0-1        5.0.0-0
+    ...
+    
+    -- Packages not found in the packages sources tree
+    Package         Installed      Required by
+    libncurses      6.2-1          vim
 
 Review this output to determine which packages need updates.  Packages
 in the "not found" section may have been removed from the collection
@@ -1780,7 +1794,7 @@ Include these headers in the `Pkgfile` for optimal integration with
 
 - `# Description`: Brief summary of the package.
 - `# URL`: Link to official documentation or website.
-- `# Depends on`: List of dependencies. `pkgman(1)` resolves and
+- `# Depends on`: List of dependencies.  `pkgman(1)` resolves and
   installs these automatically.
 
 Without these headers, `pkgman(1)` cannot display metadata or resolve
@@ -1993,7 +2007,7 @@ declaration.
 - Use pinned commits or snapshots for stability in production.
 - Reserve bleeding-edge builds for testing and development.
 - Include download functions (`download_git` or `download_svn`)
-  directly in `Pkgfiles` for portability.
+  directly in `Pkgfile` for portability.
 
 ### 5.5. Tips and Best Practices
 
