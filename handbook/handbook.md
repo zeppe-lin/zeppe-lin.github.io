@@ -1207,11 +1207,11 @@ Identify outdated packages:
 
 Update a single package:
 
-    $ pkgman update --deps --group bind
+    # pkgman update --deps --group bind
 
 Upgrade all packages in the system:
 
-    $ pkgman sysup --deps --depsort --group
+    # pkgman sysup --deps --depsort --group
 
 #### 4.6.2. Configuring pkgman
 
