@@ -749,7 +749,7 @@ target Zeppe-Lin version.  They detail package changes like removals,
 merges, or renames that may require manual intervention.</p>
 <h4 id="331-download-and-extract-binpkgs">3.3.1. Download and Extract binpkgs</h4>
 <p><strong>Note:</strong>
-Verify the integrity of the downloaded binpkgs tarball before
+Verify the integrity of the downloaded <code>binpkgs</code> tarball before
 extracting it.  It is signed using the same method as the Zeppe-Lin
 root filesystem image.</p>
 <p>Download the tarball and its signature for your upgrade, replacing
@@ -980,22 +980,22 @@ prompts you to decide their fate.  For each file, you can choose:</p>
 <h3 id="45-low-level-tools-pkgmk">4.5. Low-level Tools: pkgmk</h3>
 <p><code>pkgmk(8)</code> builds Zeppe-Lin packages (compressed archives) from source
 files using a <code>Pkgfile</code>.  These files, along with the supporting
-directory, form a Package Source -- a self-contained unit that
+directory, form a <strong>Package Source</strong> -- a self-contained unit that
 includes all files needed to build and install software.</p>
-<p>A Package Source typically contains:</p>
+<p>A <strong>Package Source</strong> typically contains:</p>
 <ul>
 <li><code>Pkgfile</code>: Defines metadata and build steps.</li>
 <li><code>.md5sum</code>: Ensures the integrity of downloaded files.</li>
 <li><code>.footprint</code>: Lists expected files in the final package.</li>
 </ul>
-<p>A Package Source is the basic unit of software organization in
-Zeppe-Lin.  While this section introduces Package Sources in the
+<p>A <strong>Package Source</strong> is the basic unit of software organization in
+Zeppe-Lin.  While this section introduces <strong>Package Sources</strong> in the
 context of building packages,
 <a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>
-explores their organization into Collections and Repositories for
-broader software management workflows.</p>
+explores their organization into <strong>Collections</strong> and <strong>Repositories</strong>
+for broader software management workflows.</p>
 <h4 id="451-pkgfile-format">4.5.1. Pkgfile Format</h4>
-<p>The Pkgfile defines:</p>
+<p>The <code>Pkgfile</code> defines:</p>
 <ul>
 <li><code>name</code>, <code>version</code>, <code>release</code>: Package identity.</li>
 <li><code>source</code>: URL to download the software's source code.</li>
@@ -1015,7 +1015,7 @@ build() {
     rm -rf $PKG/usr/info
 }
 </code></pre>
-<p>See <code>Pkgfile(5)</code> for details.</p>
+<p>See <code>pkgmk.Pkgfile(5)</code> for details.</p>
 <h4 id="452-using-pkgmk">4.5.2. Using pkgmk</h4>
 <h5 id="4521-building-a-package">4.5.2.1. Building a Package</h5>
 <p>To build a package, create a directory named after the package, <code>cd</code>
@@ -1142,7 +1142,7 @@ Defines directories for package source collections (you can list
 multiple).  The <code>pkgsrc-core</code> collection is enabled by default.  See
 <a href="#522-collections">5.2.2. Collections</a> for additional collections.</p>
 <p>Details about <code>pkgsrcdir</code> and how it is used to configure
-Collections and Repositories are explored in next chapter:
+<strong>Collections</strong> and <strong>Repositories</strong> are explored in next chapter:
 <a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>.</p>
 </li>
 <li><p><code>runscripts</code>:
@@ -1157,9 +1157,9 @@ Specifies the log file for <code>pkgman(8)</code> operations.</p>
 <h3 id="47-the-essentials-outro">4.7. The Essentials (outro)</h3>
 <p>This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.</p>
-<p>In the next chapter, we introduce Collections of Package Sources -- a
-modular approach to organizing and managing software -- with <code>pkgman</code>
-serving as the central orchestration tool.</p>
+<p>In the next chapter, we introduce <strong>Collections</strong> of <strong>Package Sources</strong>
+-- a modular approach to organizing and managing software -- with
+<code>pkgman</code> serving as the central orchestration tool.</p>
 <h2 id="5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</h2>
 <h3 id="51-introduction">5.1. Introduction</h3>
 <p>Zeppe-Lin organizes software sources into three key components:</p>
@@ -1170,14 +1170,14 @@ needed to build and install software.  These are the foundation of
 Zeppe-Lin's software management.</p>
 </li>
 <li><p><strong>Collections:</strong>
-Logical groupings of Package Sources, organized by purpose (e.g.,
-core, system tools, desktop applications).  Collections simplify
-software organization and provide modularity.</p>
+Logical groupings of <strong>Package Sources</strong>, organized by purpose
+(e.g., core, system tools, desktop applications).  <strong>Collections</strong>
+simplify software organization and provide modularity.</p>
 </li>
 <li><p><strong>Repositories:</strong>
-Distributed storage systems that host one or more Collections.
-Repositories enable versioning, collaboration, and synchronization
-across systems.</p>
+Distributed storage systems that host one or more <strong>Collections</strong>.
+<strong>Repositories</strong> enable versioning, collaboration, and
+synchronization across systems.</p>
 </li>
 </ul>
 <p>These components provide a structured approach to building, managing,
@@ -1187,9 +1187,9 @@ workflows such as dependency management, package building, and system
 updates.</p>
 <h3 id="52-organizing-package-sources">5.2. Organizing Package Sources</h3>
 <h4 id="521-package-source-the-core-unit">5.2.1. Package Source: The Core Unit</h4>
-<p>In Zeppe-Lin, a Package Source is the fundamental unit for building
-software.  Each one represents a single application, library, or
-utility, organized as a directory with all the necessary files to
+<p>In Zeppe-Lin, a <strong>Package Source</strong> is the fundamental unit for
+building software.  Each one represents a single application, library,
+or utility, organized as a directory with all the necessary files to
 build and install the software.</p>
 <p>Essential files include:</p>
 <ul>
@@ -1197,44 +1197,53 @@ build and install the software.</p>
 The main build script.  It defines the package's metadata (name,
 version, dependencies) and includes the steps for downloading,
 compiling, and packaging the software using <code>pkgmk(8)</code>.</p>
+<p>See <code>pkgmk.Pkgfile(5)</code> for details.</p>
 </li>
 <li><p><code>.md5sum</code>:
 This file contains checksums for verifying the integrity of
 downloaded source files.  It ensures that the files have not been
 altered or corrupted during transfer.</p>
+<p>See <code>pkgmk.md5sum(5)</code> for details.</p>
 </li>
 <li><p><code>.footprint</code>:
 Used for build verification, it lists the files expected in the
 final package.  This helps maintain consistency in builds.</p>
+<p>See <code>pkgmk.footprint(5)</code> for details.</p>
 </li>
 </ul>
-<p>Some Package Sources may include additional files to support custom
-builds or configurations:</p>
+<p>Some <strong>Package Sources</strong> may include additional files to support
+custom builds or configurations:</p>
 <ul>
-<li><p><code>.32bit</code>: flag file to trigger 32-bit build mode in <code>pkgmk(8)</code>.
-See <code>pkgmk-32bit(5)</code> for details.</p>
+<li><p><code>.32bit</code>:
+Flag file to trigger 32-bit build mode in <code>pkgmk(8)</code>.</p>
+<p>See <code>pkgmk.32bit(5)</code> for details.</p>
 </li>
-<li><p><code>.nostrip</code>: exceptions for stripping executable binaries and
-libraries.  See <code>pkgmk-nostrip(5)</code> for details.</p>
+<li><p><code>.nostrip</code>:
+Exceptions for stripping executable binaries and libraries.</p>
+<p>See <code>pkgmk.nostrip(5)</code> for details.</p>
 </li>
-<li><p>Patch files (<code>*.patch</code>): Modify the source code before building.</p>
+<li><p>Patch files (<code>*.patch</code>):
+Modify the source code before building.</p>
 </li>
-<li><p>Configuration files for scheduled tasks (<code>cron.*</code>): Useful for
-automating processes.</p>
+<li><p>Configuration files for scheduled tasks (<code>cron.*</code>):
+Useful for automating processes.</p>
 </li>
-<li><p>Scripts for managing services (<code>rc.*</code>): Enable or disable services
-automatically.  See <code>rc.d(7)</code> for details.</p>
+<li><p>Scripts for managing services (<code>rc.*</code>):
+Enable or disable services automatically.</p>
+<p>See <code>rc.d(7)</code> for details.</p>
 </li>
-<li><p>PAM configuration files (<code>pam.*</code>): Handle user authentication.</p>
+<li><p>PAM configuration files (<code>pam.*</code>):
+Handle user authentication.</p>
 </li>
 </ul>
 <p>Together, these files create a self-contained environment for building
 and managing software.</p>
 <h4 id="522-collections">5.2.2. Collections</h4>
-<p>Collections are logical groupings of Package Sources.  A collection is
-simply a directory containing multiple Package Sources with a shared
-purpose, like system utilities or desktop applications.</p>
-<p>Example Collection structure:</p>
+<p><strong>Collections</strong> are logical groupings of <strong>Package Sources</strong>.
+A <strong>Collection</strong> is simply a directory containing multiple
+<strong>Package Sources</strong> with a shared purpose, like system utilities or
+desktop applications.</p>
+<p>Example <strong>Collection</strong> structure:</p>
 <pre><code>Collection (e.g., pkgsrc-core)
 |
 |-- acl/ (Package Source)
@@ -1250,27 +1259,27 @@ purpose, like system utilities or desktop applications.</p>
 `-- ... (more Package Sources)
 </code></pre>
 <p>This logical organization enables modular software management.
-Instead of dealing with individual packages in isolation, Collections
-provide a structured approach to grouping and managing related sets of
-software.</p>
-<p>Common Collections in Zeppe-Lin:</p>
+Instead of dealing with individual packages in isolation,
+<strong>Collections</strong> provide a structured approach to grouping and managing
+related sets of software.</p>
+<p>Common <strong>Collections</strong> in Zeppe-Lin:</p>
 <ul>
 <li><code>pkgsrc-core</code>: Core packages for a minimal system.</li>
 <li><code>pkgsrc-system</code>: Utilities and system-specific tools.</li>
 <li><code>pkgsrc-xorg</code>: X Window System and related tools.</li>
 <li><code>pkgsrc-desktop</code>: Desktop applications.</li>
 </ul>
-<p>These Collections form the foundation of Zeppe-Lin's software
+<p>These <strong>Collections</strong> form the foundation of Zeppe-Lin's software
 ecosystem, allowing users to selectively enable the software they
 need.</p>
 <h4 id="523-repositories-distributing-and-versioning-collections">5.2.3. Repositories: Distributing and Versioning Collections</h4>
-<p>Collections are organized into Repositories, hosted on systems like
-Git.  It's important to note that while a repository <strong>can</strong> contain
-multiple collections, Zeppe-Lin's official repositories adopt a
-strategy where each repository primarily focuses on a single
+<p><strong>Collections</strong> are organized into <strong>Repositories</strong>, hosted on systems
+like Git.  It's important to note that while a repository <strong>can</strong>
+contain multiple collections, Zeppe-Lin's official repositories adopt
+a strategy where each repository primarily focuses on a single
 collection.  This design choice is driven by the benefits of allowing
 users to selectively clone only the collections they need.
-Repositories provide:</p>
+<strong>Repositories</strong> provide:</p>
 <ul>
 <li><p><strong>Versioning</strong>: Branches manage package sources for specific
 Zeppe-Lin releases (e.g., <code>1.x</code>, <code>2.x</code>), ensuring compatibility.</p>
@@ -1287,8 +1296,9 @@ one-collection-per-repository approach, include:</p>
 <li><code>pkgsrc-xorg.git</code>: X Window System and related tools.</li>
 <li><code>pkgsrc-desktop.git</code>: Desktop applications.</li>
 </ul>
-<p>Repositories ensure that collections are both modular and manageable,
-allowing users to selectively clone only the collections they need.</p>
+<p><strong>Repositories</strong> ensure that collections are both modular and
+manageable, allowing users to selectively clone only the collections
+they need.</p>
 <h3 id="53-managing-package-sources">5.3. Managing Package Sources</h3>
 <h4 id="531-setting-up-collections">5.3.1. Setting Up Collections</h4>
 <p>To access software for installation in Zeppe-Lin, download the
@@ -1380,12 +1390,12 @@ option:</p>
 <pre><code># pkgman install -vv --test --deps --group vim zathura
 </code></pre>
 <p><strong>Tip:</strong> Use <code>pkgman search</code> to locate package names.</p>
-<p>Run <code>pkgman install --help</code> or see <code>pkgman-install(1)</code> for information
+<p>Run <code>pkgman install --help</code> or see <code>pkgman-install(8)</code> for information
 about all installation options.</p>
 <h4 id="533-keeping-your-system-up-to-date">5.3.3. Keeping Your System Up-to-Date</h4>
 <p>Maintaining your Zeppe-Lin system involves two primary tasks:</p>
 <ol>
-<li>Sync your Repositories regularly to stay up-to-date.</li>
+<li>Sync your <strong>Repositories</strong> regularly to stay up-to-date.</li>
 <li>Updating installed packages to their latest versions.</li>
 </ol>
 <h5 id="5331-synchronizing-local-collections">5.3.3.1. Synchronizing Local Collections</h5>
@@ -1597,7 +1607,7 @@ build() {
 <ul>
 <li><code># Description</code>: Brief summary of the package.</li>
 <li><code># URL</code>: Link to official documentation or website.</li>
-<li><code># Depends on</code>: List of dependencies. <code>pkgman(1)</code> resolves and
+<li><code># Depends on</code>: List of dependencies.  <code>pkgman(1)</code> resolves and
 installs these automatically.</li>
 </ul>
 <p>Without these headers, <code>pkgman(1)</code> cannot display metadata or resolve
@@ -1777,7 +1787,7 @@ declaration.</p>
 <li>Use pinned commits or snapshots for stability in production.</li>
 <li>Reserve bleeding-edge builds for testing and development.</li>
 <li>Include download functions (<code>download_git</code> or <code>download_svn</code>)
-directly in <code>Pkgfiles</code> for portability.</li>
+directly in <code>Pkgfile</code> for portability.</li>
 </ul>
 <h3 id="55-tips-and-best-practices">5.5. Tips and Best Practices</h3>
 <h4 id="551-renicing-builds">5.5.1. Renicing Builds</h4>
