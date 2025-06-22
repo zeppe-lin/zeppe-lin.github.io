@@ -2486,9 +2486,9 @@ Accurate time via NTP is crucial for time-sensitive things like OTP.
 
 Use an NTP client, such as `chrony`, to synchronize the system clock.
 
-After installing `chrony`, start the service:
+After installing `chrony`, start, stop, or restart the service via:
 
-    # /etc/rc.d/chrony start
+    # /etc/rc.d/chrony [start|stop|restart]
 
 **Important:**
 To enable automatic startup, add `chrony` to the `SERVICES` line in
