@@ -1129,10 +1129,10 @@ failed installations:</p>
 <pre><code>$ pkgman diff --deps --full
 </code></pre>
 <p>Update a single package:</p>
-<pre><code>$ pkgman update --deps --group bind
+<pre><code># pkgman update --deps --group bind
 </code></pre>
 <p>Upgrade all packages in the system:</p>
-<pre><code>$ pkgman sysup --deps --depsort --group
+<pre><code># pkgman sysup --deps --depsort --group
 </code></pre>
 <h4 id="462-configuring-pkgman">4.6.2. Configuring pkgman</h4>
 <p><code>pkgman(1)</code> is configured via <code>/etc/pkgman.conf</code>.  Key settings:</p>
@@ -2175,8 +2175,8 @@ using dynamic IP) to the <code>SERVICES</code> line in <code>/etc/rc.conf</code>
 <p><strong>Note:</strong>
 Accurate time via NTP is crucial for time-sensitive things like OTP.</p>
 <p>Use an NTP client, such as <code>chrony</code>, to synchronize the system clock.</p>
-<p>After installing <code>chrony</code>, start the service:</p>
-<pre><code># /etc/rc.d/chrony start
+<p>After installing <code>chrony</code>, start, stop, or restart the service via:</p>
+<pre><code># /etc/rc.d/chrony [start|stop|restart]
 </code></pre>
 <p><strong>Important:</strong>
 To enable automatic startup, add <code>chrony</code> to the <code>SERVICES</code> line in
