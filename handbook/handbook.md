@@ -80,7 +80,7 @@ Set up Zeppe-Lin on a fully encrypted disk (excluding the bootloader
 partition) using `dm-crypt` with LUKS and an LVM container inside the
 encrypted partition.
 
-**Important:**
+**Important**:
 Ensure these packages are installed on your Live system:
 - `parted`: Create and manage partitions.
 - `dosfstools`: Format the boot partition as FAT32 for UEFI.
@@ -132,8 +132,8 @@ Logical volume scheme:
 | swap        | -          | 2 x RAM          | swap area   |
 | root        | ext4       | rest of the disk | root fs     |
 
-Check RAM size: `# free -m`.  For example, if you have 4GB RAM, a swap of 8G
-(2 x RAM) is recommended.
+Check RAM size: `# free -m`.  For example, if you have 4GB RAM, a swap
+of 8G (2 x RAM) is recommended.
 
 Create volumes:
 
@@ -173,8 +173,8 @@ system.
 Download the tarball directly into the `/mnt` directory (the default
 mount point) to avoid using live media RAM.
 
-Get the latest rootfs release from the
-[Zeppe-Lin pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases)
+Get the latest rootfs release from the Zeppe-Lin
+[pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases)
 or run these commands (replace `v1.0` with the version you need):
 
     # cd /mnt
@@ -200,7 +200,7 @@ contents using the following command.  Make sure to replace
     # tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
         rootfs-${VERSION}-x86_64.tar.xz
 
-**Important:**
+**Important**:
 
 It is critical to use all the specified options to ensure proper
 extraction.  Here's what each option does:
@@ -221,9 +221,9 @@ extraction.  Here's what each option does:
 
 ### 2.5. Chroot Into Base System
 
-**Important:**
-Copy the DNS configuration to ensure network access inside the
-chroot, which is needed for updates and installing software:
+**Important**:
+Copy the DNS configuration to ensure network access inside the chroot,
+which is needed for updates and installing software:
 `# cp /etc/resolv.conf /mnt/etc/resolv.conf`
 
 Mount necessary pseudo-filesystems:
@@ -244,8 +244,8 @@ Enter the chroot:
 
     # chroot /mnt /bin/bash
 
-Set the `SHELL` variable to `/bin/bash` to ensure tools like Vim work
-properly:
+Set the `SHELL` variable to `/bin/bash` to ensure tools like `vim`
+work properly:
 
     (chrooted) # export SHELL=/bin/bash
 
@@ -270,7 +270,7 @@ Example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
     /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
     /dev/zpln/swap  swap   swap  defaults                     0 0
 
-**Note:**
+**Note**:
 Use `UUID=...` instead of `/dev/*` for better reliability on
 multi-disk systems.  Find UUIDs with:
 `# blkid -o value -s UUID <DEVICE>`
@@ -296,7 +296,7 @@ For building packages in RAM (**if enabled**):
 
     (chrooted) # mount /var/cache/pkgmk/work
 
-**Important:**
+**Important**:
 Mount `/var/cache/pkgmk/work` only if you have enough RAM and intend
 to build packages there.
 
@@ -358,7 +358,7 @@ enabled.  Additionally, consider editing `/etc/pkgmk.conf` (see
 Before installing any packages, it is highly recommended to update the
 freshly installed system.
 
-**Warning:**
+**Warning**:
 This warning applies if you are installing Zeppe-Lin version earlier
 than 1.0 or upgrading from an older version.  Starting from version
 6.0, `pkgutils` has introduced backward-incompatible changes for
@@ -394,7 +394,7 @@ Install the necessary packages for setting up a workstation:
 This is a generic setup; users can add any additional packages they
 require based on their specific needs.
 
-**Note:**
+**Note**:
 For network setup and configuration details, see
 [6.3. Networking](#63-networking).  If you set up a networking bridge,
 ensure you specify the bridge interface in the `/etc/rc.d/dhcpcd`
@@ -416,7 +416,7 @@ The `linux` package includes a `post-install` script that runs
 `mkinitramfs(8)` and updates the GRUB config.  This script is
 disabled here for manual execution later.
 
-**Important:**
+**Important**:
 When you update the `linux` package through the package manager, the
 old kernel and its modules are removed as part of the update
 process.  This can cause issues if the system is still using the old
@@ -444,7 +444,7 @@ additional firmware, or [2.12. Initramfs](#212-initramfs) otherwise.
 This method suits those wanting a minimal kernel or needing sources
 for driver building (e.g., Nvidia, VirtualBox).
 
-**Important:**
+**Important**:
 Use the kernel version from Zeppe-Lin's package sources for best
 compatibility.  Other versions might cause issues.
 
@@ -546,11 +546,11 @@ example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
 
 See `mkinitramfs.config(5)` for more information.
 
-**Important:**
+**Important**:
 `hostonly=1` creates a smaller initramfs with only necessary modules.
 If you move the drive to different hardware later, it might not boot.
 
-**Note:**
+**Note**:
 For multi-disk systems, using `UUID=...` instead of `/dev/*` in the
 config can prevent boot issues.
 Find UUIDs with: `# blkid -o value -s UUID <DEVICE>`.
@@ -567,8 +567,8 @@ Finally, generate the initramfs image:
 
 ### 2.13. Bootloader
 
-This section covers installing GRUB2 as your bootloader.
-Support for other bootloaders may be added later.
+This section covers installing GRUB2 as your bootloader.  Support for
+other bootloaders may be added later.
 
 #### 2.13.1. GRUB2
 
@@ -581,7 +581,7 @@ Create `/etc/default/grub` with:
     # Set kernel parameters (quiet boot, swap for hibernation):
     GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
 
-**Important:**
+**Important**:
 For better reliability on multi-disk systems, use `UUID=...` instead
 of `/dev/*` for the resume partition.
 Find the UUID with: `# blkid -o value -s UUID <DEVICE>`.
@@ -648,7 +648,7 @@ window manager.  You can install it with:
 For users interested in a retro, intuitive window manager, you can
 install Window Maker from the unofficial `pkgsrc-wmaker` repository.
 
-**Warning:**
+**Warning**:
 Using unofficial repositories means the packages might not follow the
 same update schedule or quality standards as the official
 repositories.  **Use with caution.**
@@ -659,8 +659,8 @@ To install Window Maker, first clone the repository:
     # git clone https://github.com/zeppe-lin/pkgsrc-wmaker \
         --branch 1.x
 
-Next, you need to tell `pkgman(1)` about this new repository by
-adding the following line to `/etc/pkgman.conf`:
+Next, you need to tell `pkgman(1)` about this new repository by adding
+the following line to `/etc/pkgman.conf`:
 
     pkgsrcdir /usr/src/pkgsrc-wmaker
 
@@ -722,7 +722,7 @@ branch.  Replace `1.x` with the specific release you are upgrading to:
 Use precompiled binary packages for faster core system upgrades,
 especially to avoid build issues during initial updates.
 
-**Important:**
+**Important**:
 Upgrades may cause file conflicts, such as a file being reassigned
 between packages.  To prevent issues, read the release notes for the
 target Zeppe-Lin version.  They detail package changes like removals,
@@ -730,7 +730,7 @@ merges, or renames that may require manual intervention.
 
 #### 3.3.1. Download and Extract binpkgs
 
-**Note:**
+**Note**:
 Verify the integrity of the downloaded `binpkgs` tarball before
 extracting it.  It is signed using the same method as the Zeppe-Lin
 root filesystem image.
@@ -784,10 +784,10 @@ packages as instructed.  The high-level tool `pkgman` manages the
 package source collections and orchestrates these low-level tasks for
 system-wide software management.
 
-- **Packages:**
+- **Packages**:
   Compressed archives (e.g., `tar.gz`) containing pre-built software.
 
-- **Package Sources:**
+- **Package Sources**:
   Files required to create these compressed archives (packages).
 
 To work with packages and package sources, Zeppe-Lin provides:
@@ -857,7 +857,7 @@ Example entry for `ed`:
     usr/share/man/man1/ed.1.gz
     (Blank line)
 
-**Note:**
+**Note**:
 This database enables essential operations like installation
 (`pkgadd(8)`), removal (`pkgrm(8)`), and inspection (`pkginfo(8)`).
 
@@ -956,10 +956,9 @@ These rules will:
 
 - Keep all files in `/etc` and its subdirectories.
 - Keep all files in `/var/log` and its subdirectories.
-- Upgrade `/etc/X11/xorg.conf` specifically (overrides the `/etc`
-  rule).
+- Upgrade `/etc/X11/xorg.conf` specifically (overrides the `/etc` rule).
 
-**Caution:**
+**Caution**:
 Patterns match filenames inside the package, not full system paths.
 Do not use `/` at the start!
 
@@ -1103,7 +1102,7 @@ Set a unique work directory:
 Using `$name` (package name) and `$$` (process ID) avoids conflicts
 during simultaneous builds.
 
-**Note:**
+**Note**:
 Although unique directories avoid build conflicts, `pkgadd(8)` locks
 the database, so simultaneous installations may fail.
 
@@ -1250,17 +1249,17 @@ In the next chapter, we introduce **Collections** of **Package Sources**
 
 Zeppe-Lin organizes software sources into three key components:
 
-- **Package Sources:**
+- **Package Sources**:
   Self-contained directories that include all files and instructions
   needed to build and install software.  These are the foundation of
   Zeppe-Lin's software management.
 
-- **Collections:**
+- **Collections**:
   Logical groupings of **Package Sources**, organized by purpose
   (e.g., core, system tools, desktop applications).  **Collections**
   simplify software organization and provide modularity.
 
-- **Repositories:**
+- **Repositories**:
   Distributed storage systems that host one or more **Collections**.
   **Repositories** enable versioning, collaboration, and
   synchronization across systems.
@@ -1519,7 +1518,7 @@ Dry run:
 
     # pkgman install -vv --test --deps --group vim zathura
 
-**Tip:** Use `pkgman search` to locate package names.
+**Tip**: Use `pkgman search` to locate package names.
 
 Run `pkgman install --help` or see `pkgman-install(8)` for information
 about all installation options.
@@ -1591,14 +1590,14 @@ or installed manually from other sources.
 
 Use `pkgman sysup` for a system upgrade.
 
-**Step 1:** Download all required source files first:
+**Step 1**: Download all required source files first:
 
     # pkgman sysup -do
 
 This ensures that all necessary files are retrieved before the upgrade
 begins, avoiding interruptions during the build process.
 
-**Step 2:** Upgrade Packages:
+**Step 2**: Upgrade Packages:
 
     # pkgman sysup --deps --depsort --group
 
@@ -1753,7 +1752,7 @@ Ensure the directory name matches the package name in the `Pkgfile`:
     # mkdir /usr/src/mynewcollection/hello
     # cd /usr/src/mynewcollection/hello
 
-**Important:**
+**Important**:
 Naming consistency is critical.  A mismatch between the directory name
 and `name` in the `Pkgfile` cause build error.
 
@@ -1836,7 +1835,7 @@ This command:
 2. Builds the package using `pkgmk(8)`.
 3. Installs the package with `pkgadd(8)`.
 
-**Note:**
+**Note**:
 Warnings about missing `.md5sum` and `.footprint` files like
 `/usr/bin/pkgmk: ... cannot create .md5sum: Permission denied`
 occur because packages are built with the unprivileged `pkgmk` user,
@@ -1969,7 +1968,7 @@ For testing, dynamically set the version to the current date
         make DESTDIR=$PKG install
     }
 
-"Daily Updates": If the installed version is outdated, `pkgman(1)`
+**"Daily Updates"**: If the installed version is outdated, `pkgman(1)`
 flags it during `pkgman diff`, prompting updates:
 
     $ pkgman diff
@@ -2360,7 +2359,7 @@ Start, stop or restart the service via:
 
     # /etc/rc.d/net [start|stop|restart]
 
-**Important:**
+**Important**:
 To auto-start service at boot, add `net` to the `SERVICES` line in
 `/etc/rc.conf`.
 
@@ -2380,7 +2379,7 @@ Check `dhcpcd`'s README for potential issues:
 
     $ pkgman readme dhcpcd
 
-**Important:**
+**Important**:
 To auto-start service at boot, add `dhcpcd` to the `SERVICES` line in
 `/etc/rc.conf`.
 
@@ -2444,7 +2443,7 @@ For automatic IP, ensure the wireless interface is set in
     # /etc/rc.d/wpa_supplicant start
     # /etc/rc.d/dhcpcd start
 
-**Important:**
+**Important**:
 To auto-start service at boot, add `wpa_supplicant` (and `dhcpcd` if
 using dynamic IP) to the `SERVICES` line in `/etc/rc.conf`.
 
@@ -2481,7 +2480,7 @@ For accuracy, use NTP (described next).
 
 #### 6.4.3. Network Time Protocol (NTP) Configuration
 
-**Note:**
+**Note**:
 Accurate time via NTP is crucial for time-sensitive things like OTP.
 
 Use an NTP client, such as `chrony`, to synchronize the system clock.
@@ -2490,7 +2489,7 @@ After installing `chrony`, start, stop, or restart the service via:
 
     # /etc/rc.d/chrony [start|stop|restart]
 
-**Important:**
+**Important**:
 To enable automatic startup, add `chrony` to the `SERVICES` line in
 `/etc/rc.conf`.
 
