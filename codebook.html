@@ -54,36 +54,36 @@ simple.</p>
 <p>Releasing a new version of Zeppe-Lin is like preparing an airship for
 its next journey.  Here's the streamlined process:</p>
 <ul>
-<li><p><strong>Branching:</strong>
+<li><p><strong>Branching</strong>:
 Create new release branches in package source repositories.</p>
 </li>
-<li><p><strong>Toolchain Update:</strong>
+<li><p><strong>Toolchain Update</strong>:
 Refresh and rebuild core build tools in <code>pkgsrc-core</code>.</p>
 </li>
-<li><p><strong>Package Updates:</strong>
+<li><p><strong>Package Updates</strong>:
 Update software sources in <code>pkgsrc-core</code>, <code>pkgsrc-system</code>,
 <code>pkgsrc-xorg</code>, and <code>pkgsrc-desktop</code>.</p>
 </li>
-<li><p><strong>Rootfs Assembly:</strong>
+<li><p><strong>Rootfs Assembly</strong>:
 Build and verify the system image using <code>mkrootfs</code>.</p>
 </li>
-<li><p><strong>Finalize Assets:</strong>
+<li><p><strong>Finalize Assets</strong>:
 Sign the rootfs image and tag the release in Git.</p>
 </li>
-<li><p><strong>Prepare Announcements:</strong>
+<li><p><strong>Prepare Announcements</strong>:
 Prepare release notes and website assets.</p>
 </li>
-<li><p><strong>Publish Release:</strong>
+<li><p><strong>Publish Release</strong>:
 Announce and publish the release on GitHub and the Zeppe-Lin
 website.</p>
 </li>
-<li><p><strong>Post-Release Tasks:</strong>
+<li><p><strong>Post-Release Tasks</strong>:
 Update documentation, announce on discussions, monitor feedback.</p>
 </li>
 </ul>
-<p><strong>Key Repositories:</strong></p>
+<p><strong>Key Repositories</strong>:</p>
 <ul>
-<li><strong>Software sources collections:</strong>
+<li><strong>Software sources collections</strong>:
 <ul>
 <li><code>pkgsrc-core.git</code></li>
 <li><code>pkgsrc-system.git</code></li>
@@ -91,12 +91,12 @@ Update documentation, announce on discussions, monitor feedback.</p>
 <li><code>pkgsrc-desktop.git</code></li>
 </ul>
 </li>
-<li><strong>Website &amp; announcements:</strong>
+<li><strong>Website &amp; announcements</strong>:
 <ul>
 <li><code>zeppe-lin.github.io.git</code></li>
 </ul>
 </li>
-<li><strong>Release visuals:</strong>
+<li><strong>Release visuals</strong>:
 <ul>
 <li><code>artwork.git</code></li>
 </ul>
@@ -117,16 +117,16 @@ releases:</p>
 <li><code>pkgsrc-desktop.git</code></li>
 </ul>
 <p>This approach also applies to unofficial repositories.</p>
-<p><strong>General Approach:</strong></p>
+<p><strong>General Approach</strong>:</p>
 <ul>
-<li><p><strong>For 1.x (pre-2.0) releases:</strong>
+<li><p><strong>For 1.x (pre-2.0) releases</strong>:
 Name the branch <code>1.x</code> (for example, for releases 1.0, 1.1, 1.2).</p>
 </li>
-<li><p><strong>For 2.x and later:</strong>
+<li><p><strong>For 2.x and later</strong>:
 Name the branch after the major version (e.g., <code>2.x</code>).</p>
 </li>
 </ul>
-<p><strong>Creating a New Branch:</strong></p>
+<p><strong>Creating a New Branch</strong>:</p>
 <ol>
 <li><p>Identify the target major version (e.g., 1.0).</p>
 </li>
@@ -158,40 +158,40 @@ focus on the software you want to update.</p>
 <p>Before updating other packages, refresh the core toolchain for a
 fresh, stable base.  Follow this build order:</p>
 <ul>
-<li><strong>Build:</strong> <code>linux-headers</code> (skip, it's bundled with <code>glibc</code> at least now)</li>
-<li><strong>Build:</strong> <code>glibc</code> and <code>glibc-32</code></li>
-<li><strong>Build:</strong> <code>binutils</code></li>
-<li><strong>Build:</strong> <code>gcc</code></li>
-<li><strong>Build:</strong> <code>libtool</code></li>
-<li><strong>Rebuild</strong> <code>binutils</code></li>
-<li><strong>Rebuild</strong> <code>glibc</code> and <code>glibc-32</code></li>
-<li><strong>Rebuild</strong> <code>libtool</code></li>
+<li><strong>Build</strong>: <code>linux-headers</code> (skip, it's bundled with <code>glibc</code> at least now)</li>
+<li><strong>Build</strong>: <code>glibc</code> and <code>glibc-32</code></li>
+<li><strong>Build</strong>: <code>binutils</code></li>
+<li><strong>Build</strong>: <code>gcc</code></li>
+<li><strong>Build</strong>: <code>libtool</code></li>
+<li><strong>Rebuild</strong>: <code>binutils</code></li>
+<li><strong>Rebuild</strong>: <code>glibc</code> and <code>glibc-32</code></li>
+<li><strong>Rebuild</strong>: <code>libtool</code></li>
 </ul>
-<p><strong>Why This Order?</strong>
+<p><strong>Why This Order</strong>?
 <code>gcc</code> depends on <code>binutils</code>, and both rely on the system libraries
 from <code>glibc</code>.  Multiple passes guarantee that every component is built
 against its latest dependencies.</p>
-<p><strong>Steps to Update and Build:</strong></p>
+<p><strong>Steps to Update and Build</strong>:</p>
 <ol>
-<li><p><strong>Navigate to pkgsrc-core:</strong>
+<li><p><strong>Navigate to pkgsrc-core</strong>:
 Open your terminal and head to your local clone.</p>
 </li>
-<li><p><strong>Checkout the Release Branch:</strong>
+<li><p><strong>Checkout the Release Branch</strong>:
 Switch to your release branch (e.g., <code>1.x</code>).</p>
 </li>
-<li><p><strong>Update Package Definitions:</strong>
+<li><p><strong>Update Package Definitions</strong>:
 Update the <code>Pkgfile</code>, <code>.md5sum</code>, and <code>.footprint</code> files for
 <code>glibc</code>, <code>glibc-32</code>, <code>binutils</code>, <code>gcc</code>, and <code>libtool</code> with the new
 versions.</p>
 </li>
-<li><p><strong>Build the Toolchain:</strong>
+<li><p><strong>Build the Toolchain</strong>:
 Run the following command, which follows the build order above:</p>
 <pre><code>pkgman update -fr -d --group \
     glibc{,-32} binutils gcc libtool \
     binutils glibc{,-32} libtool
 </code></pre>
 </li>
-<li><p><strong>Test Extensively:</strong>
+<li><p><strong>Test Extensively</strong>:
 After the build, compile other core packages or create a rootfs
 archive to ensure everything runs smoothly.</p>
 </li>
@@ -214,10 +214,10 @@ filesystem image -- Zeppe-Lin's core for chroot installations.</p>
 <h5 id="3231-introducing-mkrootfs">3.2.3.1. Introducing mkrootfs</h5>
 <p><code>mkrootfs</code> automates building a custom root filesystem by:</p>
 <ul>
-<li><p><strong>Installing Packages:</strong>
+<li><p><strong>Installing Packages</strong>:
 It calls <code>pkgman(1)</code> to build and install the required packages.</p>
 </li>
-<li><p><strong>Checking Integrity:</strong>
+<li><p><strong>Checking Integrity</strong>:
 It calls <code>revdep(1)</code> to scan for broken shared libraries.</p>
 </li>
 </ul>
@@ -237,7 +237,7 @@ The output tarball filename (default: <code>$ROOTFS_DIR.tar.xz</code>).</p>
 <code>mkrootfs(8)</code>).</p>
 <h5 id="3232-step-by-step-rootfs-creation">3.2.3.2. Step-by-Step Rootfs Creation</h5>
 <ol>
-<li><p><strong>Configure:</strong>
+<li><p><strong>Configure</strong>:
 Edit <code>/etc/mkrootfs/config</code> (as root) and set:</p>
 <ul>
 <li><code>ROOTFS_DIR</code> (working directory)</li>
@@ -248,7 +248,7 @@ Edit <code>/etc/mkrootfs/config</code> (as root) and set:</p>
 settings on the fly using command-line options (refer to
 <code>mkrootfs(8)</code> for details).</p>
 </li>
-<li><p><strong>Build:</strong>
+<li><p><strong>Build</strong>:
 Run the command below to prepare the filesystem, check
 dependencies, and create the tarball:</p>
 <pre><code>sudo mkrootfs -BCTv
@@ -274,13 +274,13 @@ artifacts to save space.  For example:</p>
 and integrity.  Make sure GPG is installed (e.g., with
 <code>sudo pkgman install --deps --group gnupg</code>) and that you have your
 official Zeppe-Lin private key secured with a strong passphrase.</p>
-<p><strong>Steps:</strong></p>
+<p><strong>Steps</strong>:</p>
 <ol>
-<li><p><strong>Navigate to the Tarball Directory:</strong>
+<li><p><strong>Navigate to the Tarball Directory</strong>:
 Go to the directory where your tarball (e.g.,
 <code>rootfs-v1.0-x86_64.tar.xz</code>) resides.</p>
 </li>
-<li><p><strong>Sign the Tarball:</strong>
+<li><p><strong>Sign the Tarball</strong>:
 Create a detached, ASCII-armored signature:</p>
 <pre><code>gpg --detach-sig --armor --output   \
       rootfs-v1.0-x86_64.tar.xz.sig \
@@ -288,7 +288,7 @@ Create a detached, ASCII-armored signature:</p>
 </code></pre>
 <p>You'll be prompted for your key's passphrase.</p>
 </li>
-<li><p><strong>Verify the Signature (Optional):</strong>
+<li><p><strong>Verify the Signature (Optional)</strong>:
 Confirm the signature is valid:</p>
 <pre><code>gpg --verify rootfs-v1.0-x86_64.tar.xz.sig \
              rootfs-v1.0-x86_64.tar.xz
@@ -303,9 +303,9 @@ the release are committed and pushed to your release branch (e.g.,
 <code>1.x</code>) in <code>pkgsrc-core</code> and other relevant repositories, mark the
 release with a Git tag.  This tag serves as the permanent reference
 for the Zeppe-Lin release and is required for the GitHub release step.</p>
-<p><strong>Steps:</strong></p>
+<p><strong>Steps</strong>:</p>
 <ol>
-<li><p><strong>Switch to the Release Branch:</strong>
+<li><p><strong>Switch to the Release Branch</strong>:
 Make sure you're on and up-to-date with your release branch:</p>
 <pre><code>git checkout 1.x # Replace 1.x with your release branch
 git pull origin 1.x
@@ -313,11 +313,11 @@ git pull origin 1.x
 <p><em>Ensure all commits relevant to this release have been pushed to
 this branch.</em></p>
 </li>
-<li><p><strong>Create an Annotated Tag:</strong></p>
+<li><p><strong>Create an Annotated Tag</strong>:</p>
 <pre><code>git tag -a v1.0 -m &quot;Zeppe-Lin v1.0 - The Maiden Voyage!&quot;
 </code></pre>
 </li>
-<li><p><strong>Push the Tag:</strong> Push the new tag to the remote repository:</p>
+<li><p><strong>Push the Tag</strong>: Push the new tag to the remote repository:</p>
 <pre><code>git push origin v1.0
 </code></pre>
 <p>Or push all local tags (be cautious with this command if you have
@@ -326,7 +326,7 @@ other local tags):</p>
 </code></pre>
 </li>
 </ol>
-<p><strong>Notes:</strong></p>
+<p><strong>Notes</strong>:</p>
 <ul>
 <li>Use a consistent naming convention (e.g., prefix with <code>v</code> followed
 by the version number).</li>
@@ -342,40 +342,40 @@ upgrading.  They will form the official website release notes and the
 GitHub Release description.</p>
 <p>Include the following:</p>
 <ul>
-<li><p><strong>Introduction:</strong>
+<li><p><strong>Introduction</strong>:
 A brief overview (version, date, theme).</p>
 </li>
-<li><p><strong>Incompatible Changes:</strong>
+<li><p><strong>Incompatible Changes</strong>:
 List any breaking changes or adjustments needed for upgrades.</p>
 </li>
-<li><p><strong>New Features:</strong>
+<li><p><strong>New Features</strong>:
 Highlight new functionalities and improvements.</p>
 </li>
-<li><p><strong>Package Changes:</strong>
+<li><p><strong>Package Changes</strong>:
 Summarize package updates for each repository (added, removed,
 updated).</p>
 </li>
-<li><p><strong>Artwork:</strong>
+<li><p><strong>Artwork</strong>:
 Describe the release's visual design, including a link and licensing
 info if necessary (see the banner created in 3.4.2.2).</p>
 </li>
-<li><p><strong>Kernel &amp; Toolchain:</strong>
+<li><p><strong>Kernel &amp; Toolchain</strong>:
 Specify the Linux kernel version and list core toolchain components
 (e.g., <code>glibc</code>, <code>gcc</code>, <code>binutils</code>).  Include X11 details if
 relevant.</p>
 </li>
-<li><p><strong>Changelogs:</strong>
+<li><p><strong>Changelogs</strong>:
 Provide links to detailed changelogs for each pkgsrc collection.</p>
 </li>
-<li><p><strong>Downloads &amp; Checksums:</strong>
+<li><p><strong>Downloads &amp; Checksums</strong>:
 List direct download links for the signed tarball and its signature,
 along with checksum values (e.g., SHA256).</p>
 </li>
-<li><p><strong>Installation/Upgrade Instructions:</strong>
+<li><p><strong>Installation/Upgrade Instructions</strong>:
 Offer or link to clear installation/upgrade guidelines, often
 referencing the handbook.</p>
 </li>
-<li><p><strong>Contributors:</strong>
+<li><p><strong>Contributors</strong>:
 Credit those who contributed.</p>
 </li>
 </ul>
@@ -388,18 +388,18 @@ involves creating the Markdown file for the full notes and preparing
 the release banner.</p>
 <h5 id="3421-creating-the-markdown-release-notes-file-relnotes">3.4.2.1. Creating the Markdown Release Notes File (relnotes)</h5>
 <ol>
-<li><p><strong>Access the Repository:</strong>
+<li><p><strong>Access the Repository</strong>:
 Open your local clone of <code>zeppe-lin.github.io.git</code>.</p>
 </li>
-<li><p><strong>Navigate to /relnotes/ Directory:</strong>
+<li><p><strong>Navigate to /relnotes/ Directory</strong>:
 This is where all release notes in Markdown are stored.</p>
 </li>
-<li><p><strong>Create the File:</strong>
+<li><p><strong>Create the File</strong>:
 Make a file named <code>relnotes-v&lt;VERSION&gt;.md</code> (e.g.,
 <code>relnotes-v1.0.md</code>).  Paste and format your drafted release notes
 (from 3.4.1) in Markdown.</p>
 </li>
-<li><p><strong>Reference the Banner:</strong>
+<li><p><strong>Reference the Banner</strong>:
 Include a link (or embed code, typically referencing an HTML
 include if your static site generator supports it) to display your
 release banner within this Markdown file.  The banner file will be
@@ -411,12 +411,12 @@ created in the next step.</p>
 new Zeppe-Lin release.  It appears on both the release notes page and
 the main website.</p>
 <ol>
-<li><p><strong>Design and Store Artwork:</strong>
+<li><p><strong>Design and Store Artwork</strong>:
 Create a web-friendly image (e.g., PNG or JPEG) that reflects this
 release's theme.  Place the artwork file(s) in the <code>artwork.git</code>
 repository and push them.</p>
 </li>
-<li><p><strong>Prepare the Release Banner File:</strong>
+<li><p><strong>Prepare the Release Banner File</strong>:
 In the <code>/relnotes/</code> directory of <code>zeppe-lin.github.io</code> repository,
 create a file named <code>banner-v&lt;VERSION&gt;.html</code> (e.g.,
 <code>banner-v1.0.html</code>).  This file should contain an <code>&lt;img&gt;</code> tag (or
@@ -435,26 +435,26 @@ after publishing the main website updates.</p>
 files are ready, it's time to go public.</p>
 <h5 id="3431-announcing-on-github-releases">3.4.3.1. Announcing on GitHub Releases</h5>
 <ol>
-<li><p><strong>Open the Repository:</strong>
+<li><p><strong>Open the Repository</strong>:
 Navigate to the Zeppe-Lin
 <a href="https://github.com/zeppe-lin/pkgsrc-core"><code>pkgsrc-core</code> repository on GitHub</a>.</p>
 </li>
-<li><p><strong>Go to Releases:</strong>
+<li><p><strong>Go to Releases</strong>:
 Click the "Releases" tab (or section).</p>
 </li>
-<li><p><strong>Draft a Release:</strong>
+<li><p><strong>Draft a Release</strong>:
 Click "Create a new release" (or "Draft a new release").</p>
 </li>
-<li><p><strong>Select Your Tag:</strong>
+<li><p><strong>Select Your Tag</strong>:
 In the "Tag version" drop-down, choose your Git tag created in
 3.3.2 (e.g., <code>v1.0</code>).</p>
 </li>
-<li><p><strong>Set the Title and Description:</strong></p>
+<li><p><strong>Set the Title and Description</strong>:</p>
 <ul>
-<li><p><strong>Title:</strong>
+<li><p><strong>Title</strong>:
 Enter a release title (e.g., <code>Zeppe-Lin v1.0: The Maiden Voyage</code>).</p>
 </li>
-<li><p><strong>Description:</strong>
+<li><p><strong>Description</strong>:
 Copy/paste the summary and key highlights from your drafted
 release notes (3.4.1). <strong>Crucially, include a link to the full
 release notes page on the Zeppe-Lin website</strong> (this page will
@@ -462,16 +462,16 @@ become live once you push the website changes).</p>
 </li>
 </ul>
 </li>
-<li><p><strong>Attach Files:</strong>
+<li><p><strong>Attach Files</strong>:
 Upload the signed root filesystem tarball
 (<code>rootfs-v1.0-x86_64.tar.xz</code>) and its signature
 (<code>rootfs-v1.0-x86_64.tar.xz.sig</code>) generated in 3.3.1.</p>
 </li>
-<li><p><strong>Pre-release Option:</strong>
+<li><p><strong>Pre-release Option</strong>:
 If necessary, mark the release as a pre-release; otherwise, leave
 it unchecked.</p>
 </li>
-<li><p><strong>Publish:</strong>
+<li><p><strong>Publish</strong>:
 Click "Publish release" to make it official on GitHub.</p>
 </li>
 </ol>
@@ -479,7 +479,7 @@ Click "Publish release" to make it official on GitHub.</p>
 <p>Publish the release notes and banner on the official Zeppe-Lin
 website.</p>
 <ol>
-<li><p><strong>Commit and Push Website Changes:</strong>
+<li><p><strong>Commit and Push Website Changes</strong>:
 In your local clone of <code>zeppe-lin.github.io</code>, commit the changes
 for:</p>
 <ul>
@@ -499,7 +499,7 @@ correctly displayed.  Push these changes to the remote
 </li>
 </ul>
 </li>
-<li><p><strong>Verify Website Build:</strong>
+<li><p><strong>Verify Website Build</strong>:
 Our CI/CD pipeline will detect the new and changed files, convert
 the Markdown to HTML (using <code>smu(1)</code>), and publish the updated
 website.  Verify that the new release notes page (e.g.,
@@ -513,37 +513,37 @@ GitHub and the Zeppe-Lin website for the community to access.</p>
 <p>After successfully publishing the new version of Zeppe-Lin, complete
 these steps to keep everything current and the community informed.</p>
 <ol>
-<li><p><strong>Updating the User Handbook:</strong>
+<li><p><strong>Updating the User Handbook</strong>:
 Review and update <code>handbook/handbook.md</code> in the
 <code>zeppe-lin.github.io</code> repository.  Ensure that version data,
 installation/upgrade instructions, and download links reflect the
 new release.  Commit and push these changes.</p>
 </li>
-<li><p><strong>Announcing on GitHub Discussions:</strong>
+<li><p><strong>Announcing on GitHub Discussions</strong>:
 Create a new announcement thread in the GitHub Discussions
 Announcements category.  Include the release name and version, a
 brief summary of key highlights, a link to the full release notes
 on the website, and download links (linking to the GitHub release
 is often best for downloads).</p>
 </li>
-<li><p><strong>Verifying Download Links:</strong>
+<li><p><strong>Verifying Download Links</strong>:
 Double-check all download links in the release notes file
 (<code>relnotes-v&lt;VERSION&gt;.md</code>) and on the website to ensure they
 accurately point to the signed root filesystem tarball, its
 signature, and any other release artifacts.</p>
 </li>
-<li><p><strong>Updating Documentation Links:</strong>
+<li><p><strong>Updating Documentation Links</strong>:
 Review all documentation -- including the user handbook and
 developer's codebook -- to update any links that reference older
 releases, pointing them to the new release where appropriate.</p>
 </li>
-<li><p><strong>Monitoring Feedback:</strong>
+<li><p><strong>Monitoring Feedback</strong>:
 Keep an eye on GitHub Discussions and Issues for user feedback and
 bug reports.  Address any critical issues through patch releases if
 necessary (which would follow a similar, albeit potentially
 abbreviated, process).</p>
 </li>
-<li><p><strong>Planning for the Next Release:</strong>
+<li><p><strong>Planning for the Next Release</strong>:
 Begin planning the next release by discussing new features,
 improvements, and bug fixes based on community feedback and
 internal priorities.</p>
