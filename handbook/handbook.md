@@ -1827,7 +1827,7 @@ potential permission issues.
 
 Build your custom package with:
 
-    # pkgman install --vv --deps hello
+    # pkgman install -vv --deps hello
 
 This command:
 
