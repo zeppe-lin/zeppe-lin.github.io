@@ -95,16 +95,16 @@ This approach also applies to unofficial repositories.
 
 2. From the current stable branch, run:
 
-        git checkout <current_stable_branch>
-        git checkout -b <new_branch>
-        git push origin <new_branch>
+       git checkout <current_stable_branch>
+       git checkout -b <new_branch>
+       git push origin <new_branch>
 
    For example, if the last stable release is 0.9 on branch `0.x`,
    create branch `1.x` like this:
 
-        git checkout 0.x
-        git checkout -b 1.x
-        git push origin 1.x
+       git checkout 0.x
+       git checkout -b 1.x
+       git push origin 1.x
 
 This strategy keeps the new release work isolated from stable code.
 
