@@ -1575,7 +1575,7 @@ Example output:
     -- Differences between installed packages and packages sources tree
     Package         Installed      Available
     feh             3.7.2-1        3.7.2-2
-    screen          4.9.0-1        5.0.0-0
+    screen          4.9.0-1        5.0.0-1
     ...
     
     -- Packages not found in the packages sources tree
