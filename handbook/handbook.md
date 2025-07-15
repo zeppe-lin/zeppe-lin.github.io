@@ -1111,8 +1111,8 @@ See `pkgmk.conf(5)` for full options.
 ### 4.6. High-level Tool: pkgman
 
 `pkgman(1)` serves as a versatile interface for managing Zeppe-Lin's
-package ecosystem.  Building on tools like `pkgmk(8)` and `pkgadd(8)`,
-it unifies and simplifies workflows while supporting a wide range of
+package ecosystem.  Building on tools like `pkgutils` and `pkgmk`, it
+unifies and simplifies workflows while supporting a wide range of
 package management tasks.
 
 `pkgman(1)` empowers users to:
