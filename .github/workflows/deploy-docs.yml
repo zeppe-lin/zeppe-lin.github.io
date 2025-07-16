@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Uses full history which is useful for some deployments
+          fetch-depth: 0  # Uses full history
 
       - name: Build Smu
         run: |
