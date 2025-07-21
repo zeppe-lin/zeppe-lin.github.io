@@ -203,7 +203,7 @@ Configuration is handled in `/etc/mkrootfs/config`, where you can set:
   The working directory (default: `/tmp/rootfs-$(date +%F)-$(uname -m)/`).
 
 - `PACKAGES`:
-  The list of packages to install (defaults to the core set).
+  The list of packages to install (default: `pkgsrc-core` set).
 
 - `ROOTFS_TAR`:
   The output tarball filename (default: `$ROOTFS_DIR.tar.xz`).
@@ -302,7 +302,8 @@ for the Zeppe-Lin release and is required for the GitHub release step.
 
        git tag -a v1.0 -m "Zeppe-Lin v1.0 - The Maiden Voyage!"
 
-3. **Push the Tag**: Push the new tag to the remote repository:
+3. **Push the Tag**:
+   Push the new tag to the remote repository:
 
        git push origin v1.0
 
