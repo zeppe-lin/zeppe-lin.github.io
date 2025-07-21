@@ -33,7 +33,7 @@
   <li><a href="#download">Download</a></li>
 </ul>
 <h1 id="zeppe-lin-v10-release-notes">Zeppe-Lin v1.0: Release Notes</h1>
-<p>Released Jan 18, 2025. 3rd Zeppe-Lin Release.</p>
+<p>Released Jan 18, 2025.  3rd Zeppe-Lin Release.</p>
 <h2 id="introduction">Introduction</h2>
 <p>The arrival of Zeppe-Lin v1.0 -- The Maiden Voyage -- marks a major
 milestone as our first stable major release.  This version embodies
@@ -49,7 +49,7 @@ please review the transitional notes in
 <li><p><strong>Kernel Ring Buffer Logging</strong>:
 The <code>/etc/rc</code> script now saves the kernel ring buffer to
 <code>/var/log/dmesg</code> (instead of <code>/var/log/boot</code>) for the new
-<code>bootlogd(8)</code> functionality. Update scripts using the old path (if
+<code>bootlogd(8)</code> functionality.  Update scripts using the old path (if
 any).</p>
 </li>
 <li><p><strong>Glibc's libcrypt replaced by libxcrypt</strong>:
@@ -73,7 +73,7 @@ section for the archive.</p>
 <code>pkgutils</code> and <code>pkgmk</code> have been updated to optionally handle ACLs
 (<code>acl(5)</code>) and extended attributes (<code>xattr(7)</code>).  This enhancement
 allows for more fine-grained control over file permissions.</p>
-<p>Zeppe-Lin enables <strong>only</strong> <code>xattr(7)</code> in <code>pkgutils</code>' Pkgfile, with
+<p>Zeppe-Lin enables <strong>only</strong> <code>xattr(7)</code> in <code>pkgutils</code>' <code>Pkgfile</code>, with
 <code>pkgmk</code> using <code>pax</code> as the default archive format.  This allows
 setting specific permissions (Linux capabilities) for programs like
 <code>ping(8)</code> without needing full root privileges or extra installation
@@ -83,8 +83,8 @@ and <code>pkgadd(8)</code> for details.</p>
 <li><p><strong>Standard C Compilers as Separate Packages</strong>:
 New shell wrappers like <code>c89</code>, <code>c99</code>, and <code>c17</code> are now separate
 packages for standard C compilers.  Previously, <code>c99</code> was part of
-<code>gcc</code>.  This improves system development standards.  Check their
-man pages for details (thanks to NetBSD for them).</p>
+<code>gcc</code>.  This improves system development standards.  Check their man
+pages for details (thanks to NetBSD for them).</p>
 </li>
 <li><p><strong>dumb_runtime_dir PAM Module</strong>:
 Zeppe-Lin v1.0 now uses the <code>dumb-runtime-dir</code> PAM module by default
@@ -104,8 +104,8 @@ for improved formatting and readability.  Try:</p>
 </li>
 <li><p><strong>Flexible Init with Device Manager Choice</strong>:
 The <code>DEVMGR</code> variable in <code>/etc/rc.conf</code> now allows you to select
-your preferred device manager. <code>udevd</code> remains the default if no
-choice is made. See <code>rc.conf(5)</code> for details.</p>
+your preferred device manager.  <code>udevd</code> remains the default if no
+choice is made.  See <code>rc.conf(5)</code> for details.</p>
 </li>
 <li><p><strong>Boot Logging with bootlogd</strong>:
 Zeppe-Lin v1.0 now includes <code>/etc/rc.d/bootlogd</code> for boot logging
@@ -130,7 +130,7 @@ dumb-runtime-dir
 </code></pre>
 </li>
 <li><p><strong>Removed Packages</strong>:</p>
-<p>None in this release for pkgsrc-core.</p>
+<p>None in this release for <code>pkgsrc-core</code>.</p>
 </li>
 <li><p><strong>Key Changes</strong>:</p>
 <ul>
@@ -155,7 +155,7 @@ py3-packaging
 </code></pre>
 </li>
 <li><p><strong>Key Changes</strong>:</p>
-<p>None in this release for pkgsrc-system beyond new and removed
+<p>None in this release for <code>pkgsrc-system</code> beyond new and removed
 packages.</p>
 </li>
 </ul>
@@ -186,7 +186,7 @@ xorg-libxxf86misc
 <a href="https://github.com/zeppe-lin/pkgsrc-xorg/issues/2">2</a>.</p>
 </li>
 <li><p><strong>Key Changes</strong>:</p>
-<p>None in this release for pkgsrc-xorg beyond new and removed
+<p>None in this release for <code>pkgsrc-xorg</code> beyond new and removed
 packages.</p>
 </li>
 </ul>
@@ -340,7 +340,7 @@ for installation tips and hardware compatibility.</p>
 <p>You might also want to check out:</p>
 <ul>
 <li><p><a href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs</code></a>
-Tool to build custom rootfs image. It can be installed on Zeppe-Lin
+Tool to build custom rootfs image.  It can be installed on Zeppe-Lin
 using the command:</p>
 <pre><code>pkgman install --deps --group mkrootfs
 </code></pre>

@@ -227,7 +227,7 @@ It calls <code>revdep(1)</code> to scan for broken shared libraries.</p>
 The working directory (default: <code>/tmp/rootfs-$(date +%F)-$(uname -m)/</code>).</p>
 </li>
 <li><p><code>PACKAGES</code>:
-The list of packages to install (defaults to the core set).</p>
+The list of packages to install (default: <code>pkgsrc-core</code> set).</p>
 </li>
 <li><p><code>ROOTFS_TAR</code>:
 The output tarball filename (default: <code>$ROOTFS_DIR.tar.xz</code>).</p>
@@ -317,7 +317,8 @@ this branch.</em></p>
 <pre><code>git tag -a v1.0 -m &quot;Zeppe-Lin v1.0 - The Maiden Voyage!&quot;
 </code></pre>
 </li>
-<li><p><strong>Push the Tag</strong>: Push the new tag to the remote repository:</p>
+<li><p><strong>Push the Tag</strong>:
+Push the new tag to the remote repository:</p>
 <pre><code>git push origin v1.0
 </code></pre>
 <p>Or push all local tags (be cautious with this command if you have
