@@ -1,6 +1,6 @@
 # Zeppe-Lin v1.0: Release Notes
 
-Released Jan 18, 2025. 3rd Zeppe-Lin Release.
+Released Jan 18, 2025.  3rd Zeppe-Lin Release.
 
 ## Introduction
 
@@ -20,7 +20,7 @@ please review the transitional notes in
 - **Kernel Ring Buffer Logging**:
   The `/etc/rc` script now saves the kernel ring buffer to
   `/var/log/dmesg` (instead of `/var/log/boot`) for the new
-  `bootlogd(8)` functionality. Update scripts using the old path (if
+  `bootlogd(8)` functionality.  Update scripts using the old path (if
   any).
 
 - **Glibc's libcrypt replaced by libxcrypt**:
@@ -44,7 +44,7 @@ please review the transitional notes in
   (`acl(5)`) and extended attributes (`xattr(7)`).  This enhancement
   allows for more fine-grained control over file permissions.
 
-  Zeppe-Lin enables **only** `xattr(7)` in `pkgutils`' Pkgfile, with
+  Zeppe-Lin enables **only** `xattr(7)` in `pkgutils`' `Pkgfile`, with
   `pkgmk` using `pax` as the default archive format.  This allows
   setting specific permissions (Linux capabilities) for programs like
   `ping(8)` without needing full root privileges or extra installation
@@ -54,8 +54,8 @@ please review the transitional notes in
 - **Standard C Compilers as Separate Packages**:
   New shell wrappers like `c89`, `c99`, and `c17` are now separate
   packages for standard C compilers.  Previously, `c99` was part of
-  `gcc`.  This improves system development standards.  Check their
-  man pages for details (thanks to NetBSD for them).
+  `gcc`.  This improves system development standards.  Check their man
+  pages for details (thanks to NetBSD for them).
 
 - **dumb\_runtime\_dir PAM Module**:
   Zeppe-Lin v1.0 now uses the `dumb-runtime-dir` PAM module by default
@@ -75,8 +75,8 @@ please review the transitional notes in
 
 - **Flexible Init with Device Manager Choice**:
   The `DEVMGR` variable in `/etc/rc.conf` now allows you to select
-  your preferred device manager. `udevd` remains the default if no
-  choice is made. See `rc.conf(5)` for details.
+  your preferred device manager.  `udevd` remains the default if no
+  choice is made.  See `rc.conf(5)` for details.
 
 - **Boot Logging with bootlogd**:
   Zeppe-Lin v1.0 now includes `/etc/rc.d/bootlogd` for boot logging
@@ -104,7 +104,7 @@ please review the transitional notes in
 
 - **Removed Packages**:
 
-  None in this release for pkgsrc-core.
+  None in this release for `pkgsrc-core`.
 
 - **Key Changes**:
 
@@ -132,7 +132,7 @@ please review the transitional notes in
 
 - **Key Changes**:
 
-  None in this release for pkgsrc-system beyond new and removed
+  None in this release for `pkgsrc-system` beyond new and removed
   packages.
 
 ### pkgsrc-xorg
@@ -168,7 +168,7 @@ please review the transitional notes in
 
 - **Key Changes**:
 
-  None in this release for pkgsrc-xorg beyond new and removed
+  None in this release for `pkgsrc-xorg` beyond new and removed
   packages.
 
 ### pkgsrc-desktop
@@ -329,7 +329,7 @@ The release files are available at:
 You might also want to check out:
 
 - [`mkrootfs`](https://github.com/zeppe-lin/mkrootfs)
-  Tool to build custom rootfs image. It can be installed on Zeppe-Lin
+  Tool to build custom rootfs image.  It can be installed on Zeppe-Lin
   using the command:
 
       pkgman install --deps --group mkrootfs

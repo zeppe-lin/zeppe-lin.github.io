@@ -1,6 +1,6 @@
 # Zeppe-Lin v0.99: Release Notes
 
-Released May 6, 2023. 1st Zeppe-Lin Release.
+Released May 6, 2023.  1st Zeppe-Lin Release.
 
 ## Introduction
 

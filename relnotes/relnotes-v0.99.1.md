@@ -1,6 +1,6 @@
 # Zeppe-Lin v0.99.1: Release Notes
 
-Released Dec 11, 2023. 2nd Zeppe-Lin Release.
+Released Dec 11, 2023.  2nd Zeppe-Lin Release.
 
 ## Introduction
 
@@ -73,7 +73,7 @@ breaking compatibility change.
   - `rejmerge(8)` now allows redefining `PAGER` and `EDITOR` from
     command-line
   - small fixes and cleanups for `sysklogd`'s `rotatelog`
-  - added `rotatelog(8)` man page to sysklogd
+  - added `rotatelog(8)` man page to `sysklogd`
 
 ### pkgsrc-system
 
@@ -84,7 +84,7 @@ breaking compatibility change.
   ```
 
 - **Removed Packages**:
-  None in this release for pkgsrc-system.
+  None in this release for `pkgsrc-system`.
 
 - **Key Changes**:
   - `tree` switched to the maintained fork
