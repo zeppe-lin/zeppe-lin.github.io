@@ -31,26 +31,36 @@ See the [full list of previous releases](relhistory.html).
 
 Contribute to Zeppe-Lin Linux! Here's how:
 
-##### Resources for Contribution
+**Resources for Contribution**
 
 * **[Codebook](codebook.html)**:
   Your comprehensive guide to Zeppe-Lin's development process and structure.
+
 * **[GitHub Repository](https://github.com/zeppe-lin)**:
   Browse code, report issues, and submit pull requests.
+
 * **[Projects](https://github.com/orgs/zeppe-lin/projects)**:
   Follow our roadmap, track tasks, and explore open issues.
 
-##### Community & Communication
+**Community & Communication**
 
 * **[Forum](https://github.com/orgs/zeppe-lin/discussions)**:
   Join discussions, get support, and see announcements.
+
 * **[IRC](https://web.libera.chat/#zeppe-lin)**:
   Real-time chat and support: `#zeppe-lin` on Libera.Chat.
+
 * **Mailing Lists**:
-  Stay connected through our discussion lists on FreeLists.org:
-  * **Users & Support** (`zeppe-lin@freelists.org`)
-    Get help, share tips, and discuss general topics. **[Subscribe via Email](mailto:zeppe-lin-request@freelists.org?subject=subscribe)** \| **[View List Page](https://www.freelists.org/list/zeppe-lin)**
-  * **Development List** (`zeppe-lin-dev@freelists.org`)
-    For code discussions, issues, proposals, and project changes. **[Subscribe via Email](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe)** \| **[View List Page](https://www.freelists.org/list/zeppe-lin-dev)**
+  Stay connected through our discussion lists on FreeLists.org.
+
+  * **Users & Support** (`zeppe-lin@freelists.org`):
+    Get help, share tips, and discuss general topics.
+    **[Subscribe via Email](mailto:zeppe-lin-request@freelists.org?subject=subscribe)** \|
+    **[View List Page](https://www.freelists.org/list/zeppe-lin)**
+
+  * **Development List** (`zeppe-lin-dev@freelists.org`):
+    For code discussions, issues, proposals, and project changes.
+    **[Subscribe via Email](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe)** \|
+    **[View List Page](https://www.freelists.org/list/zeppe-lin-dev)**
 
 Shape the future of Zeppe-Lin with us.
