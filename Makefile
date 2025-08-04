@@ -1,6 +1,7 @@
 HTML_FILES = index.html \
 	     codebook.html \
 	     handbook.html \
+	     relnotes-v1.1.html \
 	     relnotes-v1.0.html \
 	     relnotes-v0.99.1.html \
 	     relnotes-v0.99.html \
@@ -30,6 +31,12 @@ relhistory.html: templates/header.html \
 	relhistory/welcome.html \
 	relhistory/v1.x-series.html \
 	relhistory/v0.x-series.html \
+	templates/footer.html \
+	templates/tail.html
+
+relnotes-v1.1.html: templates/header.html \
+	relnotes/banner-v1.1.html \
+	relnotes/relnotes-v1.1.md \
 	templates/footer.html \
 	templates/tail.html
 
