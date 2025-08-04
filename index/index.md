@@ -6,16 +6,17 @@ Total control, total understanding, total satisfaction.
 
 ## Latest Release
 
-**Zeppe-Lin v1.0 - The Maiden Voyage!**
+**Zeppe-Lin v1.1 - Built in the dark...**
 
-Like a resilient zeppelin embarking on a new journey through a changed
-world, this release takes flight!
-Symbolized by our iconic post-apocalyptic airship within the gear,
-it marks the beginning of a stable and enduring adventure.
+She surfaced from silence.  Stine Luft Satomi -- Zeppe-Lin's hacker
+spirit -- haunts this release like cold voltage on copper.
 
-Chart your course through [release notes](relnotes-v1.0.html) to
-discover all the new features and improvements aboard this maiden
-voyage.
+This release tightens the screws:
+* Recompiled toolchain for kernel 6.1+
+* Docs rebuilt from scratch
+* Dev flows wired to FreeLists.org
+
+[Release Notes](relnotes-v1.1.html) -- read them like you mean it.
 
 ## Documentation
 
