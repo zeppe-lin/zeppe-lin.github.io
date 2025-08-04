@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>Zeppe-Lin Linux</title>
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div style="float:right; margin: 0 0 1em 15px; text-align:center;">
+  <img src="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true"
+       alt="Zeppe-Lin v1.1 Cover Artwork" width="320" height="320"
+       style="border: 2px solid #ccc; border-radius: 8px;">
+  <br>
+  <span style="font-size: 0.9em; font-style: italic; color: #444;">
+  Zeppe-Lin v1.1: Built in the dark...
+  </span>
+</div>
+<ul id="index">
+  <li><a href="index.html">Home</a>
+  <li><a href="#zeppe-lin-v11-release-notes">Zeppe-Lin v1.1: Release Notes</a></li>
+  <li><a href="#1-introduction">1. Introduction</a></li>
+  <li><a href="#2-release-artwork">2. Release Artwork</a></li>
+  <li><a href="#3-incompatible-changes">3. Incompatible Changes</a></li>
+  <li><a href="#4-whats-new">4. What's New</a></li>
+  <li><a href="#41-infrastructure">4.1. Infrastructure</a></li>
+  <li><a href="#42-documentation">4.2. Documentation</a></li>
+  <li><a href="#43-package-changes">4.3. Package Changes</a></li>
+  <li><a href="#431-pkgsrc-core">4.3.1. pkgsrc-core</a></li>
+  <li><a href="#432-pkgsrc-system">4.3.2. pkgsrc-system</a></li>
+  <li><a href="#433-pkgsrc-xorg">4.3.3. pkgsrc-xorg</a></li>
+  <li><a href="#434-pkgsrc-desktop">4.3.4. pkgsrc-desktop</a></li>
+  <li><a href="#44-system-components">4.4. System Components</a></li>
+  <li><a href="#441-kernel">4.4.1. Kernel</a></li>
+  <li><a href="#442-toolchain">4.4.2. Toolchain</a></li>
+  <li><a href="#443-x11">4.4.3. X11</a></li>
+  <li><a href="#5-changelogs">5. Changelogs</a></li>
+  <li><a href="#6-download">6. Download</a></li>
+  <li><a href="#61-root-filesystem">6.1. Root Filesystem</a></li>
+  <li><a href="#62-binary-packages">6.2. Binary Packages</a></li>
+  <li><a href="#63-extras">6.3. Extras</a></li>
+</ul>
+<h1 id="zeppe-lin-v11-release-notes">Zeppe-Lin v1.1: Release Notes</h1>
+<p>Released Aug 1, 2025.  4th Zeppe-Lin Release.</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Zeppe-Lin 1.1 is here.</p>
+<p>Still minimal. Still sharp.  Built quietly -- as always -- and tuned with care.
+This release brings smoother control, fewer rough edges, and a bit more
+attitude.</p>
+<p>The vibe is: <strong>Built in the dark, ready to shine on your rig</strong>.
+This line belongs to <strong>Stine Luft Satomi</strong> -- the fictional hacker spirit of
+Zeppe-Lin.  She's part of the art, part of the vision: focused, quiet, and
+deliberate.</p>
+<p>If you're upgrading from a previous version, please check the
+<a href="relnotes-v1.0.html">v1.0 release notes</a> for important transitional
+information.</p>
+<h2 id="2-release-artwork">2. Release Artwork</h2>
+<ul>
+<li><p><strong>Image</strong>: <a href="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true">v1.1 Cover Art</a></p>
+</li>
+<li><p><strong>Concept</strong>: The art depicts Stine Luft Satomi in her underground lair,
+visually echoing the quiet, focused, and intentional energy behind Zeppe-Lin.</p>
+</li>
+<li><p><strong>License</strong>: Creative Commons Attribution-ShareAlike 3.0 Unported (CC-BY-SA 3.0)</p>
+</li>
+</ul>
+<h2 id="3-incompatible-changes">3. Incompatible Changes</h2>
+<ul>
+<li><p><strong>Glibc Recompiled for Kernel 6.1</strong>:</p>
+<p><code>glibc</code> and <code>glibc-32</code> are now compiled with <code>--enable-kernel=6.1</code> and
+updated kernel API headers (6.1.147).  This change enables support for newer
+<code>e2fsprogs</code> (1.47.3+) features such as <code>fs-verity</code>.  Attempting to build
+<code>e2fsprogs</code> against older headers (e.g., 5.4.x) will fail.</p>
+<p>A full toolchain rebuild is strongly recommended for system stability and
+compatibility.</p>
+<ol>
+<li>Build and install <code>linux-6.1</code>.</li>
+<li>Reboot into the new kernel.</li>
+<li>Rebuild toolchain in this order:
+<ul>
+<li><code>glibc</code>, <code>glibc-32</code></li>
+<li><code>binutils</code></li>
+<li><code>gcc</code></li>
+<li><code>libtool</code></li>
+<li><code>binutils</code> <em>(again)</em></li>
+<li><code>glibc</code>, <code>glibc-32</code> <em>(again)</em></li>
+<li><code>libtool</code> <em>(again)</em></li>
+</ul>
+</li>
+</ol>
+<p>See <a href="https://zeppe-lin.github.io/codebook.html#321-core-toolchain-update-pkgsrc-core">Toolchain Update Guide</a>
+for details.</p>
+</li>
+</ul>
+<h2 id="4-whats-new">4. What's New</h2>
+<h3 id="41-infrastructure">4.1. Infrastructure</h3>
+<ul>
+<li><p><strong>Mailing Lists</strong>:</p>
+<p>Stay connected and get support through our new mailing lists on
+FreeLists.org.</p>
+<ul>
+<li><p><strong>Users &amp; Support</strong>: <code>zeppe-lin@freelists.org</code></p>
+<p>For questions, help, or tips.</p>
+<p><strong><a href="mailto:zeppe-lin-request@freelists.org?subject=subscribe">Subscribe via Email</a></strong> |
+<strong><a href="https://www.freelists.org/list/zeppe-lin">View List Page</a></strong></p>
+</li>
+<li><p><strong>Development</strong>: <code>zeppe-lin-dev@freelists.org</code></p>
+<p>Code discussions, proposals, patch talks, and project changes.</p>
+<p><strong><a href="mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe">Subscribe via Email</a></strong> |
+<strong><a href="https://www.freelists.org/list/zeppe-lin-dev">View List Page</a></strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Development</strong>:</p>
+<ul>
+<li><p>Commits to <code>pkgsrc-core</code>, <code>pkgsrc-system</code>, <code>pkgsrc-xorg</code>, <code>pkgsrc-desktop</code>
+now notify <code>zeppe-lin-dev@freelists.org</code>.</p>
+</li>
+<li><p>Commits with <code>[notify]</code> in the title also notify <code>zeppe-lin@freelists.org</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="42-documentation">4.2. Documentation</h3>
+<ul>
+<li><p>New <a href="https://zeppe-lin.github.io/handbook.html">Handbook</a>
+and <a href="https://zeppe-lin.github.io/codebook.html">Codebook</a>
+built from scratch.</p>
+</li>
+<li><p>New <a href="https://zeppe-lin.github.io/">Website</a> launched.</p>
+</li>
+</ul>
+<p>All documentation/website sources are available at
+<a href="https://github.com/zeppe-lin/zeppe-lin.github.io">https://github.com/zeppe-lin/zeppe-lin.github.io</a>.</p>
+<h3 id="43-package-changes">4.3. Package Changes</h3>
+<h4 id="431-pkgsrc-core">4.3.1. pkgsrc-core</h4>
+<ul>
+<li><p><strong>Added</strong>:</p>
+<pre><code>libxcrypt-32
+scdoc
+</code></pre>
+</li>
+<li><p><strong>Removed</strong>:</p>
+<pre><code>libxcrypt-compat
+</code></pre>
+</li>
+<li><p><strong>Notes</strong>:</p>
+<ul>
+<li><code>glibc</code> and <code>glibc-32</code> now require kernel 6.1+.</li>
+</ul>
+</li>
+</ul>
+<h4 id="432-pkgsrc-system">4.3.2. pkgsrc-system</h4>
+<ul>
+<li><p><strong>Added</strong>:</p>
+<pre><code>iperf3
+pandoc-bin
+cmark
+nouveau-firmware
+linux-6.1
+</code></pre>
+</li>
+<li><p><strong>Removed</strong>:</p>
+<pre><code>handbook
+</code></pre>
+</li>
+</ul>
+<h4 id="433-pkgsrc-xorg">4.3.3. pkgsrc-xorg</h4>
+<ul>
+<li><p><strong>Added</strong>:</p>
+<pre><code>xorg-xf86-input-evdev
+xorg-xf86-video-nouveau
+</code></pre>
+</li>
+<li><p><strong>Removed</strong>:</p>
+<pre><code>ninja
+xkbswitch
+</code></pre>
+</li>
+</ul>
+<h4 id="434-pkgsrc-desktop">4.3.4. pkgsrc-desktop</h4>
+<ul>
+<li><p><strong>Added</strong>:</p>
+<pre><code>libxml2-2.13
+</code></pre>
+</li>
+<li><p><strong>Removed</strong>:</p>
+<pre><code>firefox-darkreader-bin
+firefox-vimium-bin
+st
+lsw
+dwmblocks
+dwm
+win3x-gtk-theme
+</code></pre>
+</li>
+<li><p><strong>Notes</strong>:</p>
+<ul>
+<li><p><code>libxml2-2.13</code> required by <code>librsvg-compat</code>.</p>
+</li>
+<li><p><code>firefox-darkreader-bin</code> and <code>firefox-vimium-bin</code> moved to <code>pkgsrc-stuff</code>.</p>
+</li>
+<li><p><code>st</code>, <code>lsw</code>, <code>dwmblocks</code>, and <code>dwm</code> have been removed and now live at
+<a href="https://github.com/rawmkit">https://github.com/rawmkit</a>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="44-system-components">4.4. System Components</h3>
+<h4 id="441-kernel">4.4.1. Kernel</h4>
+<ul>
+<li><code>linux</code> 6.15.8</li>
+<li><code>linux-firmware</code> 20250708</li>
+</ul>
+<h4 id="442-toolchain">4.4.2. Toolchain</h4>
+<ul>
+<li><code>glibc</code> 2.40.1</li>
+<li><code>gcc</code> 14.3.0</li>
+<li><code>binutils</code> 2.44</li>
+</ul>
+<h4 id="443-x11">4.4.3. X11</h4>
+<ul>
+<li><code>Xorg</code> 7.7</li>
+<li><code>xorg-server</code> 21.1.18</li>
+<li><code>mesa</code> 24.3.4</li>
+<li><code>amdgpu</code> 23.0.0</li>
+<li><code>ati</code> 22.0.0</li>
+<li><code>intel</code> 2.99.917-923</li>
+<li><code>nouveau</code> 1.0.18</li>
+<li><code>vesa</code> 2.6.0</li>
+</ul>
+<h2 id="5-changelogs">5. Changelogs</h2>
+<p>Full per-repository details:</p>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v1.1">pkgsrc-core</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v1.1">pkgsrc-system</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v1.1">pkgsrc-xorg</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v1.1">pkgsrc-desktop</a></li>
+</ul>
+<h2 id="6-download">6. Download</h2>
+<p>Check the <a href="https://zeppe-lin.github.io/handbook.html">Handbook</a> before
+installing for setup tips and compatibility.</p>
+<h3 id="61-root-filesystem">6.1. Root Filesystem</h3>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz">RootFS</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz.sig">RootFS Signature</a></li>
+</ul>
+<h3 id="62-binary-packages">6.2. Binary Packages</h3>
+<ul>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz">BinPkgs</a></li>
+<li><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz.sig">BinPkgs Signature</a></li>
+</ul>
+<h3 id="63-extras">6.3. Extras</h3>
+<ul>
+<li><a href="https://github.com/zeppe-lin/mkrootfs">mkrootfs</a> (build your own rootfs)</li>
+<li><a href="https://github.com/zeppe-lin/dockerfile">dockerfile</a> (instructions to build docker image)</li>
+</ul>
+<p><em>sighook // Until the next entry... Zeppe-Lin awaits.</em></p>
+<div class="footer-separator"></div>
+<div class="footer">
+  Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
+  <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</div>
+</body>
+</html>
