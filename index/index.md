@@ -1,67 +1,68 @@
 # Zeppe-Lin Linux
 
-Welcome.
-Build your own beautiful beast with Zeppe-Lin.
-Total control, total understanding, total satisfaction.
+**Minimal. Source-based. Built to be understood.**
 
-## Latest Release
+Zeppe-Lin is a GNU/Linux distribution for x86-64 systems, forked from
+CRUX and forged in the spirit of KISS — *Keep It Simple, Stupid*.
+It’s not a distro for everyone.  It’s for those who want to build
+their system from the ground up, with clarity over abstraction and
+control over convenience.
 
-**Zeppe-Lin v1.1 - Built in the dark...**
+**You compile. You configure. You own it.**
 
-She surfaced from silence.  Stine Luft Satomi -- Zeppe-Lin's hacker
-spirit -- haunts this release like cold voltage on copper.
+Zeppe-Lin gives you the tools to shape your system, optimize it, and
+understand.  No layers.  No hand-holding.  Just raw, deliberate Linux.
 
-This release tightens the screws:
-* Recompiled toolchain for kernel 6.1+
-* Docs rebuilt from scratch
-* Dev flows wired to FreeLists.org
+## Latest Release: v1.1
 
-[Release Notes](relnotes-v1.1.html) -- read them like you mean it.
+> **Built in the dark, ready to shine on your rig.**
+> Featuring *Stine Luft Satomi* — our fictional hacker muse — this
+> release tightens the screws and sharpens the edge.
+
+Highlights:
+
+* **Toolchain updated for kernel 6.1+**:
+  A crucial update that ensures modern compatibility and stability,
+  enabling new features like fs-verity.
+
+* **New Documentation**:
+  Rewritten [Handbook](handbook.html) from scratch, and new
+  [Codebook](codebook.html) for devs (**WIP**).
+
+* **Community Infrastructure**:
+  New mailing lists on [FreeLists.org](https://www.freelists.org/) for
+  support and dev chatter.  Thank you, **FreeLists.org**.
+
+[Read the full Release Notes](relnotes-v1.1.html)
 
 ## Documentation
 
-Get up and running (or upgrade) with our
-[comprehensive handbook](handbook.html).
+Start here:
+* [Handbook](handbook.html) — install, configure, and explore.
+* [Codebook](codebook.html) — development structure, build guides, and internals.
 
 ## Previous Releases
 
-Discover the evolution of Zeppe-Lin Linux.
-See the [full list of previous releases](relhistory.html).
+See how Zeppe-Lin evolved: [Release History](relhistory.html).
 
 ## Get Involved
 
-Contribute to Zeppe-Lin Linux! Here's how:
+Zeppe-Lin is open, lean, and waiting for your touch.
 
-**Resources for Contribution**
+**Contribution Resources**:
+* [Codebook](codebook.html) — dev process, structure, and standards.
+* [GitHub](https://github.com/zeppe-lin) — issues, PRs, and source.
+* [Projects](https://github.com/orgs/zeppe-lin/projects) — roadmap and tasks.
 
-* **[Codebook](codebook.html)**:
-  Your comprehensive guide to Zeppe-Lin's development process and structure.
-
-* **[GitHub Repository](https://github.com/zeppe-lin)**:
-  Browse code, report issues, and submit pull requests.
-
-* **[Projects](https://github.com/orgs/zeppe-lin/projects)**:
-  Follow our roadmap, track tasks, and explore open issues.
-
-**Community & Communication**
-
-* **[Forum](https://github.com/orgs/zeppe-lin/discussions)**:
-  Join discussions, get support, and see announcements.
-
-* **[IRC](https://web.libera.chat/#zeppe-lin)**:
-  Real-time chat and support: `#zeppe-lin` on Libera.Chat.
-
-* **Mailing Lists**:
-  Stay connected through our discussion lists on FreeLists.org.
-
-  * **Users & Support** (`zeppe-lin@freelists.org`):
-    Get help, share tips, and discuss general topics.
-    **[Subscribe via Email](mailto:zeppe-lin-request@freelists.org?subject=subscribe)** \|
-    **[View List Page](https://www.freelists.org/list/zeppe-lin)**
-
-  * **Development List** (`zeppe-lin-dev@freelists.org`):
-    For code discussions, issues, proposals, and project changes.
-    **[Subscribe via Email](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe)** \|
-    **[View List Page](https://www.freelists.org/list/zeppe-lin-dev)**
+**Community Channels**:
+* [Forum](https://github.com/orgs/zeppe-lin/discussions) — support, ideas, and announcements.
+* [IRC](https://web.libera.chat/#zeppe-lin) — `#zeppe-lin` on Libera.Chat.
+* Mailing Lists:
+  * **Users & Support**: `zeppe-lin@freelists.org`
+    \[[Subscribe](mailto:zeppe-lin-request@freelists.org?subject=subscribe) \|
+    [View List](https://www.freelists.org/list/zeppe-lin)\]
+  * **Development**: `zeppe-lin-dev@freelists.org`
+    \[[Subscribe](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe) \|
+    [View List](https://www.freelists.org/list/zeppe-lin-dev)\]
 
 Shape the future of Zeppe-Lin with us.
