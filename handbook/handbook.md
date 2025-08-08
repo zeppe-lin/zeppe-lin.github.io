@@ -2571,6 +2571,18 @@ For advanced configurations, consult module-specific man pages (e.g.,
    rootfs download...
    (See [2.4.1. Download Rootfs Tarball](#241-download-rootfs-tarball))
 
+3. Where's the package/feature I need? Who can add it for me?
+
+   The short answer is: there's no nanny here.  Zeppe-Lin is built by
+   its users, for its users.  If you need a package, or any other
+   feature, you are the person to make it happen.  Our community's
+   strength comes from people like you taking the initiative.
+
+   If you want it, make it.  Just be sure your work aligns with the
+   [Zeppe-Lin Principles][#21-principles] before submitting your pull
+   request to the appropriate repository.  We appreciate your
+   contribution, and we're looking forward to seeing what you'll add.
+
 ## 8. REPORTING BUGS
 
 For bug reports regarding **this site** and **handbook**, please use
