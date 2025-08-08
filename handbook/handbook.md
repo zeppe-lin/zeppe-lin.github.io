@@ -2579,7 +2579,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
    strength comes from people like you taking the initiative.
 
    If you want it, make it.  Just be sure your work aligns with the
-   [Zeppe-Lin Principles][#21-principles] before submitting your pull
+   [Zeppe-Lin Principles](#12-principles) before submitting your pull
    request to the appropriate repository.  We appreciate your
    contribution, and we're looking forward to seeing what you'll add.
 
