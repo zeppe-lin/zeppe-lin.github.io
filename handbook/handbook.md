@@ -2550,12 +2550,12 @@ For advanced configurations, consult module-specific man pages (e.g.,
 
 ## 7. FAQ
 
-1. Why is the distribution named Zeppe-Lin?
+1. **Why is the distribution named Zeppe-Lin?**
 
    It's our 'Whole Lotta Love' for Linux and GNU, just renamed!
 
-2. I've looked everywhere, but I can't find the Zeppe-Lin installation
-   CD/DVD.  Did I miss something?
+2. **I've looked everywhere, but I can't find the Zeppe-Lin installation
+   CD/DVD.  Did I miss something?**
 
    Ah, the elusive Zeppe-Lin installation disc! Fear not, intrepid
    user, your eyesight is likely just fine.  You see, Zeppe-Lin is so
@@ -2571,7 +2571,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
    rootfs download...
    (See [2.4.1. Download Rootfs Tarball](#241-download-rootfs-tarball))
 
-3. Where's the package/feature I need? Who can add it for me?
+3. **Where's the package/feature I need? Who can add it for me?**
 
    The short answer is: there's no nanny here.  Zeppe-Lin is built by
    its users, for its users.  If you need a package, or any other
