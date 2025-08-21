@@ -2589,18 +2589,18 @@ For bug reports regarding **this site** and **handbook**, please use
 the issue tracker at
 <https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
 
-## Appendix A: Legal Notices
+## 9. LEGAL NOTICES
 
-This appendix outlines the legal and licensing information for
+This section outlines the legal and licensing information for
 Zeppe-Lin, including copyrights, licenses, and disclaimers.
 
-### A.1 Software Licenses
+### 9.1. Software Licenses
 
 Zeppe-Lin integrates open-source software projects, each with its own
 license.  For licensing details, consult the source code of the
 respective packages included in your system.
 
-### A.2 Build Scripts Licensing
+### 9.2. Build Scripts Licensing
 
 Zeppe-Lin build scripts retain their original licensing structure and
 are attributed to:
@@ -2614,13 +2614,13 @@ are attributed to:
 These scripts are released under the
 [GNU General Public License version 3 or later (GPLv3+)](https://gnu.org/licenses/gpl.html).
 
-### A.3 Handbook Licensing
+### 9.3. Handbook Licensing
 
 The Zeppe-Lin Handbook, an original work by Alexandr Savca and the
 Zeppe-Lin Team, is licensed under the
 [Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/).
 
-### A.4 Disclaimer
+### 9.4. Disclaimer
 
 Zeppe-Lin and its documentation are distributed "AS IS" without
 warranty of any kind.  This includes, but is not limited to, implied
