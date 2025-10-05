@@ -30,26 +30,25 @@
   <li><a href="#243-extract-rootfs-tarball">2.4.3. Extract Rootfs Tarball</a></li>
   <li><a href="#25-chroot-into-base-system">2.5. Chroot Into Base System</a></li>
   <li><a href="#26-configure-base-system">2.6. Configure Base System</a></li>
-  <li><a href="#27-prepare-the-pkgsrc-collections">2.7. Prepare the Pkgsrc Collections</a></li>
-  <li><a href="#28-update-base-system">2.8. Update Base System</a></li>
-  <li><a href="#29-install-essential-packages">2.9. Install Essential Packages</a></li>
-  <li><a href="#210-kernel-setup">2.10. Kernel Setup</a></li>
-  <li><a href="#2101-kernel-package">2.10.1. Kernel Package</a></li>
-  <li><a href="#2102-manual-kernel-compilation">2.10.2. Manual Kernel Compilation</a></li>
-  <li><a href="#21021-download-and-unpack">2.10.2.1. Download and Unpack</a></li>
-  <li><a href="#21022-apply-zeppe-lin-patches-optional">2.10.2.2. Apply Zeppe-Lin Patches (Optional)</a></li>
-  <li><a href="#21023-configure-the-kernel">2.10.2.3. Configure the Kernel</a></li>
-  <li><a href="#21024-build-and-install">2.10.2.4. Build and Install</a></li>
-  <li><a href="#211-kernel-firmware">2.11. Kernel Firmware</a></li>
-  <li><a href="#212-initramfs">2.12. Initramfs</a></li>
-  <li><a href="#213-bootloader">2.13. Bootloader</a></li>
-  <li><a href="#2131-grub2">2.13.1. GRUB2</a></li>
-  <li><a href="#214-post-installation-tasks">2.14. Post-installation Tasks</a></li>
-  <li><a href="#2141-install-xorg-and-drivers">2.14.1. Install Xorg and Drivers</a></li>
-  <li><a href="#2142-install-a-window-manager">2.14.2. Install a Window Manager</a></li>
-  <li><a href="#21421-ratpoison">2.14.2.1. Ratpoison</a></li>
-  <li><a href="#21422-unofficial-window-maker">2.14.2.2. Unofficial: Window Maker</a></li>
-  <li><a href="#215-reboot">2.15. Reboot</a></li>
+  <li><a href="#261-mount-additional-filesystems">2.6.1 Mount Additional Filesystems</a></li>
+  <li><a href="#262-configure-users-and-privileges">2.6.2. Configure Users and Privileges</a></li>
+  <li><a href="#27-update-the-base-system">2.7. Update the Base System</a></li>
+  <li><a href="#271-prepare-pkgsrc-collections">2.7.1. Prepare Pkgsrc Collections</a></li>
+  <li><a href="#272-perform-the-system-update">2.7.2. Perform the System Update</a></li>
+  <li><a href="#28-install-essential-packages">2.8. Install Essential Packages</a></li>
+  <li><a href="#29-kernel-setup">2.9. Kernel Setup</a></li>
+  <li><a href="#291-kernel-package">2.9.1. Kernel Package</a></li>
+  <li><a href="#292-manual-kernel-compilation">2.9.2. Manual Kernel Compilation</a></li>
+  <li><a href="#210-kernel-firmware">2.10. Kernel Firmware</a></li>
+  <li><a href="#211-initramfs">2.11. Initramfs</a></li>
+  <li><a href="#212-bootloader">2.12. Bootloader</a></li>
+  <li><a href="#2121-grub2">2.12.1. GRUB2</a></li>
+  <li><a href="#213-post-installation-tasks">2.13. Post-installation Tasks</a></li>
+  <li><a href="#2131-install-xorg-and-drivers">2.13.1. Install Xorg and Drivers</a></li>
+  <li><a href="#2132-install-a-window-manager">2.13.2. Install a Window Manager</a></li>
+  <li><a href="#21321-ratpoison">2.13.2.1. Ratpoison</a></li>
+  <li><a href="#21322-unofficial-window-maker">2.13.2.2. Unofficial: Window Maker</a></li>
+  <li><a href="#214-reboot">2.14. Reboot</a></li>
   <li><a href="#3-upgrading">3. UPGRADING</a></li>
   <li><a href="#31-release-notes">3.1. Release Notes</a></li>
   <li><a href="#32-set-release-and-sync">3.2. Set Release And Sync</a></li>
@@ -180,7 +179,11 @@
   <li><a href="#9-legal-notices">9. LEGAL NOTICES</a></li>
   <li><a href="#91-software-licenses">9.1. Software Licenses</a></li>
   <li><a href="#92-build-scripts-licensing">9.2. Build Scripts Licensing</a></li>
+  <li><a href="#921-attribution">9.2.1. Attribution</a></li>
+  <li><a href="#922-license">9.2.2. License</a></li>
   <li><a href="#93-handbook-licensing">9.3. Handbook Licensing</a></li>
+  <li><a href="#931-attribution">9.3.1. Attribution</a></li>
+  <li><a href="#932-license">9.3.2. License</a></li>
   <li><a href="#94-disclaimer">9.4. Disclaimer</a></li>
 </ul>
 <h1 id="zeppe-lin-handbook">Zeppe-Lin Handbook</h1>
@@ -204,35 +207,40 @@ can build themselves, brick by digital brick.</p>
 spirit of Plan 9's elegance and simplicity resonates deeply within
 Zeppe-Lin.</p>
 <h3 id="12-principles">1.2. Principles</h3>
-<p>Guiding our philosophy:</p>
+<p>Zeppe-Lin is guided by the following principles:</p>
 <ol>
-<li><p><strong>Keep It Simple (KISS)</strong>: Design and code with minimalism.  No
-fluff -- just what's necessary.</p>
+<li><p><strong>Keep It Simple (KISS)</strong>.
+Design and code with minimalism.
+No fluff -- just what's necessary.</p>
 </li>
-<li><p><strong>Respect the UNIX Spirit</strong>: Craft small, focused tools with
-text-based, modular configurations.</p>
+<li><p><strong>Respect the UNIX Spirit</strong>.
+Craft small, focused tools with text-based, modular configurations.</p>
 </li>
-<li><p><strong>Stay Transparent</strong>: Keep everything clear and understandable.
+<li><p><strong>Stay Transparent</strong>.
+Keep everything clear and understandable.
 Avoid needless abstraction.</p>
 </li>
-<li><p><strong>Give You the Keys</strong>: Enable full user control.  Provide flexible
-tools for true customization.</p>
+<li><p><strong>Enable User Control</strong>.
+Provide flexible tools for customization.
+Let users define their workflows.</p>
 </li>
-<li><p><strong>Build on a Minimal Base</strong>: Start lean.  Only add what is
-absolutely required.</p>
+<li><p><strong>Build on a Minimal Base</strong>.
+Start lean.
+Add only what is explicitly required.</p>
 </li>
 </ol>
 <p>These principles ensure Zeppe-Lin remains simple, clear, and true to
 UNIX.</p>
 <h2 id="2-installation">2. INSTALLATION</h2>
 <h3 id="21-supported-hardware">2.1. Supported Hardware</h3>
-<p>Zeppe-Lin Linux supports x86-64 processors (e.g., AMD Athlon 64, Intel
-Core, Intel Atom).  Older architectures, such as i686, are
-incompatible.</p>
+<p>Zeppe-Lin Linux supports <strong>x86-64</strong> processors (e.g., AMD Athlon 64,
+Intel Core, Intel Atom).
+Older architectures, such as i686, are <strong>incompatible</strong>.</p>
 <h3 id="22-boot-a-live-system">2.2. Boot a Live System</h3>
 <p>Zeppe-Lin is distributed as a compiled tarball containing a root
-filesystem.  To install it, first boot your computer using a
-Linux-based "Live CD/DVD/USB" system.</p>
+filesystem.
+To install it, first boot your computer using a Linux-based "Live
+CD/DVD/USB" system.</p>
 <p>Launch your preferred Live system, open a terminal, and gain root
 privileges (e.g., <code>sudo su</code>).</p>
 <h3 id="23-disk-partitions-and-filesystems">2.3. Disk Partitions and Filesystems</h3>
@@ -240,27 +248,33 @@ privileges (e.g., <code>sudo su</code>).</p>
 Additional partitions/filesystems schemes may be added in the future.</p>
 <h4 id="231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</h4>
 <p>Set up Zeppe-Lin on a fully encrypted disk (excluding the bootloader
-partition) using <code>dm-crypt</code> with LUKS and an LVM container inside the
-encrypted partition.</p>
-<p><strong>Important</strong>:
-Ensure these packages are installed on your Live system:</p>
-
+partition for UEFI compatibility) using <code>dm-crypt</code> with LUKS and an
+LVM container inside the encrypted partition.</p>
+<ul>
+<li><strong>Important</strong>:
+Ensure the following tools are available in the Live system:
 <ul>
 <li><code>parted</code>: Create and manage partitions.</li>
-<li><code>dosfstools</code>: Format the boot partition as FAT32 for UEFI.</li>
+<li><code>dosfstools</code>: Format the boot partition as FAT32 (UEFI).</li>
 <li><code>cryptsetup</code>: Encrypt partition with LUKS.</li>
-<li><code>lvm2</code>: Create and manage the LVM container.</li>
+<li><code>lvm2</code>: Manage logical volumes inside LUKS.</li>
+</ul>
+</li>
 </ul>
 <h5 id="2311-partition-scheme">2.3.1.1. Partition Scheme</h5>
-<p>Example device: <code>/dev/sda</code>.  Replace with your actual device (e.g.,
-<code>/dev/sdb</code>, <code>/dev/nvme0n1</code>).</p>
+<p>Example device: <code>/dev/sda</code>.
+Replace with your actual device (e.g., <code>/dev/sdb</code>, <code>/dev/nvme0n1</code>).</p>
 <table>
-<tr><th>Partition </th><th>Filesystem </th><th style="text-align: left">Size             </th><th style="text-align: left">Description    </th></tr>
-<tr><td>/dev/sda1 </td><td>FAT32      </td><td style="text-align: left">512MiB           </td><td style="text-align: left">boot partition </td></tr>
-<tr><td>/dev/sda2 </td><td>-          </td><td style="text-align: left">rest of the disk </td><td style="text-align: left">LUKS partition </td></tr>
+<tr><th>Partition </th><th>Filesystem </th><th>Size             </th><th>Description    </th></tr>
+<tr><td>/dev/sda1 </td><td>FAT32      </td><td>512 MiB          </td><td>boot partition </td></tr>
+<tr><td>/dev/sda2 </td><td>none       </td><td>remaining space  </td><td>LUKS container </td></tr>
 </table>
-<p><strong>For UEFI systems</strong>, the boot partition should be an ESP (512 MiB
-recommended).</p>
+<ul>
+<li><strong>Important</strong>:
+On UEFI systems, the boot partition must be an
+<strong>EFI System Partition (ESP)</strong>.
+A size of <strong>512 MiB</strong> is recommended.</li>
+</ul>
 <h5 id="2312-create-partitions">2.3.1.2. Create Partitions</h5>
 <p>Use <code>parted(8)</code> to partition the disk:</p>
 <pre><code># parted /dev/sda
@@ -277,19 +291,20 @@ recommended).</p>
 # cryptsetup luksOpen /dev/sda2 crypt
 </code></pre>
 <h5 id="2313-create-lvm-inside-luks">2.3.1.3. Create LVM Inside LUKS</h5>
-<p>Create a physical volume and volume group (e.g., "zpln"):</p>
+<p>Create a physical volume and volume group (e.g., <code>zpln</code>):</p>
 <pre><code># pvcreate /dev/mapper/crypt
 # vgcreate zpln /dev/mapper/crypt
 </code></pre>
-<p>Logical volume scheme:</p>
+<p>Logical volume layout:</p>
 <table>
-<tr><th>Volume name </th><th>Filesystem </th><th style="text-align: left">Size             </th><th style="text-align: left">Description </th></tr>
-<tr><td>swap        </td><td>-          </td><td style="text-align: left">2 x RAM          </td><td style="text-align: left">swap area   </td></tr>
-<tr><td>root        </td><td>ext4       </td><td style="text-align: left">rest of the disk </td><td style="text-align: left">root fs     </td></tr>
+<tr><th>Volume name </th><th>Filesystem </th><th style="text-align: left">Size            </th><th style="text-align: left">Description     </th></tr>
+<tr><td>swap        </td><td>none       </td><td style="text-align: left">2 x RAM         </td><td style="text-align: left">swap area       </td></tr>
+<tr><td>root        </td><td>ext4       </td><td style="text-align: left">remaining space </td><td style="text-align: left">root filesystem </td></tr>
 </table>
-<p>Check RAM size: <code># free -m</code>.  For example, if you have 4GB RAM, a swap
-of 8G (2 x RAM) is recommended.</p>
-<p>Create volumes:</p>
+<p>Check RAM size with <code># free -m</code>.
+For example, if you have 4 GiB RAM, a swap of 8 GiB (2 x RAM) is
+recommended.</p>
+<p>Create the logical volumes:</p>
 <pre><code># lvcreate -L 8G -n swap zpln
 # lvcreate -l 100%FREE -n root zpln
 </code></pre>
@@ -316,7 +331,7 @@ system.</p>
 <h4 id="241-download-rootfs-tarball">2.4.1. Download Rootfs Tarball</h4>
 <p>Download the tarball directly into the <code>/mnt</code> directory (the default
 mount point) to avoid using live media RAM.</p>
-<p>Get the latest rootfs release from the Zeppe-Lin
+<p>Get the latest release from the Zeppe-Lin
 <a href="https://github.com/zeppe-lin/pkgsrc-core/releases">pkgsrc-core releases page</a>
 or run these commands (replace <code>v1.0</code> with the version you need):</p>
 <pre><code># cd /mnt
@@ -325,22 +340,26 @@ or run these commands (replace <code>v1.0</code> with the version you need):</p>
 # wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz{,.sig}
 </code></pre>
 <h4 id="242-verify-downloaded-tarball">2.4.2. Verify Downloaded Tarball</h4>
-<p>The tarball is signed with GPG.  For security, it's highly recommended
-(but not required) to verify its integrity.  Replace <code>${VERSION}</code> with
-your version and run:</p>
+<p>The tarball is signed with GPG.
+For security, verifying its integrity is highly recommended.</p>
+<p>Import the public key:</p>
 <pre><code># gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-# gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
+</code></pre>
+<p>Verify the signature:</p>
+<pre><code># gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
 </code></pre>
 <h4 id="243-extract-rootfs-tarball">2.4.3. Extract Rootfs Tarball</h4>
 <p>Once the rootfs tarball is downloaded and verified, extract its
-contents using the following command.  Make sure to replace
-<code>${VERSION}</code> with the version you downloaded:</p>
+contents using the following command.
+Make sure to replace <code>${VERSION}</code> with the version you downloaded:</p>
 <pre><code># tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
     rootfs-${VERSION}-x86_64.tar.xz
 </code></pre>
-<p><strong>Important</strong>:</p>
-<p>It is critical to use all the specified options to ensure proper
-extraction.  Here's what each option does:</p>
+<ul>
+<li><p><strong>Important</strong>:
+It is critical to use all the specified options to ensure proper
+extraction.
+Here's what each option does:</p>
 <ul>
 <li><p><code>--numeric-owner</code>
 Ensures numeric UIDs and GIDs from the tarball are preserved,
@@ -353,15 +372,19 @@ capabilities (e.g., allowing programs like <code>ping(8)</code> enhanced
 privileges without requiring <code>suid root</code>).</p>
 </li>
 <li><p><code>-xpf</code>
-Extracts (<code>x</code>), preserves permissions and ownership (<code>p</code>), and uses
-the specified file (<code>f</code>).</p>
+Extracts (<code>x</code>), preserves permissions and ownership (<code>p</code>), and
+uses the specified file (<code>f</code>).</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="25-chroot-into-base-system">2.5. Chroot Into Base System</h3>
-<p><strong>Important</strong>:
-Copy the DNS configuration to ensure network access inside the chroot,
-which is needed for updates and installing software:
-<code># cp /etc/resolv.conf /mnt/etc/resolv.conf</code></p>
+<ul>
+<li><strong>Important</strong>:
+Copy the DNS configuration to ensure network access inside the
+chroot, which is needed for updates and installing software:
+<code># cp /etc/resolv.conf /mnt/etc/resolv.conf</code></li>
+</ul>
 <p>Mount necessary pseudo-filesystems:</p>
 <pre><code># mount -B /dev /mnt/dev
 # mount -B /tmp /mnt/tmp
@@ -371,7 +394,7 @@ which is needed for updates and installing software:
 # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
     /mnt/dev/pts
 </code></pre>
-<p>Mount EFI variables (<strong>for UEFI setup only</strong>):</p>
+<p><strong>For UEFI systems</strong>, mount EFI variables:</p>
 <pre><code># mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
 </code></pre>
 <p>Enter the chroot:</p>
@@ -389,216 +412,214 @@ work properly:</p>
 <pre><code>(chrooted) # chown root:root /
 (chrooted) # chmod 755 /
 </code></pre>
-<p>Generate necessary locales
-(see <a href="#61-generating-locales">6.1. Generating Locales</a>).</p>
+<p>Generate necessary locales (e.g., <code>en_US</code>):</p>
+<pre><code>(chrooted) # localedef -i en_US -f UTF-8 en_US.UTF-8
+</code></pre>
+<p>Set the system default locale by adding it to <code>/etc/profile</code>:</p>
+<pre><code>export LANG=en_US.UTF-8
+</code></pre>
+<p>See <a href="#61-generating-locales">6.1. Generating Locales</a> for details.</p>
 <p>Edit <code>/etc/fstab</code> to configure filesystems (see <code>fstab(5)</code>).
 Example for <a href="#231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</a>:</p>
 <pre><code>/dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
 /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
 /dev/zpln/swap  swap   swap  defaults                     0 0
 </code></pre>
-<p><strong>Note</strong>:
+<ul>
+<li><strong>Note</strong>:
 Use <code>UUID=...</code> instead of <code>/dev/*</code> for better reliability on
-multi-disk systems.  Find UUIDs with:
-<code># blkid -o value -s UUID &lt;DEVICE&gt;</code></p>
-<p>Uncomment <code>/var/cache/pkgmk/work</code> to build packages in RAM
-(<strong>if desired</strong>).</p>
-<p>Mount necessary filesystems:</p>
-<p>Shared memory, required for some builds (e.g., <code>python3</code>):</p>
-<pre><code>(chrooted) # mount /dev/shm
-</code></pre>
-<p>EFI variables (<strong>for UEFI setup only</strong>):</p>
-<pre><code>(chrooted) # mount /sys/firmware/efi/efivars
-</code></pre>
-<p>If using <code>tmpfs(5)</code> for <code>/tmp</code>:</p>
-<pre><code>(chrooted) # mount /tmp
-</code></pre>
-<p>For building packages in RAM (<strong>if enabled</strong>):</p>
-<pre><code>(chrooted) # mount /var/cache/pkgmk/work
-</code></pre>
-<p><strong>Important</strong>:
-Mount <code>/var/cache/pkgmk/work</code> only if you have enough RAM and intend
-to build packages there.</p>
+multi-disk systems.
+Find UUIDs with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code></li>
+</ul>
 <p>Edit <code>/etc/rc.conf</code> (see <code>rc.conf(5)</code>) to configure system settings
-like font, keyboard, timezone, hostname, and services.</p>
+like console font, keyboard, timezone, hostname, and services.</p>
 <p>Configure network settings in <code>/etc/rc.d/net</code>, <code>/etc/hosts</code>, and
 <code>/etc/resolv.conf</code> (see <a href="#63-networking">6.3. Networking</a>).</p>
-<p>Add a regular user (set a specific user ID now if needed):</p>
+<h4 id="261-mount-additional-filesystems">2.6.1 Mount Additional Filesystems</h4>
+<p>Before building and installing additional software, mount additional
+pseudo-filesystems.</p>
+<p>Shared memory (needed by some builds, e.g., <code>python3</code>):</p>
+<pre><code>(chrooted) # mount /dev/shm
+</code></pre>
+<p>Optional package build directory (RAM builds):</p>
+<pre><code>(chrooted) # mount /var/cache/pkgmk/work
+</code></pre>
+<ul>
+<li><strong>Important</strong>:
+Mount <code>/var/cache/pkgmk/work</code> only if enabled in <code>/etc/fstab</code> and
+you have enough RAM.</li>
+</ul>
+<h4 id="262-configure-users-and-privileges">2.6.2. Configure Users and Privileges</h4>
+<p>Add a regular user (set a specific UID now if needed):</p>
 <pre><code>(chrooted) # useradd --shell /bin/bash --create-home  \
     --groups audio,video,scanner,cdrom,input,users    \
     --uid 1000 --user-group &lt;USERNAME&gt;
 </code></pre>
-<p>Set a password for the new user:</p>
+<p>Set the password:</p>
 <pre><code>(chrooted) # passwd &lt;USERNAME&gt;
 </code></pre>
-<p>To make this user privileged (e.g., as Ubuntu does), first, you need
-to add your <code>USERNAME</code> to the <code>wheel</code> group:</p>
-<pre><code>(chrooted) # usermod -aG wheel USERNAME
+<p>To grant administrative privileges (e.g., as Ubuntu does), first add
+the user to the <code>wheel</code> group:</p>
+<pre><code>(chrooted) # usermod -aG wheel &lt;USERNAME&gt;
 </code></pre>
-<p>And second, grant the users in the <code>wheel</code> group to be root:</p>
-<pre><code># /etc/sudoers.d/00_wheel: grant users in the wheel group to be root
-%wheel ALL=(ALL:ALL) ALL
-# End of file.
+<p>And second, grant the users in the <code>wheel</code> group to be root via
+<code>sudo(8)</code> by creating the file <code>/etc/sudoers.d/00_wheel</code> with the
+following content:</p>
+<pre><code>%wheel ALL=(ALL:ALL) ALL
 </code></pre>
-<h3 id="27-prepare-the-pkgsrc-collections">2.7. Prepare the Pkgsrc Collections</h3>
+<h3 id="27-update-the-base-system">2.7. Update the Base System</h3>
+<p>Before building and installing additional packages, it is highly
+recommended to update the freshly installed Zeppe-Lin system.</p>
+<h4 id="271-prepare-pkgsrc-collections">2.7.1. Prepare Pkgsrc Collections</h4>
 <p>Packages' sources are organized into collections
 (see <a href="#522-collections">5.2.2. Collections</a> for details).</p>
 <p>Clone the necessary collections, keeping in mind that each depends on
-the previous one:</p>
+the previous one (replace <code>1.x</code> with the current release branch):</p>
 <pre><code>(chrooted) # cd /usr/src/
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core    \
-                --branch 1.x
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system  \
-                --branch 1.x
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg    \
-                --branch 1.x
-(chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop \
-                --branch 1.x
+(chrooted) # URL=https://github.com/zeppe-lin
+(chrooted) # git clone ${URL}/pkgsrc-core    --branch 1.x
+(chrooted) # git clone ${URL}/pkgsrc-system  --branch 1.x
+(chrooted) # git clone ${URL}/pkgsrc-xorg    --branch 1.x
+(chrooted) # git clone ${URL}/pkgsrc-desktop --branch 1.x
 </code></pre>
-<p>Where <code>--branch 1.x</code> corresponds to the current Zeppe-Lin release
-branch.</p>
-<p>Edit <code>/etc/pkgman.conf</code> (see <code>pkgman.conf(5)</code> for more information)
-and enable the cloned collections.  By default, only <code>pkgsrc-core</code> is
-enabled.  Additionally, consider editing <code>/etc/pkgmk.conf</code> (see
-<code>pkgmk.conf(5)</code> for more information).</p>
-<h3 id="28-update-base-system">2.8. Update Base System</h3>
-<p>Before installing any packages, it is highly recommended to update the
-freshly installed system.</p>
-<p><strong>Warning</strong>:
-This warning applies if you are installing Zeppe-Lin version earlier
-than 1.0 or upgrading from an older version.  Starting from version
-6.0, <code>pkgutils</code> has introduced backward-incompatible changes for
-generating footprint files.  Therefore, it's recommended to update
-<code>pkgmk</code> and <code>pkgutils</code> first:
-<code>(chrooted) # pkgman update -f pkgmk pkgutils</code></p>
-<p>To perform a system update with dependency handling and sorting, and
+<p>Enable the cloned collections in <code>/etc/pkgman.conf</code>.
+By default, only <code>pkgsrc-core</code> collection is enabled.</p>
+<h4 id="272-perform-the-system-update">2.7.2. Perform the System Update</h4>
+<ul>
+<li><p><strong>Warning</strong>:
+If installing Zeppe-Lin &lt; 1.0 or upgrading from an older version,
+update <strong>pkgmk</strong> and <strong>pkgutils</strong> first:</p>
+<pre><code>(chrooted) # pkgman update -f pkgmk pkgutils
+</code></pre>
+<p>This avoids issues with backward-incompatible changes in footprint
+generation.</p>
+</li>
+</ul>
+<p>Perform a full system update with dependency handling and sorting, and
 stop if the installation of at least one package fails:</p>
 <pre><code>(chrooted) # pkgman sysup --deps --depsort --group
 </code></pre>
-<p>After the system update, merge any files that were rejected during
-updates:</p>
+<p>Merge any rejected files during update:</p>
 <pre><code>(chrooted) # rejmerge
 </code></pre>
-<p>Check for broken packages, and if any are identified, rebuild them:</p>
+<p>Check for broken packages and rebuild as needed:</p>
 <pre><code>(chrooted) # pkgman update -fr --depsort $(revdep)
 </code></pre>
-<p>Here, <code>revdep(1)</code> checks for broken dependencies, and if any are
-reported, <code>pkgman update -fr</code> rebuilds the affected packages.</p>
-<h3 id="29-install-essential-packages">2.9. Install Essential Packages</h3>
-<p>Install the necessary packages for setting up a workstation:</p>
+<p>Here, <code>revdep(1)</code> identifies packages with broken dependencies, and if
+any are reported, <code>pkgman update -fr</code> rebuilds the affected packages.</p>
+<h3 id="28-install-essential-packages">2.8. Install Essential Packages</h3>
+<p>Install packages required for a minimal, functional workstation:</p>
 <pre><code>(chrooted) # pkgman install --deps --group \
     cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg \
     lvm2 pinentry wireless-tools wpa-supplicant dhcpcd iputils
 </code></pre>
 <p>This is a generic setup; users can add any additional packages they
 require based on their specific needs.</p>
-<p><strong>Note</strong>:
+<ul>
+<li><p><strong>Note</strong>:
 For network setup and configuration details, see
-<a href="#63-networking">6.3. Networking</a>.  If you set up a networking bridge,
-ensure you specify the bridge interface in the <code>/etc/rc.d/dhcpcd</code>
-and/or <code>/etc/rc.d/wpa_supplicant</code> service scripts.</p>
-<h3 id="210-kernel-setup">2.10. Kernel Setup</h3>
-<p>Follow one of the two methods below to install and configure the Linux
-kernel.</p>
-<h4 id="2101-kernel-package">2.10.1. Kernel Package</h4>
-<p>Build and install Linux kernel:</p>
+<a href="#63-networking">6.3. Networking</a>.</p>
+<p>If you set up a networking bridge, specify the bridge interface in
+the <code>/etc/rc.d/dhcpcd</code> and/or <code>/etc/rc.d/wpa_supplicant</code>.</p>
+</li>
+</ul>
+<h3 id="29-kernel-setup">2.9. Kernel Setup</h3>
+<p>Two methods are available: build and install a package or compile
+manually.</p>
+<h4 id="291-kernel-package">2.9.1. Kernel Package</h4>
+<p>Build and install the packaged Linux kernel:</p>
 <pre><code>(chrooted) # pkgman install --deps --group \
     --config-append=&quot;runscripts no&quot; linux
 </code></pre>
 <p>The <code>linux</code> package includes a <code>post-install</code> script that runs
-<code>mkinitramfs(8)</code> and updates the GRUB config.  This script is
-disabled here for manual execution later.</p>
-<p><strong>Important</strong>:
+<code>mkinitramfs(8)</code> and updates the GRUB config.
+This script is disabled here through <code>--config-append=&quot;runscripts no&quot;</code>
+to run manually later.</p>
+<ul>
+<li><strong>Important</strong>:
 When you update the <code>linux</code> package through the package manager, the
 old kernel and its modules are removed as part of the update
-process.  This can cause issues if the system is still using the old
-kernel while the new one is being installed.  For example:</p>
-<ul>
-<li><p>If the new kernel fails to install correctly, the system may be left
-without a working kernel.</p>
-</li>
-<li><p>The running system might encounter issues due to missing modules
-after the update, as the kernel modules corresponding to the old
-kernel are removed.</p>
-</li>
+process.
+This can cause issues if the system is still using the old kernel
+while the new one is being installed.
+To avoid these problems, it is recommended to <strong>lock</strong> the <code>linux</code>
+package from automatic updates and handle kernel updates separately
+using <code>pkgman-update(8)</code>.
+See <code>pkgman-lock(8)</code> for details.</li>
 </ul>
-<p>To avoid these problems, it is recommended to lock the <code>linux</code> package
-from automatic updates and handle kernel updates separately using
-<code>pkgman-update(8)</code>.  This ensures that the current working kernel
-remains intact until the new one is fully installed and tested.  For
-more details, see <code>pkgman-lock(8)</code>.</p>
 <p>If you installed the kernel using this method, proceed to
-<a href="#211-kernel-firmware">2.11. Kernel Firmware</a> if your system requires
-additional firmware, or <a href="#212-initramfs">2.12. Initramfs</a> otherwise.</p>
-<h4 id="2102-manual-kernel-compilation">2.10.2. Manual Kernel Compilation</h4>
+<a href="#210-kernel-firmware">2.10. Kernel Firmware</a> if your system requires
+additional firmware, or <a href="#211-initramfs">2.11. Initramfs</a> otherwise.</p>
+<h4 id="292-manual-kernel-compilation">2.9.2. Manual Kernel Compilation</h4>
 <p>This method suits those wanting a minimal kernel or needing sources
 for driver building (e.g., Nvidia, VirtualBox).</p>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 Use the kernel version from Zeppe-Lin's package sources for best
-compatibility.  Other versions might cause issues.</p>
-<h5 id="21021-download-and-unpack">2.10.2.1. Download and Unpack</h5>
-<p>Download the kernel source (only download, don't install):</p>
+compatibility.
+Other versions might cause issues.</li>
+</ul>
+<p>Download sources:</p>
 <pre><code>(chrooted) # pkgman install -do linux
-</code></pre>
-<p>(Source is typically in <code>/var/cache/pkgmk/sources</code>).</p>
-<p>Unpack to <code>/usr/src/</code>:</p>
-<pre><code>(chrooted) # KV=$(pkgman printf %v --filter=linux)
+(chrooted) # KV=$(pkgman printf %v --filter=linux)
 (chrooted) # tar -xvf \
     /var/cache/pkgmk/sources/linux-${KV}.tar.?z -C /usr/src/
 </code></pre>
-<h5 id="21022-apply-zeppe-lin-patches-optional">2.10.2.2. Apply Zeppe-Lin Patches (Optional)</h5>
-<p>For better Zeppe-Lin integration, apply patches (if any).  First,
-check for errors:</p>
-<pre><code>(chrooted) # cd linux-${KV}
+<p>Apply Zeppe-Lin patches:</p>
+<pre><code>(chrooted) # cd /usr/src/linux-${KV}
 (chrooted) # for p in $(pkgman path linux)/*.patch; do \
-    [ -f &quot;$p&quot; ] &amp;&amp; patch --dry-run -Np1 -i $p; done
-</code></pre>
-<p>If no errors, apply them:</p>
-<pre><code>(chrooted) # for p in $(pkgman path linux)/*.patch; do \
     [ -f &quot;$p&quot; ] &amp;&amp; patch -Np1 -i $p; done
 </code></pre>
-<h5 id="21023-configure-the-kernel">2.10.2.3. Configure the Kernel</h5>
-<p>Choose one of the following:</p>
 <ul>
-<li><p><strong>Custom Configuration</strong></p>
-<p>Run the menu-based kernel configurator:</p>
+<li><strong>Important</strong>:
+It is highly recommended to perform a dry run to check for errors
+before applying.
+To do this, simply add <code>--dry-run</code> option to the <code>patch(1)</code> command
+within the loop shown above.</li>
+</ul>
+<p>Configure kernel (choose one of the following):</p>
+<ul>
+<li><p><strong>Custom Configuration</strong>:
+Run the menu-based kernel configurator to manually select kernel
+features:</p>
 <pre><code>(chrooted) # make menuconfig
 </code></pre>
 </li>
-<li><p><strong>Use Package Defaults</strong></p>
-<p>Apply the default configuration from the package:</p>
+<li><p><strong>Use Package Defaults</strong>:
+Apply the default configuration from the package:</p>
 <pre><code>(chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
 (chrooted) # make olddefconfig
 </code></pre>
 </li>
 </ul>
-<h5 id="21024-build-and-install">2.10.2.4. Build and Install</h5>
-<p>Compile the kernel:</p>
+<p>Build and install:</p>
 <pre><code>(chrooted) # make -j$(nproc) all
-</code></pre>
-<p>Install the compiled kernel and configuration:</p>
-<pre><code>(chrooted) # KV=$(pkgman printf %v --filter=linux)
 (chrooted) # cp arch/x86/boot/bzImage /boot/vmlinuz-${KV}
 (chrooted) # cp .config /boot/config-${KV}
 (chrooted) # make modules_install
 </code></pre>
 <p>Next steps:</p>
-<p>Firmware needed? Proceed to <a href="#211-kernel-firmware">2.11. Kernel Firmware</a>.</p>
-<p>No firmware needed? Go to <a href="#212-initramfs">2.12. Initramfs</a>.</p>
-<h3 id="211-kernel-firmware">2.11. Kernel Firmware</h3>
+<ul>
+<li>Firmware needed? Proceed to <a href="#210-kernel-firmware">2.10. Kernel Firmware</a>.</li>
+<li>No firmware needed? Go to <a href="#211-initramfs">2.11. Initramfs</a>.</li>
+</ul>
+<h3 id="210-kernel-firmware">2.10. Kernel Firmware</h3>
 <p>Some hardware (like certain Wi-Fi or graphics cards) needs extra
 firmware.</p>
 <p>Install non-free firmware if required:</p>
 <pre><code>(chrooted) # pkgman install --deps --group linux-firmware
 </code></pre>
 <p>Skip this if you prefer a completely free software system.</p>
-<h3 id="212-initramfs">2.12. Initramfs</h3>
+<h3 id="211-initramfs">2.11. Initramfs</h3>
 <p>First, install <code>mkinitramfs</code>:</p>
 <pre><code>(chrooted) # pkgman install --deps --group mkinitramfs
 </code></pre>
-<p>The <code>mkinitramfs</code> configuration file (<code>/etc/mkinitramfs/config</code>)
-defines settings like the root device and filesystem.  Here's an
-example for <a href="#231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</a>:</p>
+<p>The <code>/etc/mkinitramfs/config</code> file controls how <code>mkinitramfs(8)</code>
+builds the initial ramdisk image used at boot.
+It controls which modules, hooks, and settings are included in the
+initramfs image.</p>
+<p>Here's an example for
+<a href="#231-uefi-and-lvm-on-luks">2.3.1. UEFI and LVM on LUKS</a>:</p>
 <pre><code># /etc/mkinitramfs/config
 hostonly=1 #(optional, creates smaller initramfs)
 compress=&quot;gzip --fast&quot;
@@ -611,25 +632,32 @@ luks_root=/dev/sda2
 # End of file.
 </code></pre>
 <p>See <code>mkinitramfs.config(5)</code> for more information.</p>
-<p><strong>Important</strong>:
-<code>hostonly=1</code> creates a smaller initramfs with only necessary modules.
-If you move the drive to different hardware later, it might not boot.</p>
-<p><strong>Note</strong>:
+<ul>
+<li><p><strong>Important</strong>:
+The <code>hostonly=1</code> setting creates a smaller initramfs with only
+necessary modules.
+If you move the drive to different hardware later, it might not
+boot.</p>
+</li>
+<li><p><strong>Note</strong>:
 For multi-disk systems, using <code>UUID=...</code> instead of <code>/dev/*</code> in the
 config can prevent boot issues.
 Find UUIDs with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
-<p>Now, prepare an initramfs.  If you installed the <code>linux</code> kernel
-manually, you have already set <code>KV</code> variable to kernel version.
+</li>
+</ul>
+<p>Now, prepare an initramfs.
+If you installed the Linux kernel manually, you have already set <code>KV</code>
+variable to kernel version.
 Otherwise, fetch the kernel version from the package source:</p>
 <pre><code>(chrooted) # KV=$(pkgman printf %v --filter=linux)
 </code></pre>
 <p>Finally, generate the initramfs image:</p>
 <pre><code>(chrooted) # mkinitramfs -o /boot/initramfs-${KV}.img -k ${KV}
 </code></pre>
-<h3 id="213-bootloader">2.13. Bootloader</h3>
-<p>This section covers installing GRUB2 as your bootloader.  Support for
-other bootloaders may be added later.</p>
-<h4 id="2131-grub2">2.13.1. GRUB2</h4>
+<h3 id="212-bootloader">2.12. Bootloader</h3>
+<p>This section covers installing GRUB2 as your bootloader.
+Support for other bootloaders may be added later.</p>
+<h4 id="2121-grub2">2.12.1. GRUB2</h4>
 <p>Create <code>/etc/default/grub</code> with:</p>
 <pre><code># Set the delay before booting:
 GRUB_TIMEOUT=3
@@ -638,81 +666,93 @@ GRUB_DISTRIBUTOR=ZPLN
 # Set kernel parameters (quiet boot, swap for hibernation):
 GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet resume=/dev/zpln/swap&quot;
 </code></pre>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 For better reliability on multi-disk systems, use <code>UUID=...</code> instead
 of <code>/dev/*</code> for the resume partition.
-Find the UUID with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</p>
-<p>Next, install GRUB2 on your target drive.</p>
-<p><strong>For UEFI systems</strong> (adjust <code>/dev/sda</code> if needed):</p>
+Find the UUID with: <code># blkid -o value -s UUID &lt;DEVICE&gt;</code>.</li>
+</ul>
+<p>Next, install GRUB2 on your target drive.
+Example device: <code>/dev/sda</code>.
+Replace with your actual device (e.g., <code>/dev/sdb</code>, <code>/dev/nvme0n1</code>).</p>
+<p><strong>For UEFI</strong>, ensure the EFI System Partition (ESP) is mounted at
+<code>/boot/efi</code> inside the chroot.
+Then install GRUB with EFI support:</p>
 <pre><code>(chrooted) # grub-install --target=x86_64-efi \
     --efi-directory=/boot /dev/sda
 </code></pre>
-<p><strong>For BIOS systems</strong> (adjust <code>/dev/sda</code> if needed):</p>
+<p><strong>For legacy BIOS booting</strong>, install GRUB directly to the disk's MBR:</p>
 <pre><code>(chrooted) # grub-install --target=i386-pc /dev/sda
 </code></pre>
 <p>Finally, generate the GRUB2 configuration file based on
 <code>/etc/default/grub</code> and detected kernels:</p>
 <pre><code>(chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
-<h3 id="214-post-installation-tasks">2.14. Post-installation Tasks</h3>
-<h4 id="2141-install-xorg-and-drivers">2.14.1. Install Xorg and Drivers</h4>
+<h3 id="213-post-installation-tasks">2.13. Post-installation Tasks</h3>
+<h4 id="2131-install-xorg-and-drivers">2.13.1. Install Xorg and Drivers</h4>
 <p>To find video and input drivers, run:</p>
-<pre><code># pkgman search -vv xf86-
+<pre><code>(chrooted) # pkgman search -vv xf86-
 </code></pre>
 <p>Common video drivers include <code>xorg-xf86-video-intel</code> (Intel),
 <code>xorg-xf86-video-amdgpu</code>/<code>xorg-xf86-video-ati</code> (AMD), and
-<code>xorg-xf86-video-nouveau</code> (NVIDIA).  For NVIDIA, the
-<code>nouveau-firmware</code> is also recommended.</p>
+<code>xorg-xf86-video-nouveau</code> (NVIDIA).
+For NVIDIA, the <code>nouveau-firmware</code> is also recommended.</p>
 <p>For input, modern drivers like <code>xorg-xf86-input-libinput</code> and
-<code>xorg-xf86-input-evdev</code> are recommended.  Legacy options like
-<code>xorg-xf86-input-keyboard</code> and <code>xorg-xf86-input-mouse</code> are also
-available.</p>
-<p>After selecting drivers for your hardware, install <code>xorg</code> with:</p>
-<pre><code># pkgman install --deps --group xorg [DRIVERS]
+<code>xorg-xf86-input-evdev</code> are recommended.
+Legacy options like <code>xorg-xf86-input-keyboard</code> and
+<code>xorg-xf86-input-mouse</code> are also available.</p>
+<p>After selecting drivers for your hardware, install <code>xorg</code> meta-package
+and additional drivers with:</p>
+<pre><code>(chrooted) # pkgman install --deps --group xorg [DRIVERS]
 </code></pre>
 <p>Replace <code>[DRIVERS]</code> with the ones matching your system.</p>
-<h4 id="2142-install-a-window-manager">2.14.2. Install a Window Manager</h4>
+<h4 id="2132-install-a-window-manager">2.13.2. Install a Window Manager</h4>
 <p>Zeppe-Lin focuses on lightweight and efficient window managers rather
-than complex desktop environments like GNOME or KDE.  This approach
-avoids unnecessary dependencies and simplifies configuration.</p>
+than complex desktop environments like GNOME or KDE.
+This approach avoids unnecessary dependencies and simplifies
+configuration.</p>
 <p>Zeppe-Lin provides package sources for several window managers, but
 users are welcome to choose and contribute package sources for any
 window manager they prefer.</p>
-<h5 id="21421-ratpoison">2.14.2.1. Ratpoison</h5>
-<p>Currently, the <code>pkgsrc-desktop</code> repository provides the ratpoison
-window manager.  You can install it with:</p>
-<pre><code># pkgman install --deps --group ratpoison
+<h5 id="21321-ratpoison">2.13.2.1. Ratpoison</h5>
+<p>Currently, the <code>pkgsrc-desktop</code> repository provides the <code>ratpoison</code>
+window manager.
+You can install it with:</p>
+<pre><code>(chrooted) # pkgman install --deps --group ratpoison
 </code></pre>
-<h5 id="21422-unofficial-window-maker">2.14.2.2. Unofficial: Window Maker</h5>
+<h5 id="21322-unofficial-window-maker">2.13.2.2. Unofficial: Window Maker</h5>
 <p>For users interested in a retro, intuitive window manager, you can
-install Window Maker from the unofficial <code>pkgsrc-wmaker</code> repository.</p>
-<p><strong>Warning</strong>:
-Using unofficial repositories means the packages might not follow the
-same update schedule or quality standards as the official
-repositories.  <strong>Use with caution.</strong></p>
+install <strong>Window Maker</strong> from the unofficial <code>pkgsrc-wmaker</code>
+repository.</p>
+<ul>
+<li><strong>Warning</strong>:
+Using unofficial repositories means the packages might not follow
+the same update schedule or quality standards as the official
+repositories.
+Use with caution.</li>
+</ul>
 <p>To install Window Maker, first clone the repository:</p>
-<pre><code># cd /usr/src
-# git clone https://github.com/zeppe-lin/pkgsrc-wmaker \
-    --branch 1.x
+<pre><code>(chrooted) # cd /usr/src
+(chrooted) # URL=https://github.com/zeppe-lin
+(chrooted) # git clone ${URL}/pkgsrc-wmaker --branch 1.x
 </code></pre>
 <p>Next, you need to tell <code>pkgman(1)</code> about this new repository by adding
 the following line to <code>/etc/pkgman.conf</code>:</p>
 <pre><code>pkgsrcdir /usr/src/pkgsrc-wmaker
 </code></pre>
 <p>Then, install it with:</p>
-<pre><code># pkgman install --deps --group wmaker
+<pre><code>(chrooted) # pkgman install --deps --group wmaker
 </code></pre>
 <p>Optional meta-packages for Window Maker include <code>wmaker-dockapps</code> for
 added functionality and <code>wmaker-themes</code> for customization.</p>
-<h3 id="215-reboot">2.15. Reboot</h3>
+<h3 id="214-reboot">2.14. Reboot</h3>
 <p>Exit the chroot, unmount all filesystems, and reboot:</p>
 <pre><code>(chrooted) # exit
 # cd /
 # umount -R /mnt
 # shutdown -r now
 </code></pre>
-<p>The GRUB menu should appear, allowing you to boot into Zeppe-Lin
-Linux.</p>
+<p>The GRUB menu should appear, allowing you to boot into Zeppe-Lin.</p>
 <h2 id="3-upgrading">3. UPGRADING</h2>
 <p><strong>WARNING! THIS SECTION IS UNDER DEVELOPMENT AND CANNOT BE USED AS A
 MANUAL!</strong></p>
@@ -742,16 +782,23 @@ git -C /usr/src/pkgsrc-desktop switch 1.x
 <h3 id="33-binary-upgrade">3.3. Binary Upgrade</h3>
 <p>Use precompiled binary packages for faster core system upgrades,
 especially to avoid build issues during initial updates.</p>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 Upgrades may cause file conflicts, such as a file being reassigned
-between packages.  To prevent issues, read the release notes for the
-target Zeppe-Lin version.  They detail package changes like removals,
-merges, or renames that may require manual intervention.</p>
+between packages.
+To prevent issues, read the release notes for the target Zeppe-Lin
+version.
+They detail package changes like removals, merges, or renames that
+may require manual intervention.</li>
+</ul>
 <h4 id="331-download-and-extract-binpkgs">3.3.1. Download and Extract binpkgs</h4>
-<p><strong>Note</strong>:
+<ul>
+<li><strong>Note</strong>:
 Verify the integrity of the downloaded <code>binpkgs</code> tarball before
-extracting it.  It is signed using the same method as the Zeppe-Lin
-root filesystem image.</p>
+extracting it.
+It is signed using the same method as the Zeppe-Lin root filesystem
+image.</li>
+</ul>
 <p>Download the tarball and its signature for your upgrade, replacing
 <code>v1.0</code> with the target version:</p>
 <pre><code>$ VERSION=v1.0
@@ -859,9 +906,11 @@ usr/share/man/man1/
 usr/share/man/man1/ed.1.gz
 (Blank line)
 </code></pre>
-<p><strong>Note</strong>:
+<ul>
+<li><strong>Note</strong>:
 This database enables essential operations like installation
-(<code>pkgadd(8)</code>), removal (<code>pkgrm(8)</code>), and inspection (<code>pkginfo(8)</code>).</p>
+(<code>pkgadd(8)</code>), removal (<code>pkgrm(8)</code>), and inspection (<code>pkginfo(8)</code>).</li>
+</ul>
 <h3 id="43-low-level-tools-pkgutils">4.3. Low-level Tools: pkgutils</h3>
 <p><code>pkgutils</code> provides the core utilities to handle packages:</p>
 <ul>
@@ -890,8 +939,10 @@ placed in <code>/var/lib/pkg/rejected/</code>.</p>
 <p>To remove a package, use <code>pkgrm(8)</code> followed by the package name:</p>
 <pre><code># pkgrm bash
 </code></pre>
-<p>This removes all files owned by the package without confirmation.
-<strong>Be cautious!</strong></p>
+<ul>
+<li><strong>Caution</strong>:
+This removes all files owned by the package without confirmation.</li>
+</ul>
 <h5 id="4314-inspecting-packages">4.3.1.4. Inspecting Packages</h5>
 <p>Use <code>pkginfo(1)</code> to get information about packages.</p>
 <p>List installed packages and versions:</p>
@@ -934,9 +985,11 @@ UPGRADE   ^etc/X11/xorg.conf$   YES
 <li>Keep all files in <code>/var/log</code> and its subdirectories.</li>
 <li>Upgrade <code>/etc/X11/xorg.conf</code> specifically (overrides the <code>/etc</code> rule).</li>
 </ul>
-<p><strong>Caution</strong>:
+<ul>
+<li><strong>Caution</strong>:
 Patterns match filenames inside the package, not full system paths.
-Do not use <code>/</code> at the start!</p>
+Do not use <code>/</code> at the start!</li>
+</ul>
 <p>See <code>pkgadd.conf(5)</code> for details.</p>
 <h3 id="44-low-level-tools-rejmerge">4.4. Low-level Tools: rejmerge</h3>
 <p><code>rejmerge(8)</code> resolves files rejected during upgrades using
@@ -961,7 +1014,8 @@ prompts you to decide their fate.  For each file, you can choose:</p>
 <p>See <code>rejmerge(8)</code> for details.</p>
 <h4 id="442-configuring-rejmerge">4.4.2. Configuring rejmerge</h4>
 <p>Configurations for <code>rejmerge(8)</code> can be adjusted in
-<code>/etc/rejmerge.conf</code>.  Key settings:</p>
+<code>/etc/rejmerge.conf</code>.
+Key settings:</p>
 <ul>
 <li><code>rejmerge_diff</code>: Defines how differences are displayed.</li>
 <li><code>rejmerge_merge</code>: Controls how files are merged.</li>
@@ -1052,9 +1106,11 @@ current directory.</p>
 </code></pre>
 <p>Using <code>$name</code> (package name) and <code>$$</code> (process ID) avoids conflicts
 during simultaneous builds.</p>
-<p><strong>Note</strong>:
+<ul>
+<li><strong>Note</strong>:
 Although unique directories avoid build conflicts, <code>pkgadd(8)</code> locks
-the database, so simultaneous installations may fail.</p>
+the database, so simultaneous installations may fail.</li>
+</ul>
 <p>See <code>pkgmk.conf(5)</code> for full options.</p>
 <h3 id="46-high-level-tool-pkgman">4.6. High-level Tool: pkgman</h3>
 <p><code>pkgman(1)</code> serves as a versatile interface for managing Zeppe-Lin's
@@ -1305,14 +1361,15 @@ official package source collections and enable them for <code>pkgman(1)</code>.<
 <h5 id="5311-syncing-official-repositories">5.3.1.1. Syncing Official Repositories</h5>
 <p>Clone the repositories from the Zeppe-Lin GitHub account:</p>
 <pre><code># cd /usr/src/
-# git clone https://github.com/zeppe-lin/pkgsrc-core    --branch 1.x
-# git clone https://github.com/zeppe-lin/pkgsrc-system  --branch 1.x
-# git clone https://github.com/zeppe-lin/pkgsrc-xorg    --branch 1.x
-# git clone https://github.com/zeppe-lin/pkgsrc-desktop --branch 1.x
+# URL=https://github.com/zeppe-lin
+# git clone ${URL}/pkgsrc-core    --branch 1.x
+# git clone ${URL}/pkgsrc-system  --branch 1.x
+# git clone ${URL}/pkgsrc-xorg    --branch 1.x
+# git clone ${URL}/pkgsrc-desktop --branch 1.x
 </code></pre>
 <p>Replace <code>1.x</code> with the branch matching your Zeppe-Lin release (e.g.,
-<code>1.x</code> for version 1.0 or 1.1).  Check the Zeppe-Lin website or release
-notes for the correct branch.</p>
+<code>1.x</code> for version 1.0 or 1.1).
+Check the Zeppe-Lin website or release notes for the correct branch.</p>
 <h5 id="5312-enabling-collections-in-pkgmanconf">5.3.1.2. Enabling Collections in pkgman.conf</h5>
 <p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections.  For
 example:</p>
@@ -1388,7 +1445,9 @@ option:</p>
 <p>Dry run:</p>
 <pre><code># pkgman install -vv --test --deps --group vim zathura
 </code></pre>
-<p><strong>Tip</strong>: Use <code>pkgman search</code> to locate package names.</p>
+<ul>
+<li><strong>Tip</strong>: Use <code>pkgman search</code> to locate package names.</li>
+</ul>
 <p>Run <code>pkgman install --help</code> or see <code>pkgman-install(8)</code> for information
 about all installation options.</p>
 <h4 id="533-keeping-your-system-up-to-date">5.3.3. Keeping Your System Up-to-Date</h4>
@@ -1639,11 +1698,13 @@ potential permission issues.</p>
 <li>Builds the package using <code>pkgmk(8)</code>.</li>
 <li>Installs the package with <code>pkgadd(8)</code>.</li>
 </ol>
-<p><strong>Note</strong>:
+<ul>
+<li><strong>Note</strong>:
 Warnings about missing <code>.md5sum</code> and <code>.footprint</code> files like
-<code>/usr/bin/pkgmk: ... cannot create .md5sum: Permission denied</code>
-occur because packages are built with the unprivileged <code>pkgmk</code> user,
-which has not write permissions in <code>/usr/src/mynewcollection</code>.</p>
+<code>/usr/bin/pkgmk: ... cannot create .md5sum: Permission denied</code> occur
+because packages are built with the unprivileged <code>pkgmk</code> user, which
+has not write permissions in <code>/usr/src/mynewcollection</code>.</li>
+</ul>
 <h5 id="5432-resolving-permissions-for-build-files">5.4.3.2. Resolving Permissions for Build Files</h5>
 <p>There are at least two options to resolve permissions case.</p>
 <ol>
@@ -2081,9 +2142,11 @@ nameserver &lt;your DNS server&gt;
 <p>Start, stop or restart the service via:</p>
 <pre><code># /etc/rc.d/net [start|stop|restart]
 </code></pre>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 To auto-start service at boot, add <code>net</code> to the <code>SERVICES</code> line in
-<code>/etc/rc.conf</code>.</p>
+<code>/etc/rc.conf</code>.</li>
+</ul>
 <h4 id="633-dynamic-address">6.3.3. Dynamic Address</h4>
 <p>To get an IP address automatically via DHCP, install the <code>dhcpcd</code>
 package and edit <code>/etc/rc.d/dhcpcd</code> to specify the network interface
@@ -2096,9 +2159,11 @@ package and edit <code>/etc/rc.d/dhcpcd</code> to specify the network interface
 <p>Check <code>dhcpcd</code>'s README for potential issues:</p>
 <pre><code>$ pkgman readme dhcpcd
 </code></pre>
-<p><strong>Important</strong>:
-To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</code> line in
-<code>/etc/rc.conf</code>.</p>
+<ul>
+<li><strong>Important</strong>:
+To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</code> line
+in <code>/etc/rc.conf</code>.</li>
+</ul>
 <h4 id="634-wireless-network">6.3.4. Wireless Network</h4>
 <p>Ensure the wireless interface isn't blocked.  Use <code>rfkill(8)</code>:</p>
 <pre><code>$ rfkill list
@@ -2146,9 +2211,11 @@ To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</co
 <pre><code># /etc/rc.d/wpa_supplicant start
 # /etc/rc.d/dhcpcd start
 </code></pre>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 To auto-start service at boot, add <code>wpa_supplicant</code> (and <code>dhcpcd</code> if
-using dynamic IP) to the <code>SERVICES</code> line in <code>/etc/rc.conf</code>.</p>
+using dynamic IP) to the <code>SERVICES</code> line in <code>/etc/rc.conf</code>.</li>
+</ul>
 <h3 id="64-time-and-date-configuration">6.4. Time and Date Configuration</h3>
 <h4 id="641-timezone-setup">6.4.1. Timezone Setup</h4>
 <p>Identify your timezone from <code>/usr/share/zoneinfo</code> (e.g.,
@@ -2171,15 +2238,19 @@ using dynamic IP) to the <code>SERVICES</code> line in <code>/etc/rc.conf</code>
 </code></pre>
 <p>For accuracy, use NTP (described next).</p>
 <h4 id="643-network-time-protocol-ntp-configuration">6.4.3. Network Time Protocol (NTP) Configuration</h4>
-<p><strong>Note</strong>:
-Accurate time via NTP is crucial for time-sensitive things like OTP.</p>
+<ul>
+<li><strong>Note</strong>:
+Accurate time via NTP is crucial for time-sensitive things like OTP.</li>
+</ul>
 <p>Use an NTP client, such as <code>chrony</code>, to synchronize the system clock.</p>
 <p>After installing <code>chrony</code>, start, stop, or restart the service via:</p>
 <pre><code># /etc/rc.d/chrony [start|stop|restart]
 </code></pre>
-<p><strong>Important</strong>:
+<ul>
+<li><strong>Important</strong>:
 To enable automatic startup, add <code>chrony</code> to the <code>SERVICES</code> line in
-<code>/etc/rc.conf</code>.</p>
+<code>/etc/rc.conf</code>.</li>
+</ul>
 <h3 id="65-user-authentication-and-environment">6.5. User Authentication and Environment</h3>
 <p>This section explains Zeppe-Lin's approach to user authentication,
 environment setup, and PAM (Pluggable Authentication Modules).</p>
@@ -2211,17 +2282,21 @@ by:</p>
 commands (e.g., <code>sudo(8)</code>) without specifying full paths.</p>
 <h4 id="653-pluggable-authentication-modules-pam">6.5.3. Pluggable Authentication Modules (PAM)</h4>
 <p>Zeppe-Lin uses PAM (<code>linux-pam</code> package) for flexible user
-authentication.  PAM's configuration files are in <code>/etc/pam.d/</code>, where
-each file corresponds to a specific login service.</p>
+authentication.
+PAM's configuration files are in <code>/etc/pam.d/</code>, where each file
+corresponds to a specific login service.</p>
 <p>Common PAM modules include:</p>
 <ul>
-<li><p><code>pam_dumb_runtime_dir.so</code>: Creates <code>XDG_RUNTIME_DIR</code> for desktop
-apps (freedesktop.org).  Ensure it's active in
-<code>/etc/pam.d/common-session</code> during system upgrades.</p>
+<li><p><code>pam_dumb_runtime_dir.so</code>:
+Creates <code>XDG_RUNTIME_DIR</code> for desktop apps (freedesktop.org).
+Ensure it's active in <code>/etc/pam.d/common-session</code> during system
+upgrades.</p>
 </li>
-<li><p><code>pam_env.so</code>: Sets and exports environment variables at login.</p>
+<li><p><code>pam_env.so</code>:
+Sets and exports environment variables at login.</p>
 </li>
-<li><p><code>pam_limits.so</code>: Configures resource limits (e.g., max open files).</p>
+<li><p><code>pam_limits.so</code>:
+Configures resource limits (e.g., max open files).</p>
 </li>
 </ul>
 <p>For advanced configurations, consult module-specific man pages (e.g.,
@@ -2231,65 +2306,78 @@ apps (freedesktop.org).  Ensure it's active in
 <li><p><strong>Why is the distribution named Zeppe-Lin?</strong></p>
 <p>It's our 'Whole Lotta Love' for Linux and GNU, just renamed!</p>
 </li>
-<li><p><strong>I've looked everywhere, but I can't find the Zeppe-Lin installation
-CD/DVD.  Did I miss something?</strong></p>
-<p>Ah, the elusive Zeppe-Lin installation disc! Fear not, intrepid
-user, your eyesight is likely just fine.  You see, Zeppe-Lin is so
-cutting-edge, so <strong>minimal</strong>, that it decided to ditch physical
-media altogether!</p>
+<li><p><strong>I've looked everywhere, but I can't find the Zeppe-Lin
+installation CD/DVD.  Did I miss something?</strong></p>
+<p>Ah, the elusive Zeppe-Lin installation disc!
+Fear not, intrepid user, your eyesight is likely just fine.
+You see, Zeppe-Lin is so cutting-edge, so <strong>minimal</strong>, that it
+decided to ditch physical media altogether!</p>
 <p>Instead of hunting for a shiny disc, you embark on a digital
-treasure hunt to download the root filesystem.  Think of it as our
-way of saving trees... or maybe we just figured you already have a
-perfectly good Live CD lying around.</p>
-<p>So, no, you didn't miss it.  There's no disc.  Now, about that
-rootfs download...
+treasure hunt to download the root filesystem.
+Think of it as our way of saving trees... or maybe we just figured
+you already have a perfectly good Live CD lying around.</p>
+<p>So, no, you didn't miss it.
+There's no disc.
+Now, about that rootfs download...
 (See <a href="#241-download-rootfs-tarball">2.4.1. Download Rootfs Tarball</a>)</p>
 </li>
 <li><p><strong>Where's the package/feature I need? Who can add it for me?</strong></p>
-<p>The short answer is: there's no nanny here.  Zeppe-Lin is built by
-its users, for its users.  If you need a package, or any other
-feature, you are the person to make it happen.  Our community's
-strength comes from people like you taking the initiative.</p>
-<p>If you want it, make it.  Just be sure your work aligns with the
+<p>The short answer is: there's no nanny here.
+Zeppe-Lin is built by its users, for its users.
+If you need a package, or any other feature, you are the person to
+make it happen.
+Our community's strength comes from people like you taking the
+initiative.</p>
+<p>If you want it, make it.
+Just be sure your work aligns with the
 <a href="#12-principles">Zeppe-Lin Principles</a> and <code>packaging(7)</code>
 guidelines before submitting your pull request to the appropriate
-repository.  We appreciate your contribution, and we're looking
-forward to seeing what you'll add.</p>
+repository.
+We appreciate your contribution, and we're looking forward to
+seeing what you'll add.</p>
 </li>
 </ol>
 <h2 id="8-reporting-bugs">8. REPORTING BUGS</h2>
 <p>For bug reports regarding <strong>this site</strong> and <strong>handbook</strong>, please use
-the issue tracker at
+the issue tracker:
 <a href="https://github.com/zeppe-lin/zeppe-lin.github.io/issues">https://github.com/zeppe-lin/zeppe-lin.github.io/issues</a>.</p>
 <h2 id="9-legal-notices">9. LEGAL NOTICES</h2>
 <p>This section outlines the legal and licensing information for
 Zeppe-Lin, including copyrights, licenses, and disclaimers.</p>
 <h3 id="91-software-licenses">9.1. Software Licenses</h3>
 <p>Zeppe-Lin integrates open-source software projects, each with its own
-license.  For licensing details, consult the source code of the
-respective packages included in your system.</p>
+license.
+For licensing details, consult the source code of the respective
+packages included in your system.</p>
 <h3 id="92-build-scripts-licensing">9.2. Build Scripts Licensing</h3>
-<p>Zeppe-Lin build scripts retain their original licensing structure and
-are attributed to:</p>
+<p>Zeppe-Lin build scripts retain their original licensing structure.</p>
+<h4 id="921-attribution">9.2.1. Attribution</h4>
 <ul>
-<li><p>Copyright (C) 2000-2021 by <a href="mailto:per@fukt.bth.se">Per Lidén</a>
-and <a href="https://crux.nu">CRUX Team</a>.</p>
-</li>
-<li><p>Copyright (C) 2022-2025 by <a href="mailto:alexandr.savca89@gmail.com">Alexandr Savca</a>
-and <a href="https://zeppe-lin.github.io">Zeppe-Lin Team</a>.</p>
-</li>
+<li>(C) 2000-2021 <a href="mailto:per@fukt.bth.se">Per Lidén</a>
+and <a href="https://crux.nu">CRUX Team</a>.</li>
+<li>(C) 2022-2025 <a href="mailto:alexandr.savca89@gmail.com">Alexandr Savca</a>
+and <a href="https://zeppe-lin.github.io">Zeppe-Lin Team</a>.</li>
 </ul>
-<p>These scripts are released under the
-<a href="https://gnu.org/licenses/gpl.html">GNU General Public License version 3 or later (GPLv3+)</a>.</p>
+<h4 id="922-license">9.2.2. License</h4>
+<p>These scripts are released under the GNU General Public License
+version 3 or later (GPLv3+):
+<a href="https://gnu.org/licenses/gpl.html">https://gnu.org/licenses/gpl.html</a>.</p>
 <h3 id="93-handbook-licensing">9.3. Handbook Licensing</h3>
-<p>The Zeppe-Lin Handbook, an original work by Alexandr Savca and the
-Zeppe-Lin Team, is licensed under the
-<a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+<h4 id="931-attribution">9.3.1. Attribution</h4>
+<ul>
+<li>(C) 2022-2025 <a href="mailto:alexandr.savca89@gmail.com">Alexandr Savca</a>
+and <a href="https://zeppe-lin.github.io">Zeppe-Lin Team</a>.</li>
+</ul>
+<h4 id="932-license">9.3.2. License</h4>
+<p>This handbook is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0):
+<a href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>.</p>
 <h3 id="94-disclaimer">9.4. Disclaimer</h3>
 <p>Zeppe-Lin and its documentation are distributed "AS IS" without
-warranty of any kind.  This includes, but is not limited to, implied
-warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-All usage is at your own risk.</p>
+warranty of any kind.
+This includes, but is not limited to, implied warranties of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Use it at YOUR OWN RISK.</p>
 <div class="footer-separator"></div>
 <div class="footer">
   Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
