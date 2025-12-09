@@ -1571,28 +1571,18 @@ Include unofficial collections if applicable.
 Automate Syncing: Set up a cron job with `crond(8)`:
 
     # Weekly sync at 3:00 AM on Sundays
-    0 3 * * 0 /root/pkgsrc-sync.sh
+    0 3 * * 0 run-one git -C /usr/src/pkgsrc-core    pull -q
+    0 3 * * 0 run-one git -C /usr/src/pkgsrc-system  pull -q
+    0 3 * * 0 run-one git -C /usr/src/pkgsrc-xorg    pull -q
+    0 3 * * 0 run-one git -C /usr/src/pkgsrc-desktop pull -q
 
-Example script (`/root/pkgsrc-sync.sh`):
-
-    #!/bin/sh
-    LOCKFILE="/var/lock/pkgsrc-sync.lock"
-    exec 9>"$LOCKFILE"
-    if ! flock -n 9; then
-        echo "Another sync in progress."
-        exit 1
-    fi
-    git -C /usr/src/pkgsrc-core     pull
-    git -C /usr/src/pkgsrc-system   pull
-    git -C /usr/src/pkgsrc-xorg     pull
-    git -C /usr/src/pkgsrc-desktop  pull
-    echo "Repositories synced."
-
-For logging, replace `echo` with `logger`.
+* **Important**: Ensure `run-one` package from `pkgsrc-core`
+  collection is installed.
 
 ##### 5.3.3.2. Checking for Package Updates
 
-Identify outdated packages with `pkgman diff`:
+Once the local collections are synced, identify outdated packages with
+`pkgman diff`:
 
     $ pkgman diff --deps --full
 
