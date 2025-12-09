@@ -188,17 +188,19 @@
 </ul>
 <h1 id="zeppe-lin-handbook">Zeppe-Lin Handbook</h1>
 <h2 id="preface">PREFACE</h2>
-<p>Zeppe-Lin Handbook.  <em>Because figuring it out yourself is overrated</em>.</p>
+<p>Zeppe-Lin Handbook.
+<em>Because figuring it out yourself is overrated</em>.</p>
 <p>This guide gives you everything you need to install, configure, and
 maintain your Zeppe-Lin system.</p>
-<p>Build the Zeppe-Lin system you need.  This handbook shows you how
-(<em>because nobody else will</em>).</p>
+<p>Build the Zeppe-Lin system you need.
+This handbook shows you how (<em>because nobody else will</em>).</p>
 <h2 id="1-introduction">1. INTRODUCTION</h2>
 <h3 id="11-about-zeppe-lin">1.1. About Zeppe-Lin</h3>
 <h4 id="111-what-is-zeppe-lin">1.1.1. What is Zeppe-Lin?</h4>
 <p>Zeppe-Lin is a lightweight, source-based GNU/Linux distro for x86-64,
-forked from CRUX.  Rooted in KISS and UNIX ideals, it gives you the
-simplicity and control to build a clear, transparent system.</p>
+forked from CRUX.
+Rooted in KISS and UNIX ideals, it gives you the simplicity and
+control to build a clear, transparent system.</p>
 <h4 id="112-who-is-zeppe-lin-for">1.1.2. Who is Zeppe-Lin For?</h4>
 <p>Zeppe-Lin is for the Linux user who understands the elegance of Plan
 9's philosophy but still prefers a POSIX-compliant environment they
@@ -756,9 +758,9 @@ added functionality and <code>wmaker-themes</code> for customization.</p>
 <h2 id="3-upgrading">3. UPGRADING</h2>
 <p><strong>WARNING! THIS SECTION IS UNDER DEVELOPMENT AND CANNOT BE USED AS A
 MANUAL!</strong></p>
-<p>Upgrading Zeppe-Lin requires careful planning.  This section outlines
-methods for updating your system.  Follow the steps as presented to
-ensure a reliable upgrade.</p>
+<p>Upgrading Zeppe-Lin requires careful planning.
+This section outlines methods for updating your system.
+Follow the steps as presented to ensure a reliable upgrade.</p>
 <p>Upgrade methods:</p>
 <ol>
 <li>Quick binary upgrade (core components).</li>
@@ -767,13 +769,15 @@ ensure a reliable upgrade.</p>
 <p>Before starting, read the release notes for the target version and
 back up important data.</p>
 <h3 id="31-release-notes">3.1. Release Notes</h3>
-<p>Read the release notes for the new Zeppe-Lin version.  They contain
-essential details about new features, removed packages, and
-compatibility issues.  The latest release notes you can obtain
+<p>Read the release notes for the new Zeppe-Lin version.
+They contain essential details about new features, removed packages,
+and compatibility issues.
+The latest release notes you can obtain
 <a href="https://zeppe-lin.github.io/index.html#latest-release">here</a>.</p>
 <h3 id="32-set-release-and-sync">3.2. Set Release And Sync</h3>
 <p>Synchronize your local pkgsrc collections to match the new release
-branch.  Replace <code>1.x</code> with the specific release you are upgrading to:</p>
+branch.
+Replace <code>1.x</code> with the specific release you are upgrading to:</p>
 <pre><code>git -C /usr/src/pkgsrc-core    switch 1.x
 git -C /usr/src/pkgsrc-system  switch 1.x
 git -C /usr/src/pkgsrc-xorg    switch 1.x
@@ -818,24 +822,27 @@ $ tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/tmp/binpkgs
 <pre><code>$ cd ~/tmp/binpkgs
 $ for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
 </code></pre>
-<p><code>pkgadd -u</code> upgrades each package.  New, non-upgradable packages will
-return an error, which the loop skips, ensuring all upgradeable
-packages are updated.</p>
+<p><code>pkgadd -u</code> upgrades each package.
+New, non-upgradable packages will return an error, which the loop
+skips, ensuring all upgradeable packages are updated.</p>
 <h4 id="333-install-new-core-packages">3.3.3. Install New Core Packages</h4>
 <p>Install new core packages introduced in the release:</p>
 <pre><code>$ cd ~/tmp/binpkgs
 $ for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
 </code></pre>
-<p><code>pkgadd</code> installs each package.  Already installed packages return an
-error, which the loop skips to ensure all new packages are installed.</p>
+<p><code>pkgadd</code> installs each package.
+Already installed packages return an error, which the loop skips to
+ensure all new packages are installed.</p>
 <h2 id="4-package-management">4. PACKAGE MANAGEMENT</h2>
 <h3 id="41-introduction">4.1. Introduction</h3>
 <p>Zeppe-Lin's package management system revolves around packages and
-package sources.  Low-level tools handle atomic operations like
-building and installation, working with individual package sources or
-packages as instructed.  The high-level tool <code>pkgman</code> manages the
-package source collections and orchestrates these low-level tasks for
-system-wide software management.</p>
+package sources.
+Low-level tools handle atomic operations like building and
+installation, working with individual package sources or packages as
+instructed.
+The high-level tool <code>pkgman</code> manages the package source collections
+and orchestrates these low-level tasks for system-wide software
+management.</p>
 <ul>
 <li><p><strong>Packages</strong>:
 Compressed archives (e.g., <code>tar.gz</code>) containing pre-built software.</p>
@@ -865,8 +872,9 @@ updates, integrating <code>pkgutils</code> and <code>pkgmk</code>.</li>
 </ul>
 <h3 id="-42-what-is-a-package"> 4.2. What is a Package?</h3>
 <p>A Zeppe-Lin package is a compressed archive (e.g., <code>tar.gz</code>) that
-contains only the software files.  It avoids any kind of embedded
-metadata, ensuring simplicity and transparency in its structure.</p>
+contains only the software files.
+It avoids any kind of embedded metadata, ensuring simplicity and
+transparency in its structure.</p>
 <h4 id="421-package-naming">4.2.1. Package Naming</h4>
 <p>Zeppe-Lin packages follow a clear naming convention:</p>
 <pre><code>name#version-release.pkg.tar.gz
@@ -881,12 +889,13 @@ metadata, ensuring simplicity and transparency in its structure.</p>
 <p>Example:</p>
 <pre><code>ed#1.21-1.pkg.tar.gz
 </code></pre>
-<p>The extension <code>.pkg.tar.gz</code> denotes a Zeppe-Lin package.  Other common
-compression formats like <code>tar.bz2</code>, <code>tar.xz</code>, and <code>tar.zst</code> are also
-supported.</p>
+<p>The extension <code>.pkg.tar.gz</code> denotes a Zeppe-Lin package.
+Other common compression formats like <code>tar.bz2</code>, <code>tar.xz</code>, and
+<code>tar.zst</code> are also supported.</p>
 <h4 id="422-package-database">4.2.2. Package Database</h4>
 <p>The package database, located at <code>/var/lib/pkg/db</code>, tracks installed
-packages and their contents.  Each package entry follows this format:</p>
+packages and their contents.
+Each package entry follows this format:</p>
 <pre><code>&lt;name&gt;                 # Package name
 &lt;version&gt;-&lt;release&gt;    # Version and release
 &lt;dir&gt;/                 # Top-level directory
@@ -923,16 +932,17 @@ This database enables essential operations like installation
 <p>Install a package file with <code>pkgadd(8)</code>:</p>
 <pre><code># pkgadd bash#5.0.18-1.pkg.tar.gz
 </code></pre>
-<p>By default, <code>pkgadd(8)</code> prevents overwriting existing files.  Use <code>-f</code>
-or <code>--force</code> to override this behavior (<strong>use with caution!</strong>):</p>
+<p>By default, <code>pkgadd(8)</code> prevents overwriting existing files.
+Use <code>-f</code> or <code>--force</code> to override this behavior (<strong>use with caution!</strong>):</p>
 <pre><code># pkgadd -f bash#5.0.18-1.pkg.tar.gz
 </code></pre>
 <h5 id="4312-upgrading-a-package">4.3.1.2. Upgrading a Package</h5>
 <p>Upgrade a package with the <code>-u</code> or <code>--upgrade</code> option:</p>
 <pre><code># pkgadd -u bash#5.0.18-1.pkg.tar.gz
 </code></pre>
-<p>This replaces the installed package.  If the package is not installed,
-it will return an error.  You can even "upgrade" to an older version.</p>
+<p>This replaces the installed package.
+If the package is not installed, it will return an error.
+You can even "upgrade" to an older version.</p>
 <p>Files that should not be upgraded (based on <code>/etc/pkgadd.conf</code>) are
 placed in <code>/var/lib/pkg/rejected/</code>.</p>
 <h5 id="4313-removing-a-package">4.3.1.3. Removing a Package</h5>
@@ -960,8 +970,8 @@ This removes all files owned by the package without confirmation.</li>
 <p>See <code>pkgadd(8)</code>, <code>pkgrm(8)</code>, and <code>pkginfo(1)</code> for details.</p>
 <h4 id="432-configuring-pkgadd">4.3.2. Configuring pkgadd</h4>
 <p>You can customize <code>pkgadd(8)</code> behavior during package upgrades using
-<code>/etc/pkgadd.conf</code>.  Rules define whether files should be upgraded or
-preserved.</p>
+<code>/etc/pkgadd.conf</code>.
+Rules define whether files should be upgraded or preserved.</p>
 <h5 id="4321-rule-format">4.3.2.1. Rule Format</h5>
 <p>Each rule in <code>/etc/pkgadd.conf</code> follows this format:</p>
 <pre><code>EVENT   PATTERN   ACTION
@@ -992,13 +1002,14 @@ Do not use <code>/</code> at the start!</li>
 </ul>
 <p>See <code>pkgadd.conf(5)</code> for details.</p>
 <h3 id="44-low-level-tools-rejmerge">4.4. Low-level Tools: rejmerge</h3>
-<p><code>rejmerge(8)</code> resolves files rejected during upgrades using
-<code>pkgadd -u</code>.  Rejected files are moved to <code>/var/lib/pkg/rejected/</code>
-for manual handling, while <code>rejmerge(8)</code> provides a way to manage
-these files semi-automatically.</p>
+<p><code>rejmerge(8)</code> resolves files rejected during upgrades using <code>pkgadd -u</code>.
+Rejected files are moved to <code>/var/lib/pkg/rejected/</code> for manual
+handling, while <code>rejmerge(8)</code> provides a way to manage these files
+semi-automatically.</p>
 <h4 id="441-using-rejmerge">4.4.1. Using rejmerge</h4>
-<p>If files are present in <code>/var/lib/pkg/rejected</code>, <code>rejmerge(8)</code>
-prompts you to decide their fate.  For each file, you can choose:</p>
+<p>If files are present in <code>/var/lib/pkg/rejected</code>, <code>rejmerge(8)</code> prompts
+you to decide their fate.
+For each file, you can choose:</p>
 <pre><code>=======&gt; file
 (diff output between installed file and rejected file)
 [K]eep [U]pgrade [M]erge [D]iff [S]kip
@@ -1032,9 +1043,10 @@ Key settings:</p>
 <p>See <code>rejmerge.conf(5)</code> for more details.</p>
 <h3 id="45-low-level-tools-pkgmk">4.5. Low-level Tools: pkgmk</h3>
 <p><code>pkgmk(8)</code> builds Zeppe-Lin packages (compressed archives) from source
-files using a <code>Pkgfile</code>.  These files, along with the supporting
-directory, form a <strong>Package Source</strong> -- a self-contained unit that
-includes all files needed to build and install software.</p>
+files using a <code>Pkgfile</code>.
+These files, along with the supporting directory, form a
+<strong>Package Source</strong> -- a self-contained unit that includes all files
+needed to build and install software.</p>
 <p>A <strong>Package Source</strong> typically contains:</p>
 <ul>
 <li><code>Pkgfile</code>: Defines metadata and build steps.</li>
@@ -1042,8 +1054,9 @@ includes all files needed to build and install software.</p>
 <li><code>.footprint</code>: Lists expected files in the final package.</li>
 </ul>
 <p>A <strong>Package Source</strong> is the basic unit of software organization in
-Zeppe-Lin.  While this section introduces <strong>Package Sources</strong> in the
-context of building packages,
+Zeppe-Lin.
+While this section introduces <strong>Package Sources</strong> in the context of
+building packages,
 <a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>
 explores their organization into <strong>Collections</strong> and <strong>Repositories</strong>
 for broader software management workflows.</p>
@@ -1114,9 +1127,10 @@ the database, so simultaneous installations may fail.</li>
 <p>See <code>pkgmk.conf(5)</code> for full options.</p>
 <h3 id="46-high-level-tool-pkgman">4.6. High-level Tool: pkgman</h3>
 <p><code>pkgman(1)</code> serves as a versatile interface for managing Zeppe-Lin's
-package ecosystem.  Building on tools like <code>pkgutils</code> and <code>pkgmk</code>, it
-unifies and simplifies workflows while supporting a wide range of
-package management tasks.</p>
+package ecosystem.
+Building on tools like <code>pkgutils</code> and <code>pkgmk</code>, it unifies and
+simplifies workflows while supporting a wide range of package
+management tasks.</p>
 <p><code>pkgman(1)</code> empowers users to:</p>
 <ul>
 <li>Handle dependencies and system updates efficiently.</li>
@@ -1174,8 +1188,8 @@ Dependencies: attr
 <p>Build and install a package with dependencies (recommended):</p>
 <pre><code># pkgman install --deps --group xterm
 </code></pre>
-<p>Use <code>--group</code> to stop installation if a dependency fails.  Retry
-failed installations:</p>
+<p>Use <code>--group</code> to stop installation if a dependency fails.
+Retry failed installations:</p>
 <pre><code># pkgman install --deps --group --force xterm
 </code></pre>
 <p><code>--force</code> skips already installed packages during the retry.</p>
@@ -1194,15 +1208,17 @@ failed installations:</p>
 <ul>
 <li><p><code>pkgsrcdir</code>:
 Defines directories for package source collections (you can list
-multiple).  The <code>pkgsrc-core</code> collection is enabled by default.  See
-<a href="#522-collections">5.2.2. Collections</a> for additional collections.</p>
+multiple).
+The <code>pkgsrc-core</code> collection is enabled by default.
+See <a href="#522-collections">5.2.2. Collections</a> for additional collections.</p>
 <p>Details about <code>pkgsrcdir</code> and how it is used to configure
 <strong>Collections</strong> and <strong>Repositories</strong> are explored in next chapter:
 <a href="#5-package-sources-and-collections">5. PACKAGE SOURCES AND COLLECTIONS</a>.</p>
 </li>
 <li><p><code>runscripts</code>:
 Enables <code>pre-install</code>, <code>post-install</code>, <code>pre-remove</code>, and
-<code>post-remove</code> scripts during operations.  <strong>Enable this option.</strong></p>
+<code>post-remove</code> scripts during operations.
+<strong>Enable this option.</strong></p>
 </li>
 <li><p><code>logfile</code>:
 Specifies the log file for <code>pkgman(8)</code> operations.</p>
@@ -1221,13 +1237,14 @@ packages and basic system updates.</p>
 <ul>
 <li><p><strong>Package Sources</strong>:
 Self-contained directories that include all files and instructions
-needed to build and install software.  These are the foundation of
-Zeppe-Lin's software management.</p>
+needed to build and install software.
+These are the foundation of Zeppe-Lin's software management.</p>
 </li>
 <li><p><strong>Collections</strong>:
 Logical groupings of <strong>Package Sources</strong>, organized by purpose
-(e.g., core, system tools, desktop applications).  <strong>Collections</strong>
-simplify software organization and provide modularity.</p>
+(e.g., core, system tools, desktop applications).
+<strong>Collections</strong> simplify software organization and provide
+modularity.</p>
 </li>
 <li><p><strong>Repositories</strong>:
 Distributed storage systems that host one or more <strong>Collections</strong>.
@@ -1236,33 +1253,37 @@ synchronization across systems.</p>
 </li>
 </ul>
 <p>These components provide a structured approach to building, managing,
-and distributing software on Zeppe-Lin.  Tools like <code>pkgmk(8)</code> and
-<code>pkgman(1)</code> are used to interact with these components, supporting
-workflows such as dependency management, package building, and system
-updates.</p>
+and distributing software on Zeppe-Lin.
+Tools like <code>pkgmk(8)</code> and <code>pkgman(1)</code> are used to interact with these
+components, supporting workflows such as dependency management,
+package building, and system updates.</p>
 <h3 id="52-organizing-package-sources">5.2. Organizing Package Sources</h3>
 <h4 id="521-package-source-the-core-unit">5.2.1. Package Source: The Core Unit</h4>
 <p>In Zeppe-Lin, a <strong>Package Source</strong> is the fundamental unit for
-building software.  Each one represents a single application, library,
-or utility, organized as a directory with all the necessary files to
-build and install the software.</p>
+building software.
+Each one represents a single application, library, or utility,
+organized as a directory with all the necessary files to build and
+install the software.</p>
 <p>Essential files include:</p>
 <ul>
 <li><p><code>Pkgfile</code>:
-The main build script.  It defines the package's metadata (name,
-version, dependencies) and includes the steps for downloading,
-compiling, and packaging the software using <code>pkgmk(8)</code>.</p>
+The main build script.
+It defines the package's metadata (name, version, dependencies) and
+includes the steps for downloading, compiling, and packaging the
+software using <code>pkgmk(8)</code>.</p>
 <p>See <code>pkgmk.Pkgfile(5)</code> for details.</p>
 </li>
 <li><p><code>.md5sum</code>:
 This file contains checksums for verifying the integrity of
-downloaded source files.  It ensures that the files have not been
-altered or corrupted during transfer.</p>
+downloaded source files.
+It ensures that the files have not been altered or corrupted during
+transfer.</p>
 <p>See <code>pkgmk.md5sum(5)</code> for details.</p>
 </li>
 <li><p><code>.footprint</code>:
 Used for build verification, it lists the files expected in the
-final package.  This helps maintain consistency in builds.</p>
+final package.
+This helps maintain consistency in builds.</p>
 <p>See <code>pkgmk.footprint(5)</code> for details.</p>
 </li>
 </ul>
@@ -1329,11 +1350,13 @@ ecosystem, allowing users to selectively enable the software they
 need.</p>
 <h4 id="523-repositories-distributing-and-versioning-collections">5.2.3. Repositories: Distributing and Versioning Collections</h4>
 <p><strong>Collections</strong> are organized into <strong>Repositories</strong>, hosted on systems
-like Git.  It's important to note that while a repository <strong>can</strong>
-contain multiple collections, Zeppe-Lin's official repositories adopt
-a strategy where each repository primarily focuses on a single
-collection.  This design choice is driven by the benefits of allowing
-users to selectively clone only the collections they need.
+like Git.
+It's important to note that while a repository <strong>can</strong> contain
+multiple collections, Zeppe-Lin's official repositories adopt a
+strategy where each repository primarily focuses on a single
+collection.
+This design choice is driven by the benefits of allowing users to
+selectively clone only the collections they need.
 <strong>Repositories</strong> provide:</p>
 <ul>
 <li><p><strong>Versioning</strong>: Branches manage package sources for specific
@@ -1371,8 +1394,8 @@ official package source collections and enable them for <code>pkgman(1)</code>.<
 <code>1.x</code> for version 1.0 or 1.1).
 Check the Zeppe-Lin website or release notes for the correct branch.</p>
 <h5 id="5312-enabling-collections-in-pkgmanconf">5.3.1.2. Enabling Collections in pkgman.conf</h5>
-<p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections.  For
-example:</p>
+<p>Edit <code>/etc/pkgman.conf</code> to enable package sources collections.
+For example:</p>
 <pre><code>pkgsrcdir /usr/src/pkgsrc-core
 pkgsrcdir /usr/src/pkgsrc-system
 pkgsrcdir /usr/src/pkgsrc-xorg
@@ -1467,25 +1490,18 @@ about all installation options.</p>
 <p>Include unofficial collections if applicable.</p>
 <p>Automate Syncing: Set up a cron job with <code>crond(8)</code>:</p>
 <pre><code># Weekly sync at 3:00 AM on Sundays
-0 3 * * 0 /root/pkgsrc-sync.sh
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-core    pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-system  pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-xorg    pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-desktop pull -q
 </code></pre>
-<p>Example script (<code>/root/pkgsrc-sync.sh</code>):</p>
-<pre><code>#!/bin/sh
-LOCKFILE=&quot;/var/lock/pkgsrc-sync.lock&quot;
-exec 9&gt;&quot;$LOCKFILE&quot;
-if ! flock -n 9; then
-    echo &quot;Another sync in progress.&quot;
-    exit 1
-fi
-git -C /usr/src/pkgsrc-core     pull
-git -C /usr/src/pkgsrc-system   pull
-git -C /usr/src/pkgsrc-xorg     pull
-git -C /usr/src/pkgsrc-desktop  pull
-echo &quot;Repositories synced.&quot;
-</code></pre>
-<p>For logging, replace <code>echo</code> with <code>logger</code>.</p>
+<ul>
+<li><strong>Important</strong>: Ensure <code>run-one</code> package from <code>pkgsrc-core</code>
+collection is installed.</li>
+</ul>
 <h5 id="5332-checking-for-package-updates">5.3.3.2. Checking for Package Updates</h5>
-<p>Identify outdated packages with <code>pkgman diff</code>:</p>
+<p>Once the local collections are synced, identify outdated packages with
+<code>pkgman diff</code>:</p>
 <pre><code>$ pkgman diff --deps --full
 </code></pre>
 <p>Example output:</p>
@@ -1499,9 +1515,9 @@ screen          4.9.0-1        5.0.0-1
 Package         Installed      Required by
 libncurses      6.2-1          vim
 </code></pre>
-<p>Review this output to determine which packages need updates.  Packages
-in the "not found" section may have been removed from the collection
-or installed manually from other sources.</p>
+<p>Review this output to determine which packages need updates.
+Packages in the "not found" section may have been removed from the
+collection or installed manually from other sources.</p>
 <h5 id="5333-updating-packages">5.3.3.3. Updating Packages</h5>
 <p>Use <code>pkgman sysup</code> for a system upgrade.</p>
 <p><strong>Step 1</strong>: Download all required source files first:</p>
@@ -1522,8 +1538,9 @@ dependencies.</p>
 <h4 id="534-advanced-package-management">5.3.4. Advanced Package Management</h4>
 <h5 id="5341-detecting-broken-dependencies-with-revdep1">5.3.4.1. Detecting Broken Dependencies with revdep(1)</h5>
 <p><code>revdep(1)</code> checks installed packages for missing or incorrect shared
-libraries.  Use it to verify system stability and identify packages
-needing a rebuild after updates.</p>
+libraries.
+Use it to verify system stability and identify packages needing a
+rebuild after updates.</p>
 <p>Examples:</p>
 <ol>
 <li><p>Check system-wide for broken libraries:</p>
@@ -1544,7 +1561,8 @@ packages remain functional.</p>
 <p>See <code>revdep(1)</code> and <code>revdep.d(5)</code> for more information.</p>
 <h5 id="5342-ignoring-packages-during-updates">5.3.4.2. Ignoring Packages During Updates</h5>
 <p>Prevent updates to specific packages during system upgrades with
-<code>--ignore</code>.  Example:</p>
+<code>--ignore</code>.
+Example:</p>
 <pre><code># pkgman sysup --deps --depsort --group --ignore=vim,screen
 </code></pre>
 <p>Regularly revisit ignored packages to avoid security risks and
@@ -1560,16 +1578,18 @@ dependency conflicts.</p>
 critical to workflows.</p>
 <h5 id="5344-handling-lower-available-versions">5.3.4.4. Handling Lower Available Versions</h5>
 <p>Occasionally, a package source may revert to a lower version than the
-one installed on your system.  This often happens when maintainers
-roll back to a stable release after issues with a newer version.  By
-default, <code>pkgman</code> does not prioritize installed versions over
+one installed on your system.
+This often happens when maintainers roll back to a stable release
+after issues with a newer version.
+By default, <code>pkgman</code> does not prioritize installed versions over
 available ones.</p>
 <p>To override this behavior, enable the <code>preferhigher</code> option:</p>
 <pre><code># pkgman --config-set=&quot;preferhigher yes&quot; sysup --deps --depsort
 </code></pre>
 <p>This ensures <code>pkgman</code> retains the higher installed version during
-upgrades.  Use this feature cautiously, as higher versions might be
-less stable or unsupported.</p>
+upgrades.
+Use this feature cautiously, as higher versions might be less stable
+or unsupported.</p>
 <h5 id="5345-practical-considerations">5.3.4.5. Practical Considerations</h5>
 <ul>
 <li><p>Regularly review ignored and locked packages for security and
@@ -1583,21 +1603,21 @@ using potentially unstable software.</p>
 </ul>
 <h3 id="54-extending-software-sources">5.4. Extending Software Sources</h3>
 <h4 id="541-adding-a-local-collection">5.4.1. Adding a Local Collection</h4>
-<p>This section explains how to create custom collections.  A local
-collection allows you to add new packages that are not available in
-the official repositories.</p>
+<p>This section explains how to create custom collections.
+A local collection allows you to add new packages that are not
+available in the official repositories.</p>
 <h5 id="5411-creating-the-collection-directory">5.4.1.1. Creating the Collection Directory</h5>
 <p>Create your local collection directory in <code>/usr/src</code>, alongside
-official Zeppe-Lin collections.  Using directories with broader read
-permissions ensures that unprivileged users like <code>pkgmk</code> can access
-the collection.</p>
+official Zeppe-Lin collections.
+Using directories with broader read permissions ensures that
+unprivileged users like <code>pkgmk</code> can access the collection.</p>
 <p>Example:</p>
 <pre><code># cd /usr/src
 # mkdir mynewcollection
 </code></pre>
 <h5 id="5412-enabling-the-collection-in-pkgmanconf">5.4.1.2. Enabling the Collection in pkgman.conf</h5>
-<p>Add your collection to <code>/etc/pkgman.conf</code>.  List it above official
-collections to give it search priority:</p>
+<p>Add your collection to <code>/etc/pkgman.conf</code>.
+List it above official collections to give it search priority:</p>
 <pre><code>pkgsrcdir /usr/src/mynewcollection
 pkgsrcdir /usr/src/pkgsrc-core
 pkgsrcdir /usr/src/pkgsrc-system
@@ -1620,8 +1640,9 @@ pkgsrcdir /usr/src/pkgsrc-xorg
 sources.</p>
 <h4 id="542-creating-custom-packages">5.4.2. Creating Custom Packages</h4>
 <p>After setting up your local collection, the next step is to add a
-package source.  This involves creating a directory for the package
-and writing a <code>Pkgfile</code> with build instructions and metadata.</p>
+package source.
+This involves creating a directory for the package and writing a
+<code>Pkgfile</code> with build instructions and metadata.</p>
 <h5 id="5421-creating-the-package-directory">5.4.2.1. Creating the Package Directory</h5>
 <p>Create a subdirectory for the new package in your local collection.
 Ensure the directory name matches the package name in the <code>Pkgfile</code>:</p>
@@ -1629,8 +1650,9 @@ Ensure the directory name matches the package name in the <code>Pkgfile</code>:<
 # cd /usr/src/mynewcollection/hello
 </code></pre>
 <p><strong>Important</strong>:
-Naming consistency is critical.  A mismatch between the directory name
-and <code>name</code> in the <code>Pkgfile</code> cause build error.</p>
+Naming consistency is critical.
+A mismatch between the directory name and <code>name</code> in the <code>Pkgfile</code>
+cause build error.</p>
 <h5 id="5422-writing-the-pkgfile">5.4.2.2. Writing the Pkgfile</h5>
 <p>The <code>Pkgfile</code> serves two purposes:</p>
 <ol>
@@ -1665,8 +1687,8 @@ build() {
 <ul>
 <li><code># Description</code>: Brief summary of the package.</li>
 <li><code># URL</code>: Link to official documentation or website.</li>
-<li><code># Depends on</code>: List of dependencies.  <code>pkgman(1)</code> resolves and
-installs these automatically.</li>
+<li><code># Depends on</code>: List of dependencies.
+<code>pkgman(1)</code> resolves and installs these automatically.</li>
 </ul>
 <p>Without these headers, <code>pkgman(1)</code> cannot display metadata or resolve
 dependencies.</p>
@@ -1746,12 +1768,13 @@ has not write permissions in <code>/usr/src/mynewcollection</code>.</li>
 </code></pre>
 <h4 id="544-building-packages-from-bleeding-edge-sources">5.4.4. Building Packages from Bleeding-Edge Sources</h4>
 <p>Some packages need to be built directly from version control systems
-(VCS) like Git or Subversion, instead of fixed release archives.  This
-section outlines two approaches: a stable approach and a bleeding-edge
-approach.</p>
+(VCS) like Git or Subversion, instead of fixed release archives.
+This section outlines two approaches: a stable approach and a
+bleeding-edge approach.</p>
 <h5 id="5441-stable-commit-approach">5.4.4.1. Stable Commit Approach</h5>
 <p>For production, pinning to a specific commit ensures consistent
-builds.  Example:</p>
+builds.
+Example:</p>
 <pre><code># Description: Ratpoison window manager
 # URL:         https://www.nongnu.org/ratpoison/
 # Depends on:  xorg-server
@@ -1786,7 +1809,8 @@ build() {
 changes.</p>
 <h5 id="5442-bleeding-edge-approach">5.4.4.2. Bleeding-Edge Approach</h5>
 <p>For testing, dynamically set the version to the current date
-(<code>YYYYMMDD</code>) to track upstream changes.  Example:</p>
+(<code>YYYYMMDD</code>) to track upstream changes.
+Example:</p>
 <pre><code># Description: Ruby interpreter (bleeding-edge)
 # URL:         http://www.ruby-lang.org
 # Depends on:  gdbm libgmp openssl zlib libffi libyaml
@@ -1815,8 +1839,9 @@ build() {
     make DESTDIR=$PKG install
 }
 </code></pre>
-<p><strong>"Daily Updates"</strong>: If the installed version is outdated, <code>pkgman(1)</code>
-flags it during <code>pkgman diff</code>, prompting updates:</p>
+<p><strong>"Daily Updates"</strong>:
+If the installed version is outdated, <code>pkgman(1)</code> flags it during
+<code>pkgman diff</code>, prompting updates:</p>
 <pre><code>$ pkgman diff
   
 -- Differences between installed packages and packages sources tree
@@ -1839,9 +1864,9 @@ environments.</p>
 <p>Example usage in a <code>Pkgfile</code>:</p>
 <pre><code>download_svn https://svn.project.org/svn/program/trunk
 </code></pre>
-<p>Add <code>subversion</code> to dependencies for compatibility.  Unlike <code>git</code>,
-which resides in <code>pkgsrc-core</code>, <code>subversion</code> requires explicit
-declaration.</p>
+<p>Add <code>subversion</code> to dependencies for compatibility.
+Unlike <code>git</code>, which resides in <code>pkgsrc-core</code>, <code>subversion</code> requires
+explicit declaration.</p>
 <h5 id="5444-best-practices">5.4.4.4. Best Practices</h5>
 <ul>
 <li>Use pinned commits or snapshots for stability in production.</li>
@@ -1852,8 +1877,9 @@ directly in <code>Pkgfile</code> for portability.</li>
 <h3 id="55-tips-and-best-practices">5.5. Tips and Best Practices</h3>
 <h4 id="551-renicing-builds">5.5.1. Renicing Builds</h4>
 <p>Package builds can reduce system responsiveness due to high CPU and
-I/O usage.  Mitigate this by adjusting process priorities using
-<code>nice(1)</code> and <code>ionice(1)</code>:</p>
+I/O usage.
+Mitigate this by adjusting process priorities using <code>nice(1)</code> and
+<code>ionice(1)</code>:</p>
 <ul>
 <li><code>nice(1)</code>: Lowers CPU priority (higher number = lower priority).</li>
 <li><code>ionice(1)</code>: Adjusts I/O priority (class 2, priority 6 is commonly
@@ -1877,8 +1903,8 @@ up package compilation in Zeppe-Lin.</p>
 <li><p>Uncomment this line in <code>/etc/fstab</code>:</p>
 <pre><code>pkgmk /var/cache/pkgmk/work tmpfs size=&lt;SIZE&gt;,uid=&lt;UID&gt;,defaults 0 0
 </code></pre>
-<p>Replace <code>SIZE</code> (e.g., <code>16G</code>).  The <code>UID</code> for the <code>pkgmk</code> user is
-preconfigured.</p>
+<p>Replace <code>SIZE</code> (e.g., <code>16G</code>).
+The <code>UID</code> for the <code>pkgmk</code> user is preconfigured.</p>
 </li>
 <li><p>Mount <code>tmpfs</code>:</p>
 <pre><code># mount pkgmk
@@ -1912,9 +1938,12 @@ preconfigured.</p>
 </ol>
 <h4 id="553-unprivileged-builds-in-zeppe-lin">5.5.3. Unprivileged Builds in Zeppe-Lin</h4>
 <p>Zeppe-Lin builds packages as an unprivileged user (typically <code>pkgmk</code>)
-by default.  This secure and modular setup isolates the build process
-to mitigate risks.  <strong>If you are using Zeppe-Lin, these steps are
-already configured out of the box.  There is no need to repeat them.</strong></p>
+by default.
+This secure and modular setup isolates the build process to mitigate
+risks.
+<strong>If you are using Zeppe-Lin, these steps are already configured out
+of the box.</strong>
+<strong>There is no need to repeat them.</strong></p>
 <p>However, this guide is provided for educational purposes, to show how
 it was achieved, or for users wanting to adapt this approach for other
 distributions or customizations.</p>
@@ -1964,13 +1993,13 @@ and run:</p>
 <p>This ensures consistent locale settings across your system.</p>
 <h3 id="62-system-initialization-and-configuration">6.2. System Initialization and Configuration</h3>
 <p>Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
-services, and shutdown.  This system relies on shell scripts located
-in <code>/etc</code> and <code>/etc/rc.d</code>, offering an efficient and flexible way to
-control processes.</p>
+services, and shutdown.
+This system relies on shell scripts located in <code>/etc</code> and <code>/etc/rc.d</code>,
+offering an efficient and flexible way to control processes.</p>
 <h4 id="621-system-states-runlevels">6.2.1. System States (Runlevels)</h4>
 <p>Runlevels define the operating state of the system, such as halting,
-rebooting, or normal operation.  Zeppe-Lin's runlevels are configured
-in <code>/etc/inittab</code>:</p>
+rebooting, or normal operation.
+Zeppe-Lin's runlevels are configured in <code>/etc/inittab</code>:</p>
 <table>
 <tr><th>Runlevel </th><th>State            </th><th>Purpose                                   </th></tr>
 <tr><td>0        </td><td>Halt             </td><td>Shut down the system completely           </td></tr>
@@ -1980,9 +2009,9 @@ in <code>/etc/inittab</code>:</p>
 <tr><td>6        </td><td>Reboot           </td><td>Restart the system                        </td></tr>
 </table>
 <p>By default, Zeppe-Lin boots into multi-user mode (runlevel <strong>2</strong>),
-which enables all services and user access.  Single-user mode
-(runlevel <strong>1</strong> or <strong>S</strong>) is ideal for system maintenance, providing a
-minimal environment.</p>
+which enables all services and user access.
+Single-user mode (runlevel <strong>1</strong> or <strong>S</strong>) is ideal for system
+maintenance, providing a minimal environment.</p>
 <h4 id="622-core-init-scripts">6.2.2. Core Init Scripts</h4>
 <p>Zeppe-Lin's init system uses the following scripts to manage system
 processes:</p>
@@ -2000,8 +2029,8 @@ processes:</p>
 commands or <code>/etc/rc.modules</code> to load specific kernel modules.</p>
 <p>See <code>rc(8)</code> for details.</p>
 <h4 id="623-configuring-runlevels-and-init-behavior">6.2.3. Configuring Runlevels and Init Behavior</h4>
-<p>The <code>/etc/inittab</code> file determines actions for each runlevel.  Each
-entry follows this format: <code>id:runlevel:action:command</code></p>
+<p>The <code>/etc/inittab</code> file determines actions for each runlevel.
+Each entry follows this format: <code>id:runlevel:action:command</code></p>
 <p>Key Components:</p>
 <ul>
 <li><code>id</code>: Unique entry identifier.</li>
@@ -2024,10 +2053,12 @@ c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
 c2:2:respawn:/sbin/agetty 38400 tty2 linux
 </code></pre>
 <p>This configuration ensures a smooth startup, runtime, and shutdown
-process.  See <code>inittab(5)</code> for configuration details.</p>
+process.
+See <code>inittab(5)</code> for configuration details.</p>
 <h4 id="624-configuring-system-behavior-etcrcconf">6.2.4. Configuring System Behavior (/etc/rc.conf)</h4>
 <p>The <code>/etc/rc.conf</code> file centralizes system configuration settings,
-such as hostname, timezone, and services.  Example:</p>
+such as hostname, timezone, and services.
+Example:</p>
 <pre><code>HOSTNAME=&quot;myhostname&quot;
 TIMEZONE=&quot;Europe/Berlin&quot;
 SERVICES=&quot;lo crond sshd&quot;
@@ -2038,7 +2069,8 @@ which are started by <code>/etc/rc.multi</code> and stopped by <code>/etc/rc.shu
 <p>See <code>rc.conf(5)</code> for additional configuration settings.</p>
 <h4 id="625-service-control-scripts-etcrcd">6.2.5. Service Control Scripts (/etc/rc.d/)</h4>
 <p>The <code>/etc/rc.d/</code> directory contains individual scripts to manage
-services.  Each script supports commands like:</p>
+services.
+Each script supports commands like:</p>
 <ul>
 <li><code>start</code>: Activate the service.</li>
 <li><code>stop</code>: Terminates the service.</li>
@@ -2052,15 +2084,17 @@ services.  Each script supports commands like:</p>
 <p>See <code>rc.d(7)</code> for more information.</p>
 <h4 id="626-kernel-module-management-etcrcmodules">6.2.6. Kernel Module Management (/etc/rc.modules)</h4>
 <p>The <code>/etc/rc.modules</code> file is used to load specific kernel modules at
-boot.  It begins by running <code>/sbin/depmod -a</code> to map module
-dependencies, ensuring proper functionality.  After this, include
-commands like:</p>
+boot.
+It begins by running <code>/sbin/depmod -a</code> to map module dependencies,
+ensuring proper functionality.
+After this, include commands like:</p>
 <pre><code>/sbin/modprobe virtio_net
 </code></pre>
 <p>For modules requiring parameters, it's better to configure settings in
-<code>/etc/modprobe.d/</code> for persistent management.  For example, to set
-options for the <code>snd_hda_intel</code> module, create a file like
-<code>/etc/modprobe.d/snd_hda_intel.conf</code> with the following content:</p>
+<code>/etc/modprobe.d/</code> for persistent management.
+For example, to set options for the <code>snd_hda_intel</code> module, create a
+file like <code>/etc/modprobe.d/snd_hda_intel.conf</code> with the following
+content:</p>
 <pre><code>options snd_hda_intel probe_mask=8
 </code></pre>
 <p>This approach ensures parameters are automatically applied when the
@@ -2070,13 +2104,14 @@ adhering to best practices.</p>
 process.</p>
 <h4 id="627-custom-startup-commands-etcrclocal">6.2.7. Custom Startup Commands (/etc/rc.local)</h4>
 <p>User-defined actions are added to <code>/etc/rc.local</code>, executed as last
-step of a normal boot (invoked by <code>/etc/rc.multi</code>).  Example:</p>
+step of a normal boot (invoked by <code>/etc/rc.multi</code>).
+Example:</p>
 <pre><code># Start a monitoring app
 /usr/bin/my_monitoring_app &amp;
 </code></pre>
 <h4 id="628-from-boot-to-login-system-startup-sequence">6.2.8. From Boot to Login: System Startup Sequence</h4>
-<p>Here's the sequence from power-up to login.  It differs slightly with
-or without <code>initramfs</code>.</p>
+<p>Here's the sequence from power-up to login.
+It differs slightly with or without <code>initramfs</code>.</p>
 <h5 id="6281-without-initramfs">6.2.8.1. Without Initramfs</h5>
 <ol>
 <li>Power On: System starts.</li>
@@ -2107,8 +2142,8 @@ The init process from your main system.</li>
 </ol>
 <h4 id="629-minimal-mode-single-user-mode">6.2.9. Minimal Mode (Single-User Mode)</h4>
 <p>Runlevel <strong>1</strong> or <strong>S</strong> boots the system with a minimal setup for
-maintenance.  It runs <code>/etc/rc.single</code>, providing a root shell for
-troubleshooting.</p>
+maintenance.
+It runs <code>/etc/rc.single</code>, providing a root shell for troubleshooting.</p>
 <h4 id="6210-graceful-shutdown-procedure">6.2.10. Graceful Shutdown Procedure</h4>
 <p>When shutting down or rebooting, <code>/etc/rc.shutdown</code> is invoked to stop
 services, unmount filesystems, and safely power off the system.</p>
@@ -2128,8 +2163,9 @@ to the loopback lines:</p>
 </code></pre>
 <p>This ensures your system recognizes its own name.</p>
 <h4 id="632-static-address">6.3.2. Static Address</h4>
-<p>To configure a static IP, edit <code>/etc/rc.d/net</code>.  Set the network
-interface, IP, subnet mask, and gateway.  For example:</p>
+<p>To configure a static IP, edit <code>/etc/rc.d/net</code>.
+Set the network interface, IP, subnet mask, and gateway.
+For example:</p>
 <pre><code>DEV=enp11s0
 ADDR=192.168.1.100
 MASK=24
@@ -2165,7 +2201,8 @@ To auto-start service at boot, add <code>dhcpcd</code> to the <code>SERVICES</co
 in <code>/etc/rc.conf</code>.</li>
 </ul>
 <h4 id="634-wireless-network">6.3.4. Wireless Network</h4>
-<p>Ensure the wireless interface isn't blocked.  Use <code>rfkill(8)</code>:</p>
+<p>Ensure the wireless interface isn't blocked.
+Use <code>rfkill(8)</code>:</p>
 <pre><code>$ rfkill list
 # rfkill unblock &lt;ID|TYPE&gt;
 </code></pre>
@@ -2207,7 +2244,8 @@ in <code>/etc/rc.conf</code>.</li>
 }
 </code></pre>
 <p>For automatic IP, ensure the wireless interface is set in
-<code>/etc/rc.d/dhcpcd</code>.  Start the services:</p>
+<code>/etc/rc.d/dhcpcd</code>.
+Start the services:</p>
 <pre><code># /etc/rc.d/wpa_supplicant start
 # /etc/rc.d/dhcpcd start
 </code></pre>
@@ -2258,28 +2296,31 @@ environment setup, and PAM (Pluggable Authentication Modules).</p>
 <p>Zeppe-Lin uses strong password encryption with <code>SHA512</code> for secure
 user accounts.</p>
 <p>Applications requiring user authentication via <code>crypt(3)</code> must link
-against libcrypt (<code>-lcrypt</code>).  Zeppe-Lin's <code>libcrypt</code> supports
-<code>SHA512</code> and older encryption methods like <code>DES</code>.</p>
+against libcrypt (<code>-lcrypt</code>).
+Zeppe-Lin's <code>libcrypt</code> supports <code>SHA512</code> and older encryption methods
+like <code>DES</code>.</p>
 <h4 id="652-user-environment-configuration">6.5.2. User Environment Configuration</h4>
 <p>User account creation via <code>useradd(8)</code> is governed by
-<code>/etc/login.defs</code>.  Key settings include:</p>
+<code>/etc/login.defs</code>.
+Key settings include:</p>
 <ul>
-<li><code>CREATE_HOME</code>: Determines whether a home directory is created for
-new users.</li>
-<li><code>USERGROUPS_ENAB</code>: Controls how group memberships are managed for
-new users.</li>
+<li><code>CREATE_HOME</code>:
+Determines whether a home directory is created for new users.</li>
+<li><code>USERGROUPS_ENAB</code>:
+Controls how group memberships are managed for new users.</li>
 </ul>
 <p>Zeppe-Lin follows a minimalist approach -- home directories created
-with <code>useradd -m</code> are empty by default.  Customize user environments
-by:</p>
+with <code>useradd -m</code> are empty by default.
+Customize user environments by:</p>
 <ul>
 <li>Using <code>/etc/skel</code> for default home directory contents.</li>
 <li>Changing the default shell.</li>
 <li>Modifying the <code>PATH</code> or environment variables.</li>
 </ul>
 <p>Default shell <code>PATH</code> (via <code>/etc/profile</code>) is set to
-<code>/sbin:/usr/sbin:/bin:/usr/bin</code>.  This allows access to administrative
-commands (e.g., <code>sudo(8)</code>) without specifying full paths.</p>
+<code>/sbin:/usr/sbin:/bin:/usr/bin</code>.
+This allows access to administrative commands (e.g., <code>sudo(8)</code>)
+without specifying full paths.</p>
 <h4 id="653-pluggable-authentication-modules-pam">6.5.3. Pluggable Authentication Modules (PAM)</h4>
 <p>Zeppe-Lin uses PAM (<code>linux-pam</code> package) for flexible user
 authentication.
