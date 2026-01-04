@@ -15,22 +15,20 @@ jobs:
         with:
           fetch-depth: 0  # Uses full history
 
-      - name: Build Smu
+      - name: Install Pandoc
         run: |
-          echo "Cloning and building Smu..."
-          git clone https://github.com/karlb/smu.git
-          cd smu
-          make
-          sudo cp smu /usr/local/bin/
-          cd ..
+          echo "Installing pandoc..."
+          sudo apt-get update
+          sudo apt-get install -y pandoc
 
       - name: Build Documentation
         run: |
           echo "Building documentation..."
           make all
           mkdir -p public
+          rm -rf public/*
           mv *.html public/ || echo "No HTML files found to deploy."
-          cp -r assets public/
+          cp *.css public/ || echo "No CSS files found to deploy."
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -38,4 +36,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-
