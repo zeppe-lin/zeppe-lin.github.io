@@ -1,67 +1,28 @@
-HTML_FILES = index.html \
-	     codebook.html \
-	     handbook.html \
-	     relnotes-v1.1.html \
-	     relnotes-v1.0.html \
-	     relnotes-v0.99.1.html \
-	     relnotes-v0.99.html \
-	     relhistory.html
+# Zeppe-Lin documentation build
 
-all: $(HTML_FILES)
+PANDOC   ?= pandoc
+CSS      := style.css
+TEMPLATE := template.html.in
 
-# The file order matters!
-index.html: templates/header.html \
-	index/banner.html \
-	index/index.md \
-	templates/footer.html \
-	templates/tail.html
+FLAGS    := -s \
+	--from=markdown-ascii_identifiers \
+	--to=html \
+	--syntax-highlighting=zenburn \
+	--css=$(CSS) \
+	--template=$(TEMPLATE) \
+	--toc \
+	--number-sections=true
 
-codebook.html: templates/header.html \
-	codebook/codebook.md \
-	templates/footer.html \
-	templates/tail.html
+MD   := $(wildcard *.md)
+HTML := $(MD:.md=.html)
 
-handbook.html: templates/header.html \
-	handbook/handbook.md \
-	templates/footer.html \
-	templates/tail.html
+all: $(HTML)
 
-relhistory.html: templates/header.html \
-	relhistory/toc.html \
-	relhistory/welcome.html \
-	relhistory/v1.x-series.html \
-	relhistory/v0.x-series.html \
-	templates/footer.html \
-	templates/tail.html
-
-relnotes-v1.1.html: templates/header.html \
-	relnotes/banner-v1.1.html \
-	relnotes/relnotes-v1.1.md \
-	templates/footer.html \
-	templates/tail.html
-
-relnotes-v1.0.html: templates/header.html \
-	relnotes/banner-v1.0.html \
-	relnotes/relnotes-v1.0.md \
-	templates/footer.html \
-	templates/tail.html
-
-relnotes-v0.99.1.html: templates/header.html \
-	relnotes/banner-v0.99.1.html \
-	relnotes/relnotes-v0.99.1.md \
-	templates/footer.html \
-	templates/tail.html
-
-relnotes-v0.99.html: templates/header.html \
-	relnotes/banner-v0.99.html \
-	relnotes/relnotes-v0.99.md \
-	templates/footer.html \
-	templates/tail.html
-
-%.html:
-	./scripts/build_html.sh $^ > $@
+%.html: %.md $(CSS) $(TEMPLATE)
+	@printf '  PANDOC  %s\n' $<
+	@$(PANDOC) $(FLAGS) $< -o $@
 
 clean:
-	rm -f $(HTML_FILES)
+	@rm -f $(HTML)
 
 .PHONY: all clean

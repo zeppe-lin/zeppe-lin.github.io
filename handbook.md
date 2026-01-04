@@ -1,6 +1,10 @@
-# Zeppe-Lin Handbook
+---
+title: Zeppe-Lin Handbook
+---
 
-## PREFACE
+[Back to Index](index.html)
+
+# PREFACE {.unnumbered}
 
 Zeppe-Lin Handbook.
 *Because figuring it out yourself is overrated*.
@@ -11,18 +15,18 @@ maintain your Zeppe-Lin system.
 Build the Zeppe-Lin system you need.
 This handbook shows you how (*because nobody else will*).
 
-## 1. INTRODUCTION
+# INTRODUCTION
 
-### 1.1. About Zeppe-Lin
+## About Zeppe-Lin
 
-#### 1.1.1. What is Zeppe-Lin?
+### What is Zeppe-Lin?
 
 Zeppe-Lin is a lightweight, source-based GNU/Linux distro for x86-64,
 forked from CRUX.
 Rooted in KISS and UNIX ideals, it gives you the simplicity and
 control to build a clear, transparent system.
 
-#### 1.1.2. Who is Zeppe-Lin For?
+### Who is Zeppe-Lin For?
 
 Zeppe-Lin is for the Linux user who understands the elegance of Plan
 9's philosophy but still prefers a POSIX-compliant environment they
@@ -32,7 +36,7 @@ While we might not be serving up everything as a file quite yet, the
 spirit of Plan 9's elegance and simplicity resonates deeply within
 Zeppe-Lin.
 
-### 1.2. Principles
+## Principles
 
 Zeppe-Lin is guided by the following principles:
 
@@ -58,15 +62,15 @@ Zeppe-Lin is guided by the following principles:
 These principles ensure Zeppe-Lin remains simple, clear, and true to
 UNIX.
 
-## 2. INSTALLATION
+# INSTALLATION
 
-### 2.1. Supported Hardware
+## Supported Hardware
 
 Zeppe-Lin Linux supports **x86-64** processors (e.g., AMD Athlon 64,
 Intel Core, Intel Atom).
 Older architectures, such as i686, are **incompatible**.
 
-### 2.2. Boot a Live System
+## Boot a Live System
 
 Zeppe-Lin is distributed as a compiled tarball containing a root
 filesystem.
@@ -76,25 +80,27 @@ CD/DVD/USB" system.
 Launch your preferred Live system, open a terminal, and gain root
 privileges (e.g., `sudo su`).
 
-### 2.3. Disk Partitions and Filesystems
+## Disk Partitions and Filesystems
 
 This section describes "UEFI and LVM on LUKS" installation.
 Additional partitions/filesystems schemes may be added in the future.
 
-#### 2.3.1. UEFI and LVM on LUKS
+### UEFI and LVM on LUKS
 
 Set up Zeppe-Lin on a fully encrypted disk (excluding the bootloader
 partition for UEFI compatibility) using `dm-crypt` with LUKS and an
 LVM container inside the encrypted partition.
 
-* **Important**:
-  Ensure the following tools are available in the Live system:
-  - `parted`: Create and manage partitions.
-  - `dosfstools`: Format the boot partition as FAT32 (UEFI).
-  - `cryptsetup`: Encrypt partition with LUKS.
-  - `lvm2`: Manage logical volumes inside LUKS.
+> **Important:**
+>
+> Ensure the following tools are available in the Live system:
+>
+>  - `parted` - Create and manage partitions.
+>  - `dosfstools` - Format the boot partition as FAT32 (UEFI).
+>  - `cryptsetup` - Encrypt partition with LUKS.
+>  - `lvm2` - Manage logical volumes inside LUKS.
 
-##### 2.3.1.1. Partition Scheme
+#### Partition Scheme
 
 Example device: `/dev/sda`.
 Replace with your actual device (e.g., `/dev/sdb`, `/dev/nvme0n1`).
@@ -104,35 +110,47 @@ Replace with your actual device (e.g., `/dev/sdb`, `/dev/nvme0n1`).
 | /dev/sda1 | FAT32      | 512 MiB          | boot partition |
 | /dev/sda2 | none       | remaining space  | LUKS container |
 
-* **Important**:
-  On UEFI systems, the boot partition must be an
-  **EFI System Partition (ESP)**.
-  A size of **512 MiB** is recommended.
+> **Important:**
+>
+> On UEFI systems, the boot partition must be an
+> **EFI System Partition (ESP)**.
+>
+>  A size of **512 MiB** is recommended.
 
-##### 2.3.1.2. Create Partitions
+#### Create Partitions
 
 Use `parted(8)` to partition the disk:
 
-    # parted /dev/sda
-    (parted) mklabel gpt
-    (parted) mkpart ESP fat32 1MiB 513MiB
-    (parted) set 1 boot on
-    (parted) name 1 efiboot
-    (parted) mkpart primary 513MiB 100%
-    (parted) name 2 luks
-    (parted) quit
+```sh
+# as root
+parted -s /dev/sda <<'EOF'
+mklabel gpt
+mkpart ESP fat32 1MiB 513MiB
+set 1 boot on
+name 1 efiboot
+mkpart primary 513MiB 100%
+name 2 luks
+quit
+EOF
+```
 
 Encrypt `/dev/sda2` with LUKS and map it:
 
-    # cryptsetup luksFormat /dev/sda2
-    # cryptsetup luksOpen /dev/sda2 crypt
+```sh
+# as root
+cryptsetup luksFormat /dev/sda2
+cryptsetup luksOpen /dev/sda2 crypt
+```
 
-##### 2.3.1.3. Create LVM Inside LUKS
+#### Create LVM Inside LUKS
 
 Create a physical volume and volume group (e.g., `zpln`):
 
-    # pvcreate /dev/mapper/crypt
-    # vgcreate zpln /dev/mapper/crypt
+```sh
+# as root
+pvcreate /dev/mapper/crypt
+vgcreate zpln /dev/mapper/crypt
+```
 
 Logical volume layout:
 
@@ -147,436 +165,579 @@ recommended.
 
 Create the logical volumes:
 
-    # lvcreate -L 8G -n swap zpln
-    # lvcreate -l 100%FREE -n root zpln
+```sh
+# as root
+lvcreate -L 8G -n swap zpln
+lvcreate -l 100%FREE -n root zpln
+```
 
-##### 2.3.1.4. Create Filesystems and Swap
+#### Create Filesystems and Swap
 
 Format partitions and volumes:
 
-    # mkfs.vfat -F32 /dev/sda1
-    # mkfs.ext4 /dev/zpln/root
-    # mkswap /dev/zpln/swap
-    # swapon /dev/zpln/swap
+```sh
+# as root
+mkfs.vfat -F32 /dev/sda1
+mkfs.ext4 /dev/zpln/root
+mkswap /dev/zpln/swap
+swapon /dev/zpln/swap
+```
 
-##### 2.3.1.5. Mount Partitions
+#### Mount Partitions
 
 The `/mnt` directory is used as the default mount point in this
 handbook.
 
 Mount the root volume:
 
-    # mount /dev/zpln/root /mnt
+```sh
+# as root
+mount /dev/zpln/root /mnt
+```
 
 Mount the boot partition:
 
-    # mkdir /mnt/boot
-    # mount /dev/sda1 /mnt/boot
+```sh
+# as root
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+```
 
-### 2.4. Install Base System
+## Install Base System
 
 Download, verify, and extract the rootfs tarball to set up your base
 system.
 
-#### 2.4.1. Download Rootfs Tarball
+### Download Rootfs Tarball
 
 Download the tarball directly into the `/mnt` directory (the default
 mount point) to avoid using live media RAM.
 
 Get the latest release from the Zeppe-Lin
-[pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases)
-or run these commands (replace `v1.0` with the version you need):
+[pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest)
+or run these commands (replace `v1.0` with the latest version):
 
-    # cd /mnt
-    # VERSION=v1.0
-    # URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download/
-    # wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz{,.sig}
+```sh
+# as root
+cd /mnt
+URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download/
+VERSION=v1.0
+wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz{,.sig}
+```
 
-#### 2.4.2. Verify Downloaded Tarball
+### Verify Downloaded Tarball
 
 The tarball is signed with GPG.
 For security, verifying its integrity is highly recommended.
 
 Import the public key:
 
-    # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
+```sh
+# as root
+gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
+```
 
 Verify the signature:
 
-    # gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
+```sh
+# as root
+gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
+```
 
-#### 2.4.3. Extract Rootfs Tarball
+### Extract Rootfs Tarball
 
 Once the rootfs tarball is downloaded and verified, extract its
 contents using the following command.
 Make sure to replace `${VERSION}` with the version you downloaded:
 
-    # tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
+```sh
+# as root
+tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
         rootfs-${VERSION}-x86_64.tar.xz
+```
 
-* **Important**:
-  It is critical to use all the specified options to ensure proper
-  extraction.
-  Here's what each option does:
+> **Important:**
+>
+> It is critical to use all the specified options to ensure proper
+> extraction.
+> Here's what each option does:
+>
+> * `--numeric-owner`
+>
+>   Ensures numeric UIDs and GIDs from the tarball are preserved,
+>   avoiding mismatches caused by the UID/GID mappings on the live
+>   system.
+>
+> * `--xattrs --xattrs-include='*'`
+>
+>   Preserves filesystem extended attributes, which are used for Linux
+>   capabilities (e.g., allowing programs like `ping(8)` enhanced
+>   privileges without requiring `suid root`).
+>
+> * `-xpf`
+>
+>   Extracts (`x`), preserves permissions and ownership (`p`), and
+>   uses the specified file (`f`).
 
-  * `--numeric-owner`
-    Ensures numeric UIDs and GIDs from the tarball are preserved,
-    avoiding mismatches caused by the UID/GID mappings on the live
-    system.
+## Chroot Into Base System
 
-  * `--xattrs --xattrs-include='*'`
-    Preserves filesystem extended attributes, which are used for Linux
-    capabilities (e.g., allowing programs like `ping(8)` enhanced
-    privileges without requiring `suid root`).
-
-  * `-xpf`
-    Extracts (`x`), preserves permissions and ownership (`p`), and
-    uses the specified file (`f`).
-
-### 2.5. Chroot Into Base System
-
-* **Important**:
-  Copy the DNS configuration to ensure network access inside the
-  chroot, which is needed for updates and installing software:
-  `# cp /etc/resolv.conf /mnt/etc/resolv.conf`
+> **Important:**
+>
+> Copy the DNS configuration to ensure network access inside the
+> chroot, which is needed for updates and installing software:
+>
+> ```sh
+> # as root
+> cp /etc/resolv.conf /mnt/etc/resolv.conf
+> ```
 
 Mount necessary pseudo-filesystems:
 
-    # mount -B /dev /mnt/dev
-    # mount -B /tmp /mnt/tmp
-    # mount -B /run /mnt/run
-    # mount -t proc proc /mnt/proc
-    # mount -t sysfs none /mnt/sys
-    # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
+```sh
+# as root
+mount -B /dev /mnt/dev
+mount -B /tmp /mnt/tmp
+mount -B /run /mnt/run
+mount -t proc proc /mnt/proc
+mount -t sysfs none /mnt/sys
+mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
         /mnt/dev/pts
+```
 
 **For UEFI systems**, mount EFI variables:
 
-    # mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
+```sh
+# as root
+mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
+```
 
 Enter the chroot:
 
-    # chroot /mnt /bin/bash
+```sh
+# as root
+chroot /mnt /bin/bash
+```
 
 Set the `SHELL` variable to `/bin/bash` to ensure tools like `vim`
 work properly:
 
-    (chrooted) # export SHELL=/bin/bash
+```sh
+# chrooted, as root
+export SHELL=/bin/bash
+```
 
-### 2.6. Configure Base System
+## Configure Base System
 
 Set the root password:
 
-    (chrooted) # passwd root
+```sh
+# chrooted, as root
+passwd root
+```
 
 Ensure proper ownership and permissions:
 
-    (chrooted) # chown root:root /
-    (chrooted) # chmod 755 /
+```sh
+# chrooted, as root
+chown root:root /
+chmod 755 /
+```
 
 Generate necessary locales (e.g., `en_US`):
 
-    (chrooted) # localedef -i en_US -f UTF-8 en_US.UTF-8
+```sh
+# chrooted, as root
+localedef -i en_US -f UTF-8 en_US.UTF-8
+```
 
 Set the system default locale by adding it to `/etc/profile`:
 
-    export LANG=en_US.UTF-8
+```sh
+export LANG=en_US.UTF-8
+```
 
-See [6.1. Generating Locales](#61-generating-locales) for details.
+See [Generating Locales](#generating-locales) for details.
 
 Edit `/etc/fstab` to configure filesystems (see `fstab(5)`).
-Example for [2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
+Example for [UEFI and LVM on LUKS](#uefi-and-lvm-on-luks):
 
-    /dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
-    /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
-    /dev/zpln/swap  swap   swap  defaults                     0 0
+```fstab
+/dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
+/dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
+/dev/zpln/swap  swap   swap  defaults                     0 0
+```
 
-* **Note**:
-  Use `UUID=...` instead of `/dev/*` for better reliability on
-  multi-disk systems.
-  Find UUIDs with: `# blkid -o value -s UUID <DEVICE>`
+> **Note:**
+>
+> Use `UUID=...` instead of `/dev/*` for better reliability on
+> multi-disk systems.
+> Find UUIDs with:
+> ```sh
+> # as root
+> blkid -o value -s UUID <DEVICE>
+> ```
 
 Edit `/etc/rc.conf` (see `rc.conf(5)`) to configure system settings
 like console font, keyboard, timezone, hostname, and services.
 
 Configure network settings in `/etc/rc.d/net`, `/etc/hosts`, and
-`/etc/resolv.conf` (see [6.3. Networking](#63-networking)).
+`/etc/resolv.conf` (see [Networking](#networking)).
 
-#### 2.6.1 Mount Additional Filesystems
+### Mount Additional Filesystems
 
 Before building and installing additional software, mount additional
 pseudo-filesystems.
 
 Shared memory (needed by some builds, e.g., `python3`):
 
-    (chrooted) # mount /dev/shm
+```sh
+# chrooted, as root
+mount /dev/shm
+```
 
 Optional package build directory (RAM builds):
 
-    (chrooted) # mount /var/cache/pkgmk/work
+```sh
+# chrooted, as root
+mount /var/cache/pkgmk/work
+```
 
-* **Important**:
-  Mount `/var/cache/pkgmk/work` only if enabled in `/etc/fstab` and
-  you have enough RAM.
+> **Important:**
+>
+> Mount `/var/cache/pkgmk/work` only if enabled in `/etc/fstab` and
+> you have enough RAM.
 
-#### 2.6.2. Configure Users and Privileges
+### Configure Users and Privileges
 
 Add a regular user (set a specific UID now if needed):
 
-    (chrooted) # useradd --shell /bin/bash --create-home  \
-        --groups audio,video,scanner,cdrom,input,users    \
-        --uid 1000 --user-group <USERNAME>
+```sh
+# chrooted, as root
+useradd --shell /bin/bash \
+        --create-home  \
+        --groups audio,video,scanner,cdrom,input,users \
+        --uid 1000 \
+        --user-group <USERNAME>
+```
 
 Set the password:
 
-    (chrooted) # passwd <USERNAME>
+```sh
+# chrooted, as root
+passwd <USERNAME>
+```
 
 To grant administrative privileges (e.g., as Ubuntu does), first add
 the user to the `wheel` group:
 
-    (chrooted) # usermod -aG wheel <USERNAME>
+```sh
+# chrooted, as root
+usermod -aG wheel <USERNAME>
+```
 
 And second, grant the users in the `wheel` group to be root via
 `sudo(8)` by creating the file `/etc/sudoers.d/00_wheel` with the
 following content:
 
-    %wheel ALL=(ALL:ALL) ALL
+```sudoers
+%wheel ALL=(ALL:ALL) ALL
+```
 
-### 2.7. Update the Base System
+## Update the Base System
 
 Before building and installing additional packages, it is highly
 recommended to update the freshly installed Zeppe-Lin system.
 
-#### 2.7.1. Prepare Pkgsrc Collections
+### Prepare Pkgsrc Collections
 
 Packages' sources are organized into collections
-(see [5.2.2. Collections](#522-collections) for details).
+(see [Collections](#collections) for details).
 
 Clone the necessary collections, keeping in mind that each depends on
 the previous one (replace `1.x` with the current release branch):
 
-    (chrooted) # cd /usr/src/
-    (chrooted) # URL=https://github.com/zeppe-lin
-    (chrooted) # git clone ${URL}/pkgsrc-core    --branch 1.x
-    (chrooted) # git clone ${URL}/pkgsrc-system  --branch 1.x
-    (chrooted) # git clone ${URL}/pkgsrc-xorg    --branch 1.x
-    (chrooted) # git clone ${URL}/pkgsrc-desktop --branch 1.x
+```sh
+# chrooted, as root
+cd /usr/src/
+URL=https://github.com/zeppe-lin
+git clone ${URL}/pkgsrc-core    --branch 1.x
+git clone ${URL}/pkgsrc-system  --branch 1.x
+git clone ${URL}/pkgsrc-xorg    --branch 1.x
+git clone ${URL}/pkgsrc-desktop --branch 1.x
+```
 
 Enable the cloned collections in `/etc/pkgman.conf`.
 By default, only `pkgsrc-core` collection is enabled.
 
-#### 2.7.2. Perform the System Update
-
-* **Warning**:
-  If installing Zeppe-Lin < 1.0 or upgrading from an older version,
-  update **pkgmk** and **pkgutils** first:
-
-      (chrooted) # pkgman update -f pkgmk pkgutils
-
-  This avoids issues with backward-incompatible changes in footprint
-  generation.
+### Perform the System Update
 
 Perform a full system update with dependency handling and sorting, and
 stop if the installation of at least one package fails:
 
-    (chrooted) # pkgman sysup --deps --depsort --group
+```sh
+# chrooted, as root
+pkgman sysup --deps --depsort --group
+```
 
 Merge any rejected files during update:
 
-    (chrooted) # rejmerge
+```sh
+# chrooted, as root
+rejmerge
+```
 
 Check for broken packages and rebuild as needed:
 
-    (chrooted) # pkgman update -fr --depsort $(revdep)
+```sh
+# chrooted, as root
+pkgman update -fr --depsort $(revdep)
+```
 
 Here, `revdep(1)` identifies packages with broken dependencies, and if
 any are reported, `pkgman update -fr` rebuilds the affected packages.
 
-### 2.8. Install Essential Packages
+## Install Essential Packages
 
 Install packages required for a minimal, functional workstation:
 
-    (chrooted) # pkgman install --deps --group \
+```sh
+# chrooted, as root
+pkgman install --deps --group \
         cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg \
         lvm2 pinentry wireless-tools wpa-supplicant dhcpcd iputils
+```
 
 This is a generic setup; users can add any additional packages they
 require based on their specific needs.
 
-* **Note**:
-  For network setup and configuration details, see
-  [6.3. Networking](#63-networking).
+> **Note:**
+>
+> For network setup and configuration details, see
+> [Networking](#networking).
+>
+> If you set up a networking bridge, specify the bridge interface in
+> the `/etc/rc.d/dhcpcd` and/or `/etc/rc.d/wpa_supplicant`.
 
-  If you set up a networking bridge, specify the bridge interface in
-  the `/etc/rc.d/dhcpcd` and/or `/etc/rc.d/wpa_supplicant`.
-
-### 2.9. Kernel Setup
+## Kernel Setup
 
 Two methods are available: build and install a package or compile
 manually.
 
-#### 2.9.1. Kernel Package
+### Kernel Package
 
 Build and install the packaged Linux kernel:
 
-    (chrooted) # pkgman install --deps --group \
-        --config-append="runscripts no" linux
+```sh
+# chrooted, as root
+pkgman install --deps --group --config-append="runscripts no" linux
+```
 
 The `linux` package includes a `post-install` script that runs
 `mkinitramfs(8)` and updates the GRUB config.
 This script is disabled here through `--config-append="runscripts no"`
 to run manually later.
 
-* **Important**:
-  When you update the `linux` package through the package manager, the
-  old kernel and its modules are removed as part of the update
-  process.
-  This can cause issues if the system is still using the old kernel
-  while the new one is being installed.
-  To avoid these problems, it is recommended to **lock** the `linux`
-  package from automatic updates and handle kernel updates separately
-  using `pkgman-update(8)`.
-  See `pkgman-lock(8)` for details.
+> **Important:**
+>
+> When you update the `linux` package through the package manager, the
+> old kernel and its modules are removed as part of the update
+> process.
+> This can cause issues if the system is still using the old kernel
+> while the new one is being installed.
+> To avoid these problems, it is recommended to **lock** the `linux`
+> package from automatic updates and handle kernel updates separately
+> using `pkgman-update(8)`.
+> See `pkgman-lock(8)` for details.
 
 If you installed the kernel using this method, proceed to
-[2.10. Kernel Firmware](#210-kernel-firmware) if your system requires
-additional firmware, or [2.11. Initramfs](#211-initramfs) otherwise.
+[Kernel Firmware](#kernel-firmware) if your system requires
+additional firmware, or [Initramfs](#initramfs) otherwise.
 
-#### 2.9.2. Manual Kernel Compilation
+### Manual Kernel Compilation
 
 This method suits those wanting a minimal kernel or needing sources
 for driver building (e.g., Nvidia, VirtualBox).
 
-* **Important**:
-  Use the kernel version from Zeppe-Lin's package sources for best
-  compatibility.
-  Other versions might cause issues.
+> **Important:**
+>
+> Use the kernel version from Zeppe-Lin's package sources for best
+> compatibility.
+> Other versions might cause issues.
 
 Download sources:
 
-    (chrooted) # pkgman install -do linux
-    (chrooted) # KV=$(pkgman printf %v --filter=linux)
-    (chrooted) # tar -xvf \
-        /var/cache/pkgmk/sources/linux-${KV}.tar.?z -C /usr/src/
+```sh
+# chrooted, as root
+pkgman install -do linux
+KV=$(pkgman printf %v --filter=linux)
+tar -xvf /var/cache/pkgmk/sources/linux-${KV}.tar.?z -C /usr/src/
+```
 
 Apply Zeppe-Lin patches:
 
-    (chrooted) # cd /usr/src/linux-${KV}
-    (chrooted) # for p in $(pkgman path linux)/*.patch; do \
+```sh
+# chrooted, as root
+cd /usr/src/linux-${KV}
+for p in $(pkgman path linux)/*.patch; do \
         [ -f "$p" ] && patch -Np1 -i $p; done
+```
 
-* **Important**:
-  It is highly recommended to perform a dry run to check for errors
-  before applying.
-  To do this, simply add `--dry-run` option to the `patch(1)` command
-  within the loop shown above.
+> **Important:**
+>
+> It is highly recommended to perform a dry run to check for errors
+> before applying.
+> To do this, simply add `--dry-run` option to the `patch(1)` command
+> within the loop shown above.
 
 Configure kernel (choose one of the following):
 
 - **Custom Configuration**:
+
   Run the menu-based kernel configurator to manually select kernel
   features:
 
-      (chrooted) # make menuconfig
+  ```sh
+  # chrooted, as root
+  make menuconfig
+  ```
 
 - **Use Package Defaults**:
+
   Apply the default configuration from the package:
 
-      (chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
-      (chrooted) # make olddefconfig
+  ```sh
+  # chrooted, as root
+  cp $(pkgman path linux)/x86_64-dotconfig .config
+  make olddefconfig
+  ```
 
-Build and install:
+  Build and install:
 
-    (chrooted) # make -j$(nproc) all
-    (chrooted) # cp arch/x86/boot/bzImage /boot/vmlinuz-${KV}
-    (chrooted) # cp .config /boot/config-${KV}
-    (chrooted) # make modules_install
+  ```sh
+  # chrooted, as root
+  make -j$(nproc) all
+  cp arch/x86/boot/bzImage /boot/vmlinuz-${KV}
+  cp .config /boot/config-${KV}
+  make modules_install
+  ```
 
 Next steps:
 
-* Firmware needed? Proceed to [2.10. Kernel Firmware](#210-kernel-firmware).
-* No firmware needed? Go to [2.11. Initramfs](#211-initramfs).
+* Firmware needed? Proceed to [Kernel Firmware](#kernel-firmware).
+* No firmware needed? Go to [Initramfs](#initramfs).
 
-### 2.10. Kernel Firmware
+## Kernel Firmware
 
 Some hardware (like certain Wi-Fi or graphics cards) needs extra
 firmware.
 
 Install non-free firmware if required:
 
-    (chrooted) # pkgman install --deps --group linux-firmware
+```sh
+# chrooted, as root
+pkgman install --deps --group linux-firmware
+```
 
 Skip this if you prefer a completely free software system.
 
-### 2.11. Initramfs
+## Initramfs
 
 First, install `mkinitramfs`:
 
-    (chrooted) # pkgman install --deps --group mkinitramfs
+```sh
+# chrooted, as root
+pkgman install --deps --group mkinitramfs
+```
 
 The `/etc/mkinitramfs/config` file controls how `mkinitramfs(8)`
 builds the initial ramdisk image used at boot.
 It controls which modules, hooks, and settings are included in the
 initramfs image.
 
-Here's an example for
-[2.3.1. UEFI and LVM on LUKS](#231-uefi-and-lvm-on-luks):
+Here's an example for [UEFI and LVM on LUKS](#uefi-and-lvm-on-luks):
 
-    # /etc/mkinitramfs/config
-    hostonly=1 #(optional, creates smaller initramfs)
-    compress="gzip --fast"
-    hooks="eudev luks lvm resume"
-    root=/dev/zpln/root
-    root_type=ext4
-    resume=/dev/zpln/swap
-    luks_name=crypt
-    luks_root=/dev/sda2
-    # End of file.
+```sh
+# /etc/mkinitramfs/config
+hostonly=1 #(optional, creates smaller initramfs)
+compress="gzip --fast"
+hooks="eudev luks lvm resume"
+root=/dev/zpln/root
+root_type=ext4
+resume=/dev/zpln/swap
+luks_name=crypt
+luks_root=/dev/sda2
+# End of file.
+```
 
 See `mkinitramfs.config(5)` for more information.
 
-* **Important**:
-  The `hostonly=1` setting creates a smaller initramfs with only
-  necessary modules.
-  If you move the drive to different hardware later, it might not
-  boot.
+> **Important:**
+>
+> The `hostonly=1` setting creates a smaller initramfs with only
+> necessary modules.
+> If you move the drive to different hardware later, it might not
+> boot.
 
-* **Note**:
-  For multi-disk systems, using `UUID=...` instead of `/dev/*` in the
-  config can prevent boot issues.
-  Find UUIDs with: `# blkid -o value -s UUID <DEVICE>`.
+> **Note:**
+>
+> For multi-disk systems, using `UUID=...` instead of `/dev/*` in the
+> config can prevent boot issues.
+>
+> Find UUIDs with:
+>
+> ```sh
+> # as root
+> blkid -o value -s UUID <DEVICE>
+> ```
 
 Now, prepare an initramfs.
 If you installed the Linux kernel manually, you have already set `KV`
 variable to kernel version.
 Otherwise, fetch the kernel version from the package source:
 
-    (chrooted) # KV=$(pkgman printf %v --filter=linux)
+```sh
+# chrooted, as root
+KV=$(pkgman printf %v --filter=linux)
+```
 
 Finally, generate the initramfs image:
 
-    (chrooted) # mkinitramfs -o /boot/initramfs-${KV}.img -k ${KV}
+```sh
+# chrooted, as root
+mkinitramfs -o /boot/initramfs-${KV}.img -k ${KV}
+```
 
-### 2.12. Bootloader
+## Bootloader
 
 This section covers installing GRUB2 as your bootloader.
 Support for other bootloaders may be added later.
 
-#### 2.12.1. GRUB2
+### GRUB2
 
 Create `/etc/default/grub` with:
 
-    # Set the delay before booting:
-    GRUB_TIMEOUT=3
-    # Show ZPLN in the GRUB menu:
-    GRUB_DISTRIBUTOR=ZPLN
-    # Set kernel parameters (quiet boot, swap for hibernation):
-    GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+```sh
+# Set the delay before booting:
+GRUB_TIMEOUT=3
 
-* **Important**:
-  For better reliability on multi-disk systems, use `UUID=...` instead
-  of `/dev/*` for the resume partition.
-  Find the UUID with: `# blkid -o value -s UUID <DEVICE>`.
+# Show ZPLN in the GRUB menu:
+GRUB_DISTRIBUTOR=ZPLN
+
+# Set kernel parameters (quiet boot, swap for hibernation):
+GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+```
+
+> **Important:**
+>
+> For better reliability on multi-disk systems, use `UUID=...` instead
+> of `/dev/*` for the resume partition.
+>
+> Find the UUID with:
+>
+> ```sh
+> # as root
+> blkid -o value -s UUID <DEVICE>
+> ```
 
 Next, install GRUB2 on your target drive.
 Example device: `/dev/sda`.
@@ -586,25 +747,36 @@ Replace with your actual device (e.g., `/dev/sdb`, `/dev/nvme0n1`).
 `/boot/efi` inside the chroot.
 Then install GRUB with EFI support:
 
-    (chrooted) # grub-install --target=x86_64-efi \
-        --efi-directory=/boot /dev/sda
+```sh
+# chrooted, as root
+grub-install --target=x86_64-efi --efi-directory=/boot /dev/sda
+```
 
 **For legacy BIOS booting**, install GRUB directly to the disk's MBR:
 
-    (chrooted) # grub-install --target=i386-pc /dev/sda
+```sh
+# chrooted, as root
+grub-install --target=i386-pc /dev/sda
+```
 
 Finally, generate the GRUB2 configuration file based on
 `/etc/default/grub` and detected kernels:
 
-    (chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
+```sh
+# chrooted, as root
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
-### 2.13. Post-installation Tasks
+## Post-installation Tasks
 
-#### 2.13.1. Install Xorg and Drivers
+### Install Xorg and Drivers
 
 To find video and input drivers, run:
 
-    (chrooted) # pkgman search -vv xf86-
+```sh
+# chrooted, as root
+pkgman search -vv xf86-
+```
 
 Common video drivers include `xorg-xf86-video-intel` (Intel),
 `xorg-xf86-video-amdgpu`/`xorg-xf86-video-ati` (AMD), and
@@ -619,11 +791,14 @@ Legacy options like `xorg-xf86-input-keyboard` and
 After selecting drivers for your hardware, install `xorg` meta-package
 and additional drivers with:
 
-    (chrooted) # pkgman install --deps --group xorg [DRIVERS]
+```sh
+# chrooted, as root
+pkgman install --deps --group xorg [DRIVERS]
+```
 
 Replace `[DRIVERS]` with the ones matching your system.
 
-#### 2.13.2. Install a Window Manager
+### Install a Window Manager
 
 Zeppe-Lin focuses on lightweight and efficient window managers rather
 than complex desktop environments like GNOME or KDE.
@@ -634,21 +809,25 @@ Zeppe-Lin provides package sources for several window managers, but
 users are welcome to choose and contribute package sources for any
 window manager they prefer.
 
-##### 2.13.2.1. Ratpoison
+#### Ratpoison
 
 Currently, the `pkgsrc-desktop` repository provides the `ratpoison`
 window manager.
 You can install it with:
 
-    (chrooted) # pkgman install --deps --group ratpoison
+```sh
+# chrooted, as root
+pkgman install --deps --group ratpoison
+```
 
-##### 2.13.2.2. Unofficial: Window Maker
+#### Unofficial: Window Maker
 
 For users interested in a retro, intuitive window manager, you can
 install **Window Maker** from the unofficial `pkgsrc-wmaker`
 repository.
 
 * **Warning**:
+
   Using unofficial repositories means the packages might not follow
   the same update schedule or quality standards as the official
   repositories.
@@ -656,34 +835,51 @@ repository.
 
 To install Window Maker, first clone the repository:
 
-    (chrooted) # cd /usr/src
-    (chrooted) # URL=https://github.com/zeppe-lin
-    (chrooted) # git clone ${URL}/pkgsrc-wmaker --branch 1.x
+```sh
+# chrooted, as root
+cd /usr/src
+URL=https://github.com/zeppe-lin
+git clone ${URL}/pkgsrc-wmaker --branch 1.x
+```
 
 Next, you need to tell `pkgman(1)` about this new repository by adding
 the following line to `/etc/pkgman.conf`:
 
-    pkgsrcdir /usr/src/pkgsrc-wmaker
+```
+pkgsrcdir /usr/src/pkgsrc-wmaker
+```
 
 Then, install it with:
 
-    (chrooted) # pkgman install --deps --group wmaker
+```sh
+# chrooted, as root
+pkgman install --deps --group wmaker
+```
 
 Optional meta-packages for Window Maker include `wmaker-dockapps` for
 added functionality and `wmaker-themes` for customization.
 
-### 2.14. Reboot
+## Reboot
 
-Exit the chroot, unmount all filesystems, and reboot:
+Exit the chroot:
 
-    (chrooted) # exit
-    # cd /
-    # umount -R /mnt
-    # shutdown -r now
+```sh
+# chrooted, as root
+exit
+```
+
+Unmount all filesystems, and reboot:
+
+```sh
+# as root
+cd /
+umount -R /mnt
+shutdown -r now
+```
 
 The GRUB menu should appear, allowing you to boot into Zeppe-Lin.
 
-## 3. UPGRADING
+# UPGRADING
 
 **WARNING! THIS SECTION IS UNDER DEVELOPMENT AND CANNOT BE USED AS A
 MANUAL!**
@@ -700,7 +896,7 @@ Upgrade methods:
 Before starting, read the release notes for the target version and
 back up important data.
 
-### 3.1. Release Notes
+## Release Notes
 
 Read the release notes for the new Zeppe-Lin version.
 They contain essential details about new features, removed packages,
@@ -708,80 +904,95 @@ and compatibility issues.
 The latest release notes you can obtain
 [here](https://zeppe-lin.github.io/index.html#latest-release).
 
-### 3.2. Set Release And Sync
+## Set Release And Sync
 
 Synchronize your local pkgsrc collections to match the new release
 branch.
 Replace `1.x` with the specific release you are upgrading to:
 
-    git -C /usr/src/pkgsrc-core    switch 1.x
-    git -C /usr/src/pkgsrc-system  switch 1.x
-    git -C /usr/src/pkgsrc-xorg    switch 1.x
-    git -C /usr/src/pkgsrc-desktop switch 1.x
+```sh
+# as root
+git -C /usr/src/pkgsrc-core    switch 1.x
+git -C /usr/src/pkgsrc-system  switch 1.x
+git -C /usr/src/pkgsrc-xorg    switch 1.x
+git -C /usr/src/pkgsrc-desktop switch 1.x
+```
 
-### 3.3. Binary Upgrade
+### Binary Upgrade
 
 Use precompiled binary packages for faster core system upgrades,
 especially to avoid build issues during initial updates.
 
-* **Important**:
-  Upgrades may cause file conflicts, such as a file being reassigned
-  between packages.
-  To prevent issues, read the release notes for the target Zeppe-Lin
-  version.
-  They detail package changes like removals, merges, or renames that
-  may require manual intervention.
+> **Important:**
+>
+> Upgrades may cause file conflicts, such as a file being reassigned
+> between packages.
+> To prevent issues, read the release notes for the target Zeppe-Lin
+> version.
+> They detail package changes like removals, merges, or renames that
+> may require manual intervention.
 
-#### 3.3.1. Download and Extract binpkgs
+### Download and Extract binpkgs
 
-* **Note**:
-  Verify the integrity of the downloaded `binpkgs` tarball before
-  extracting it.
-  It is signed using the same method as the Zeppe-Lin root filesystem
-  image.
+> **Note:**
+>
+> Verify the integrity of the downloaded `binpkgs` tarball before
+> extracting it.
+> It is signed using the same method as the Zeppe-Lin root filesystem
+> image.
 
 Download the tarball and its signature for your upgrade, replacing
 `v1.0` with the target version:
 
-    $ VERSION=v1.0
-    $ URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
-    $ wget -c ${URL}/${VERSION}/binpkgs-${VERSION}-x86_64.tar.xz{,.sig}
+```sh
+URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
+VERSION=v1.0
+wget -c ${URL}/${VERSION}/binpkgs-${VERSION}-x86_64.tar.xz{,.sig}
+```
 
 Verify the tarball with `gpg(1)`:
 
-    $ gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-    $ gpg --verify binpkgs-${VERSION}-x86_64.tar.xz{.sig,}
+```sh
+gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
+gpg --verify binpkgs-${VERSION}-x86_64.tar.xz{.sig,}
+```
 
 Extract the tarball after successful verification:
 
-    $ mkdir -p ~/tmp/binpkgs
-    $ tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/tmp/binpkgs
+```sh
+mkdir -p ~/tmp/binpkgs
+tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/tmp/binpkgs
+```
 
-#### 3.3.2. Upgrade Core Packages
+### Upgrade Core Packages
 
 Navigate to the directory and upgrade core packages:
 
-    $ cd ~/tmp/binpkgs
-    $ for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
+```sh
+cd ~/tmp/binpkgs
+for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
+```
 
 `pkgadd -u` upgrades each package.
 New, non-upgradable packages will return an error, which the loop
 skips, ensuring all upgradeable packages are updated.
 
-#### 3.3.3. Install New Core Packages
+### Install New Core Packages
 
 Install new core packages introduced in the release:
 
-    $ cd ~/tmp/binpkgs
-    $ for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
+```sh
+cd ~/tmp/binpkgs
+for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
+```
 
 `pkgadd` installs each package.
 Already installed packages return an error, which the loop skips to
 ensure all new packages are installed.
 
-## 4. PACKAGE MANAGEMENT
+# PACKAGE MANAGEMENT
 
-### 4.1. Introduction
+## Introduction
 
 Zeppe-Lin's package management system revolves around packages and
 package sources.
@@ -815,18 +1026,20 @@ To work with packages and package sources, Zeppe-Lin provides:
   - `pkgman`: Orchestrates package sources, dependencies, and system
     updates, integrating `pkgutils` and `pkgmk`.
 
-###  4.2. What is a Package?
+## What is a Package?
 
 A Zeppe-Lin package is a compressed archive (e.g., `tar.gz`) that
 contains only the software files.
 It avoids any kind of embedded metadata, ensuring simplicity and
 transparency in its structure.
 
-#### 4.2.1. Package Naming
+### Package Naming
 
 Zeppe-Lin packages follow a clear naming convention:
 
-    name#version-release.pkg.tar.gz
+```
+name#version-release.pkg.tar.gz
+```
 
 Components:
 - `name`: Package name.
@@ -835,43 +1048,50 @@ Components:
 
 Example:
 
-    ed#1.21-1.pkg.tar.gz
+```
+ed#1.21-1.pkg.tar.gz
+```
 
 The extension `.pkg.tar.gz` denotes a Zeppe-Lin package.
 Other common compression formats like `tar.bz2`, `tar.xz`, and
 `tar.zst` are also supported.
 
-#### 4.2.2. Package Database
+### Package Database
 
 The package database, located at `/var/lib/pkg/db`, tracks installed
 packages and their contents.
 Each package entry follows this format:
 
-    <name>                 # Package name
-    <version>-<release>    # Version and release
-    <dir>/                 # Top-level directory
-    <dir>/<subdir>         # Subdirectory
-    <dir>/<subdir>/<file>  # File within subdirectory
-    (Blank line)           # Separates package entries
+```sh
+<name>                 # Package name
+<version>-<release>    # Version and release
+<dir>/                 # Top-level directory
+<dir>/<subdir>         # Subdirectory
+<dir>/<subdir>/<file>  # File within subdirectory
+(Blank line)           # Separates package entries
+```
 
 Example entry for `ed`:
 
-    ed
-    1.21-1
-    bin/
-    bin/ed
-    usr/
-    usr/share/
-    usr/share/man/
-    usr/share/man/man1/
-    usr/share/man/man1/ed.1.gz
-    (Blank line)
+```sh
+ed
+1.21-1
+bin/
+bin/ed
+usr/
+usr/share/
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/ed.1.gz
+(Blank line)
+```
 
-* **Note**:
-  This database enables essential operations like installation
-  (`pkgadd(8)`), removal (`pkgrm(8)`), and inspection (`pkginfo(8)`).
+> **Note:**
+>
+> This database enables essential operations like installation
+> (`pkgadd(8)`), removal (`pkgrm(8)`), and inspection (`pkginfo(8)`).
 
-### 4.3. Low-level Tools: pkgutils
+## Low-level Tools: pkgutils
 
 `pkgutils` provides the core utilities to handle packages:
 
@@ -879,24 +1099,33 @@ Example entry for `ed`:
 - `pkgrm(8)`: Removes packages.
 - `pkginfo(1)`: Displays package details.
 
-#### 4.3.1. Using pkgutils
+### Using pkgutils
 
-##### 4.3.1.1. Installing a Package
+#### Installing a Package
 
 Install a package file with `pkgadd(8)`:
 
-    # pkgadd bash#5.0.18-1.pkg.tar.gz
+```sh
+# as root
+pkgadd bash#5.0.18-1.pkg.tar.gz
+```
 
 By default, `pkgadd(8)` prevents overwriting existing files.
 Use `-f` or `--force` to override this behavior (**use with caution!**):
 
-    # pkgadd -f bash#5.0.18-1.pkg.tar.gz
+```sh
+# as root
+pkgadd -f bash#5.0.18-1.pkg.tar.gz
+```
 
-##### 4.3.1.2. Upgrading a Package
+#### 4.3.1.2. Upgrading a Package
 
 Upgrade a package with the `-u` or `--upgrade` option:
 
-    # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+```sh
+# as root
+pkgadd -u bash#5.0.18-1.pkg.tar.gz
+```
 
 This replaces the installed package.
 If the package is not installed, it will return an error.
@@ -905,48 +1134,62 @@ You can even "upgrade" to an older version.
 Files that should not be upgraded (based on `/etc/pkgadd.conf`) are
 placed in `/var/lib/pkg/rejected/`.
 
-##### 4.3.1.3. Removing a Package
+#### Removing a Package
 
 To remove a package, use `pkgrm(8)` followed by the package name:
 
-    # pkgrm bash
+```sh
+# as root
+pkgrm bash
+```
 
 * **Caution**:
+
   This removes all files owned by the package without confirmation.
 
-##### 4.3.1.4. Inspecting Packages
+#### Inspecting Packages
 
 Use `pkginfo(1)` to get information about packages.
 
 List installed packages and versions:
 
-    $ pkginfo -i
+```sh
+pkginfo -i
+```
 
 List files in a package:
 
-    $ pkginfo -l bash
+```sh
+pkginfo -l bash
+```
 
 List files in a package archive (before installing):
 
-    $ pkginfo -l grep#2.5-1.pkg.tar.gz
+```sh
+pkginfo -l grep#2.5-1.pkg.tar.gz
+```
 
 Find which package owns a file:
 
-    $ pkginfo -o /usr/bin/ls
+```sh
+pkginfo -o /usr/bin/ls
+```
 
 See `pkgadd(8)`, `pkgrm(8)`, and `pkginfo(1)` for details.
 
-#### 4.3.2. Configuring pkgadd
+### Configuring pkgadd
 
 You can customize `pkgadd(8)` behavior during package upgrades using
 `/etc/pkgadd.conf`.
 Rules define whether files should be upgraded or preserved.
 
-##### 4.3.2.1. Rule Format
+#### Rule Format
 
 Each rule in `/etc/pkgadd.conf` follows this format:
 
-    EVENT   PATTERN   ACTION
+```
+EVENT   PATTERN   ACTION
+```
 
 - `EVENT`: Currently, only `UPGRADE` is supported.
 - `PATTERN`: A regular expression matching filenames in the package.
@@ -955,13 +1198,15 @@ Each rule in `/etc/pkgadd.conf` follows this format:
 Rules are processed sequentially, with the last matching rule taking
 priority.
 
-##### 4.3.2.2. Example
+#### Example
 
 Example `/etc/pkgadd.conf` entries:
 
-    UPGRADE   ^etc/.*$              NO
-    UPGRADE   ^var/log/.*$          NO
-    UPGRADE   ^etc/X11/xorg.conf$   YES
+```
+UPGRADE   ^etc/.*$              NO
+UPGRADE   ^var/log/.*$          NO
+UPGRADE   ^etc/X11/xorg.conf$   YES
+```
 
 These rules will:
 
@@ -969,28 +1214,32 @@ These rules will:
 - Keep all files in `/var/log` and its subdirectories.
 - Upgrade `/etc/X11/xorg.conf` specifically (overrides the `/etc` rule).
 
+
 * **Caution**:
+
   Patterns match filenames inside the package, not full system paths.
   Do not use `/` at the start!
 
 See `pkgadd.conf(5)` for details.
 
-### 4.4. Low-level Tools: rejmerge
+## Low-level Tools: rejmerge
 
 `rejmerge(8)` resolves files rejected during upgrades using `pkgadd -u`.
 Rejected files are moved to `/var/lib/pkg/rejected/` for manual
 handling, while `rejmerge(8)` provides a way to manage these files
 semi-automatically.
 
-#### 4.4.1. Using rejmerge
+### Using rejmerge
 
 If files are present in `/var/lib/pkg/rejected`, `rejmerge(8)` prompts
 you to decide their fate.
 For each file, you can choose:
 
-    =======> file
-    (diff output between installed file and rejected file)
-    [K]eep [U]pgrade [M]erge [D]iff [S]kip
+```
+=======> file
+(diff output between installed file and rejected file)
+[K]eep [U]pgrade [M]erge [D]iff [S]kip
+```
 
 Legend:
 
@@ -1002,7 +1251,7 @@ Legend:
 
 See `rejmerge(8)` for details.
 
-#### 4.4.2. Configuring rejmerge
+### Configuring rejmerge
 
 Configurations for `rejmerge(8)` can be adjusted in
 `/etc/rejmerge.conf`.
@@ -1013,19 +1262,23 @@ Key settings:
 - `EDITOR`: Specifies the editor for merges.
 - `PAGER`: Specifies the pager for differences.
 
-##### 4.4.2.1. Example
+#### Example
 
 Use unified, colorized output for differences:
 
-    rejmerge_diff() { diff -u --color=always $1 $2 > $3 ; }
+```sh
+rejmerge_diff() { diff -u --color=always $1 $2 > $3 ; }
+```
 
 Use `sdiff(1)` for merging files:
 
-    rejmerge_merge() { sdiff -o $3 $1 $2 ; }
+```sh
+rejmerge_merge() { sdiff -o $3 $1 $2 ; }
+```
 
 See `rejmerge.conf(5)` for more details.
 
-### 4.5. Low-level Tools: pkgmk
+## Low-level Tools: pkgmk
 
 `pkgmk(8)` builds Zeppe-Lin packages (compressed archives) from source
 files using a `Pkgfile`.
@@ -1047,7 +1300,7 @@ building packages,
 explores their organization into **Collections** and **Repositories**
 for broader software management workflows.
 
-#### 4.5.1. Pkgfile Format
+### Pkgfile Format
 
 The `Pkgfile` defines:
 
@@ -1055,31 +1308,35 @@ The `Pkgfile` defines:
 - `source`: URL to download the software's source code.
 - `build()`: Instructions to compile and package the software.
 
-##### 4.5.1.1. Example
+#### Example
 
-    name=hello
-    version=2.12.1
-    release=1
-    source=https://ftp.gnu.org/gnu/hello/$name-$version.tar.gz
-        
-    build() {
-        cd $name-$version
-        ./configure --prefix=/usr --disable-nls
-        make
-        make DESTDIR=$PKG install
-        rm -rf $PKG/usr/info
-    }
+```sh
+name=hello
+version=2.12.1
+release=1
+source=https://ftp.gnu.org/gnu/hello/$name-$version.tar.gz
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}
+```
 
 See `pkgmk.Pkgfile(5)` for details.
 
-#### 4.5.2. Using pkgmk
+### Using pkgmk
 
-##### 4.5.2.1. Building a Package
+#### Building a Package
 
 To build a package, create a directory named after the package, `cd`
 into this directory, place the `Pkgfile` inside, and run:
 
-    $ fakeroot pkgmk -d -cf /dev/null
+```sh
+fakeroot pkgmk -d -cf /dev/null
+```
 
 - `fakeroot`: Always use to avoid system risks.
 - `-d`: Downloads missing source files.
@@ -1093,7 +1350,7 @@ On the first build, `pkgmk(8)` generates:
 The final package (e.g., `hello#2.12.1-1.pkg.tar.gz`) will be in the
 current directory.
 
-#### 4.5.3. Configuring pkgmk
+### Configuring pkgmk
 
 Customize `pkgmk(8)` with `/etc/pkgmk.conf`.  Key settings:
 
@@ -1103,27 +1360,32 @@ Customize `pkgmk(8)` with `/etc/pkgmk.conf`.  Key settings:
 - `PKGMK_PACKAGE_DIR`: Directory for built packages.
 - `PKGMK_WORK_DIR`: Temporary build directory.
 
-##### 4.5.3.1. Example
+#### Example
 
 Define backup URLs:
 
-    PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/sources/
-                          http://mirror2/sources/"
+```sh
+PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/sources/
+                      http://mirror2/sources/"
+```
 
 Set a unique work directory:
 
-    PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name-$$"
+```sh
+PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name-$$"
+```
 
 Using `$name` (package name) and `$$` (process ID) avoids conflicts
 during simultaneous builds.
 
-* **Note**:
-  Although unique directories avoid build conflicts, `pkgadd(8)` locks
-  the database, so simultaneous installations may fail.
+> **Note:**
+>
+> Although unique directories avoid build conflicts, `pkgadd(8)` locks
+> the database, so simultaneous installations may fail.
 
 See `pkgmk.conf(5)` for full options.
 
-### 4.6. High-level Tool: pkgman
+## High-level Tool: pkgman
 
 `pkgman(1)` serves as a versatile interface for managing Zeppe-Lin's
 package ecosystem.
@@ -1141,94 +1403,130 @@ With its adaptable design, `pkgman(1)` integrates seamlessly into
 diverse system management scenarios, making it an indispensable tool
 for maintaining and customizing Zeppe-Lin.
 
-#### 4.6.1. Using pkgman
+### Using pkgman
 
-##### 4.6.1.1. List Installed Packages
+#### List Installed Packages
 
 List installed packages:
 
-    $ pkgman list
+```sh
+pkgman list
+```
 
 Include versions:
 
-    $ pkgman list -v
+```sh
+pkgman list -v
+```
 
 Include versions and descriptions:
 
-    $ pkgman list -vv
+```sh
+pkgman list -vv
+```
 
-##### 4.6.1.2. Query Package Information
+#### Query Package Information
 
 Display detailed package information:
 
-    $ pkgman info acl
+```sh
+pkgman info acl
+```
 
 Example output:
 
-    Name:         acl
-    Path:         /usr/src/pkgsrc-core
-    Version:      2.3.1
-    Release:      1
-    Description:  Access Control List filesystem support
-    URL:          http://savannah.nongnu.org/projects/acl
-    Dependencies: attr
+```
+Name:         acl
+Path:         /usr/src/pkgsrc-core
+Version:      2.3.1
+Release:      1
+Description:  Access Control List filesystem support
+URL:          http://savannah.nongnu.org/projects/acl
+Dependencies: attr
+```
 
-##### 4.6.1.3. Search Package Sources
+#### Search Package Sources
 
 Search by name:
 
-    $ pkgman search -vv glibc
+```sh
+pkgman search -vv glibc
+```
 
 Search using regular expressions:
 
-    $ pkgman search -vv --regex '^(glib)c?$'
+```sh
+pkgman search -vv --regex '^(glib)c?$'
+```
 
 Search by description:
 
-    $ pkgman dsearch -vv archive
+```sh
+pkgman dsearch -vv archive
+```
 
-##### 4.6.1.4. Query Dependencies
+#### 4.6.1.4. Query Dependencies
 
 Show direct dependencies:
 
-    $ pkgman dep vim
+```sh
+pkgman dep vim
+```
 
 Show recursive dependencies:
 
-    $ pkgman dep vim --recursive
+```sh
+pkgman dep vim --recursive
+```
 
 Show detailed dependency tree:
 
-    $ pkgman dep vim --recursive --tree
+```sh
+pkgman dep vim --recursive --tree
+```
 
-##### 4.6.1.5. Build and Install Packages
+#### 4.6.1.5. Build and Install Packages
 
 Build and install a package with dependencies (recommended):
 
-    # pkgman install --deps --group xterm
+```sh
+# as root
+pkgman install --deps --group xterm
+```
 
 Use `--group` to stop installation if a dependency fails.
 Retry failed installations:
 
-    # pkgman install --deps --group --force xterm
+```sh
+# as root
+pkgman install --deps --group --force xterm
+```
 
 `--force` skips already installed packages during the retry.
 
-##### 4.6.1.6. Update Installed Packages
+#### 4.6.1.6. Update Installed Packages
 
 Identify outdated packages:
 
-    $ pkgman diff --deps --full
+```sh
+pkgman diff --deps --full
+```
 
 Update a single package:
 
-    # pkgman update --deps --group bind
+```sh
+# as root
+pkgman update --deps --group bind
+```
 
 Upgrade all packages in the system:
 
-    # pkgman sysup --deps --depsort --group
+```sh
+# as root
+pkgman sysup --deps --depsort --group
+```
 
-#### 4.6.2. Configuring pkgman
+### Configuring pkgman
 
 `pkgman(1)` is configured via `/etc/pkgman.conf`.  Key settings:
 
@@ -1236,11 +1534,11 @@ Upgrade all packages in the system:
   Defines directories for package source collections (you can list
   multiple).
   The `pkgsrc-core` collection is enabled by default.
-  See [5.2.2. Collections](#522-collections) for additional collections.
+  See [Collections](#collections) for additional collections.
 
   Details about `pkgsrcdir` and how it is used to configure
   **Collections** and **Repositories** are explored in next chapter:
-  [5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections).
+  [PACKAGE SOURCES AND COLLECTIONS](#package-sources-and-collections).
 
 - `runscripts`:
   Enables `pre-install`, `post-install`, `pre-remove`, and
@@ -1252,7 +1550,7 @@ Upgrade all packages in the system:
 
 See `pkgman.conf(5)` for more details.
 
-### 4.7. The Essentials (outro)
+## The Essentials (outro)
 
 This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.
@@ -1261,9 +1559,9 @@ In the next chapter, we introduce **Collections** of **Package Sources**
 -- a modular approach to organizing and managing software -- with
 `pkgman` serving as the central orchestration tool.
 
-## 5. PACKAGE SOURCES AND COLLECTIONS
+# PACKAGE SOURCES AND COLLECTIONS
 
-### 5.1. Introduction
+## Introduction
 
 Zeppe-Lin organizes software sources into three key components:
 
@@ -1289,9 +1587,9 @@ Tools like `pkgmk(8)` and `pkgman(1)` are used to interact with these
 components, supporting workflows such as dependency management,
 package building, and system updates.
 
-### 5.2. Organizing Package Sources
+## Organizing Package Sources
 
-#### 5.2.1. Package Source: The Core Unit
+### Package Source: The Core Unit
 
 In Zeppe-Lin, a **Package Source** is the fundamental unit for
 building software.
@@ -1354,7 +1652,7 @@ custom builds or configurations:
 Together, these files create a self-contained environment for building
 and managing software.
 
-#### 5.2.2. Collections
+### Collections
 
 **Collections** are logical groupings of **Package Sources**.
 A **Collection** is simply a directory containing multiple
@@ -1363,19 +1661,21 @@ desktop applications.
 
 Example **Collection** structure:
 
-    Collection (e.g., pkgsrc-core)
-    |
-    |-- acl/ (Package Source)
-    |   |-- Pkgfile
-    |   |-- .md5sum
-    |   `-- .footprint
-    |
-    |-- bash/ (Package Source)
-    |   |-- Pkgfile
-    |   |-- .md5sum
-    |   `-- .footprint
-    |
-    `-- ... (more Package Sources)
+```
+Collection (e.g., pkgsrc-core)
+|
+|-- acl/ (Package Source)
+|   |-- Pkgfile
+|   |-- .md5sum
+|   `-- .footprint
+|
+|-- bash/ (Package Source)
+|   |-- Pkgfile
+|   |-- .md5sum
+|   `-- .footprint
+|
+`-- ... (more Package Sources)
+```
 
 This logical organization enables modular software management.
 Instead of dealing with individual packages in isolation,
@@ -1393,7 +1693,7 @@ These **Collections** form the foundation of Zeppe-Lin's software
 ecosystem, allowing users to selectively enable the software they
 need.
 
-#### 5.2.3. Repositories: Distributing and Versioning Collections
+### Repositories: Distributing and Versioning Collections
 
 **Collections** are organized into **Repositories**, hosted on systems
 like Git.
@@ -1423,67 +1723,78 @@ one-collection-per-repository approach, include:
 manageable, allowing users to selectively clone only the collections
 they need.
 
-### 5.3. Managing Package Sources
+## Managing Package Sources
 
-#### 5.3.1. Setting Up Collections
+### Setting Up Collections
 
 To access software for installation in Zeppe-Lin, download the
 official package source collections and enable them for `pkgman(1)`.
 
-##### 5.3.1.1. Syncing Official Repositories
+#### Syncing Official Repositories
 
 Clone the repositories from the Zeppe-Lin GitHub account:
 
-    # cd /usr/src/
-    # URL=https://github.com/zeppe-lin
-    # git clone ${URL}/pkgsrc-core    --branch 1.x
-    # git clone ${URL}/pkgsrc-system  --branch 1.x
-    # git clone ${URL}/pkgsrc-xorg    --branch 1.x
-    # git clone ${URL}/pkgsrc-desktop --branch 1.x
+```sh
+# as root
+cd /usr/src/
+URL=https://github.com/zeppe-lin
+git clone ${URL}/pkgsrc-core    --branch 1.x
+git clone ${URL}/pkgsrc-system  --branch 1.x
+git clone ${URL}/pkgsrc-xorg    --branch 1.x
+git clone ${URL}/pkgsrc-desktop --branch 1.x
+```
 
 Replace `1.x` with the branch matching your Zeppe-Lin release (e.g.,
 `1.x` for version 1.0 or 1.1).
 Check the Zeppe-Lin website or release notes for the correct branch.
 
-##### 5.3.1.2. Enabling Collections in pkgman.conf
+#### Enabling Collections in pkgman.conf
 
 Edit `/etc/pkgman.conf` to enable package sources collections.
 For example:
 
-    pkgsrcdir /usr/src/pkgsrc-core
-    pkgsrcdir /usr/src/pkgsrc-system
-    pkgsrcdir /usr/src/pkgsrc-xorg
-    pkgsrcdir /usr/src/pkgsrc-desktop
+```
+pkgsrcdir /usr/src/pkgsrc-core
+pkgsrcdir /usr/src/pkgsrc-system
+pkgsrcdir /usr/src/pkgsrc-xorg
+pkgsrcdir /usr/src/pkgsrc-desktop
+```
 
 For detailed configuration options, see `pkgman.conf(5)`.
 
-##### 5.3.1.3. Verify Your Setup
+#### Verify Your Setup
 
 Confirm that `pkgman(1)` recognizes the collections:
 
-    $ pkgman list --all
+```sh
+pkgman list --all
+```
 
 This lists all package sources from enabled collections.
 
-#### 5.3.2. Exploring and Installing Packages
+### Exploring and Installing Packages
 
 With collections enabled, you can explore and install packages using
 `pkgman(1)`.
 
-##### 5.3.2.1. Listing Available Packages
+#### Listing Available Packages
 
 List all package sources:
 
-    $ pkgman list --all
+```sh
+pkgman list --all
+```
 
 Example output:
 
-    -- list ([i] = installed)
-    [i] acl
-    [i] bash
-    [ ] vim
-    [ ] zathura
-    ...
+```
+-- list ([i] = installed)
+[i] acl
+[i] bash
+[ ] vim
+[ ] zathura
+...
+```
 
 Legend:
 
@@ -1494,193 +1805,257 @@ To display the full path of each package source (helpful for
 identifying which collection a package belongs to), use the `--path`
 option:
 
-    $ pkgman list --all --path
+```sh
+pkgman list --all --path
+```
 
 Example output:
 
-    [i] /usr/src/pkgsrc-core/acl
-    [ ] /usr/src/pkgsrc-system/vim
+```
+[i] /usr/src/pkgsrc-core/acl
+[ ] /usr/src/pkgsrc-system/vim
+```
 
-##### 5.3.2.2. Searching for Packages
+#### Searching for Packages
 
 If you're looking for specific software, use the `search` command.
 For example, to search for packages related to `alsa`:
 
-    $ pkgman search alsa
+```sh
+pkgman search alsa
+```
 
 Example output:
 
-    -- search ([i] = installed)
-    [ ] alsa-lib
-    [ ] alsa-ucm-conf
-    [i] alsa-utils
+```
+-- search ([i] = installed)
+[ ] alsa-lib
+[ ] alsa-ucm-conf
+[i] alsa-utils
+```
 
 The output indicates which packages are installed and available.
 
 For a detailed search that includes collection paths, add the `--path`
 option:
 
-    $ pkgman search --path alsa
+```sh
+pkgman search --path alsa
+```
 
-##### 5.3.2.3. Building and Installing Packages
+#### Building and Installing Packages
 
 Build and install a package with dependencies:
 
-    # pkgman install --deps --group <package_name>
+```sh
+# as root
+pkgman install --deps --group <package_name>
+```
 
 Example:
 
-    # pkgman install --deps --group vim
+```sh
+# as root
+pkgman install --deps --group vim
+```
 
 Build and install multiple packages:
 
-    # pkgman install --deps --group vim zathura
+```sh
+# as root
+pkgman install --deps --group vim zathura
+```
 
 For verbose output (show building process on stdout):
 
-    # pkgman install -vv --deps --group vim zathura
+```sh
+# as root
+pkgman install -vv --deps --group vim zathura
+```
 
 Dry run:
 
-    # pkgman install -vv --test --deps --group vim zathura
+```sh
+# as root
+pkgman install -vv --test --deps --group vim zathura
+```
 
-* **Tip**: Use `pkgman search` to locate package names.
+* **Tip:**
+
+  Use `pkgman search` to locate package names.
 
 Run `pkgman install --help` or see `pkgman-install(8)` for information
 about all installation options.
 
-#### 5.3.3. Keeping Your System Up-to-Date
+### Keeping Your System Up-to-Date
 
 Maintaining your Zeppe-Lin system involves two primary tasks:
 
 1. Sync your **Repositories** regularly to stay up-to-date.
 2. Updating installed packages to their latest versions.
 
-##### 5.3.3.1. Synchronizing Local Collections
+#### Synchronizing Local Collections
 
 Regularly sync local collections with remote repositories using
 `git pull`:
 
-    # git -C /usr/src/pkgsrc-core     pull
-    # git -C /usr/src/pkgsrc-system   pull
-    # git -C /usr/src/pkgsrc-xorg     pull
-    # git -C /usr/src/pkgsrc-desktop  pull
+```sh
+# as root
+git -C /usr/src/pkgsrc-core     pull
+git -C /usr/src/pkgsrc-system   pull
+git -C /usr/src/pkgsrc-xorg     pull
+git -C /usr/src/pkgsrc-desktop  pull
+```
 
 Include unofficial collections if applicable.
 
 Automate Syncing: Set up a cron job with `crond(8)`:
 
-    # Weekly sync at 3:00 AM on Sundays
-    0 3 * * 0 run-one git -C /usr/src/pkgsrc-core    pull -q
-    0 3 * * 0 run-one git -C /usr/src/pkgsrc-system  pull -q
-    0 3 * * 0 run-one git -C /usr/src/pkgsrc-xorg    pull -q
-    0 3 * * 0 run-one git -C /usr/src/pkgsrc-desktop pull -q
+```crontab
+# Weekly sync at 3:00 AM on Sundays
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-core    pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-system  pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-xorg    pull -q
+0 3 * * 0 run-one git -C /usr/src/pkgsrc-desktop pull -q
+```
 
-* **Important**: Ensure `run-one` package from `pkgsrc-core`
-  collection is installed.
+> **Important:**
+>
+> Ensure `run-one` package from `pkgsrc-core` collection is installed.
 
-##### 5.3.3.2. Checking for Package Updates
+#### Checking for Package Updates
 
 Once the local collections are synced, identify outdated packages with
 `pkgman diff`:
 
-    $ pkgman diff --deps --full
+```sh
+pkgman diff --deps --full
+```
 
 Example output:
 
-    -- Differences between installed packages and packages sources tree
-    Package         Installed      Available
-    feh             3.7.2-1        3.7.2-2
-    screen          4.9.0-1        5.0.0-1
-    ...
-    
-    -- Packages not found in the packages sources tree
-    Package         Installed      Required by
-    libncurses      6.2-1          vim
+```
+-- Differences between installed packages and packages sources tree
+Package         Installed      Available
+feh             3.7.2-1        3.7.2-2
+screen          4.9.0-1        5.0.0-1
+...
+
+-- Packages not found in the packages sources tree
+Package         Installed      Required by
+libncurses      6.2-1          vim
+```
 
 Review this output to determine which packages need updates.
 Packages in the "not found" section may have been removed from the
 collection or installed manually from other sources.
 
-##### 5.3.3.3. Updating Packages
+#### Updating Packages
 
 Use `pkgman sysup` for a system upgrade.
 
 **Step 1**: Download all required source files first:
 
-    # pkgman sysup -do
+```sh
+# as root
+pkgman sysup -do
+```
 
 This ensures that all necessary files are retrieved before the upgrade
 begins, avoiding interruptions during the build process.
 
 **Step 2**: Upgrade Packages:
 
-    # pkgman sysup --deps --depsort --group
+```sh
+# as root
+pkgman sysup --deps --depsort --group
+```
 
 These options ensure proper dependency handling and upgrade order.
 
-##### 5.3.3.4. Updating Specific Packages
+#### Updating Specific Packages
 
-Update individual packages with `pkgman update`.  For example:
+Update individual packages with `pkgman update`.
+For example:
 
-    # pkgman update --deps --depsort --group screen feh
+```sh
+# as root
+pkgman update --deps --depsort --group screen feh
+```
 
 This command updates only the specified packages while resolving their
 dependencies.
 
-#### 5.3.4. Advanced Package Management
+### Advanced Package Management
 
-##### 5.3.4.1. Detecting Broken Dependencies with revdep(1)
+#### Detecting Broken Dependencies with revdep(1)
 
 `revdep(1)` checks installed packages for missing or incorrect shared
 libraries.
 Use it to verify system stability and identify packages needing a
 rebuild after updates.
 
-Examples:
+Check system-wide for broken libraries:
 
-1. Check system-wide for broken libraries:
+```sh
+revdep
+```
 
-       $ revdep
+Rebuild affected packages:
 
-2. Rebuild affected packages:
+```sh
+# as root
+pkgman update -fr $(revdep)
+```
 
-       # pkgman update -fr $(revdep)
+Inspect a specific package:
 
-3. Inspect a specific package:
-
-       $ revdep -p bash
+```sh
+revdep -p bash
+```
 
 Run `revdep` regularly after updates or repository syncs to ensure all
 packages remain functional.
 
 See `revdep(1)` and `revdep.d(5)` for more information.
 
-##### 5.3.4.2. Ignoring Packages During Updates
+#### Ignoring Packages During Updates
 
 Prevent updates to specific packages during system upgrades with
 `--ignore`.
 Example:
 
-    # pkgman sysup --deps --depsort --group --ignore=vim,screen
+```sh
+# as root
+pkgman sysup --deps --depsort --group --ignore=vim,screen
+```
 
 Regularly revisit ignored packages to avoid security risks and
 dependency conflicts.
 
-##### 5.3.4.3. Locking Packages
+#### Locking Packages
 
 Lock a package to prevent upgrades indefinitely:
 
-    # pkgman lock vim
+```sh
+# as root
+pkgman lock vim
+```
 
 Unlock a package to resume updates:
 
-    # pkgman unlock vim
+```sh
+# as root
+pkgman unlock vim
+```
 
 Locked packages are useful for maintaining specific software versions
 critical to workflows.
 
-##### 5.3.4.4. Handling Lower Available Versions
+See `pkgman-lock(8)`, `pkgman-unlock(8)`, and `pkgman-list-locked(1)`
+for more information.
+
+#### Handling Lower Available Versions
 
 Occasionally, a package source may revert to a lower version than the
 one installed on your system.
@@ -1691,14 +2066,17 @@ available ones.
 
 To override this behavior, enable the `preferhigher` option:
 
-    # pkgman --config-set="preferhigher yes" sysup --deps --depsort
+```sh
+# as root
+pkgman --config-set="preferhigher yes" sysup --deps --depsort
+```
 
 This ensures `pkgman` retains the higher installed version during
 upgrades.
 Use this feature cautiously, as higher versions might be less stable
 or unsupported.
 
-##### 5.3.4.5. Practical Considerations
+#### Practical Considerations
 
 - Regularly review ignored and locked packages for security and
   compatibility.
@@ -1708,15 +2086,15 @@ or unsupported.
 
 - Check dependency trees carefully to prevent system breakages.
 
-### 5.4. Extending Software Sources
+## Extending Software Sources
 
-#### 5.4.1. Adding a Local Collection
+### Adding a Local Collection
 
 This section explains how to create custom collections.
 A local collection allows you to add new packages that are not
 available in the official repositories.
 
-##### 5.4.1.1. Creating the Collection Directory
+#### Creating the Collection Directory
 
 Create your local collection directory in `/usr/src`, alongside
 official Zeppe-Lin collections.
@@ -1725,47 +2103,56 @@ unprivileged users like `pkgmk` can access the collection.
 
 Example:
 
-    # cd /usr/src
-    # mkdir mynewcollection
+```sh
+# as root
+cd /usr/src
+mkdir mynewcollection
+```
 
-##### 5.4.1.2. Enabling the Collection in pkgman.conf
+#### Enabling the Collection in pkgman.conf
 
 Add your collection to `/etc/pkgman.conf`.
 List it above official collections to give it search priority:
 
-    pkgsrcdir /usr/src/mynewcollection
-    pkgsrcdir /usr/src/pkgsrc-core
-    pkgsrcdir /usr/src/pkgsrc-system
-    pkgsrcdir /usr/src/pkgsrc-xorg
+```
+pkgsrcdir /usr/src/mynewcollection
+pkgsrcdir /usr/src/pkgsrc-core
+pkgsrcdir /usr/src/pkgsrc-system
+pkgsrcdir /usr/src/pkgsrc-xorg
+```
 
 Save the file and proceed to verify the setup.
 
-##### 5.4.1.3. Verifying the Collection Setup
+#### Verifying the Collection Setup
 
 Verify that `pkgman(1)` recognizes your collection:
 
-    $ pkgman dumpconfig
+```sh
+pkgman dumpconfig
+```
 
 Check the "Packages sources directories" section for your collection:
 
-    Packages sources directories: <n>
-      /usr/src/mynewcollection <-- here
-      /usr/src/pkgsrc-core
-      /usr/src/pkgsrc-system
-      /usr/src/pkgsrc-xorg
-      ...
+```
+Packages sources directories: <n>
+  /usr/src/mynewcollection <-- here
+  /usr/src/pkgsrc-core
+  /usr/src/pkgsrc-system
+  /usr/src/pkgsrc-xorg
+  ...
+```
 
 If it appears, the setup is complete, and you can start adding package
 sources.
 
-#### 5.4.2. Creating Custom Packages
+### Creating Custom Packages
 
 After setting up your local collection, the next step is to add a
 package source.
 This involves creating a directory for the package and writing a
 `Pkgfile` with build instructions and metadata.
 
-##### 5.4.2.1. Creating the Package Directory
+#### Creating the Package Directory
 
 Create a subdirectory for the new package in your local collection.
 Ensure the directory name matches the package name in the `Pkgfile`:
@@ -1773,12 +2160,13 @@ Ensure the directory name matches the package name in the `Pkgfile`:
     # mkdir /usr/src/mynewcollection/hello
     # cd /usr/src/mynewcollection/hello
 
-**Important**:
-Naming consistency is critical.
-A mismatch between the directory name and `name` in the `Pkgfile`
-cause build error.
+> **Important:**
+>
+> Naming consistency is critical.
+> A mismatch between the directory name and `name` in the `Pkgfile`
+> cause build error.
 
-##### 5.4.2.2. Writing the Pkgfile
+#### Writing the Pkgfile
 
 The `Pkgfile` serves two purposes:
 
@@ -1788,27 +2176,29 @@ The `Pkgfile` serves two purposes:
 
 Example `Pkgfile`:
 
-    # Description: Example package based on GNU hello
-    # URL:         https://www.gnu.org/software/hello/
-    # Depends on:  glibc
-      
-    name=hello
-    version=2.12.1
-    release=1
-    source=https://ftp.gnu.org/gnu/hello/$name-$version.tar.gz
-      
-    build() {
+```sh
+# Description: Example package based on GNU hello
+# URL:         https://www.gnu.org/software/hello/
+# Depends on:  glibc
+
+name=hello
+version=2.12.1
+release=1
+source=https://ftp.gnu.org/gnu/hello/$name-$version.tar.gz
+
+build() {
         cd $name-$version
-      
+
         ./configure --prefix=/usr --disable-nls
-      
+
         make V=1
         make DESTDIR=$PKG install
-      
-        rm -rf $PKG/usr/share/info
-    }
 
-##### 5.4.2.3. Key Metadata Headers for pkgman
+        rm -rf $PKG/usr/share/info
+}
+```
+
+#### Key Metadata Headers for pkgman
 
 Include these headers in the `Pkgfile` for optimal integration with
 `pkgman(1)`:
@@ -1821,35 +2211,42 @@ Include these headers in the `Pkgfile` for optimal integration with
 Without these headers, `pkgman(1)` cannot display metadata or resolve
 dependencies.
 
-##### 5.4.2.4. Verifying the Package Source
+#### Verifying the Package Source
 
 Verify your package metadata with:
 
-    $ pkgman info hello
+```sh
+pkgman info hello
+```
 
 Expected output:
 
-    Name:         hello
-    Path:         /usr/src/mynewcollection/hello
-    Version:      2.12.1
-    Release:      1
-    Description:  Example package based on GNU hello
-    URL:          https://www.gnu.org/software/hello/
-    Depends on:   glibc
+```
+Name:         hello
+Path:         /usr/src/mynewcollection/hello
+Version:      2.12.1
+Release:      1
+Description:  Example package based on GNU hello
+URL:          https://www.gnu.org/software/hello/
+Depends on:   glibc
+```
 
 If metadata is missing, review the `Pkgfile` for errors.
 
-#### 5.4.3. Building and Installing Custom Packages
+### Building and Installing Custom Packages
 
 After creating a custom package source, the next step is to build and
 install the package using `pkgman(1)` and `pkgmk(8)`, addressing any
 potential permission issues.
 
-##### 5.4.3.1. Building the Package
+#### Building the Package
 
 Build your custom package with:
 
-    # pkgman install -vv --deps hello
+```sh
+# as root
+pkgman install -vv --deps hello
+```
 
 This command:
 
@@ -1857,13 +2254,14 @@ This command:
 2. Builds the package using `pkgmk(8)`.
 3. Installs the package with `pkgadd(8)`.
 
-* **Note**:
-  Warnings about missing `.md5sum` and `.footprint` files like
-  `/usr/bin/pkgmk: ... cannot create .md5sum: Permission denied` occur
-  because packages are built with the unprivileged `pkgmk` user, which
-  has not write permissions in `/usr/src/mynewcollection`.
+> **Note:**
+>
+> Warnings about missing `.md5sum` and `.footprint` files like
+> `/usr/bin/pkgmk: ... cannot create .md5sum: Permission denied` occur
+> because packages are built with the unprivileged `pkgmk` user, which
+> has not write permissions in `/usr/src/mynewcollection`.
 
-##### 5.4.3.2. Resolving Permissions for Build Files
+#### Resolving Permissions for Build Files
 
 There are at least two options to resolve permissions case.
 
@@ -1871,171 +2269,209 @@ There are at least two options to resolve permissions case.
 
    Navigate to the package directory and generate the files:
 
-       # cd /usr/src/mynewcollection/hello
-       # pkgmk -um   # Update .md5sum
-       # pkgmk -uf   # Update .footprint
+   ```sh
+   # as root
+   cd /usr/src/mynewcollection/hello
+   pkgmk -um   # Update .md5sum
+   pkgmk -uf   # Update .footprint
+   ```
 
 2. **Adjusting Permissions.**
 
    Grant write access to `pkgmk` using `setfacl(1)`:
 
-       # setfacl -m u:pkgmk:rwx /usr/src/mynewcollection/hello
+   ```sh
+   # as root
+   setfacl -m u:pkgmk:rwx /usr/src/mynewcollection/hello
+   ```
 
    Rebuild the package afterward:
 
-       # pkgman update -fr hello
+   ```sh
+   # as root
+   pkgman update -fr hello
+   ```
 
-##### 5.4.3.3. Verifying Generated Files
+#### Verifying Generated Files
 
 After addressing warnings, confirm the presence of required files:
 
-    $ ls -l /usr/src/mynewcollection/hello
-    -rw-r--r--  1 pkgmk pkgmk  251 .footprint
-    -rw-r--r--  1 pkgmk pkgmk   54 .md5sum
-    -rw-r--r--  1 root  root   359 Pkgfile
+```sh
+ls -l /usr/src/mynewcollection/hello
+```
 
-##### 5.4.3.4. Verifying the Installation
+Expected output:
+
+```
+-rw-r--r--  1 pkgmk pkgmk  251 .footprint
+-rw-r--r--  1 pkgmk pkgmk   54 .md5sum
+-rw-r--r--  1 root  root   359 Pkgfile
+```
+
+#### Verifying the Installation
 
 Ensure the package is installed on your system:
 
-    $ pkgman isinst hello
+```sh
+pkgman isinst hello
+```
 
 Expected output:
 
-    package 'hello' is installed
+```
+package 'hello' is installed
+```
 
 Run:
 
-    $ hello
+```sh
+hello
+```
 
 Expected output:
 
-    Hello, world!
+```
+Hello, world!
+```
 
-#### 5.4.4. Building Packages from Bleeding-Edge Sources
+### Building Packages from Bleeding-Edge Sources
 
 Some packages need to be built directly from version control systems
 (VCS) like Git or Subversion, instead of fixed release archives.
 This section outlines two approaches: a stable approach and a
 bleeding-edge approach.
 
-##### 5.4.4.1. Stable Commit Approach
+#### Stable Commit Approach
 
 For production, pinning to a specific commit ensures consistent
 builds.
 Example:
 
-    # Description: Ratpoison window manager
-    # URL:         https://www.nongnu.org/ratpoison/
-    # Depends on:  xorg-server
-      
-    name=ratpoison
-    version=1.4.9-db94d49  # Release + commit hash
-    release=1
-      
-    # Custom function to fetch or clone git repository
-    download_git() {
-        if [ -d $PKGMK_SOURCE_DIR/$name ]; then
-            git -C $PKGMK_SOURCE_DIR/$name fetch --depth=1
-            git -C $PKGMK_SOURCE_DIR/$name clean -f
-            git -C $PKGMK_SOURCE_DIR/$name reset --hard origin/$2
-        else
-            git -C $PKGMK_SOURCE_DIR clone --depth=1 $1 -b $2 $name
-        fi
-        cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
-    }
-      
-    build() {
-        download_git https://git.savannah.nongnu.org/git/ratpoison.git master
-        cd ratpoison
-        git checkout ${version#*-}  # Pin commit 'db94d49'
-          
-        ./configure --prefix=/usr
-        make V=1
-        make DESTDIR=$PKG install
-    }
+```sh
+# Description: Ratpoison window manager
+# URL:         https://www.nongnu.org/ratpoison/
+# Depends on:  xorg-server
+
+name=ratpoison
+version=1.4.9-db94d49  # Release + commit hash
+release=1
+
+# Custom function to fetch or clone git repository
+download_git() {
+    if [ -d $PKGMK_SOURCE_DIR/$name ]; then
+        git -C $PKGMK_SOURCE_DIR/$name fetch --depth=1
+        git -C $PKGMK_SOURCE_DIR/$name clean -f
+        git -C $PKGMK_SOURCE_DIR/$name reset --hard origin/$2
+    else
+        git -C $PKGMK_SOURCE_DIR clone --depth=1 $1 -b $2 $name
+    fi
+    cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
+}
+
+build() {
+    download_git https://git.savannah.nongnu.org/git/ratpoison.git master
+    cd ratpoison
+    git checkout ${version#*-}  # Pin commit 'db94d49'
+
+    ./configure --prefix=/usr
+    make V=1
+    make DESTDIR=$PKG install
+}
+```
 
 Pinning builds guarantees stability and shields against upstream
 changes.
 
-##### 5.4.4.2. Bleeding-Edge Approach
+#### Bleeding-Edge Approach
 
 For testing, dynamically set the version to the current date
 (`YYYYMMDD`) to track upstream changes.
 Example:
 
-    # Description: Ruby interpreter (bleeding-edge)
-    # URL:         http://www.ruby-lang.org
-    # Depends on:  gdbm libgmp openssl zlib libffi libyaml
-      
-    name=ruby-scm
-    version=$(date +%Y%m%d)  # Version updates daily to track build date
-    release=1
-      
-    download_git() {
-        if [ -d $PKGMK_SOURCE_DIR/$name ]; then
-            git -C $PKGMK_SOURCE_DIR/$name fetch --depth=1
-            git -C $PKGMK_SOURCE_DIR/$name clean -f
-            git -C $PKGMK_SOURCE_DIR/$name reset --hard origin/$2
-        else
-            git -C $PKGMK_SOURCE_DIR clone --depth=1 $1 -b $2 $name
-        fi
-        cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
-    }
-      
-    build() {
-        download_git https://github.com/ruby/ruby master
-        cd ruby-scm
-          
-        ./configure --prefix=/usr
-        make V=1
-        make DESTDIR=$PKG install
-    }
+```sh
+# Description: Ruby interpreter (bleeding-edge)
+# URL:         http://www.ruby-lang.org
+# Depends on:  gdbm libgmp openssl zlib libffi libyaml
+
+name=ruby-scm
+version=$(date +%Y%m%d)  # Version updates daily to track build date
+release=1
+
+download_git() {
+    if [ -d $PKGMK_SOURCE_DIR/$name ]; then
+        git -C $PKGMK_SOURCE_DIR/$name fetch --depth=1
+        git -C $PKGMK_SOURCE_DIR/$name clean -f
+        git -C $PKGMK_SOURCE_DIR/$name reset --hard origin/$2
+    else
+        git -C $PKGMK_SOURCE_DIR clone --depth=1 $1 -b $2 $name
+    fi
+    cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
+}
+
+build() {
+    download_git https://github.com/ruby/ruby master
+    cd ruby-scm
+
+    ./configure --prefix=/usr
+    make V=1
+    make DESTDIR=$PKG install
+}
+```
 
 **"Daily Updates"**:
 If the installed version is outdated, `pkgman(1)` flags it during
 `pkgman diff`, prompting updates:
 
-    $ pkgman diff
-      
-    -- Differences between installed packages and packages sources tree
-    ruby-scm                        20250216-1          20250401-1
+```sh
+pkgman diff
+```
+
+Expected output:
+
+```
+-- Differences between installed packages and packages sources tree
+ruby-scm                        20250216-1          20250401-1
+```
 
 This approach is ideal for development but unsuitable for production
 environments.
 
-##### 5.4.4.3. Subversion Repository Download Function
+#### Subversion Repository Download Function
 
 For Subversion-based builds, use a download function like this:
 
-    download_svn() {
-        if [ -d $PKGMK_SOURCE_DIR/$name ]; then
-            svn cleanup $PKGMK_SOURCE_DIR/$name
-            svn up $PKGMK_SOURCE_DIR/$name
-        else
-            svn co $1 $PKGMK_SOURCE_DIR/$name
-        fi
-        cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
-    }
+```sh
+download_svn() {
+    if [ -d $PKGMK_SOURCE_DIR/$name ]; then
+        svn cleanup $PKGMK_SOURCE_DIR/$name
+        svn up $PKGMK_SOURCE_DIR/$name
+    else
+        svn co $1 $PKGMK_SOURCE_DIR/$name
+    fi
+    cp -r $PKGMK_SOURCE_DIR/$name $PKGMK_WORK_DIR/src/$name
+}
+```
 
 Example usage in a `Pkgfile`:
 
-    download_svn https://svn.project.org/svn/program/trunk
+```sh
+download_svn https://svn.project.org/svn/program/trunk
+```
 
 Add `subversion` to dependencies for compatibility.
 Unlike `git`, which resides in `pkgsrc-core`, `subversion` requires
 explicit declaration.
 
-##### 5.4.4.4. Best Practices
+#### Best Practices
 
 - Use pinned commits or snapshots for stability in production.
 - Reserve bleeding-edge builds for testing and development.
 - Include download functions (`download_git` or `download_svn`)
   directly in `Pkgfile` for portability.
 
-### 5.5. Tips and Best Practices
+## Tips and Best Practices
 
-#### 5.5.1. Renicing Builds
+### Renicing Builds
 
 Package builds can reduce system responsiveness due to high CPU and
 I/O usage.
@@ -2048,7 +2484,9 @@ Mitigate this by adjusting process priorities using `nice(1)` and
 
 Update the `makecommand` in `/etc/pkgman.conf`:
 
-    makecommand sudo -H -u pkgmk nice -n10 ionice -c2 -n6 fakeroot pkgmk
+```
+makecommand sudo -H -u pkgmk nice -n10 ionice -c2 -n6 fakeroot pkgmk
+```
 
 Explanation:
 
@@ -2058,50 +2496,65 @@ Explanation:
 These changes help the build process interfere less with interactive
 tasks, improving system responsiveness.
 
-#### 5.5.2. RAM Builds for Faster Package Compilation
+### RAM Builds for Faster Package Compilation
 
 Using RAM for temporary build files (`tmpfs`) can significantly speed
 up package compilation in Zeppe-Lin.
 
-##### 5.5.2.1. Enable RAM Builds in Zeppe-Lin
+#### Enable RAM Builds in Zeppe-Lin
 
 1. Uncomment this line in `/etc/fstab`:
 
-       pkgmk /var/cache/pkgmk/work tmpfs size=<SIZE>,uid=<UID>,defaults 0 0
+   ```
+   pkgmk /var/cache/pkgmk/work tmpfs size=<SIZE>,uid=<UID>,defaults 0 0
+   ```
 
    Replace `SIZE` (e.g., `16G`).
    The `UID` for the `pkgmk` user is preconfigured.
 
 2. Mount `tmpfs`:
 
-       # mount pkgmk
+   ```sh
+   # as root
+   mount pkgmk
+   ```
 
 3. Remove `-pipe` from `CFLAGS` and `CXXFLAGS` in `/etc/pkgmk.conf`.
 
-##### 5.5.2.2. RAM Build Configuration (Educational)
+#### RAM Build Configuration (Educational)
 
 For users interested in customizing the setup:
 
 1. Creating a dedicated build user:
 
-       # useradd -b /var/cache/ -m -s /bin/false -U pkgmk
+   ```sh
+   # as root
+   useradd -b /var/cache/ -m -s /bin/false -U pkgmk
+   ```
 
 2. Setting up build directories and assigning ownership:
 
-       # mkdir -p /var/cache/pkgmk/{sources,packages,work}
-       # chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
+   ```sh
+   # as root
+   mkdir -p /var/cache/pkgmk/{sources,packages,work}
+   chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
+   ```
 
 3. Configuring `tmpfs` in `/etc/fstab`:
 
-       pkgmk /var/cache/pkgmk/work tmpfs size=<SIZE>,uid=<UID>,defaults 0 0
+   ```
+   pkgmk /var/cache/pkgmk/work tmpfs size=<SIZE>,uid=<UID>,defaults 0 0
+   ```
 
 4. Setting the work directory in `/etc/pkgmk.conf`:
 
-       PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
+   ```sh
+   PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
+   ```
 
 5. Removing `-pipe` from `CFLAGS` and `CXXFLAGS` in `/etc/pkgmk.conf`.
 
-#### 5.5.3. Unprivileged Builds in Zeppe-Lin
+### Unprivileged Builds in Zeppe-Lin
 
 Zeppe-Lin builds packages as an unprivileged user (typically `pkgmk`)
 by default.
@@ -2118,7 +2571,10 @@ distributions or customizations.
 1. Create a Dedicated Build User.
    A restricted user is used to perform package builds securely:
 
-       # useradd -b /var/cache/ -m -s /bin/false -U pkgmk
+   ```sh
+   # as root
+   useradd -b /var/cache/ -m -s /bin/false -U pkgmk
+   ```
 
    This creates a user and group named `pkgmk` with limited shell
    access.
@@ -2127,51 +2583,63 @@ distributions or customizations.
    Directories for sources, packages, and temporary files are created
    and assigned ownership to the `pkgmk` user:
 
-       # mkdir -p /var/cache/pkgmk/{sources,packages,work}
-       # chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
+   ```sh
+   # as root
+   mkdir -p /var/cache/pkgmk/{sources,packages,work}
+   chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
+   ```
 
 3. Configure `pkgmk`.
    In `/etc/pkgmk.conf`, the paths for these directories are defined:
 
-       PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
-       PKGMK_PACKAGE_DIR="/var/cache/pkgmk/packages"
-       PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name-$$"
+   ```sh
+   PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
+   PKGMK_PACKAGE_DIR="/var/cache/pkgmk/packages"
+   PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name-$$"
+   ```
 
 4. Integrate `pkgman`.
    In `/etc/pkgman.conf`, the `makecommand` variable is updated to run
    `pkgmk(8)` as the unprivileged `pkgmk` user via `sudo(8)` and
    `fakeroot(1)`:
 
-       makecommand sudo -H -u pkgmk fakeroot pkgmk
+   ```
+   makecommand sudo -H -u pkgmk fakeroot pkgmk
+   ```
 
 This structure ensures package builds are securely isolated while
 remaining flexible for adaptations.
 
-## 6. CONFIGURATION
+# CONFIGURATION
 
-### 6.1. Generating Locales
+## Generating Locales
 
 In Zeppe-Lin, `glibc` package includes a minimal set of locales by
 default, with `C.UTF-8` generated for compatibility with `pkgmk(8)`.
 To create additional locales, replace `en_US` with your desired locale
 and run:
 
-    # localedef -i en_US -f UTF-8 en_US.UTF-8
+```sh
+# as root
+localedef -i en_US -f UTF-8 en_US.UTF-8
+```
 
 Set the system default locale by adding it to `/etc/profile`:
 
-    export LANG=en_US.UTF-8
+```sh
+export LANG=en_US.UTF-8
+```
 
 This ensures consistent locale settings across your system.
 
-### 6.2. System Initialization and Configuration
+## System Initialization and Configuration
 
 Zeppe-Lin uses a lightweight BSD-style init system to manage startup,
 services, and shutdown.
 This system relies on shell scripts located in `/etc` and `/etc/rc.d`,
 offering an efficient and flexible way to control processes.
 
-#### 6.2.1. System States (Runlevels)
+### System States (Runlevels)
 
 Runlevels define the operating state of the system, such as halting,
 rebooting, or normal operation.
@@ -2190,7 +2658,7 @@ which enables all services and user access.
 Single-user mode (runlevel **1** or **S**) is ideal for system
 maintenance, providing a minimal environment.
 
-#### 6.2.2. Core Init Scripts
+### Core Init Scripts
 
 Zeppe-Lin's init system uses the following scripts to manage system
 processes:
@@ -2210,7 +2678,7 @@ commands or `/etc/rc.modules` to load specific kernel modules.
 
 See `rc(8)` for details.
 
-#### 6.2.3. Configuring Runlevels and Init Behavior
+### Configuring Runlevels and Init Behavior
 
 The `/etc/inittab` file determines actions for each runlevel.
 Each entry follows this format: `id:runlevel:action:command`
@@ -2224,32 +2692,36 @@ Key Components:
 
 Example `/etc/inittab` Configuration:
 
-    # Set default runlevel to multi-user mode
-    id:2:initdefault:
-    
-    # Core startup scripts
-    rc::sysinit:/etc/rc         # Main boot script
-    rs:S1:wait:/etc/rc.single   # Single-user mode startup
-    rm:2:wait:/etc/rc.multi     # Multi-user mode startup
-    rd:06:wait:/etc/rc.shutdown # Graceful shutdown
-    
-    # Virtual console login prompts
-    c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
-    c2:2:respawn:/sbin/agetty 38400 tty2 linux
+```sh
+# Set default runlevel to multi-user mode
+id:2:initdefault:
+
+# Core startup scripts
+rc::sysinit:/etc/rc         # Main boot script
+rs:S1:wait:/etc/rc.single   # Single-user mode startup
+rm:2:wait:/etc/rc.multi     # Multi-user mode startup
+rd:06:wait:/etc/rc.shutdown # Graceful shutdown
+
+# Virtual console login prompts
+c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+c2:2:respawn:/sbin/agetty 38400 tty2 linux
+```
 
 This configuration ensures a smooth startup, runtime, and shutdown
 process.
 See `inittab(5)` for configuration details.
 
-#### 6.2.4. Configuring System Behavior (/etc/rc.conf)
+### Configuring System Behavior (/etc/rc.conf)
 
 The `/etc/rc.conf` file centralizes system configuration settings,
 such as hostname, timezone, and services.
 Example:
 
-    HOSTNAME="myhostname"
-    TIMEZONE="Europe/Berlin"
-    SERVICES="lo crond sshd"
+```sh
+HOSTNAME="myhostname"
+TIMEZONE="Europe/Berlin"
+SERVICES="lo crond sshd"
+```
 
 Services listed in `SERVICES` correspond to scripts in `/etc/rc.d/`,
 which are started by `/etc/rc.multi` and stopped by `/etc/rc.shutdown`
@@ -2257,7 +2729,7 @@ which are started by `/etc/rc.multi` and stopped by `/etc/rc.shutdown`
 
 See `rc.conf(5)` for additional configuration settings.
 
-#### 6.2.5. Service Control Scripts (/etc/rc.d/)
+### Service Control Scripts (/etc/rc.d/)
 
 The `/etc/rc.d/` directory contains individual scripts to manage
 services.
@@ -2270,12 +2742,15 @@ Each script supports commands like:
 
 Example usage:
 
-    /etc/rc.d/sshd start
-    /etc/rc.d/sshd status
+```sh
+# as root
+/etc/rc.d/sshd start
+/etc/rc.d/sshd status
+```
 
 See `rc.d(7)` for more information.
 
-#### 6.2.6. Kernel Module Management (/etc/rc.modules)
+### Kernel Module Management (/etc/rc.modules)
 
 The `/etc/rc.modules` file is used to load specific kernel modules at
 boot.
@@ -2283,7 +2758,9 @@ It begins by running `/sbin/depmod -a` to map module dependencies,
 ensuring proper functionality.
 After this, include commands like:
 
-    /sbin/modprobe virtio_net
+```sh
+/sbin/modprobe virtio_net
+```
 
 For modules requiring parameters, it's better to configure settings in
 `/etc/modprobe.d/` for persistent management.
@@ -2291,7 +2768,9 @@ For example, to set options for the `snd_hda_intel` module, create a
 file like `/etc/modprobe.d/snd_hda_intel.conf` with the following
 content:
 
-    options snd_hda_intel probe_mask=8
+```
+options snd_hda_intel probe_mask=8
+```
 
 This approach ensures parameters are automatically applied when the
 module is reloaded, making manual specification unnecessary and
@@ -2300,21 +2779,23 @@ adhering to best practices.
 The `/etc/rc.modules` script is invoked by `/etc/rc` during the boot
 process.
 
-#### 6.2.7. Custom Startup Commands (/etc/rc.local)
+### Custom Startup Commands (/etc/rc.local)
 
 User-defined actions are added to `/etc/rc.local`, executed as last
 step of a normal boot (invoked by `/etc/rc.multi`).
 Example:
 
-    # Start a monitoring app
-    /usr/bin/my_monitoring_app &
+```sh
+# Start a monitoring app
+/usr/bin/my_monitoring_app &
+```
 
-#### 6.2.8. From Boot to Login: System Startup Sequence
+### From Boot to Login: System Startup Sequence
 
 Here's the sequence from power-up to login.
 It differs slightly with or without `initramfs`.
 
-##### 6.2.8.1. Without Initramfs
+#### Without Initramfs
 
 1. Power On: System starts.
 2. Bootloader: Loads the kernel into memory.
@@ -2328,7 +2809,7 @@ It differs slightly with or without `initramfs`.
 9. `/etc/rc.local` runs: Your custom commands are executed.
 10. Login prompts: The system is ready for you.
 
-##### 6.2.8.2. With Initramfs
+#### With Initramfs
 
 1. Power On: System starts.
 2. Bootloader: Loads kernel and initramfs into memory.
@@ -2342,201 +2823,257 @@ It differs slightly with or without `initramfs`.
    The init process from your main system.
 9. *(Steps 5-10 from [6.2.8.1. Without Initramfs](#6281-without-initramfs) follow).*
 
-#### 6.2.9. Minimal Mode (Single-User Mode)
+### Minimal Mode (Single-User Mode)
 
 Runlevel **1** or **S** boots the system with a minimal setup for
 maintenance.
 It runs `/etc/rc.single`, providing a root shell for troubleshooting.
 
-#### 6.2.10. Graceful Shutdown Procedure
+### Graceful Shutdown Procedure
 
 When shutting down or rebooting, `/etc/rc.shutdown` is invoked to stop
 services, unmount filesystems, and safely power off the system.
 
-### 6.3. Networking
+## Networking
 
-#### 6.3.1. Hostname Configuration
+### Hostname Configuration
 
 The hostname identifies your system on the network.
 
 To set it temporarily, use:
 
-    # hostname <new_hostname>
+```sh
+# as root
+hostname <new_hostname>
+```
 
 For a permanent setting, edit `/etc/rc.conf` and set:
 
-    HOSTNAME='<new_hostname>'
+```sh
+HOSTNAME='<new_hostname>'
+```
 
 For proper network function, edit `/etc/hosts` and add your hostname
 to the loopback lines:
 
-    127.0.0.1 localhost <new_hostname>
-    ::1 localhost <new_hostname>
+```
+127.0.0.1 localhost <new_hostname>
+::1       localhost <new_hostname>
+```
 
 This ensures your system recognizes its own name.
 
-#### 6.3.2. Static Address
+### Static Address
 
 To configure a static IP, edit `/etc/rc.d/net`.
 Set the network interface, IP, subnet mask, and gateway.
 For example:
 
-    DEV=enp11s0
-    ADDR=192.168.1.100
-    MASK=24
-    GW=192.168.1.1
+```sh
+DEV=enp11s0
+ADDR=192.168.1.100
+MASK=24
+GW=192.168.1.1
+```
 
 Set DNS in `/etc/resolv.conf`:
 
-    search <your internal domain>
-    nameserver <your DNS server>
+```
+search <your internal domain>
+nameserver <your DNS server>
+```
 
 Start, stop or restart the service via:
 
-    # /etc/rc.d/net [start|stop|restart]
+```sh
+# as root
+/etc/rc.d/net [start|stop|restart]
+```
 
-* **Important**:
-  To auto-start service at boot, add `net` to the `SERVICES` line in
-  `/etc/rc.conf`.
+> **Important:**
+>
+> To auto-start service at boot, add `net` to the `SERVICES` line in
+> `/etc/rc.conf`.
 
-#### 6.3.3. Dynamic Address
+### Dynamic Address
 
 To get an IP address automatically via DHCP, install the `dhcpcd`
 package and edit `/etc/rc.d/dhcpcd` to specify the network interface
 (e.g., `enp5s0`):
 
-    DEV=enp5s0
+```sh
+DEV=enp5s0
+```
 
 Start, stop, or restart the service via:
 
-    # /etc/rc.d/dhcpcd [start|stop|restart]
+```sh
+# as root
+/etc/rc.d/dhcpcd [start|stop|restart]
+```
 
 Check `dhcpcd`'s README for potential issues:
 
-    $ pkgman readme dhcpcd
+```sh
+pkgman readme dhcpcd
+```
 
-* **Important**:
-  To auto-start service at boot, add `dhcpcd` to the `SERVICES` line
-  in `/etc/rc.conf`.
+> **Important:**
+>
+> To auto-start service at boot, add `dhcpcd` to the `SERVICES` line
+> in `/etc/rc.conf`.
 
-#### 6.3.4. Wireless Network
+### Wireless Network
 
 Ensure the wireless interface isn't blocked.
 Use `rfkill(8)`:
 
-    $ rfkill list
-    # rfkill unblock <ID|TYPE>
+```sh
+rfkill list
+
+# as root
+rfkill unblock <ID|TYPE>
+```
 
 Install the `wpa-supplicant` package and edit
 `/etc/rc.d/wpa_supplicant` to set the wireless interface:
 
-    DEV=wlp1s0
+```sh
+DEV=wlp1s0
+```
 
 Update `/etc/wpa_supplicant.conf` based on your network:
 
-##### 6.3.4.1. WPA-PSK (Pre-Shared Key)
+#### WPA-PSK (Pre-Shared Key)
 
 Generate a key with `wpa_passphrase(8)`:
 
-    # wpa_passphrase <MYSSID> <PASSPHRASE>
+```sh
+wpa_passphrase <MYSSID> <PASSPHRASE>
+```
 
 Example `/etc/wpa_supplicant.conf`:
 
-    network={
-        ssid="YOUR_NETWORK_NAME"
-        psk="THE_GENERATED_KEY"
-    }
+```
+network={
+    ssid="YOUR_NETWORK_NAME"
+    psk="THE_GENERATED_KEY"
+}
+```
 
-##### 6.3.4.2. WPA-EAP (Enterprise)
+#### WPA-EAP (Enterprise)
 
 Generate a password hash:
 
-    # echo -n <PASSPHRASE> | iconv -t utf16le | openssl md4
+```sh
+echo -n <PASSPHRASE> | iconv -t utf16le | openssl md4
+```
 
 Example `/etc/wpa_supplicant.conf`:
 
-    network={
-        ssid="YOUR_NETWORK_NAME"
-        key_mgmt=WPA-EAP
-        identity="YOUR_USERNAME"
-        password=hash:<YOUR_PASSWORD_HASH>
-    }
+```
+network={
+    ssid="YOUR_NETWORK_NAME"
+    key_mgmt=WPA-EAP
+    identity="YOUR_USERNAME"
+    password=hash:<YOUR_PASSWORD_HASH>
+}
+```
 
-##### 6.3.4.3. WEP
+#### WEP
 
 Example `/etc/wpa_supplicant.conf` for WEP:
 
-    network={
-        ssid="YOUR_NETWORK_NAME"
-        key_mgmt=NONE
-        wep_key0="YOUR_WEP_KEY"
-        wep_tx_keyidx=0
-        auth_alg=SHARED
-    }
+```
+network={
+    ssid="YOUR_NETWORK_NAME"
+    key_mgmt=NONE
+    wep_key0="YOUR_WEP_KEY"
+    wep_tx_keyidx=0
+    auth_alg=SHARED
+}
+```
 
 For automatic IP, ensure the wireless interface is set in
 `/etc/rc.d/dhcpcd`.
 Start the services:
 
-    # /etc/rc.d/wpa_supplicant start
-    # /etc/rc.d/dhcpcd start
+```sh
+# as root
+/etc/rc.d/wpa_supplicant start
+/etc/rc.d/dhcpcd start
+```
 
-* **Important**:
-  To auto-start service at boot, add `wpa_supplicant` (and `dhcpcd` if
-  using dynamic IP) to the `SERVICES` line in `/etc/rc.conf`.
+> **Important:**
+>
+> To auto-start service at boot, add `wpa_supplicant` (and `dhcpcd` if
+> using dynamic IP) to the `SERVICES` line in `/etc/rc.conf`.
 
-### 6.4. Time and Date Configuration
+## Time and Date Configuration
 
-#### 6.4.1. Timezone Setup
+### Timezone Setup
 
 Identify your timezone from `/usr/share/zoneinfo` (e.g.,
 `America/New_York`).
 
 Set the timezone immediately:
 
-    # ln -sfn /usr/share/zoneinfo/<Your_Timezone> /etc/localtime
+```sh
+# as root
+ln -sfn /usr/share/zoneinfo/<Your_Timezone> /etc/localtime
+```
 
 Verify the symbolic link:
 
-    # ls -l /etc/localtime
+```sh
+ls -l /etc/localtime
+```
 
 To make it persistent, add the timezone to `/etc/rc.conf`:
 
-    TIMEZONE='<Your_Timezone>'
+```sh
+TIMEZONE='<Your_Timezone>'
+```
 
-#### 6.4.2. System Clock Setup
+### System Clock Setup
 
-Manually set the system clock:
+Manually set the system clock using the `MMDDhhmmYYYY.ss` format:
 
-    # date MMDDhhmmYYYY.ss
+```sh
+# as root
 
-Example:
-
-    # date 032705352025.00
+# Example: March 27, 05:35, 2025
+date 032705352025.00
+```
 
 For accuracy, use NTP (described next).
 
-#### 6.4.3. Network Time Protocol (NTP) Configuration
+### Network Time Protocol (NTP) Configuration
 
-* **Note**:
-  Accurate time via NTP is crucial for time-sensitive things like OTP.
+> **Note:**
+>
+> Accurate time via NTP is crucial for time-sensitive things like OTP.
 
 Use an NTP client, such as `chrony`, to synchronize the system clock.
 
 After installing `chrony`, start, stop, or restart the service via:
 
-    # /etc/rc.d/chrony [start|stop|restart]
+```sh
+# as root
+/etc/rc.d/chrony [start|stop|restart]
+```
 
-* **Important**:
-  To enable automatic startup, add `chrony` to the `SERVICES` line in
-  `/etc/rc.conf`.
+> **Important:**
+>
+> To enable automatic startup, add `chrony` to the `SERVICES` line in
+> `/etc/rc.conf`.
 
-### 6.5. User Authentication and Environment
+## User Authentication and Environment
 
 This section explains Zeppe-Lin's approach to user authentication,
 environment setup, and PAM (Pluggable Authentication Modules).
 
-#### 6.5.1. Password Management
+### Password Management
 
 Zeppe-Lin uses strong password encryption with `SHA512` for secure
 user accounts.
@@ -2546,7 +3083,7 @@ against libcrypt (`-lcrypt`).
 Zeppe-Lin's `libcrypt` supports `SHA512` and older encryption methods
 like `DES`.
 
-#### 6.5.2. User Environment Configuration
+### User Environment Configuration
 
 User account creation via `useradd(8)` is governed by
 `/etc/login.defs`.
@@ -2570,7 +3107,7 @@ Default shell `PATH` (via `/etc/profile`) is set to
 This allows access to administrative commands (e.g., `sudo(8)`)
 without specifying full paths.
 
-#### 6.5.3. Pluggable Authentication Modules (PAM)
+### Pluggable Authentication Modules (PAM)
 
 Zeppe-Lin uses PAM (`linux-pam` package) for flexible user
 authentication.
@@ -2593,7 +3130,7 @@ Common PAM modules include:
 For advanced configurations, consult module-specific man pages (e.g.,
 `man pam_env`).
 
-## 7. FAQ
+# FAQ
 
 1. **Why is the distribution named Zeppe-Lin?**
 
@@ -2634,55 +3171,55 @@ For advanced configurations, consult module-specific man pages (e.g.,
    We appreciate your contribution, and we're looking forward to
    seeing what you'll add.
 
-## 8. REPORTING BUGS
+# REPORTING BUGS
 
 For bug reports regarding **this site** and **handbook**, please use
 the issue tracker:
 <https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
 
-## 9. LEGAL NOTICES
+# LEGAL NOTICES
 
 This section outlines the legal and licensing information for
 Zeppe-Lin, including copyrights, licenses, and disclaimers.
 
-### 9.1. Software Licenses
+## Software Licenses
 
 Zeppe-Lin integrates open-source software projects, each with its own
 license.
 For licensing details, consult the source code of the respective
 packages included in your system.
 
-### 9.2. Build Scripts Licensing
+## Build Scripts Licensing
 
 Zeppe-Lin build scripts retain their original licensing structure.
 
-#### 9.2.1. Attribution
+### Attribution
 
-* (C) 2000-2021 [Per Lidén](mailto:per@fukt.bth.se)
+- © 2000-2021 [Per Lidén](mailto:per@fukt.bth.se)
   and [CRUX Team](https://crux.nu).
-* (C) 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://zeppe-lin.github.io).
+- © 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
+  and [Zeppe-Lin Team](https://github.com/zeppe-lin).
 
-#### 9.2.2. License
+### License
 
 These scripts are released under the GNU General Public License
 version 3 or later (GPLv3+):
 <https://gnu.org/licenses/gpl.html>.
 
-### 9.3. Handbook Licensing
+## Handbook Licensing
 
-#### 9.3.1. Attribution
+### Attribution
 
-* (C) 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://zeppe-lin.github.io).
+* © 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
+  and [Zeppe-Lin Team](https://github.com/zeppe-lin).
 
-#### 9.3.2. License
+### License
 
 This handbook is licensed under the Creative Commons
 Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0):
 <https://creativecommons.org/licenses/by-sa/3.0/>.
 
-### 9.4. Disclaimer
+## Disclaimer
 
 Zeppe-Lin and its documentation are distributed "AS IS" without
 warranty of any kind.

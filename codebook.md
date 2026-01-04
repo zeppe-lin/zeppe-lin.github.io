@@ -1,16 +1,37 @@
-# Zeppe-Lin Codebook
+---
+title: Zeppe-Lin Codebook
+---
 
-## PREFACE
+[Back to Index](index.html)
+
+# PREFACE {.unnumbered}
+
+> **Important:**
+>
+> This Codebook is currently a draft.
+> The material here represents early ideas, structure, and notes — a
+> working skeleton of what Zeppe-Lin’s development practices, system
+> internals, and workflow might look like.  
+> 
+> Expect gaps, rough edges, and unfinished sections.
+> Some things may be reorganized, clarified, or rewritten in future
+> iterations — polished when the stars align, or whenever inspiration
+> strikes.  
+>
+> Think of this as a living document, a companion for those curious
+> enough to explore the foundations before the polish.
+> Your feedback, experiments, and discoveries are part of its evolution.
 
 Zeppe-Lin Codebook.
-*Because even pirates need a map to find the treasure (and avoid the kraken).*
+*Because even pirates need a map to find the treasure
+(and avoid the kraken).*
 
 This guide is your blueprint to shape the future of Zeppe-Lin.  It's
 simple, efficient, and free of extra complexity -- designed to
 streamline coding, contributing, and releasing.  Clarity lights the
 way so you can work without fuss.
 
-## 1. Introduction
+# Introduction
 
 Hello, Zeppe-Linauts!  Whether you're cleaning up code, fixing bugs,
 or planning the next release, this codebook keeps things lean and
@@ -18,7 +39,7 @@ focused.  Zeppe-Lin stands for clean code and honest collaboration.
 So grab your tools, set your course, and let's keep it sharp and
 simple.
 
-## 2. Zeppe-Lin Release Process (Overview)
+# Zeppe-Lin Release Process (Overview)
 
 Releasing a new version of Zeppe-Lin is like preparing an airship for
 its next journey.  Here's the streamlined process:
@@ -64,11 +85,11 @@ its next journey.  Here's the streamlined process:
 This codebook will guide you through each step.
 Let's get Zeppe-Lin ready for takeoff!
 
-## 3. Creating a Zeppe-Lin Release
+# Creating a Zeppe-Lin Release
 
-### 3.1. Preparation
+## Preparation
 
-#### 3.1.1. Branching Strategy for Package Source Repositories
+### Branching Strategy for Package Source Repositories
 
 Before updating your toolchain or other package sources, create new
 branches in these repositories to keep changes separate from stable
@@ -95,20 +116,24 @@ This approach also applies to unofficial repositories.
 
 2. From the current stable branch, run:
 
-       git checkout <current_stable_branch>
-       git checkout -b <new_branch>
-       git push origin <new_branch>
+   ```sh
+   git checkout <current_stable_branch>
+   git checkout -b <new_branch>
+   git push origin <new_branch>
+   ```
 
    For example, if the last stable release is 0.9 on branch `0.x`,
    create branch `1.x` like this:
 
-       git checkout 0.x
-       git checkout -b 1.x
-       git push origin 1.x
+   ```sh
+   git checkout 0.x
+   git checkout -b 1.x
+   git push origin 1.x
+   ```
 
 This strategy keeps the new release work isolated from stable code.
 
-#### 3.1.2. Using pkgsrcfeeds to Track Package Updates (Optional)
+### Using pkgsrcfeeds to Track Package Updates (Optional)
 
 The `pkgsrcfeeds.git` repository gathers update information from all
 Zeppe-Lin pkgsrc collections into one helpful feed.  Use your favorite
@@ -121,9 +146,9 @@ also provides scripts to check for consistency and flag any issues.
 In short, `pkgsrcfeeds` handles the tracking for you, letting you
 focus on the software you want to update.
 
-### 3.2. Updating Pkgsrc Repositories and Building the Core System
+## Updating Pkgsrc Repositories and Building the Core System
 
-#### 3.2.1. Core Toolchain Update (pkgsrc-core)
+### Core Toolchain Update (pkgsrc-core)
 
 Before updating other packages, refresh the core toolchain for a
 fresh, stable base.  Follow this build order:
@@ -158,9 +183,11 @@ against its latest dependencies.
 4. **Build the Toolchain**:
    Run the following command, which follows the build order above:
 
-       pkgman update -fr -d --group \
-           glibc{,-32} binutils gcc libtool \
-           binutils glibc{,-32} libtool
+   ```sh
+   pkgman update -fr -d --group \
+       glibc{,-32} binutils gcc libtool \
+       binutils glibc{,-32} libtool
+   ```
 
 5. **Test Extensively**:
    After the build, compile other core packages or create a rootfs
@@ -170,7 +197,7 @@ If you encounter any build failures, linker errors, or runtime issues,
 review the logs and consult relevant resources for assistance (e.g.,
 Linux From Scratch documentation).
 
-#### 3.2.2. Standard Package Updates
+### Standard Package Updates
 
 Once the toolchain is updated, refresh package definitions across your
 pkgsrc repositories.  Begin with `pkgsrc-core` to ensure core packages
@@ -182,12 +209,12 @@ needed patches.  Commit your changes with a clear message (e.g.,
 `<package>: <old_version> -> <new_version>`) and push them to the
 remote repository.
 
-#### 3.2.3. Preparing the Root Filesystem Image
+### Preparing the Root Filesystem Image
 
 Once the toolchain and packages are updated, you can create the root
 filesystem image -- Zeppe-Lin's core for chroot installations.
 
-##### 3.2.3.1. Introducing mkrootfs
+#### Introducing mkrootfs
 
 `mkrootfs` automates building a custom root filesystem by:
 
@@ -211,7 +238,7 @@ Configuration is handled in `/etc/mkrootfs/config`, where you can set:
 You can override these settings with command-line options (see
 `mkrootfs(8)`).
 
-##### 3.2.3.2. Step-by-Step Rootfs Creation
+##### Step-by-Step Rootfs Creation
 
 1. **Configure**:
    Edit `/etc/mkrootfs/config` (as root) and set:
@@ -228,7 +255,9 @@ You can override these settings with command-line options (see
    Run the command below to prepare the filesystem, check
    dependencies, and create the tarball:
 
-       sudo mkrootfs -BCTv
+   ```sh
+   sudo mkrootfs -BCTv
+   ```
 
    This does the following:
 
@@ -237,18 +266,20 @@ You can override these settings with command-line options (see
    - `-T`: Compress the directory into a tarball.
    - `-v`: Be verbose.
 
-##### 3.2.3.3. Optional Cleanup
+##### Optional Cleanup
 
 Once you've verified the tarball, you can remove temporary build
 artifacts to save space.  For example:
 
-    sudo rm -rf /tmp/rootfs-*-$(uname -m){,.log}
+```sh
+sudo rm -rf /tmp/rootfs-*-$(uname -m){,.log}
+```
 
 Skip cleanup if you need to debug or perform incremental builds.
 
-### 3.3. Finalizing Release Assets
+### Finalizing Release Assets
 
-#### 3.3.1. Signing the Rootfs Tarball
+#### Signing the Rootfs Tarball
 
 Sign your root filesystem tarball with GPG to prove its authenticity
 and integrity.  Make sure GPG is installed (e.g., with
@@ -264,22 +295,26 @@ official Zeppe-Lin private key secured with a strong passphrase.
 2. **Sign the Tarball**:
    Create a detached, ASCII-armored signature:
 
-       gpg --detach-sig --armor --output   \
-             rootfs-v1.0-x86_64.tar.xz.sig \
-             rootfs-v1.0-x86_64.tar.xz
+   ```sh
+   gpg --detach-sig --armor --output   \
+         rootfs-v1.0-x86_64.tar.xz.sig \
+         rootfs-v1.0-x86_64.tar.xz
+   ```
 
    You'll be prompted for your key's passphrase.
 
 3. **Verify the Signature (Optional)**:
    Confirm the signature is valid:
 
-       gpg --verify rootfs-v1.0-x86_64.tar.xz.sig \
-                    rootfs-v1.0-x86_64.tar.xz
+   ```sh
+   gpg --verify rootfs-v1.0-x86_64.tar.xz.sig \
+                rootfs-v1.0-x86_64.tar.xz
+   ```
 
 After these steps, your signed tarball and its signature file are
 ready for distribution.
 
-#### 3.3.2. Creating a Git Tag in pkgsrc-core
+#### Creating a Git Tag in pkgsrc-core
 
 Once all package updates, configuration changes, and build scripts for
 the release are committed and pushed to your release branch (e.g.,
@@ -292,25 +327,33 @@ for the Zeppe-Lin release and is required for the GitHub release step.
 1. **Switch to the Release Branch**:
    Make sure you're on and up-to-date with your release branch:
 
-       git checkout 1.x # Replace 1.x with your release branch
-       git pull origin 1.x
+   ```sh
+   git checkout 1.x # Replace 1.x with your release branch
+   git pull origin 1.x
+   ```
 
    *Ensure all commits relevant to this release have been pushed to
    this branch.*
 
 2. **Create an Annotated Tag**:
 
-       git tag -a v1.0 -m "Zeppe-Lin v1.0 - The Maiden Voyage!"
+   ```sh
+   git tag -a v1.0 -m "Zeppe-Lin v1.0 - The Maiden Voyage!"
+   ```
 
 3. **Push the Tag**:
    Push the new tag to the remote repository:
 
-       git push origin v1.0
+   ```sh
+   git push origin v1.0
+   ```
 
    Or push all local tags (be cautious with this command if you have
    other local tags):
 
-       git push origin --tags
+   ```sh
+   git push origin --tags
+   ```
 
 **Notes**:
 
@@ -322,9 +365,9 @@ for the Zeppe-Lin release and is required for the GitHub release step.
 This simple process officially marks the source code state for your
 release.
 
-### 3.4. Preparing and Publishing Announcements
+### Preparing and Publishing Announcements
 
-#### 3.4.1. Drafting Release Notes Content
+#### Drafting Release Notes Content
 
 Release notes communicate what's new, changed, and required for
 upgrading.  They will form the official website release notes and the
@@ -371,14 +414,14 @@ Include the following:
 Draft these notes in a temporary file.  This content will be formatted
 and published in the following steps.
 
-#### 3.4.2. Creating Website Announcement Files and Assets
+#### Creating Website Announcement Files and Assets
 
 For Zeppe-Lin, we manage official release notes and related assets in
 the `zeppe-lin.github.io` repository -- our website's home.  This
 involves creating the Markdown file for the full notes and preparing
 the release banner.
 
-##### 3.4.2.1. Creating the Markdown Release Notes File (relnotes)
+##### Creating the Markdown Release Notes File (relnotes)
 
 1. **Access the Repository**:
    Open your local clone of `zeppe-lin.github.io.git`.
@@ -397,7 +440,7 @@ the release banner.
    release banner within this Markdown file.  The banner file will be
    created in the next step.
 
-##### 3.4.2.2. Creating the Release Banner (Cover Artwork)
+##### Creating the Release Banner (Cover Artwork)
 
 A distinct release banner helps your audience instantly recognize the
 new Zeppe-Lin release.  It appears on both the release notes page and
@@ -421,12 +464,12 @@ the main website.
    points to the new artwork.  This step can be done just before or
    after publishing the main website updates.
 
-#### 3.4.3. Publishing the Release
+#### Publishing the Release
 
 Once your assets (signed tarball, signature, Git tag) and announcement
 files are ready, it's time to go public.
 
-##### 3.4.3.1. Announcing on GitHub Releases
+##### Announcing on GitHub Releases
 
 1. **Open the Repository**:
    Navigate to the Zeppe-Lin
@@ -465,7 +508,7 @@ files are ready, it's time to go public.
 8. **Publish**:
    Click "Publish release" to make it official on GitHub.
 
-##### 3.4.3.2. Updating the Zeppe-Lin Website
+##### Updating the Zeppe-Lin Website
 
 Publish the release notes and banner on the official Zeppe-Lin
 website.
@@ -498,7 +541,7 @@ website.
 This process ensures that the release is prominently published on both
 GitHub and the Zeppe-Lin website for the community to access.
 
-### 3.5. Post-Release Tasks
+# Post-Release Tasks
 
 After successfully publishing the new version of Zeppe-Lin, complete
 these steps to keep everything current and the community informed.
@@ -538,7 +581,7 @@ these steps to keep everything current and the community informed.
    improvements, and bug fixes based on community feedback and
    internal priorities.
 
-### 3.6. Conclusion
+# Conclusion
 
 Congratulations, Captain! You've navigated every key step -- from
 preparing our pkgsrc repositories and building the core system to

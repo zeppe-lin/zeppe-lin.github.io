@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>$title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
+<!--
+  $if(highlighting-css)$
+  <style type="text/css">
+  $highlighting-css$
+  </style>
+  $endif$
+-->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tango.css"
+  media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="zenburn.css"
+  media="(prefers-color-scheme: dark)">
+</head>
+<body$if(toc)$ class="has-toc"$endif$>
+
+$if(toc)$
+<nav id="TOC" role="doc-toc">
+  <div class="toc-title">Contents</div>
+  $toc$
+  </div>
+</nav>
+$endif$
+
+<main>
+  $body$
+</main>
+
+</body>
+</html>
