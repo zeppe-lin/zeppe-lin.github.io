@@ -11,7 +11,7 @@ FLAGS    := -s \
 	--css=$(CSS) \
 	--template=$(TEMPLATE) \
 	--toc \
-	--number-sections
+	--number-sections=true
 
 MD   := $(wildcard *.md)
 HTML := $(MD:.md=.html)
