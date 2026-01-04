@@ -209,6 +209,7 @@ pre code {
   padding: 0.4rem 0.6rem;
   border-radius: 3px;
   font-family: "Cascadia Mono", monospace;
+  white-space: pre;
 }
 
 code {
