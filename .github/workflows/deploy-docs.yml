@@ -28,6 +28,7 @@ jobs:
           rm -rf public/*
           mv *.html public/ || echo "No HTML files found to deploy."
           cp *.css public/ || echo "No CSS files found to deploy."
+          cp CNAME public/ || echo "No CNAME file found to deploy."
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
