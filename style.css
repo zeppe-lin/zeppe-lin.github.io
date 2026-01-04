@@ -1,6 +1,6 @@
 /**
- * Zeppe-Lin Linux Handbook Style – Golden Legacy, Micro-Polished
- * Version: 4.2.0 – Structural Harmony Pass
+ *  Zeppe-Lin Linux main CSS style
+ *  See LICENSE file for license terms and copyright notices.
  */
 
 /* --- Theme Variables --- */
@@ -65,8 +65,20 @@ html, body {
   z-index: 1000;
 }
 
-#TOC ul { list-style: none; margin: 0; padding: 0; }
-#TOC li { margin: calc(var(--rhythm) * 0.5) 0; }
+#TOC ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#TOC li {
+  margin: calc(var(--rhythm) * 0.5) 0;
+  padding-left: 0.5em; /* gentle indent */
+}
+
+#TOC ul ul li {
+  padding-left: 1em; /* slightly deeper for nested levels */
+}
 
 #TOC a {
   color: var(--link);
@@ -291,3 +303,4 @@ blockquote footer {
   }
 }
 
+/* End of file. */

@@ -84,15 +84,16 @@
   <div class="toc-title">Contents</div>
   <ul>
   <li><a href="#zeppe-lin-v0.99-release-notes"
-  id="toc-zeppe-lin-v0.99-release-notes">Zeppe-Lin v0.99: Release
+  id="toc-zeppe-lin-v0.99-release-notes">Zeppe-Lin v0.99 — Release
   Notes</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
   class="toc-section-number">1</span> Introduction</a></li>
-  <li><a href="#incompatible-changes"
-  id="toc-incompatible-changes"><span
-  class="toc-section-number">2</span> Incompatible Changes</a></li>
-  <li><a href="#new-features" id="toc-new-features"><span
-  class="toc-section-number">3</span> New Features</a>
+  <li><a href="#upgrade-compatibility"
+  id="toc-upgrade-compatibility"><span
+  class="toc-section-number">2</span> Upgrade &amp;
+  Compatibility</a></li>
+  <li><a href="#whats-new" id="toc-whats-new"><span
+  class="toc-section-number">3</span> What’s New</a>
   <ul>
   <li><a href="#package-changes" id="toc-package-changes"><span
   class="toc-section-number">3.1</span> Package Changes</a>
@@ -122,9 +123,13 @@
   <li><a href="#download" id="toc-download"><span
   class="toc-section-number">5</span> Download</a>
   <ul>
-  <li><a href="#cover-artwork" id="toc-cover-artwork"><span
-  class="toc-section-number">5.1</span> Cover Artwork</a></li>
+  <li><a href="#root-filesystem" id="toc-root-filesystem"><span
+  class="toc-section-number">5.1</span> Root Filesystem</a></li>
+  <li><a href="#extras" id="toc-extras"><span
+  class="toc-section-number">5.2</span> Extras</a></li>
   </ul></li>
+  <li><a href="#release-artwork" id="toc-release-artwork"><span
+  class="toc-section-number">6</span> Release Artwork</a></li>
   </ul>
   </div>
 </nav>
@@ -132,7 +137,7 @@
 <main>
   <p><a href="index.html">Back to Index</a></p>
   <h1 class="unnumbered" id="zeppe-lin-v0.99-release-notes">Zeppe-Lin
-  v0.99: Release Notes</h1>
+  v0.99 — Release Notes</h1>
   <p>Released May 6, 2023. 1st Zeppe-Lin Release.</p>
   <figure>
   <img
@@ -143,24 +148,23 @@
   </figure>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> Introduction</h1>
-  <p>The Zeppe-Lin project is happy to announce the first stable release
-  v0.99! <strong>Happy Birthday, Zeppe-Lin!</strong></p>
-  <p>This version represents a selected subset of fixes and updates for
-  the beta release from 2023-01-02 and has no breaking compatibility
-  changes. Therefore, a simple update should not cause any issues:</p>
+  <p>Zeppe-Lin v0.99 is the first stable release.<br />
+  It provides a selected subset of fixes and updates for the beta
+  release from 2023‑01‑02.</p>
+  <h1 data-number="2" id="upgrade-compatibility"><span
+  class="header-section-number">2</span> Upgrade &amp;
+  Compatibility</h1>
+  <p>No compatibility changes are introduced.<br />
+  A system update should proceed without issues:</p>
   <div class="sourceCode" id="cb1"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span></span></code></pre></div>
-  <p><em>Most likely.</em></p>
-  <h1 data-number="2" id="incompatible-changes"><span
-  class="header-section-number">2</span> Incompatible Changes</h1>
-  <p>There are no breaking compatibility changes in this release.</p>
-  <h1 data-number="3" id="new-features"><span
-  class="header-section-number">3</span> New Features</h1>
+  <h1 data-number="3" id="whats-new"><span
+  class="header-section-number">3</span> What’s New</h1>
   <ul>
-  <li><p>Improved <code>pkgman.conf</code> configuration file: added an
-  example of how to renice build packages.</p></li>
-  <li><p>Made screen blanking timeout configurable via the
+  <li><p><code>pkgman.conf</code>: added example showing how to renice
+  build packages.</p></li>
+  <li><p>Screen blanking timeout made configurable via the
   <code>BLANKTIME</code> variable in <code>rc.conf</code>. See
   <code>rc.conf(5)</code>.</p></li>
   </ul>
@@ -196,11 +200,11 @@
   <h3 data-number="3.2.1" id="kernel"><span
   class="header-section-number">3.2.1</span> Kernel</h3>
   <ul>
-  <li><code>linux</code> 5.4.238</li>
+  <li><code>linux</code> 5.4.238 (with sighook’s <a
+  href="https://github.com/sighook/lwpp"><code>lwpp</code></a>
+  patches)</li>
   <li><code>linux-firmware</code> 20230404</li>
   </ul>
-  <p>Includes <a href="https://github.com/sighook/lwpp">Wi-Fi pentest
-  patches</a>.</p>
   <h3 data-number="3.2.2" id="toolchain"><span
   class="header-section-number">3.2.2</span> Toolchain</h3>
   <ul>
@@ -217,56 +221,57 @@
   <li><code>amdgpu</code> 23.0.0</li>
   <li><code>ati</code> 22.0.0</li>
   <li><code>intel</code> 2.99.917-916</li>
-  <li><code>nouveau</code> n/a</li>
+  <li><code>nouveau</code> <em>n/a</em></li>
   <li><code>vesa</code> 2.6.0</li>
   </ul>
   <h1 data-number="4" id="changelogs"><span
   class="header-section-number">4</span> Changelogs</h1>
-  <p>Full per-repository details:</p>
+  <p>Per-repository details:</p>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99">pkgsrc-core</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99"><code>pkgsrc-core</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99">pkgsrc-system</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99"><code>pkgsrc-system</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99">pkgsrc-xorg</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99"><code>pkgsrc-xorg</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99">pkgsrc-desktop</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99"><code>pkgsrc-desktop</code></a></li>
   </ul>
   <h1 data-number="5" id="download"><span
   class="header-section-number">5</span> Download</h1>
-  <p>Before downloading Zeppe-Lin, please read the <a
-  href="https://zeppe-lin.github.io/handbook.html">handbook</a> to be
-  sure your hardware is supported and you know how to install it.</p>
-  <p>The release files are available at:</p>
+  <p>Consult the <a href="handbook.html">Handbook</a> before
+  downloading. Ensure hardware support and installation familiarity.</p>
+  <h2 data-number="5.1" id="root-filesystem"><span
+  class="header-section-number">5.1</span> Root Filesystem</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz"><strong>Root
-  Filesystem Archive</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz"><code>rootfs-v0.99-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz.sig"><strong>Root
-  Filesystem Signature</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz.sig"><code>rootfs-v0.99-x86_64.tar.xz.sig</code></a></li>
   </ul>
-  <p>You might also want to check out:</p>
+  <h2 data-number="5.2" id="extras"><span
+  class="header-section-number">5.2</span> Extras</h2>
   <ul>
-  <li><a
-  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs</code></a>
-  (tool to build custom rootfs image)</li>
-  <li><a
-  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a>
-  (instructions to build docker image)</li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
+  Tool for building custom root filesystem images. Install on Zeppe-Lin
+  with:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
+  Instructions for building a Docker image.</p></li>
   </ul>
-  <h2 data-number="5.1" id="cover-artwork"><span
-  class="header-section-number">5.1</span> Cover Artwork</h2>
-  <p>The release cover for Zeppe-Lin v0.99:</p>
+  <h1 data-number="6" id="release-artwork"><span
+  class="header-section-number">6</span> Release Artwork</h1>
   <ul>
-  <li>Cover Image: <a
+  <li><strong>Image:</strong> <a
   href="https://github.com/zeppe-lin/artwork/blob/master/v0.99.png?raw=true">Direct
   Link</a></li>
-  <li>Artwork Concept: None.</li>
+  <li><strong>Concept:</strong> <em>None</em></li>
+  <li><strong>License:</strong> CC‑BY‑SA 3.0</li>
   </ul>
-  <p>The cover artwork is licensed under the Creative Commons
-  Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
   <hr />
   <p><em>sighook // Until the next entry… Zeppe-Lin awaits.</em></p>
 </main>

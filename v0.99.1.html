@@ -88,41 +88,59 @@
   Notes</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
   class="toc-section-number">1</span> Introduction</a></li>
-  <li><a href="#incompatible-changes"
-  id="toc-incompatible-changes"><span
-  class="toc-section-number">2</span> Incompatible Changes</a></li>
-  <li><a href="#new-features" id="toc-new-features"><span
-  class="toc-section-number">3</span> New Features</a>
+  <li><a href="#upgrade-compatibility"
+  id="toc-upgrade-compatibility"><span
+  class="toc-section-number">2</span> Upgrade &amp; Compatibility</a>
   <ul>
+  <li><a href="#pkgutils-footprint-file-changes"
+  id="toc-pkgutils-footprint-file-changes"><span
+  class="toc-section-number">2.1</span> pkgutils footprint file
+  changes</a></li>
+  <li><a href="#traceroute-conflicts-with-inetutils"
+  id="toc-traceroute-conflicts-with-inetutils"><span
+  class="toc-section-number">2.2</span> traceroute conflicts with
+  inetutils</a></li>
+  </ul></li>
+  <li><a href="#whats-new" id="toc-whats-new"><span
+  class="toc-section-number">3</span> What’s New</a>
+  <ul>
+  <li><a href="#notable-fixes" id="toc-notable-fixes"><span
+  class="toc-section-number">3.1</span> Notable Fixes</a></li>
   <li><a href="#package-changes" id="toc-package-changes"><span
-  class="toc-section-number">3.1</span> Package Changes</a>
+  class="toc-section-number">3.2</span> Package Changes</a>
   <ul>
   <li><a href="#pkgsrc-core" id="toc-pkgsrc-core"><span
-  class="toc-section-number">3.1.1</span> pkgsrc-core</a></li>
+  class="toc-section-number">3.2.1</span> pkgsrc-core</a></li>
   <li><a href="#pkgsrc-system" id="toc-pkgsrc-system"><span
-  class="toc-section-number">3.1.2</span> pkgsrc-system</a></li>
+  class="toc-section-number">3.2.2</span> pkgsrc-system</a></li>
   <li><a href="#pkgsrc-xorg" id="toc-pkgsrc-xorg"><span
-  class="toc-section-number">3.1.3</span> pkgsrc-xorg</a></li>
+  class="toc-section-number">3.2.3</span> pkgsrc-xorg</a></li>
   <li><a href="#pkgsrc-desktop" id="toc-pkgsrc-desktop"><span
-  class="toc-section-number">3.1.4</span> pkgsrc-desktop</a></li>
+  class="toc-section-number">3.2.4</span> pkgsrc-desktop</a></li>
   </ul></li>
   <li><a href="#system-components" id="toc-system-components"><span
-  class="toc-section-number">3.2</span> System Components</a>
+  class="toc-section-number">3.3</span> System Components</a>
   <ul>
   <li><a href="#kernel" id="toc-kernel"><span
-  class="toc-section-number">3.2.1</span> Kernel</a></li>
+  class="toc-section-number">3.3.1</span> Kernel</a></li>
   <li><a href="#toolchain" id="toc-toolchain"><span
-  class="toc-section-number">3.2.2</span> Toolchain</a></li>
+  class="toc-section-number">3.3.2</span> Toolchain</a></li>
   <li><a href="#x11" id="toc-x11"><span
-  class="toc-section-number">3.2.3</span> X11</a></li>
+  class="toc-section-number">3.3.3</span> X11</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#changelogs" id="toc-changelogs"><span
   class="toc-section-number">4</span> Changelogs</a></li>
   <li><a href="#download" id="toc-download"><span
-  class="toc-section-number">5</span> Download</a></li>
-  <li><a href="#cover-artwork" id="toc-cover-artwork"><span
-  class="toc-section-number">6</span> Cover Artwork</a></li>
+  class="toc-section-number">5</span> Download</a>
+  <ul>
+  <li><a href="#root-filesystem" id="toc-root-filesystem"><span
+  class="toc-section-number">5.1</span> Root Filesystem</a></li>
+  <li><a href="#extras" id="toc-extras"><span
+  class="toc-section-number">5.2</span> Extras</a></li>
+  </ul></li>
+  <li><a href="#release-artwork" id="toc-release-artwork"><span
+  class="toc-section-number">6</span> Release Artwork</a></li>
   </ul>
   </div>
 </nav>
@@ -132,7 +150,7 @@
   <h1 class="unnumbered"
   id="zeppe-lin-v0.99.1---release-notes">Zeppe-Lin v0.99.1 - Release
   Notes</h1>
-  <p>Released Dec 11, 2023. 2nd Zeppe-Lin Release.</p>
+  <p>Released December 11, 2023. 2nd Zeppe-Lin Release.</p>
   <figure>
   <img
   src="https://github.com/zeppe-lin/artwork/blob/master/v0.99.1.png?raw=true"
@@ -141,32 +159,38 @@
   </figure>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> Introduction</h1>
-  <p>The Zeppe-Lin project is happy to announce the second stable
-  release v0.99.1! It represents a selected subset of fixes and updates
-  for <a href="relnotes-v0.99.html">v0.99</a> and has one small (and not
-  painful) breaking compatibility change.</p>
-  <h1 data-number="2" id="incompatible-changes"><span
-  class="header-section-number">2</span> Incompatible Changes</h1>
-  <ul>
-  <li><p><strong>pkgutils Footprint File Changes</strong><br />
-  During performance optimizations for <code>pkgutils</code>, the
-  generation and sorting order of footprint files has been changed. This
-  may break system updates via <code>pkgman-sysup(8)</code>. To avoid
-  this, perform a forced upgrade of <code>pkgutils</code> and
-  <code>pkgmk</code> before running a system upgrade:</p>
+  <p>Zeppe-Lin v0.99.1 is a maintenance release. It provides selected
+  fixes and updates for <a href="v0.99.html">v0.99</a> and introduces
+  two compatibility changes.</p>
+  <h1 data-number="2" id="upgrade-compatibility"><span
+  class="header-section-number">2</span> Upgrade &amp;
+  Compatibility</h1>
+  <h2 data-number="2.1" id="pkgutils-footprint-file-changes"><span
+  class="header-section-number">2.1</span> pkgutils footprint file
+  changes</h2>
+  <p>Performance optimizations in <code>pkgutils</code> altered the
+  generation and sorting order of <code>.footprint</code> files. This
+  may affect system updates via <code>pkgman-sysup(8)</code>. Perform a
+  forced upgrade of <code>pkgutils</code> and <code>pkgmk</code> before
+  running a system upgrade:</p>
   <div class="sourceCode" id="cb1"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-f</span> pkgmk pkgutils <span class="kw">&amp;&amp;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rejmerge</span></span></code></pre></div></li>
-  <li><p><strong>New traceroute conflicts with inetutils</strong><br />
-  New package <code>traceroute</code>, introduced to replace buggy
-  <code>traceroute(8)</code> utility provided by <code>inetutils</code>.
-  Make sure you update <code>inetutils</code> before you install
-  <code>traceroute</code>.</p></li>
-  </ul>
-  <h1 data-number="3" id="new-features"><span
-  class="header-section-number">3</span> New Features</h1>
-  <p>Mostly fix:</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-f</span> <span class="at">--deps</span> <span class="at">--depsort</span> pkgmk pkgutils <span class="kw">&amp;&amp;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rejmerge</span></span></code></pre></div>
+  <h2 data-number="2.2" id="traceroute-conflicts-with-inetutils"><span
+  class="header-section-number">2.2</span> traceroute conflicts with
+  inetutils</h2>
+  <p>A new <code>traceroute</code> package replaces the buggy
+  <code>traceroute(8)</code> from <code>inetutils</code>. Update
+  <code>inetutils</code> before installing <code>traceroute</code>:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">--deps</span> <span class="at">--depsort</span> inetutils</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> traceroute</span></code></pre></div>
+  <h1 data-number="3" id="whats-new"><span
+  class="header-section-number">3</span> What’s New</h1>
+  <h2 data-number="3.1" id="notable-fixes"><span
+  class="header-section-number">3.1</span> Notable Fixes</h2>
   <ul>
   <li><code>pkgsrc-system/ntfs-3g</code><br />
   Added <code>fsck.ntfs</code>, a wrapper script around
@@ -174,11 +198,11 @@
   from <code>/etc/rc</code>’s <code>fsck(8)</code>. Also added
   <code>fsck.ntfs(8)</code> manual page.</li>
   </ul>
-  <h2 data-number="3.1" id="package-changes"><span
-  class="header-section-number">3.1</span> Package Changes</h2>
+  <h2 data-number="3.2" id="package-changes"><span
+  class="header-section-number">3.2</span> Package Changes</h2>
   <!-- generated by ./gen_release_pkgchanges.sh v0.99.1 -->
-  <h3 data-number="3.1.1" id="pkgsrc-core"><span
-  class="header-section-number">3.1.1</span> pkgsrc-core</h3>
+  <h3 data-number="3.2.1" id="pkgsrc-core"><span
+  class="header-section-number">3.2.1</span> pkgsrc-core</h3>
   <ul>
   <li>New: <code>seedrng</code> <code>traceroute</code></li>
   <li>Removed: <code>capstone</code></li>
@@ -187,16 +211,16 @@
   <li><code>capstone</code> moved to <code>pkgsrc-system</code></li>
   <li><code>/etc/pkgadd.conf</code> updated to silently upgrade
   <code>/etc/revdep.d</code> files</li>
-  <li><code>rejmerge(8)</code> now allows redefining <code>PAGER</code>
-  and <code>EDITOR</code> from command-line</li>
-  <li>small fixes and cleanups for <code>sysklogd</code>’s
+  <li><code>rejmerge(8)</code> allows redefining <code>PAGER</code> and
+  <code>EDITOR</code> from command-line</li>
+  <li>fixes and cleanups for <code>sysklogd</code>’s
   <code>rotatelog</code></li>
-  <li>added <code>rotatelog(8)</code> man page to
-  <code>sysklogd</code></li>
+  <li>added <code>rotatelog(8)</code> manual page to
+  <code>sysklogd</code> package source</li>
   </ul></li>
   </ul>
-  <h3 data-number="3.1.2" id="pkgsrc-system"><span
-  class="header-section-number">3.1.2</span> pkgsrc-system</h3>
+  <h3 data-number="3.2.2" id="pkgsrc-system"><span
+  class="header-section-number">3.2.2</span> pkgsrc-system</h3>
   <ul>
   <li>New: <code>alsa-ucm-conf</code> <code>capstone</code>
   <code>rdfind</code></li>
@@ -207,18 +231,19 @@
   <li><code>capstone</code> imported from the
   <code>pkgsrc-core</code></li>
   <li><code>ntfs-3g</code>: added <code>fsck.ntfs</code> (wrapper for
-  <code>ntfsfix(8)</code>) and <code>fsck.ntfs(8)</code> man page</li>
-  <li><code>lm-sensors</code>: configurations moved from
-  <code>/usr/etc</code> to <code>/etc</code></li>
+  <code>ntfsfix(8)</code>) and <code>fsck.ntfs(8)</code> manual
+  page</li>
+  <li><code>lm-sensors</code>: configs moved from <code>/usr/etc</code>
+  to <code>/etc</code></li>
   <li><code>freetype</code>: no longer pollutes
   <code>/etc/profile.d</code></li>
-  <li><code>p11-kit</code>: added <code>update-ca-trust(1)</code> man
+  <li><code>p11-kit</code>: added <code>update-ca-trust(1)</code> manual
   page</li>
   <li><code>rdfind</code> required by <code>linux-firmware</code></li>
   </ul></li>
   </ul>
-  <h3 data-number="3.1.3" id="pkgsrc-xorg"><span
-  class="header-section-number">3.1.3</span> pkgsrc-xorg</h3>
+  <h3 data-number="3.2.3" id="pkgsrc-xorg"><span
+  class="header-section-number">3.2.3</span> pkgsrc-xorg</h3>
   <ul>
   <li>New: <code>gxmessage</code> <code>ttf-font-jetbrains-mono</code>
   <code>ttf-font-jetbrains-mono-nerd</code> <code>vulkan-headers</code>
@@ -233,8 +258,8 @@
   support.</li>
   </ul></li>
   </ul>
-  <h3 data-number="3.1.4" id="pkgsrc-desktop"><span
-  class="header-section-number">3.1.4</span> pkgsrc-desktop</h3>
+  <h3 data-number="3.2.4" id="pkgsrc-desktop"><span
+  class="header-section-number">3.2.4</span> pkgsrc-desktop</h3>
   <ul>
   <li>New: <code>alsa-firmware</code> <code>alsa-plugins</code>
   <code>broodwar-cursor-theme</code> <code>firefox-darkreader-bin</code>
@@ -247,26 +272,26 @@
   <li><code>json-glib</code> required by <code>zathura</code></li>
   </ul></li>
   </ul>
-  <h2 data-number="3.2" id="system-components"><span
-  class="header-section-number">3.2</span> System Components</h2>
+  <h2 data-number="3.3" id="system-components"><span
+  class="header-section-number">3.3</span> System Components</h2>
   <!-- generated via ./generate_syscomps.sh v0.99.1 -->
-  <h3 data-number="3.2.1" id="kernel"><span
-  class="header-section-number">3.2.1</span> Kernel</h3>
+  <h3 data-number="3.3.1" id="kernel"><span
+  class="header-section-number">3.3.1</span> Kernel</h3>
   <ul>
-  <li><code>linux</code> 5.4.256</li>
+  <li><code>linux</code> 5.4.256 (with sighook’s <a
+  href="https://github.com/sighook/lwpp"><code>lwpp</code></a>
+  patches)</li>
   <li><code>linux-firmware</code> 20231111</li>
   </ul>
-  <p>Included <a href="https://github.com/sighook/lwpp">Wi-Fi pentest
-  patches</a>.</p>
-  <h3 data-number="3.2.2" id="toolchain"><span
-  class="header-section-number">3.2.2</span> Toolchain</h3>
+  <h3 data-number="3.3.2" id="toolchain"><span
+  class="header-section-number">3.3.2</span> Toolchain</h3>
   <ul>
   <li><code>glibc</code> 2.36-7</li>
   <li><code>gcc</code> 12.3.0</li>
   <li><code>binutils</code> 2.39</li>
   </ul>
-  <h3 data-number="3.2.3" id="x11"><span
-  class="header-section-number">3.2.3</span> X11</h3>
+  <h3 data-number="3.3.3" id="x11"><span
+  class="header-section-number">3.3.3</span> X11</h3>
   <ul>
   <li><code>Xorg</code> 7.7</li>
   <li><code>xorg-server</code> 21.1.9</li>
@@ -279,51 +304,52 @@
   </ul>
   <h1 data-number="4" id="changelogs"><span
   class="header-section-number">4</span> Changelogs</h1>
-  <p>Full per-repository details:</p>
+  <p>Per-repository details:</p>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99.1">pkgsrc-core</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v0.99.1"><code>pkgsrc-core</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99.1">pkgsrc-system</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v0.99.1"><code>pkgsrc-system</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99.1">pkgsrc-xorg</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v0.99.1"><code>pkgsrc-xorg</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99.1">pkgsrc-desktop</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v0.99.1"><code>pkgsrc-desktop</code></a></li>
   </ul>
   <h1 data-number="5" id="download"><span
   class="header-section-number">5</span> Download</h1>
-  <p>Before downloading Zeppe-Lin, please read the <a
-  href="https://zeppe-lin.github.io/handbook.html">handbook</a> to be
-  sure your hardware is supported and you know how to install it.</p>
-  <p>The release files are available at:</p>
+  <p>Consult the <a href="handbook.html">Handbook</a> before
+  downloading. Ensure hardware support and installation familiarity.</p>
+  <h2 data-number="5.1" id="root-filesystem"><span
+  class="header-section-number">5.1</span> Root Filesystem</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz"><strong>Root
-  Filesystem Archive</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz"><code>rootfs-v0.99.1-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz.sig"><strong>Root
-  Filesystem Signature</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz.sig"><code>rootfs-v0.99.1-x86_64.tar.xz.sig</code></a></li>
   </ul>
-  <p>You might also want to check out:</p>
+  <h2 data-number="5.2" id="extras"><span
+  class="header-section-number">5.2</span> Extras</h2>
   <ul>
-  <li><a
-  href="https://github.com/zeppe-lin/mkrootfs%3E"><code>mkrootfs</code></a>
-  (tool to build custom rootfs image)</li>
-  <li><a
-  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a>
-  (instructions to build docker image)</li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
+  Tool for building custom root filesystem images.<br />
+  Install on Zeppe-Lin with:</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
+  Instructions for building a Docker image.</p></li>
   </ul>
-  <h1 data-number="6" id="cover-artwork"><span
-  class="header-section-number">6</span> Cover Artwork</h1>
-  <p>The release cover for Zeppe-Lin v0.99.1:</p>
+  <h1 data-number="6" id="release-artwork"><span
+  class="header-section-number">6</span> Release Artwork</h1>
   <ul>
-  <li>Cover Image: <a
+  <li>Image: <a
   href="https://github.com/zeppe-lin/artwork/blob/master/v0.99.1.png?raw=true">Direct
   Link</a></li>
-  <li>Artwork Concept: None</li>
+  <li>Concept: <em>None</em></li>
+  <li>License: CC-BY-SA 3.0</li>
   </ul>
-  <p>The cover artwork is licensed under the Creative Commons
-  Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
   <hr />
   <p><em>sighook // Until the next entry… Zeppe-Lin awaits.</em></p>
 </main>

@@ -6,6 +6,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
 <!--
+    <style type="text/css">
+  html { -webkit-text-size-adjust: 100%; }
+  pre > code.sourceCode { white-space: pre; position: relative; }
+  pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+  pre > code.sourceCode > span:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode > span { color: inherit; text-decoration: inherit; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  pre > code.sourceCode { white-space: pre-wrap; }
+  pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+  }
+  pre.numberSource code
+    { counter-reset: source-line 0; }
+  pre.numberSource code > span
+    { position: relative; left: -4em; counter-increment: source-line; }
+  pre.numberSource code > span > a:first-child::before
+    { content: counter(source-line);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+    }
+  pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+  div.sourceCode
+    { color: #cccccc; background-color: #303030; }
+  @media screen {
+  pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+  }
+  code span.al { color: #ffcfaf; } /* Alert */
+  code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+  code span.at { } /* Attribute */
+  code span.bn { color: #dca3a3; } /* BaseN */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #f0dfaf; } /* ControlFlow */
+  code span.ch { color: #dca3a3; } /* Char */
+  code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+  code span.co { color: #7f9f7f; } /* Comment */
+  code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+  code span.do { color: #7f9f7f; } /* Documentation */
+  code span.dt { color: #dfdfbf; } /* DataType */
+  code span.dv { color: #dcdccc; } /* DecVal */
+  code span.er { color: #c3bf9f; } /* Error */
+  code span.ex { } /* Extension */
+  code span.fl { color: #c0bed1; } /* Float */
+  code span.fu { color: #efef8f; } /* Function */
+  code span.im { } /* Import */
+  code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+  code span.kw { color: #f0dfaf; } /* Keyword */
+  code span.op { color: #f0efd0; } /* Operator */
+  code span.ot { color: #efef8f; } /* Other */
+  code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+  code span.sc { color: #dca3a3; } /* SpecialChar */
+  code span.ss { color: #cc9393; } /* SpecialString */
+  code span.st { color: #cc9393; } /* String */
+  code span.va { } /* Variable */
+  code span.vs { color: #cc9393; } /* VerbatimString */
+  code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
   -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="tango.css"
@@ -103,13 +168,11 @@
   </blockquote>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> Introduction</h1>
-  <p>Zeppe-Lin 1.1 is a refinement release. We are not reinventing the
-  wheel; we are ensuring the spokes are made of the right material. This
-  iteration focuses on toolchain integrity, specifically enforcing the
-  transition to the <strong>Kernel 6.1 API</strong>.</p>
-  <p>The goal remains the same: a system that is understandable because
-  nothing is hidden.</p>
-  <p>If you are upgrading from v1.0, check the <a href="v1.0.html">v1.0
+  <p>Zeppe-Lin v1.1 is a refinement release. This iteration enforces the
+  transition to the <strong>Kernel 6.1 API</strong> and focuses on
+  toolchain integrity. The goal remains: a system that is understandable
+  because nothing is hidden.</p>
+  <p>If upgrading from v1.0, consult the <a href="v1.0.html">v1.0
   release notes</a> for transitional guidance.</p>
   <h1 data-number="2" id="upgrade-compatibility"><span
   class="header-section-number">2</span> Upgrade &amp;
@@ -292,42 +355,48 @@
   </ul>
   <h1 data-number="5" id="download"><span
   class="header-section-number">5</span> Download</h1>
-  <p>Before installing, review the <a href="handbook.html">Handbook</a>
-  for setup notes and compatibility guidance.</p>
+  <p>Consult the <a href="handbook.html">Handbook</a> before
+  downloading. Ensure hardware support and installation familiarity.</p>
   <h2 data-number="5.1" id="root-filesystem"><span
   class="header-section-number">5.1</span> Root Filesystem</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz">rootfs-v1.1-x86_64.tar.xz</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz"><code>rootfs-v1.1-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz.sig">rootfs-v1.1-x86_64.tar.xz.sig</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz.sig"><code>rootfs-v1.1-x86_64.tar.xz.sig</code></a></li>
   </ul>
   <h2 data-number="5.2" id="binary-packages"><span
   class="header-section-number">5.2</span> Binary Packages</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz">binpkgs-v1.1-x86_64.tar.xz</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz"><code>binpkgs-v1.1-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz.sig">binpkgs-v1.1-x86_64.tar.xz.sig</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz.sig"><code>binpkgs-v1.1-x86_64.tar.xz.sig</code></a></li>
   </ul>
   <h2 data-number="5.3" id="extras"><span
   class="header-section-number">5.3</span> Extras</h2>
   <ul>
-  <li><a href="https://github.com/zeppe-lin/mkrootfs">mkrootfs</a></li>
-  <li><a
-  href="https://github.com/zeppe-lin/dockerfile">dockerfile</a></li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
+  Tool for building custom root filesystem images.<br />
+  Install on Zeppe-Lin with:</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
+  Instructions for building a Docker image.</p></li>
   </ul>
   <h1 data-number="6" id="release-artwork"><span
   class="header-section-number">6</span> Release Artwork</h1>
   <ul>
-  <li><p><strong>Image</strong>: <a
-  href="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true">v1.1
-  Cover Art</a></p></li>
-  <li><p><strong>Concept</strong>: The art depicts Stine Luft Satomi in
+  <li><p><strong>Image:</strong> <a
+  href="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true">Direct
+  Link</a></p></li>
+  <li><p><strong>Concept:</strong> The art depicts Stine Luft Satomi in
   her underground lair, visually echoing the quiet, focused, and
   intentional energy behind this release.</p></li>
-  <li><p><strong>License</strong>: Creative Commons
-  Attribution-ShareAlike 3.0 Unported (CC-BY-SA 3.0)</p></li>
+  <li><p><strong>License:</strong> CC-BY-SA 3.0</p></li>
   </ul>
   <h1 data-number="7" id="acknowledgments"><span
   class="header-section-number">7</span> Acknowledgments</h1>

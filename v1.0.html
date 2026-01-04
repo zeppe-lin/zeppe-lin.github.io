@@ -88,41 +88,93 @@
   Notes</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
   class="toc-section-number">1</span> Introduction</a></li>
-  <li><a href="#incompatible-changes"
-  id="toc-incompatible-changes"><span
-  class="toc-section-number">2</span> Incompatible Changes</a></li>
-  <li><a href="#new-features" id="toc-new-features"><span
-  class="toc-section-number">3</span> New Features</a>
+  <li><a href="#upgrade-compatibility"
+  id="toc-upgrade-compatibility"><span
+  class="toc-section-number">2</span> Upgrade &amp; Compatibility</a>
   <ul>
+  <li><a href="#kernel-ring-buffer-logging"
+  id="toc-kernel-ring-buffer-logging"><span
+  class="toc-section-number">2.1</span> Kernel Ring Buffer
+  Logging</a></li>
+  <li><a href="#libcrypt-transition" id="toc-libcrypt-transition"><span
+  class="toc-section-number">2.2</span> libcrypt Transition</a></li>
+  <li><a href="#c99-split-from-gcc" id="toc-c99-split-from-gcc"><span
+  class="toc-section-number">2.3</span> c99 Split from gcc</a></li>
+  </ul></li>
+  <li><a href="#whats-new" id="toc-whats-new"><span
+  class="toc-section-number">3</span> What’s New</a>
+  <ul>
+  <li><a href="#binary-package-support"
+  id="toc-binary-package-support"><span
+  class="toc-section-number">3.1</span> Binary Package Support</a></li>
+  <li><a href="#extended-attributes-and-capabilities-support"
+  id="toc-extended-attributes-and-capabilities-support"><span
+  class="toc-section-number">3.2</span> Extended Attributes and
+  Capabilities Support</a></li>
+  <li><a href="#standard-c-compiler-wrappers"
+  id="toc-standard-c-compiler-wrappers"><span
+  class="toc-section-number">3.3</span> Standard C Compiler
+  Wrappers</a></li>
+  <li><a href="#dumb_runtime_dir-pam-module"
+  id="toc-dumb_runtime_dir-pam-module"><span
+  class="toc-section-number">3.4</span> dumb_runtime_dir PAM
+  Module</a></li>
+  <li><a href="#additional-pkgsrc-collections"
+  id="toc-additional-pkgsrc-collections"><span
+  class="toc-section-number">3.5</span> Additional Pkgsrc
+  Collections</a></li>
+  <li><a href="#markdown-readme-support"
+  id="toc-markdown-readme-support"><span
+  class="toc-section-number">3.6</span> Markdown README Support</a></li>
+  <li><a href="#configurable-device-manager"
+  id="toc-configurable-device-manager"><span
+  class="toc-section-number">3.7</span> Configurable Device
+  Manager</a></li>
+  <li><a href="#configurable-boot-logging"
+  id="toc-configurable-boot-logging"><span
+  class="toc-section-number">3.8</span> Configurable Boot
+  Logging</a></li>
+  <li><a href="#editor-and-shell-enhancements"
+  id="toc-editor-and-shell-enhancements"><span
+  class="toc-section-number">3.9</span> Editor and Shell
+  Enhancements</a></li>
   <li><a href="#package-changes" id="toc-package-changes"><span
-  class="toc-section-number">3.1</span> Package Changes</a>
+  class="toc-section-number">3.10</span> Package Changes</a>
   <ul>
   <li><a href="#pkgsrc-core" id="toc-pkgsrc-core"><span
-  class="toc-section-number">3.1.1</span> pkgsrc-core</a></li>
+  class="toc-section-number">3.10.1</span> pkgsrc-core</a></li>
   <li><a href="#pkgsrc-system" id="toc-pkgsrc-system"><span
-  class="toc-section-number">3.1.2</span> pkgsrc-system</a></li>
+  class="toc-section-number">3.10.2</span> pkgsrc-system</a></li>
   <li><a href="#pkgsrc-xorg" id="toc-pkgsrc-xorg"><span
-  class="toc-section-number">3.1.3</span> pkgsrc-xorg</a></li>
+  class="toc-section-number">3.10.3</span> pkgsrc-xorg</a></li>
   <li><a href="#pkgsrc-desktop" id="toc-pkgsrc-desktop"><span
-  class="toc-section-number">3.1.4</span> pkgsrc-desktop</a></li>
+  class="toc-section-number">3.10.4</span> pkgsrc-desktop</a></li>
   </ul></li>
   <li><a href="#system-components" id="toc-system-components"><span
-  class="toc-section-number">3.2</span> System Components</a>
+  class="toc-section-number">3.11</span> System Components</a>
   <ul>
   <li><a href="#kernel" id="toc-kernel"><span
-  class="toc-section-number">3.2.1</span> Kernel</a></li>
+  class="toc-section-number">3.11.1</span> Kernel</a></li>
   <li><a href="#toolchain" id="toc-toolchain"><span
-  class="toc-section-number">3.2.2</span> Toolchain</a></li>
+  class="toc-section-number">3.11.2</span> Toolchain</a></li>
   <li><a href="#x11" id="toc-x11"><span
-  class="toc-section-number">3.2.3</span> X11</a></li>
+  class="toc-section-number">3.11.3</span> X11</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#changelogs" id="toc-changelogs"><span
   class="toc-section-number">4</span> Changelogs</a></li>
   <li><a href="#download" id="toc-download"><span
-  class="toc-section-number">5</span> Download</a></li>
-  <li><a href="#cover-artwork" id="toc-cover-artwork"><span
-  class="toc-section-number">6</span> Cover Artwork</a></li>
+  class="toc-section-number">5</span> Download</a>
+  <ul>
+  <li><a href="#root-filesystem" id="toc-root-filesystem"><span
+  class="toc-section-number">5.1</span> Root Filesystem</a></li>
+  <li><a href="#binary-packages" id="toc-binary-packages"><span
+  class="toc-section-number">5.2</span> Binary Packages</a></li>
+  <li><a href="#extras" id="toc-extras"><span
+  class="toc-section-number">5.3</span> Extras</a></li>
+  </ul></li>
+  <li><a href="#release-artwork" id="toc-release-artwork"><span
+  class="toc-section-number">6</span> Release Artwork</a></li>
   </ul>
   </div>
 </nav>
@@ -141,98 +193,133 @@
   </figure>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> Introduction</h1>
-  <p>The arrival of Zeppe-Lin v1.0 – The Maiden Voyage – marks a major
-  milestone as our first stable major release. This version embodies the
-  resilience and hard work invested in developing essential system
-  tools, marking the start of a promising future for Zeppe-Lin. Through
-  research and refinement, we’ve emerged stronger, and our cover art
-  visually encapsulates this spirit of enduring flight.</p>
-  <p>If you’re upgrading from an earlier release (for example, v0.99),
-  please review the transitional notes in <a
-  href="relnotes-v0.99.1.html">v0.99.1</a>.</p>
-  <h1 data-number="2" id="incompatible-changes"><span
-  class="header-section-number">2</span> Incompatible Changes</h1>
+  <p>Zeppe-Lin v1.0 — The Maiden Voyage — marks the first stable major
+  release of the project.</p>
+  <p>This release consolidates the work done throughout the 0.9x series
+  into a coherent, usable base system. Core tooling is complete, system
+  behavior is predictable, and the distribution is ready for sustained
+  use and further development.</p>
+  <p>The accompanying artwork reflects this moment: a machine designed
+  to endure, finally airborne.</p>
+  <p>If you are upgrading from an earlier release (for example v0.99),
+  review the transitional notes in <a href="v0.99.1.html">v0.99.1</a>
+  before proceeding.</p>
+  <h1 data-number="2" id="upgrade-compatibility"><span
+  class="header-section-number">2</span> Upgrade &amp;
+  Compatibility</h1>
+  <p>This release introduces several structural changes that may affect
+  existing systems.</p>
+  <h2 data-number="2.1" id="kernel-ring-buffer-logging"><span
+  class="header-section-number">2.1</span> Kernel Ring Buffer
+  Logging</h2>
+  <p>The <code>/etc/rc</code> script now saves the kernel ring buffer to
+  <code>/var/log/dmesg</code> instead of <code>/var/log/boot</code>.</p>
+  <p>This change is required for the new <code>bootlogd(8)</code>
+  integration. Update any local scripts that rely on the old path.</p>
+  <h2 data-number="2.2" id="libcrypt-transition"><span
+  class="header-section-number">2.2</span> libcrypt Transition</h2>
+  <p><code>glibc</code> no longer provides <code>libcrypt</code>. It has
+  been replaced by <code>libxcrypt</code>.</p>
+  <p>Upgrade <code>glibc</code> before installing <code>libxcrypt</code>
+  to avoid file conflicts.</p>
+  <h2 data-number="2.3" id="c99-split-from-gcc"><span
+  class="header-section-number">2.3</span> c99 Split from gcc</h2>
+  <p>The <code>c99</code> wrapper is now shipped as a separate
+  package.</p>
+  <p>Upgrade <code>gcc</code> first, then install <code>c99</code>.</p>
+  <h1 data-number="3" id="whats-new"><span
+  class="header-section-number">3</span> What’s New</h1>
+  <h2 data-number="3.1" id="binary-package-support"><span
+  class="header-section-number">3.1</span> Binary Package Support</h2>
+  <p>Zeppe-Lin v1.0 introduces prebuilt binary packages for
+  <code>pkgsrc-core</code> alongside <code>rootfs</code>.</p>
+  <p>These packages simplify upgrades and reduce build time when needed
+  to upgrade to new release. They can be installed using
+  <code>pkgadd(8)</code>.</p>
+  <p>See <a href="#binary-packages">Binary Packages</a> for download
+  links.</p>
+  <h2 data-number="3.2"
+  id="extended-attributes-and-capabilities-support"><span
+  class="header-section-number">3.2</span> Extended Attributes and
+  Capabilities Support</h2>
+  <p><code>pkgutils</code> and <code>pkgmk</code> can now handle
+  extended attributes (<code>xattr(7)</code> and
+  <code>acl(5)</code>).</p>
+  <p>Zeppe-Lin enables <strong>only</strong> <code>xattr(7)</code> by
+  default and uses <code>pax</code> as the archive format for the
+  packages. This allows Linux capabilities to be set correctly for
+  programs such as <code>ping(8)</code> during packaging, without
+  post-install scripts or full root privileges.</p>
+  <p>See <code>pkgmk(8)</code> and <code>pkgadd(8)</code> for
+  details.</p>
+  <h2 data-number="3.3" id="standard-c-compiler-wrappers"><span
+  class="header-section-number">3.3</span> Standard C Compiler
+  Wrappers</h2>
+  <p>The standard compiler wrappers <code>c89</code>, <code>c99</code>,
+  and <code>c17</code> are now shipped as separate packages.</p>
+  <p>This improves standards compliance and makes toolchain behavior
+  more explicit. Manual pages are provided (courtesy of <a
+  href="https://netbsd.org/">NetBSD</a>).</p>
+  <h2 data-number="3.4" id="dumb_runtime_dir-pam-module"><span
+  class="header-section-number">3.4</span> dumb_runtime_dir PAM
+  Module</h2>
+  <p>Zeppe-Lin now uses the <code>dumb-runtime-dir</code> PAM module by
+  default to manage <code>XDG_RUNTIME_DIR</code>.</p>
+  <p>This improves runtime directory handling for desktop and
+  session-based applications.</p>
+  <p>See <code>pam_dumb_runtime_dir(8)</code> for details.</p>
+  <h2 data-number="3.5" id="additional-pkgsrc-collections"><span
+  class="header-section-number">3.5</span> Additional Pkgsrc
+  Collections</h2>
+  <p>Two unofficial pkgsrc collections are now available:</p>
   <ul>
-  <li><p><strong>Kernel Ring Buffer Logging</strong><br />
-  The <code>/etc/rc</code> script now saves the kernel ring buffer to
-  <code>/var/log/dmesg</code> (instead of <code>/var/log/boot</code>)
-  for the new <code>bootlogd(8)</code> functionality.<br />
-  Update scripts using the old path (<em>if any</em>).</p></li>
-  <li><p><strong>Glibc’s libcrypt replaced by libxcrypt</strong><br />
-  Update <code>glibc</code> before installing <code>libxcrypt</code> to
-  avoid file conflicts.</p></li>
-  <li><p><strong>c99 Now Separate Package: Install After
-  gcc</strong><br />
-  Update <code>gcc</code> first, then install <code>c99</code> to avoid
-  file conflicts.</p></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-games"><code>pkgsrc-games</code></a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-wmaker"><code>pkgsrc-wmaker</code></a></li>
   </ul>
-  <h1 data-number="3" id="new-features"><span
-  class="header-section-number">3</span> New Features</h1>
-  <ul>
-  <li><p><strong>Binary Package Support</strong><br />
-  Zeppe-Lin v1.0 now offers pre-built binary packages for
-  <code>pkgsrc-core</code>. This significantly simplifies the upgrade
-  process and reduces the risk of issues associated with building from
-  source. Install them using <code>pkgadd(1)</code>. See the <a
-  href="#download">Download</a> section for the archive.</p></li>
-  <li><p><strong>PAX &amp; CAPS in pkgutils</strong><br />
-  <code>pkgutils</code> and <code>pkgmk</code> have been updated to
-  optionally handle ACLs (<code>acl(5)</code>) and extended attributes
-  (<code>xattr(7)</code>). This enhancement allows for more fine-grained
-  control over file permissions.</p>
-  <p>Zeppe-Lin enables <strong>only</strong> <code>xattr(7)</code> in
-  <code>pkgutils</code>’ <code>Pkgfile</code>, with <code>pkgmk</code>
-  using <code>pax</code> as the default archive format. This allows
-  setting specific permissions (Linux capabilities) for programs like
-  <code>ping(8)</code> without needing full root privileges or extra
-  installation steps (like <code>post-install</code> scripts with
-  <code>setcap</code>). See <code>pkgmk(8)</code> and
-  <code>pkgadd(8)</code> for details.</p></li>
-  <li><p><strong>Standard C Compilers as Separate
-  Packages</strong><br />
-  New shell wrappers like <code>c89</code>, <code>c99</code>, and
-  <code>c17</code> are now separate packages for standard C compilers.
-  Previously, <code>c99</code> was part of <code>gcc</code>. This
-  improves system development standards. Check their man pages for
-  details (thanks to NetBSD for them).</p></li>
-  <li><p><strong><code>dumb_runtime_dir</code> PAM Module</strong><br />
-  Zeppe-Lin v1.0 now uses the <code>dumb-runtime-dir</code> PAM module
-  by default to manage <code>XDG_RUNTIME_DIR</code>, improving how
-  user-specific runtime directories are handled for desktop
-  applications. See <code>pam_dumb_runtime_dir(8)</code> for
-  details.</p></li>
-  <li><p><strong>Additional Package Sources Collections</strong><br />
-  New unofficial collections: <code>pkgsrc-games</code> and
-  <code>pkgsrc-wmaker</code>.</p></li>
-  <li><p><strong>Markdown Package READMEs</strong><br />
-  <code>pkgman</code> now supports Markdown (<code>.md</code>) for
-  package READMEs, in addition to plain text. All READMEs have been
-  converted to Markdown for improved formatting and readability.
-  Try:</p>
+  <h2 data-number="3.6" id="markdown-readme-support"><span
+  class="header-section-number">3.6</span> Markdown README Support</h2>
+  <p><code>pkgman</code> now supports Markdown (<code>.md</code>) README
+  files.</p>
+  <p>All package READMEs have been converted to Markdown for improved
+  readability.</p>
+  <p>Example:</p>
   <div class="sourceCode" id="cb1"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">PAGER</span><span class="op">=</span><span class="st">&#39;&lt;markdown_viewer&gt;&#39;</span> <span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div></li>
-  <li><p><strong>Flexible Init with Device Manager Choice</strong><br />
-  The <code>DEVMGR</code> variable in <code>/etc/rc.conf</code> now
-  allows you to select your preferred device manager. <code>udevd</code>
-  remains the default if no choice is made. See <code>rc.conf(5)</code>
-  for details.</p></li>
-  <li><p><strong>Boot Logging with bootlogd</strong><br />
-  Zeppe-Lin v1.0 now includes <code>/etc/rc.d/bootlogd</code> for boot
-  logging (provided by <code>sysvinit</code>). To enable it, set
-  <code>BOOTLOGD=yes</code> in <code>/etc/rc.conf</code>. Boot messages
-  will be saved to <code>/var/log/boot</code>. See
-  <code>rc.conf(5)</code> and <code>bootlogd(8)</code> for
-  details.</p></li>
-  <li><p><strong>Vim Syntax Files and Bash Completion</strong><br />
-  Vim now highlights syntax in <code>/etc/pkgadd.conf</code> and
-  <code>/etc/pkgman.conf</code>. Bash completion has also been added for
-  Zeppe-Lin command-line tools, enhancing terminal usability.</p></li>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">PAGER</span><span class="op">=</span><span class="st">&#39;&lt;markdown_viewer&gt;&#39;</span> <span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div>
+  <h2 data-number="3.7" id="configurable-device-manager"><span
+  class="header-section-number">3.7</span> Configurable Device
+  Manager</h2>
+  <p>The <code>DEVMGR</code> variable in <code>/etc/rc.conf</code>
+  allows selecting a device manager.</p>
+  <p>If unset, <code>udevd</code> remains the default.</p>
+  <p>See <code>rc.conf(5)</code> for details.</p>
+  <h2 data-number="3.8" id="configurable-boot-logging"><span
+  class="header-section-number">3.8</span> Configurable Boot
+  Logging</h2>
+  <p>The <code>BOOTLOG</code> variable in <code>/etc/rc.conf</code>
+  allows selecting a boot logger.</p>
+  <p>If unset, <code>bootlogd(8)</code> is default.</p>
+  <p><code>sysvinit</code> package provides
+  <code>/etc/rc.d/bootlogd</code>. Boot logs are written to
+  <code>/var/log/boot</code>.</p>
+  <p>See <code>rc.conf(5)</code> and <code>bootlogd(8)</code> for
+  details.</p>
+  <h2 data-number="3.9" id="editor-and-shell-enhancements"><span
+  class="header-section-number">3.9</span> Editor and Shell
+  Enhancements</h2>
+  <p>Vim syntax highlighting has been added for:</p>
+  <ul>
+  <li><code>/etc/pkgadd.conf</code></li>
+  <li><code>/etc/pkgman.conf</code></li>
   </ul>
-  <h2 data-number="3.1" id="package-changes"><span
-  class="header-section-number">3.1</span> Package Changes</h2>
+  <p>Bash completion is now available for Zeppe-Lin command-line
+  tools.</p>
+  <h2 data-number="3.10" id="package-changes"><span
+  class="header-section-number">3.10</span> Package Changes</h2>
   <!-- generated by ./gen_release_pkgchanges.sh v1.0 -->
-  <h3 data-number="3.1.1" id="pkgsrc-core"><span
-  class="header-section-number">3.1.1</span> pkgsrc-core</h3>
+  <h3 data-number="3.10.1" id="pkgsrc-core"><span
+  class="header-section-number">3.10.1</span> pkgsrc-core</h3>
   <ul>
   <li>New: <code>c17</code> <code>c89</code> <code>c99</code>
   <code>dumb-runtime-dir</code> <code>libidn2</code>
@@ -249,14 +336,13 @@
   (needed by <code>cmake</code>).</li>
   <li><code>eudev</code> now ships <code>/etc/rc.d/rc.udevd</code>.</li>
   <li><code>rejmerge</code> now ships <code>gnufind.patch</code>, <a
-  href="https://github.com/zeppe-lin/rejmerge/issues/8">see
-  why</a>.</li>
+  href="https://github.com/zeppe-lin/rejmerge/issues/8">see #8</a>.</li>
   <li><code>sysvinit</code> now ships
   <code>/etc/rc.d/rc.bootlogd</code>.</li>
   </ul></li>
   </ul>
-  <h3 data-number="3.1.2" id="pkgsrc-system"><span
-  class="header-section-number">3.1.2</span> pkgsrc-system</h3>
+  <h3 data-number="3.10.2" id="pkgsrc-system"><span
+  class="header-section-number">3.10.2</span> pkgsrc-system</h3>
   <ul>
   <li>New: <code>acpid</code> <code>apr-util</code> <code>chrony</code>
   <code>cups</code> <code>hddtemp</code> <code>libedit</code>
@@ -264,8 +350,8 @@
   <code>py3-packaging</code></li>
   <li>Removed: <code>libidn2</code> <code>scons</code></li>
   </ul>
-  <h3 data-number="3.1.3" id="pkgsrc-xorg"><span
-  class="header-section-number">3.1.3</span> pkgsrc-xorg</h3>
+  <h3 data-number="3.10.3" id="pkgsrc-xorg"><span
+  class="header-section-number">3.10.3</span> pkgsrc-xorg</h3>
   <ul>
   <li>New: <code>gxmessage3</code> <code>ninja</code>
   <code>py3-yaml</code> <code>xdialog</code>
@@ -282,8 +368,8 @@
   href="https://github.com/zeppe-lin/pkgsrc-xorg/issues/2">#2</a>.</li>
   </ul></li>
   </ul>
-  <h3 data-number="3.1.4" id="pkgsrc-desktop"><span
-  class="header-section-number">3.1.4</span> pkgsrc-desktop</h3>
+  <h3 data-number="3.10.4" id="pkgsrc-desktop"><span
+  class="header-section-number">3.10.4</span> pkgsrc-desktop</h3>
   <ul>
   <li>New: <code>adwaita-gtk-theme</code> <code>alsa-oss</code>
   <code>android-file-transfer</code> <code>bluecurve-gtk-theme</code>
@@ -320,24 +406,24 @@
   <code>gmtp</code> <code>jdk11-bin</code> <code>newsboat213</code>
   <code>stfl</code> <code>sxiv</code> <code>youtube-dl</code></li>
   </ul>
-  <h2 data-number="3.2" id="system-components"><span
-  class="header-section-number">3.2</span> System Components</h2>
+  <h2 data-number="3.11" id="system-components"><span
+  class="header-section-number">3.11</span> System Components</h2>
   <!-- generated by ./gen_release_syscomps.sh v1.0 -->
-  <h3 data-number="3.2.1" id="kernel"><span
-  class="header-section-number">3.2.1</span> Kernel</h3>
+  <h3 data-number="3.11.1" id="kernel"><span
+  class="header-section-number">3.11.1</span> Kernel</h3>
   <ul>
   <li><code>linux</code> 5.4.288</li>
   <li><code>linux-firmware</code> 20241210</li>
   </ul>
-  <h3 data-number="3.2.2" id="toolchain"><span
-  class="header-section-number">3.2.2</span> Toolchain</h3>
+  <h3 data-number="3.11.2" id="toolchain"><span
+  class="header-section-number">3.11.2</span> Toolchain</h3>
   <ul>
   <li><code>glibc</code> 2.40</li>
   <li><code>gcc</code> 14.2.0</li>
   <li><code>binutils</code> 2.43.1</li>
   </ul>
-  <h3 data-number="3.2.3" id="x11"><span
-  class="header-section-number">3.2.3</span> X11</h3>
+  <h3 data-number="3.11.3" id="x11"><span
+  class="header-section-number">3.11.3</span> X11</h3>
   <ul>
   <li><code>Xorg</code> 7.7</li>
   <li><code>xorg-server</code> 21.1.15</li>
@@ -345,7 +431,7 @@
   <li><code>amdgpu</code> 23.0.0</li>
   <li><code>ati</code> 22.0.0</li>
   <li><code>intel</code> 2.99.917-923</li>
-  <li><code>nouveau</code> n/a</li>
+  <li><code>nouveau</code> <em>n/a</em></li>
   <li><code>vesa</code> 2.6.0</li>
   </ul>
   <h1 data-number="4" id="changelogs"><span
@@ -353,63 +439,61 @@
   <p>Full per-repository details:</p>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v1.0">pkgsrc-core</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v1.0"><code>pkgsrc-core</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v1.0">pkgsrc-system</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v1.0"><code>pkgsrc-system</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v1.0">pkgsrc-xorg</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v1.0"><code>pkgsrc-xorg</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v1.0">pkgsrc-desktop</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v1.0"><code>pkgsrc-desktop</code></a></li>
   </ul>
   <h1 data-number="5" id="download"><span
   class="header-section-number">5</span> Download</h1>
-  <p>Before downloading, please review <a
-  href="https://zeppe-lin.github.io/handbook.html">handbook</a> for
-  installation tips and hardware compatibility.</p>
-  <p>The release files are available at:</p>
+  <p>Consult the <a href="handbook.html">Handbook</a> before
+  downloading. Ensure hardware support and installation familiarity.</p>
+  <h2 data-number="5.1" id="root-filesystem"><span
+  class="header-section-number">5.1</span> Root Filesystem</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz"><strong>Root
-  Filesystem Archive</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz"><code>rootfs-v1.0-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz.sig"><strong>Root
-  Filesystem Signature</strong></a></li>
-  <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/binpkgs-v1.0-x86_64.tar.xz"><strong>Binary
-  Packages Archive</strong></a></li>
-  <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/binpkgs-v1.0-x86_64.tar.xz.sig"><strong>Binary
-  Packages Signature</strong></a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz.sig"><code>rootfs-v1.0-x86_64.tar.xz.sig</code></a></li>
   </ul>
-  <p>You might also want to check out:</p>
+  <h2 data-number="5.2" id="binary-packages"><span
+  class="header-section-number">5.2</span> Binary Packages</h2>
+  <ul>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/binpkgs-v1.0-x86_64.tar.xz"><code>binpkgs-v1.0-x86_64.tar.xz</code></a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/binpkgs-v1.0-x86_64.tar.xz.sig"><code>binpkgs-v1.0-x86_64.tar.xz.sig</code></a></li>
+  </ul>
+  <h2 data-number="5.3" id="extras"><span
+  class="header-section-number">5.3</span> Extras</h2>
   <ul>
   <li><p><a
-  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs</code></a><br />
-  Tool to build custom rootfs image. It can be installed on Zeppe-Lin
-  using the command:</p>
+  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
+  Tool for building custom root filesystem images. Install on Zeppe-Lin
+  with:</p>
   <div class="sourceCode" id="cb2"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
   <li><p><a
   href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
-  Instructions to build docker image.</p></li>
+  Instructions for building a Docker image.</p></li>
   </ul>
-  <h1 data-number="6" id="cover-artwork"><span
-  class="header-section-number">6</span> Cover Artwork</h1>
-  <p>Our release cover is an artful expression of Zeppe-Lin’s
-  spirit:</p>
+  <h1 data-number="6" id="release-artwork"><span
+  class="header-section-number">6</span> Release Artwork</h1>
   <ul>
-  <li><p>Cover Image: <a
+  <li><p><strong>Image:</strong> <a
   href="https://github.com/zeppe-lin/artwork/blob/master/v1.0.png?raw=true">Direct
   Link</a></p></li>
-  <li><p>Artwork Concept: A weathered zeppelin, a symbol of enduring
-  flight through changing times, is held within the precise embrace of a
-  gear – representing the robust and carefully engineered core of
-  Zeppe-Lin. This emblem signifies the start of a reliable and enduring
-  journey.</p></li>
+  <li><p><strong>Concept:</strong> A weathered zeppelin, a symbol of
+  enduring flight through changing times, is held within the precise
+  embrace of a gear – representing the robust and carefully engineered
+  core of Zeppe-Lin. This emblem signifies the start of a reliable and
+  enduring journey.</p></li>
+  <li><p><strong>License:</strong> CC-BY-SA 3.0</p></li>
   </ul>
-  <p>The cover artwork is licensed under the Creative Commons
-  Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0).</p>
   <hr />
   <p><em>sighook // Until the next entry… Zeppe-Lin awaits.</em></p>
 </main>
