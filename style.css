@@ -71,9 +71,22 @@ html, body {
   padding: 0;
 }
 
+/*
+#TOC li {
+  margin: calc(var(--rhythm) * 0.35) 0;
+  line-height: 1.4;
+  padding-left: 0.5em;
+}
+*/
 #TOC li {
   margin: calc(var(--rhythm) * 0.5) 0;
   padding-left: 0.5em; /* gentle indent */
+}
+
+#TOC ul ul {
+  border-left: 1px solid var(--brd);
+  margin-left: 0.25em;
+  padding-left: 0.75em;
 }
 
 #TOC ul ul li {
@@ -205,28 +218,50 @@ code {
 /* --- Tables --- */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate; /* Permit border-radius */
+  border-spacing: 0;
   margin: calc(var(--rhythm) * 2) 0;
   border: 1px solid var(--brd);
   font-variant-numeric: tabular-nums;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: "Cascadia Mono", monospace; /* Force mono for all table */
 }
 
 th {
   background: var(--pre);
   color: var(--gld);
-  padding: 12px;
+  padding: 14px 12px;
   border-bottom: 2px solid var(--gld);
   font-size: var(--fs-small);
-  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
 }
 
 td {
   padding: 12px;
   border-bottom: 1px solid var(--brd);
+  font-size: var(--fs-small);
+  vertical-align: middle;
+}
+
+/* Specific aligns for dates/sizes */
+td:nth-child(3), th:nth-child(3) {
+  text-align: right; /* better reads adjusted to right */
+  padding-right: 2rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
 }
 
 tr:nth-child(even) {
-  background: rgba(176, 131, 64, 0.04);
+  background: rgba(176, 131, 64, 0.03);
+}
+
+tr:hover {
+  background: rgba(176, 131, 64, 0.08); /* Feedback vizual discret la hover */
 }
 
 /* --- Figures --- */
