@@ -309,6 +309,22 @@ blockquote {
 
 blockquote p { margin: 0; }
 
+blockquote code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.95em;
+  white-space: normal;
+  color: var(--txt);
+  opacity: 0.75;
+  /*
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: var(--brd);
+  */
+}
+
 /* --- Blockquote Footer --- */
 blockquote footer {
   margin-top: 0.75rem;
