@@ -13,7 +13,7 @@ FLAGS    := -s \
 	--toc \
 	--number-sections=true
 
-MD   := $(wildcard *.md)
+MD   := $(filter-out README.md,$(wildcard *.md))
 HTML := $(MD:.md=.html)
 
 all: $(HTML)
