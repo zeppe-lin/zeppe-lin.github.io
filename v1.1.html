@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Zeppe-Lin v1.1 - Release Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
+<!--
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tango.css"
+  media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="zenburn.css"
+  media="(prefers-color-scheme: dark)">
+</head>
+<body class="has-toc">
+
+<nav id="TOC" role="doc-toc">
+  <div class="toc-title">Contents</div>
+  <ul>
+  <li><a href="#zeppe-lin-v1.1---release-notes"
+  id="toc-zeppe-lin-v1.1---release-notes">Zeppe-Lin v1.1 - Release
+  Notes</a></li>
+  <li><a href="#introduction" id="toc-introduction"><span
+  class="toc-section-number">1</span> Introduction</a></li>
+  <li><a href="#upgrade-compatibility"
+  id="toc-upgrade-compatibility"><span
+  class="toc-section-number">2</span> Upgrade &amp;
+  Compatibility</a></li>
+  <li><a href="#whats-new" id="toc-whats-new"><span
+  class="toc-section-number">3</span> What’s New</a>
+  <ul>
+  <li><a href="#infrastructure" id="toc-infrastructure"><span
+  class="toc-section-number">3.1</span> Infrastructure</a>
+  <ul>
+  <li><a href="#mailing-lists" id="toc-mailing-lists"><span
+  class="toc-section-number">3.1.1</span> Mailing Lists</a></li>
+  </ul></li>
+  <li><a href="#documentation" id="toc-documentation"><span
+  class="toc-section-number">3.2</span> Documentation</a></li>
+  <li><a href="#package-changes" id="toc-package-changes"><span
+  class="toc-section-number">3.3</span> Package Changes</a>
+  <ul>
+  <li><a href="#pkgsrc-core" id="toc-pkgsrc-core"><span
+  class="toc-section-number">3.3.1</span> pkgsrc-core</a></li>
+  <li><a href="#pkgsrc-system" id="toc-pkgsrc-system"><span
+  class="toc-section-number">3.3.2</span> pkgsrc-system</a></li>
+  <li><a href="#pkgsrc-xorg" id="toc-pkgsrc-xorg"><span
+  class="toc-section-number">3.3.3</span> pkgsrc-xorg</a></li>
+  <li><a href="#pkgsrc-desktop" id="toc-pkgsrc-desktop"><span
+  class="toc-section-number">3.3.4</span> pkgsrc-desktop</a></li>
+  </ul></li>
+  <li><a href="#system-components" id="toc-system-components"><span
+  class="toc-section-number">3.4</span> System Components</a>
+  <ul>
+  <li><a href="#kernel" id="toc-kernel"><span
+  class="toc-section-number">3.4.1</span> Kernel</a></li>
+  <li><a href="#toolchain" id="toc-toolchain"><span
+  class="toc-section-number">3.4.2</span> Toolchain</a></li>
+  <li><a href="#x11" id="toc-x11"><span
+  class="toc-section-number">3.4.3</span> X11</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#changelogs" id="toc-changelogs"><span
+  class="toc-section-number">4</span> Changelogs</a></li>
+  <li><a href="#download" id="toc-download"><span
+  class="toc-section-number">5</span> Download</a>
+  <ul>
+  <li><a href="#root-filesystem" id="toc-root-filesystem"><span
+  class="toc-section-number">5.1</span> Root Filesystem</a></li>
+  <li><a href="#binary-packages" id="toc-binary-packages"><span
+  class="toc-section-number">5.2</span> Binary Packages</a></li>
+  <li><a href="#extras" id="toc-extras"><span
+  class="toc-section-number">5.3</span> Extras</a></li>
+  </ul></li>
+  <li><a href="#release-artwork" id="toc-release-artwork"><span
+  class="toc-section-number">6</span> Release Artwork</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments"><span
+  class="toc-section-number">7</span> Acknowledgments</a></li>
+  </ul>
+  </div>
+</nav>
+
+<main>
+  <p><a href="index.html">Back to Index</a></p>
+  <h1 class="unnumbered" id="zeppe-lin-v1.1---release-notes">Zeppe-Lin
+  v1.1 - Release Notes</h1>
+  <p>Released Aug 1, 2025. 4th Zeppe-Lin Release.</p>
+  <figure>
+  <img
+  src="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true"
+  alt="Artwork for v1.1 — Featuring Stine Luft Satomi" />
+  <figcaption aria-hidden="true">Artwork for v1.1 — Featuring Stine Luft
+  Satomi</figcaption>
+  </figure>
+  <blockquote>
+  <p>It left my forge in a state of perfect grace. If it fails to shine
+  on your hardware, it is statistically likely that the observer —
+  that’s you — is the primary source of interference.</p>
+  <footer>
+  — <strong>Stine Luft Satomi</strong>
+  </footer>
+  </blockquote>
+  <h1 data-number="1" id="introduction"><span
+  class="header-section-number">1</span> Introduction</h1>
+  <p>Zeppe-Lin 1.1 is a refinement release. We are not reinventing the
+  wheel; we are ensuring the spokes are made of the right material. This
+  iteration focuses on toolchain integrity, specifically enforcing the
+  transition to the <strong>Kernel 6.1 API</strong>.</p>
+  <p>The goal remains the same: a system that is understandable because
+  nothing is hidden.</p>
+  <p>If you are upgrading from v1.0, check the <a href="v1.0.html">v1.0
+  release notes</a> for transitional guidance.</p>
+  <h1 data-number="2" id="upgrade-compatibility"><span
+  class="header-section-number">2</span> Upgrade &amp;
+  Compatibility</h1>
+  <p>This release raises the minimum kernel requirement to <strong>Linux
+  6.1</strong>.</p>
+  <p><strong>What changed</strong></p>
+  <ul>
+  <li>Toolchain headers switched to Linux 6.1.147.</li>
+  <li><code>glibc</code> configured with
+  <code>--enable-kernel=6.1</code>.</li>
+  </ul>
+  <p><strong>What it means</strong></p>
+  <ul>
+  <li>Userland assumes kernel 6.1 features are present</li>
+  <li>Building against older headers will fail.</li>
+  <li>Running on kernels older than 6.1 is unsupported.</li>
+  <li>Rebuilding the toolchain and dependent packages is required.</li>
+  </ul>
+  <p><strong>Upgrade Path</strong></p>
+  <ol type="1">
+  <li>Build and install <code>linux-6.1</code>, then boot into it<br />
+  (<code>uname -r</code> to verify).</li>
+  <li>Rebuild the toolchain in this order:
+  <ul>
+  <li><code>glibc</code>, <code>glibc-32</code></li>
+  <li><code>binutils</code></li>
+  <li><code>gcc</code></li>
+  <li><code>libtool</code></li>
+  <li>Stabilization pass: <code>binutils</code> → <code>glibc</code> →
+  <code>libtool</code></li>
+  </ul></li>
+  <li>Rebuild dependent packages.</li>
+  </ol>
+  <p>See <a
+  href="codebook.html#core-toolchain-update-pkgsrc-core">Toolchain
+  Update Guide</a> for rationale.</p>
+  <p><strong>Prebuilt Packages (Optional)</strong></p>
+  <p><a href="#binary-packages">binpkgs</a> exist for those in a hurry.
+  They mirror the source tree — a shortcut through the forge.</p>
+  <p>But shortcuts are quiet. No scars, no stories, no lessons.</p>
+  <p>Build from source in your meditation hours. If it breaks, don’t
+  whine — diagnose. Every segmentation fault is a koan; every failed
+  link is a riddle.</p>
+  <blockquote>
+  <p>Binary packages are a statistical convenience. They reduce
+  variance, but they do not collapse uncertainty. Errors remain
+  entangled with your system, waiting for observation. To build is to
+  measure; to rebuild is to alter the wavefunction. Statistically
+  speaking, you will fail — and in failing, you will learn.</p>
+  <footer>
+  — <strong>Stine Luft Satomi</strong>
+  </footer>
+  </blockquote>
+  <h1 data-number="3" id="whats-new"><span
+  class="header-section-number">3</span> What’s New</h1>
+  <h2 data-number="3.1" id="infrastructure"><span
+  class="header-section-number">3.1</span> Infrastructure</h2>
+  <h3 data-number="3.1.1" id="mailing-lists"><span
+  class="header-section-number">3.1.1</span> Mailing Lists</h3>
+  <p>Project communication is now hosted on FreeLists.org.</p>
+  <ul>
+  <li><p><strong>Users &amp; Support</strong><br />
+  <code>zeppe-lin@freelists.org</code><br />
+  Questions, announcements, usage, and general support.</p>
+  <p><strong><a
+  href="mailto:zeppe-lin-request@freelists.org?subject=subscribe">Subscribe
+  via Email</a></strong> | <strong><a
+  href="https://www.freelists.org/list/zeppe-lin">View List
+  Page</a></strong></p></li>
+  <li><p><strong>Development</strong><br />
+  <code>zeppe-lin-dev@freelists.org</code><br />
+  Patches, project changes, proposals, and development discussion.</p>
+  <p><strong><a
+  href="mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe">Subscribe
+  via Email</a></strong> | <strong><a
+  href="https://www.freelists.org/list/zeppe-lin-dev">View List
+  Page</a></strong></p></li>
+  </ul>
+  <p>Repository activity updates:</p>
+  <ul>
+  <li><p>Commits to <code>pkgsrc-core</code>,
+  <code>pkgsrc-system</code>, <code>pkgsrc-xorg</code>,
+  <code>pkgsrc-desktop</code> notify
+  <code>zeppe-lin-dev@freelists.org</code>.</p></li>
+  <li><p>Commits with <code>[notify]</code> in the title additionally
+  notify <code>zeppe-lin@freelists.org</code>.</p></li>
+  </ul>
+  <h2 data-number="3.2" id="documentation"><span
+  class="header-section-number">3.2</span> Documentation</h2>
+  <p>Documentation has been rebuilt and consolidated.</p>
+  <ul>
+  <li><a href="handbook.html">Handbook</a></li>
+  <li><a href="codebook.html">Codebook</a></li>
+  <li><a href="https://zeppe-lin.github.io/">Project Website</a></li>
+  </ul>
+  <p>Sources are available at:<br />
+  <a href="https://github.com/zeppe-lin/zeppe-lin.github.io"
+  class="uri">https://github.com/zeppe-lin/zeppe-lin.github.io</a></p>
+  <h2 data-number="3.3" id="package-changes"><span
+  class="header-section-number">3.3</span> Package Changes</h2>
+  <!-- generated via 'gen_release_pkgchanges.sh v1.1 -->
+  <h3 data-number="3.3.1" id="pkgsrc-core"><span
+  class="header-section-number">3.3.1</span> pkgsrc-core</h3>
+  <ul>
+  <li>New: <code>libxcrypt-32</code> <code>scdoc</code></li>
+  <li>Removed: <code>libxcrypt-compat</code></li>
+  </ul>
+  <h3 data-number="3.3.2" id="pkgsrc-system"><span
+  class="header-section-number">3.3.2</span> pkgsrc-system</h3>
+  <ul>
+  <li>New: <code>cmark</code> <code>iperf3</code> <code>linux-6.1</code>
+  <code>nouveau-firmware</code> <code>pandoc-bin</code></li>
+  <li>Removed: <code>handbook</code></li>
+  </ul>
+  <h3 data-number="3.3.3" id="pkgsrc-xorg"><span
+  class="header-section-number">3.3.3</span> pkgsrc-xorg</h3>
+  <ul>
+  <li>New: <code>xorg-xf86-input-evdev</code>
+  <code>xorg-xf86-video-nouveau</code></li>
+  <li>Removed: <code>ninja</code> <code>xkbswitch</code></li>
+  </ul>
+  <h3 data-number="3.3.4" id="pkgsrc-desktop"><span
+  class="header-section-number">3.3.4</span> pkgsrc-desktop</h3>
+  <ul>
+  <li>New: <code>libxml2-2.13</code></li>
+  <li>Removed: <code>dwm</code> <code>dwmblocks</code>
+  <code>firefox-darkreader-bin</code> <code>firefox-vimium-bin</code>
+  <code>lsw</code> <code>st</code> <code>win3x-gtk-theme</code></li>
+  <li>Notes:
+  <ul>
+  <li><code>libxml2-2.13</code> required by
+  <code>librsvg-compat</code>.</li>
+  <li>Removed Firefox add-ons moved to <code>pkgsrc-stuff</code>.</li>
+  <li>Removed desktops/tools now maintained at<br />
+  <a href="https://github.com/rawmkit"
+  class="uri">https://github.com/rawmkit</a>.</li>
+  </ul></li>
+  </ul>
+  <h2 data-number="3.4" id="system-components"><span
+  class="header-section-number">3.4</span> System Components</h2>
+  <!-- generated via 'gen_release_syscomps.sh v1.1' -->
+  <h3 data-number="3.4.1" id="kernel"><span
+  class="header-section-number">3.4.1</span> Kernel</h3>
+  <ul>
+  <li><code>linux</code> 6.15.8</li>
+  <li><code>linux-firmware</code> 20250708</li>
+  </ul>
+  <h3 data-number="3.4.2" id="toolchain"><span
+  class="header-section-number">3.4.2</span> Toolchain</h3>
+  <ul>
+  <li><code>glibc</code> 2.40-1</li>
+  <li><code>gcc</code> 14.3.0</li>
+  <li><code>binutils</code> 2.44</li>
+  </ul>
+  <h3 data-number="3.4.3" id="x11"><span
+  class="header-section-number">3.4.3</span> X11</h3>
+  <ul>
+  <li><code>Xorg</code> 7.7</li>
+  <li><code>xorg-server</code> 21.1.18</li>
+  <li><code>mesa</code> 24.3.4</li>
+  <li><code>amdgpu</code> 23.0.0</li>
+  <li><code>ati</code> 22.0.0</li>
+  <li><code>intel</code> 2.99.917-923</li>
+  <li><code>nouveau</code> 1.0.18</li>
+  <li><code>vesa</code> 2.6.0</li>
+  </ul>
+  <h1 data-number="4" id="changelogs"><span
+  class="header-section-number">4</span> Changelogs</h1>
+  <p>Full per-repository details:</p>
+  <ul>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/tag/v1.1">pkgsrc-core</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-system/releases/tag/v1.1">pkgsrc-system</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-xorg/releases/tag/v1.1">pkgsrc-xorg</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-desktop/releases/tag/v1.1">pkgsrc-desktop</a></li>
+  </ul>
+  <h1 data-number="5" id="download"><span
+  class="header-section-number">5</span> Download</h1>
+  <p>Before installing, review the <a href="handbook.html">Handbook</a>
+  for setup notes and compatibility guidance.</p>
+  <h2 data-number="5.1" id="root-filesystem"><span
+  class="header-section-number">5.1</span> Root Filesystem</h2>
+  <ul>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz">rootfs-v1.1-x86_64.tar.xz</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/rootfs-v1.1-x86_64.tar.xz.sig">rootfs-v1.1-x86_64.tar.xz.sig</a></li>
+  </ul>
+  <h2 data-number="5.2" id="binary-packages"><span
+  class="header-section-number">5.2</span> Binary Packages</h2>
+  <ul>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz">binpkgs-v1.1-x86_64.tar.xz</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.1/binpkgs-v1.1-x86_64.tar.xz.sig">binpkgs-v1.1-x86_64.tar.xz.sig</a></li>
+  </ul>
+  <h2 data-number="5.3" id="extras"><span
+  class="header-section-number">5.3</span> Extras</h2>
+  <ul>
+  <li><a href="https://github.com/zeppe-lin/mkrootfs">mkrootfs</a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/dockerfile">dockerfile</a></li>
+  </ul>
+  <h1 data-number="6" id="release-artwork"><span
+  class="header-section-number">6</span> Release Artwork</h1>
+  <ul>
+  <li><p><strong>Image</strong>: <a
+  href="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true">v1.1
+  Cover Art</a></p></li>
+  <li><p><strong>Concept</strong>: The art depicts Stine Luft Satomi in
+  her underground lair, visually echoing the quiet, focused, and
+  intentional energy behind this release.</p></li>
+  <li><p><strong>License</strong>: Creative Commons
+  Attribution-ShareAlike 3.0 Unported (CC-BY-SA 3.0)</p></li>
+  </ul>
+  <h1 data-number="7" id="acknowledgments"><span
+  class="header-section-number">7</span> Acknowledgments</h1>
+  <ul>
+  <li>GitHub, for hosting source and releases.</li>
+  <li>FreeLists.org, for mailing list hosting.</li>
+  <li>Libera.Chat, for real-time support channels.</li>
+  <li>CRUX project, for inspiration and foundation.</li>
+  </ul>
+</main>
+
+</body>
+</html>

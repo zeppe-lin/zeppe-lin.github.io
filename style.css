@@ -1,0 +1,293 @@
+/**
+ * Zeppe-Lin Linux Handbook Style – Golden Legacy, Micro-Polished
+ * Version: 4.2.0 – Structural Harmony Pass
+ */
+
+/* --- Theme Variables --- */
+:root {
+  --bg: #f7f5f1;
+  --txt: #2c2c2c;
+  --gld: #b08340;
+  --pre: #f0ede6;
+  --brd: rgba(176, 131, 64, 0.25);
+  --link: #a67c3a;
+  --link-hover: #2c2c2c;
+  --toc-w: 280px;
+
+  --fs-base: 16px;
+  --fs-h1: calc(var(--fs-base) * 2.37);
+  --fs-h2: calc(var(--fs-base) * 1.78);
+  --fs-h3: calc(var(--fs-base) * 1.33);
+  --fs-small: calc(var(--fs-base) * 0.85);
+
+  --rhythm: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1b17;
+    --txt: #dcd6c9;
+    --gld: #e2c07a;
+    --pre: #25241f;
+    --brd: rgba(226, 192, 122, 0.25);
+    --link: #e2c07a;
+    --link-hover: #ffffff;
+  }
+}
+
+/* --- Layout Foundation --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--txt);
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: var(--fs-base);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1, "calt" 1, "tnum" 1;
+}
+
+/* --- Sidebar TOC --- */
+#TOC {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--toc-w);
+  height: 100vh;
+  padding: calc(var(--rhythm) * 2.5) 1.5rem;
+  box-sizing: border-box;
+  border-right: 1px solid var(--brd);
+  overflow-y: auto;
+  font-size: var(--fs-small);
+  background: var(--bg);
+  z-index: 1000;
+}
+
+#TOC ul { list-style: none; margin: 0; padding: 0; }
+#TOC li { margin: calc(var(--rhythm) * 0.5) 0; }
+
+#TOC a {
+  color: var(--link);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+#TOC a:hover {
+  opacity: 1;
+  color: var(--link-hover);
+}
+
+/* --- Target highlight --- */
+h1, h2, h3 {
+  transition: color 0.4s ease, border-bottom-color 0.4s ease;
+}
+
+h1:target,
+h2:target,
+h3:target {
+  border-bottom-color: var(--gld);
+  color: var(--gld);
+}
+
+/* --- Main Container --- */
+main {
+  margin: 0 auto 0 var(--toc-w);
+  max-width: 75ch;
+  padding: calc(var(--rhythm) * 3) 5%;
+  box-sizing: border-box;
+}
+
+body:not(:has(#TOC)) main {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* --- Headers --- */
+h1, h2, h3 {
+  margin-top: calc(var(--rhythm) * 2);
+  margin-bottom: calc(var(--rhythm) * 0.75);
+  border-bottom: 1px solid var(--brd);
+  padding-bottom: 0.3rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--fs-h1); color: var(--gld); }
+h2 { font-size: var(--fs-h2); color: var(--gld); }
+h3 { font-size: var(--fs-h3); color: var(--txt); }
+
+h1::before {
+  content: "";
+  display: block;
+  width: 2.5ch;
+  height: 2px;
+  background: var(--gld);
+  margin-bottom: 0.7rem;
+  opacity: 0.45;
+}
+
+/* --- Text --- */
+p { margin: calc(var(--rhythm) * 1) 0; }
+small, .secondary { color: #6e6e6e; font-size: var(--fs-small); }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover { color: var(--link-hover); }
+
+/* --- Harmonized Markdown Separator --- */
+hr {
+  border: none;
+  height: 1px;
+  margin: calc(var(--rhythm) * 2.5) auto;
+  max-width: 40ch;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      var(--gld),
+      transparent
+    );
+  opacity: 0.45;
+}
+
+/* Optional: tighter separator for dense sections */
+section hr {
+  margin: calc(var(--rhythm) * 2) auto;
+  max-width: 32ch;
+  opacity: 0.35;
+}
+
+/* --- Code & Pre --- */
+code, pre {
+  background: var(--pre);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  font-family: "Cascadia Mono", monospace;
+}
+
+code {
+  white-space: nowrap;       /* prevent wrapping entirely */
+}
+
+/* --- Tables --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: calc(var(--rhythm) * 2) 0;
+  border: 1px solid var(--brd);
+  font-variant-numeric: tabular-nums;
+}
+
+th {
+  background: var(--pre);
+  color: var(--gld);
+  padding: 12px;
+  border-bottom: 2px solid var(--gld);
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--brd);
+}
+
+tr:nth-child(even) {
+  background: rgba(176, 131, 64, 0.04);
+}
+
+/* --- Figures --- */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--brd);
+  padding: 5px;
+  background: var(--pre);
+  margin: calc(var(--rhythm) * 2) auto;
+  display: block;
+  box-shadow: 6px 6px 0 var(--brd);
+  border-radius: 2px;
+}
+
+figure {
+  margin: calc(var(--rhythm) * 2) 0;
+  text-align: center;
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  font-style: italic;
+  border-top: 1px solid var(--brd);
+  padding-top: 0.5rem;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.85;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  margin: calc(var(--rhythm) * 1.5) auto;
+  padding: 0.75rem 1.25rem;
+  max-width: 65ch;
+  font-size: var(--fs-small);
+  font-style: italic;
+  border-left: 3px solid var(--gld);
+  background: var(--pre);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+blockquote p { margin: 0; }
+
+/* --- Blockquote Footer --- */
+blockquote footer {
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  font-style: normal;
+  color: var(--gld);
+  text-align: right;
+  border-top: 1px solid var(--brd);
+  padding-top: 0.5rem;
+  opacity: 0.85;
+}
+
+/* --- Mobile --- */
+@media screen and (max-width: 1024px) {
+  #TOC {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--brd);
+  }
+
+  main {
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    width: 100%;
+  }
+}
+

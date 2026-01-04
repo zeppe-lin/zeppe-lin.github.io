@@ -1,99 +1,139 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Zeppe-Lin Linux</title>
-<link rel="stylesheet" href="assets/style.css" type="text/css" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <title>Zeppe-Lin Linux - Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
+<!--
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tango.css"
+  media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="zenburn.css"
+  media="(prefers-color-scheme: dark)">
 </head>
-<body>
-<div class="hero-index">
+<body class="has-toc">
 
-  <!-- Hero Banner Image -->
-  <a href="relnotes-v1.1.html">
-  <img src="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true"
-       alt="Zeppe-Lin Hero">
-  </a>
-  <div class="separator"></div>
-  <p>Complexity, by Choice. Simplicity, by Design.</p>
+<nav id="TOC" role="doc-toc">
+  <div class="toc-title">Contents</div>
+  <ul>
+  <li><a href="#welcome-to-zeppe-lin"
+  id="toc-welcome-to-zeppe-lin">Welcome to Zeppe-Lin</a>
+  <ul>
+  <li><a href="#introduction"
+  id="toc-introduction">Introduction</a></li>
+  <li><a href="#current-release" id="toc-current-release">Current
+  Release</a></li>
+  <li><a href="#documentation"
+  id="toc-documentation">Documentation</a></li>
+  <li><a href="#previous-releases" id="toc-previous-releases">Previous
+  Releases</a></li>
+  <li><a href="#source-development" id="toc-source-development">Source
+  &amp; Development</a></li>
+  <li><a href="#community" id="toc-community">Community</a></li>
+  </ul></li>
+  </ul>
+  </div>
+</nav>
 
-</div>
-<ul id="index">
-  <li><a href="index.html">Home</a>
-  <li><a href="#zeppe-lin-linux">Zeppe-Lin Linux</a></li>
-  <li><a href="#latest-release-v11">Latest Release: v1.1</a></li>
-  <li><a href="#documentation">Documentation</a></li>
-  <li><a href="#previous-releases">Previous Releases</a></li>
-  <li><a href="#get-involved">Get Involved</a></li>
-</ul>
-<h1 id="zeppe-lin-linux">Zeppe-Lin Linux</h1>
-<p><strong>Minimal. Source-based. Built to be understood.</strong></p>
-<p>Zeppe-Lin is a GNU/Linux distribution for x86-64 systems, forked from
-CRUX and forged in the spirit of KISS — <em>Keep It Simple, Stupid</em>.
-It’s not a distro for everyone.  It’s for those who want to build
-their system from the ground up, with clarity over abstraction and
-control over convenience.</p>
-<p><strong>You compile. You configure. You own it.</strong></p>
-<p>Zeppe-Lin gives you the tools to shape your system, optimize it, and
-understand.  No layers.  No hand-holding.  Just raw, deliberate Linux.</p>
-<h2 id="latest-release-v11">Latest Release: v1.1</h2>
-<blockquote><p><strong>Built in the dark, ready to shine on your rig.</strong>
-Featuring <em>Stine Luft Satomi</em> — our fictional hacker muse — this
-release tightens the screws and sharpens the edge.</p>
-</blockquote>
-<p>Highlights:</p>
-<ul>
-<li><p><strong>Toolchain updated for kernel 6.1+</strong>:
-A crucial update that ensures modern compatibility and stability,
-enabling new features like fs-verity.</p>
-</li>
-<li><p><strong>New Documentation</strong>:
-Rewritten <a href="handbook.html">Handbook</a> from scratch, and new
-<a href="codebook.html">Codebook</a> for devs (<strong>WIP</strong>).</p>
-</li>
-<li><p><strong>Community Infrastructure</strong>:
-New mailing lists on <a href="https://www.freelists.org/">FreeLists.org</a> for
-support and dev chatter.  Thank you, <strong>FreeLists.org</strong>.</p>
-</li>
-</ul>
-<p><a href="relnotes-v1.1.html">Read the full Release Notes</a></p>
-<h2 id="documentation">Documentation</h2>
-<p>Start here:</p>
+<main>
+  <h1 class="unnumbered" id="welcome-to-zeppe-lin">Welcome to
+  Zeppe-Lin</h1>
+  <figure>
+  <img
+  src="https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true"
+  alt="Artwork for v1.1 — Featuring Stine Luft Satomi" />
+  <figcaption aria-hidden="true">Artwork for v1.1 — Featuring Stine Luft
+  Satomi</figcaption>
+  </figure>
+  <h2 class="unnumbered" id="introduction">Introduction</h2>
+  <p><strong>Minimal. Source-based. Built to be understood.</strong></p>
+  <p>Zeppe-Lin is a GNU/Linux distribution for x86-64 systems, forked
+  from <a href="https://crux.nu/">CRUX</a> and forged in the spirit of
+  KISS - <em>Keep It Simple, Stupid</em>.</p>
+  <p>It is a system for those who prefer clarity over abstraction and
+  full control over their computing environment.</p>
+  <blockquote>
+  <p>You compile. You configure. You own it. You fix it when it
+  breaks.</p>
+  </blockquote>
+  <h2 class="unnumbered" id="current-release">Current Release</h2>
+  <p><strong>Zeppe-Lin v1.1</strong><br />
+  Released August 1, 2025</p>
+  <p>This release focuses on toolchain alignment, documentation
+  maturity, and infrastructure cleanup.</p>
+  <blockquote>
+  <p><strong>Built in the dark, ready to shine on your
+  rig.</strong><br />
+  Featuring <em>Stine Luft Satomi</em> — fictional, unimpressed, and not
+  responsible for your compiler flags.</p>
+  </blockquote>
+  <ul>
+  <li>Toolchain updated for <strong>Linux 6.1+</strong></li>
+  <li>Documentation rebuilt from scratch</li>
+  <li>New community infrastructure</li>
+  </ul>
+  <p><a href="v1.1.html">Read the full Release Notes</a></p>
+  <h2 class="unnumbered" id="documentation">Documentation</h2>
+  <p>Start here:</p>
+  <ul>
+  <li><p><strong><a href="handbook.html">Handbook</a></strong><br />
+  Installation, system layout, configuration, and daily
+  operation.</p></li>
+  <li><p><strong><a href="codebook.html">Codebook</a></strong><br />
+  Source tree structure, build process, tooling, and internal
+  conventions.</p></li>
+  </ul>
+  <h2 class="unnumbered" id="previous-releases">Previous Releases</h2>
+  <ul>
+  <li><a href="v1.0.html">v1.0 - The Maiden Voyage</a></li>
+  <li><a href="v0.99.1.html">v0.99.1</a></li>
+  <li><a href="v0.99.html">v0.99 - Happy Birthday</a></li>
+  </ul>
+  <h2 class="unnumbered" id="source-development">Source &amp;
+  Development</h2>
+  <p>Zeppe-Lin is developed in the open.</p>
+  <ul>
+  <li><p><strong><a href="https://github.com/zeppe-lin">GitHub
+  Organization</a></strong><br />
+  Source repositories, issues, pull requests.</p></li>
+  <li><p><strong><a
+  href="https://github.com/orgs/zeppe-lin/projects">Project
+  Boards</a></strong><br />
+  Ongoing work, milestones, and planning.</p></li>
+  </ul>
+  <h2 class="unnumbered" id="community">Community</h2>
+  <p>Discussion is low-noise and technical.</p>
+  <ul>
+  <li><p><strong>Forum</strong><br />
+  <a href="https://github.com/orgs/zeppe-lin/discussions"
+  class="uri">https://github.com/orgs/zeppe-lin/discussions</a></p></li>
+  <li><p><strong>IRC</strong><br />
+  <code>#zeppe-lin</code> on Libera.Chat<br />
+  <a href="https://web.libera.chat/#zeppe-lin"
+  class="uri">https://web.libera.chat/#zeppe-lin</a></p></li>
+  <li><p><strong>Mailing Lists</strong></p>
+  <ul>
+  <li><p><strong>Users &amp; Support</strong><br />
+  <code>zeppe-lin@freelists.org</code><br />
+  <a
+  href="mailto:zeppe-lin-request@freelists.org?subject=subscribe">Subscribe</a>
+  · <a
+  href="https://www.freelists.org/list/zeppe-lin">Archive</a></p></li>
+  <li><p><strong>Development</strong><br />
+  <code>zeppe-lin-dev@freelists.org</code><br />
+  <a
+  href="mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe">Subscribe</a>
+  · <a
+  href="https://www.freelists.org/list/zeppe-lin-dev">Archive</a></p></li>
+  </ul></li>
+  </ul>
+  <hr />
+  <p>Zeppe-Lin is built by people who care about systems, correctness,
+  and long-term maintainability.<br />
+  If that resonates, you already know where to start.</p>
+</main>
 
-<ul>
-<li><a href="handbook.html">Handbook</a> — install, configure, and explore.</li>
-<li><a href="codebook.html">Codebook</a> — development structure, build guides, and internals.</li>
-</ul>
-<h2 id="previous-releases">Previous Releases</h2>
-<p>See how Zeppe-Lin evolved: <a href="relhistory.html">Release History</a>.</p>
-<h2 id="get-involved">Get Involved</h2>
-<p>Zeppe-Lin is open, lean, and waiting for your touch.</p>
-<p><strong>Contribution Resources</strong>:</p>
-
-<ul>
-<li><a href="codebook.html">Codebook</a> — dev process, structure, and standards.</li>
-<li><a href="https://github.com/zeppe-lin">GitHub</a> — issues, PRs, and source.</li>
-<li><a href="https://github.com/orgs/zeppe-lin/projects">Projects</a> — roadmap and tasks.</li>
-</ul>
-<p><strong>Community Channels</strong>:</p>
-
-<ul>
-<li><a href="https://github.com/orgs/zeppe-lin/discussions">Forum</a> — support, ideas, and announcements.</li>
-<li><a href="https://web.libera.chat/#zeppe-lin">IRC</a> — <code>#zeppe-lin</code> on Libera.Chat.</li>
-<li>Mailing Lists:
-<ul>
-<li><strong>Users &amp; Support</strong>: <code>zeppe-lin@freelists.org</code>
-[<a href="mailto:zeppe-lin-request@freelists.org?subject=subscribe">Subscribe</a> |
-<a href="https://www.freelists.org/list/zeppe-lin">View List</a>]</li>
-<li><strong>Development</strong>: <code>zeppe-lin-dev@freelists.org</code>
-[<a href="mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe">Subscribe</a> |
-<a href="https://www.freelists.org/list/zeppe-lin-dev">View List</a>]</li>
-</ul>
-</li>
-</ul>
-<p>Shape the future of Zeppe-Lin with us.</p>
-<div class="footer-separator"></div>
-<div class="footer">
-  Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
-  <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
-</div>
 </body>
 </html>

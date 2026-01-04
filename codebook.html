@@ -1,567 +1,678 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Zeppe-Lin Linux</title>
-<link rel="stylesheet" href="assets/style.css" type="text/css" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <title>Zeppe-Lin Codebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
+<!--
+    <style type="text/css">
+  html { -webkit-text-size-adjust: 100%; }
+  pre > code.sourceCode { white-space: pre; position: relative; }
+  pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+  pre > code.sourceCode > span:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode > span { color: inherit; text-decoration: inherit; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  pre > code.sourceCode { white-space: pre-wrap; }
+  pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+  }
+  pre.numberSource code
+    { counter-reset: source-line 0; }
+  pre.numberSource code > span
+    { position: relative; left: -4em; counter-increment: source-line; }
+  pre.numberSource code > span > a:first-child::before
+    { content: counter(source-line);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+    }
+  pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+  div.sourceCode
+    { color: #cccccc; background-color: #303030; }
+  @media screen {
+  pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+  }
+  code span.al { color: #ffcfaf; } /* Alert */
+  code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+  code span.at { } /* Attribute */
+  code span.bn { color: #dca3a3; } /* BaseN */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #f0dfaf; } /* ControlFlow */
+  code span.ch { color: #dca3a3; } /* Char */
+  code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+  code span.co { color: #7f9f7f; } /* Comment */
+  code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+  code span.do { color: #7f9f7f; } /* Documentation */
+  code span.dt { color: #dfdfbf; } /* DataType */
+  code span.dv { color: #dcdccc; } /* DecVal */
+  code span.er { color: #c3bf9f; } /* Error */
+  code span.ex { } /* Extension */
+  code span.fl { color: #c0bed1; } /* Float */
+  code span.fu { color: #efef8f; } /* Function */
+  code span.im { } /* Import */
+  code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+  code span.kw { color: #f0dfaf; } /* Keyword */
+  code span.op { color: #f0efd0; } /* Operator */
+  code span.ot { color: #efef8f; } /* Other */
+  code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+  code span.sc { color: #dca3a3; } /* SpecialChar */
+  code span.ss { color: #cc9393; } /* SpecialString */
+  code span.st { color: #cc9393; } /* String */
+  code span.va { } /* Variable */
+  code span.vs { color: #cc9393; } /* VerbatimString */
+  code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tango.css"
+  media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="zenburn.css"
+  media="(prefers-color-scheme: dark)">
 </head>
-<body>
-<ul id="index">
-  <li><a href="index.html">Home</a>
-  <li><a href="#zeppe-lin-codebook">Zeppe-Lin Codebook</a></li>
-  <li><a href="#preface">PREFACE</a></li>
-  <li><a href="#1-introduction">1. Introduction</a></li>
-  <li><a href="#2-zeppe-lin-release-process-overview">2. Zeppe-Lin Release Process (Overview)</a></li>
-  <li><a href="#3-creating-a-zeppe-lin-release">3. Creating a Zeppe-Lin Release</a></li>
-  <li><a href="#31-preparation">3.1. Preparation</a></li>
-  <li><a href="#311-branching-strategy-for-package-source-repositories">3.1.1. Branching Strategy for Package Source Repositories</a></li>
-  <li><a href="#312-using-pkgsrcfeeds-to-track-package-updates-optional">3.1.2. Using pkgsrcfeeds to Track Package Updates (Optional)</a></li>
-  <li><a href="#32-updating-pkgsrc-repositories-and-building-the-core-system">3.2. Updating Pkgsrc Repositories and Building the Core System</a></li>
-  <li><a href="#321-core-toolchain-update-pkgsrc-core">3.2.1. Core Toolchain Update (pkgsrc-core)</a></li>
-  <li><a href="#322-standard-package-updates">3.2.2. Standard Package Updates</a></li>
-  <li><a href="#323-preparing-the-root-filesystem-image">3.2.3. Preparing the Root Filesystem Image</a></li>
-  <li><a href="#3231-introducing-mkrootfs">3.2.3.1. Introducing mkrootfs</a></li>
-  <li><a href="#3232-step-by-step-rootfs-creation">3.2.3.2. Step-by-Step Rootfs Creation</a></li>
-  <li><a href="#3233-optional-cleanup">3.2.3.3. Optional Cleanup</a></li>
-  <li><a href="#33-finalizing-release-assets">3.3. Finalizing Release Assets</a></li>
-  <li><a href="#331-signing-the-rootfs-tarball">3.3.1. Signing the Rootfs Tarball</a></li>
-  <li><a href="#332-creating-a-git-tag-in-pkgsrc-core">3.3.2. Creating a Git Tag in pkgsrc-core</a></li>
-  <li><a href="#34-preparing-and-publishing-announcements">3.4. Preparing and Publishing Announcements</a></li>
-  <li><a href="#341-drafting-release-notes-content">3.4.1. Drafting Release Notes Content</a></li>
-  <li><a href="#342-creating-website-announcement-files-and-assets">3.4.2. Creating Website Announcement Files and Assets</a></li>
-  <li><a href="#3421-creating-the-markdown-release-notes-file-relnotes">3.4.2.1. Creating the Markdown Release Notes File (relnotes)</a></li>
-  <li><a href="#3422-creating-the-release-banner-cover-artwork">3.4.2.2. Creating the Release Banner (Cover Artwork)</a></li>
-  <li><a href="#343-publishing-the-release">3.4.3. Publishing the Release</a></li>
-  <li><a href="#3431-announcing-on-github-releases">3.4.3.1. Announcing on GitHub Releases</a></li>
-  <li><a href="#3432-updating-the-zeppe-lin-website">3.4.3.2. Updating the Zeppe-Lin Website</a></li>
-  <li><a href="#35-post-release-tasks">3.5. Post-Release Tasks</a></li>
-  <li><a href="#36-conclusion">3.6. Conclusion</a></li>
-</ul>
-<h1 id="zeppe-lin-codebook">Zeppe-Lin Codebook</h1>
-<h2 id="preface">PREFACE</h2>
-<p>Zeppe-Lin Codebook.
-<em>Because even pirates need a map to find the treasure (and avoid the kraken).</em></p>
-<p>This guide is your blueprint to shape the future of Zeppe-Lin.  It's
-simple, efficient, and free of extra complexity -- designed to
-streamline coding, contributing, and releasing.  Clarity lights the
-way so you can work without fuss.</p>
-<h2 id="1-introduction">1. Introduction</h2>
-<p>Hello, Zeppe-Linauts!  Whether you're cleaning up code, fixing bugs,
-or planning the next release, this codebook keeps things lean and
-focused.  Zeppe-Lin stands for clean code and honest collaboration.
-So grab your tools, set your course, and let's keep it sharp and
-simple.</p>
-<h2 id="2-zeppe-lin-release-process-overview">2. Zeppe-Lin Release Process (Overview)</h2>
-<p>Releasing a new version of Zeppe-Lin is like preparing an airship for
-its next journey.  Here's the streamlined process:</p>
-<ul>
-<li><p><strong>Branching</strong>:
-Create new release branches in package source repositories.</p>
-</li>
-<li><p><strong>Toolchain Update</strong>:
-Refresh and rebuild core build tools in <code>pkgsrc-core</code>.</p>
-</li>
-<li><p><strong>Package Updates</strong>:
-Update software sources in <code>pkgsrc-core</code>, <code>pkgsrc-system</code>,
-<code>pkgsrc-xorg</code>, and <code>pkgsrc-desktop</code>.</p>
-</li>
-<li><p><strong>Rootfs Assembly</strong>:
-Build and verify the system image using <code>mkrootfs</code>.</p>
-</li>
-<li><p><strong>Finalize Assets</strong>:
-Sign the rootfs image and tag the release in Git.</p>
-</li>
-<li><p><strong>Prepare Announcements</strong>:
-Prepare release notes and website assets.</p>
-</li>
-<li><p><strong>Publish Release</strong>:
-Announce and publish the release on GitHub and the Zeppe-Lin
-website.</p>
-</li>
-<li><p><strong>Post-Release Tasks</strong>:
-Update documentation, announce on discussions, monitor feedback.</p>
-</li>
-</ul>
-<p><strong>Key Repositories</strong>:</p>
-<ul>
-<li><strong>Software sources collections</strong>:
-<ul>
-<li><code>pkgsrc-core.git</code></li>
-<li><code>pkgsrc-system.git</code></li>
-<li><code>pkgsrc-xorg.git</code></li>
-<li><code>pkgsrc-desktop.git</code></li>
-</ul>
-</li>
-<li><strong>Website &amp; announcements</strong>:
-<ul>
-<li><code>zeppe-lin.github.io.git</code></li>
-</ul>
-</li>
-<li><strong>Release visuals</strong>:
-<ul>
-<li><code>artwork.git</code></li>
-</ul>
-</li>
-</ul>
-<p>This codebook will guide you through each step.
-Let's get Zeppe-Lin ready for takeoff!</p>
-<h2 id="3-creating-a-zeppe-lin-release">3. Creating a Zeppe-Lin Release</h2>
-<h3 id="31-preparation">3.1. Preparation</h3>
-<h4 id="311-branching-strategy-for-package-source-repositories">3.1.1. Branching Strategy for Package Source Repositories</h4>
-<p>Before updating your toolchain or other package sources, create new
-branches in these repositories to keep changes separate from stable
-releases:</p>
-<ul>
-<li><code>pkgsrc-core.git</code></li>
-<li><code>pkgsrc-system.git</code></li>
-<li><code>pkgsrc-xorg.git</code></li>
-<li><code>pkgsrc-desktop.git</code></li>
-</ul>
-<p>This approach also applies to unofficial repositories.</p>
-<p><strong>General Approach</strong>:</p>
-<ul>
-<li><p><strong>For 1.x (pre-2.0) releases</strong>:
-Name the branch <code>1.x</code> (for example, for releases 1.0, 1.1, 1.2).</p>
-</li>
-<li><p><strong>For 2.x and later</strong>:
-Name the branch after the major version (e.g., <code>2.x</code>).</p>
-</li>
-</ul>
-<p><strong>Creating a New Branch</strong>:</p>
-<ol>
-<li><p>Identify the target major version (e.g., 1.0).</p>
-</li>
-<li><p>From the current stable branch, run:</p>
-<pre><code>git checkout &lt;current_stable_branch&gt;
-git checkout -b &lt;new_branch&gt;
-git push origin &lt;new_branch&gt;
-</code></pre>
-<p>For example, if the last stable release is 0.9 on branch <code>0.x</code>,
-create branch <code>1.x</code> like this:</p>
-<pre><code>git checkout 0.x
-git checkout -b 1.x
-git push origin 1.x
-</code></pre>
-</li>
-</ol>
-<p>This strategy keeps the new release work isolated from stable code.</p>
-<h4 id="312-using-pkgsrcfeeds-to-track-package-updates-optional">3.1.2. Using pkgsrcfeeds to Track Package Updates (Optional)</h4>
-<p>The <code>pkgsrcfeeds.git</code> repository gathers update information from all
-Zeppe-Lin pkgsrc collections into one helpful feed.  Use your favorite
-feed reader (like <code>snownews</code>) to quickly spot new or changed packages.</p>
-<p>If an update shows a missing dependency, add it to the appropriate
-pkgsrc repository and update the helper repository accordingly.  It
-also provides scripts to check for consistency and flag any issues.</p>
-<p>In short, <code>pkgsrcfeeds</code> handles the tracking for you, letting you
-focus on the software you want to update.</p>
-<h3 id="32-updating-pkgsrc-repositories-and-building-the-core-system">3.2. Updating Pkgsrc Repositories and Building the Core System</h3>
-<h4 id="321-core-toolchain-update-pkgsrc-core">3.2.1. Core Toolchain Update (pkgsrc-core)</h4>
-<p>Before updating other packages, refresh the core toolchain for a
-fresh, stable base.  Follow this build order:</p>
-<ul>
-<li><strong>Build</strong>: <code>linux-headers</code> (skip, it's bundled with <code>glibc</code> at least now)</li>
-<li><strong>Build</strong>: <code>glibc</code> and <code>glibc-32</code></li>
-<li><strong>Build</strong>: <code>binutils</code></li>
-<li><strong>Build</strong>: <code>gcc</code></li>
-<li><strong>Build</strong>: <code>libtool</code></li>
-<li><strong>Rebuild</strong>: <code>binutils</code></li>
-<li><strong>Rebuild</strong>: <code>glibc</code> and <code>glibc-32</code></li>
-<li><strong>Rebuild</strong>: <code>libtool</code></li>
-</ul>
-<p><strong>Why This Order</strong>?
-<code>gcc</code> depends on <code>binutils</code>, and both rely on the system libraries
-from <code>glibc</code>.  Multiple passes guarantee that every component is built
-against its latest dependencies.</p>
-<p><strong>Steps to Update and Build</strong>:</p>
-<ol>
-<li><p><strong>Navigate to pkgsrc-core</strong>:
-Open your terminal and head to your local clone.</p>
-</li>
-<li><p><strong>Checkout the Release Branch</strong>:
-Switch to your release branch (e.g., <code>1.x</code>).</p>
-</li>
-<li><p><strong>Update Package Definitions</strong>:
-Update the <code>Pkgfile</code>, <code>.md5sum</code>, and <code>.footprint</code> files for
-<code>glibc</code>, <code>glibc-32</code>, <code>binutils</code>, <code>gcc</code>, and <code>libtool</code> with the new
-versions.</p>
-</li>
-<li><p><strong>Build the Toolchain</strong>:
-Run the following command, which follows the build order above:</p>
-<pre><code>pkgman update -fr -d --group \
-    glibc{,-32} binutils gcc libtool \
-    binutils glibc{,-32} libtool
-</code></pre>
-</li>
-<li><p><strong>Test Extensively</strong>:
-After the build, compile other core packages or create a rootfs
-archive to ensure everything runs smoothly.</p>
-</li>
-</ol>
-<p>If you encounter any build failures, linker errors, or runtime issues,
-review the logs and consult relevant resources for assistance (e.g.,
-Linux From Scratch documentation).</p>
-<h4 id="322-standard-package-updates">3.2.2. Standard Package Updates</h4>
-<p>Once the toolchain is updated, refresh package definitions across your
-pkgsrc repositories.  Begin with <code>pkgsrc-core</code> to ensure core packages
-reflect the latest upstream changes.  Then update <code>pkgsrc-system</code>,
-followed by <code>pkgsrc-xorg</code>, and finally <code>pkgsrc-desktop</code>.</p>
-<p>For each package, update the version, checksums, footprint, and any
-needed patches.  Commit your changes with a clear message (e.g.,
-<code>&lt;package&gt;: &lt;old_version&gt; -&gt; &lt;new_version&gt;</code>) and push them to the
-remote repository.</p>
-<h4 id="323-preparing-the-root-filesystem-image">3.2.3. Preparing the Root Filesystem Image</h4>
-<p>Once the toolchain and packages are updated, you can create the root
-filesystem image -- Zeppe-Lin's core for chroot installations.</p>
-<h5 id="3231-introducing-mkrootfs">3.2.3.1. Introducing mkrootfs</h5>
-<p><code>mkrootfs</code> automates building a custom root filesystem by:</p>
-<ul>
-<li><p><strong>Installing Packages</strong>:
-It calls <code>pkgman(1)</code> to build and install the required packages.</p>
-</li>
-<li><p><strong>Checking Integrity</strong>:
-It calls <code>revdep(1)</code> to scan for broken shared libraries.</p>
-</li>
-</ul>
-<p>Configuration is handled in <code>/etc/mkrootfs/config</code>, where you can set:</p>
-<ul>
-<li><p><code>ROOTFS_DIR</code>:
-The working directory (default: <code>/tmp/rootfs-$(date +%F)-$(uname -m)/</code>).</p>
-</li>
-<li><p><code>PACKAGES</code>:
-The list of packages to install (default: <code>pkgsrc-core</code> set).</p>
-</li>
-<li><p><code>ROOTFS_TAR</code>:
-The output tarball filename (default: <code>$ROOTFS_DIR.tar.xz</code>).</p>
-</li>
-</ul>
-<p>You can override these settings with command-line options (see
-<code>mkrootfs(8)</code>).</p>
-<h5 id="3232-step-by-step-rootfs-creation">3.2.3.2. Step-by-Step Rootfs Creation</h5>
-<ol>
-<li><p><strong>Configure</strong>:
-Edit <code>/etc/mkrootfs/config</code> (as root) and set:</p>
-<ul>
-<li><code>ROOTFS_DIR</code> (working directory)</li>
-<li><code>ROOTFS_TAR</code> (output tarball name)</li>
-<li><code>PACKAGES</code> (default: all packages from <code>pkgsrc-core</code>)</li>
-</ul>
-<p>Save your changes.  Alternatively, you can override configuration
-settings on the fly using command-line options (refer to
-<code>mkrootfs(8)</code> for details).</p>
-</li>
-<li><p><strong>Build</strong>:
-Run the command below to prepare the filesystem, check
-dependencies, and create the tarball:</p>
-<pre><code>sudo mkrootfs -BCTv
-</code></pre>
-<p>This does the following:</p>
-<ul>
-<li><code>-B</code>: Builds the filesystem directory.</li>
-<li><code>-C</code>: Scan for broken shared libraries.</li>
-<li><code>-T</code>: Compress the directory into a tarball.</li>
-<li><code>-v</code>: Be verbose.</li>
-</ul>
-</li>
-</ol>
-<h5 id="3233-optional-cleanup">3.2.3.3. Optional Cleanup</h5>
-<p>Once you've verified the tarball, you can remove temporary build
-artifacts to save space.  For example:</p>
-<pre><code>sudo rm -rf /tmp/rootfs-*-$(uname -m){,.log}
-</code></pre>
-<p>Skip cleanup if you need to debug or perform incremental builds.</p>
-<h3 id="33-finalizing-release-assets">3.3. Finalizing Release Assets</h3>
-<h4 id="331-signing-the-rootfs-tarball">3.3.1. Signing the Rootfs Tarball</h4>
-<p>Sign your root filesystem tarball with GPG to prove its authenticity
-and integrity.  Make sure GPG is installed (e.g., with
-<code>sudo pkgman install --deps --group gnupg</code>) and that you have your
-official Zeppe-Lin private key secured with a strong passphrase.</p>
-<p><strong>Steps</strong>:</p>
-<ol>
-<li><p><strong>Navigate to the Tarball Directory</strong>:
-Go to the directory where your tarball (e.g.,
-<code>rootfs-v1.0-x86_64.tar.xz</code>) resides.</p>
-</li>
-<li><p><strong>Sign the Tarball</strong>:
-Create a detached, ASCII-armored signature:</p>
-<pre><code>gpg --detach-sig --armor --output   \
-      rootfs-v1.0-x86_64.tar.xz.sig \
-      rootfs-v1.0-x86_64.tar.xz
-</code></pre>
-<p>You'll be prompted for your key's passphrase.</p>
-</li>
-<li><p><strong>Verify the Signature (Optional)</strong>:
-Confirm the signature is valid:</p>
-<pre><code>gpg --verify rootfs-v1.0-x86_64.tar.xz.sig \
-             rootfs-v1.0-x86_64.tar.xz
-</code></pre>
-</li>
-</ol>
-<p>After these steps, your signed tarball and its signature file are
-ready for distribution.</p>
-<h4 id="332-creating-a-git-tag-in-pkgsrc-core">3.3.2. Creating a Git Tag in pkgsrc-core</h4>
-<p>Once all package updates, configuration changes, and build scripts for
-the release are committed and pushed to your release branch (e.g.,
-<code>1.x</code>) in <code>pkgsrc-core</code> and other relevant repositories, mark the
-release with a Git tag.  This tag serves as the permanent reference
-for the Zeppe-Lin release and is required for the GitHub release step.</p>
-<p><strong>Steps</strong>:</p>
-<ol>
-<li><p><strong>Switch to the Release Branch</strong>:
-Make sure you're on and up-to-date with your release branch:</p>
-<pre><code>git checkout 1.x # Replace 1.x with your release branch
-git pull origin 1.x
-</code></pre>
-<p><em>Ensure all commits relevant to this release have been pushed to
-this branch.</em></p>
-</li>
-<li><p><strong>Create an Annotated Tag</strong>:</p>
-<pre><code>git tag -a v1.0 -m &quot;Zeppe-Lin v1.0 - The Maiden Voyage!&quot;
-</code></pre>
-</li>
-<li><p><strong>Push the Tag</strong>:
-Push the new tag to the remote repository:</p>
-<pre><code>git push origin v1.0
-</code></pre>
-<p>Or push all local tags (be cautious with this command if you have
-other local tags):</p>
-<pre><code>git push origin --tags
-</code></pre>
-</li>
-</ol>
-<p><strong>Notes</strong>:</p>
-<ul>
-<li>Use a consistent naming convention (e.g., prefix with <code>v</code> followed
-by the version number).</li>
-<li>Once pushed, tags are considered immutable -- review carefully
-before tagging.</li>
-</ul>
-<p>This simple process officially marks the source code state for your
-release.</p>
-<h3 id="34-preparing-and-publishing-announcements">3.4. Preparing and Publishing Announcements</h3>
-<h4 id="341-drafting-release-notes-content">3.4.1. Drafting Release Notes Content</h4>
-<p>Release notes communicate what's new, changed, and required for
-upgrading.  They will form the official website release notes and the
-GitHub Release description.</p>
-<p>Include the following:</p>
-<ul>
-<li><p><strong>Introduction</strong>:
-A brief overview (version, date, theme).</p>
-</li>
-<li><p><strong>Incompatible Changes</strong>:
-List any breaking changes or adjustments needed for upgrades.</p>
-</li>
-<li><p><strong>New Features</strong>:
-Highlight new functionalities and improvements.</p>
-</li>
-<li><p><strong>Package Changes</strong>:
-Summarize package updates for each repository (added, removed,
-updated).</p>
-</li>
-<li><p><strong>Artwork</strong>:
-Describe the release's visual design, including a link and licensing
-info if necessary (see the banner created in 3.4.2.2).</p>
-</li>
-<li><p><strong>Kernel &amp; Toolchain</strong>:
-Specify the Linux kernel version and list core toolchain components
-(e.g., <code>glibc</code>, <code>gcc</code>, <code>binutils</code>).  Include X11 details if
-relevant.</p>
-</li>
-<li><p><strong>Changelogs</strong>:
-Provide links to detailed changelogs for each pkgsrc collection.</p>
-</li>
-<li><p><strong>Downloads &amp; Checksums</strong>:
-List direct download links for the signed tarball and its signature,
-along with checksum values (e.g., SHA256).</p>
-</li>
-<li><p><strong>Installation/Upgrade Instructions</strong>:
-Offer or link to clear installation/upgrade guidelines, often
-referencing the handbook.</p>
-</li>
-<li><p><strong>Contributors</strong>:
-Credit those who contributed.</p>
-</li>
-</ul>
-<p>Draft these notes in a temporary file.  This content will be formatted
-and published in the following steps.</p>
-<h4 id="342-creating-website-announcement-files-and-assets">3.4.2. Creating Website Announcement Files and Assets</h4>
-<p>For Zeppe-Lin, we manage official release notes and related assets in
-the <code>zeppe-lin.github.io</code> repository -- our website's home.  This
-involves creating the Markdown file for the full notes and preparing
-the release banner.</p>
-<h5 id="3421-creating-the-markdown-release-notes-file-relnotes">3.4.2.1. Creating the Markdown Release Notes File (relnotes)</h5>
-<ol>
-<li><p><strong>Access the Repository</strong>:
-Open your local clone of <code>zeppe-lin.github.io.git</code>.</p>
-</li>
-<li><p><strong>Navigate to /relnotes/ Directory</strong>:
-This is where all release notes in Markdown are stored.</p>
-</li>
-<li><p><strong>Create the File</strong>:
-Make a file named <code>relnotes-v&lt;VERSION&gt;.md</code> (e.g.,
-<code>relnotes-v1.0.md</code>).  Paste and format your drafted release notes
-(from 3.4.1) in Markdown.</p>
-</li>
-<li><p><strong>Reference the Banner</strong>:
-Include a link (or embed code, typically referencing an HTML
-include if your static site generator supports it) to display your
-release banner within this Markdown file.  The banner file will be
-created in the next step.</p>
-</li>
-</ol>
-<h5 id="3422-creating-the-release-banner-cover-artwork">3.4.2.2. Creating the Release Banner (Cover Artwork)</h5>
-<p>A distinct release banner helps your audience instantly recognize the
-new Zeppe-Lin release.  It appears on both the release notes page and
-the main website.</p>
-<ol>
-<li><p><strong>Design and Store Artwork</strong>:
-Create a web-friendly image (e.g., PNG or JPEG) that reflects this
-release's theme.  Place the artwork file(s) in the <code>artwork.git</code>
-repository and push them.</p>
-</li>
-<li><p><strong>Prepare the Release Banner File</strong>:
-In the <code>/relnotes/</code> directory of <code>zeppe-lin.github.io</code> repository,
-create a file named <code>banner-v&lt;VERSION&gt;.html</code> (e.g.,
-<code>banner-v1.0.html</code>).  This file should contain an <code>&lt;img&gt;</code> tag (or
-similar code) referencing the artwork in the <code>artwork.git</code>) to
-display the banner.</p>
-</li>
-<li><p><strong>Update Main Website Banner Pointer</strong>
-(Optional - can be done Post-Release): Edit <code>/index/banner.html</code> on
-the <code>zeppe-lin.github.io</code> repository so that the release banner
-points to the new artwork.  This step can be done just before or
-after publishing the main website updates.</p>
-</li>
-</ol>
-<h4 id="343-publishing-the-release">3.4.3. Publishing the Release</h4>
-<p>Once your assets (signed tarball, signature, Git tag) and announcement
-files are ready, it's time to go public.</p>
-<h5 id="3431-announcing-on-github-releases">3.4.3.1. Announcing on GitHub Releases</h5>
-<ol>
-<li><p><strong>Open the Repository</strong>:
-Navigate to the Zeppe-Lin
-<a href="https://github.com/zeppe-lin/pkgsrc-core"><code>pkgsrc-core</code> repository on GitHub</a>.</p>
-</li>
-<li><p><strong>Go to Releases</strong>:
-Click the "Releases" tab (or section).</p>
-</li>
-<li><p><strong>Draft a Release</strong>:
-Click "Create a new release" (or "Draft a new release").</p>
-</li>
-<li><p><strong>Select Your Tag</strong>:
-In the "Tag version" drop-down, choose your Git tag created in
-3.3.2 (e.g., <code>v1.0</code>).</p>
-</li>
-<li><p><strong>Set the Title and Description</strong>:</p>
-<ul>
-<li><p><strong>Title</strong>:
-Enter a release title (e.g., <code>Zeppe-Lin v1.0: The Maiden Voyage</code>).</p>
-</li>
-<li><p><strong>Description</strong>:
-Copy/paste the summary and key highlights from your drafted
-release notes (3.4.1). <strong>Crucially, include a link to the full
-release notes page on the Zeppe-Lin website</strong> (this page will
-become live once you push the website changes).</p>
-</li>
-</ul>
-</li>
-<li><p><strong>Attach Files</strong>:
-Upload the signed root filesystem tarball
-(<code>rootfs-v1.0-x86_64.tar.xz</code>) and its signature
-(<code>rootfs-v1.0-x86_64.tar.xz.sig</code>) generated in 3.3.1.</p>
-</li>
-<li><p><strong>Pre-release Option</strong>:
-If necessary, mark the release as a pre-release; otherwise, leave
-it unchecked.</p>
-</li>
-<li><p><strong>Publish</strong>:
-Click "Publish release" to make it official on GitHub.</p>
-</li>
-</ol>
-<h5 id="3432-updating-the-zeppe-lin-website">3.4.3.2. Updating the Zeppe-Lin Website</h5>
-<p>Publish the release notes and banner on the official Zeppe-Lin
-website.</p>
-<ol>
-<li><p><strong>Commit and Push Website Changes</strong>:
-In your local clone of <code>zeppe-lin.github.io</code>, commit the changes
-for:</p>
-<ul>
-<li><p>The new release notes Markdown file
-(<code>/relnotes/relnotes-v&lt;VERSION&gt;.md</code>) created in 3.4.2.1.</p>
-</li>
-<li><p>The new banner HTML file (<code>/relnotes/banner-v&lt;VERSION&gt;.html</code>)
-created in 3.4.2.2.</p>
-</li>
-<li><p>(If you didn't do it in 3.4.2.2) The change in
-<code>/index/banner.html</code> to point to the new artwork.</p>
-</li>
-<li><p>The update to <code>/index/index.md</code> so that the latest release
-version and links (like the one to the release notes page) are
-correctly displayed.  Push these changes to the remote
-<code>zeppe-lin.github.io</code> repository.</p>
-</li>
-</ul>
-</li>
-<li><p><strong>Verify Website Build</strong>:
-Our CI/CD pipeline will detect the new and changed files, convert
-the Markdown to HTML (using <code>smu(1)</code>), and publish the updated
-website.  Verify that the new release notes page (e.g.,
-<code>https://zeppe-lin.github.io/relnotes-v1.0.html</code>) and the main page
-display and link to the new release properly.</p>
-</li>
-</ol>
-<p>This process ensures that the release is prominently published on both
-GitHub and the Zeppe-Lin website for the community to access.</p>
-<h3 id="35-post-release-tasks">3.5. Post-Release Tasks</h3>
-<p>After successfully publishing the new version of Zeppe-Lin, complete
-these steps to keep everything current and the community informed.</p>
-<ol>
-<li><p><strong>Updating the User Handbook</strong>:
-Review and update <code>handbook/handbook.md</code> in the
-<code>zeppe-lin.github.io</code> repository.  Ensure that version data,
-installation/upgrade instructions, and download links reflect the
-new release.  Commit and push these changes.</p>
-</li>
-<li><p><strong>Announcing on GitHub Discussions</strong>:
-Create a new announcement thread in the GitHub Discussions
-Announcements category.  Include the release name and version, a
-brief summary of key highlights, a link to the full release notes
-on the website, and download links (linking to the GitHub release
-is often best for downloads).</p>
-</li>
-<li><p><strong>Verifying Download Links</strong>:
-Double-check all download links in the release notes file
-(<code>relnotes-v&lt;VERSION&gt;.md</code>) and on the website to ensure they
-accurately point to the signed root filesystem tarball, its
-signature, and any other release artifacts.</p>
-</li>
-<li><p><strong>Updating Documentation Links</strong>:
-Review all documentation -- including the user handbook and
-developer's codebook -- to update any links that reference older
-releases, pointing them to the new release where appropriate.</p>
-</li>
-<li><p><strong>Monitoring Feedback</strong>:
-Keep an eye on GitHub Discussions and Issues for user feedback and
-bug reports.  Address any critical issues through patch releases if
-necessary (which would follow a similar, albeit potentially
-abbreviated, process).</p>
-</li>
-<li><p><strong>Planning for the Next Release</strong>:
-Begin planning the next release by discussing new features,
-improvements, and bug fixes based on community feedback and
-internal priorities.</p>
-</li>
-</ol>
-<h3 id="36-conclusion">3.6. Conclusion</h3>
-<p>Congratulations, Captain! You've navigated every key step -- from
-preparing our pkgsrc repositories and building the core system to
-finalizing assets, publishing announcements, and completing
-post-release tasks.  By sticking to this guide, you're ensuring each
-Zeppe-Lin release is stable, secure, and clearly communicated to our
-community.</p>
-<p>Fair winds and smooth sailing on your next release voyage!</p>
-<div class="footer-separator"></div>
-<div class="footer">
-  Except where otherwise noted, all content on this website, including the Zeppe-Lin Handbook and logos, is licensed under a
-  <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
-</div>
+<body class="has-toc">
+
+<nav id="TOC" role="doc-toc">
+  <div class="toc-title">Contents</div>
+  <ul>
+  <li><a href="#preface" id="toc-preface">PREFACE</a></li>
+  <li><a href="#introduction" id="toc-introduction"><span
+  class="toc-section-number">1</span> Introduction</a></li>
+  <li><a href="#zeppe-lin-release-process-overview"
+  id="toc-zeppe-lin-release-process-overview"><span
+  class="toc-section-number">2</span> Zeppe-Lin Release Process
+  (Overview)</a></li>
+  <li><a href="#creating-a-zeppe-lin-release"
+  id="toc-creating-a-zeppe-lin-release"><span
+  class="toc-section-number">3</span> Creating a Zeppe-Lin Release</a>
+  <ul>
+  <li><a href="#preparation" id="toc-preparation"><span
+  class="toc-section-number">3.1</span> Preparation</a>
+  <ul>
+  <li><a href="#branching-strategy-for-package-source-repositories"
+  id="toc-branching-strategy-for-package-source-repositories"><span
+  class="toc-section-number">3.1.1</span> Branching Strategy for Package
+  Source Repositories</a></li>
+  <li><a href="#using-pkgsrcfeeds-to-track-package-updates-optional"
+  id="toc-using-pkgsrcfeeds-to-track-package-updates-optional"><span
+  class="toc-section-number">3.1.2</span> Using pkgsrcfeeds to Track
+  Package Updates (Optional)</a></li>
+  </ul></li>
+  <li><a
+  href="#updating-pkgsrc-repositories-and-building-the-core-system"
+  id="toc-updating-pkgsrc-repositories-and-building-the-core-system"><span
+  class="toc-section-number">3.2</span> Updating Pkgsrc Repositories and
+  Building the Core System</a>
+  <ul>
+  <li><a href="#core-toolchain-update-pkgsrc-core"
+  id="toc-core-toolchain-update-pkgsrc-core"><span
+  class="toc-section-number">3.2.1</span> Core Toolchain Update
+  (pkgsrc-core)</a></li>
+  <li><a href="#standard-package-updates"
+  id="toc-standard-package-updates"><span
+  class="toc-section-number">3.2.2</span> Standard Package
+  Updates</a></li>
+  <li><a href="#preparing-the-root-filesystem-image"
+  id="toc-preparing-the-root-filesystem-image"><span
+  class="toc-section-number">3.2.3</span> Preparing the Root Filesystem
+  Image</a></li>
+  <li><a href="#finalizing-release-assets"
+  id="toc-finalizing-release-assets"><span
+  class="toc-section-number">3.2.4</span> Finalizing Release
+  Assets</a></li>
+  <li><a href="#preparing-and-publishing-announcements"
+  id="toc-preparing-and-publishing-announcements"><span
+  class="toc-section-number">3.2.5</span> Preparing and Publishing
+  Announcements</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#post-release-tasks" id="toc-post-release-tasks"><span
+  class="toc-section-number">4</span> Post-Release Tasks</a></li>
+  <li><a href="#conclusion" id="toc-conclusion"><span
+  class="toc-section-number">5</span> Conclusion</a></li>
+  </ul>
+  </div>
+</nav>
+
+<main>
+  <p><a href="index.html">Back to Index</a></p>
+  <h1 class="unnumbered" id="preface">PREFACE</h1>
+  <blockquote>
+  <p><strong>Important:</strong></p>
+  <p>This Codebook is currently a draft. The material here represents
+  early ideas, structure, and notes — a working skeleton of what
+  Zeppe-Lin’s development practices, system internals, and workflow
+  might look like.</p>
+  <p>Expect gaps, rough edges, and unfinished sections. Some things may
+  be reorganized, clarified, or rewritten in future iterations —
+  polished when the stars align, or whenever inspiration strikes.</p>
+  <p>Think of this as a living document, a companion for those curious
+  enough to explore the foundations before the polish. Your feedback,
+  experiments, and discoveries are part of its evolution.</p>
+  </blockquote>
+  <p>Zeppe-Lin Codebook. <em>Because even pirates need a map to find the
+  treasure (and avoid the kraken).</em></p>
+  <p>This guide is your blueprint to shape the future of Zeppe-Lin. It’s
+  simple, efficient, and free of extra complexity – designed to
+  streamline coding, contributing, and releasing. Clarity lights the way
+  so you can work without fuss.</p>
+  <h1 data-number="1" id="introduction"><span
+  class="header-section-number">1</span> Introduction</h1>
+  <p>Hello, Zeppe-Linauts! Whether you’re cleaning up code, fixing bugs,
+  or planning the next release, this codebook keeps things lean and
+  focused. Zeppe-Lin stands for clean code and honest collaboration. So
+  grab your tools, set your course, and let’s keep it sharp and
+  simple.</p>
+  <h1 data-number="2" id="zeppe-lin-release-process-overview"><span
+  class="header-section-number">2</span> Zeppe-Lin Release Process
+  (Overview)</h1>
+  <p>Releasing a new version of Zeppe-Lin is like preparing an airship
+  for its next journey. Here’s the streamlined process:</p>
+  <ul>
+  <li><p><strong>Branching</strong>: Create new release branches in
+  package source repositories.</p></li>
+  <li><p><strong>Toolchain Update</strong>: Refresh and rebuild core
+  build tools in <code>pkgsrc-core</code>.</p></li>
+  <li><p><strong>Package Updates</strong>: Update software sources in
+  <code>pkgsrc-core</code>, <code>pkgsrc-system</code>,
+  <code>pkgsrc-xorg</code>, and <code>pkgsrc-desktop</code>.</p></li>
+  <li><p><strong>Rootfs Assembly</strong>: Build and verify the system
+  image using <code>mkrootfs</code>.</p></li>
+  <li><p><strong>Finalize Assets</strong>: Sign the rootfs image and tag
+  the release in Git.</p></li>
+  <li><p><strong>Prepare Announcements</strong>: Prepare release notes
+  and website assets.</p></li>
+  <li><p><strong>Publish Release</strong>: Announce and publish the
+  release on GitHub and the Zeppe-Lin website.</p></li>
+  <li><p><strong>Post-Release Tasks</strong>: Update documentation,
+  announce on discussions, monitor feedback.</p></li>
+  </ul>
+  <p><strong>Key Repositories</strong>:</p>
+  <ul>
+  <li><strong>Software sources collections</strong>:
+  <ul>
+  <li><code>pkgsrc-core.git</code></li>
+  <li><code>pkgsrc-system.git</code></li>
+  <li><code>pkgsrc-xorg.git</code></li>
+  <li><code>pkgsrc-desktop.git</code></li>
+  </ul></li>
+  <li><strong>Website &amp; announcements</strong>:
+  <ul>
+  <li><code>zeppe-lin.github.io.git</code></li>
+  </ul></li>
+  <li><strong>Release visuals</strong>:
+  <ul>
+  <li><code>artwork.git</code></li>
+  </ul></li>
+  </ul>
+  <p>This codebook will guide you through each step. Let’s get Zeppe-Lin
+  ready for takeoff!</p>
+  <h1 data-number="3" id="creating-a-zeppe-lin-release"><span
+  class="header-section-number">3</span> Creating a Zeppe-Lin
+  Release</h1>
+  <h2 data-number="3.1" id="preparation"><span
+  class="header-section-number">3.1</span> Preparation</h2>
+  <h3 data-number="3.1.1"
+  id="branching-strategy-for-package-source-repositories"><span
+  class="header-section-number">3.1.1</span> Branching Strategy for
+  Package Source Repositories</h3>
+  <p>Before updating your toolchain or other package sources, create new
+  branches in these repositories to keep changes separate from stable
+  releases:</p>
+  <ul>
+  <li><code>pkgsrc-core.git</code></li>
+  <li><code>pkgsrc-system.git</code></li>
+  <li><code>pkgsrc-xorg.git</code></li>
+  <li><code>pkgsrc-desktop.git</code></li>
+  </ul>
+  <p>This approach also applies to unofficial repositories.</p>
+  <p><strong>General Approach</strong>:</p>
+  <ul>
+  <li><p><strong>For 1.x (pre-2.0) releases</strong>: Name the branch
+  <code>1.x</code> (for example, for releases 1.0, 1.1, 1.2).</p></li>
+  <li><p><strong>For 2.x and later</strong>: Name the branch after the
+  major version (e.g., <code>2.x</code>).</p></li>
+  </ul>
+  <p><strong>Creating a New Branch</strong>:</p>
+  <ol type="1">
+  <li><p>Identify the target major version (e.g., 1.0).</p></li>
+  <li><p>From the current stable branch, run:</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>current_stable_branch<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div>
+  <p>For example, if the last stable release is 0.9 on branch
+  <code>0.x</code>, create branch <code>1.x</code> like this:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 0.x</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> 1.x</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 1.x</span></code></pre></div></li>
+  </ol>
+  <p>This strategy keeps the new release work isolated from stable
+  code.</p>
+  <h3 data-number="3.1.2"
+  id="using-pkgsrcfeeds-to-track-package-updates-optional"><span
+  class="header-section-number">3.1.2</span> Using pkgsrcfeeds to Track
+  Package Updates (Optional)</h3>
+  <p>The <code>pkgsrcfeeds.git</code> repository gathers update
+  information from all Zeppe-Lin pkgsrc collections into one helpful
+  feed. Use your favorite feed reader (like <code>snownews</code>) to
+  quickly spot new or changed packages.</p>
+  <p>If an update shows a missing dependency, add it to the appropriate
+  pkgsrc repository and update the helper repository accordingly. It
+  also provides scripts to check for consistency and flag any
+  issues.</p>
+  <p>In short, <code>pkgsrcfeeds</code> handles the tracking for you,
+  letting you focus on the software you want to update.</p>
+  <h2 data-number="3.2"
+  id="updating-pkgsrc-repositories-and-building-the-core-system"><span
+  class="header-section-number">3.2</span> Updating Pkgsrc Repositories
+  and Building the Core System</h2>
+  <h3 data-number="3.2.1" id="core-toolchain-update-pkgsrc-core"><span
+  class="header-section-number">3.2.1</span> Core Toolchain Update
+  (pkgsrc-core)</h3>
+  <p>Before updating other packages, refresh the core toolchain for a
+  fresh, stable base. Follow this build order:</p>
+  <ul>
+  <li><strong>Build</strong>: <code>linux-headers</code> (skip, it’s
+  bundled with <code>glibc</code> at least now)</li>
+  <li><strong>Build</strong>: <code>glibc</code> and
+  <code>glibc-32</code></li>
+  <li><strong>Build</strong>: <code>binutils</code></li>
+  <li><strong>Build</strong>: <code>gcc</code></li>
+  <li><strong>Build</strong>: <code>libtool</code></li>
+  <li><strong>Rebuild</strong>: <code>binutils</code></li>
+  <li><strong>Rebuild</strong>: <code>glibc</code> and
+  <code>glibc-32</code></li>
+  <li><strong>Rebuild</strong>: <code>libtool</code></li>
+  </ul>
+  <p><strong>Why This Order</strong>? <code>gcc</code> depends on
+  <code>binutils</code>, and both rely on the system libraries from
+  <code>glibc</code>. Multiple passes guarantee that every component is
+  built against its latest dependencies.</p>
+  <p><strong>Steps to Update and Build</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Navigate to pkgsrc-core</strong>: Open your terminal
+  and head to your local clone.</p></li>
+  <li><p><strong>Checkout the Release Branch</strong>: Switch to your
+  release branch (e.g., <code>1.x</code>).</p></li>
+  <li><p><strong>Update Package Definitions</strong>: Update the
+  <code>Pkgfile</code>, <code>.md5sum</code>, and
+  <code>.footprint</code> files for <code>glibc</code>,
+  <code>glibc-32</code>, <code>binutils</code>, <code>gcc</code>, and
+  <code>libtool</code> with the new versions.</p></li>
+  <li><p><strong>Build the Toolchain</strong>: Run the following
+  command, which follows the build order above:</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="at">-d</span> <span class="at">--group</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> binutils gcc libtool <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    binutils glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> libtool</span></code></pre></div></li>
+  <li><p><strong>Test Extensively</strong>: After the build, compile
+  other core packages or create a rootfs archive to ensure everything
+  runs smoothly.</p></li>
+  </ol>
+  <p>If you encounter any build failures, linker errors, or runtime
+  issues, review the logs and consult relevant resources for assistance
+  (e.g., Linux From Scratch documentation).</p>
+  <h3 data-number="3.2.2" id="standard-package-updates"><span
+  class="header-section-number">3.2.2</span> Standard Package
+  Updates</h3>
+  <p>Once the toolchain is updated, refresh package definitions across
+  your pkgsrc repositories. Begin with <code>pkgsrc-core</code> to
+  ensure core packages reflect the latest upstream changes. Then update
+  <code>pkgsrc-system</code>, followed by <code>pkgsrc-xorg</code>, and
+  finally <code>pkgsrc-desktop</code>.</p>
+  <p>For each package, update the version, checksums, footprint, and any
+  needed patches. Commit your changes with a clear message (e.g.,
+  <code>&lt;package&gt;: &lt;old_version&gt; -&gt; &lt;new_version&gt;</code>)
+  and push them to the remote repository.</p>
+  <h3 data-number="3.2.3" id="preparing-the-root-filesystem-image"><span
+  class="header-section-number">3.2.3</span> Preparing the Root
+  Filesystem Image</h3>
+  <p>Once the toolchain and packages are updated, you can create the
+  root filesystem image – Zeppe-Lin’s core for chroot installations.</p>
+  <h4 data-number="3.2.3.1" id="introducing-mkrootfs"><span
+  class="header-section-number">3.2.3.1</span> Introducing mkrootfs</h4>
+  <p><code>mkrootfs</code> automates building a custom root filesystem
+  by:</p>
+  <ul>
+  <li><p><strong>Installing Packages</strong>: It calls
+  <code>pkgman(1)</code> to build and install the required
+  packages.</p></li>
+  <li><p><strong>Checking Integrity</strong>: It calls
+  <code>revdep(1)</code> to scan for broken shared libraries.</p></li>
+  </ul>
+  <p>Configuration is handled in <code>/etc/mkrootfs/config</code>,
+  where you can set:</p>
+  <ul>
+  <li><p><code>ROOTFS_DIR</code>: The working directory (default:
+  <code>/tmp/rootfs-$(date +%F)-$(uname -m)/</code>).</p></li>
+  <li><p><code>PACKAGES</code>: The list of packages to install
+  (default: <code>pkgsrc-core</code> set).</p></li>
+  <li><p><code>ROOTFS_TAR</code>: The output tarball filename (default:
+  <code>$ROOTFS_DIR.tar.xz</code>).</p></li>
+  </ul>
+  <p>You can override these settings with command-line options (see
+  <code>mkrootfs(8)</code>).</p>
+  <h5 data-number="3.2.3.1.1" id="step-by-step-rootfs-creation"><span
+  class="header-section-number">3.2.3.1.1</span> Step-by-Step Rootfs
+  Creation</h5>
+  <ol type="1">
+  <li><p><strong>Configure</strong>: Edit
+  <code>/etc/mkrootfs/config</code> (as root) and set:</p>
+  <ul>
+  <li><code>ROOTFS_DIR</code> (working directory)</li>
+  <li><code>ROOTFS_TAR</code> (output tarball name)</li>
+  <li><code>PACKAGES</code> (default: all packages from
+  <code>pkgsrc-core</code>)</li>
+  </ul>
+  <p>Save your changes. Alternatively, you can override configuration
+  settings on the fly using command-line options (refer to
+  <code>mkrootfs(8)</code> for details).</p></li>
+  <li><p><strong>Build</strong>: Run the command below to prepare the
+  filesystem, check dependencies, and create the tarball:</p>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkrootfs <span class="at">-BCTv</span></span></code></pre></div>
+  <p>This does the following:</p>
+  <ul>
+  <li><code>-B</code>: Builds the filesystem directory.</li>
+  <li><code>-C</code>: Scan for broken shared libraries.</li>
+  <li><code>-T</code>: Compress the directory into a tarball.</li>
+  <li><code>-v</code>: Be verbose.</li>
+  </ul></li>
+  </ol>
+  <h5 data-number="3.2.3.1.2" id="optional-cleanup"><span
+  class="header-section-number">3.2.3.1.2</span> Optional Cleanup</h5>
+  <p>Once you’ve verified the tarball, you can remove temporary build
+  artifacts to save space. For example:</p>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /tmp/rootfs-<span class="pp">*</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="dt">{</span><span class="op">,</span><span class="dt">.log}</span></span></code></pre></div>
+  <p>Skip cleanup if you need to debug or perform incremental
+  builds.</p>
+  <h3 data-number="3.2.4" id="finalizing-release-assets"><span
+  class="header-section-number">3.2.4</span> Finalizing Release
+  Assets</h3>
+  <h4 data-number="3.2.4.1" id="signing-the-rootfs-tarball"><span
+  class="header-section-number">3.2.4.1</span> Signing the Rootfs
+  Tarball</h4>
+  <p>Sign your root filesystem tarball with GPG to prove its
+  authenticity and integrity. Make sure GPG is installed (e.g., with
+  <code>sudo pkgman install --deps --group gnupg</code>) and that you
+  have your official Zeppe-Lin private key secured with a strong
+  passphrase.</p>
+  <p><strong>Steps</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Navigate to the Tarball Directory</strong>: Go to the
+  directory where your tarball (e.g.,
+  <code>rootfs-v1.0-x86_64.tar.xz</code>) resides.</p></li>
+  <li><p><strong>Sign the Tarball</strong>: Create a detached,
+  ASCII-armored signature:</p>
+  <div class="sourceCode" id="cb6"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sig</span> <span class="at">--armor</span> <span class="at">--output</span>   <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      rootfs-v1.0-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      rootfs-v1.0-x86_64.tar.xz</span></code></pre></div>
+  <p>You’ll be prompted for your key’s passphrase.</p></li>
+  <li><p><strong>Verify the Signature (Optional)</strong>: Confirm the
+  signature is valid:</p>
+  <div class="sourceCode" id="cb7"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--verify</span> rootfs-v1.0-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             rootfs-v1.0-x86_64.tar.xz</span></code></pre></div></li>
+  </ol>
+  <p>After these steps, your signed tarball and its signature file are
+  ready for distribution.</p>
+  <h4 data-number="3.2.4.2" id="creating-a-git-tag-in-pkgsrc-core"><span
+  class="header-section-number">3.2.4.2</span> Creating a Git Tag in
+  pkgsrc-core</h4>
+  <p>Once all package updates, configuration changes, and build scripts
+  for the release are committed and pushed to your release branch (e.g.,
+  <code>1.x</code>) in <code>pkgsrc-core</code> and other relevant
+  repositories, mark the release with a Git tag. This tag serves as the
+  permanent reference for the Zeppe-Lin release and is required for the
+  GitHub release step.</p>
+  <p><strong>Steps</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Switch to the Release Branch</strong>: Make sure you’re
+  on and up-to-date with your release branch:</p>
+  <div class="sourceCode" id="cb8"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 1.x <span class="co"># Replace 1.x with your release branch</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin 1.x</span></code></pre></div>
+  <p><em>Ensure all commits relevant to this release have been pushed to
+  this branch.</em></p></li>
+  <li><p><strong>Create an Annotated Tag</strong>:</p>
+  <div class="sourceCode" id="cb9"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Zeppe-Lin v1.0 - The Maiden Voyage!&quot;</span></span></code></pre></div></li>
+  <li><p><strong>Push the Tag</strong>: Push the new tag to the remote
+  repository:</p>
+  <div class="sourceCode" id="cb10"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin v1.0</span></code></pre></div>
+  <p>Or push all local tags (be cautious with this command if you have
+  other local tags):</p>
+  <div class="sourceCode" id="cb11"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="at">--tags</span></span></code></pre></div></li>
+  </ol>
+  <p><strong>Notes</strong>:</p>
+  <ul>
+  <li>Use a consistent naming convention (e.g., prefix with
+  <code>v</code> followed by the version number).</li>
+  <li>Once pushed, tags are considered immutable – review carefully
+  before tagging.</li>
+  </ul>
+  <p>This simple process officially marks the source code state for your
+  release.</p>
+  <h3 data-number="3.2.5"
+  id="preparing-and-publishing-announcements"><span
+  class="header-section-number">3.2.5</span> Preparing and Publishing
+  Announcements</h3>
+  <h4 data-number="3.2.5.1" id="drafting-release-notes-content"><span
+  class="header-section-number">3.2.5.1</span> Drafting Release Notes
+  Content</h4>
+  <p>Release notes communicate what’s new, changed, and required for
+  upgrading. They will form the official website release notes and the
+  GitHub Release description.</p>
+  <p>Include the following:</p>
+  <ul>
+  <li><p><strong>Introduction</strong>: A brief overview (version, date,
+  theme).</p></li>
+  <li><p><strong>Incompatible Changes</strong>: List any breaking
+  changes or adjustments needed for upgrades.</p></li>
+  <li><p><strong>New Features</strong>: Highlight new functionalities
+  and improvements.</p></li>
+  <li><p><strong>Package Changes</strong>: Summarize package updates for
+  each repository (added, removed, updated).</p></li>
+  <li><p><strong>Artwork</strong>: Describe the release’s visual design,
+  including a link and licensing info if necessary (see the banner
+  created in 3.4.2.2).</p></li>
+  <li><p><strong>Kernel &amp; Toolchain</strong>: Specify the Linux
+  kernel version and list core toolchain components (e.g.,
+  <code>glibc</code>, <code>gcc</code>, <code>binutils</code>). Include
+  X11 details if relevant.</p></li>
+  <li><p><strong>Changelogs</strong>: Provide links to detailed
+  changelogs for each pkgsrc collection.</p></li>
+  <li><p><strong>Downloads &amp; Checksums</strong>: List direct
+  download links for the signed tarball and its signature, along with
+  checksum values (e.g., SHA256).</p></li>
+  <li><p><strong>Installation/Upgrade Instructions</strong>: Offer or
+  link to clear installation/upgrade guidelines, often referencing the
+  handbook.</p></li>
+  <li><p><strong>Contributors</strong>: Credit those who
+  contributed.</p></li>
+  </ul>
+  <p>Draft these notes in a temporary file. This content will be
+  formatted and published in the following steps.</p>
+  <h4 data-number="3.2.5.2"
+  id="creating-website-announcement-files-and-assets"><span
+  class="header-section-number">3.2.5.2</span> Creating Website
+  Announcement Files and Assets</h4>
+  <p>For Zeppe-Lin, we manage official release notes and related assets
+  in the <code>zeppe-lin.github.io</code> repository – our website’s
+  home. This involves creating the Markdown file for the full notes and
+  preparing the release banner.</p>
+  <h5 data-number="3.2.5.2.1"
+  id="creating-the-markdown-release-notes-file-relnotes"><span
+  class="header-section-number">3.2.5.2.1</span> Creating the Markdown
+  Release Notes File (relnotes)</h5>
+  <ol type="1">
+  <li><p><strong>Access the Repository</strong>: Open your local clone
+  of <code>zeppe-lin.github.io.git</code>.</p></li>
+  <li><p><strong>Navigate to /relnotes/ Directory</strong>: This is
+  where all release notes in Markdown are stored.</p></li>
+  <li><p><strong>Create the File</strong>: Make a file named
+  <code>relnotes-v&lt;VERSION&gt;.md</code> (e.g.,
+  <code>relnotes-v1.0.md</code>). Paste and format your drafted release
+  notes (from 3.4.1) in Markdown.</p></li>
+  <li><p><strong>Reference the Banner</strong>: Include a link (or embed
+  code, typically referencing an HTML include if your static site
+  generator supports it) to display your release banner within this
+  Markdown file. The banner file will be created in the next
+  step.</p></li>
+  </ol>
+  <h5 data-number="3.2.5.2.2"
+  id="creating-the-release-banner-cover-artwork"><span
+  class="header-section-number">3.2.5.2.2</span> Creating the Release
+  Banner (Cover Artwork)</h5>
+  <p>A distinct release banner helps your audience instantly recognize
+  the new Zeppe-Lin release. It appears on both the release notes page
+  and the main website.</p>
+  <ol type="1">
+  <li><p><strong>Design and Store Artwork</strong>: Create a
+  web-friendly image (e.g., PNG or JPEG) that reflects this release’s
+  theme. Place the artwork file(s) in the <code>artwork.git</code>
+  repository and push them.</p></li>
+  <li><p><strong>Prepare the Release Banner File</strong>: In the
+  <code>/relnotes/</code> directory of <code>zeppe-lin.github.io</code>
+  repository, create a file named
+  <code>banner-v&lt;VERSION&gt;.html</code> (e.g.,
+  <code>banner-v1.0.html</code>). This file should contain an
+  <code>&lt;img&gt;</code> tag (or similar code) referencing the artwork
+  in the <code>artwork.git</code>) to display the banner.</p></li>
+  <li><p><strong>Update Main Website Banner Pointer</strong> (Optional -
+  can be done Post-Release): Edit <code>/index/banner.html</code> on the
+  <code>zeppe-lin.github.io</code> repository so that the release banner
+  points to the new artwork. This step can be done just before or after
+  publishing the main website updates.</p></li>
+  </ol>
+  <h4 data-number="3.2.5.3" id="publishing-the-release"><span
+  class="header-section-number">3.2.5.3</span> Publishing the
+  Release</h4>
+  <p>Once your assets (signed tarball, signature, Git tag) and
+  announcement files are ready, it’s time to go public.</p>
+  <h5 data-number="3.2.5.3.1" id="announcing-on-github-releases"><span
+  class="header-section-number">3.2.5.3.1</span> Announcing on GitHub
+  Releases</h5>
+  <ol type="1">
+  <li><p><strong>Open the Repository</strong>: Navigate to the Zeppe-Lin
+  <a
+  href="https://github.com/zeppe-lin/pkgsrc-core"><code>pkgsrc-core</code>
+  repository on GitHub</a>.</p></li>
+  <li><p><strong>Go to Releases</strong>: Click the “Releases” tab (or
+  section).</p></li>
+  <li><p><strong>Draft a Release</strong>: Click “Create a new release”
+  (or “Draft a new release”).</p></li>
+  <li><p><strong>Select Your Tag</strong>: In the “Tag version”
+  drop-down, choose your Git tag created in 3.3.2 (e.g.,
+  <code>v1.0</code>).</p></li>
+  <li><p><strong>Set the Title and Description</strong>:</p>
+  <ul>
+  <li><p><strong>Title</strong>: Enter a release title (e.g.,
+  <code>Zeppe-Lin v1.0: The Maiden Voyage</code>).</p></li>
+  <li><p><strong>Description</strong>: Copy/paste the summary and key
+  highlights from your drafted release notes (3.4.1). <strong>Crucially,
+  include a link to the full release notes page on the Zeppe-Lin
+  website</strong> (this page will become live once you push the website
+  changes).</p></li>
+  </ul></li>
+  <li><p><strong>Attach Files</strong>: Upload the signed root
+  filesystem tarball (<code>rootfs-v1.0-x86_64.tar.xz</code>) and its
+  signature (<code>rootfs-v1.0-x86_64.tar.xz.sig</code>) generated in
+  3.3.1.</p></li>
+  <li><p><strong>Pre-release Option</strong>: If necessary, mark the
+  release as a pre-release; otherwise, leave it unchecked.</p></li>
+  <li><p><strong>Publish</strong>: Click “Publish release” to make it
+  official on GitHub.</p></li>
+  </ol>
+  <h5 data-number="3.2.5.3.2" id="updating-the-zeppe-lin-website"><span
+  class="header-section-number">3.2.5.3.2</span> Updating the Zeppe-Lin
+  Website</h5>
+  <p>Publish the release notes and banner on the official Zeppe-Lin
+  website.</p>
+  <ol type="1">
+  <li><p><strong>Commit and Push Website Changes</strong>: In your local
+  clone of <code>zeppe-lin.github.io</code>, commit the changes for:</p>
+  <ul>
+  <li><p>The new release notes Markdown file
+  (<code>/relnotes/relnotes-v&lt;VERSION&gt;.md</code>) created in
+  3.4.2.1.</p></li>
+  <li><p>The new banner HTML file
+  (<code>/relnotes/banner-v&lt;VERSION&gt;.html</code>) created in
+  3.4.2.2.</p></li>
+  <li><p>(If you didn’t do it in 3.4.2.2) The change in
+  <code>/index/banner.html</code> to point to the new artwork.</p></li>
+  <li><p>The update to <code>/index/index.md</code> so that the latest
+  release version and links (like the one to the release notes page) are
+  correctly displayed. Push these changes to the remote
+  <code>zeppe-lin.github.io</code> repository.</p></li>
+  </ul></li>
+  <li><p><strong>Verify Website Build</strong>: Our CI/CD pipeline will
+  detect the new and changed files, convert the Markdown to HTML (using
+  <code>smu(1)</code>), and publish the updated website. Verify that the
+  new release notes page (e.g.,
+  <code>https://zeppe-lin.github.io/relnotes-v1.0.html</code>) and the
+  main page display and link to the new release properly.</p></li>
+  </ol>
+  <p>This process ensures that the release is prominently published on
+  both GitHub and the Zeppe-Lin website for the community to access.</p>
+  <h1 data-number="4" id="post-release-tasks"><span
+  class="header-section-number">4</span> Post-Release Tasks</h1>
+  <p>After successfully publishing the new version of Zeppe-Lin,
+  complete these steps to keep everything current and the community
+  informed.</p>
+  <ol type="1">
+  <li><p><strong>Updating the User Handbook</strong>: Review and update
+  <code>handbook/handbook.md</code> in the
+  <code>zeppe-lin.github.io</code> repository. Ensure that version data,
+  installation/upgrade instructions, and download links reflect the new
+  release. Commit and push these changes.</p></li>
+  <li><p><strong>Announcing on GitHub Discussions</strong>: Create a new
+  announcement thread in the GitHub Discussions Announcements category.
+  Include the release name and version, a brief summary of key
+  highlights, a link to the full release notes on the website, and
+  download links (linking to the GitHub release is often best for
+  downloads).</p></li>
+  <li><p><strong>Verifying Download Links</strong>: Double-check all
+  download links in the release notes file
+  (<code>relnotes-v&lt;VERSION&gt;.md</code>) and on the website to
+  ensure they accurately point to the signed root filesystem tarball,
+  its signature, and any other release artifacts.</p></li>
+  <li><p><strong>Updating Documentation Links</strong>: Review all
+  documentation – including the user handbook and developer’s codebook –
+  to update any links that reference older releases, pointing them to
+  the new release where appropriate.</p></li>
+  <li><p><strong>Monitoring Feedback</strong>: Keep an eye on GitHub
+  Discussions and Issues for user feedback and bug reports. Address any
+  critical issues through patch releases if necessary (which would
+  follow a similar, albeit potentially abbreviated, process).</p></li>
+  <li><p><strong>Planning for the Next Release</strong>: Begin planning
+  the next release by discussing new features, improvements, and bug
+  fixes based on community feedback and internal priorities.</p></li>
+  </ol>
+  <h1 data-number="5" id="conclusion"><span
+  class="header-section-number">5</span> Conclusion</h1>
+  <p>Congratulations, Captain! You’ve navigated every key step – from
+  preparing our pkgsrc repositories and building the core system to
+  finalizing assets, publishing announcements, and completing
+  post-release tasks. By sticking to this guide, you’re ensuring each
+  Zeppe-Lin release is stable, secure, and clearly communicated to our
+  community.</p>
+  <p>Fair winds and smooth sailing on your next release voyage!</p>
+</main>
+
 </body>
 </html>
