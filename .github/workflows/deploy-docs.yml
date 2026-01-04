@@ -15,11 +15,10 @@ jobs:
         with:
           fetch-depth: 0  # Uses full history
 
-      - name: Install Pandoc
-        run: |
-          echo "Installing pandoc..."
-          sudo apt-get update
-          sudo apt-get install -y pandoc
+      - name: Install Pandoc (3.8+ required)
+        uses: pandoc/actions/setup@v1
+        with:
+          version: '3.8'
 
       - name: Build Documentation
         run: |
