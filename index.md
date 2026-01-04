@@ -14,22 +14,18 @@ Zeppe-Lin is a GNU/Linux distribution for x86-64 systems,
 forked from [CRUX](https://crux.nu/) and forged in the spirit
 of KISS - *Keep It Simple, Stupid*.
 
-It is a system for those who prefer clarity over abstraction
-and full control over their computing environment.
-
-> You compile. You configure. You own it. You fix it when it breaks.
+It emphasizes clarity, minimalism, and direct control of the
+computing environment.
 
 ## Current Release {.unnumbered}
 
 **Zeppe-Lin v1.1**  
 Released August 1, 2025
 
-This release focuses on toolchain alignment, documentation maturity,
+This release focuses on toolchain alignment, documentation rebuild,
 and infrastructure cleanup.
 
-> **Built in the dark, ready to shine on your rig.**  
-> Featuring *Stine Luft Satomi* — fictional, unimpressed, and not
-> responsible for your compiler flags.
+Highlights:
 
 - Toolchain updated for **Linux 6.1+**
 - Documentation rebuilt from scratch
@@ -52,7 +48,7 @@ Start here:
 
 - [v1.0 - The Maiden Voyage](v1.0.html)
 - [v0.99.1](v0.99.1.html)
-- [v0.99 - Happy Birthday](v0.99.html)
+- [v0.99 - Happy Birthday!](v0.99.html)
 
 ## Source & Development {.unnumbered}
 
@@ -89,6 +85,4 @@ Discussion is low-noise and technical.
 
 ---
 
-Zeppe-Lin is built by people who care about systems, correctness, and
-long-term maintainability.  
-If that resonates, you already know where to start.
+See the [Handbook](handbook.html) to begin.
