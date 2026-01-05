@@ -12,7 +12,7 @@ title: Zeppe-Lin Linux --- Welcome
 
 Zeppe-Lin is a GNU/Linux distribution for x86-64 systems,
 forked from [CRUX](https://crux.nu/) and forged in the spirit
-of KISS - *Keep It Simple, Stupid*.
+of KISS --- *Keep It Simple, Stupid*.
 
 It emphasizes clarity, minimalism, and direct control of the
 computing environment.

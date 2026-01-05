@@ -369,8 +369,8 @@ Example for [UEFI and LVM on LUKS](#uefi-and-lvm-on-luks):
 
 > **Note:**
 >
-> Use `UUID=...` instead of `/dev/*` for better reliability on
-> multi-disk systems.
+> Use `UUID=...` or `/dev/disk/by-uuid/*` instead of `/dev/*` for
+> better reliability on multi-disk systems.
 > Find UUIDs with:
 > ```sh
 > # as root
@@ -454,7 +454,7 @@ Packages' sources are organized into collections
 (see [Collections](#collections) for details).
 
 Clone the necessary collections, keeping in mind that each depends on
-the previous one (replace `1.x` with the current release branch):
+the previous one:
 
 ```sh
 # chrooted, as root
@@ -465,6 +465,14 @@ git clone ${URL}/pkgsrc-system  --branch 1.x
 git clone ${URL}/pkgsrc-xorg    --branch 1.x
 git clone ${URL}/pkgsrc-desktop --branch 1.x
 ```
+
+> **Important:**
+>
+> The `1.x` branch applies to all **1.** releases (1.0, 1.1, 1.2, ...).
+> When a new major line appears, switch to its branch (e.g., `2.x`).
+> Verify your release against the
+> [current release](index.html#current-release) or the
+> [pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest).
 
 Enable the cloned collections in `/etc/pkgman.conf`.
 By default, only `pkgsrc-core` collection is enabled.
@@ -680,9 +688,9 @@ See `mkinitramfs.config(5)` for more information.
 
 > **Note:**
 >
-> For multi-disk systems, using `UUID=...` instead of `/dev/*` in the
-> config can prevent boot issues.
->
+> For multi-disk systems, using `UUID=...` or
+> `/dev/disk/by-uuid/*` instead of `/dev/*` in the config can prevent
+> boot issues.
 > Find UUIDs with:
 >
 > ```sh
@@ -826,12 +834,12 @@ For users interested in a retro, intuitive window manager, you can
 install **Window Maker** from the unofficial `pkgsrc-wmaker`
 repository.
 
-* **Warning**:
-
-  Using unofficial repositories means the packages might not follow
-  the same update schedule or quality standards as the official
-  repositories.
-  Use with caution.
+> **Warning:**
+>
+> Using unofficial repositories means the packages might not follow
+> the same update schedule or quality standards as the official
+> repositories.
+> **Use with caution.**
 
 To install Window Maker, first clone the repository:
 
@@ -841,6 +849,14 @@ cd /usr/src
 URL=https://github.com/zeppe-lin
 git clone ${URL}/pkgsrc-wmaker --branch 1.x
 ```
+
+> **Important:**
+>
+> The `1.x` branch applies to all **1.** releases (1.0, 1.1, 1.2, ...).
+> When a new major line appears, switch to its branch (e.g., `2.x`).
+> Verify your release against the
+> [current release](index.html#current-release) or the
+> [pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest).
 
 Next, you need to tell `pkgman(1)` about this new repository by adding
 the following line to `/etc/pkgman.conf`:
@@ -1042,6 +1058,7 @@ name#version-release.pkg.tar.gz
 ```
 
 Components:
+
 - `name`: Package name.
 - `version`: Version number.
 - `release`: Build revision.
@@ -1118,7 +1135,7 @@ Use `-f` or `--force` to override this behavior (**use with caution!**):
 pkgadd -f bash#5.0.18-1.pkg.tar.gz
 ```
 
-#### 4.3.1.2. Upgrading a Package
+#### Upgrading a Package
 
 Upgrade a package with the `-u` or `--upgrade` option:
 
@@ -1143,9 +1160,12 @@ To remove a package, use `pkgrm(8)` followed by the package name:
 pkgrm bash
 ```
 
-* **Caution**:
-
-  This removes all files owned by the package without confirmation.
+> **Caution:**
+>
+> This command removes all files owned by the package, without
+> prompting.
+> Misspelling the package name may remove something entirely different
+> (e.g., `glib` vs. `glibc`).
 
 #### Inspecting Packages
 
@@ -1215,10 +1235,10 @@ These rules will:
 - Upgrade `/etc/X11/xorg.conf` specifically (overrides the `/etc` rule).
 
 
-* **Caution**:
-
-  Patterns match filenames inside the package, not full system paths.
-  Do not use `/` at the start!
+> **Caution**:
+>
+> Patterns match filenames inside the package, not full system paths.
+> Do not use **`/`** at the start!
 
 See `pkgadd.conf(5)` for details.
 
@@ -1744,9 +1764,13 @@ git clone ${URL}/pkgsrc-xorg    --branch 1.x
 git clone ${URL}/pkgsrc-desktop --branch 1.x
 ```
 
-Replace `1.x` with the branch matching your Zeppe-Lin release (e.g.,
-`1.x` for version 1.0 or 1.1).
-Check the Zeppe-Lin website or release notes for the correct branch.
+> **Important:**
+>
+> The `1.x` branch applies to all **1.** releases (1.0, 1.1, 1.2, ...).
+> When a new major line appears, switch to its branch (e.g., `2.x`).
+> Verify your release against the
+> [current release](index.html#current-release) or the
+> [pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest).
 
 #### Enabling Collections in pkgman.conf
 
@@ -1821,13 +1845,8 @@ Example output:
 If you're looking for specific software, use the `search` command.
 For example, to search for packages related to `alsa`:
 
-```sh
-pkgman search alsa
 ```
-
-Example output:
-
-```
+$ pkgman search alsa
 -- search ([i] = installed)
 [ ] alsa-lib
 [ ] alsa-ucm-conf
@@ -1836,11 +1855,15 @@ Example output:
 
 The output indicates which packages are installed and available.
 
-For a detailed search that includes collection paths, add the `--path`
-option:
+For a detailed search that includes versions, descriptions, and
+collection paths, add the `-vv` and `--path` options:
 
-```sh
-pkgman search --path alsa
+```
+$ pkgman search -vv --path alsa
+-- search ([i] = installed)
+[ ] /usr/src/pkgsrc-system/alsa-lib 1.2.15.1-1: ALSA libraries
+[ ] /usr/src/pkgsrc-system/alsa-ucm-conf 1.2.15.1-1: ALSA Use Case Manager configuration
+[i] /usr/src/pkgsrc-system/alsa-utils 1.2.15.1-1: Utilities for the ALSA
 ```
 
 #### Building and Installing Packages
@@ -1952,26 +1975,34 @@ collection or installed manually from other sources.
 
 #### Updating Packages
 
-Use `pkgman sysup` for a system upgrade.
-
-**Step 1**: Download all required source files first:
+To upgrade the system, start by downloading all required source files.
+This ensures the upgrade won't be interrupted by missing files.
 
 ```sh
 # as root
 pkgman sysup -do
 ```
 
-This ensures that all necessary files are retrieved before the upgrade
-begins, avoiding interruptions during the build process.
-
-**Step 2**: Upgrade Packages:
+Once the sources are downloaded, upgrade the packages with proper
+dependency handling and ordering:
 
 ```sh
 # as root
 pkgman sysup --deps --depsort --group
 ```
 
-These options ensure proper dependency handling and upgrade order.
+Options explained:
+
+- `--deps`  
+  Include all dependencies of the packages in the update process.
+
+- `--depsort`  
+  Sort packages by dependency order before updating.
+
+- `--group`  
+  Update all packages in order, stopping immediately if the update of
+  any package fails.
+  Useful for updating dependent packages sequentially.
 
 #### Updating Specific Packages
 
@@ -2203,25 +2234,26 @@ build() {
 Include these headers in the `Pkgfile` for optimal integration with
 `pkgman(1)`:
 
-- `# Description`: Brief summary of the package.
-- `# URL`: Link to official documentation or website.
-- `# Depends on`: List of dependencies.
+- `# Description`  
+  Brief summary of the package.
+
+- `# URL`  
+  Link to official documentation or website.
+
+- `# Depends on`  
+  List of dependencies.
   `pkgman(1)` resolves and installs these automatically.
 
-Without these headers, `pkgman(1)` cannot display metadata or resolve
-dependencies.
+> **Important:**  
+> Without these headers, `pkgman(1)` cannot display metadata or
+> resolve dependencies.
 
 #### Verifying the Package Source
 
 Verify your package metadata with:
 
-```sh
-pkgman info hello
 ```
-
-Expected output:
-
-```
+$ pkgman info hello
 Name:         hello
 Path:         /usr/src/mynewcollection/hello
 Version:      2.12.1
@@ -2296,13 +2328,8 @@ There are at least two options to resolve permissions case.
 
 After addressing warnings, confirm the presence of required files:
 
-```sh
-ls -l /usr/src/mynewcollection/hello
 ```
-
-Expected output:
-
-```
+$ ls -l /usr/src/mynewcollection/hello
 -rw-r--r--  1 pkgmk pkgmk  251 .footprint
 -rw-r--r--  1 pkgmk pkgmk   54 .md5sum
 -rw-r--r--  1 root  root   359 Pkgfile
@@ -2312,25 +2339,15 @@ Expected output:
 
 Ensure the package is installed on your system:
 
-```sh
-pkgman isinst hello
 ```
-
-Expected output:
-
-```
+$ pkgman isinst hello
 package 'hello' is installed
 ```
 
 Run:
 
-```sh
-hello
 ```
-
-Expected output:
-
-```
+$ hello
 Hello, world!
 ```
 
