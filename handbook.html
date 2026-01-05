@@ -806,8 +806,9 @@
 /dev/zpln/swap  swap   swap  defaults                     0 0</code></pre>
   <blockquote>
   <p><strong>Note:</strong></p>
-  <p>Use <code>UUID=...</code> instead of <code>/dev/*</code> for better
-  reliability on multi-disk systems. Find UUIDs with:</p>
+  <p>Use <code>UUID=...</code> or <code>/dev/disk/by-uuid/*</code>
+  instead of <code>/dev/*</code> for better reliability on multi-disk
+  systems. Find UUIDs with:</p>
   <div class="sourceCode" id="cb22"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">blkid</span> <span class="at">-o</span> value <span class="at">-s</span> UUID <span class="op">&lt;</span>DEVICE<span class="op">&gt;</span></span></code></pre></div>
@@ -871,8 +872,7 @@
   <p>Packages’ sources are organized into collections (see <a
   href="#collections">Collections</a> for details).</p>
   <p>Clone the necessary collections, keeping in mind that each depends
-  on the previous one (replace <code>1.x</code> with the current release
-  branch):</p>
+  on the previous one:</p>
   <div class="sourceCode" id="cb29"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chrooted, as root</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src/</span>
@@ -881,6 +881,15 @@
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-system  <span class="at">--branch</span> 1.x</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-xorg    <span class="at">--branch</span> 1.x</span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-desktop <span class="at">--branch</span> 1.x</span></code></pre></div>
+  <blockquote>
+  <p><strong>Important:</strong></p>
+  <p>The <code>1.x</code> branch applies to all <strong>1.</strong>
+  releases (1.0, 1.1, 1.2, …). When a new major line appears, switch to
+  its branch (e.g., <code>2.x</code>). Verify your release against the
+  <a href="index.html#current-release">current release</a> or the <a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest">pkgsrc-core
+  releases page</a>.</p>
+  </blockquote>
   <p>Enable the cloned collections in <code>/etc/pkgman.conf</code>. By
   default, only <code>pkgsrc-core</code> collection is enabled.</p>
   <h3 data-number="2.7.2" id="perform-the-system-update"><span
@@ -1049,9 +1058,9 @@
   </blockquote>
   <blockquote>
   <p><strong>Note:</strong></p>
-  <p>For multi-disk systems, using <code>UUID=...</code> instead of
-  <code>/dev/*</code> in the config can prevent boot issues.</p>
-  <p>Find UUIDs with:</p>
+  <p>For multi-disk systems, using <code>UUID=...</code> or
+  <code>/dev/disk/by-uuid/*</code> instead of <code>/dev/*</code> in the
+  config can prevent boot issues. Find UUIDs with:</p>
   <div class="sourceCode" id="cb43"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">blkid</span> <span class="at">-o</span> value <span class="at">-s</span> UUID <span class="op">&lt;</span>DEVICE<span class="op">&gt;</span></span></code></pre></div>
@@ -1161,18 +1170,27 @@
   <p>For users interested in a retro, intuitive window manager, you can
   install <strong>Window Maker</strong> from the unofficial
   <code>pkgsrc-wmaker</code> repository.</p>
-  <ul>
-  <li><p><strong>Warning</strong>:</p>
+  <blockquote>
+  <p><strong>Warning:</strong></p>
   <p>Using unofficial repositories means the packages might not follow
   the same update schedule or quality standards as the official
-  repositories. Use with caution.</p></li>
-  </ul>
+  repositories. <strong>Use with caution.</strong></p>
+  </blockquote>
   <p>To install Window Maker, first clone the repository:</p>
   <div class="sourceCode" id="cb54"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chrooted, as root</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="va">URL</span><span class="op">=</span>https://github.com/zeppe-lin</span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-wmaker <span class="at">--branch</span> 1.x</span></code></pre></div>
+  <blockquote>
+  <p><strong>Important:</strong></p>
+  <p>The <code>1.x</code> branch applies to all <strong>1.</strong>
+  releases (1.0, 1.1, 1.2, …). When a new major line appears, switch to
+  its branch (e.g., <code>2.x</code>). Verify your release against the
+  <a href="index.html#current-release">current release</a> or the <a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest">pkgsrc-core
+  releases page</a>.</p>
+  </blockquote>
   <p>Next, you need to tell <code>pkgman(1)</code> about this new
   repository by adding the following line to
   <code>/etc/pkgman.conf</code>:</p>
@@ -1327,9 +1345,12 @@
   class="header-section-number">4.2.1</span> Package Naming</h3>
   <p>Zeppe-Lin packages follow a clear naming convention:</p>
   <pre><code>name#version-release.pkg.tar.gz</code></pre>
-  <p>Components: - <code>name</code>: Package name. -
-  <code>version</code>: Version number. - <code>release</code>: Build
-  revision.</p>
+  <p>Components:</p>
+  <ul>
+  <li><code>name</code>: Package name.</li>
+  <li><code>version</code>: Version number.</li>
+  <li><code>release</code>: Build revision.</li>
+  </ul>
   <p>Example:</p>
   <pre><code>ed#1.21-1.pkg.tar.gz</code></pre>
   <p>The extension <code>.pkg.tar.gz</code> denotes a Zeppe-Lin package.
@@ -1390,8 +1411,7 @@
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgadd</span> <span class="at">-f</span> bash#5.0.18-1.pkg.tar.gz</span></code></pre></div>
   <h4 data-number="4.3.1.2" id="upgrading-a-package"><span
-  class="header-section-number">4.3.1.2</span> 4.3.1.2. Upgrading a
-  Package</h4>
+  class="header-section-number">4.3.1.2</span> Upgrading a Package</h4>
   <p>Upgrade a package with the <code>-u</code> or
   <code>--upgrade</code> option:</p>
   <div class="sourceCode" id="cb71"><pre
@@ -1410,11 +1430,12 @@
   <div class="sourceCode" id="cb72"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgrm</span> bash</span></code></pre></div>
-  <ul>
-  <li><p><strong>Caution</strong>:</p>
-  <p>This removes all files owned by the package without
-  confirmation.</p></li>
-  </ul>
+  <blockquote>
+  <p><strong>Caution:</strong></p>
+  <p>This command removes all files owned by the package, without
+  prompting. Misspelling the package name may remove something entirely
+  different (e.g., <code>glib</code> vs. <code>glibc</code>).</p>
+  </blockquote>
   <h4 data-number="4.3.1.4" id="inspecting-packages"><span
   class="header-section-number">4.3.1.4</span> Inspecting Packages</h4>
   <p>Use <code>pkginfo(1)</code> to get information about packages.</p>
@@ -1459,16 +1480,17 @@ UPGRADE   ^var/log/.*$          NO
 UPGRADE   ^etc/X11/xorg.conf$   YES</code></pre>
   <p>These rules will:</p>
   <ul>
-  <li><p>Keep all files in <code>/etc</code> and its
-  subdirectories.</p></li>
-  <li><p>Keep all files in <code>/var/log</code> and its
-  subdirectories.</p></li>
-  <li><p>Upgrade <code>/etc/X11/xorg.conf</code> specifically (overrides
-  the <code>/etc</code> rule).</p></li>
-  <li><p><strong>Caution</strong>:</p>
-  <p>Patterns match filenames inside the package, not full system paths.
-  Do not use <code>/</code> at the start!</p></li>
+  <li>Keep all files in <code>/etc</code> and its subdirectories.</li>
+  <li>Keep all files in <code>/var/log</code> and its
+  subdirectories.</li>
+  <li>Upgrade <code>/etc/X11/xorg.conf</code> specifically (overrides
+  the <code>/etc</code> rule).</li>
   </ul>
+  <blockquote>
+  <p><strong>Caution</strong>:</p>
+  <p>Patterns match filenames inside the package, not full system paths.
+  Do not use <strong><code>/</code></strong> at the start!</p>
+  </blockquote>
   <p>See <code>pkgadd.conf(5)</code> for details.</p>
   <h2 data-number="4.4" id="low-level-tools-rejmerge"><span
   class="header-section-number">4.4</span> Low-level Tools:
@@ -1906,9 +1928,15 @@ Dependencies: attr</code></pre>
 <span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-system  <span class="at">--branch</span> 1.x</span>
 <span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-xorg    <span class="at">--branch</span> 1.x</span>
 <span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="va">${URL}</span>/pkgsrc-desktop <span class="at">--branch</span> 1.x</span></code></pre></div>
-  <p>Replace <code>1.x</code> with the branch matching your Zeppe-Lin
-  release (e.g., <code>1.x</code> for version 1.0 or 1.1). Check the
-  Zeppe-Lin website or release notes for the correct branch.</p>
+  <blockquote>
+  <p><strong>Important:</strong></p>
+  <p>The <code>1.x</code> branch applies to all <strong>1.</strong>
+  releases (1.0, 1.1, 1.2, …). When a new major line appears, switch to
+  its branch (e.g., <code>2.x</code>). Verify your release against the
+  <a href="index.html#current-release">current release</a> or the <a
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest">pkgsrc-core
+  releases page</a>.</p>
+  </blockquote>
   <h4 data-number="5.3.1.2"
   id="enabling-collections-in-pkgman.conf"><span
   class="header-section-number">5.3.1.2</span> Enabling Collections in
@@ -1964,42 +1992,44 @@ pkgsrcdir /usr/src/pkgsrc-desktop</code></pre>
   <p>If you’re looking for specific software, use the
   <code>search</code> command. For example, to search for packages
   related to <code>alsa</code>:</p>
-  <div class="sourceCode" id="cb110"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> search alsa</span></code></pre></div>
-  <p>Example output:</p>
-  <pre><code>-- search ([i] = installed)
+  <pre><code>$ pkgman search alsa
+-- search ([i] = installed)
 [ ] alsa-lib
 [ ] alsa-ucm-conf
 [i] alsa-utils</code></pre>
   <p>The output indicates which packages are installed and
   available.</p>
-  <p>For a detailed search that includes collection paths, add the
-  <code>--path</code> option:</p>
-  <div class="sourceCode" id="cb112"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> search <span class="at">--path</span> alsa</span></code></pre></div>
+  <p>For a detailed search that includes versions, descriptions, and
+  collection paths, add the <code>-vv</code> and <code>--path</code>
+  options:</p>
+  <pre><code>$ pkgman search -vv --path alsa
+-- search ([i] = installed)
+[ ] /usr/src/pkgsrc-system/alsa-lib 1.2.15.1-1: ALSA libraries
+[ ] /usr/src/pkgsrc-system/alsa-ucm-conf 1.2.15.1-1: ALSA Use Case Manager configuration
+[i] /usr/src/pkgsrc-system/alsa-utils 1.2.15.1-1: Utilities for the ALSA</code></pre>
   <h4 data-number="5.3.2.3" id="building-and-installing-packages"><span
   class="header-section-number">5.3.2.3</span> Building and Installing
   Packages</h4>
   <p>Build and install a package with dependencies:</p>
+  <div class="sourceCode" id="cb112"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span></code></pre></div>
+  <p>Example:</p>
   <div class="sourceCode" id="cb113"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span></code></pre></div>
-  <p>Example:</p>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> vim</span></code></pre></div>
+  <p>Build and install multiple packages:</p>
   <div class="sourceCode" id="cb114"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> vim</span></code></pre></div>
-  <p>Build and install multiple packages:</p>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
+  <p>For verbose output (show building process on stdout):</p>
   <div class="sourceCode" id="cb115"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
-  <p>For verbose output (show building process on stdout):</p>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
+  <p>Dry run:</p>
   <div class="sourceCode" id="cb116"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
-  <p>Dry run:</p>
-  <div class="sourceCode" id="cb117"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--test</span> <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--test</span> <span class="at">--deps</span> <span class="at">--group</span> vim zathura</span></code></pre></div>
   <blockquote>
   <p><strong>Tip:</strong></p>
   <p>Use <code>pkgman search</code> to locate package names.</p>
@@ -2021,12 +2051,12 @@ pkgsrcdir /usr/src/pkgsrc-desktop</code></pre>
   Collections</h4>
   <p>Regularly sync local collections with remote repositories using
   <code>git pull</code>:</p>
-  <div class="sourceCode" id="cb118"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-core     pull</span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-system   pull</span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-xorg     pull</span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-desktop  pull</span></code></pre></div>
+  <div class="sourceCode" id="cb117"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-core     pull</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-system   pull</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-xorg     pull</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /usr/src/pkgsrc-desktop  pull</span></code></pre></div>
   <p>Include unofficial collections if applicable.</p>
   <p>Automate Syncing: Set up a cron job with <code>crond(8)</code>:</p>
   <pre class="crontab"><code># Weekly sync at 3:00 AM on Sundays
@@ -2044,8 +2074,8 @@ pkgsrcdir /usr/src/pkgsrc-desktop</code></pre>
   Updates</h4>
   <p>Once the local collections are synced, identify outdated packages
   with <code>pkgman diff</code>:</p>
-  <div class="sourceCode" id="cb120"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> diff <span class="at">--deps</span> <span class="at">--full</span></span></code></pre></div>
+  <div class="sourceCode" id="cb119"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> diff <span class="at">--deps</span> <span class="at">--full</span></span></code></pre></div>
   <p>Example output:</p>
   <pre><code>-- Differences between installed packages and packages sources tree
 Package         Installed      Available
@@ -2061,28 +2091,37 @@ libncurses      6.2-1          vim</code></pre>
   collection or installed manually from other sources.</p>
   <h4 data-number="5.3.3.3" id="updating-packages"><span
   class="header-section-number">5.3.3.3</span> Updating Packages</h4>
-  <p>Use <code>pkgman sysup</code> for a system upgrade.</p>
-  <p><strong>Step 1</strong>: Download all required source files
-  first:</p>
+  <p>To upgrade the system, start by downloading all required source
+  files. This ensures the upgrade won’t be interrupted by missing
+  files.</p>
+  <div class="sourceCode" id="cb121"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">-do</span></span></code></pre></div>
+  <p>Once the sources are downloaded, upgrade the packages with proper
+  dependency handling and ordering:</p>
   <div class="sourceCode" id="cb122"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">-do</span></span></code></pre></div>
-  <p>This ensures that all necessary files are retrieved before the
-  upgrade begins, avoiding interruptions during the build process.</p>
-  <p><strong>Step 2</strong>: Upgrade Packages:</p>
-  <div class="sourceCode" id="cb123"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span></span></code></pre></div>
-  <p>These options ensure proper dependency handling and upgrade
-  order.</p>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span></span></code></pre></div>
+  <p>Options explained:</p>
+  <ul>
+  <li><p><code>--deps</code><br />
+  Include all dependencies of the packages in the update
+  process.</p></li>
+  <li><p><code>--depsort</code><br />
+  Sort packages by dependency order before updating.</p></li>
+  <li><p><code>--group</code><br />
+  Update all packages in order, stopping immediately if the update of
+  any package fails. Useful for updating dependent packages
+  sequentially.</p></li>
+  </ul>
   <h4 data-number="5.3.3.4" id="updating-specific-packages"><span
   class="header-section-number">5.3.3.4</span> Updating Specific
   Packages</h4>
   <p>Update individual packages with <code>pkgman update</code>. For
   example:</p>
-  <div class="sourceCode" id="cb124"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> screen feh</span></code></pre></div>
+  <div class="sourceCode" id="cb123"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> screen feh</span></code></pre></div>
   <p>This command updates only the specified packages while resolving
   their dependencies.</p>
   <h3 data-number="5.3.4" id="advanced-package-management"><span
@@ -2096,15 +2135,15 @@ libncurses      6.2-1          vim</code></pre>
   incorrect shared libraries. Use it to verify system stability and
   identify packages needing a rebuild after updates.</p>
   <p>Check system-wide for broken libraries:</p>
-  <div class="sourceCode" id="cb125"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
+  <div class="sourceCode" id="cb124"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
   <p>Rebuild affected packages:</p>
-  <div class="sourceCode" id="cb126"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="va">$(</span><span class="ex">revdep</span><span class="va">)</span></span></code></pre></div>
+  <div class="sourceCode" id="cb125"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="va">$(</span><span class="ex">revdep</span><span class="va">)</span></span></code></pre></div>
   <p>Inspect a specific package:</p>
-  <div class="sourceCode" id="cb127"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span> <span class="at">-p</span> bash</span></code></pre></div>
+  <div class="sourceCode" id="cb126"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span> <span class="at">-p</span> bash</span></code></pre></div>
   <p>Run <code>revdep</code> regularly after updates or repository syncs
   to ensure all packages remain functional.</p>
   <p>See <code>revdep(1)</code> and <code>revdep.d(5)</code> for more
@@ -2114,21 +2153,21 @@ libncurses      6.2-1          vim</code></pre>
   Updates</h4>
   <p>Prevent updates to specific packages during system upgrades with
   <code>--ignore</code>. Example:</p>
-  <div class="sourceCode" id="cb128"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> <span class="at">--ignore</span><span class="op">=</span>vim,screen</span></code></pre></div>
+  <div class="sourceCode" id="cb127"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> <span class="at">--ignore</span><span class="op">=</span>vim,screen</span></code></pre></div>
   <p>Regularly revisit ignored packages to avoid security risks and
   dependency conflicts.</p>
   <h4 data-number="5.3.4.3" id="locking-packages"><span
   class="header-section-number">5.3.4.3</span> Locking Packages</h4>
   <p>Lock a package to prevent upgrades indefinitely:</p>
+  <div class="sourceCode" id="cb128"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> lock vim</span></code></pre></div>
+  <p>Unlock a package to resume updates:</p>
   <div class="sourceCode" id="cb129"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> lock vim</span></code></pre></div>
-  <p>Unlock a package to resume updates:</p>
-  <div class="sourceCode" id="cb130"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> unlock vim</span></code></pre></div>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> unlock vim</span></code></pre></div>
   <p>Locked packages are useful for maintaining specific software
   versions critical to workflows.</p>
   <p>See <code>pkgman-lock(8)</code>, <code>pkgman-unlock(8)</code>, and
@@ -2143,9 +2182,9 @@ libncurses      6.2-1          vim</code></pre>
   over available ones.</p>
   <p>To override this behavior, enable the <code>preferhigher</code>
   option:</p>
-  <div class="sourceCode" id="cb131"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;preferhigher yes&quot;</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span></span></code></pre></div>
+  <div class="sourceCode" id="cb130"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;preferhigher yes&quot;</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span></span></code></pre></div>
   <p>This ensures <code>pkgman</code> retains the higher installed
   version during upgrades. Use this feature cautiously, as higher
   versions might be less stable or unsupported.</p>
@@ -2177,10 +2216,10 @@ libncurses      6.2-1          vim</code></pre>
   broader read permissions ensures that unprivileged users like
   <code>pkgmk</code> can access the collection.</p>
   <p>Example:</p>
-  <div class="sourceCode" id="cb132"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mynewcollection</span></code></pre></div>
+  <div class="sourceCode" id="cb131"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mynewcollection</span></code></pre></div>
   <h4 data-number="5.4.1.2"
   id="enabling-the-collection-in-pkgman.conf"><span
   class="header-section-number">5.4.1.2</span> Enabling the Collection
@@ -2196,8 +2235,8 @@ pkgsrcdir /usr/src/pkgsrc-xorg</code></pre>
   class="header-section-number">5.4.1.3</span> Verifying the Collection
   Setup</h4>
   <p>Verify that <code>pkgman(1)</code> recognizes your collection:</p>
-  <div class="sourceCode" id="cb134"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> dumpconfig</span></code></pre></div>
+  <div class="sourceCode" id="cb133"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> dumpconfig</span></code></pre></div>
   <p>Check the “Packages sources directories” section for your
   collection:</p>
   <pre><code>Packages sources directories: &lt;n&gt;
@@ -2238,48 +2277,51 @@ pkgsrcdir /usr/src/pkgsrc-xorg</code></pre>
   resolution, search, and queries.</li>
   </ol>
   <p>Example <code>Pkgfile</code>:</p>
-  <div class="sourceCode" id="cb137"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Example package based on GNU hello</span></span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         https://www.gnu.org/software/hello/</span></span>
-<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  glibc</span></span>
-<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>hello</span>
-<span id="cb137-6"><a href="#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span>2.12.1</span>
-<span id="cb137-7"><a href="#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
-<span id="cb137-8"><a href="#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="va">source</span><span class="op">=</span>https://ftp.gnu.org/gnu/hello/<span class="va">$name</span>-<span class="va">$version</span>.tar.gz</span>
-<span id="cb137-9"><a href="#cb137-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-10"><a href="#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
-<span id="cb137-11"><a href="#cb137-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">cd</span> <span class="va">$name</span>-<span class="va">$version</span></span>
-<span id="cb137-12"><a href="#cb137-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-13"><a href="#cb137-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr <span class="at">--disable-nls</span></span>
-<span id="cb137-14"><a href="#cb137-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-15"><a href="#cb137-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">make</span> V=1</span>
-<span id="cb137-16"><a href="#cb137-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
-<span id="cb137-17"><a href="#cb137-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-18"><a href="#cb137-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rm</span> <span class="at">-rf</span> <span class="va">$PKG</span>/usr/share/info</span>
-<span id="cb137-19"><a href="#cb137-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+  <div class="sourceCode" id="cb136"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Example package based on GNU hello</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         https://www.gnu.org/software/hello/</span></span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  glibc</span></span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>hello</span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span>2.12.1</span>
+<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
+<span id="cb136-8"><a href="#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="va">source</span><span class="op">=</span>https://ftp.gnu.org/gnu/hello/<span class="va">$name</span>-<span class="va">$version</span>.tar.gz</span>
+<span id="cb136-9"><a href="#cb136-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-10"><a href="#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
+<span id="cb136-11"><a href="#cb136-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">cd</span> <span class="va">$name</span>-<span class="va">$version</span></span>
+<span id="cb136-12"><a href="#cb136-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-13"><a href="#cb136-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr <span class="at">--disable-nls</span></span>
+<span id="cb136-14"><a href="#cb136-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-15"><a href="#cb136-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">make</span> V=1</span>
+<span id="cb136-16"><a href="#cb136-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
+<span id="cb136-17"><a href="#cb136-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-18"><a href="#cb136-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rm</span> <span class="at">-rf</span> <span class="va">$PKG</span>/usr/share/info</span>
+<span id="cb136-19"><a href="#cb136-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
   <h4 data-number="5.4.2.3" id="key-metadata-headers-for-pkgman"><span
   class="header-section-number">5.4.2.3</span> Key Metadata Headers for
   pkgman</h4>
   <p>Include these headers in the <code>Pkgfile</code> for optimal
   integration with <code>pkgman(1)</code>:</p>
   <ul>
-  <li><code># Description</code>: Brief summary of the package.</li>
-  <li><code># URL</code>: Link to official documentation or
-  website.</li>
-  <li><code># Depends on</code>: List of dependencies.
-  <code>pkgman(1)</code> resolves and installs these automatically.</li>
+  <li><p><code># Description</code><br />
+  Brief summary of the package.</p></li>
+  <li><p><code># URL</code><br />
+  Link to official documentation or website.</p></li>
+  <li><p><code># Depends on</code><br />
+  List of dependencies. <code>pkgman(1)</code> resolves and installs
+  these automatically.</p></li>
   </ul>
-  <p>Without these headers, <code>pkgman(1)</code> cannot display
-  metadata or resolve dependencies.</p>
+  <blockquote>
+  <p><strong>Important:</strong><br />
+  Without these headers, <code>pkgman(1)</code> cannot display metadata
+  or resolve dependencies.</p>
+  </blockquote>
   <h4 data-number="5.4.2.4" id="verifying-the-package-source"><span
   class="header-section-number">5.4.2.4</span> Verifying the Package
   Source</h4>
   <p>Verify your package metadata with:</p>
-  <div class="sourceCode" id="cb138"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> info hello</span></code></pre></div>
-  <p>Expected output:</p>
-  <pre><code>Name:         hello
+  <pre><code>$ pkgman info hello
+Name:         hello
 Path:         /usr/src/mynewcollection/hello
 Version:      2.12.1
 Release:      1
@@ -2298,9 +2340,9 @@ Depends on:   glibc</code></pre>
   <h4 data-number="5.4.3.1" id="building-the-package"><span
   class="header-section-number">5.4.3.1</span> Building the Package</h4>
   <p>Build your custom package with:</p>
-  <div class="sourceCode" id="cb140"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--deps</span> hello</span></code></pre></div>
+  <div class="sourceCode" id="cb138"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">-vv</span> <span class="at">--deps</span> hello</span></code></pre></div>
   <p>This command:</p>
   <ol type="1">
   <li>Downloads source files if not cached.</li>
@@ -2324,46 +2366,40 @@ Depends on:   glibc</code></pre>
   <ol type="1">
   <li><p><strong>Manually Updating Files.</strong></p>
   <p>Navigate to the package directory and generate the files:</p>
-  <div class="sourceCode" id="cb141"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src/mynewcollection/hello</span>
-<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgmk</span> <span class="at">-um</span>   <span class="co"># Update .md5sum</span></span>
-<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgmk</span> <span class="at">-uf</span>   <span class="co"># Update .footprint</span></span></code></pre></div></li>
+  <div class="sourceCode" id="cb139"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src/mynewcollection/hello</span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgmk</span> <span class="at">-um</span>   <span class="co"># Update .md5sum</span></span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgmk</span> <span class="at">-uf</span>   <span class="co"># Update .footprint</span></span></code></pre></div></li>
   <li><p><strong>Adjusting Permissions.</strong></p>
   <p>Grant write access to <code>pkgmk</code> using
   <code>setfacl(1)</code>:</p>
-  <div class="sourceCode" id="cb142"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="ex">setfacl</span> <span class="at">-m</span> u:pkgmk:rwx /usr/src/mynewcollection/hello</span></code></pre></div>
+  <div class="sourceCode" id="cb140"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="ex">setfacl</span> <span class="at">-m</span> u:pkgmk:rwx /usr/src/mynewcollection/hello</span></code></pre></div>
   <p>Rebuild the package afterward:</p>
-  <div class="sourceCode" id="cb143"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> hello</span></code></pre></div></li>
+  <div class="sourceCode" id="cb141"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> hello</span></code></pre></div></li>
   </ol>
   <h4 data-number="5.4.3.3" id="verifying-generated-files"><span
   class="header-section-number">5.4.3.3</span> Verifying Generated
   Files</h4>
   <p>After addressing warnings, confirm the presence of required
   files:</p>
-  <div class="sourceCode" id="cb144"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /usr/src/mynewcollection/hello</span></code></pre></div>
-  <p>Expected output:</p>
-  <pre><code>-rw-r--r--  1 pkgmk pkgmk  251 .footprint
+  <pre><code>$ ls -l /usr/src/mynewcollection/hello
+-rw-r--r--  1 pkgmk pkgmk  251 .footprint
 -rw-r--r--  1 pkgmk pkgmk   54 .md5sum
 -rw-r--r--  1 root  root   359 Pkgfile</code></pre>
   <h4 data-number="5.4.3.4" id="verifying-the-installation"><span
   class="header-section-number">5.4.3.4</span> Verifying the
   Installation</h4>
   <p>Ensure the package is installed on your system:</p>
-  <div class="sourceCode" id="cb146"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> isinst hello</span></code></pre></div>
-  <p>Expected output:</p>
-  <pre><code>package &#39;hello&#39; is installed</code></pre>
+  <pre><code>$ pkgman isinst hello
+package &#39;hello&#39; is installed</code></pre>
   <p>Run:</p>
-  <div class="sourceCode" id="cb148"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span></code></pre></div>
-  <p>Expected output:</p>
-  <pre><code>Hello, world!</code></pre>
+  <pre><code>$ hello
+Hello, world!</code></pre>
   <h3 data-number="5.4.4"
   id="building-packages-from-bleeding-edge-sources"><span
   class="header-section-number">5.4.4</span> Building Packages from
@@ -2377,36 +2413,36 @@ Depends on:   glibc</code></pre>
   Approach</h4>
   <p>For production, pinning to a specific commit ensures consistent
   builds. Example:</p>
-  <div class="sourceCode" id="cb150"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Ratpoison window manager</span></span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         https://www.nongnu.org/ratpoison/</span></span>
-<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  xorg-server</span></span>
-<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-5"><a href="#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>ratpoison</span>
-<span id="cb150-6"><a href="#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span>1.4.9-db94d49  <span class="co"># Release + commit hash</span></span>
-<span id="cb150-7"><a href="#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
-<span id="cb150-8"><a href="#cb150-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-9"><a href="#cb150-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function to fetch or clone git repository</span></span>
-<span id="cb150-10"><a href="#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="fu">download_git()</span> <span class="kw">{</span></span>
-<span id="cb150-11"><a href="#cb150-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb150-12"><a href="#cb150-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> fetch <span class="at">--depth</span><span class="op">=</span>1</span>
-<span id="cb150-13"><a href="#cb150-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> clean <span class="at">-f</span></span>
-<span id="cb150-14"><a href="#cb150-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> reset <span class="at">--hard</span> origin/<span class="va">$2</span></span>
-<span id="cb150-15"><a href="#cb150-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb150-16"><a href="#cb150-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span> clone <span class="at">--depth</span><span class="op">=</span>1 <span class="va">$1</span> <span class="at">-b</span> <span class="va">$2</span> <span class="va">$name</span></span>
-<span id="cb150-17"><a href="#cb150-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb150-18"><a href="#cb150-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
-<span id="cb150-19"><a href="#cb150-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb150-20"><a href="#cb150-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-21"><a href="#cb150-21" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
-<span id="cb150-22"><a href="#cb150-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">download_git</span> https://git.savannah.nongnu.org/git/ratpoison.git master</span>
-<span id="cb150-23"><a href="#cb150-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> ratpoison</span>
-<span id="cb150-24"><a href="#cb150-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> checkout <span class="va">${version</span><span class="op">#</span><span class="pp">*</span>-<span class="va">}</span>  <span class="co"># Pin commit &#39;db94d49&#39;</span></span>
-<span id="cb150-25"><a href="#cb150-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-26"><a href="#cb150-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr</span>
-<span id="cb150-27"><a href="#cb150-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> V=1</span>
-<span id="cb150-28"><a href="#cb150-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
-<span id="cb150-29"><a href="#cb150-29" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+  <div class="sourceCode" id="cb145"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Ratpoison window manager</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         https://www.nongnu.org/ratpoison/</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  xorg-server</span></span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>ratpoison</span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span>1.4.9-db94d49  <span class="co"># Release + commit hash</span></span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
+<span id="cb145-8"><a href="#cb145-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-9"><a href="#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function to fetch or clone git repository</span></span>
+<span id="cb145-10"><a href="#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="fu">download_git()</span> <span class="kw">{</span></span>
+<span id="cb145-11"><a href="#cb145-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb145-12"><a href="#cb145-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> fetch <span class="at">--depth</span><span class="op">=</span>1</span>
+<span id="cb145-13"><a href="#cb145-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> clean <span class="at">-f</span></span>
+<span id="cb145-14"><a href="#cb145-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> reset <span class="at">--hard</span> origin/<span class="va">$2</span></span>
+<span id="cb145-15"><a href="#cb145-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb145-16"><a href="#cb145-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span> clone <span class="at">--depth</span><span class="op">=</span>1 <span class="va">$1</span> <span class="at">-b</span> <span class="va">$2</span> <span class="va">$name</span></span>
+<span id="cb145-17"><a href="#cb145-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb145-18"><a href="#cb145-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
+<span id="cb145-19"><a href="#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb145-20"><a href="#cb145-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-21"><a href="#cb145-21" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
+<span id="cb145-22"><a href="#cb145-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">download_git</span> https://git.savannah.nongnu.org/git/ratpoison.git master</span>
+<span id="cb145-23"><a href="#cb145-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> ratpoison</span>
+<span id="cb145-24"><a href="#cb145-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> checkout <span class="va">${version</span><span class="op">#</span><span class="pp">*</span>-<span class="va">}</span>  <span class="co"># Pin commit &#39;db94d49&#39;</span></span>
+<span id="cb145-25"><a href="#cb145-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-26"><a href="#cb145-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr</span>
+<span id="cb145-27"><a href="#cb145-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> V=1</span>
+<span id="cb145-28"><a href="#cb145-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
+<span id="cb145-29"><a href="#cb145-29" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
   <p>Pinning builds guarantees stability and shields against upstream
   changes.</p>
   <h4 data-number="5.4.4.2" id="bleeding-edge-approach"><span
@@ -2414,39 +2450,39 @@ Depends on:   glibc</code></pre>
   Approach</h4>
   <p>For testing, dynamically set the version to the current date
   (<code>YYYYMMDD</code>) to track upstream changes. Example:</p>
-  <div class="sourceCode" id="cb151"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Ruby interpreter (bleeding-edge)</span></span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         http://www.ruby-lang.org</span></span>
-<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  gdbm libgmp openssl zlib libffi libyaml</span></span>
-<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>ruby-scm</span>
-<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span><span class="va">$(</span><span class="fu">date</span> +%Y%m%d<span class="va">)</span>  <span class="co"># Version updates daily to track build date</span></span>
-<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
-<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="fu">download_git()</span> <span class="kw">{</span></span>
-<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> fetch <span class="at">--depth</span><span class="op">=</span>1</span>
-<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> clean <span class="at">-f</span></span>
-<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> reset <span class="at">--hard</span> origin/<span class="va">$2</span></span>
-<span id="cb151-14"><a href="#cb151-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb151-15"><a href="#cb151-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span> clone <span class="at">--depth</span><span class="op">=</span>1 <span class="va">$1</span> <span class="at">-b</span> <span class="va">$2</span> <span class="va">$name</span></span>
-<span id="cb151-16"><a href="#cb151-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb151-17"><a href="#cb151-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
-<span id="cb151-18"><a href="#cb151-18" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb151-19"><a href="#cb151-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-20"><a href="#cb151-20" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
-<span id="cb151-21"><a href="#cb151-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">download_git</span> https://github.com/ruby/ruby master</span>
-<span id="cb151-22"><a href="#cb151-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> ruby-scm</span>
-<span id="cb151-23"><a href="#cb151-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-24"><a href="#cb151-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr</span>
-<span id="cb151-25"><a href="#cb151-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> V=1</span>
-<span id="cb151-26"><a href="#cb151-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
-<span id="cb151-27"><a href="#cb151-27" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+  <div class="sourceCode" id="cb146"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Ruby interpreter (bleeding-edge)</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co"># URL:         http://www.ruby-lang.org</span></span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Depends on:  gdbm libgmp openssl zlib libffi libyaml</span></span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span>ruby-scm</span>
+<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a><span class="va">version</span><span class="op">=</span><span class="va">$(</span><span class="fu">date</span> +%Y%m%d<span class="va">)</span>  <span class="co"># Version updates daily to track build date</span></span>
+<span id="cb146-7"><a href="#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="va">release</span><span class="op">=</span>1</span>
+<span id="cb146-8"><a href="#cb146-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-9"><a href="#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="fu">download_git()</span> <span class="kw">{</span></span>
+<span id="cb146-10"><a href="#cb146-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb146-11"><a href="#cb146-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> fetch <span class="at">--depth</span><span class="op">=</span>1</span>
+<span id="cb146-12"><a href="#cb146-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> clean <span class="at">-f</span></span>
+<span id="cb146-13"><a href="#cb146-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> reset <span class="at">--hard</span> origin/<span class="va">$2</span></span>
+<span id="cb146-14"><a href="#cb146-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb146-15"><a href="#cb146-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> <span class="at">-C</span> <span class="va">$PKGMK_SOURCE_DIR</span> clone <span class="at">--depth</span><span class="op">=</span>1 <span class="va">$1</span> <span class="at">-b</span> <span class="va">$2</span> <span class="va">$name</span></span>
+<span id="cb146-16"><a href="#cb146-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb146-17"><a href="#cb146-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
+<span id="cb146-18"><a href="#cb146-18" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb146-19"><a href="#cb146-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-20"><a href="#cb146-20" aria-hidden="true" tabindex="-1"></a><span class="fu">build()</span> <span class="kw">{</span></span>
+<span id="cb146-21"><a href="#cb146-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">download_git</span> https://github.com/ruby/ruby master</span>
+<span id="cb146-22"><a href="#cb146-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> ruby-scm</span>
+<span id="cb146-23"><a href="#cb146-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-24"><a href="#cb146-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/usr</span>
+<span id="cb146-25"><a href="#cb146-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> V=1</span>
+<span id="cb146-26"><a href="#cb146-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">make</span> DESTDIR=<span class="va">$PKG</span> install</span>
+<span id="cb146-27"><a href="#cb146-27" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
   <p><strong>“Daily Updates”</strong>: If the installed version is
   outdated, <code>pkgman(1)</code> flags it during
   <code>pkgman diff</code>, prompting updates:</p>
-  <div class="sourceCode" id="cb152"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> diff</span></code></pre></div>
+  <div class="sourceCode" id="cb147"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> diff</span></code></pre></div>
   <p>Expected output:</p>
   <pre><code>-- Differences between installed packages and packages sources tree
 ruby-scm                        20250216-1          20250401-1</code></pre>
@@ -2457,19 +2493,19 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   class="header-section-number">5.4.4.3</span> Subversion Repository
   Download Function</h4>
   <p>For Subversion-based builds, use a download function like this:</p>
-  <div class="sourceCode" id="cb154"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_svn()</span> <span class="kw">{</span></span>
-<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> cleanup <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
-<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> up <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
-<span id="cb154-5"><a href="#cb154-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb154-6"><a href="#cb154-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> co <span class="va">$1</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
-<span id="cb154-7"><a href="#cb154-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb154-8"><a href="#cb154-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
-<span id="cb154-9"><a href="#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+  <div class="sourceCode" id="cb149"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_svn()</span> <span class="kw">{</span></span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> cleanup <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
+<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> up <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
+<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">svn</span> co <span class="va">$1</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span></span>
+<span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb149-8"><a href="#cb149-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="at">-r</span> <span class="va">$PKGMK_SOURCE_DIR</span>/<span class="va">$name</span> <span class="va">$PKGMK_WORK_DIR</span>/src/<span class="va">$name</span></span>
+<span id="cb149-9"><a href="#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
   <p>Example usage in a <code>Pkgfile</code>:</p>
-  <div class="sourceCode" id="cb155"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="ex">download_svn</span> https://svn.project.org/svn/program/trunk</span></code></pre></div>
+  <div class="sourceCode" id="cb150"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="ex">download_svn</span> https://svn.project.org/svn/program/trunk</span></code></pre></div>
   <p>Add <code>subversion</code> to dependencies for compatibility.
   Unlike <code>git</code>, which resides in <code>pkgsrc-core</code>,
   <code>subversion</code> requires explicit declaration.</p>
@@ -2523,9 +2559,9 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <code>UID</code> for the <code>pkgmk</code> user is
   preconfigured.</p></li>
   <li><p>Mount <code>tmpfs</code>:</p>
-  <div class="sourceCode" id="cb158"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> pkgmk</span></code></pre></div></li>
+  <div class="sourceCode" id="cb153"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> pkgmk</span></code></pre></div></li>
   <li><p>Remove <code>-pipe</code> from <code>CFLAGS</code> and
   <code>CXXFLAGS</code> in <code>/etc/pkgmk.conf</code>.</p></li>
   </ol>
@@ -2536,19 +2572,19 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <p>For users interested in customizing the setup:</p>
   <ol type="1">
   <li><p>Creating a dedicated build user:</p>
-  <div class="sourceCode" id="cb159"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">-b</span> /var/cache/ <span class="at">-m</span> <span class="at">-s</span> /bin/false <span class="at">-U</span> pkgmk</span></code></pre></div></li>
+  <div class="sourceCode" id="cb154"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">-b</span> /var/cache/ <span class="at">-m</span> <span class="at">-s</span> /bin/false <span class="at">-U</span> pkgmk</span></code></pre></div></li>
   <li><p>Setting up build directories and assigning ownership:</p>
-  <div class="sourceCode" id="cb160"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span>
-<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> pkgmk:pkgmk /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span></code></pre></div></li>
+  <div class="sourceCode" id="cb155"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> pkgmk:pkgmk /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span></code></pre></div></li>
   <li><p>Configuring <code>tmpfs</code> in <code>/etc/fstab</code>:</p>
   <pre><code>pkgmk /var/cache/pkgmk/work tmpfs size=&lt;SIZE&gt;,uid=&lt;UID&gt;,defaults 0 0</code></pre></li>
   <li><p>Setting the work directory in <code>/etc/pkgmk.conf</code>:</p>
-  <div class="sourceCode" id="cb162"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_WORK_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/work/</span><span class="va">$name</span><span class="st">&quot;</span></span></code></pre></div></li>
+  <div class="sourceCode" id="cb157"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_WORK_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/work/</span><span class="va">$name</span><span class="st">&quot;</span></span></code></pre></div></li>
   <li><p>Removing <code>-pipe</code> from <code>CFLAGS</code> and
   <code>CXXFLAGS</code> in <code>/etc/pkgmk.conf</code>.</p></li>
   </ol>
@@ -2566,24 +2602,24 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <ol type="1">
   <li><p>Create a Dedicated Build User. A restricted user is used to
   perform package builds securely:</p>
-  <div class="sourceCode" id="cb163"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">-b</span> /var/cache/ <span class="at">-m</span> <span class="at">-s</span> /bin/false <span class="at">-U</span> pkgmk</span></code></pre></div>
+  <div class="sourceCode" id="cb158"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">-b</span> /var/cache/ <span class="at">-m</span> <span class="at">-s</span> /bin/false <span class="at">-U</span> pkgmk</span></code></pre></div>
   <p>This creates a user and group named <code>pkgmk</code> with limited
   shell access.</p></li>
   <li><p>Set Up Build Directories. Directories for sources, packages,
   and temporary files are created and assigned ownership to the
   <code>pkgmk</code> user:</p>
-  <div class="sourceCode" id="cb164"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span>
-<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> pkgmk:pkgmk /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span></code></pre></div></li>
+  <div class="sourceCode" id="cb159"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> pkgmk:pkgmk /var/cache/pkgmk/<span class="dt">{sources</span><span class="op">,</span><span class="dt">packages</span><span class="op">,</span><span class="dt">work}</span></span></code></pre></div></li>
   <li><p>Configure <code>pkgmk</code>. In <code>/etc/pkgmk.conf</code>,
   the paths for these directories are defined:</p>
-  <div class="sourceCode" id="cb165"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_SOURCE_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/sources&quot;</span></span>
-<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_PACKAGE_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/packages&quot;</span></span>
-<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_WORK_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/work/</span><span class="va">$name</span><span class="st">-</span><span class="va">$$</span><span class="st">&quot;</span></span></code></pre></div></li>
+  <div class="sourceCode" id="cb160"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_SOURCE_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/sources&quot;</span></span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_PACKAGE_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/packages&quot;</span></span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="va">PKGMK_WORK_DIR</span><span class="op">=</span><span class="st">&quot;/var/cache/pkgmk/work/</span><span class="va">$name</span><span class="st">-</span><span class="va">$$</span><span class="st">&quot;</span></span></code></pre></div></li>
   <li><p>Integrate <code>pkgman</code>. In
   <code>/etc/pkgman.conf</code>, the <code>makecommand</code> variable
   is updated to run <code>pkgmk(8)</code> as the unprivileged
@@ -2602,13 +2638,13 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   compatibility with <code>pkgmk(8)</code>. To create additional
   locales, replace <code>en_US</code> with your desired locale and
   run:</p>
-  <div class="sourceCode" id="cb167"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="ex">localedef</span> <span class="at">-i</span> en_US <span class="at">-f</span> UTF-8 en_US.UTF-8</span></code></pre></div>
+  <div class="sourceCode" id="cb162"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="ex">localedef</span> <span class="at">-i</span> en_US <span class="at">-f</span> UTF-8 en_US.UTF-8</span></code></pre></div>
   <p>Set the system default locale by adding it to
   <code>/etc/profile</code>:</p>
-  <div class="sourceCode" id="cb168"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LANG</span><span class="op">=</span>en_US.UTF-8</span></code></pre></div>
+  <div class="sourceCode" id="cb163"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LANG</span><span class="op">=</span>en_US.UTF-8</span></code></pre></div>
   <p>This ensures consistent locale settings across your system.</p>
   <h2 data-number="6.2"
   id="system-initialization-and-configuration"><span
@@ -2737,19 +2773,19 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <li><code>command</code>: The script or program to execute.</li>
   </ul>
   <p>Example <code>/etc/inittab</code> Configuration:</p>
-  <div class="sourceCode" id="cb169"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default runlevel to multi-user mode</span></span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">id:2:initdefault:</span></span>
-<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Core startup scripts</span></span>
-<span id="cb169-5"><a href="#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rc::sysinit:/etc/rc</span>         <span class="co"># Main boot script</span></span>
-<span id="cb169-6"><a href="#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rs:S1:wait:/etc/rc.single</span>   <span class="co"># Single-user mode startup</span></span>
-<span id="cb169-7"><a href="#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:2:wait:/etc/rc.multi</span>     <span class="co"># Multi-user mode startup</span></span>
-<span id="cb169-8"><a href="#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="ex">rd:06:wait:/etc/rc.shutdown</span> <span class="co"># Graceful shutdown</span></span>
-<span id="cb169-9"><a href="#cb169-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-10"><a href="#cb169-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Virtual console login prompts</span></span>
-<span id="cb169-11"><a href="#cb169-11" aria-hidden="true" tabindex="-1"></a><span class="ex">c1:2:respawn:/sbin/agetty</span> <span class="at">--noclear</span> 38400 tty1 linux</span>
-<span id="cb169-12"><a href="#cb169-12" aria-hidden="true" tabindex="-1"></a><span class="ex">c2:2:respawn:/sbin/agetty</span> 38400 tty2 linux</span></code></pre></div>
+  <div class="sourceCode" id="cb164"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default runlevel to multi-user mode</span></span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="ex">id:2:initdefault:</span></span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Core startup scripts</span></span>
+<span id="cb164-5"><a href="#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rc::sysinit:/etc/rc</span>         <span class="co"># Main boot script</span></span>
+<span id="cb164-6"><a href="#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rs:S1:wait:/etc/rc.single</span>   <span class="co"># Single-user mode startup</span></span>
+<span id="cb164-7"><a href="#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:2:wait:/etc/rc.multi</span>     <span class="co"># Multi-user mode startup</span></span>
+<span id="cb164-8"><a href="#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="ex">rd:06:wait:/etc/rc.shutdown</span> <span class="co"># Graceful shutdown</span></span>
+<span id="cb164-9"><a href="#cb164-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-10"><a href="#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Virtual console login prompts</span></span>
+<span id="cb164-11"><a href="#cb164-11" aria-hidden="true" tabindex="-1"></a><span class="ex">c1:2:respawn:/sbin/agetty</span> <span class="at">--noclear</span> 38400 tty1 linux</span>
+<span id="cb164-12"><a href="#cb164-12" aria-hidden="true" tabindex="-1"></a><span class="ex">c2:2:respawn:/sbin/agetty</span> 38400 tty2 linux</span></code></pre></div>
   <p>This configuration ensures a smooth startup, runtime, and shutdown
   process. See <code>inittab(5)</code> for configuration details.</p>
   <h3 data-number="6.2.4"
@@ -2758,10 +2794,10 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   (/etc/rc.conf)</h3>
   <p>The <code>/etc/rc.conf</code> file centralizes system configuration
   settings, such as hostname, timezone, and services. Example:</p>
-  <div class="sourceCode" id="cb170"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&quot;myhostname&quot;</span></span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&quot;Europe/Berlin&quot;</span></span>
-<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="va">SERVICES</span><span class="op">=</span><span class="st">&quot;lo crond sshd&quot;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb165"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&quot;myhostname&quot;</span></span>
+<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&quot;Europe/Berlin&quot;</span></span>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="va">SERVICES</span><span class="op">=</span><span class="st">&quot;lo crond sshd&quot;</span></span></code></pre></div>
   <p>Services listed in <code>SERVICES</code> correspond to scripts in
   <code>/etc/rc.d/</code>, which are started by
   <code>/etc/rc.multi</code> and stopped by
@@ -2780,10 +2816,10 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <li><code>status</code>: Check if the service is running.</li>
   </ul>
   <p>Example usage:</p>
-  <div class="sourceCode" id="cb171"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/sshd</span> start</span>
-<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/sshd</span> status</span></code></pre></div>
+  <div class="sourceCode" id="cb166"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/sshd</span> start</span>
+<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/sshd</span> status</span></code></pre></div>
   <p>See <code>rc.d(7)</code> for more information.</p>
   <h3 data-number="6.2.6"
   id="kernel-module-management-etcrc.modules"><span
@@ -2793,8 +2829,8 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   kernel modules at boot. It begins by running
   <code>/sbin/depmod -a</code> to map module dependencies, ensuring
   proper functionality. After this, include commands like:</p>
-  <div class="sourceCode" id="cb172"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin/modprobe</span> virtio_net</span></code></pre></div>
+  <div class="sourceCode" id="cb167"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin/modprobe</span> virtio_net</span></code></pre></div>
   <p>For modules requiring parameters, it’s better to configure settings
   in <code>/etc/modprobe.d/</code> for persistent management. For
   example, to set options for the <code>snd_hda_intel</code> module,
@@ -2812,9 +2848,9 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <p>User-defined actions are added to <code>/etc/rc.local</code>,
   executed as last step of a normal boot (invoked by
   <code>/etc/rc.multi</code>). Example:</p>
-  <div class="sourceCode" id="cb174"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start a monitoring app</span></span>
-<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/my_monitoring_app</span> <span class="kw">&amp;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb169"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start a monitoring app</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/my_monitoring_app</span> <span class="kw">&amp;</span></span></code></pre></div>
   <h3 data-number="6.2.8"
   id="from-boot-to-login-system-startup-sequence"><span
   class="header-section-number">6.2.8</span> From Boot to Login: System
@@ -2877,13 +2913,13 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   class="header-section-number">6.3.1</span> Hostname Configuration</h3>
   <p>The hostname identifies your system on the network.</p>
   <p>To set it temporarily, use:</p>
-  <div class="sourceCode" id="cb175"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="op">&lt;</span>new_hostname<span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb170"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="op">&lt;</span>new_hostname<span class="op">&gt;</span></span></code></pre></div>
   <p>For a permanent setting, edit <code>/etc/rc.conf</code> and
   set:</p>
-  <div class="sourceCode" id="cb176"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&#39;&lt;new_hostname&gt;&#39;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb171"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&#39;&lt;new_hostname&gt;&#39;</span></span></code></pre></div>
   <p>For proper network function, edit <code>/etc/hosts</code> and add
   your hostname to the loopback lines:</p>
   <pre><code>127.0.0.1 localhost &lt;new_hostname&gt;
@@ -2893,18 +2929,18 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   class="header-section-number">6.3.2</span> Static Address</h3>
   <p>To configure a static IP, edit <code>/etc/rc.d/net</code>. Set the
   network interface, IP, subnet mask, and gateway. For example:</p>
-  <div class="sourceCode" id="cb178"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp11s0</span>
-<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="va">ADDR</span><span class="op">=</span>192.168.1.100</span>
-<span id="cb178-3"><a href="#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="va">MASK</span><span class="op">=</span>24</span>
-<span id="cb178-4"><a href="#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="va">GW</span><span class="op">=</span>192.168.1.1</span></code></pre></div>
+  <div class="sourceCode" id="cb173"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp11s0</span>
+<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="va">ADDR</span><span class="op">=</span>192.168.1.100</span>
+<span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="va">MASK</span><span class="op">=</span>24</span>
+<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="va">GW</span><span class="op">=</span>192.168.1.1</span></code></pre></div>
   <p>Set DNS in <code>/etc/resolv.conf</code>:</p>
   <pre><code>search &lt;your internal domain&gt;
 nameserver &lt;your DNS server&gt;</code></pre>
   <p>Start, stop or restart the service via:</p>
-  <div class="sourceCode" id="cb180"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/net</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb175"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/net</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>net</code> to the
@@ -2915,15 +2951,15 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <p>To get an IP address automatically via DHCP, install the
   <code>dhcpcd</code> package and edit <code>/etc/rc.d/dhcpcd</code> to
   specify the network interface (e.g., <code>enp5s0</code>):</p>
-  <div class="sourceCode" id="cb181"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp5s0</span></code></pre></div>
+  <div class="sourceCode" id="cb176"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp5s0</span></code></pre></div>
   <p>Start, stop, or restart the service via:</p>
-  <div class="sourceCode" id="cb182"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb182-2"><a href="#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb177"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <p>Check <code>dhcpcd</code>’s README for potential issues:</p>
-  <div class="sourceCode" id="cb183"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div>
+  <div class="sourceCode" id="cb178"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>dhcpcd</code> to the
@@ -2933,24 +2969,24 @@ nameserver &lt;your DNS server&gt;</code></pre>
   class="header-section-number">6.3.4</span> Wireless Network</h3>
   <p>Ensure the wireless interface isn’t blocked. Use
   <code>rfkill(8)</code>:</p>
-  <div class="sourceCode" id="cb184"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> list</span>
-<span id="cb184-2"><a href="#cb184-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-3"><a href="#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb184-4"><a href="#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> unblock <span class="op">&lt;</span>ID<span class="kw">|</span><span class="ex">TYPE</span><span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb179"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> list</span>
+<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb179-4"><a href="#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> unblock <span class="op">&lt;</span>ID<span class="kw">|</span><span class="ex">TYPE</span><span class="op">&gt;</span></span></code></pre></div>
   <p>Install the <code>wpa-supplicant</code> package and edit
   <code>/etc/rc.d/wpa_supplicant</code> to set the wireless
   interface:</p>
-  <div class="sourceCode" id="cb185"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>wlp1s0</span></code></pre></div>
+  <div class="sourceCode" id="cb180"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>wlp1s0</span></code></pre></div>
   <p>Update <code>/etc/wpa_supplicant.conf</code> based on your
   network:</p>
   <h4 data-number="6.3.4.1" id="wpa-psk-pre-shared-key"><span
   class="header-section-number">6.3.4.1</span> WPA-PSK (Pre-Shared
   Key)</h4>
   <p>Generate a key with <code>wpa_passphrase(8)</code>:</p>
-  <div class="sourceCode" id="cb186"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wpa_passphrase</span> <span class="op">&lt;</span>MYSSID<span class="op">&gt;</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb181"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wpa_passphrase</span> <span class="op">&lt;</span>MYSSID<span class="op">&gt;</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span></span></code></pre></div>
   <p>Example <code>/etc/wpa_supplicant.conf</code>:</p>
   <pre><code>network={
     ssid=&quot;YOUR_NETWORK_NAME&quot;
@@ -2959,8 +2995,8 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <h4 data-number="6.3.4.2" id="wpa-eap-enterprise"><span
   class="header-section-number">6.3.4.2</span> WPA-EAP (Enterprise)</h4>
   <p>Generate a password hash:</p>
-  <div class="sourceCode" id="cb188"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> utf16le <span class="kw">|</span> <span class="ex">openssl</span> md4</span></code></pre></div>
+  <div class="sourceCode" id="cb183"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> utf16le <span class="kw">|</span> <span class="ex">openssl</span> md4</span></code></pre></div>
   <p>Example <code>/etc/wpa_supplicant.conf</code>:</p>
   <pre><code>network={
     ssid=&quot;YOUR_NETWORK_NAME&quot;
@@ -2980,10 +3016,10 @@ nameserver &lt;your DNS server&gt;</code></pre>
 }</code></pre>
   <p>For automatic IP, ensure the wireless interface is set in
   <code>/etc/rc.d/dhcpcd</code>. Start the services:</p>
-  <div class="sourceCode" id="cb191"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/wpa_supplicant</span> start</span>
-<span id="cb191-3"><a href="#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> start</span></code></pre></div>
+  <div class="sourceCode" id="cb186"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/wpa_supplicant</span> start</span>
+<span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> start</span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>wpa_supplicant</code> (and
@@ -2998,25 +3034,25 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <p>Identify your timezone from <code>/usr/share/zoneinfo</code> (e.g.,
   <code>America/New_York</code>).</p>
   <p>Set the timezone immediately:</p>
-  <div class="sourceCode" id="cb192"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb192-2"><a href="#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/<span class="op">&lt;</span>Your_Timezone<span class="op">&gt;</span> /etc/localtime</span></code></pre></div>
+  <div class="sourceCode" id="cb187"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/<span class="op">&lt;</span>Your_Timezone<span class="op">&gt;</span> /etc/localtime</span></code></pre></div>
   <p>Verify the symbolic link:</p>
-  <div class="sourceCode" id="cb193"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /etc/localtime</span></code></pre></div>
+  <div class="sourceCode" id="cb188"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /etc/localtime</span></code></pre></div>
   <p>To make it persistent, add the timezone to
   <code>/etc/rc.conf</code>:</p>
-  <div class="sourceCode" id="cb194"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&#39;&lt;Your_Timezone&gt;&#39;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb189"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&#39;&lt;Your_Timezone&gt;&#39;</span></span></code></pre></div>
   <h3 data-number="6.4.2" id="system-clock-setup"><span
   class="header-section-number">6.4.2</span> System Clock Setup</h3>
   <p>Manually set the system clock using the
   <code>MMDDhhmmYYYY.ss</code> format:</p>
-  <div class="sourceCode" id="cb195"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb195-2"><a href="#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-3"><a href="#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
-<span id="cb195-4"><a href="#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
+  <div class="sourceCode" id="cb190"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
+<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
   <p>For accuracy, use NTP (described next).</p>
   <h3 data-number="6.4.3"
   id="network-time-protocol-ntp-configuration"><span
@@ -3031,9 +3067,9 @@ nameserver &lt;your DNS server&gt;</code></pre>
   system clock.</p>
   <p>After installing <code>chrony</code>, start, stop, or restart the
   service via:</p>
-  <div class="sourceCode" id="cb196"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb191"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To enable automatic startup, add <code>chrony</code> to the
