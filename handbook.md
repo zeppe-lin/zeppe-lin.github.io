@@ -948,7 +948,7 @@ especially to avoid build issues during initial updates.
 > They detail package changes like removals, merges, or renames that
 > may require manual intervention.
 
-### Download and Extract binpkgs
+#### Download and Extract binpkgs
 
 > **Note:**
 >
@@ -976,16 +976,16 @@ gpg --verify binpkgs-${VERSION}-x86_64.tar.xz{.sig,}
 Extract the tarball after successful verification:
 
 ```sh
-mkdir -p ~/tmp/binpkgs
-tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/tmp/binpkgs
+mkdir -p ~/binpkgs
+tar -xf binpkgs-${VERSION}-x86_64.tar.xz -C ~/binpkgs
 ```
 
-### Upgrade Core Packages
+#### Upgrade Core Packages
 
 Navigate to the directory and upgrade core packages:
 
 ```sh
-cd ~/tmp/binpkgs
+cd ~/binpkgs
 for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
 ```
 
@@ -993,12 +993,12 @@ for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
 New, non-upgradable packages will return an error, which the loop
 skips, ensuring all upgradeable packages are updated.
 
-### Install New Core Packages
+#### Install New Core Packages
 
 Install new core packages introduced in the release:
 
 ```sh
-cd ~/tmp/binpkgs
+cd ~/binpkgs
 for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
 ```
 
