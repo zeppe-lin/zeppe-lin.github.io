@@ -211,17 +211,6 @@
   <ul>
   <li><a href="#binary-upgrade" id="toc-binary-upgrade"><span
   class="toc-section-number">3.2.1</span> Binary Upgrade</a></li>
-  <li><a href="#download-and-extract-binpkgs"
-  id="toc-download-and-extract-binpkgs"><span
-  class="toc-section-number">3.2.2</span> Download and Extract
-  binpkgs</a></li>
-  <li><a href="#upgrade-core-packages"
-  id="toc-upgrade-core-packages"><span
-  class="toc-section-number">3.2.3</span> Upgrade Core Packages</a></li>
-  <li><a href="#install-new-core-packages"
-  id="toc-install-new-core-packages"><span
-  class="toc-section-number">3.2.4</span> Install New Core
-  Packages</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#package-management" id="toc-package-management"><span
@@ -981,8 +970,10 @@
   <div class="sourceCode" id="cb36"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chrooted, as root</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src/linux-<span class="va">${KV}</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="va">$(</span><span class="ex">pkgman</span> path linux<span class="va">)</span>/<span class="pp">*</span>.patch<span class="kw">;</span> <span class="cf">do</span> <span class="dt">\</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">[</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">&quot;</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="fu">patch</span> <span class="at">-Np1</span> <span class="at">-i</span> <span class="va">$p</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="va">$(</span><span class="ex">pkgman</span> path linux<span class="va">)</span>/<span class="pp">*</span>.patch<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">[</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">&quot;</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="fu">patch</span> <span class="at">-Np1</span> <span class="at">-i</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">&quot;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+  <p>vs</p>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>It is highly recommended to perform a dry run to check for errors
@@ -1258,9 +1249,9 @@
   target Zeppe-Lin version. They detail package changes like removals,
   merges, or renames that may require manual intervention.</p>
   </blockquote>
-  <h3 data-number="3.2.2" id="download-and-extract-binpkgs"><span
-  class="header-section-number">3.2.2</span> Download and Extract
-  binpkgs</h3>
+  <h4 data-number="3.2.1.1" id="download-and-extract-binpkgs"><span
+  class="header-section-number">3.2.1.1</span> Download and Extract
+  binpkgs</h4>
   <blockquote>
   <p><strong>Note:</strong></p>
   <p>Verify the integrity of the downloaded <code>binpkgs</code> tarball
@@ -1279,24 +1270,33 @@
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--verify</span> binpkgs-<span class="va">${VERSION}</span>-x86_64.tar.xz<span class="dt">{.sig</span><span class="op">,</span><span class="dt">}</span></span></code></pre></div>
   <p>Extract the tarball after successful verification:</p>
   <div class="sourceCode" id="cb62"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/tmp/binpkgs</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> binpkgs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> ~/tmp/binpkgs</span></code></pre></div>
-  <h3 data-number="3.2.3" id="upgrade-core-packages"><span
-  class="header-section-number">3.2.3</span> Upgrade Core Packages</h3>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/binpkgs</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> binpkgs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> ~/binpkgs</span></code></pre></div>
+  <h4 data-number="3.2.1.2" id="upgrade-core-packages"><span
+  class="header-section-number">3.2.1.2</span> Upgrade Core
+  Packages</h4>
   <p>Navigate to the directory and upgrade core packages:</p>
   <div class="sourceCode" id="cb63"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/tmp/binpkgs</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pkg <span class="kw">in</span> <span class="pp">*</span>.pkg.tar.gz<span class="kw">;</span> <span class="cf">do</span> <span class="fu">sudo</span> pkgadd <span class="at">-u</span> <span class="va">$pkg</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/binpkgs</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root, upgrade all upgradeable packages</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="pp">*</span>.pkg.tar.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pkgadd</span> <span class="at">-u</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">&quot;</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
   <p><code>pkgadd -u</code> upgrades each package. New, non-upgradable
   packages will return an error, which the loop skips, ensuring all
   upgradeable packages are updated.</p>
-  <h3 data-number="3.2.4" id="install-new-core-packages"><span
-  class="header-section-number">3.2.4</span> Install New Core
-  Packages</h3>
+  <h4 data-number="3.2.1.3" id="install-new-core-packages"><span
+  class="header-section-number">3.2.1.3</span> Install New Core
+  Packages</h4>
   <p>Install new core packages introduced in the release:</p>
   <div class="sourceCode" id="cb64"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/tmp/binpkgs</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pkg <span class="kw">in</span> <span class="pp">*</span>.pkg.tar.gz<span class="kw">;</span> <span class="cf">do</span> <span class="fu">sudo</span> pkgadd <span class="va">$pkg</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/binpkgs</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root, install all new packages</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="pp">*</span>.pkg.tar.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pkgadd</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">&quot;</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
   <p><code>pkgadd</code> installs each package. Already installed
   packages return an error, which the loop skips to ensure all new
   packages are installed.</p>
@@ -1347,9 +1347,9 @@
   <pre><code>name#version-release.pkg.tar.gz</code></pre>
   <p>Components:</p>
   <ul>
-  <li><code>name</code>: Package name.</li>
-  <li><code>version</code>: Version number.</li>
-  <li><code>release</code>: Build revision.</li>
+  <li><code>name</code> – Package name.</li>
+  <li><code>version</code> – Version number.</li>
+  <li><code>release</code> – Build revision.</li>
   </ul>
   <p>Example:</p>
   <pre><code>ed#1.21-1.pkg.tar.gz</code></pre>
