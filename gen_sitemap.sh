@@ -10,7 +10,7 @@ for f in *.html; do
   fname=$(basename "$f")
   echo "  <url>" >> sitemap.xml
   echo "    <loc>https://$SITE_DOMAIN/$fname</loc>" >> sitemap.xml
-  echo "    <lastmod>$(date -r "$f" +%F)" >> sitemap.xml
+  echo "    <lastmod>$(date -r "$f" +%F)</lastmod>" >> sitemap.xml
   if [ "$fname" = "index.html" ]; then
     echo "    <priority>1.0</priority>" >> sitemap.xml
   else
