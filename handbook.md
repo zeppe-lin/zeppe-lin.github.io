@@ -1296,7 +1296,7 @@ A **Package Source** is the basic unit of software organization in
 Zeppe-Lin.
 While this section introduces **Package Sources** in the context of
 building packages,
-[5. PACKAGE SOURCES AND COLLECTIONS](#5-package-sources-and-collections)
+[PACKAGE SOURCES AND COLLECTIONS](#package-sources-and-collections)
 explores their organization into **Collections** and **Repositories**
 for broader software management workflows.
 
@@ -1880,9 +1880,9 @@ Dry run:
 pkgman install -vv --test --deps --group vim zathura
 ```
 
-* **Tip:**
-
-  Use `pkgman search` to locate package names.
+> **Tip:**
+>
+> Use `pkgman search` to locate package names.
 
 Run `pkgman install --help` or see `pkgman-install(8)` for information
 about all installation options.
@@ -2821,7 +2821,7 @@ It differs slightly with or without `initramfs`.
 7. Root is switched: System moves from initramfs to your real root.
 8. `/sbin/init` on real root starts:
    The init process from your main system.
-9. *(Steps 5-10 from [6.2.8.1. Without Initramfs](#6281-without-initramfs) follow).*
+9. *(Steps 5-10 from [Without Initramfs](#without-initramfs) follow).*
 
 ### Minimal Mode (Single-User Mode)
 
@@ -3152,7 +3152,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
    So, no, you didn't miss it.
    There's no disc.
    Now, about that rootfs download...
-   (See [2.4.1. Download Rootfs Tarball](#241-download-rootfs-tarball))
+   (See [Download Rootfs Tarball](#download-rootfs-tarball))
 
 3. **Where's the package/feature I need? Who can add it for me?**
 
@@ -3165,7 +3165,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
 
    If you want it, make it.
    Just be sure your work aligns with the
-   [Zeppe-Lin Principles](#12-principles) and `packaging(7)`
+   [Zeppe-Lin Principles](#principles) and `packaging(7)`
    guidelines before submitting your pull request to the appropriate
    repository.
    We appreciate your contribution, and we're looking forward to
@@ -3174,8 +3174,8 @@ For advanced configurations, consult module-specific man pages (e.g.,
 # REPORTING BUGS
 
 For bug reports regarding **this site** and **handbook**, please use
-the issue tracker:
-<https://github.com/zeppe-lin/zeppe-lin.github.io/issues>.
+the issue tracker at:  
+<https://github.com/zeppe-lin/zeppe-lin.github.io/issues>
 
 # LEGAL NOTICES
 
