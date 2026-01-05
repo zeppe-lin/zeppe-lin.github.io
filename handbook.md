@@ -586,9 +586,12 @@ Apply Zeppe-Lin patches:
 ```sh
 # chrooted, as root
 cd /usr/src/linux-${KV}
-for p in $(pkgman path linux)/*.patch; do \
-        [ -f "$p" ] && patch -Np1 -i $p; done
+for p in $(pkgman path linux)/*.patch; do
+    [ -f "$p" ] && patch -Np1 -i "$p"
+done
 ```
+
+vs
 
 > **Important:**
 >
@@ -986,7 +989,11 @@ Navigate to the directory and upgrade core packages:
 
 ```sh
 cd ~/binpkgs
-for pkg in *.pkg.tar.gz; do sudo pkgadd -u $pkg; done
+
+# as root, upgrade all upgradeable packages
+for p in *.pkg.tar.gz; do
+    pkgadd -u "$p"
+done
 ```
 
 `pkgadd -u` upgrades each package.
@@ -999,7 +1006,11 @@ Install new core packages introduced in the release:
 
 ```sh
 cd ~/binpkgs
-for pkg in *.pkg.tar.gz; do sudo pkgadd $pkg; done
+
+# as root, install all new packages
+for p in *.pkg.tar.gz; do
+    pkgadd "$p"
+done
 ```
 
 `pkgadd` installs each package.
@@ -1059,9 +1070,9 @@ name#version-release.pkg.tar.gz
 
 Components:
 
-- `name`: Package name.
-- `version`: Version number.
-- `release`: Build revision.
+- `name`    -- Package name.
+- `version` -- Version number.
+- `release` -- Build revision.
 
 Example:
 
