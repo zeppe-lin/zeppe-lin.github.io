@@ -4,3 +4,9 @@
 
 # backup files
 *.bak
+
+# build artefacts
+*.html
+robots.txt
+sitemap.xml
+public/
