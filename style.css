@@ -219,51 +219,50 @@ code {
 /* --- Tables --- */
 table {
   width: 100%;
-  border-collapse: separate; /* Permit border-radius */
-  border-spacing: 0;
+  border-collapse: collapse;
   margin: calc(var(--rhythm) * 2) 0;
-  border: 1px solid var(--brd);
+  font-size: var(--fs-small);
+  font-family: "Cascadia Mono", monospace;
   font-variant-numeric: tabular-nums;
-  border-radius: 4px;
-  overflow: hidden;
-  font-family: "Cascadia Mono", monospace; /* Force mono for all table */
+  border: 1px solid var(--brd);
+  border-radius: 6px;          /* rounded corners */
+  overflow: hidden;            /* clip child borders to radius */
+}
+
+th, td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--brd);
+  text-align: left;
+  vertical-align: middle;
 }
 
 th {
   background: var(--pre);
   color: var(--gld);
-  padding: 14px 12px;
-  border-bottom: 2px solid var(--gld);
-  font-size: var(--fs-small);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-align: left;
+  letter-spacing: 0.05em;
 }
 
 td {
-  padding: 12px;
-  border-bottom: 1px solid var(--brd);
-  font-size: var(--fs-small);
-  vertical-align: middle;
-}
-
-/* Specific aligns for dates/sizes */
-td:nth-child(3), th:nth-child(3) {
-  text-align: right; /* better reads adjusted to right */
-  padding-right: 2rem;
+  color: var(--txt);
 }
 
 tr:last-child td {
-  border-bottom: none;
+  border-bottom: none;         /* clean bottom edge */
 }
 
-tr:nth-child(even) {
-  background: rgba(176, 131, 64, 0.03);
+tr:nth-child(even) td {
+  background: rgba(176, 131, 64, 0.04);
 }
 
-tr:hover {
-  background: rgba(176, 131, 64, 0.08); /* Feedback vizual discret la hover */
+tr:hover td {
+  background: rgba(176, 131, 64, 0.08);
 }
+
+/* Alignment helpers */
+td.num, th.num { text-align: right; }
+td.center, th.center { text-align: center; }
 
 /* --- Figures --- */
 img {
