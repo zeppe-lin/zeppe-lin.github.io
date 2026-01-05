@@ -119,16 +119,21 @@ h3:target {
 
 /* --- Main Container --- */
 main {
-  margin: 0 auto 0 var(--toc-w);
-  max-width: 75ch;
-  padding: calc(var(--rhythm) * 3) 5%;
+  margin-left: var(--toc-w);              /* always reserve space for TOC */
+  margin-right: auto;
+  padding: calc(var(--rhythm) * 3) 2rem;  /* stable horizontal padding */
+  max-width: 72ch;                        /* normalized readable width */
   box-sizing: border-box;
 }
 
+/* When no TOC is present */
+/*
 body:not(:has(#TOC)) main {
   margin: 0 auto;
-  text-align: center;
+  padding: calc(var(--rhythm) * 3) clamp(1rem, 4vw, 3rem);
+  text-align: left;
 }
+*/
 
 /* --- Headers --- */
 h1, h2, h3 {
@@ -337,7 +342,7 @@ blockquote footer {
   opacity: 0.85;
 }
 
-/* --- Mobile --- */
+/* --- Responsive --- */
 @media screen and (max-width: 1024px) {
   #TOC {
     position: relative;
@@ -348,9 +353,9 @@ blockquote footer {
   }
 
   main {
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    width: 100%;
+    margin: 0 auto;                       /* center content on mobile */
+    max-width: 100%;                      /* full width for small screens */
+    padding: 2rem 1.25rem;                /* normalized side padding */
   }
 }
 
