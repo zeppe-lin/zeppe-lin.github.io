@@ -20,6 +20,11 @@ for f in *.html; do
 done
 
 echo '</urlset>' >> sitemap.xml
+
+if command -v xmllint >/dev/null 2>&1; then
+	xmllint --noout sitemap.xml
+fi
+
 echo "sitemap.xml generated for $SITE_DOMAIN"
 
 # End of file.
