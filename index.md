@@ -1,5 +1,5 @@
 ---
-title: Zeppe-Lin Linux - Welcome
+title: Zeppe-Lin Linux --- Welcome
 ---
 
 # Welcome to Zeppe-Lin {.unnumbered}
@@ -46,9 +46,9 @@ Start here:
 
 ## Previous Releases {.unnumbered}
 
-- [v1.0 - The Maiden Voyage](v1.0.html)
+- [v1.0 --- The Maiden Voyage](v1.0.html)
 - [v0.99.1](v0.99.1.html)
-- [v0.99 - Happy Birthday!](v0.99.html)
+- [v0.99 --- Happy Birthday!](v0.99.html)
 
 ## Source & Development {.unnumbered}
 
