@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Zeppe-Lin v1.2 - Release Notes</title>
+  <title>Zeppe-Lin v1.2 — Release Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
 <!--
@@ -83,8 +83,9 @@
 <nav id="TOC" role="doc-toc">
   <div class="toc-title">Contents</div>
   <ul>
-  <li><a href="#zeppe-lin-v1.2-relnotes"
-  id="toc-zeppe-lin-v1.2-relnotes">Zeppe-Lin v1.2 — Relnotes</a></li>
+  <li><a href="#zeppe-lin-v1.2-release-notes"
+  id="toc-zeppe-lin-v1.2-release-notes">Zeppe-Lin v1.2 — Release
+  Notes</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
   class="toc-section-number">1</span> Introduction</a></li>
   <li><a href="#incompatible-changes"
@@ -109,18 +110,24 @@
   class="toc-section-number">3.1</span> Root Filesystem</a></li>
   <li><a href="#binary-packages" id="toc-binary-packages"><span
   class="toc-section-number">3.2</span> Binary Packages</a></li>
+  <li><a href="#extras" id="toc-extras"><span
+  class="toc-section-number">3.3</span> Extras</a></li>
   </ul></li>
+  <li><a href="#release-artwork" id="toc-release-artwork"><span
+  class="toc-section-number">4</span> Release Artwork</a></li>
   </ul>
   </div>
 </nav>
 
 <main>
   <p><a href="index.html">Back to Index</a></p>
-  <h1 class="unnumbered" id="zeppe-lin-v1.2-relnotes">Zeppe-Lin v1.2 —
-  Relnotes</h1>
-  <p><em>Released 05 January 2026 - 5th Zeppe‑Lin Release</em></p>
+  <h1 class="unnumbered" id="zeppe-lin-v1.2-release-notes">Zeppe-Lin
+  v1.2 — Release Notes</h1>
+  <p>Released 05 January 2026. 5th Zeppe-Lin Release.</p>
   <figure>
-  <img src="v1.2.png" alt="Artwork for v1.2 — Ghosts in the Rig" />
+  <img
+  src="https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true"
+  alt="Artwork for v1.2 — Ghosts in the Rig" />
   <figcaption aria-hidden="true">Artwork for v1.2 — Ghosts in the
   Rig</figcaption>
   </figure>
@@ -181,13 +188,13 @@
   standardized across core packages to reduce subtle ABI and build-time
   differences.</p></li>
   <li><p>Logging and rotation - <code>logrotate</code> introduced as the
-  system log rotation tool; per‑service configs added (syslog, boot,
+  system log rotation tool; per-service configs added (syslog, boot,
   dmesg).</p></li>
   <li><p>Cron and maintenance - switched to <code>run-parts</code> for
   scheduled jobs; removed legacy wrappers and updated crontab
   entries.</p></li>
   <li><p>Security and relbumps - security updates and relbumps across
-  the tree (<code>openssl</code>, <code>util‑linux</code>,
+  the tree (<code>openssl</code>, <code>util-linux</code>,
   <code>libarchive</code>, etc.).</p></li>
   <li><p>Reproducibility - improved build logs and deterministic
   packaging where feasible; signed release artifacts and checksums
@@ -256,23 +263,46 @@
   </ul>
   <h1 data-number="3" id="downloads"><span
   class="header-section-number">3</span> Downloads</h1>
-  <p>Before installing, review the <a href="handbook.html">Handbook</a>
-  for setup notes and compatibility guidance.</p>
+  <p>Consult the <a href="handbook.html">Handbook</a> before
+  downloading. Ensure hardware support and installation familiarity.</p>
   <h2 data-number="3.1" id="root-filesystem"><span
   class="header-section-number">3.1</span> Root Filesystem</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz">rootfs-v1.2-x86_64.tar.xz</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz"><code>rootfs-v1.2-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz.sig">rootfs-v1.2-x86_64.tar.xz.sig</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz.sig"><code>rootfs-v1.2-x86_64.tar.xz.sig</code></a></li>
   </ul>
   <h2 data-number="3.2" id="binary-packages"><span
   class="header-section-number">3.2</span> Binary Packages</h2>
   <ul>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz">binpkgs-v1.2-x86_64.tar.xz</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz"><code>binpkgs-v1.2-x86_64.tar.xz</code></a></li>
   <li><a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz.sig">binpkgs-v1.2-x86_64.tar.xz.sig</a></li>
+  href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz.sig"><code>binpkgs-v1.2-x86_64.tar.xz.sig</code></a></li>
+  </ul>
+  <h2 data-number="3.3" id="extras"><span
+  class="header-section-number">3.3</span> Extras</h2>
+  <ul>
+  <li><p><a
+  href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
+  Tool for building custom root filesystem images.<br />
+  Install on Zeppe-Lin with:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
+  <li><p><a
+  href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
+  Instructions for building a Docker image.</p></li>
+  </ul>
+  <h1 data-number="4" id="release-artwork"><span
+  class="header-section-number">4</span> Release Artwork</h1>
+  <ul>
+  <li><p><strong>Image:</strong> <a
+  href="https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true">Direct
+  Link</a></p></li>
+  <li><p><strong>Concept:</strong> TODO</p></li>
+  <li><p><strong>License:</strong> CC-BY-SA 3.0</p></li>
   </ul>
   <hr />
   <p><em>Ghosts in the rig. Fire in the code. The storm? Our

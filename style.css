@@ -71,9 +71,22 @@ html, body {
   padding: 0;
 }
 
+/*
+#TOC li {
+  margin: calc(var(--rhythm) * 0.35) 0;
+  line-height: 1.4;
+  padding-left: 0.5em;
+}
+*/
 #TOC li {
   margin: calc(var(--rhythm) * 0.5) 0;
   padding-left: 0.5em; /* gentle indent */
+}
+
+#TOC ul ul {
+  border-left: 1px solid var(--brd);
+  margin-left: 0.25em;
+  padding-left: 0.75em;
 }
 
 #TOC ul ul li {
@@ -196,6 +209,7 @@ pre code {
   padding: 0.4rem 0.6rem;
   border-radius: 3px;
   font-family: "Cascadia Mono", monospace;
+  white-space: pre;
 }
 
 code {
@@ -207,27 +221,48 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: calc(var(--rhythm) * 2) 0;
-  border: 1px solid var(--brd);
+  font-size: var(--fs-small);
+  font-family: "Cascadia Mono", monospace;
   font-variant-numeric: tabular-nums;
+  border: 1px solid var(--brd);
+  border-radius: 6px;          /* rounded corners */
+  overflow: hidden;            /* clip child borders to radius */
+}
+
+th, td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--brd);
+  text-align: left;
+  vertical-align: middle;
 }
 
 th {
   background: var(--pre);
   color: var(--gld);
-  padding: 12px;
-  border-bottom: 2px solid var(--gld);
-  font-size: var(--fs-small);
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 td {
-  padding: 12px;
-  border-bottom: 1px solid var(--brd);
+  color: var(--txt);
 }
 
-tr:nth-child(even) {
+tr:last-child td {
+  border-bottom: none;         /* clean bottom edge */
+}
+
+tr:nth-child(even) td {
   background: rgba(176, 131, 64, 0.04);
 }
+
+tr:hover td {
+  background: rgba(176, 131, 64, 0.08);
+}
+
+/* Alignment helpers */
+td.num, th.num { text-align: right; }
+td.center, th.center { text-align: center; }
 
 /* --- Figures --- */
 img {
@@ -273,6 +308,22 @@ blockquote {
 }
 
 blockquote p { margin: 0; }
+
+blockquote code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.95em;
+  white-space: normal;
+  color: var(--txt);
+  opacity: 0.75;
+  /*
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: var(--brd);
+  */
+}
 
 /* --- Blockquote Footer --- */
 blockquote footer {
