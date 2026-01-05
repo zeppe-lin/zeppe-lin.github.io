@@ -1,6 +1,6 @@
 # Zeppe-Lin documentation build
 
-SITENAME  = zeppe-lin.org
+SITE_DOMAIN = zeppe-lin.org
 CSS      := style.css
 TEMPLATE := template.html.in
 PANDOC   ?= pandoc
@@ -18,10 +18,10 @@ all: $(HTML) $(STATIC)
 	@$(PANDOC) $(PFLAGS) $< -o $@
 
 robots.txt: gen_robots.sh
-	@./gen_robots.sh $(SITENAME)
+	@./gen_robots.sh $(SITE_DOMAIN)
 
 sitemap.xml: gen_sitemap.sh $(HTML)
-	@./gen_sitemap.sh $(SITENAME)
+	@./gen_sitemap.sh $(SITE_DOMAIN)
 
 clean:
 	@rm -f $(HTML) $(STATIC)
