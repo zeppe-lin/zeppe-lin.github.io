@@ -88,16 +88,11 @@
   class="toc-section-number">1</span> INTRODUCTION</a>
   <ul>
   <li><a href="#about-zeppe-lin" id="toc-about-zeppe-lin"><span
-  class="toc-section-number">1.1</span> About Zeppe-Lin</a>
-  <ul>
-  <li><a href="#what-is-zeppe-lin" id="toc-what-is-zeppe-lin"><span
-  class="toc-section-number">1.1.1</span> What is Zeppe-Lin?</a></li>
-  <li><a href="#who-is-zeppe-lin-for"
-  id="toc-who-is-zeppe-lin-for"><span
-  class="toc-section-number">1.1.2</span> Who is Zeppe-Lin For?</a></li>
-  </ul></li>
-  <li><a href="#principles" id="toc-principles"><span
-  class="toc-section-number">1.2</span> Principles</a></li>
+  class="toc-section-number">1.1</span> About Zeppe-Lin</a></li>
+  <li><a href="#target-audience" id="toc-target-audience"><span
+  class="toc-section-number">1.2</span> Target Audience</a></li>
+  <li><a href="#design-principles" id="toc-design-principles"><span
+  class="toc-section-number">1.3</span> Design Principles</a></li>
   </ul></li>
   <li><a href="#installation" id="toc-installation"><span
   class="toc-section-number">2</span> INSTALLATION</a>
@@ -432,10 +427,8 @@
   <ul>
   <li><a href="#password-management" id="toc-password-management"><span
   class="toc-section-number">6.5.1</span> Password Management</a></li>
-  <li><a href="#user-environment-configuration"
-  id="toc-user-environment-configuration"><span
-  class="toc-section-number">6.5.2</span> User Environment
-  Configuration</a></li>
+  <li><a href="#user-environment" id="toc-user-environment"><span
+  class="toc-section-number">6.5.2</span> User Environment</a></li>
   <li><a href="#pluggable-authentication-modules-pam"
   id="toc-pluggable-authentication-modules-pam"><span
   class="toc-section-number">6.5.3</span> Pluggable Authentication
@@ -478,46 +471,65 @@
 <main>
   <p><a href="index.html">Back to Index</a></p>
   <h1 class="unnumbered" id="preface">PREFACE</h1>
-  <p>Zeppe-Lin Handbook. <em>Because figuring it out yourself is
-  overrated</em>.</p>
-  <p>This guide gives you everything you need to install, configure, and
+  <p>Zeppe-Lin Handbook.<br />
+  <em>Because figuring it out yourself is overrated.</em></p>
+  <p>This guide provides everything you need to install, configure, and
   maintain your Zeppe-Lin system.</p>
-  <p>Build the Zeppe-Lin system you need. This handbook shows you how
-  (<em>because nobody else will</em>).</p>
+  <p>Build the system you need. This handbook shows you how.<br />
+  <em>Because nobody else will.</em></p>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> INTRODUCTION</h1>
   <h2 data-number="1.1" id="about-zeppe-lin"><span
   class="header-section-number">1.1</span> About Zeppe-Lin</h2>
-  <h3 data-number="1.1.1" id="what-is-zeppe-lin"><span
-  class="header-section-number">1.1.1</span> What is Zeppe-Lin?</h3>
-  <p>Zeppe-Lin is a lightweight, source-based GNU/Linux distro for
-  x86-64, forked from CRUX. Rooted in KISS and UNIX ideals, it gives you
-  the simplicity and control to build a clear, transparent system.</p>
-  <h3 data-number="1.1.2" id="who-is-zeppe-lin-for"><span
-  class="header-section-number">1.1.2</span> Who is Zeppe-Lin For?</h3>
-  <p>Zeppe-Lin is for the Linux user who understands the elegance of
-  Plan 9’s philosophy but still prefers a POSIX-compliant environment
-  they can build themselves, brick by digital brick.</p>
-  <p>While we might not be serving up everything as a file quite yet,
-  the spirit of Plan 9’s elegance and simplicity resonates deeply within
-  Zeppe-Lin.</p>
-  <h2 data-number="1.2" id="principles"><span
-  class="header-section-number">1.2</span> Principles</h2>
-  <p>Zeppe-Lin is guided by the following principles:</p>
-  <ol type="1">
-  <li><p><strong>Keep It Simple (KISS)</strong>. Design and code with
-  minimalism. No fluff – just what’s necessary.</p></li>
-  <li><p><strong>Respect the UNIX Spirit</strong>. Craft small, focused
-  tools with text-based, modular configurations.</p></li>
-  <li><p><strong>Stay Transparent</strong>. Keep everything clear and
-  understandable. Avoid needless abstraction.</p></li>
-  <li><p><strong>Enable User Control</strong>. Provide flexible tools
-  for customization. Let users define their workflows.</p></li>
-  <li><p><strong>Build on a Minimal Base</strong>. Start lean. Add only
-  what is explicitly required.</p></li>
-  </ol>
-  <p>These principles ensure Zeppe-Lin remains simple, clear, and true
-  to UNIX.</p>
+  <p>Zeppe-Lin is a lightweight, source-based GNU/Linux distribution for
+  x86-64 systems. It emphasizes simplicity, transparency, and deliberate
+  user control.</p>
+  <p>The system follows traditional UNIX principles: small tools,
+  explicit behavior, plain text configuration, and a system layout that
+  can be understood. Zeppe-Lin is designed to be read, inspected, and
+  modified.</p>
+  <h2 data-number="1.2" id="target-audience"><span
+  class="header-section-number">1.2</span> Target Audience</h2>
+  <p>Zeppe-Lin is intended for users who:</p>
+  <ul>
+  <li><p>Require a clean, minimal, and predictable environment.</p></li>
+  <li><p>Prefer editing configuration files directly over using
+  abstracted or graphical tools.</p></li>
+  <li><p>Build software from source to retain control over compilation,
+  dependencies, and resulting binaries.</p></li>
+  <li><p>Value understanding and ownership of the entire operating
+  system stack.</p></li>
+  </ul>
+  <h2 data-number="1.3" id="design-principles"><span
+  class="header-section-number">1.3</span> Design Principles</h2>
+  <p>Zeppe‑Lin is guided by a small set of strict principles shaping
+  system layout, tooling, and policy.</p>
+  <ul>
+  <li><p><strong>Simplicity</strong><br />
+  Components are kept small, direct, and auditable. When complexity is
+  unavoidable, it is made explicit rather than hidden.</p></li>
+  <li><p><strong>Practicality</strong><br />
+  Working, maintainable solutions are preferred over clever or fragile
+  ones. Predictability matters more than feature completeness.</p></li>
+  <li><p><strong>Text Interface</strong><br />
+  System state lives in plain text. Configuration files, logs, and
+  policies are readable, versionable, and repairable with standard
+  tools. Opaque or binary state is avoided unless strictly
+  necessary.</p></li>
+  <li><p><strong>Explicit Operation</strong><br />
+  Automation exists, but it is visible. Hidden actions or background
+  logic are avoided. Operations result from clear commands or
+  scripts.</p></li>
+  <li><p><strong>Capable Base</strong><br />
+  The base installation is minimal in scope but capable in function. It
+  includes the toolchain, build utilities, documentation tools, basic
+  networking, and system management utilities. This is the minimum
+  required to build and maintain a workstation or server from source
+  without external dependencies. The cost is disk space; the benefit is
+  autonomy.</p></li>
+  </ul>
+  <p>These principles are binding. They define how Zeppe-Lin is built,
+  extended, and maintained.</p>
   <h1 data-number="2" id="installation"><span
   class="header-section-number">2</span> INSTALLATION</h1>
   <h2 data-number="2.1" id="supported-hardware"><span
@@ -2979,8 +2991,8 @@ nameserver &lt;your DNS server&gt;</code></pre>
   interface:</p>
   <div class="sourceCode" id="cb180"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>wlp1s0</span></code></pre></div>
-  <p>Update <code>/etc/wpa_supplicant.conf</code> based on your
-  network:</p>
+  <p>Update <code>/etc/wpa_supplicant.conf</code> based on your network
+  settings. Common security configurations follow.</p>
   <h4 data-number="6.3.4.1" id="wpa-psk-pre-shared-key"><span
   class="header-section-number">6.3.4.1</span> WPA-PSK (Pre-Shared
   Key)</h4>
@@ -3031,29 +3043,30 @@ nameserver &lt;your DNS server&gt;</code></pre>
   Configuration</h2>
   <h3 data-number="6.4.1" id="timezone-setup"><span
   class="header-section-number">6.4.1</span> Timezone Setup</h3>
-  <p>Identify your timezone from <code>/usr/share/zoneinfo</code> (e.g.,
-  <code>America/New_York</code>).</p>
+  <p>Select your timezone from <code>/usr/share/zoneinfo</code> (e.g.,
+  <code>Europe/Berlin</code>).</p>
   <p>Set the timezone immediately:</p>
   <div class="sourceCode" id="cb187"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/<span class="op">&lt;</span>Your_Timezone<span class="op">&gt;</span> /etc/localtime</span></code></pre></div>
-  <p>Verify the symbolic link:</p>
-  <div class="sourceCode" id="cb188"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /etc/localtime</span></code></pre></div>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/Europe/Berlin /etc/localtime</span></code></pre></div>
   <p>To make it persistent, add the timezone to
   <code>/etc/rc.conf</code>:</p>
-  <div class="sourceCode" id="cb189"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&#39;&lt;Your_Timezone&gt;&#39;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb188"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&quot;Europe/Berlin&quot;</span></span></code></pre></div>
   <h3 data-number="6.4.2" id="system-clock-setup"><span
   class="header-section-number">6.4.2</span> System Clock Setup</h3>
   <p>Manually set the system clock using the
   <code>MMDDhhmmYYYY.ss</code> format:</p>
-  <div class="sourceCode" id="cb190"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
-<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
-  <p>For accuracy, use NTP (described next).</p>
+  <div class="sourceCode" id="cb189"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
+<span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
+  <blockquote>
+  <p><strong>Important:</strong></p>
+  <p>Manual configuration is temporary. Use NTP for continuous
+  synchronization (described next).</p>
+  </blockquote>
   <h3 data-number="6.4.3"
   id="network-time-protocol-ntp-configuration"><span
   class="header-section-number">6.4.3</span> Network Time Protocol (NTP)
@@ -3067,9 +3080,9 @@ nameserver &lt;your DNS server&gt;</code></pre>
   system clock.</p>
   <p>After installing <code>chrony</code>, start, stop, or restart the
   service via:</p>
-  <div class="sourceCode" id="cb191"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb190"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To enable automatic startup, add <code>chrony</code> to the
@@ -3082,58 +3095,61 @@ nameserver &lt;your DNS server&gt;</code></pre>
   environment setup, and PAM (Pluggable Authentication Modules).</p>
   <h3 data-number="6.5.1" id="password-management"><span
   class="header-section-number">6.5.1</span> Password Management</h3>
-  <p>Zeppe-Lin uses strong password encryption with <code>SHA512</code>
-  for secure user accounts.</p>
-  <p>Applications requiring user authentication via
-  <code>crypt(3)</code> must link against libcrypt
-  (<code>-lcrypt</code>). Zeppe-Lin’s <code>libcrypt</code> supports
-  <code>SHA512</code> and older encryption methods like
-  <code>DES</code>.</p>
-  <h3 data-number="6.5.2" id="user-environment-configuration"><span
-  class="header-section-number">6.5.2</span> User Environment
-  Configuration</h3>
-  <p>User account creation via <code>useradd(8)</code> is governed by
-  <code>/etc/login.defs</code>. Key settings include:</p>
+  <p>Zeppe-Lin uses <code>libxcrypt</code> to provide the
+  <code>crypt(3)</code> API for password hashing.</p>
+  <p>The default hash algorithm is <strong>SHA-512</strong>, ensuring
+  strong security. <strong>Legacy algorithms</strong> (MD5, traditional
+  DES) are supported for compatibility, but their use is
+  discouraged.</p>
+  <p>Programs that authenticate users via <code>crypt(3)</code> must
+  link against <code>libxcrypt</code> (<code>-lcrypt</code>).</p>
+  <p>System-wide password policies are defined in
+  <code>/etc/login.defs</code>. Key parameters include:</p>
   <ul>
-  <li><code>CREATE_HOME</code>: Determines whether a home directory is
-  created for new users.</li>
-  <li><code>USERGROUPS_ENAB</code>: Controls how group memberships are
-  managed for new users.</li>
+  <li><code>PASS_MAX_DAYS</code> — Maximum password age.</li>
+  <li><code>PASS_MIN_DAYS</code> — Minimum password age.</li>
+  <li><code>PASS_WARN_AGE</code> — Days before expiration to warn
+  users.</li>
   </ul>
-  <p>Zeppe-Lin follows a minimalist approach – home directories created
-  with <code>useradd -m</code> are empty by default. Customize user
-  environments by:</p>
-  <ul>
-  <li>Using <code>/etc/skel</code> for default home directory
-  contents.</li>
-  <li>Changing the default shell.</li>
-  <li>Modifying the <code>PATH</code> or environment variables.</li>
-  </ul>
-  <p>Default shell <code>PATH</code> (via <code>/etc/profile</code>) is
-  set to <code>/sbin:/usr/sbin:/bin:/usr/bin</code>. This allows access
-  to administrative commands (e.g., <code>sudo(8)</code>) without
-  specifying full paths.</p>
+  <p>Use <code>passwd(1)</code> to set or change user passwords. SHA-512
+  is recommended for all accounts.</p>
+  <h3 data-number="6.5.2" id="user-environment"><span
+  class="header-section-number">6.5.2</span> User Environment</h3>
+  <p>User accounts are created via <code>useradd(8)</code> according to
+  <code>/etc/login.defs</code>.</p>
+  <p>Home directories created with <code>useradd -m</code> are empty by
+  default. To provide default files, use <code>/etc/skel</code>.</p>
+  <p>The default shell <code>PATH</code> is defined in
+  <code>/etc/profile</code>:</p>
+  <div class="sourceCode" id="cb191"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin:/usr/sbin:/bin:/usr/bin</span></span></code></pre></div>
+  <p>This allows access to administrative commands without specifying
+  full paths.</p>
   <h3 data-number="6.5.3"
   id="pluggable-authentication-modules-pam"><span
   class="header-section-number">6.5.3</span> Pluggable Authentication
   Modules (PAM)</h3>
-  <p>Zeppe-Lin uses PAM (<code>linux-pam</code> package) for flexible
-  user authentication. PAM’s configuration files are in
-  <code>/etc/pam.d/</code>, where each file corresponds to a specific
-  login service.</p>
-  <p>Common PAM modules include:</p>
+  <p>Zeppe-Lin uses PAM for authentication, session management, and
+  resource control.</p>
+  <p>PAM configuration files are located in <code>/etc/pam.d</code>.
+  Each file corresponds to a specific service (e.g., <code>login</code>,
+  <code>su</code>, <code>sshd</code>). Key modules included:</p>
   <ul>
-  <li><p><code>pam_dumb_runtime_dir.so</code>: Creates
-  <code>XDG_RUNTIME_DIR</code> for desktop apps (freedesktop.org).
-  Ensure it’s active in <code>/etc/pam.d/common-session</code> during
-  system upgrades.</p></li>
-  <li><p><code>pam_env.so</code>: Sets and exports environment variables
-  at login.</p></li>
-  <li><p><code>pam_limits.so</code>: Configures resource limits (e.g.,
-  max open files).</p></li>
+  <li><p><code>pam_dumb_runtime_dir.so</code><br />
+  Creates <code>XDG_RUNTIME_DIR</code> on login. Required for Wayland,
+  PipeWire, and other XDG-compliant environments.</p></li>
+  <li><p><code>pam_env.so</code><br />
+  Exports environment variables from
+  <code>/etc/security/pam_env.conf</code> and
+  <code>/etc/environment</code>, enabling system-wide settings for
+  users.</p></li>
+  <li><p><code>pam_limits.so</code><br />
+  Enforces resource limits (max processes, open files) defined in
+  <code>/etc/security/limits.conf</code>.</p></li>
   </ul>
   <p>For advanced configurations, consult module-specific man pages
-  (e.g., <code>man pam_env</code>).</p>
+  (e.g., <code>pam_dumb_runtime_dir(8)</code>, <code>pam_env(8)</code>,
+  <code>pam_limits(8)</code>, <code>pam_exec(8)</code>).</p>
   <h1 data-number="7" id="faq"><span
   class="header-section-number">7</span> FAQ</h1>
   <ol type="1">
@@ -3160,7 +3176,7 @@ nameserver &lt;your DNS server&gt;</code></pre>
   you are the person to make it happen. Our community’s strength comes
   from people like you taking the initiative.</p>
   <p>If you want it, make it. Just be sure your work aligns with the <a
-  href="#principles">Zeppe-Lin Principles</a> and
+  href="#design-principles">Design Principles</a> and
   <code>packaging(7)</code> guidelines before submitting your pull
   request to the appropriate repository. We appreciate your
   contribution, and we’re looking forward to seeing what you’ll
