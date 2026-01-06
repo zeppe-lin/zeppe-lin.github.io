@@ -6,61 +6,80 @@ title: Zeppe-Lin Handbook
 
 # PREFACE {.unnumbered}
 
-Zeppe-Lin Handbook.
-*Because figuring it out yourself is overrated*.
+Zeppe-Lin Handbook.  
+*Because figuring it out yourself is overrated.*
 
-This guide gives you everything you need to install, configure, and
+This guide provides everything you need to install, configure, and
 maintain your Zeppe-Lin system.
 
-Build the Zeppe-Lin system you need.
-This handbook shows you how (*because nobody else will*).
+Build the system you need.
+This handbook shows you how.  
+*Because nobody else will.*
 
 # INTRODUCTION
 
 ## About Zeppe-Lin
 
-### What is Zeppe-Lin?
+Zeppe-Lin is a lightweight, source-based GNU/Linux distribution for
+x86-64 systems.
+It emphasizes simplicity, transparency, and deliberate user control.
 
-Zeppe-Lin is a lightweight, source-based GNU/Linux distro for x86-64,
-forked from CRUX.
-Rooted in KISS and UNIX ideals, it gives you the simplicity and
-control to build a clear, transparent system.
+The system follows traditional UNIX principles:
+small tools, explicit behavior, plain text configuration, and a system
+layout that can be understood.
+Zeppe-Lin is designed to be read, inspected, and modified.
 
-### Who is Zeppe-Lin For?
+## Target Audience
 
-Zeppe-Lin is for the Linux user who understands the elegance of Plan
-9's philosophy but still prefers a POSIX-compliant environment they
-can build themselves, brick by digital brick.
+Zeppe-Lin is intended for users who:
 
-While we might not be serving up everything as a file quite yet, the
-spirit of Plan 9's elegance and simplicity resonates deeply within
-Zeppe-Lin.
+- Require a clean, minimal, and predictable environment.
 
-## Principles
+- Prefer editing configuration files directly over using abstracted or
+  graphical tools.
 
-Zeppe-Lin is guided by the following principles:
+- Build software from source to retain control over compilation,
+  dependencies, and resulting binaries.
 
-1. **Keep It Simple (KISS)**.
-   Design and code with minimalism.
-   No fluff -- just what's necessary.
+- Value understanding and ownership of the entire operating system
+  stack.
 
-2. **Respect the UNIX Spirit**.
-   Craft small, focused tools with text-based, modular configurations.
+## Design Principles
 
-3. **Stay Transparent**.
-   Keep everything clear and understandable.
-   Avoid needless abstraction.
+Zeppe‑Lin is guided by a small set of strict principles shaping system
+layout, tooling, and policy.
 
-4. **Enable User Control**.
-   Provide flexible tools for customization.
-   Let users define their workflows.
+- **Simplicity**  
+  Components are kept small, direct, and auditable.
+  When complexity is unavoidable, it is made explicit rather than
+  hidden.
 
-5. **Build on a Minimal Base**.
-   Start lean.
-   Add only what is explicitly required.
+- **Practicality**  
+  Working, maintainable solutions are preferred over clever or fragile
+  ones.
+  Predictability matters more than feature completeness.
 
-These principles ensure Zeppe-Lin remains simple, clear, and true to
-UNIX.
+- **Text Interface**  
+  System state lives in plain text.
+  Configuration files, logs, and policies are readable, versionable,
+  and repairable with standard tools.
+  Opaque or binary state is avoided unless strictly necessary.
+
+- **Explicit Operation**  
+  Automation exists, but it is visible.
+  Hidden actions or background logic are avoided.
+  Operations result from clear commands or scripts.
+
+- **Capable Base**  
+  The base installation is minimal in scope but capable in function.
+  It includes the toolchain, build utilities, documentation tools,
+  basic networking, and system management utilities.
+  This is the minimum required to build and maintain a workstation or
+  server from source without external dependencies.
+  The cost is disk space; the benefit is autonomy.
+
+These principles are binding.
+They define how Zeppe-Lin is built, extended, and maintained.
 
 # INSTALLATION
 
@@ -2970,7 +2989,8 @@ Install the `wpa-supplicant` package and edit
 DEV=wlp1s0
 ```
 
-Update `/etc/wpa_supplicant.conf` based on your network:
+Update `/etc/wpa_supplicant.conf` based on your network settings.
+Common security configurations follow.
 
 #### WPA-PSK (Pre-Shared Key)
 
@@ -3041,26 +3061,20 @@ Start the services:
 
 ### Timezone Setup
 
-Identify your timezone from `/usr/share/zoneinfo` (e.g.,
-`America/New_York`).
+Select your timezone from `/usr/share/zoneinfo` (e.g.,
+`Europe/Berlin`).
 
 Set the timezone immediately:
 
 ```sh
 # as root
-ln -sfn /usr/share/zoneinfo/<Your_Timezone> /etc/localtime
-```
-
-Verify the symbolic link:
-
-```sh
-ls -l /etc/localtime
+ln -sfn /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 ```
 
 To make it persistent, add the timezone to `/etc/rc.conf`:
 
 ```sh
-TIMEZONE='<Your_Timezone>'
+TIMEZONE="Europe/Berlin"
 ```
 
 ### System Clock Setup
@@ -3074,7 +3088,10 @@ Manually set the system clock using the `MMDDhhmmYYYY.ss` format:
 date 032705352025.00
 ```
 
-For accuracy, use NTP (described next).
+> **Important:**
+>
+> Manual configuration is temporary.
+> Use NTP for continuous synchronization (described next).
 
 ### Network Time Protocol (NTP) Configuration
 
@@ -3103,60 +3120,69 @@ environment setup, and PAM (Pluggable Authentication Modules).
 
 ### Password Management
 
-Zeppe-Lin uses strong password encryption with `SHA512` for secure
-user accounts.
+Zeppe-Lin uses `libxcrypt` to provide the `crypt(3)` API for password
+hashing.
 
-Applications requiring user authentication via `crypt(3)` must link
-against libcrypt (`-lcrypt`).
-Zeppe-Lin's `libcrypt` supports `SHA512` and older encryption methods
-like `DES`.
+The default hash algorithm is **SHA-512**, ensuring strong security.
+**Legacy algorithms** (MD5, traditional DES) are supported for
+compatibility, but their use is discouraged.
 
-### User Environment Configuration
+Programs that authenticate users via `crypt(3)` must link against
+`libxcrypt` (`-lcrypt`).
 
-User account creation via `useradd(8)` is governed by
+System-wide password policies are defined in `/etc/login.defs`.
+Key parameters include:
+
+- `PASS_MAX_DAYS` --- Maximum password age.
+- `PASS_MIN_DAYS` --- Minimum password age.
+- `PASS_WARN_AGE` --- Days before expiration to warn users.
+
+Use `passwd(1)` to set or change user passwords.
+SHA-512 is recommended for all accounts.
+
+### User Environment
+
+User accounts are created via `useradd(8)` according to
 `/etc/login.defs`.
-Key settings include:
 
-- `CREATE_HOME`:
-  Determines whether a home directory is created for new users.
-- `USERGROUPS_ENAB`:
-  Controls how group memberships are managed for new users.
+Home directories created with `useradd -m` are empty by default.
+To provide default files, use `/etc/skel`.
 
-Zeppe-Lin follows a minimalist approach -- home directories created
-with `useradd -m` are empty by default.
-Customize user environments by:
+The default shell `PATH` is defined in `/etc/profile`:
 
-- Using `/etc/skel` for default home directory contents.
-- Changing the default shell.
-- Modifying the `PATH` or environment variables.
+```sh
+/sbin:/usr/sbin:/bin:/usr/bin
+```
 
-Default shell `PATH` (via `/etc/profile`) is set to
-`/sbin:/usr/sbin:/bin:/usr/bin`.
-This allows access to administrative commands (e.g., `sudo(8)`)
-without specifying full paths.
+This allows access to administrative commands without specifying full
+paths.
 
 ### Pluggable Authentication Modules (PAM)
 
-Zeppe-Lin uses PAM (`linux-pam` package) for flexible user
-authentication.
-PAM's configuration files are in `/etc/pam.d/`, where each file
-corresponds to a specific login service.
+Zeppe-Lin uses PAM for authentication, session management, and
+resource control.
 
-Common PAM modules include:
+PAM configuration files are located in `/etc/pam.d`.
+Each file corresponds to a specific service
+(e.g., `login`, `su`, `sshd`).
+Key modules included:
 
-- `pam_dumb_runtime_dir.so`:
-  Creates `XDG_RUNTIME_DIR` for desktop apps (freedesktop.org).
-  Ensure it's active in `/etc/pam.d/common-session` during system
-  upgrades.
+- `pam_dumb_runtime_dir.so`  
+  Creates `XDG_RUNTIME_DIR` on login.
+  Required for Wayland, PipeWire, and other XDG-compliant
+  environments.
 
-- `pam_env.so`:
-  Sets and exports environment variables at login.
+- `pam_env.so`  
+  Exports environment variables from `/etc/security/pam_env.conf` and
+  `/etc/environment`, enabling system-wide settings for users.
 
-- `pam_limits.so`:
-  Configures resource limits (e.g., max open files).
+- `pam_limits.so`  
+  Enforces resource limits (max processes, open files) defined in
+  `/etc/security/limits.conf`.
 
-For advanced configurations, consult module-specific man pages (e.g.,
-`man pam_env`).
+For advanced configurations, consult module-specific man pages
+(e.g., `pam_dumb_runtime_dir(8)`, `pam_env(8)`, `pam_limits(8)`,
+`pam_exec(8)`).
 
 # FAQ
 
@@ -3193,7 +3219,7 @@ For advanced configurations, consult module-specific man pages (e.g.,
 
    If you want it, make it.
    Just be sure your work aligns with the
-   [Zeppe-Lin Principles](#principles) and `packaging(7)`
+   [Design Principles](#design-principles) and `packaging(7)`
    guidelines before submitting your pull request to the appropriate
    repository.
    We appreciate your contribution, and we're looking forward to
