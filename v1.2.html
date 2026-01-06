@@ -88,33 +88,54 @@
   Notes</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
   class="toc-section-number">1</span> Introduction</a></li>
-  <li><a href="#incompatible-changes"
-  id="toc-incompatible-changes"><span
-  class="toc-section-number">2</span> Incompatible Changes</a>
+  <li><a href="#upgrade-compatibility"
+  id="toc-upgrade-compatibility"><span
+  class="toc-section-number">2</span> Upgrade &amp; Compatibility</a>
   <ul>
+  <li><a href="#openssl-3.5.4-abi-bump"
+  id="toc-openssl-3.5.4-abi-bump"><span
+  class="toc-section-number">2.1</span> OpenSSL 3.5.4 ABI Bump</a></li>
+  <li><a href="#rc-file-ownership-changes"
+  id="toc-rc-file-ownership-changes"><span
+  class="toc-section-number">2.2</span> rc File Ownership
+  Changes</a></li>
+  <li><a href="#cron-execution-model"
+  id="toc-cron-execution-model"><span
+  class="toc-section-number">2.3</span> Cron Execution Model</a></li>
+  <li><a href="#log-rotation" id="toc-log-rotation"><span
+  class="toc-section-number">2.4</span> Log Rotation</a></li>
+  <li><a href="#binary-upgrade-option"
+  id="toc-binary-upgrade-option"><span
+  class="toc-section-number">2.5</span> Binary Upgrade Option</a></li>
+  </ul></li>
   <li><a href="#whats-new" id="toc-whats-new"><span
-  class="toc-section-number">2.1</span> What’s New</a>
+  class="toc-section-number">3</span> What’s New</a>
   <ul>
+  <li><a href="#infrastructure" id="toc-infrastructure"><span
+  class="toc-section-number">3.0.1</span> Infrastructure</a></li>
+  <li><a href="#documentation" id="toc-documentation"><span
+  class="toc-section-number">3.0.2</span> Documentation</a></li>
   <li><a href="#highlights" id="toc-highlights"><span
-  class="toc-section-number">2.1.1</span> Highlights</a></li>
+  class="toc-section-number">3.0.3</span> Highlights</a></li>
   <li><a href="#package-changes" id="toc-package-changes"><span
-  class="toc-section-number">2.1.2</span> Package changes</a></li>
+  class="toc-section-number">3.0.4</span> Package changes</a></li>
   <li><a href="#system-components" id="toc-system-components"><span
-  class="toc-section-number">2.1.3</span> System components</a></li>
+  class="toc-section-number">3.0.5</span> System components</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#changelogs" id="toc-changelogs"><span
+  class="toc-section-number">4</span> Changelogs</a></li>
   <li><a href="#downloads" id="toc-downloads"><span
-  class="toc-section-number">3</span> Downloads</a>
+  class="toc-section-number">5</span> Downloads</a>
   <ul>
   <li><a href="#root-filesystem" id="toc-root-filesystem"><span
-  class="toc-section-number">3.1</span> Root Filesystem</a></li>
+  class="toc-section-number">5.1</span> Root Filesystem</a></li>
   <li><a href="#binary-packages" id="toc-binary-packages"><span
-  class="toc-section-number">3.2</span> Binary Packages</a></li>
+  class="toc-section-number">5.2</span> Binary Packages</a></li>
   <li><a href="#extras" id="toc-extras"><span
-  class="toc-section-number">3.3</span> Extras</a></li>
+  class="toc-section-number">5.3</span> Extras</a></li>
   </ul></li>
   <li><a href="#release-artwork" id="toc-release-artwork"><span
-  class="toc-section-number">4</span> Release Artwork</a></li>
+  class="toc-section-number">6</span> Release Artwork</a></li>
   </ul>
   </div>
 </nav>
@@ -123,7 +144,7 @@
   <p><a href="index.html">Back to Index</a></p>
   <h1 class="unnumbered" id="zeppe-lin-v1.2-release-notes">Zeppe-Lin
   v1.2 — Release Notes</h1>
-  <p>Released 05 January 2026. 5th Zeppe-Lin Release.</p>
+  <p>Released 06 January 2026. 5th Zeppe-Lin Release.</p>
   <figure>
   <img
   src="https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true"
@@ -131,177 +152,240 @@
   <figcaption aria-hidden="true">Artwork for v1.2 — Ghosts in the
   Rig</figcaption>
   </figure>
+  <blockquote>
+  <p>The system is ready because we made it ready.</p>
+  <footer>
+  — <strong>Crew Log, v1.2</strong>
+  </footer>
+  </blockquote>
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> Introduction</h1>
-  <p><strong>Ghosts in the Rig.</strong> This release is a deep-tissue
-  rebuild. We spent this cycle hunting the ghosts - those silent drifts
-  in the toolchain and structural cracks that haunt a system as it
-  grows. We didn’t wait for perfection; we stayed up late, tightened the
-  toolchain, and re-aligned every interface from the base code to the
-  documentation. The result is a rig that is predictable, raw, and ready
-  to be pushed.</p>
-  <p>The cover is the vibe: a crew caught in the static, fully aware of
-  the “cool lie” of being totally ready. <strong>v1.2</strong> is
-  readiness without the bullshit. We’re closing the chapter of pure
-  defiance and starting the one where we take meticulous care of the
-  craft. We know the ghosts are still in the wiring, but we’ve learned
-  how to fly with them. <strong>The system is ready because we made it
-  ready.</strong> The launch is real. <strong>Pretend this is
-  dramatic!</strong></p>
-  <h1 data-number="2" id="incompatible-changes"><span
-  class="header-section-number">2</span> Incompatible Changes</h1>
-  <p><strong>Read this before upgrading.</strong> Several updates change
-  file ownerships, configuration layouts, or introduce ABI bumps that
-  require attention.</p>
-  <ul>
-  <li><p><strong>rc / log files</strong> - <code>rc</code> now ships
-  <code>/var/log/dmesg</code> and related <code>logrotate</code>
-  entries. On upgrade, <code>pkgadd</code> may refuse to overwrite
-  existing files unless forced. If you see errors when updating
-  <code>rc</code>, run:</p>
+  <p><strong>Ghosts in the Rig.</strong></p>
+  <p>v1.2 is a sanitization and structural maintenance release.
+  Following the toolchain alignment introduced in <a
+  href="v1.1.html">v1.1</a>, this cycle focused on system hygiene:
+  formalizing the logging stack, migrating manual pages to
+  <code>scdoc</code>, correcting ABI drifts across the pkgsrc
+  collections, and tightening package sources.</p>
+  <p>The goal remains unchanged: a transparent and predictable system
+  where nothing stays hidden. Complexity is a tax; this release lowers
+  it through structural correction.</p>
+  <p>Ghosts remain in the wiring, but the rig is ready.</p>
+  <h1 data-number="2" id="upgrade-compatibility"><span
+  class="header-section-number">2</span> Upgrade &amp;
+  Compatibility</h1>
+  <p><strong>Breaking changes affect upgrades only; fresh installations
+  are unaffected.</strong></p>
+  <h2 data-number="2.1" id="openssl-3.5.4-abi-bump"><span
+  class="header-section-number">2.1</span> OpenSSL 3.5.4 ABI Bump</h2>
+  <p>OpenSSL is now at version 3.5.4. This is an ABI change.</p>
+  <p>All package sources in the official collections have been relbumped
+  against the new version. Locally compiled or third-party binaries
+  built against v1.1 will no longer link and must be rebuilt after
+  upgrade.</p>
+  <h2 data-number="2.2" id="rc-file-ownership-changes"><span
+  class="header-section-number">2.2</span> rc File Ownership
+  Changes</h2>
+  <p>The <code>rc</code> package now owns <code>/var/log/dmesg</code>
+  and installs standard <code>logrotate</code> configuration file.</p>
+  <p>During upgrade, <code>pkgadd(8)</code> may refuse to overwrite
+  existing files due ownership changes. In this case, update the package
+  forcibly:</p>
   <div class="sourceCode" id="cb1"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-f</span> rc</span></code></pre></div></li>
-  <li><p><strong>Run rejmerge</strong> after upgrades that touch
-  <code>/etc</code> (notably crontab and logrotate) to merge new
-  configuration files into your system.</p></li>
-  <li><p><strong>Install <code>run-one</code>, <code>run-parts</code>
-  and <code>logrotate</code></strong> - required for consistent cron job
-  execution and log rotation across services.</p></li>
-  <li><p><strong>OpenSSL ABI bump</strong> - OpenSSL moved to 3.5.4.
-  Dependent packages were relbumped; local binaries built against older
-  OpenSSL may need rebuilding (OpenSSH is a common example).</p></li>
-  <li><p><strong>Cron scripts</strong> - some packages fixed cron
-  scripts that lacked a shebang (e.g., <code>man-db</code>); ensure
-  <code>rejmerge</code> is run so updated scripts replace older
-  copies.</p></li>
-  </ul>
-  <h2 data-number="2.1" id="whats-new"><span
-  class="header-section-number">2.1</span> What’s New</h2>
-  <h3 data-number="2.1.1" id="highlights"><span
-  class="header-section-number">2.1.1</span> Highlights</h3>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-f</span> rc</span></code></pre></div>
+  <p>This resolves the conflict and installs the new layout.</p>
+  <h2 data-number="2.3" id="cron-execution-model"><span
+  class="header-section-number">2.3</span> Cron Execution Model</h2>
+  <p>Scheduled job execution has been standardized on
+  <code>run-parts</code>. The legacy <code>runjobs</code> script from
+  <code>dcron</code> has been removed (see <a
+  href="https://github.com/zeppe-lin/pkgsrc-core/issues/3">GH
+  #3</a>).</p>
+  <p>Install the required tools:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> run-parts run-one</span></code></pre></div>
+  <p>System cron entries have been updated accordingly. Custom scripts
+  under <code>/etc/cron/*</code> must be executable and compatible with
+  <code>run-parts</code>. Scripts relying on <code>runjobs</code> should
+  be adjusted.</p>
+  <p>Updated system configuration files will be merged via
+  <code>rejmerge</code>.</p>
+  <h2 data-number="2.4" id="log-rotation"><span
+  class="header-section-number">2.4</span> Log Rotation</h2>
+  <p>Log rotation is now handled by <code>logrotate</code>.
+  Configuration files are installed under
+  <code>/etc/logrotate.d</code>.</p>
+  <p>The legacy <code>rotatelog</code> script previously provided by
+  <code>sysklogd</code> has been removed (see <a
+  href="https://github.com/zeppe-lin/pkgsrc-core/issues/4">GH #4</a>).
+  Log archival behaviour is unchanged: rotated logs are stored under
+  <code>/var/log/old</code>, just compressed.</p>
+  <p>Daily rotation jobs are scheduled via <code>dcron</code>.</p>
+  <p>Run <code>rejmerge</code> after completing the system upgrade to
+  apply the updated configuration.</p>
+  <h2 data-number="2.5" id="binary-upgrade-option"><span
+  class="header-section-number">2.5</span> Binary Upgrade Option</h2>
+  <p>For maintainers who prefer <a
+  href="handbook.html#binary-upgrade">the path of least resistance</a>,
+  binary packages (<a href="#binary-packages"><code>binpkgs</code></a>)
+  are provided. These are pre-built archives of the entire
+  <code>pkgsrc-core</code> collection, providing a direct binary path to
+  the v1.2 state without local compilation.</p>
+  <p>Using binary packages avoids local rebuilds but does not remove the
+  need to merge updated configuration files.</p>
+  <p>After installation, run <code>rejmerge</code> to complete the
+  upgrade.</p>
+  <blockquote>
+  <p>Binary packages are a statistical convenience. They reduce
+  variance, but they do not collapse uncertainty. Errors remain
+  entangled with your system, waiting for observation. To build is to
+  measure; to rebuild is to alter the wavefunction. Statistically
+  speaking, you will fail — and in failing, you will learn.</p>
+  <footer>
+  — <a href="v1.1.html"><strong>Stine Luft Satomi</strong></a>
+  </footer>
+  </blockquote>
+  <h1 data-number="3" id="whats-new"><span
+  class="header-section-number">3</span> What’s New</h1>
+  <h3 data-number="3.0.1" id="infrastructure"><span
+  class="header-section-number">3.0.1</span> Infrastructure</h3>
+  <p>The project website has its official domain:<br />
+  <a href="https://zeppe-lin.org/"
+  class="uri">https://zeppe-lin.org/</a>.</p>
+  <p>The website was redesigned, serving documentation and project
+  materials.</p>
+  <h3 data-number="3.0.2" id="documentation"><span
+  class="header-section-number">3.0.2</span> Documentation</h3>
+  <p>Manual pages have been migrated to <code>scdoc</code>. Coverage
+  across Zeppe-Lin tools has been expanded and normalized.</p>
+  <h3 data-number="3.0.3" id="highlights"><span
+  class="header-section-number">3.0.3</span> Highlights</h3>
+  <p>Logging standardized using <code>logrotate</code>.</p>
+  <p>Cron execution is unified under <code>run-parts</code>, with
+  <code>run-one</code> introduced for simpler job control.</p>
+  <p>New utility packages have been imported to support these changes,
+  including <code>run-parts</code>, <code>run-one</code>, and
+  <code>popt</code>.</p>
+  <p>The <a href="handbook.html">Handbook</a> has been updated to
+  reflect the new cron execution model.</p>
+  <h3 data-number="3.0.4" id="package-changes"><span
+  class="header-section-number">3.0.4</span> Package changes</h3>
+  <!-- generated by ./gen_release_pkgchanges.sh v1.2 -->
+  <h4 data-number="3.0.4.1" id="pkgsrc-core"><span
+  class="header-section-number">3.0.4.1</span> pkgsrc-core</h4>
   <ul>
-  <li><p>Rebuilt structure - directory layout and package metadata
-  normalized for predictable builds and clearer package
-  behavior.</p></li>
-  <li><p>Toolchain alignment - compilers, linkers, and build flags
-  standardized across core packages to reduce subtle ABI and build-time
-  differences.</p></li>
-  <li><p>Logging and rotation - <code>logrotate</code> introduced as the
-  system log rotation tool; per-service configs added (syslog, boot,
-  dmesg).</p></li>
-  <li><p>Cron and maintenance - switched to <code>run-parts</code> for
-  scheduled jobs; removed legacy wrappers and updated crontab
-  entries.</p></li>
-  <li><p>Security and relbumps - security updates and relbumps across
-  the tree (<code>openssl</code>, <code>util-linux</code>,
-  <code>libarchive</code>, etc.).</p></li>
-  <li><p>Reproducibility - improved build logs and deterministic
-  packaging where feasible; signed release artifacts and checksums
-  provided.</p></li>
-  <li><p>New/imported packages - several small utilities and
-  dependencies imported to support the above changes (e.g.,
-  <code>run-parts</code>, <code>run-one</code>,
-  <code>popt</code>).</p></li>
+  <li>New: <code>logrotate</code> <code>popt</code> <code>run-one</code>
+  <code>run-parts</code></li>
+  <li>Removed: <em>None</em></li>
   </ul>
-  <h3 data-number="2.1.2" id="package-changes"><span
-  class="header-section-number">2.1.2</span> Package changes</h3>
-  <h4 data-number="2.1.2.1" id="pkgsrc-core"><span
-  class="header-section-number">2.1.2.1</span> pkgsrc-core</h4>
+  <h4 data-number="3.0.4.2" id="pkgsrc-system"><span
+  class="header-section-number">3.0.4.2</span> pkgsrc-system</h4>
   <ul>
-  <li>New: <code>libxcrypt-32</code> <code>scdoc</code></li>
-  <li>Removed: <code>libxcrypt-compat</code></li>
+  <li>New: <em>None</em></li>
+  <li>Removed: <code>popt</code></li>
   </ul>
-  <h4 data-number="2.1.2.2" id="pkgsrc-system"><span
-  class="header-section-number">2.1.2.2</span> pkgsrc-system</h4>
+  <p><code>popt</code> was promoted to core to support the new logging
+  primitives.</p>
+  <h4 data-number="3.0.4.3" id="pkgsrc-xorg"><span
+  class="header-section-number">3.0.4.3</span> pkgsrc-xorg</h4>
   <ul>
-  <li>New: <code>cmark</code> <code>iperf3</code> <code>linux-6.1</code>
-  <code>nouveau-firmware</code> <code>pandoc-bin</code></li>
-  <li>Removed: <code>handbook</code></li>
+  <li>New: <em>None</em></li>
+  <li>Removed: <em>None</em></li>
   </ul>
-  <h4 data-number="2.1.2.3" id="pkgsrc-xorg"><span
-  class="header-section-number">2.1.2.3</span> pkgsrc-xorg</h4>
+  <h4 data-number="3.0.4.4" id="pkgsrc-desktop"><span
+  class="header-section-number">3.0.4.4</span> pkgsrc-desktop</h4>
   <ul>
-  <li>New: <code>xorg-xf86-input-evdev</code>
-  <code>xorg-xf86-video-nouveau</code></li>
-  <li>Removed: <code>ninja</code> <code>xkbswitch</code></li>
+  <li>New: <em>None</em></li>
+  <li>Removed: <em>None</em></li>
   </ul>
-  <h4 data-number="2.1.2.4" id="pkgsrc-desktop"><span
-  class="header-section-number">2.1.2.4</span> pkgsrc-desktop</h4>
+  <h3 data-number="3.0.5" id="system-components"><span
+  class="header-section-number">3.0.5</span> System components</h3>
+  <!-- generated by ./gen_release_syscomps.sh v1.2 -->
+  <h4 data-number="3.0.5.1" id="kernel"><span
+  class="header-section-number">3.0.5.1</span> Kernel</h4>
   <ul>
-  <li>New: <code>libxml2-2.13</code></li>
-  <li>Removed: <code>dwm</code> <code>dwmblocks</code>
-  <code>firefox-darkreader-bin</code> <code>firefox-vimium-bin</code>
-  <code>lsw</code> <code>st</code> <code>win3x-gtk-theme</code></li>
+  <li><code>linux</code> 6.18.3</li>
+  <li><code>linux-firmware</code> 20251125</li>
   </ul>
-  <h3 data-number="2.1.3" id="system-components"><span
-  class="header-section-number">2.1.3</span> System components</h3>
-  <h4 data-number="2.1.3.1" id="kernel"><span
-  class="header-section-number">2.1.3.1</span> Kernel</h4>
-  <ul>
-  <li><code>linux</code> 6.15.8</li>
-  <li><code>linux-firmware</code> 20250708</li>
-  </ul>
-  <h4 data-number="2.1.3.2" id="toolchain"><span
-  class="header-section-number">2.1.3.2</span> Toolchain</h4>
+  <h4 data-number="3.0.5.2" id="toolchain"><span
+  class="header-section-number">3.0.5.2</span> Toolchain</h4>
   <ul>
   <li><code>glibc</code> 2.40-1</li>
   <li><code>gcc</code> 14.3.0</li>
   <li><code>binutils</code> 2.44</li>
   </ul>
-  <h4 data-number="2.1.3.3" id="x11"><span
-  class="header-section-number">2.1.3.3</span> X11</h4>
+  <h4 data-number="3.0.5.3" id="x11"><span
+  class="header-section-number">3.0.5.3</span> X11</h4>
   <ul>
   <li><code>Xorg</code> 7.7</li>
-  <li><code>xorg-server</code> 21.1.18</li>
-  <li><code>mesa</code> 24.3.4</li>
-  <li><code>amdgpu</code> 23.0.0</li>
+  <li><code>xorg-server</code> 21.1.21</li>
+  <li><code>mesa</code> 25.3.3</li>
+  <li><code>amdgpu</code> 25.0.0</li>
   <li><code>ati</code> 22.0.0</li>
   <li><code>intel</code> 2.99.917-923</li>
   <li><code>nouveau</code> 1.0.18</li>
   <li><code>vesa</code> 2.6.0</li>
   </ul>
-  <h1 data-number="3" id="downloads"><span
-  class="header-section-number">3</span> Downloads</h1>
+  <h1 data-number="4" id="changelogs"><span
+  class="header-section-number">4</span> Changelogs</h1>
+  <ul>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-core/compare/v1.1...v1.2"><code>pkgsrc-core</code></a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-system/compare/v1.1...v1.2"><code>pkgsrc-system</code></a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-xorg/compare/v1.1...v1.2"><code>pkgsrc-xorg</code></a></li>
+  <li><a
+  href="https://github.com/zeppe-lin/pkgsrc-desktop/compare/v1.1...v1.2"><code>pkgsrc-desktop</code></a></li>
+  </ul>
+  <h1 data-number="5" id="downloads"><span
+  class="header-section-number">5</span> Downloads</h1>
   <p>Consult the <a href="handbook.html">Handbook</a> before
-  downloading. Ensure hardware support and installation familiarity.</p>
-  <h2 data-number="3.1" id="root-filesystem"><span
-  class="header-section-number">3.1</span> Root Filesystem</h2>
+  downloading. Ensure hardware support and familiarity with the
+  installation process.</p>
+  <h2 data-number="5.1" id="root-filesystem"><span
+  class="header-section-number">5.1</span> Root Filesystem</h2>
   <ul>
   <li><a
   href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz"><code>rootfs-v1.2-x86_64.tar.xz</code></a></li>
   <li><a
   href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/rootfs-v1.2-x86_64.tar.xz.sig"><code>rootfs-v1.2-x86_64.tar.xz.sig</code></a></li>
   </ul>
-  <h2 data-number="3.2" id="binary-packages"><span
-  class="header-section-number">3.2</span> Binary Packages</h2>
+  <h2 data-number="5.2" id="binary-packages"><span
+  class="header-section-number">5.2</span> Binary Packages</h2>
+  <p>Binary packages are the shortcut path described under<br />
+  <a href="#binary-upgrade-option">Upgrade &amp; Compatibility</a>.</p>
   <ul>
   <li><a
   href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz"><code>binpkgs-v1.2-x86_64.tar.xz</code></a></li>
   <li><a
   href="https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.2/binpkgs-v1.2-x86_64.tar.xz.sig"><code>binpkgs-v1.2-x86_64.tar.xz.sig</code></a></li>
   </ul>
-  <h2 data-number="3.3" id="extras"><span
-  class="header-section-number">3.3</span> Extras</h2>
+  <h2 data-number="5.3" id="extras"><span
+  class="header-section-number">5.3</span> Extras</h2>
   <ul>
   <li><p><a
   href="https://github.com/zeppe-lin/mkrootfs"><code>mkrootfs(8)</code></a><br />
   Tool for building custom root filesystem images.<br />
   Install on Zeppe-Lin with:</p>
-  <div class="sourceCode" id="cb2"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--deps</span> <span class="at">--group</span> mkrootfs</span></code></pre></div></li>
   <li><p><a
   href="https://github.com/zeppe-lin/dockerfile"><code>dockerfile</code></a><br />
   Instructions for building a Docker image.</p></li>
   </ul>
-  <h1 data-number="4" id="release-artwork"><span
-  class="header-section-number">4</span> Release Artwork</h1>
+  <h1 data-number="6" id="release-artwork"><span
+  class="header-section-number">6</span> Release Artwork</h1>
   <ul>
   <li><p><strong>Image:</strong> <a
   href="https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true">Direct
   Link</a></p></li>
-  <li><p><strong>Concept:</strong> TODO</p></li>
+  <li><p><strong>Concept:</strong> A crew caught in the static, aware of
+  the limits of preparation. The ghosts remain, but the rig
+  holds.</p></li>
   <li><p><strong>License:</strong> CC-BY-SA 3.0</p></li>
   </ul>
   <hr />
