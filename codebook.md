@@ -39,6 +39,38 @@ focused.  Zeppe-Lin stands for clean code and honest collaboration.
 So grab your tools, set your course, and let's keep it sharp and
 simple.
 
+# Maintainer Principles
+
+All contributors to Zeppe‑Lin must follow these rules.
+They are binding, enforceable, and exist to preserve simplicity,
+transparency, and user control.
+
+1. **Respect User Choice**
+   Pkgfiles, scripts, and automation must honor user configuration and
+   environment.
+   Mandatory tools, forced compiler flags, or hidden overrides outside
+   the base system are prohibited.
+
+2. **Transparency and Predictability**
+   All operations must be explicit, auditable, and reproducible.
+   Hidden automation or background behavior is forbidden.
+
+3. **Minimal and Practical Dependencies**
+   Only dependencies strictly required for correctness are allowed.
+   Optional tools, extensions, or enhancements must never be imposed.
+
+4. **Compartmentalization**
+   Changes in one layer (core, system, xorg, desktop)
+   must not break others.
+   Each collection has clear boundaries; cross-layer side effects are
+   forbidden.
+
+5. **Accountability**
+   Any maintainer violating these principles can be challenged by the
+   team.
+   Enforcement exists to keep the system understandable, maintainable,
+   and reliable over time.
+
 # Zeppe-Lin Release Process (Overview)
 
 Releasing a new version of Zeppe-Lin is like preparing an airship for
