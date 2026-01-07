@@ -16,70 +16,44 @@ Build the system you need.
 This handbook shows you how.  
 *Because nobody else will.*
 
+---
+
 # INTRODUCTION
 
 ## About Zeppe-Lin
 
-Zeppe-Lin is a lightweight, source-based GNU/Linux distribution for
-x86-64 systems.
-It emphasizes simplicity, transparency, and deliberate user control.
+Zeppe‑Lin is a lightweight, source‑based GNU/Linux distribution for
+x86‑64 systems.
+A fork of CRUX, it emphasizes simplicity, predictability, and
+maintainable design.
+It follows UNIX principles: small tools, plain‑text configuration, and
+explicit behavior.
+Automation is minimal and visible.
 
-The system follows traditional UNIX principles:
-small tools, explicit behavior, plain text configuration, and a system
-layout that can be understood.
-Zeppe-Lin is designed to be read, inspected, and modified.
+Zeppe‑Lin is designed for users who want full control over their
+system.
+Everything can be built, inspected, and maintained from source,
+ensuring autonomy, transparency, and reproducibility.
+The system favors practical, reliable behavior over cleverness or
+unnecessary features.
 
-## Target Audience
+## Audience
 
-Zeppe-Lin is intended for users who:
+Zeppe‑Lin suits users who:
 
-- Require a clean, minimal, and predictable environment.
+- Prefer a minimal and predictable environment
+- Manage and configure the system via text files
+- Build software from source to control dependencies
+- Want to fully understand and maintain their system
 
-- Prefer editing configuration files directly over using abstracted or
-  graphical tools.
+## Summary
 
-- Build software from source to retain control over compilation,
-  dependencies, and resulting binaries.
+By keeping components small, behavior explicit, and operations
+visible, Zeppe‑Lin ensures the system is comprehensible, controllable,
+and practical, while remaining flexible enough to adapt to individual
+needs.
 
-- Value understanding and ownership of the entire operating system
-  stack.
-
-## Design Principles
-
-Zeppe‑Lin is guided by a small set of strict principles shaping system
-layout, tooling, and policy.
-
-- **Simplicity**  
-  Components are kept small, direct, and auditable.
-  When complexity is unavoidable, it is made explicit rather than
-  hidden.
-
-- **Practicality**  
-  Working, maintainable solutions are preferred over clever or fragile
-  ones.
-  Predictability matters more than feature completeness.
-
-- **Text Interface**  
-  System state lives in plain text.
-  Configuration files, logs, and policies are readable, versionable,
-  and repairable with standard tools.
-  Opaque or binary state is avoided unless strictly necessary.
-
-- **Explicit Operation**  
-  Automation exists, but it is visible.
-  Hidden actions or background logic are avoided.
-  Operations result from clear commands or scripts.
-
-- **Capable Base**  
-  The base installation is minimal in scope but capable in function.
-  It includes the toolchain, build utilities, documentation tools,
-  basic networking, and system management utilities.
-  This is the minimum required to build and maintain a workstation or
-  server from source without external dependencies.
-  The cost is disk space; the benefit is autonomy.
-
-These principles are binding.
-They define how Zeppe-Lin is built, extended, and maintained.
+---
 
 # INSTALLATION
 
@@ -917,6 +891,8 @@ shutdown -r now
 
 The GRUB menu should appear, allowing you to boot into Zeppe-Lin.
 
+---
+
 # UPGRADING
 
 **WARNING! THIS SECTION IS UNDER DEVELOPMENT AND CANNOT BE USED AS A
@@ -1035,6 +1011,8 @@ done
 `pkgadd` installs each package.
 Already installed packages return an error, which the loop skips to
 ensure all new packages are installed.
+
+---
 
 # PACKAGE MANAGEMENT
 
@@ -1608,6 +1586,8 @@ packages and basic system updates.
 In the next chapter, we introduce **Collections** of **Package Sources**
 -- a modular approach to organizing and managing software -- with
 `pkgman` serving as the central orchestration tool.
+
+---
 
 # PACKAGE SOURCES AND COLLECTIONS
 
@@ -2657,6 +2637,8 @@ distributions or customizations.
 This structure ensures package builds are securely isolated while
 remaining flexible for adaptations.
 
+---
+
 # CONFIGURATION
 
 ## Generating Locales
@@ -3184,6 +3166,8 @@ For advanced configurations, consult module-specific man pages
 (e.g., `pam_dumb_runtime_dir(8)`, `pam_env(8)`, `pam_limits(8)`,
 `pam_exec(8)`).
 
+---
+
 # FAQ
 
 1. **Why is the distribution named Zeppe-Lin?**
@@ -3225,11 +3209,15 @@ For advanced configurations, consult module-specific man pages
    We appreciate your contribution, and we're looking forward to
    seeing what you'll add.
 
+---
+
 # REPORTING BUGS
 
 For bug reports regarding **this site** and **handbook**, please use
 the issue tracker at:  
 <https://github.com/zeppe-lin/zeppe-lin.github.io/issues>
+
+---
 
 # LEGAL NOTICES
 
