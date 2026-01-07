@@ -3168,104 +3168,388 @@ For advanced configurations, consult module-specific man pages
 
 ---
 
-# FAQ
+# Appendices
 
-1. **Why is the distribution named Zeppe-Lin?**
+## Appendix A: Licensing & Legal
 
-   It's our 'Whole Lotta Love' for Linux and GNU, just renamed!
+This appendix summarizes the licensing and legal terms applicable to
+Zeppe-Lin, including software components, build scripts, website
+content, and artwork.
 
-2. **I've looked everywhere, but I can't find the Zeppe-Lin
-   installation CD/DVD.  Did I miss something?**
+### Software & Packages
 
-   Ah, the elusive Zeppe-Lin installation disc!
-   Fear not, intrepid user, your eyesight is likely just fine.
-   You see, Zeppe-Lin is so cutting-edge, so **minimal**, that it
-   decided to ditch physical media altogether!
+Zeppe-Lin is composed entirely of free and open-source software
+obtained from publicly available upstream projects.
 
-   Instead of hunting for a shiny disc, you embark on a digital
-   treasure hunt to download the root filesystem.
-   Think of it as our way of saving trees... or maybe we just figured
-   you already have a perfectly good Live CD lying around.
+Each package retains its original upstream license
+(including GPL, BSD, MIT, Apache, and others).
+Zeppe-Lin does not relicense, restrict, or replace upstream licensing
+terms.
 
-   So, no, you didn't miss it.
-   There's no disc.
-   Now, about that rootfs download...
-   (See [Download Rootfs Tarball](#download-rootfs-tarball))
+The distributed root filesystem and any binary packages are built from
+these sources without the inclusion of proprietary software.
+Patches applied during the build process are limited to correctness,
+portability, or security fixes and do not alter licensing conditions.
 
-3. **Where's the package/feature I need? Who can add it for me?**
+Redistribution and use of binaries are governed solely by the licenses
+of the upstream projects from which they originate.
 
-   The short answer is: there's no nanny here.
-   Zeppe-Lin is built by its users, for its users.
-   If you need a package, or any other feature, you are the person to
-   make it happen.
-   Our community's strength comes from people like you taking the
-   initiative.
+### Build Scripts
 
-   If you want it, make it.
-   Just be sure your work aligns with the
-   [Design Principles](#design-principles) and `packaging(7)`
-   guidelines before submitting your pull request to the appropriate
-   repository.
-   We appreciate your contribution, and we're looking forward to
-   seeing what you'll add.
-
----
-
-# REPORTING BUGS
-
-For bug reports regarding **this site** and **handbook**, please use
-the issue tracker at:  
-<https://github.com/zeppe-lin/zeppe-lin.github.io/issues>
-
----
-
-# LEGAL NOTICES
-
-This section outlines the legal and licensing information for
-Zeppe-Lin, including copyrights, licenses, and disclaimers.
-
-## Software Licenses
-
-Zeppe-Lin integrates open-source software projects, each with its own
-license.
-For licensing details, consult the source code of the respective
-packages included in your system.
-
-## Build Scripts Licensing
-
-Zeppe-Lin build scripts retain their original licensing structure.
-
-### Attribution
+Build scripts and related tooling are derived from CRUX and extended
+by the Zeppe-Lin project.
 
 - © 2000-2021 [Per Lidén](mailto:per@fukt.bth.se)
-  and [CRUX Team](https://crux.nu).
-- © 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://github.com/zeppe-lin).
+  and the [CRUX Team](https://crux.nu)
+- © 2022-2026 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
+  and [Zeppe-Lin Team](https://github.com/zeppe-lin)
 
-### License
+These scripts are licensed under the
+[GNU General Public License version 3 or later (GPLv3+)](https://gnu.org/licenses/gpl.html).
 
-These scripts are released under the GNU General Public License
-version 3 or later (GPLv3+):
-<https://gnu.org/licenses/gpl.html>.
+### Website & Artwork
 
-## Handbook Licensing
+Website content and visual assets, including documentation text,
+branding, and release artwork, are maintained by the Zeppe-Lin
+project.
 
-### Attribution
+- © 2022-2026 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
+  and [Zeppe-Lin Team](https://github.com/zeppe-lin)
 
-* © 2022-2025 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://github.com/zeppe-lin).
+This material is licensed under the
+[Creative Commons Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0)](https://creativecommons.org/licenses/by-sa/3.0/).
 
-### License
+This license applies only to website content and artwork.
+Source code, packages, and build scripts are governed by their
+respective licenses.
 
-This handbook is licensed under the Creative Commons
-Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0):
-<https://creativecommons.org/licenses/by-sa/3.0/>.
+Artwork repository: <https://github.com/zeppe-lin/artwork>  
+Website repository: <https://github.com/zeppe-lin/zeppe-lin.github.io/>
 
-## Disclaimer
+### Disclaimer
 
-Zeppe-Lin and its documentation are distributed "AS IS" without
-warranty of any kind.
-This includes, but is not limited to, implied warranties of
+Zeppe-Lin is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 Use it at YOUR OWN RISK.
 
+## Appendix B: Troubleshooting
+
+This appendix collects solutions to common issues in Zeppe‑Lin.
+Topics are grouped by area for easier navigation.
+
+### dhcpcd Networking Issues
+
+#### Overview
+
+Covers common problems with `dhcpcd`, including carrier loss, client
+ID mismatches, and noncompliant routers.
+Edit `/etc/dhcpcd/dhcpcd.conf` to apply fixes.
+
+#### Carrier Lost
+
+If `dhcpcd` logs show messages like:
+
+```
+dhcpcd[852]: enp0s31f6: carrier lost
+```
+
+or
+
+```
+dhcpcd[852]: enp0s31f6: waiting for carrier
+dhcpcd[852]: carrier acquired
+dhcpcd[852]: soliciting an IPv6 router
+dhcpcd[852]: no global addresses for default route
+dhcpcd[852]: timed out
+```
+
+You may try adding the following options to `/etc/dhcpcd/dhcpcd.conf`:
+
+```sh
+nolink   # Ignore carrier status messages (for buggy drivers)
+noipv6   # Disable IPv6 router advertisements
+```
+
+#### Client ID Issues
+
+If your DHCPv4 network filters Client IDs by MAC address, change:
+
+```
+duid
+```
+
+To:
+
+```
+clientid
+```
+
+This forces `dhcpcd` to use the hardware MAC address for DHCPv4,
+avoiding issues with RFC4361-style identifiers.
+See [RFC 4361](https://tools.ietf.org/html/rfc4361) for details.
+
+#### Noncompliant Routers
+
+Some routers reject requests unless you comment out:
+
+```
+require dhcp_server_identifier
+```
+
+This is safe unless you have multiple DHCP servers on the same network.
+See [Microsoft Technet](https://technet.microsoft.com/en-us/library/cc977442.aspx)
+for background.
+
+#### Quick Summary
+
+- Use `nolink` and `noipv6` to handle carrier loss.
+
+- Switch from `duid` to `clientid` for DHCPv4 MAC-based networks.
+
+- Comment out `require dhcp_server_identifier` for noncompliant
+  routers.
+
+## Appendix C: Frequently Asked Questions
+
+This appendix collects common questions about Zeppe‑Lin.
+Questions are grouped by topic for easier navigation.
+
+### General
+
+#### Why is the distribution named Zeppe-Lin? {.unnumbered}
+
+The name is a deliberate nod to classic UNIX culture and the early era
+of Linux experimentation.
+It reflects the project's appreciation for engineering craft,
+simplicity, and a certain irreverent independence.
+
+The name carries no technical meaning and should not be
+over-interpreted.
+
+Or you can consider it our our 'Whole Lotta Love' for Linux and GNU,
+just renamed!
+
+#### Is Zeppe-Lin a fork of another distribution? {.unnumbered}
+
+Yes.
+Zeppe‑Lin is a fork of [CRUX](https://crux.nu/), a lightweight,
+source‑based Linux distribution.
+
+It inherits CRUX's minimalist philosophy and tooling, but evolves them
+independently, with its own design decisions and policies.
+
+#### What makes Zeppe-Lin different from CRUX or KISS Linux? {.unnumbered}
+
+Zeppe-Lin focuses on **practical minimalism** rather than extreme
+reduction or strict preservation of legacy behavior.
+
+Compared to CRUX, Zeppe-Lin actively refactors core tooling instead of
+keeping it unchanged for compatibility's sake.
+Package management, build utilities, and system tools are reorganized
+for clarity, consistency, and long-term maintainability.
+
+Compared to KISS Linux, Zeppe-Lin favors clear structure and explicit
+behavior over minimal code size.
+It is willing to use more capable implementations when they improve
+correctness, auditability, or usability.
+
+Across the system, Zeppe-Lin generally favors:
+
+- POSIX-compliant sh(1p) instead of Bash
+- Explicit configuration over implicit behavior
+- Manual pages as a primary interface
+- Removal of obsolete or redundant mechanisms
+- Readable, structured implementations rather than ad-hoc scripts
+
+Zeppe-Lin does not aim to be the smallest possible system.
+It aims to remain understandable and controllable as it evolves.
+
+#### Is Zeppe-Lin suitable for beginners? {.unnumbered}
+
+No.
+Zeppe-Lin assumes prior Linux experience.
+Users are expected to be comfortable with the command line, manual
+configuration, and building software from source.
+
+It is not designed to be beginner-friendly, automated, or "hands-off".
+
+### Installation
+
+#### I can't find the Zeppe‑Lin installation CD/DVD.  Did I miss something? {.unnumbered}
+
+No installation media exists.
+Zeppe-Lin is installed using a minimal root filesystem tarball.
+Installation is performed from a live environment of your choice.
+
+#### Why is there no installer? {.unnumbered}
+
+An installer would obscure system layout and behavior behind
+automation.
+
+Zeppe-Lin intentionally exposes system setup so users understand what
+is installed, how it is configured, and why it works.
+This approach aligns with the project's emphasis on clarity and
+control.
+
+### Configuration
+
+#### Does Zeppe-Lin use systemd? {.unnumbered}
+
+No.
+Zeppe-Lin uses a traditional, script-based init system.
+
+Service management is explicit and readable, and does not rely on a
+monolithic service manager.
+
+### Packages and Features
+
+#### Where is the package or feature I need? {.unnumbered}
+
+Zeppe-Lin is community-driven.
+If a package or feature is missing, users are encouraged to add it.
+
+Follow the `packaging(7)` guidelines and submit a pull request to the
+appropriate repository.
+
+The system evolves through user contributions rather than centralized
+curation.
+
+#### Why are some familiar CRUX tools missing or replaced? {.unnumbered}
+
+Some tools were removed or replaced because their original design
+goals no longer aligned with Zeppe-Lin's direction.
+
+When this happens, replacements are chosen to be simpler, more
+explicit, or easier to maintain.
+Each major tool includes documentation explaining its design and
+differences.
+
+### Maintenance
+
+#### How often does Zeppe-Lin release new versions? {.unnumbered}
+
+Zeppe-Lin follows a **semi-rolling release model**.
+
+The toolchain (compiler, libc, and related components) is kept
+stable for extended periods.
+Userland packages evolve on top of this stable base.
+
+When accumulated changes make the existing toolchain a limiting
+factor, the toolchain is updated, userland is rebuilt and polished,
+and a new **major version** is released.
+
+Between major releases, **minor versions** (e.g., v1.1, v1.2) are
+published when enough non-toolchain changes accumulate to justify a
+new root filesystem.
+
+There is no fixed schedule.
+Releases happen when they are ready.
+
+#### Is Zeppe-Lin stable? {.unnumbered}
+
+Zeppe-Lin prioritizes correctness and predictability over rapid
+change.
+
+While it is source-based and expects user involvement, care is taken
+to avoid unnecessary breakage, especially within a stable toolchain
+cycle.
+
+Important packaging changes, required manual interventions, and security
+updates are announced on the <zeppe-lin@freelists.org> mailing list.
+Users are strongly encouraged to subscribe and follow these notices.
+
+### Support and Community
+
+#### How can I report bugs or issues? {.unnumbered}
+
+See [Appendix D: Reporting Issues](#appendix-d-reporting-issues).
+Report issues in the repository corresponding to the affected
+component (packages, tools, website, or artwork).
+Include version, logs, steps to reproduce, and any relevant local
+modifications.
+
+#### Can I contribute? {.unnumbered}
+
+Yes.
+Contributions can include:
+
+- New packages or updates to existing ones
+- Tool improvements or bug fixes
+- Documentation enhancements
+- Artwork or visual identity improvements
+
+Follow repository guidelines, and submit a pull request to the
+appropriate repository.
+
+### Philosophy
+
+#### Is Zeppe-Lin trying to compete with other distributions? {.unnumbered}
+
+No.
+Zeppe-Lin exists to satisfy its own design goals and the needs of its
+users.
+
+It does not aim to replace other distributions or appeal to a broad
+audience.
+
+## Appendix D: Reporting Issues
+
+This appendix explains how to report problems with Zeppe‑Lin.
+Clear, well-structured reports help the team respond efficiently.
+
+### Where to Report
+
+Submit issues in the repository that corresponds to the type of
+problem:
+
+- **Package-related problems**  
+  Open an issue in the relevant `pkgsrc-*` repository.
+
+- **Tool issues**  
+  Report in the specific tool repository,
+  e.g., `pkgman`, `pkgmk`, `pkgutils`, `rejmerge`, `revdep`.
+
+- **Website or documentation**  
+  Report in the
+  [`zeppe-lin.github.io`](https://github.com/zeppe-lin/zeppe-lin.github.io/)
+  repository.
+
+- **Artwork or visual assets**  
+  Report in the [`artwork`](https://github.com/zeppe-lin/artwork/)
+  repository.
+
+- **Upstream software bugs**  
+  Report directly to the upstream project, not in Zeppe-Lin repos,
+  unless it affects packaging.
+
+You can subscribe to or report via mailing list:
+
+- **General user discussion / small issues:**
+  `zeppe-lin@freelists.org`
+
+- **Development, commits, tool updates:**
+  `zeppe-lin-dev@freelists.org`
+
+### What to Include
+
+Provide as much relevant information as possible:
+
+- Zeppe-Lin version or snapshot
+- Clear description of the problem
+- Steps to reproduce
+- Relevant error messages, logs, or outputs
+- Local modifications that may affect behavior
+
+### Reporting Guidelines
+
+- Verify that the issue is reproducible before reporting.
+- Search existing issues to avoid duplicates.
+- Keep reports factual, concise, and structured.
+- Do **not** assume the cause unless you have evidence.
+- Reference related issues, commits, or upstream bugs where applicable.
+
+> **Tip:**
+>
+> Well-prepared reports get faster responses and make troubleshooting
+> easier for both users and developers.
