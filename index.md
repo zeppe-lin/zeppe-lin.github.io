@@ -75,14 +75,18 @@ Discussion is low-noise and technical.
 
   - **Users & Support**  
     `zeppe-lin@freelists.org`  
-    [Subscribe](mailto:zeppe-lin-request@freelists.org?subject=subscribe) ·
-    [Archive](https://www.freelists.org/list/zeppe-lin)
+    [Subscribe via Email](mailto:zeppe-lin-request@freelists.org?subject=subscribe) |
+    [View List Page](https://www.freelists.org/list/zeppe-lin)
 
   - **Development**  
     `zeppe-lin-dev@freelists.org`  
-    [Subscribe](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe) ·
-    [Archive](https://www.freelists.org/list/zeppe-lin-dev)
+    [Subscribe via Email](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe) |
+    [View List Page](https://www.freelists.org/list/zeppe-lin-dev)
+
 
 ---
 
-See the [Handbook](handbook.html) to begin.
+<center>
+**Wait**.
+[**Continue**](handbook.html).
+</center>
