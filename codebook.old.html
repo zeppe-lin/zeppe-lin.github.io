@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Zeppe-Lin Codebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://github.com/zeppe-lin/artwork/blob/master/favicon.png?raw=true" sizes="192x192">
+<!--
+    <style type="text/css">
+  html { -webkit-text-size-adjust: 100%; }
+  pre > code.sourceCode { white-space: pre; position: relative; }
+  pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+  pre > code.sourceCode > span:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode > span { color: inherit; text-decoration: inherit; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  pre > code.sourceCode { white-space: pre-wrap; }
+  pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+  }
+  pre.numberSource code
+    { counter-reset: source-line 0; }
+  pre.numberSource code > span
+    { position: relative; left: -4em; counter-increment: source-line; }
+  pre.numberSource code > span > a:first-child::before
+    { content: counter(source-line);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+    }
+  pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+  div.sourceCode
+    { color: #cccccc; background-color: #303030; }
+  @media screen {
+  pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+  }
+  code span.al { color: #ffcfaf; } /* Alert */
+  code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+  code span.at { } /* Attribute */
+  code span.bn { color: #dca3a3; } /* BaseN */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #f0dfaf; } /* ControlFlow */
+  code span.ch { color: #dca3a3; } /* Char */
+  code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+  code span.co { color: #7f9f7f; } /* Comment */
+  code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+  code span.do { color: #7f9f7f; } /* Documentation */
+  code span.dt { color: #dfdfbf; } /* DataType */
+  code span.dv { color: #dcdccc; } /* DecVal */
+  code span.er { color: #c3bf9f; } /* Error */
+  code span.ex { } /* Extension */
+  code span.fl { color: #c0bed1; } /* Float */
+  code span.fu { color: #efef8f; } /* Function */
+  code span.im { } /* Import */
+  code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+  code span.kw { color: #f0dfaf; } /* Keyword */
+  code span.op { color: #f0efd0; } /* Operator */
+  code span.ot { color: #efef8f; } /* Other */
+  code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+  code span.sc { color: #dca3a3; } /* SpecialChar */
+  code span.ss { color: #cc9393; } /* SpecialString */
+  code span.st { color: #cc9393; } /* String */
+  code span.va { } /* Variable */
+  code span.vs { color: #cc9393; } /* VerbatimString */
+  code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tango.css"
+  media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="zenburn.css"
+  media="(prefers-color-scheme: dark)">
+</head>
+<body class="has-toc">
+
+<nav id="TOC" role="doc-toc">
+  <div class="toc-title">Contents</div>
+  <ul>
+  <li><a href="#preface" id="toc-preface">PREFACE</a></li>
+  <li><a href="#introduction" id="toc-introduction"><span
+  class="toc-section-number">1</span> Introduction</a></li>
+  <li><a href="#maintainer-principles"
+  id="toc-maintainer-principles"><span
+  class="toc-section-number">2</span> Maintainer Principles</a></li>
+  <li><a href="#release-model-and-versioning"
+  id="toc-release-model-and-versioning"><span
+  class="toc-section-number">3</span> Release Model and
+  Versioning</a></li>
+  <li><a href="#release-preparation-workflow"
+  id="toc-release-preparation-workflow"><span
+  class="toc-section-number">4</span> Release Preparation
+  Workflow</a></li>
+  <li><a href="#repository-branching"
+  id="toc-repository-branching"><span
+  class="toc-section-number">5</span> Repository Branching</a></li>
+  <li><a href="#toolchain-updates-when-required"
+  id="toc-toolchain-updates-when-required"><span
+  class="toc-section-number">6</span> Toolchain Updates (When
+  Required)</a></li>
+  <li><a href="#building-the-zeppe-lin-root-filesystem"
+  id="toc-building-the-zeppe-lin-root-filesystem"><span
+  class="toc-section-number">7</span> Building the Zeppe-Lin Root
+  Filesystem</a>
+  <ul>
+  <li><a href="#stage-1-base-rootfs" id="toc-stage-1-base-rootfs"><span
+  class="toc-section-number">7.1</span> Stage 1: Base RootFS</a>
+  <ul>
+  <li><a href="#option-a-build-from-existing-zeppe-lin-system"
+  id="toc-option-a-build-from-existing-zeppe-lin-system"><span
+  class="toc-section-number">7.1.1</span> Option A: Build from Existing
+  Zeppe-Lin System</a></li>
+  <li><a href="#option-b-use-published-stage-1-rootfs"
+  id="toc-option-b-use-published-stage-1-rootfs"><span
+  class="toc-section-number">7.1.2</span> Option B: Use Published Stage
+  1 RootFS</a></li>
+  </ul></li>
+  <li><a href="#entering-the-chroot" id="toc-entering-the-chroot"><span
+  class="toc-section-number">7.2</span> Entering the Chroot</a></li>
+  <li><a href="#stage-2-rebuild-core-system"
+  id="toc-stage-2-rebuild-core-system"><span
+  class="toc-section-number">7.3</span> Stage 2: Rebuild Core System</a>
+  <ul>
+  <li><a href="#using-pkgsrcfeeds-to-track-package-updates-optional"
+  id="toc-using-pkgsrcfeeds-to-track-package-updates-optional"><span
+  class="toc-section-number">7.3.1</span> Using pkgsrcfeeds to Track
+  Package Updates (Optional)</a></li>
+  </ul></li>
+  <li><a
+  href="#updating-pkgsrc-repositories-and-building-the-core-system"
+  id="toc-updating-pkgsrc-repositories-and-building-the-core-system"><span
+  class="toc-section-number">7.4</span> Updating Pkgsrc Repositories and
+  Building the Core System</a>
+  <ul>
+  <li><a href="#core-toolchain-update-pkgsrc-core"
+  id="toc-core-toolchain-update-pkgsrc-core"><span
+  class="toc-section-number">7.4.1</span> Core Toolchain Update
+  (pkgsrc-core)</a></li>
+  <li><a href="#standard-package-updates"
+  id="toc-standard-package-updates"><span
+  class="toc-section-number">7.4.2</span> Standard Package
+  Updates</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#building-a-zeppe-lin-root-filesystem"
+  id="toc-building-a-zeppe-lin-root-filesystem"><span
+  class="toc-section-number">8</span> Building a Zeppe-Lin Root
+  Filesystem</a>
+  <ul>
+  <li><a href="#stage-1-obtaining-a-base-rootfs"
+  id="toc-stage-1-obtaining-a-base-rootfs"><span
+  class="toc-section-number">8.1</span> Stage 1: Obtaining a Base
+  RootFS</a>
+  <ul>
+  <li><a href="#building-stage-1-from-an-existing-zeppe-lin-system"
+  id="toc-building-stage-1-from-an-existing-zeppe-lin-system"><span
+  class="toc-section-number">8.1.1</span> Building Stage 1 from an
+  Existing Zeppe-Lin System</a></li>
+  <li><a href="#using-a-published-stage-1-rootfs"
+  id="toc-using-a-published-stage-1-rootfs"><span
+  class="toc-section-number">8.1.2</span> Using a Published Stage 1
+  RootFS</a></li>
+  </ul></li>
+  <li><a href="#preparing-the-chroot-environment"
+  id="toc-preparing-the-chroot-environment"><span
+  class="toc-section-number">8.2</span> Preparing the Chroot
+  Environment</a></li>
+  <li><a href="#stage-2-rebuilding-the-base-system"
+  id="toc-stage-2-rebuilding-the-base-system"><span
+  class="toc-section-number">8.3</span> Stage 2: Rebuilding the Base
+  System</a></li>
+  <li><a href="#assembling-the-release-rootfs"
+  id="toc-assembling-the-release-rootfs"><span
+  class="toc-section-number">8.4</span> Assembling the Release
+  RootFS</a></li>
+  <li><a href="#create-release-artefacts"
+  id="toc-create-release-artefacts"><span
+  class="toc-section-number">8.5</span> Create Release
+  Artefacts</a></li>
+  <li><a href="#exiting-the-chroot-and-cleanup"
+  id="toc-exiting-the-chroot-and-cleanup"><span
+  class="toc-section-number">8.6</span> Exiting the Chroot and
+  Cleanup</a></li>
+  <li><a href="#optional-signing-release-files"
+  id="toc-optional-signing-release-files"><span
+  class="toc-section-number">8.7</span> Optional: Signing Release
+  Files</a>
+  <ul>
+  <li><a href="#building-the-root-filesystem"
+  id="toc-building-the-root-filesystem"><span
+  class="toc-section-number">8.7.1</span> Building the Root
+  Filesystem</a></li>
+  <li><a href="#finalizing-release-assets"
+  id="toc-finalizing-release-assets"><span
+  class="toc-section-number">8.7.2</span> Finalizing Release
+  Assets</a></li>
+  <li><a href="#preparing-and-publishing-announcements"
+  id="toc-preparing-and-publishing-announcements"><span
+  class="toc-section-number">8.7.3</span> Preparing and Publishing
+  Announcements</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#post-release-tasks" id="toc-post-release-tasks"><span
+  class="toc-section-number">9</span> Post-Release Tasks</a></li>
+  <li><a href="#conclusion" id="toc-conclusion"><span
+  class="toc-section-number">10</span> Conclusion</a></li>
+  </ul>
+  </div>
+</nav>
+
+<main>
+  <p><a href="index.html">Back to Index</a></p>
+  <h1 class="unnumbered" id="preface">PREFACE</h1>
+  <blockquote>
+  <p><strong>Important:</strong> This Codebook is a living draft. It
+  represents early ideas, practices, and workflows for Zeppe-Lin
+  development. Expect gaps, rough edges, and future refinements.</p>
+  </blockquote>
+  <p>Zeppe-Lin Codebook.<br />
+  <em>Because even pirates need a map to find the treasure<br />
+  (and avoid the kraken).</em></p>
+  <p>This document exists for maintainers and contributors who need to
+  understand how Zeppe-Lin is developed, built, and released. It favors
+  clarity over ceremony, and reproducibility over automation.</p>
+  <h1 data-number="1" id="introduction"><span
+  class="header-section-number">1</span> Introduction</h1>
+  <p>Zeppe-Lin is a source-based system that values simplicity, explicit
+  control, and technical honesty.</p>
+  <p>This Codebook describes:</p>
+  <ul>
+  <li>maintainer rules and boundaries</li>
+  <li>how releases are prepared</li>
+  <li>how the base system and root filesystem are built</li>
+  <li>how releases are published</li>
+  </ul>
+  <p>It intentionally avoids tooling abstractions that hide real work.
+  If a process can be done with standard tools, it should be.</p>
+  <h1 data-number="2" id="maintainer-principles"><span
+  class="header-section-number">2</span> Maintainer Principles</h1>
+  <p>All contributors to Zeppe‑Lin must follow these rules. They are
+  binding, enforceable, and exist to preserve simplicity, transparency,
+  and user control.</p>
+  <ol type="1">
+  <li><p><strong>Respect User Choice</strong><br />
+  Pkgfiles, scripts, and automation must honor user configuration and
+  environment. Mandatory tools, forced compiler flags, or hidden
+  overrides outside the base system are prohibited.</p></li>
+  <li><p><strong>Transparency and Predictability</strong><br />
+  All operations must be explicit, auditable, and reproducible. Hidden
+  automation or background behavior is forbidden.</p></li>
+  <li><p><strong>Minimal and Practical Dependencies</strong><br />
+  Only dependencies strictly required for correctness are allowed.
+  Optional tools, extensions, or enhancements must never be
+  imposed.</p></li>
+  <li><p><strong>Compartmentalization</strong><br />
+  Changes in one layer (core, system, xorg, desktop) must not break
+  others. Each collection has clear boundaries; cross-layer side effects
+  are forbidden.</p></li>
+  <li><p><strong>Accountability</strong><br />
+  Any maintainer violating these principles can be challenged by the
+  team. Enforcement exists to keep the system understandable,
+  maintainable, and reliable over time.</p></li>
+  </ol>
+  <h1 data-number="3" id="release-model-and-versioning"><span
+  class="header-section-number">3</span> Release Model and
+  Versioning</h1>
+  <p>XXX This is a short conceptual chapter explaining:</p>
+  <pre><code>Semi-rolling model
+
+Toolchain-stable cycles
+
+Minor vs major releases
+
+“Released when ready”</code></pre>
+  <p>This chapter answers “what kind of release am I preparing?” before
+  any work begins. XXX</p>
+  <p>Zeppe-Lin follows a semi-rolling model:</p>
+  <ul>
+  <li><p>The toolchain is kept stable for long periods.</p></li>
+  <li><p>Userland evolves gradually on top of it.</p></li>
+  <li><p>When accumulated changes become disruptive, a new minor release
+  is made.</p></li>
+  <li><p>When the toolchain must change, a new major release branch is
+  created.</p></li>
+  </ul>
+  <p>Releases happen when ready, not on a schedule.</p>
+  <h1 data-number="4" id="release-preparation-workflow"><span
+  class="header-section-number">4</span> Release Preparation
+  Workflow</h1>
+  <p>A release consists of four clearly separated phases:</p>
+  <ul>
+  <li>Branching</li>
+  <li>Toolchain update (if required)</li>
+  <li>System rebuild and rootfs creation</li>
+  <li>Publication and announcement</li>
+  </ul>
+  <p>Each phase must complete cleanly before the next begins.</p>
+  <h1 data-number="5" id="repository-branching"><span
+  class="header-section-number">5</span> Repository Branching</h1>
+  <p>Before any release work begins, create release branches.</p>
+  <p>Repositories involved:</p>
+  <ul>
+  <li><code>pkgsrc-core</code></li>
+  <li><code>pkgsrc-system</code></li>
+  <li><code>pkgsrc-xorg</code></li>
+  <li><code>pkgsrc-desktop</code></li>
+  </ul>
+  <p>Branch naming:</p>
+  <ul>
+  <li><code>1.x</code> for all 1.x releases</li>
+  <li><code>2.x</code> for all 2.x releases</li>
+  </ul>
+  <p>Example:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 0.x    <span class="co"># current stable branch</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> 1.x <span class="co"># new branch</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 1.x</span></code></pre></div>
+  <p>All release-related commits must land on the release branch
+  only.</p>
+  <h1 data-number="6" id="toolchain-updates-when-required"><span
+  class="header-section-number">6</span> Toolchain Updates (When
+  Required)</h1>
+  <p>Toolchain updates only occur when necessary.</p>
+  <p>Required rebuild order:</p>
+  <ol type="1">
+  <li><code>glibc</code> / <code>glibc-32</code></li>
+  <li><code>binutils</code></li>
+  <li><code>gcc</code></li>
+  <li><code>libtool</code></li>
+  <li>rebuild <code>binutils</code></li>
+  <li>rebuild <code>glibc</code> / <code>glibc-32</code></li>
+  <li>rebuild <code>libtool</code></li>
+  </ol>
+  <blockquote>
+  <p><strong>Note:</strong></p>
+  <ol start="0" type="1">
+  <li><code>linux-headers</code> (when we’ll be ready)</li>
+  </ol>
+  </blockquote>
+  <p>Command example:</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="at">-d</span> <span class="at">--group</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> binutils gcc libtool <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    binutils glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> libtool</span></code></pre></div>
+  <p>Afterward, build and test several core packages to validate the
+  toolchain.</p>
+  <h1 data-number="7" id="building-the-zeppe-lin-root-filesystem"><span
+  class="header-section-number">7</span> Building the Zeppe-Lin Root
+  Filesystem</h1>
+  <p>Root filesystem images are built manually and explicitly. No
+  wrapper tools are used.</p>
+  <p>The build is always done in two stages.</p>
+  <h2 data-number="7.1" id="stage-1-base-rootfs"><span
+  class="header-section-number">7.1</span> Stage 1: Base RootFS</h2>
+  <p>Stage 1 provides a minimal, bootstrappable filesystem.</p>
+  <h3 data-number="7.1.1"
+  id="option-a-build-from-existing-zeppe-lin-system"><span
+  class="header-section-number">7.1.1</span> Option A: Build from
+  Existing Zeppe-Lin System</h3>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg/db</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE1</span> <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="dt">\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <h3 data-number="7.1.2"
+  id="option-b-use-published-stage-1-rootfs"><span
+  class="header-section-number">7.1.2</span> Option B: Use Published
+  Stage 1 RootFS</h3>
+  <p>Download from:<br />
+  <a href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest"
+  class="uri">https://github.com/zeppe-lin/pkgsrc-core/releases/latest</a></p>
+  <p>Extract:</p>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--numeric-owner</span> <span class="at">--xattrs</span> <span class="at">--xattrs-include</span><span class="op">=</span><span class="st">&#39;*&#39;</span> <span class="at">-xpf</span> <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  rootfs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE1</span></span></code></pre></div>
+  <h2 data-number="7.2" id="entering-the-chroot"><span
+  class="header-section-number">7.2</span> Entering the Chroot</h2>
+  <div class="sourceCode" id="cb6"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run <span class="va">$ROOTFS_STAGE1</span>/run</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc proc <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 devpts <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="va">$ROOTFS_STAGE1</span>/dev/pts</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
+  <h2 data-number="7.3" id="stage-2-rebuild-core-system"><span
+  class="header-section-number">7.3</span> Stage 2: Rebuild Core
+  System</h2>
+  <div class="sourceCode" id="cb7"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="at">-d</span> <span class="va">$(</span><span class="ex">pkgman</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <p>Verify:</p>
+  <div class="sourceCode" id="cb8"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Zeppe-Lin Release Process (Overview)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Releasing</span> a new version of Zeppe-Lin is like preparing an airship for</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">its</span> next journey.  Here<span class="st">&#39;s the streamlined process:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">- **Branching**:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">  Create new release branches in package source repositories.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">- **Toolchain Update**:</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">  Refresh and rebuild core build tools in `pkgsrc-core`.</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">- **Package Updates**:</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="st">  Update software sources in `pkgsrc-core`, `pkgsrc-system`,</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="st">  `pkgsrc-xorg`, and `pkgsrc-desktop`.</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="st">- **Rootfs Assembly**:</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="st">  Build and verify the system image using `mkrootfs`.</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="st">- **Finalize Assets**:</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="st">  Sign the rootfs image and tag the release in Git.</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="st">- **Prepare Announcements**:</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="st">  Prepare release notes and website assets.</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="st">- **Publish Release**:</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="st">  Announce and publish the release on GitHub and the Zeppe-Lin</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="st">  website.</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="st">- **Post-Release Tasks**:</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="st">  Update documentation, announce on discussions, monitor feedback.</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="st">**Key Repositories**:</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="st">- **Software sources collections**:</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="st">  - `pkgsrc-core.git`</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="st">  - `pkgsrc-system.git`</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="st">  - `pkgsrc-xorg.git`</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="st">  - `pkgsrc-desktop.git`</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="st">- **Website &amp; announcements**:</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="st">  - `zeppe-lin.github.io.git`</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="st">- **Release visuals**:</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="st">  - `artwork.git`</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="st">This codebook will guide you through each step.</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="st">Let&#39;</span>s get Zeppe-Lin ready for takeoff!</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a Zeppe-Lin Release</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co">## Preparation</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="co">### Branching Strategy for Package Source Repositories</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="ex">Before</span> updating your toolchain or other package sources, create new</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="ex">branches</span> in these repositories to keep changes separate from stable</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="ex">releases:</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="kw">`</span><span class="ex">pkgsrc-core.git</span><span class="kw">`</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="kw">`</span><span class="ex">pkgsrc-system.git</span><span class="kw">`</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="kw">`</span><span class="ex">pkgsrc-xorg.git</span><span class="kw">`</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="kw">`</span><span class="ex">pkgsrc-desktop.git</span><span class="kw">`</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> approach also applies to unofficial repositories.</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="ex">**General</span> Approach<span class="pp">**</span>:</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="pp">**</span>For 1.x <span class="er">(</span><span class="ex">pre-2.0</span><span class="kw">)</span> <span class="ex">releases**:</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Name</span> the branch <span class="kw">`</span><span class="ex">1.x</span><span class="kw">`</span> <span class="er">(</span><span class="cf">for</span> example<span class="ex">,</span> for releases 1.0, 1.1, 1.2<span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> <span class="pp">**</span>For 2.x and later<span class="pp">**</span>:</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Name</span> the branch after the major version <span class="er">(</span><span class="ex">e.g.,</span> <span class="kw">`</span><span class="ex">2.x</span><span class="kw">`)</span><span class="bu">.</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="ex">**Creating</span> a New Branch<span class="pp">**</span>:</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="ex">1.</span> Identify the target major version <span class="er">(</span><span class="ex">e.g.,</span> 1.0<span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="ex">2.</span> From the current stable branch, run:</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>   <span class="kw">```</span><span class="fu">sh</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>   <span class="fu">git</span> checkout <span class="op">&lt;</span>current_stable_branch<span class="op">&gt;</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>   <span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div>
+  <p>For example, if the last stable release is 0.9 on branch
+  <code>0.x</code>, create branch <code>1.x</code> like this:</p>
+  <div class="sourceCode" id="cb9"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 0.x</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> 1.x</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 1.x</span></code></pre></div>
+  <p>This strategy keeps the new release work isolated from stable
+  code.</p>
+  <h3 data-number="7.3.1"
+  id="using-pkgsrcfeeds-to-track-package-updates-optional"><span
+  class="header-section-number">7.3.1</span> Using pkgsrcfeeds to Track
+  Package Updates (Optional)</h3>
+  <p>The <code>pkgsrcfeeds.git</code> repository gathers update
+  information from all Zeppe-Lin pkgsrc collections into one helpful
+  feed. Use your favorite feed reader (like <code>snownews</code>) to
+  quickly spot new or changed packages.</p>
+  <p>If an update shows a missing dependency, add it to the appropriate
+  pkgsrc repository and update the helper repository accordingly. It
+  also provides scripts to check for consistency and flag any
+  issues.</p>
+  <p>In short, <code>pkgsrcfeeds</code> handles the tracking for you,
+  letting you focus on the software you want to update.</p>
+  <h2 data-number="7.4"
+  id="updating-pkgsrc-repositories-and-building-the-core-system"><span
+  class="header-section-number">7.4</span> Updating Pkgsrc Repositories
+  and Building the Core System</h2>
+  <h3 data-number="7.4.1" id="core-toolchain-update-pkgsrc-core"><span
+  class="header-section-number">7.4.1</span> Core Toolchain Update
+  (pkgsrc-core)</h3>
+  <p>Before updating other packages, refresh the core toolchain for a
+  fresh, stable base. Follow this build order:</p>
+  <ul>
+  <li><strong>Build</strong>: <code>linux-headers</code> (skip, it’s
+  bundled with <code>glibc</code> at least now)</li>
+  <li><strong>Build</strong>: <code>glibc</code> and
+  <code>glibc-32</code></li>
+  <li><strong>Build</strong>: <code>binutils</code></li>
+  <li><strong>Build</strong>: <code>gcc</code></li>
+  <li><strong>Build</strong>: <code>libtool</code></li>
+  <li><strong>Rebuild</strong>: <code>binutils</code></li>
+  <li><strong>Rebuild</strong>: <code>glibc</code> and
+  <code>glibc-32</code></li>
+  <li><strong>Rebuild</strong>: <code>libtool</code></li>
+  </ul>
+  <p><strong>Why This Order</strong>? <code>gcc</code> depends on
+  <code>binutils</code>, and both rely on the system libraries from
+  <code>glibc</code>. Multiple passes guarantee that every component is
+  built against its latest dependencies.</p>
+  <p><strong>Steps to Update and Build</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Navigate to pkgsrc-core</strong>: Open your terminal
+  and head to your local clone.</p></li>
+  <li><p><strong>Checkout the Release Branch</strong>: Switch to your
+  release branch (e.g., <code>1.x</code>).</p></li>
+  <li><p><strong>Update Package Definitions</strong>: Update the
+  <code>Pkgfile</code>, <code>.md5sum</code>, and
+  <code>.footprint</code> files for <code>glibc</code>,
+  <code>glibc-32</code>, <code>binutils</code>, <code>gcc</code>, and
+  <code>libtool</code> with the new versions.</p></li>
+  <li><p><strong>Build the Toolchain</strong>: Run the following
+  command, which follows the build order above:</p>
+  <div class="sourceCode" id="cb10"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="at">-d</span> <span class="at">--group</span> <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> binutils gcc libtool <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    binutils glibc<span class="dt">{</span><span class="op">,</span><span class="dt">-32}</span> libtool</span></code></pre></div></li>
+  <li><p><strong>Test Extensively</strong>: After the build, compile
+  other core packages or create a rootfs archive to ensure everything
+  runs smoothly.</p></li>
+  </ol>
+  <p>If you encounter any build failures, linker errors, or runtime
+  issues, review the logs and consult relevant resources for assistance
+  (e.g., Linux From Scratch documentation).</p>
+  <h3 data-number="7.4.2" id="standard-package-updates"><span
+  class="header-section-number">7.4.2</span> Standard Package
+  Updates</h3>
+  <p>Once the toolchain is updated, refresh package definitions across
+  your pkgsrc repositories. Begin with <code>pkgsrc-core</code> to
+  ensure core packages reflect the latest upstream changes. Then update
+  <code>pkgsrc-system</code>, followed by <code>pkgsrc-xorg</code>, and
+  finally <code>pkgsrc-desktop</code>.</p>
+  <p>For each package, update the version, checksums, footprint, and any
+  needed patches. Commit your changes with a clear message (e.g.,
+  <code>&lt;package&gt;: &lt;old_version&gt; -&gt; &lt;new_version&gt;</code>)
+  and push them to the remote repository.</p>
+  <h1 data-number="8" id="building-a-zeppe-lin-root-filesystem"><span
+  class="header-section-number">8</span> Building a Zeppe-Lin Root
+  Filesystem</h1>
+  <p>This chapter describes how Zeppe-Lin root filesystem tarballs are
+  created. The same procedure is used for official releases and for
+  developer testing.</p>
+  <p>The process is intentionally simple and reproducible. No special
+  build tools are required beyond the standard Zeppe-Lin toolchain.</p>
+  <p>At a high level, the build consists of two stages:</p>
+  <ul>
+  <li><p><strong>Stage 1</strong> creates or obtains a minimal root
+  filesystem suitable for chrooting.</p></li>
+  <li><p><strong>Stage 2</strong> rebuilds the complete base system and
+  produces release artifacts.</p></li>
+  </ul>
+  <h2 data-number="8.1" id="stage-1-obtaining-a-base-rootfs"><span
+  class="header-section-number">8.1</span> Stage 1: Obtaining a Base
+  RootFS</h2>
+  <p>Stage 1 provides a bootstrappable environment with a valid package
+  database. There are two supported approaches.</p>
+  <h3 data-number="8.1.1"
+  id="building-stage-1-from-an-existing-zeppe-lin-system"><span
+  class="header-section-number">8.1.1</span> Building Stage 1 from an
+  Existing Zeppe-Lin System</h3>
+  <p>On a working Zeppe-Lin installation:</p>
+  <div class="sourceCode" id="cb11"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg/db</span></code></pre></div>
+  <p>Populate the root filesystem with the currently installed
+  <code>pkgsrc-core</code> packages:</p>
+  <div class="sourceCode" id="cb12"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="dt">\</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE1</span> <span class="dt">\</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <p>This method is convenient for local development and testing.</p>
+  <h3 data-number="8.1.2" id="using-a-published-stage-1-rootfs"><span
+  class="header-section-number">8.1.2</span> Using a Published Stage 1
+  RootFS</h3>
+  <p>Official Stage 1 rootfs tarballs are published alongside
+  <code>pkgsrc-core</code> releases:</p>
+  <p><a href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest"
+  class="uri">https://github.com/zeppe-lin/pkgsrc-core/releases/latest</a></p>
+  <p>Extract the tarball:</p>
+  <div class="sourceCode" id="cb13"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar <span class="at">--numeric-owner</span> <span class="at">--xattrs</span> <span class="at">--xattrs-include</span><span class="op">=</span><span class="st">&#39;*&#39;</span> <span class="at">-xpf</span> <span class="dt">\</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  rootfs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE1</span></span></code></pre></div>
+  <p>This approach avoids dependency on a local Zeppe-Lin installation
+  and is preferred for reproducible release builds.</p>
+  <h2 data-number="8.2" id="preparing-the-chroot-environment"><span
+  class="header-section-number">8.2</span> Preparing the Chroot
+  Environment</h2>
+  <p>Before entering the rootfs, basic system services must be available
+  inside the chroot.</p>
+  <p>Copy DNS configuration to allow network access:</p>
+  <div class="sourceCode" id="cb14"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span></code></pre></div>
+  <p>Mount required pseudo-filesystems:</p>
+  <div class="sourceCode" id="cb15"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev  <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run  <span class="va">$ROOTFS_STAGE1</span>/run</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc  proc  <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none  <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 <span class="dt">\</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  devpts <span class="va">$ROOTFS_STAGE1</span>/dev/pts</span></code></pre></div>
+  <p><code>/run</code> is not strictly mandatory, but recommended.
+  Several tools assume its presence and may fail or behave
+  inconsistently without it.</p>
+  <p>Enter the chroot:</p>
+  <div class="sourceCode" id="cb16"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
+  <p>Inside the chroot, set a root password and adjust the prompt for
+  clarity:</p>
+  <p>Inside the chroot, set a root password and adjust the prompt for
+  clarity:</p>
+  <div class="sourceCode" id="cb17"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span> root</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PS1</span><span class="op">=</span><span class="st">&quot;(chrooted) </span><span class="va">$PS1</span><span class="st">&quot;</span></span></code></pre></div>
+  <h2 data-number="8.3" id="stage-2-rebuilding-the-base-system"><span
+  class="header-section-number">8.3</span> Stage 2: Rebuilding the Base
+  System</h2>
+  <p>Stage 2 rebuilds the entire base system inside the chroot, ensuring
+  that all binaries and libraries are produced in a controlled
+  environment.</p>
+  <p>Clone the <code>pkgsrc-core</code> collection:</p>
+  <div class="sourceCode" id="cb18"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span></code></pre></div>
+  <p>Rebuild all core packages:</p>
+  <div class="sourceCode" id="cb19"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> update <span class="at">-fr</span> <span class="at">-d</span> <span class="va">$(</span><span class="ex">pkgman</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <p>If a build fails, logs can be inspected in
+  <code>/var/log/pkgbuild/&lt;package&gt;</code>.</p>
+  <p>After the rebuild, verify that no shared library dependencies are
+  missing:</p>
+  <div class="sourceCode" id="cb20"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
+  <p>A clean Stage 2 build should report no unresolved dependencies.</p>
+  <h2 data-number="8.4" id="assembling-the-release-rootfs"><span
+  class="header-section-number">8.4</span> Assembling the Release
+  RootFS</h2>
+  <p>Once the system has been rebuilt successfully, a clean rootfs is
+  assembled from the rebuilt packages.</p>
+  <p>Initialize the release rootfs directory:</p>
+  <div class="sourceCode" id="cb21"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>v1.2 <span class="co"># New release version, example</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE2</span><span class="op">=</span>/tmp/rootfs-<span class="va">$VERSION</span>-x86_64</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg/db</span></code></pre></div>
+  <p>Populate it using the rebuilt packages:</p>
+  <div class="sourceCode" id="cb22"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="dt">\</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE2</span> <span class="dt">\</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="dt">\</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <p>The install transaction must complete without errors.</p>
+  <h2 data-number="8.5" id="create-release-artefacts"><span
+  class="header-section-number">8.5</span> Create Release Artefacts</h2>
+  <p>Compress the final root filesystem:</p>
+  <div class="sourceCode" id="cb23"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> <span class="va">$ROOTFS_STAGE2</span> .</span></code></pre></div>
+  <p>The trailing dot is required to preserve the correct directory
+  layout inside the archive.</p>
+  <p>Create the binary package archive:</p>
+  <div class="sourceCode" id="cb24"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /var/cache/pkgmk/packages .</span></code></pre></div>
+  <h2 data-number="8.6" id="exiting-the-chroot-and-cleanup"><span
+  class="header-section-number">8.6</span> Exiting the Chroot and
+  Cleanup</h2>
+  <p>Exit the chroot:</p>
+  <div class="sourceCode" id="cb25"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inside chroot, as root</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div>
+  <p>Unmount all mounted filesystems:</p>
+  <div class="sourceCode" id="cb26"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/run</span></code></pre></div>
+  <p>The resulting artifacts are now available in:</p>
+  <div class="sourceCode" id="cb27"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="va">$ROOTFS_STAGE1</span><span class="ex">/tmp/</span></span></code></pre></div>
+  <ul>
+  <li><code>rootfs-$VERSION-x86_64.tar.xz</code></li>
+  <li><code>binpkgs-$VERSION-x86_64.tar.xz</code></li>
+  </ul>
+  <h2 data-number="8.7" id="optional-signing-release-files"><span
+  class="header-section-number">8.7</span> Optional: Signing Release
+  Files</h2>
+  <p>For official releases, artifacts may be signed:</p>
+  <div class="sourceCode" id="cb28"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOTFS_STAGE1</span>/tmp</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
+  <h3 data-number="8.7.1" id="building-the-root-filesystem"><span
+  class="header-section-number">8.7.1</span> Building the Root
+  Filesystem</h3>
+  <p>This section describes how to build a Zeppe‑Lin root filesystem
+  (rootfs) in two stages. You can either build directly on a running
+  Zeppe‑Lin instance or download a prebuilt rootfs tarball.</p>
+  <p>Once the toolchain and packages are updated, you can create the
+  root filesystem image – Zeppe-Lin’s core for chroot installations.</p>
+  <h4 data-number="8.7.1.1" id="introducing-mkrootfs"><span
+  class="header-section-number">8.7.1.1</span> Introducing mkrootfs</h4>
+  <p><code>mkrootfs</code> automates building a custom root filesystem
+  by:</p>
+  <ul>
+  <li><p><strong>Installing Packages</strong>: It calls
+  <code>pkgman(1)</code> to build and install the required
+  packages.</p></li>
+  <li><p><strong>Checking Integrity</strong>: It calls
+  <code>revdep(1)</code> to scan for broken shared libraries.</p></li>
+  </ul>
+  <p>Configuration is handled in <code>/etc/mkrootfs/config</code>,
+  where you can set:</p>
+  <ul>
+  <li><p><code>ROOTFS_DIR</code>: The working directory (default:
+  <code>/tmp/rootfs-$(date +%F)-$(uname -m)/</code>).</p></li>
+  <li><p><code>PACKAGES</code>: The list of packages to install
+  (default: <code>pkgsrc-core</code> set).</p></li>
+  <li><p><code>ROOTFS_TAR</code>: The output tarball filename (default:
+  <code>$ROOTFS_DIR.tar.xz</code>).</p></li>
+  </ul>
+  <p>You can override these settings with command-line options (see
+  <code>mkrootfs(8)</code>).</p>
+  <h5 data-number="8.7.1.1.1" id="step-by-step-rootfs-creation"><span
+  class="header-section-number">8.7.1.1.1</span> Step-by-Step Rootfs
+  Creation</h5>
+  <ol type="1">
+  <li><p><strong>Configure</strong>: Edit
+  <code>/etc/mkrootfs/config</code> (as root) and set:</p>
+  <ul>
+  <li><code>ROOTFS_DIR</code> (working directory)</li>
+  <li><code>ROOTFS_TAR</code> (output tarball name)</li>
+  <li><code>PACKAGES</code> (default: all packages from
+  <code>pkgsrc-core</code>)</li>
+  </ul>
+  <p>Save your changes. Alternatively, you can override configuration
+  settings on the fly using command-line options (refer to
+  <code>mkrootfs(8)</code> for details).</p></li>
+  <li><p><strong>Build</strong>: Run the command below to prepare the
+  filesystem, check dependencies, and create the tarball:</p>
+  <div class="sourceCode" id="cb29"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkrootfs <span class="at">-BCTv</span></span></code></pre></div>
+  <p>This does the following:</p>
+  <ul>
+  <li><code>-B</code>: Builds the filesystem directory.</li>
+  <li><code>-C</code>: Scan for broken shared libraries.</li>
+  <li><code>-T</code>: Compress the directory into a tarball.</li>
+  <li><code>-v</code>: Be verbose.</li>
+  </ul></li>
+  </ol>
+  <h5 data-number="8.7.1.1.2" id="optional-cleanup"><span
+  class="header-section-number">8.7.1.1.2</span> Optional Cleanup</h5>
+  <p>Once you’ve verified the tarball, you can remove temporary build
+  artifacts to save space. For example:</p>
+  <div class="sourceCode" id="cb30"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /tmp/rootfs-<span class="pp">*</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="dt">{</span><span class="op">,</span><span class="dt">.log}</span></span></code></pre></div>
+  <p>Skip cleanup if you need to debug or perform incremental
+  builds.</p>
+  <h3 data-number="8.7.2" id="finalizing-release-assets"><span
+  class="header-section-number">8.7.2</span> Finalizing Release
+  Assets</h3>
+  <h4 data-number="8.7.2.1" id="signing-the-rootfs-tarball"><span
+  class="header-section-number">8.7.2.1</span> Signing the Rootfs
+  Tarball</h4>
+  <p>Sign your root filesystem tarball with GPG to prove its
+  authenticity and integrity. Make sure GPG is installed (e.g., with
+  <code>sudo pkgman install --deps --group gnupg</code>) and that you
+  have your official Zeppe-Lin private key secured with a strong
+  passphrase.</p>
+  <p><strong>Steps</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Navigate to the Tarball Directory</strong>: Go to the
+  directory where your tarball (e.g.,
+  <code>rootfs-v1.0-x86_64.tar.xz</code>) resides.</p></li>
+  <li><p><strong>Sign the Tarball</strong>: Create a detached,
+  ASCII-armored signature:</p>
+  <div class="sourceCode" id="cb31"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sig</span> <span class="at">--armor</span> <span class="at">--output</span>   <span class="dt">\</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>      rootfs-v1.0-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>      rootfs-v1.0-x86_64.tar.xz</span></code></pre></div>
+  <p>You’ll be prompted for your key’s passphrase.</p></li>
+  <li><p><strong>Verify the Signature (Optional)</strong>: Confirm the
+  signature is valid:</p>
+  <div class="sourceCode" id="cb32"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--verify</span> rootfs-v1.0-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>             rootfs-v1.0-x86_64.tar.xz</span></code></pre></div></li>
+  </ol>
+  <p>After these steps, your signed tarball and its signature file are
+  ready for distribution.</p>
+  <h4 data-number="8.7.2.2" id="creating-a-git-tag-in-pkgsrc-core"><span
+  class="header-section-number">8.7.2.2</span> Creating a Git Tag in
+  pkgsrc-core</h4>
+  <p>Once all package updates, configuration changes, and build scripts
+  for the release are committed and pushed to your release branch (e.g.,
+  <code>1.x</code>) in <code>pkgsrc-core</code> and other relevant
+  repositories, mark the release with a Git tag. This tag serves as the
+  permanent reference for the Zeppe-Lin release and is required for the
+  GitHub release step.</p>
+  <p><strong>Steps</strong>:</p>
+  <ol type="1">
+  <li><p><strong>Switch to the Release Branch</strong>: Make sure you’re
+  on and up-to-date with your release branch:</p>
+  <div class="sourceCode" id="cb33"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 1.x <span class="co"># Replace 1.x with your release branch</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin 1.x</span></code></pre></div>
+  <p><em>Ensure all commits relevant to this release have been pushed to
+  this branch.</em></p></li>
+  <li><p><strong>Create an Annotated Tag</strong>:</p>
+  <div class="sourceCode" id="cb34"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Zeppe-Lin v1.0 - The Maiden Voyage!&quot;</span></span></code></pre></div></li>
+  <li><p><strong>Push the Tag</strong>: Push the new tag to the remote
+  repository:</p>
+  <div class="sourceCode" id="cb35"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin v1.0</span></code></pre></div>
+  <p>Or push all local tags (be cautious with this command if you have
+  other local tags):</p>
+  <div class="sourceCode" id="cb36"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="at">--tags</span></span></code></pre></div></li>
+  </ol>
+  <p><strong>Notes</strong>:</p>
+  <ul>
+  <li>Use a consistent naming convention (e.g., prefix with
+  <code>v</code> followed by the version number).</li>
+  <li>Once pushed, tags are considered immutable – review carefully
+  before tagging.</li>
+  </ul>
+  <p>This simple process officially marks the source code state for your
+  release.</p>
+  <h3 data-number="8.7.3"
+  id="preparing-and-publishing-announcements"><span
+  class="header-section-number">8.7.3</span> Preparing and Publishing
+  Announcements</h3>
+  <h4 data-number="8.7.3.1" id="drafting-release-notes-content"><span
+  class="header-section-number">8.7.3.1</span> Drafting Release Notes
+  Content</h4>
+  <p>Release notes communicate what’s new, changed, and required for
+  upgrading. They will form the official website release notes and the
+  GitHub Release description.</p>
+  <p>Include the following:</p>
+  <ul>
+  <li><p><strong>Introduction</strong>: A brief overview (version, date,
+  theme).</p></li>
+  <li><p><strong>Incompatible Changes</strong>: List any breaking
+  changes or adjustments needed for upgrades.</p></li>
+  <li><p><strong>New Features</strong>: Highlight new functionalities
+  and improvements.</p></li>
+  <li><p><strong>Package Changes</strong>: Summarize package updates for
+  each repository (added, removed, updated).</p></li>
+  <li><p><strong>Artwork</strong>: Describe the release’s visual design,
+  including a link and licensing info if necessary (see the banner
+  created in 3.4.2.2).</p></li>
+  <li><p><strong>Kernel &amp; Toolchain</strong>: Specify the Linux
+  kernel version and list core toolchain components (e.g.,
+  <code>glibc</code>, <code>gcc</code>, <code>binutils</code>). Include
+  X11 details if relevant.</p></li>
+  <li><p><strong>Changelogs</strong>: Provide links to detailed
+  changelogs for each pkgsrc collection.</p></li>
+  <li><p><strong>Downloads &amp; Checksums</strong>: List direct
+  download links for the signed tarball and its signature, along with
+  checksum values (e.g., SHA256).</p></li>
+  <li><p><strong>Installation/Upgrade Instructions</strong>: Offer or
+  link to clear installation/upgrade guidelines, often referencing the
+  handbook.</p></li>
+  <li><p><strong>Contributors</strong>: Credit those who
+  contributed.</p></li>
+  </ul>
+  <p>Draft these notes in a temporary file. This content will be
+  formatted and published in the following steps.</p>
+  <h4 data-number="8.7.3.2"
+  id="creating-website-announcement-files-and-assets"><span
+  class="header-section-number">8.7.3.2</span> Creating Website
+  Announcement Files and Assets</h4>
+  <p>For Zeppe-Lin, we manage official release notes and related assets
+  in the <code>zeppe-lin.github.io</code> repository – our website’s
+  home. This involves creating the Markdown file for the full notes and
+  preparing the release banner.</p>
+  <h5 data-number="8.7.3.2.1"
+  id="creating-the-markdown-release-notes-file-relnotes"><span
+  class="header-section-number">8.7.3.2.1</span> Creating the Markdown
+  Release Notes File (relnotes)</h5>
+  <ol type="1">
+  <li><p><strong>Access the Repository</strong>: Open your local clone
+  of <code>zeppe-lin.github.io.git</code>.</p></li>
+  <li><p><strong>Navigate to /relnotes/ Directory</strong>: This is
+  where all release notes in Markdown are stored.</p></li>
+  <li><p><strong>Create the File</strong>: Make a file named
+  <code>relnotes-v&lt;VERSION&gt;.md</code> (e.g.,
+  <code>relnotes-v1.0.md</code>). Paste and format your drafted release
+  notes (from 3.4.1) in Markdown.</p></li>
+  <li><p><strong>Reference the Banner</strong>: Include a link (or embed
+  code, typically referencing an HTML include if your static site
+  generator supports it) to display your release banner within this
+  Markdown file. The banner file will be created in the next
+  step.</p></li>
+  </ol>
+  <h5 data-number="8.7.3.2.2"
+  id="creating-the-release-banner-cover-artwork"><span
+  class="header-section-number">8.7.3.2.2</span> Creating the Release
+  Banner (Cover Artwork)</h5>
+  <p>A distinct release banner helps your audience instantly recognize
+  the new Zeppe-Lin release. It appears on both the release notes page
+  and the main website.</p>
+  <ol type="1">
+  <li><p><strong>Design and Store Artwork</strong>: Create a
+  web-friendly image (e.g., PNG or JPEG) that reflects this release’s
+  theme. Place the artwork file(s) in the <code>artwork.git</code>
+  repository and push them.</p></li>
+  <li><p><strong>Prepare the Release Banner File</strong>: In the
+  <code>/relnotes/</code> directory of <code>zeppe-lin.github.io</code>
+  repository, create a file named
+  <code>banner-v&lt;VERSION&gt;.html</code> (e.g.,
+  <code>banner-v1.0.html</code>). This file should contain an
+  <code>&lt;img&gt;</code> tag (or similar code) referencing the artwork
+  in the <code>artwork.git</code>) to display the banner.</p></li>
+  <li><p><strong>Update Main Website Banner Pointer</strong> (Optional -
+  can be done Post-Release): Edit <code>/index/banner.html</code> on the
+  <code>zeppe-lin.github.io</code> repository so that the release banner
+  points to the new artwork. This step can be done just before or after
+  publishing the main website updates.</p></li>
+  </ol>
+  <h4 data-number="8.7.3.3" id="publishing-the-release"><span
+  class="header-section-number">8.7.3.3</span> Publishing the
+  Release</h4>
+  <p>Once your assets (signed tarball, signature, Git tag) and
+  announcement files are ready, it’s time to go public.</p>
+  <h5 data-number="8.7.3.3.1" id="announcing-on-github-releases"><span
+  class="header-section-number">8.7.3.3.1</span> Announcing on GitHub
+  Releases</h5>
+  <ol type="1">
+  <li><p><strong>Open the Repository</strong>: Navigate to the Zeppe-Lin
+  <a
+  href="https://github.com/zeppe-lin/pkgsrc-core"><code>pkgsrc-core</code>
+  repository on GitHub</a>.</p></li>
+  <li><p><strong>Go to Releases</strong>: Click the “Releases” tab (or
+  section).</p></li>
+  <li><p><strong>Draft a Release</strong>: Click “Create a new release”
+  (or “Draft a new release”).</p></li>
+  <li><p><strong>Select Your Tag</strong>: In the “Tag version”
+  drop-down, choose your Git tag created in 3.3.2 (e.g.,
+  <code>v1.0</code>).</p></li>
+  <li><p><strong>Set the Title and Description</strong>:</p>
+  <ul>
+  <li><p><strong>Title</strong>: Enter a release title (e.g.,
+  <code>Zeppe-Lin v1.0: The Maiden Voyage</code>).</p></li>
+  <li><p><strong>Description</strong>: Copy/paste the summary and key
+  highlights from your drafted release notes (3.4.1). <strong>Crucially,
+  include a link to the full release notes page on the Zeppe-Lin
+  website</strong> (this page will become live once you push the website
+  changes).</p></li>
+  </ul></li>
+  <li><p><strong>Attach Files</strong>: Upload the signed root
+  filesystem tarball (<code>rootfs-v1.0-x86_64.tar.xz</code>) and its
+  signature (<code>rootfs-v1.0-x86_64.tar.xz.sig</code>) generated in
+  3.3.1.</p></li>
+  <li><p><strong>Pre-release Option</strong>: If necessary, mark the
+  release as a pre-release; otherwise, leave it unchecked.</p></li>
+  <li><p><strong>Publish</strong>: Click “Publish release” to make it
+  official on GitHub.</p></li>
+  </ol>
+  <h5 data-number="8.7.3.3.2" id="updating-the-zeppe-lin-website"><span
+  class="header-section-number">8.7.3.3.2</span> Updating the Zeppe-Lin
+  Website</h5>
+  <p>Publish the release notes and banner on the official Zeppe-Lin
+  website.</p>
+  <ol type="1">
+  <li><p><strong>Commit and Push Website Changes</strong>: In your local
+  clone of <code>zeppe-lin.github.io</code>, commit the changes for:</p>
+  <ul>
+  <li><p>The new release notes Markdown file
+  (<code>/relnotes/relnotes-v&lt;VERSION&gt;.md</code>) created in
+  3.4.2.1.</p></li>
+  <li><p>The new banner HTML file
+  (<code>/relnotes/banner-v&lt;VERSION&gt;.html</code>) created in
+  3.4.2.2.</p></li>
+  <li><p>(If you didn’t do it in 3.4.2.2) The change in
+  <code>/index/banner.html</code> to point to the new artwork.</p></li>
+  <li><p>The update to <code>/index/index.md</code> so that the latest
+  release version and links (like the one to the release notes page) are
+  correctly displayed. Push these changes to the remote
+  <code>zeppe-lin.github.io</code> repository.</p></li>
+  </ul></li>
+  <li><p><strong>Verify Website Build</strong>: Our CI/CD pipeline will
+  detect the new and changed files, convert the Markdown to HTML (using
+  <code>smu(1)</code>), and publish the updated website. Verify that the
+  new release notes page (e.g.,
+  <code>https://zeppe-lin.github.io/relnotes-v1.0.html</code>) and the
+  main page display and link to the new release properly.</p></li>
+  </ol>
+  <p>This process ensures that the release is prominently published on
+  both GitHub and the Zeppe-Lin website for the community to access.</p>
+  <h1 data-number="9" id="post-release-tasks"><span
+  class="header-section-number">9</span> Post-Release Tasks</h1>
+  <p>After successfully publishing the new version of Zeppe-Lin,
+  complete these steps to keep everything current and the community
+  informed.</p>
+  <ol type="1">
+  <li><p><strong>Updating the User Handbook</strong>: Review and update
+  <code>handbook/handbook.md</code> in the
+  <code>zeppe-lin.github.io</code> repository. Ensure that version data,
+  installation/upgrade instructions, and download links reflect the new
+  release. Commit and push these changes.</p></li>
+  <li><p><strong>Announcing on GitHub Discussions</strong>: Create a new
+  announcement thread in the GitHub Discussions Announcements category.
+  Include the release name and version, a brief summary of key
+  highlights, a link to the full release notes on the website, and
+  download links (linking to the GitHub release is often best for
+  downloads).</p></li>
+  <li><p><strong>Verifying Download Links</strong>: Double-check all
+  download links in the release notes file
+  (<code>relnotes-v&lt;VERSION&gt;.md</code>) and on the website to
+  ensure they accurately point to the signed root filesystem tarball,
+  its signature, and any other release artifacts.</p></li>
+  <li><p><strong>Updating Documentation Links</strong>: Review all
+  documentation – including the user handbook and developer’s codebook –
+  to update any links that reference older releases, pointing them to
+  the new release where appropriate.</p></li>
+  <li><p><strong>Monitoring Feedback</strong>: Keep an eye on GitHub
+  Discussions and Issues for user feedback and bug reports. Address any
+  critical issues through patch releases if necessary (which would
+  follow a similar, albeit potentially abbreviated, process).</p></li>
+  <li><p><strong>Planning for the Next Release</strong>: Begin planning
+  the next release by discussing new features, improvements, and bug
+  fixes based on community feedback and internal priorities.</p></li>
+  </ol>
+  <h1 data-number="10" id="conclusion"><span
+  class="header-section-number">10</span> Conclusion</h1>
+  <p>Congratulations, Captain! You’ve navigated every key step – from
+  preparing our pkgsrc repositories and building the core system to
+  finalizing assets, publishing announcements, and completing
+  post-release tasks. By sticking to this guide, you’re ensuring each
+  Zeppe-Lin release is stable, secure, and clearly communicated to our
+  community.</p>
+  <p>Fair winds and smooth sailing on your next release voyage!</p>
+</main>
+
+</body>
+</html>
