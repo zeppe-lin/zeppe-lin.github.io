@@ -10,84 +10,92 @@ Zeppe-Lin Codebook.
 *Because even pirates need a map to find the treasure  
 (and avoid the kraken).*
 
-This Codebook documents the development and release process of
-Zeppe‑Lin.
-It is intended for maintainers and contributors who need a reliable
-reference for building, updating, and releasing the system.
+This Codebook defines the development, update, and release model of
+Zeppe-Lin.
+It is a reference document for maintainers and contributors
+responsible for building, maintaining, and publishing the system.
 
-Its purpose is to reduce bus factor, preserve institutional knowledge,
-and ensure reproducible releases.
+Its goals are to reduce the bus factor, preserve institutional
+knowledge, and ensure that all releases remain reproducible,
+traceable, and predictable.
 
 ---
 
 # INTRODUCTION
 
-Zeppe‑Lin is a source-based Linux distribution with a structured
-workflow for package updates and releases.
-This Codebook defines the steps and rules that keep the system
-consistent, traceable, and manageable over time.
+Zeppe-Lin is a source-based Linux distribution developed through a
+deliberate, rule-driven workflow.
+This Codebook documents the models and procedures that govern how the
+system evolves over time.
 
-## Releases, Branches, and Versioning
-
-Zeppe-Lin organizes development around
-**release types**, **branches**, **and version numbers**.
-These concepts are closely related and define how the system evolves.
-
-### Release Types
-
-- **Patch release**  
-  Small fixes, relbumps, or urgent hotfixes.
-
-- **Minor release**  
-  Significant updates to userland; toolchain remains stable.
-
-- **Major release**  
-  Toolchain or system structure changes (ABI updates, structural
-  shifts).
-
-Releases are discrete events; rolling releases are not used.
-
-### Branch Structure
-
-- Each major series has a **stable branch** (e.g., `1.x`, `2.x`) where
-  all release work occurs.
-
-- **Master branch** exists for reference only; it is not used for
-  releases.
-
-
-Branches allow multiple series to coexist while maintaining stability
-and predictability.
-
-## Versioning Rules
-
-- **Major (X.0)**  
-  Toolchain baseline, ABI or structural changes.
-
-- **Minor (X.Y)**  
-  Significant updates such as toolchain refresh or accumulated changes
-  are big enough.
-
-- **Patch (X.Y.Z)**  
-  Small fixes, relbumps, or critical hotfixes.
-
-Version history must remain linear and predictable.
+The document is intentionally normative.  
+Where it describes rules, they are mandatory.  
+Where it describes procedures, they reflect the expected operational
+practice.
 
 ---
 
-# UPDATING PACKAGES
+# RELEASE MODEL
 
-Package updates follow a strict order to maintain a consistent and
-working system.
-All updates in `pkgsrc-core` must be completed first, starting with
-the toolchain.
+This section defines the rules governing releases, branches, and
+versioning.
+These rules apply uniformly across all repositories and collections.
 
-## pkgsrc-core Collection
+## Release Types
 
-### Toolchain
+Zeppe-Lin publishes discrete releases.
+Rolling releases are not used.
+
+* **Patch release**  
+  Small fixes, relbumps, or urgent hotfixes.
+
+* **Minor release**  
+  Accumulated updates to userland with a stable toolchain.
+
+* **Major release**  
+  Toolchain changes or structural system updates, including ABI changes.
+
+## Release Series and Branches
+
+Each major release series is developed on a dedicated stable branch,
+for example `1.x` or `2.x`.
+
+All release work occurs exclusively on stable branches.  
+The `master` branch is unused.
+
+This structure allows multiple release series to coexist while
+preserving stability and predictability.
+
+## Versioning Scheme
+
+Zeppe-Lin uses semantic versioning with the following meaning:
+
+* **Major (X.0)**  
+  Toolchain baselines, ABI changes, or structural shifts.
+
+* **Minor (X.Y)**  
+  Significant accumulated changes that do not alter the system
+  structure.
+
+* **Patch (X.Y.Z)**  
+  Small fixes, relbumps, or critical hotfixes.
+
+Version history must remain linear and explicit.
+
+---
+
+# PACKAGE UPDATE POLICY
+
+Package updates follow a strict, ordered policy to preserve system
+consistency.
+All updates begin in `pkgsrc-core`.
+
+## Core Collection (pkgsrc-core)
+
+### Toolchain Update Order
 
 The toolchain must be updated before any other packages.
-Order is critical:
+The order below is mandatory:
 
 1. `glibc` / `glibc-32`
 2. `binutils`
@@ -98,117 +106,140 @@ Order is critical:
 7. rebuild `libtool`
 
 > **Note:**
-> 0. `linux-headers` (when we'll be ready to split `glibc`)
+>
+> 0. `linux-headers`  
+>    Will be introduced once `glibc` is split accordingly.
 
-Rebuild each package before moving to the next.
-Do not update other packages until the toolchain is verified.
+Each package must be rebuilt and verified before proceeding.
+Other packages must not be updated until the toolchain is confirmed
+working.
 
 ### Other Core Packages
 
-Once the toolchain is verified, update the remaining packages in
-`pkgsrc-core`:
+After the toolchain is verified, the remaining packages in
+`pkgsrc-core` may be updated.
 
-- Apply minimal patches; prefer upstream fixes.
-- Rebuild all packages.
-- Regenerate checksums and footprints.
-- Verify dependencies with `revdep(1)`.
+The following rules apply:
+
+* Keep patches minimal; prefer upstream fixes.
+* Rebuild all affected packages.
+* Regenerate checksums and footprints.
+* Verify dependencies using `revdep(1)`, `finddepslinked(1)`.
 
 ## Other Collections
 
-Update collections in this order:
+Once `pkgsrc-core` is complete, update the remaining collections in
+this order:
 
 1. `pkgsrc-system`
 2. `pkgsrc-xorg`
 3. `pkgsrc-desktop`
 
-Fix failures immediately; do not defer.
+Failures must be fixed immediately and must not be deferred.
 
 ---
 
-# ROOT FILESYSTEM CREATION
+# ROOTFS BUILD MODEL
 
-The root filesystem is built in two stages to ensure reproducibility
-and verification.
+The rootfs (root filesystem) is built in two formal stages to ensure
+reproducibility and verification.
 
-- **Stage 1**  
-  Obtain an initial rootfs (build locally or download).
+## Build Stages
 
-- **Stage 2**  
-  Chroot into Stage 1, build core packages into Stage 2, verify with
-  `revdep`, and assemble the final rootfs.
+* **Stage 1**  
+  An initial rootfs obtained by local build or from a published
+  artifact.
 
-Commands are detailed in Appendix A.
+* **Stage 2**  
+  A clean rootfs assembled by chrooting into Stage 1 and rebuilding
+  core packages.
 
----
+## Verification Requirements
 
-# RELEASE ARTIFACTS
+Before a rootfs is considered valid:
 
-Each release produces:
+* All core packages must be rebuilt in Stage 2.
+* `revdep` must complete without unresolved failures.
+* File ownership and extended attributes must be preserved.
 
-- `rootfs-$VERSION-x86_64.tar.xz`
-- `binpkgs-$VERSION-x86_64.tar.xz`
-
-Sign with GPG.  
-Tag release in Git (`v$VERSION`).  
-
----
-
-# PUBLISHING
-
-Publishing ensures that releases are accessible to users and
-contributors.
-
-## GitHub
-
-- Draft a release in `pkgsrc-core`.  
-- Select the tag `v$VERSION`.  
-- Upload tarballs and signatures.  
-
-## Artwork
-
-If artwork exists, add it to `artwork.git`.  
-
-## Website
-
-Update `zeppe-lin.github.io`:  
-
-- Add release notes as `v<VERSION>.md`.  
-- Update `index.md` (mandatory).  
-- Reference artwork in `v<VERSION>.md` and `index.md` if present.  
-- Update Handbook and Codebook references if needed.  
+Procedural details are provided in
+[Appendix B](#appendix-b-rootfs-build-procedure).
 
 ---
 
-# POST‑RELEASE
+# RELEASE PROCESS
 
-- Announce on mailing list.  
-- Monitor early reports.  
-- Apply hotfixes only if critical.  
-- Release is complete after initial validation by users.  
+This section defines the operational steps required to publish a
+release.
+
+## Release Artifacts
+
+Each release produces the following artifacts:
+
+* `rootfs-$VERSION-x86_64.tar.xz`
+* `binpkgs-$VERSION-x86_64.tar.xz`
+
+All artifacts must be signed with GPG.  
+The release must be tagged in Git as `v$VERSION`.
+
+## Publishing
+
+### GitHub
+
+* Draft a release in `pkgsrc-core`.
+* Select the tag `v$VERSION`.
+* Upload all artifacts and signatures.
+
+### Artwork
+
+If artwork exists, add it to `artwork.git`.
+
+### Website
+
+Update `zeppe-lin.github.io`:
+
+* Add release notes as `v<VERSION>.md`.
+* Update `index.md` (mandatory).
+* Reference artwork where applicable.
+* Update Handbook and Codebook references if required.
+
+---
+
+# POST-RELEASE OPERATIONS
+
+After publishing:
+
+* Announce the release on the mailing list.
+* Monitor early user reports.
+* Apply hotfixes only when critical.
+
+A release is considered complete after initial validation by users.
 
 ---
 
 # APPENDICES
 
-## Appendix A: Creating a New Major Release Branch
+## Appendix A: Major Release Branch Creation
 
 **Purpose:**
-prepare repositories for a new major release series
-(e.g., `1.x` → `2.x`).  
-*Minor and patch releases do not require new branches.*
 
-**Steps:**
+Prepare repositories for a new major release series
+(for example, `1.x` → `2.x`).
+Minor and patch releases do not require new branches.
 
-1. Identify the target major version (e.g., 2.0).
+**Procedure:**
+
+1. Identify the target major version.
 2. From the current stable branch, create a new branch in each
-   repository:
-   ```sh
-   git checkout <current_stable_branch>
-   git checkout -b <new_branch>
-   git push origin <new_branch>
-   ```
+   repository.
 
-**Example for 2.x release:**
+```sh
+git checkout <current_stable_branch>
+git checkout -b <new_branch>
+git push origin <new_branch>
+```
+
+**Example: creating the `2.x` release series**
 
 ```sh
 cd /usr/src
@@ -221,12 +252,10 @@ done
 
 Repositories involved:
 
-- `pkgsrc-core.git`
-- `pkgsrc-system.git`
-- `pkgsrc-xorg.git`
-- `pkgsrc-desktop.git`
-
-This isolates major release work from existing stable series.
+* `pkgsrc-core.git`
+* `pkgsrc-system.git`
+* `pkgsrc-xorg.git`
+* `pkgsrc-desktop.git`
 
 ## Appendix B: Rootfs Build Procedure
 
@@ -237,7 +266,7 @@ Build locally:
 ```sh
 ROOTFS_STAGE1=/mnt/rootfs-stage1
 
-# as root (switch to fakeroot?)
+# as root
 mkdir -p $ROOTFS_STAGE1/var/lib/pkg
 touch $ROOTFS_STAGE1/var/lib/pkg/db
 pkgman install --root=$ROOTFS_STAGE1 \
@@ -245,8 +274,7 @@ pkgman install --root=$ROOTFS_STAGE1 \
   $(pkgman --config-set="pkgsrcdir /usr/src/pkgsrc-core" printf "%n\n")
 ```
 
-Or extract published rootfs from
-[pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest):
+Or extract a published rootfs:
 
 ```sh
 tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
@@ -257,53 +285,50 @@ tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
 
 ```sh
 # as root
-
 cp /etc/resolv.conf $ROOTFS_STAGE1/etc/resolv.conf
-mount -B /dev $ROOTFS_STAGE1/dev
-mount -B /run $ROOTFS_STAGE1/run
-mount -t proc proc $ROOTFS_STAGE1/proc
+mount -B /dev  $ROOTFS_STAGE1/dev
+mount -B /run  $ROOTFS_STAGE1/run
+mount -t proc  proc $ROOTFS_STAGE1/proc
 mount -t sysfs none $ROOTFS_STAGE1/sys
 mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
-$ROOTFS_STAGE1/dev/pts
+  $ROOTFS_STAGE1/dev/pts
 
 chroot $ROOTFS_STAGE1 /bin/bash
 ```
 
 ### Stage 2: Build and Assemble
 
-Build all core packages into Stage 2 directory:
-
 ```sh
 # in chroot, as root
 
-# clone pkgsrc-core first
-cd /usr/src/
+cd /usr/src
 git clone https://github.com/zeppe-lin/pkgsrc-core --branch 1.x
 
-# prepare stage2 dir
-VERSION=1.2 # New release VERSION
+VERSION=1.2 # new release version
 ROOTFS_STAGE2=/tmp/rootfs-${VERSION}-x86_64
+
 mkdir -p $ROOTFS_STAGE2/var/lib/pkg
 touch $ROOTFS_STAGE2/var/lib/pkg/db
 
-# build and install core packages into stage dir
 pkgman install --root=$ROOTFS_STAGE2 \
   --config-append="runscripts no" --force --deps --group -d \
   $(pkgman --config-set="pkgsrcdir /usr/src/pkgsrc-core" printf "%n\n")
 
-# verify with revdep
 revdep
 ```
 
-Compress artifacts:  
-```sh
-tar -cJf $ROOTFS_STAGE2.tar.xz -C $ROOTFS_STAGE2 .
+Compress artifacts:
 
+```sh
+# in chroot, as root
+
+tar -cJf $ROOTFS_STAGE2.tar.xz -C $ROOTFS_STAGE2 .
 tar -cJf /tmp/binpkgs-$VERSION-x86_64.tar.xz \
   -C /var/cache/pkgmk/packages .
 ```
 
-Cleanup:  
+Cleanup:
+
 ```sh
 exit
 umount -R $ROOTFS_STAGE1/dev
@@ -312,10 +337,16 @@ umount -R $ROOTFS_STAGE1/sys
 umount -R $ROOTFS_STAGE1/run
 ```
 
-## Appendix C: Signing Artifacts
+## Appendix C: Artifact Signing
 
 ```sh
-cd $ROOTFS_STAGE1/tmp
-gpg --detach-sign --armor rootfs-$VERSION-x86_64.tar.xz
-gpg --detach-sign --armor binpkgs-$VERSION-x86_64.tar.xz
+cd $ROOT_STAGE1/tmp
+
+gpg --detach-sign --armor \
+    --output rootfs-$VERSION-x86_64.tar.xz \
+    rootfs-$VERSION-x86_64.tar.xz
+
+gpg --detach-sign --armor \
+    --output binpkgs-$VERSION-x86_64.tar.xz \
+    binpkgs-$VERSION-x86_64.tar.xz
 ```
