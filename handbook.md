@@ -3168,7 +3168,7 @@ For advanced configurations, consult module-specific man pages
 
 ---
 
-# Appendices
+# APPENDICES
 
 ## Appendix A: Licensing & Legal
 
