@@ -4,7 +4,7 @@ title: Zeppe-Lin Linux --- Welcome
 
 # Welcome to Zeppe-Lin {.unnumbered}
 
-![Artwork for v1.2 — Ghosts in the Rig](https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true)
+![Artwork for v1.2 --- Ghosts in the Rig](https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true)
 
 ## Introduction {.unnumbered}
 
