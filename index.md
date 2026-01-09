@@ -19,21 +19,23 @@ computing environment.
 
 ## Current Release {.unnumbered}
 
-**Zeppe-Lin v1.2**  
+**Zeppe-Lin v1.2**  ("Ghosts in the Rig")  
 Released January 9, 2026
 
-This release focused on consolidation of core primitives,
-log management standardization, and ABI alignment.
+This is a structural maintenance release focused on logging, cron
+execution, and ABI alignment.
 
 Highlights:
 
 - OpenSSL 3.5.4 ABI bump
 - Logging standardized with `logrotate`
-- Cron execution unified under `run-parts`;  
-  `run-one` introduced for simpler job control
+- Cron execution unified under `run-parts`; `run-one` introduced for
+  simpler job control
+- Tooling manual pages migrated to scdoc and improved
 - Website redesign at <zeppe-lin.org>
+- Kernel updated from 6.16 series to 6.18
 
-[Full Release Notes](v1.2.html)
+[Full Release Notes and Downloads](v1.2.html)
 
 ## Documentation {.unnumbered}
 
