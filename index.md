@@ -4,7 +4,7 @@ title: Zeppe-Lin Linux --- Welcome
 
 # Welcome to Zeppe-Lin {.unnumbered}
 
-![Artwork for v1.1 — Featuring Stine Luft Satomi](https://github.com/zeppe-lin/artwork/blob/master/v1.1.png?raw=true)
+![Artwork for v1.2 — Ghosts in the Rig](https://github.com/zeppe-lin/artwork/blob/master/v1.2.png?raw=true)
 
 ## Introduction {.unnumbered}
 
@@ -19,19 +19,21 @@ computing environment.
 
 ## Current Release {.unnumbered}
 
-**Zeppe-Lin v1.1**  
-Released August 1, 2025
+**Zeppe-Lin v1.2**  
+Released January 9, 2026
 
-This release focuses on toolchain alignment, documentation rebuild,
-and infrastructure cleanup.
+This release focused on consolidation of core primitives,
+log management standardization, and ABI alignment.
 
 Highlights:
 
-- Toolchain updated for **Linux 6.1+**
-- Documentation rebuilt from scratch
-- New community infrastructure
+- OpenSSL 3.5.4 ABI bump
+- Logging standardized with `logrotate`
+- Cron execution unified under `run-parts`;  
+  `run-one` introduced for simpler job control
+- Website redesign at <zeppe-lin.org>
 
-[Read the full Release Notes](v1.1.html)
+[Full Release Notes](v1.2.html)
 
 ## Documentation {.unnumbered}
 
@@ -46,6 +48,7 @@ Start here:
 
 ## Previous Releases {.unnumbered}
 
+- [v1.1 --- Built in the Dark](v1.1.html)
 - [v1.0 --- The Maiden Voyage](v1.0.html)
 - [v0.99.1](v0.99.1.html)
 - [v0.99 --- Happy Birthday!](v0.99.html)
@@ -82,7 +85,6 @@ Discussion is low-noise and technical.
     `zeppe-lin-dev@freelists.org`  
     [Subscribe via Email](mailto:zeppe-lin-dev-request@freelists.org?subject=subscribe) |
     [View List Page](https://www.freelists.org/list/zeppe-lin-dev)
-
 
 ---
 
