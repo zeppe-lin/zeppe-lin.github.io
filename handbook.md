@@ -206,16 +206,21 @@ system.
 Download the tarball directly into the `/mnt` directory (the default
 mount point) to avoid using live media RAM.
 
-Get the latest release from the Zeppe-Lin
-[pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest)
-or run these commands (replace `v1.0` with the latest version):
+The current Zeppe-Lin release is published at  
+<https://github.com/zeppe-lin/pkgsrc-core/releases/latest>
+
+Identify the release version (e.g., `vX.Y`), then download the
+corresponding rootfs archive and its detached signature:
 
 ```sh
 # as root
 cd /mnt
-URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download/
-VERSION=v1.0
-wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz{,.sig}
+
+URL=https://github.com/zeppe-lin/pkgsrc-core/releases/download
+VERSION=vX.Y
+
+wget -c ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz \
+        ${URL}/${VERSION}/rootfs-${VERSION}-x86_64.tar.xz.sig
 ```
 
 ### Verify Downloaded Tarball
@@ -234,7 +239,8 @@ Verify the signature:
 
 ```sh
 # as root
-gpg --verify rootfs-${VERSION}-x86_64.tar.xz{.sig,}
+gpg --verify rootfs-${VERSION}-x86_64.tar.xz.sig \
+        rootfs-${VERSION}-x86_64.tar.xz
 ```
 
 ### Extract Rootfs Tarball
@@ -443,8 +449,8 @@ recommended to update the freshly installed Zeppe-Lin system.
 
 ### Prepare Pkgsrc Collections
 
-Packages' sources are organized into collections
-(see [Collections](#collections) for details).
+Packages' sources are organized into
+[collections](#collections).
 
 Clone the necessary collections, keeping in mind that each depends on
 the previous one:
@@ -580,7 +586,7 @@ Apply Zeppe-Lin patches:
 # chrooted, as root
 cd /usr/src/linux-${KV}
 for p in $(pkgman path linux)/*.patch; do
-    [ -f "$p" ] && patch -Np1 -i "$p"
+        [ -f "$p" ] && patch -Np1 -i "$p"
 done
 ```
 
@@ -662,7 +668,7 @@ Here's an example for [UEFI and LVM on LUKS](#uefi-and-lvm-on-luks):
 
 ```sh
 # /etc/mkinitramfs/config
-hostonly=1 #(optional, creates smaller initramfs)
+hostonly=1 # optional, creates smaller initramfs
 compress="gzip --fast"
 hooks="eudev luks lvm resume"
 root=/dev/zpln/root
