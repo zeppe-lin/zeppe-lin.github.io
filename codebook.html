@@ -85,60 +85,74 @@
   <ul>
   <li><a href="#preface" id="toc-preface">PREFACE</a></li>
   <li><a href="#introduction" id="toc-introduction"><span
-  class="toc-section-number">1</span> INTRODUCTION</a>
-  <ul>
-  <li><a href="#releases-branches-and-versioning"
-  id="toc-releases-branches-and-versioning"><span
-  class="toc-section-number">1.1</span> Releases, Branches, and
-  Versioning</a>
+  class="toc-section-number">1</span> INTRODUCTION</a></li>
+  <li><a href="#release-model" id="toc-release-model"><span
+  class="toc-section-number">2</span> RELEASE MODEL</a>
   <ul>
   <li><a href="#release-types" id="toc-release-types"><span
-  class="toc-section-number">1.1.1</span> Release Types</a></li>
-  <li><a href="#branch-structure" id="toc-branch-structure"><span
-  class="toc-section-number">1.1.2</span> Branch Structure</a></li>
+  class="toc-section-number">2.1</span> Release Types</a></li>
+  <li><a href="#release-series-and-branches"
+  id="toc-release-series-and-branches"><span
+  class="toc-section-number">2.2</span> Release Series and
+  Branches</a></li>
+  <li><a href="#versioning-scheme" id="toc-versioning-scheme"><span
+  class="toc-section-number">2.3</span> Versioning Scheme</a></li>
   </ul></li>
-  <li><a href="#versioning-rules" id="toc-versioning-rules"><span
-  class="toc-section-number">1.2</span> Versioning Rules</a></li>
-  </ul></li>
-  <li><a href="#updating-packages" id="toc-updating-packages"><span
-  class="toc-section-number">2</span> UPDATING PACKAGES</a>
+  <li><a href="#package-update-policy"
+  id="toc-package-update-policy"><span
+  class="toc-section-number">3</span> PACKAGE UPDATE POLICY</a>
   <ul>
-  <li><a href="#pkgsrc-core-collection"
-  id="toc-pkgsrc-core-collection"><span
-  class="toc-section-number">2.1</span> pkgsrc-core Collection</a>
+  <li><a href="#core-collection-pkgsrc-core"
+  id="toc-core-collection-pkgsrc-core"><span
+  class="toc-section-number">3.1</span> Core Collection
+  (pkgsrc-core)</a>
   <ul>
-  <li><a href="#toolchain" id="toc-toolchain"><span
-  class="toc-section-number">2.1.1</span> Toolchain</a></li>
+  <li><a href="#toolchain-update-order"
+  id="toc-toolchain-update-order"><span
+  class="toc-section-number">3.1.1</span> Toolchain Update
+  Order</a></li>
   <li><a href="#other-core-packages" id="toc-other-core-packages"><span
-  class="toc-section-number">2.1.2</span> Other Core Packages</a></li>
+  class="toc-section-number">3.1.2</span> Other Core Packages</a></li>
   </ul></li>
   <li><a href="#other-collections" id="toc-other-collections"><span
-  class="toc-section-number">2.2</span> Other Collections</a></li>
+  class="toc-section-number">3.2</span> Other Collections</a></li>
   </ul></li>
-  <li><a href="#root-filesystem-creation"
-  id="toc-root-filesystem-creation"><span
-  class="toc-section-number">3</span> ROOT FILESYSTEM CREATION</a></li>
+  <li><a href="#rootfs-build-model" id="toc-rootfs-build-model"><span
+  class="toc-section-number">4</span> ROOTFS BUILD MODEL</a>
+  <ul>
+  <li><a href="#build-stages" id="toc-build-stages"><span
+  class="toc-section-number">4.1</span> Build Stages</a></li>
+  <li><a href="#verification-requirements"
+  id="toc-verification-requirements"><span
+  class="toc-section-number">4.2</span> Verification
+  Requirements</a></li>
+  </ul></li>
+  <li><a href="#release-process" id="toc-release-process"><span
+  class="toc-section-number">5</span> RELEASE PROCESS</a>
+  <ul>
   <li><a href="#release-artifacts" id="toc-release-artifacts"><span
-  class="toc-section-number">4</span> RELEASE ARTIFACTS</a></li>
+  class="toc-section-number">5.1</span> Release Artifacts</a></li>
   <li><a href="#publishing" id="toc-publishing"><span
-  class="toc-section-number">5</span> PUBLISHING</a>
+  class="toc-section-number">5.2</span> Publishing</a>
   <ul>
   <li><a href="#github" id="toc-github"><span
-  class="toc-section-number">5.1</span> GitHub</a></li>
+  class="toc-section-number">5.2.1</span> GitHub</a></li>
   <li><a href="#artwork" id="toc-artwork"><span
-  class="toc-section-number">5.2</span> Artwork</a></li>
+  class="toc-section-number">5.2.2</span> Artwork</a></li>
   <li><a href="#website" id="toc-website"><span
-  class="toc-section-number">5.3</span> Website</a></li>
+  class="toc-section-number">5.2.3</span> Website</a></li>
   </ul></li>
-  <li><a href="#postrelease" id="toc-postrelease"><span
-  class="toc-section-number">6</span> POST‑RELEASE</a></li>
+  </ul></li>
+  <li><a href="#post-release-operations"
+  id="toc-post-release-operations"><span
+  class="toc-section-number">6</span> POST-RELEASE OPERATIONS</a></li>
   <li><a href="#appendices" id="toc-appendices"><span
   class="toc-section-number">7</span> APPENDICES</a>
   <ul>
-  <li><a href="#appendix-a-creating-a-new-major-release-branch"
-  id="toc-appendix-a-creating-a-new-major-release-branch"><span
-  class="toc-section-number">7.1</span> Appendix A: Creating a New Major
-  Release Branch</a></li>
+  <li><a href="#appendix-a-major-release-branch-creation"
+  id="toc-appendix-a-major-release-branch-creation"><span
+  class="toc-section-number">7.1</span> Appendix A: Major Release Branch
+  Creation</a></li>
   <li><a href="#appendix-b-rootfs-build-procedure"
   id="toc-appendix-b-rootfs-build-procedure"><span
   class="toc-section-number">7.2</span> Appendix B: Rootfs Build
@@ -155,10 +169,10 @@
   class="toc-section-number">7.2.3</span> Stage 2: Build and
   Assemble</a></li>
   </ul></li>
-  <li><a href="#appendix-c-signing-artifacts"
-  id="toc-appendix-c-signing-artifacts"><span
-  class="toc-section-number">7.3</span> Appendix C: Signing
-  Artifacts</a></li>
+  <li><a href="#appendix-c-artifact-signing"
+  id="toc-appendix-c-artifact-signing"><span
+  class="toc-section-number">7.3</span> Appendix C: Artifact
+  Signing</a></li>
   </ul></li>
   </ul>
   </div>
@@ -170,73 +184,75 @@
   <p>Zeppe-Lin Codebook.<br />
   <em>Because even pirates need a map to find the treasure<br />
   (and avoid the kraken).</em></p>
-  <p>This Codebook documents the development and release process of
-  Zeppe‑Lin. It is intended for maintainers and contributors who need a
-  reliable reference for building, updating, and releasing the
-  system.</p>
-  <p>Its purpose is to reduce bus factor, preserve institutional
-  knowledge, and ensure reproducible releases.</p>
+  <p>This Codebook defines the development, update, and release model of
+  Zeppe-Lin. It is a reference document for maintainers and contributors
+  responsible for building, maintaining, and publishing the system.</p>
+  <p>Its goals are to reduce the bus factor, preserve institutional
+  knowledge, and ensure that all releases remain reproducible,
+  traceable, and predictable.</p>
   <hr />
   <h1 data-number="1" id="introduction"><span
   class="header-section-number">1</span> INTRODUCTION</h1>
-  <p>Zeppe‑Lin is a source-based Linux distribution with a structured
-  workflow for package updates and releases. This Codebook defines the
-  steps and rules that keep the system consistent, traceable, and
-  manageable over time.</p>
-  <h2 data-number="1.1" id="releases-branches-and-versioning"><span
-  class="header-section-number">1.1</span> Releases, Branches, and
-  Versioning</h2>
-  <p>Zeppe-Lin organizes development around <strong>release
-  types</strong>, <strong>branches</strong>, <strong>and version
-  numbers</strong>. These concepts are closely related and define how
-  the system evolves.</p>
-  <h3 data-number="1.1.1" id="release-types"><span
-  class="header-section-number">1.1.1</span> Release Types</h3>
+  <p>Zeppe-Lin is a source-based Linux distribution developed through a
+  deliberate, rule-driven workflow. This Codebook documents the models
+  and procedures that govern how the system evolves over time.</p>
+  <p>The document is intentionally normative.<br />
+  Where it describes rules, they are mandatory.<br />
+  Where it describes procedures, they reflect the expected operational
+  practice.</p>
+  <hr />
+  <h1 data-number="2" id="release-model"><span
+  class="header-section-number">2</span> RELEASE MODEL</h1>
+  <p>This section defines the rules governing releases, branches, and
+  versioning. These rules apply uniformly across all repositories and
+  collections.</p>
+  <h2 data-number="2.1" id="release-types"><span
+  class="header-section-number">2.1</span> Release Types</h2>
+  <p>Zeppe-Lin publishes discrete releases. Rolling releases are not
+  used.</p>
   <ul>
   <li><p><strong>Patch release</strong><br />
   Small fixes, relbumps, or urgent hotfixes.</p></li>
   <li><p><strong>Minor release</strong><br />
-  Significant updates to userland; toolchain remains stable.</p></li>
+  Accumulated updates to userland with a stable toolchain.</p></li>
   <li><p><strong>Major release</strong><br />
-  Toolchain or system structure changes (ABI updates, structural
-  shifts).</p></li>
+  Toolchain changes or structural system updates, including ABI
+  changes.</p></li>
   </ul>
-  <p>Releases are discrete events; rolling releases are not used.</p>
-  <h3 data-number="1.1.2" id="branch-structure"><span
-  class="header-section-number">1.1.2</span> Branch Structure</h3>
-  <ul>
-  <li><p>Each major series has a <strong>stable branch</strong> (e.g.,
-  <code>1.x</code>, <code>2.x</code>) where all release work
-  occurs.</p></li>
-  <li><p><strong>Master branch</strong> exists for reference only; it is
-  not used for releases.</p></li>
-  </ul>
-  <p>Branches allow multiple series to coexist while maintaining
-  stability and predictability.</p>
-  <h2 data-number="1.2" id="versioning-rules"><span
-  class="header-section-number">1.2</span> Versioning Rules</h2>
+  <h2 data-number="2.2" id="release-series-and-branches"><span
+  class="header-section-number">2.2</span> Release Series and
+  Branches</h2>
+  <p>Each major release series is developed on a dedicated stable
+  branch, for example <code>1.x</code> or <code>2.x</code>.</p>
+  <p>All release work occurs exclusively on stable branches.<br />
+  The <code>master</code> branch is unused.</p>
+  <p>This structure allows multiple release series to coexist while
+  preserving stability and predictability.</p>
+  <h2 data-number="2.3" id="versioning-scheme"><span
+  class="header-section-number">2.3</span> Versioning Scheme</h2>
+  <p>Zeppe-Lin uses semantic versioning with the following meaning:</p>
   <ul>
   <li><p><strong>Major (X.0)</strong><br />
-  Toolchain baseline, ABI or structural changes.</p></li>
+  Toolchain baselines, ABI changes, or structural shifts.</p></li>
   <li><p><strong>Minor (X.Y)</strong><br />
-  Significant updates such as toolchain refresh or accumulated changes
-  are big enough.</p></li>
+  Significant accumulated changes that do not alter the system
+  structure.</p></li>
   <li><p><strong>Patch (X.Y.Z)</strong><br />
   Small fixes, relbumps, or critical hotfixes.</p></li>
   </ul>
-  <p>Version history must remain linear and predictable.</p>
+  <p>Version history must remain linear and explicit.</p>
   <hr />
-  <h1 data-number="2" id="updating-packages"><span
-  class="header-section-number">2</span> UPDATING PACKAGES</h1>
-  <p>Package updates follow a strict order to maintain a consistent and
-  working system. All updates in <code>pkgsrc-core</code> must be
-  completed first, starting with the toolchain.</p>
-  <h2 data-number="2.1" id="pkgsrc-core-collection"><span
-  class="header-section-number">2.1</span> pkgsrc-core Collection</h2>
-  <h3 data-number="2.1.1" id="toolchain"><span
-  class="header-section-number">2.1.1</span> Toolchain</h3>
-  <p>The toolchain must be updated before any other packages. Order is
-  critical:</p>
+  <h1 data-number="3" id="package-update-policy"><span
+  class="header-section-number">3</span> PACKAGE UPDATE POLICY</h1>
+  <p>Package updates follow a strict, ordered policy to preserve system
+  consistency. All updates begin in <code>pkgsrc-core</code>.</p>
+  <h2 data-number="3.1" id="core-collection-pkgsrc-core"><span
+  class="header-section-number">3.1</span> Core Collection
+  (pkgsrc-core)</h2>
+  <h3 data-number="3.1.1" id="toolchain-update-order"><span
+  class="header-section-number">3.1.1</span> Toolchain Update Order</h3>
+  <p>The toolchain must be updated before any other packages. The order
+  below is mandatory:</p>
   <ol type="1">
   <li><code>glibc</code> / <code>glibc-32</code></li>
   <li><code>binutils</code></li>
@@ -247,116 +263,133 @@
   <li>rebuild <code>libtool</code></li>
   </ol>
   <blockquote>
-  <p><strong>Note:</strong> 0. <code>linux-headers</code> (when we’ll be
-  ready to split <code>glibc</code>)</p>
+  <p><strong>Note:</strong></p>
+  <ol start="0" type="1">
+  <li><code>linux-headers</code><br />
+  Will be introduced once <code>glibc</code> is split accordingly.</li>
+  </ol>
   </blockquote>
-  <p>Rebuild each package before moving to the next. Do not update other
-  packages until the toolchain is verified.</p>
-  <h3 data-number="2.1.2" id="other-core-packages"><span
-  class="header-section-number">2.1.2</span> Other Core Packages</h3>
-  <p>Once the toolchain is verified, update the remaining packages in
-  <code>pkgsrc-core</code>:</p>
+  <p>Each package must be rebuilt and verified before proceeding. Other
+  packages must not be updated until the toolchain is confirmed
+  working.</p>
+  <h3 data-number="3.1.2" id="other-core-packages"><span
+  class="header-section-number">3.1.2</span> Other Core Packages</h3>
+  <p>After the toolchain is verified, the remaining packages in
+  <code>pkgsrc-core</code> may be updated.</p>
+  <p>The following rules apply:</p>
   <ul>
-  <li>Apply minimal patches; prefer upstream fixes.</li>
-  <li>Rebuild all packages.</li>
+  <li>Keep patches minimal; prefer upstream fixes.</li>
+  <li>Rebuild all affected packages.</li>
   <li>Regenerate checksums and footprints.</li>
-  <li>Verify dependencies with <code>revdep(1)</code>.</li>
+  <li>Verify dependencies using <code>revdep(1)</code>,
+  <code>finddepslinked(1)</code>.</li>
   </ul>
-  <h2 data-number="2.2" id="other-collections"><span
-  class="header-section-number">2.2</span> Other Collections</h2>
-  <p>Update collections in this order:</p>
+  <h2 data-number="3.2" id="other-collections"><span
+  class="header-section-number">3.2</span> Other Collections</h2>
+  <p>Once <code>pkgsrc-core</code> is complete, update the remaining
+  collections in this order:</p>
   <ol type="1">
   <li><code>pkgsrc-system</code></li>
   <li><code>pkgsrc-xorg</code></li>
   <li><code>pkgsrc-desktop</code></li>
   </ol>
-  <p>Fix failures immediately; do not defer.</p>
+  <p>Failures must be fixed immediately and must not be deferred.</p>
   <hr />
-  <h1 data-number="3" id="root-filesystem-creation"><span
-  class="header-section-number">3</span> ROOT FILESYSTEM CREATION</h1>
-  <p>The root filesystem is built in two stages to ensure
-  reproducibility and verification.</p>
+  <h1 data-number="4" id="rootfs-build-model"><span
+  class="header-section-number">4</span> ROOTFS BUILD MODEL</h1>
+  <p>The rootfs (root filesystem) is built in two formal stages to
+  ensure reproducibility and verification.</p>
+  <h2 data-number="4.1" id="build-stages"><span
+  class="header-section-number">4.1</span> Build Stages</h2>
   <ul>
   <li><p><strong>Stage 1</strong><br />
-  Obtain an initial rootfs (build locally or download).</p></li>
+  An initial rootfs obtained by local build or from a published
+  artifact.</p></li>
   <li><p><strong>Stage 2</strong><br />
-  Chroot into Stage 1, build core packages into Stage 2, verify with
-  <code>revdep</code>, and assemble the final rootfs.</p></li>
+  A clean rootfs assembled by chrooting into Stage 1 and rebuilding core
+  packages.</p></li>
   </ul>
-  <p>Commands are detailed in Appendix A.</p>
+  <h2 data-number="4.2" id="verification-requirements"><span
+  class="header-section-number">4.2</span> Verification
+  Requirements</h2>
+  <p>Before a rootfs is considered valid:</p>
+  <ul>
+  <li>All core packages must be rebuilt in Stage 2.</li>
+  <li><code>revdep</code> must complete without unresolved
+  failures.</li>
+  <li>File ownership and extended attributes must be preserved.</li>
+  </ul>
+  <p>Procedural details are provided in <a
+  href="#appendix-b-rootfs-build-procedure">Appendix B</a>.</p>
   <hr />
-  <h1 data-number="4" id="release-artifacts"><span
-  class="header-section-number">4</span> RELEASE ARTIFACTS</h1>
-  <p>Each release produces:</p>
+  <h1 data-number="5" id="release-process"><span
+  class="header-section-number">5</span> RELEASE PROCESS</h1>
+  <p>This section defines the operational steps required to publish a
+  release.</p>
+  <h2 data-number="5.1" id="release-artifacts"><span
+  class="header-section-number">5.1</span> Release Artifacts</h2>
+  <p>Each release produces the following artifacts:</p>
   <ul>
   <li><code>rootfs-$VERSION-x86_64.tar.xz</code></li>
   <li><code>binpkgs-$VERSION-x86_64.tar.xz</code></li>
   </ul>
-  <p>Sign with GPG.<br />
-  Tag release in Git (<code>v$VERSION</code>).</p>
-  <hr />
-  <h1 data-number="5" id="publishing"><span
-  class="header-section-number">5</span> PUBLISHING</h1>
-  <p>Publishing ensures that releases are accessible to users and
-  contributors.</p>
-  <h2 data-number="5.1" id="github"><span
-  class="header-section-number">5.1</span> GitHub</h2>
+  <p>All artifacts must be signed with GPG.<br />
+  The release must be tagged in Git as <code>v$VERSION</code>.</p>
+  <h2 data-number="5.2" id="publishing"><span
+  class="header-section-number">5.2</span> Publishing</h2>
+  <h3 data-number="5.2.1" id="github"><span
+  class="header-section-number">5.2.1</span> GitHub</h3>
   <ul>
-  <li>Draft a release in <code>pkgsrc-core</code>.<br />
-  </li>
-  <li>Select the tag <code>v$VERSION</code>.<br />
-  </li>
-  <li>Upload tarballs and signatures.</li>
+  <li>Draft a release in <code>pkgsrc-core</code>.</li>
+  <li>Select the tag <code>v$VERSION</code>.</li>
+  <li>Upload all artifacts and signatures.</li>
   </ul>
-  <h2 data-number="5.2" id="artwork"><span
-  class="header-section-number">5.2</span> Artwork</h2>
+  <h3 data-number="5.2.2" id="artwork"><span
+  class="header-section-number">5.2.2</span> Artwork</h3>
   <p>If artwork exists, add it to <code>artwork.git</code>.</p>
-  <h2 data-number="5.3" id="website"><span
-  class="header-section-number">5.3</span> Website</h2>
+  <h3 data-number="5.2.3" id="website"><span
+  class="header-section-number">5.2.3</span> Website</h3>
   <p>Update <code>zeppe-lin.github.io</code>:</p>
   <ul>
-  <li>Add release notes as <code>v&lt;VERSION&gt;.md</code>.<br />
-  </li>
-  <li>Update <code>index.md</code> (mandatory).<br />
-  </li>
-  <li>Reference artwork in <code>v&lt;VERSION&gt;.md</code> and
-  <code>index.md</code> if present.<br />
-  </li>
-  <li>Update Handbook and Codebook references if needed.</li>
+  <li>Add release notes as <code>v&lt;VERSION&gt;.md</code>.</li>
+  <li>Update <code>index.md</code> (mandatory).</li>
+  <li>Reference artwork where applicable.</li>
+  <li>Update Handbook and Codebook references if required.</li>
   </ul>
   <hr />
-  <h1 data-number="6" id="postrelease"><span
-  class="header-section-number">6</span> POST‑RELEASE</h1>
+  <h1 data-number="6" id="post-release-operations"><span
+  class="header-section-number">6</span> POST-RELEASE OPERATIONS</h1>
+  <p>After publishing:</p>
   <ul>
-  <li>Announce on mailing list.<br />
-  </li>
-  <li>Monitor early reports.<br />
-  </li>
-  <li>Apply hotfixes only if critical.<br />
-  </li>
-  <li>Release is complete after initial validation by users.</li>
+  <li>Announce the release on the mailing list.</li>
+  <li>Monitor early user reports.</li>
+  <li>Apply hotfixes only when critical.</li>
   </ul>
+  <p>A release is considered complete after initial validation by
+  users.</p>
   <hr />
   <h1 data-number="7" id="appendices"><span
   class="header-section-number">7</span> APPENDICES</h1>
   <h2 data-number="7.1"
-  id="appendix-a-creating-a-new-major-release-branch"><span
-  class="header-section-number">7.1</span> Appendix A: Creating a New
-  Major Release Branch</h2>
-  <p><strong>Purpose:</strong> prepare repositories for a new major
-  release series (e.g., <code>1.x</code> → <code>2.x</code>).<br />
-  <em>Minor and patch releases do not require new branches.</em></p>
-  <p><strong>Steps:</strong></p>
+  id="appendix-a-major-release-branch-creation"><span
+  class="header-section-number">7.1</span> Appendix A: Major Release
+  Branch Creation</h2>
+  <p><strong>Purpose:</strong></p>
+  <p>Prepare repositories for a new major release series (for example,
+  <code>1.x</code> → <code>2.x</code>). Minor and patch releases do not
+  require new branches.</p>
+  <p><strong>Procedure:</strong></p>
   <ol type="1">
-  <li><p>Identify the target major version (e.g., 2.0).</p></li>
-  <li><p>From the current stable branch, create a new branch in each
-  repository:</p>
+  <li>Identify the target major version.</li>
+  <li>From the current stable branch, create a new branch in each
+  repository.</li>
+  </ol>
   <div class="sourceCode" id="cb1"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>current_stable_branch<span class="op">&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div></li>
-  </ol>
-  <p><strong>Example for 2.x release:</strong></p>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div>
+  <p><strong>Example: creating the <code>2.x</code> release
+  series</strong></p>
   <div class="sourceCode" id="cb2"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> core system xorg desktop<span class="kw">;</span> <span class="cf">do</span></span>
@@ -371,7 +404,6 @@
   <li><code>pkgsrc-xorg.git</code></li>
   <li><code>pkgsrc-desktop.git</code></li>
   </ul>
-  <p>This isolates major release work from existing stable series.</p>
   <h2 data-number="7.2" id="appendix-b-rootfs-build-procedure"><span
   class="header-section-number">7.2</span> Appendix B: Rootfs Build
   Procedure</h2>
@@ -382,15 +414,13 @@
   <div class="sourceCode" id="cb3"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root (switch to fakeroot?)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg/db</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE1</span> <span class="dt">\</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
-  <p>Or extract published rootfs from <a
-  href="https://github.com/zeppe-lin/pkgsrc-core/releases/latest">pkgsrc-core
-  releases page</a>:</p>
+  <p>Or extract a published rootfs:</p>
   <div class="sourceCode" id="cb4"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--numeric-owner</span> <span class="at">--xattrs</span> <span class="at">--xattrs-include</span><span class="op">=</span><span class="st">&#39;*&#39;</span> <span class="at">-xpf</span> <span class="dt">\</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  rootfs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE1</span></span></code></pre></div>
@@ -398,46 +428,42 @@
   class="header-section-number">7.2.2</span> Entering the Chroot</h3>
   <div class="sourceCode" id="cb5"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev <span class="va">$ROOTFS_STAGE1</span>/dev</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run <span class="va">$ROOTFS_STAGE1</span>/run</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc proc <span class="va">$ROOTFS_STAGE1</span>/proc</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none <span class="va">$ROOTFS_STAGE1</span>/sys</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 devpts <span class="dt">\</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="va">$ROOTFS_STAGE1</span>/dev/pts</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev  <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run  <span class="va">$ROOTFS_STAGE1</span>/run</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc  proc <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 devpts <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$ROOTFS_STAGE1</span>/dev/pts</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
   <h3 data-number="7.2.3" id="stage-2-build-and-assemble"><span
   class="header-section-number">7.2.3</span> Stage 2: Build and
   Assemble</h3>
-  <p>Build all core packages into Stage 2 directory:</p>
   <div class="sourceCode" id="cb6"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># clone pkgsrc-core first</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src/</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># prepare stage2 dir</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>1.2 <span class="co"># New release VERSION</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE2</span><span class="op">=</span>/tmp/rootfs-<span class="va">${VERSION}</span>-x86_64</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg/db</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># build and install core packages into stage dir</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE2</span> <span class="dt">\</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># verify with revdep</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>1.2 <span class="co"># new release version</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE2</span><span class="op">=</span>/tmp/rootfs-<span class="va">${VERSION}</span>-x86_64</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg/db</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE2</span> <span class="dt">\</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
   <p>Compress artifacts:</p>
   <div class="sourceCode" id="cb7"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> <span class="va">$ROOTFS_STAGE2</span>.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE2</span> .</span>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /var/cache/pkgmk/packages .</span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> <span class="va">$ROOTFS_STAGE2</span>.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE2</span> .</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /var/cache/pkgmk/packages .</span></code></pre></div>
   <p>Cleanup:</p>
   <div class="sourceCode" id="cb8"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
@@ -445,13 +471,19 @@
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/proc</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/sys</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/run</span></code></pre></div>
-  <h2 data-number="7.3" id="appendix-c-signing-artifacts"><span
-  class="header-section-number">7.3</span> Appendix C: Signing
-  Artifacts</h2>
+  <h2 data-number="7.3" id="appendix-c-artifact-signing"><span
+  class="header-section-number">7.3</span> Appendix C: Artifact
+  Signing</h2>
   <div class="sourceCode" id="cb9"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOTFS_STAGE1</span>/tmp</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOT_STAGE1</span>/tmp</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
 </main>
 
 </body>
