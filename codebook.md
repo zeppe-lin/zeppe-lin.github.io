@@ -108,7 +108,8 @@ The order below is mandatory:
 > **Note:**
 >
 > 0. `linux-headers`  
->    Will be introduced once `glibc` is split accordingly.
+>    Will be introduced once `glibc` is split accordingly
+>    ([GH #6](https://github.com/zeppe-lin/pkgsrc-core/issues/6)).
 
 Each package must be rebuilt and verified before proceeding.
 Other packages must not be updated until the toolchain is confirmed
