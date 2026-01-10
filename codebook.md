@@ -115,10 +115,22 @@ Each package must be rebuilt and verified before proceeding.
 Other packages must not be updated until the toolchain is confirmed
 working.
 
+### System Release Metadata
+
+After the toolchain is verified, update `os-release` in the
+`filesystem` package.
+
+Rules:
+
+- Update `VERSION`, `VERSION_ID`, and related fields to match the
+  target release.
+
+- Do not update other core packages until `os-release` is correct.
+
 ### Other Core Packages
 
-After the toolchain is verified, the remaining packages in
-`pkgsrc-core` may be updated.
+After the toolchain is verified and system release metadata is
+updated, the remaining packages in `pkgsrc-core` may be updated.
 
 The following rules apply:
 
