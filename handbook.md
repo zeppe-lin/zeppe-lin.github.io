@@ -1589,9 +1589,9 @@ See `pkgman.conf(5)` for more details.
 This chapter introduced Zeppe-Lin's tools for managing individual
 packages and basic system updates.
 
-In the next chapter, we introduce **Collections** of **Package Sources**
--- a modular approach to organizing and managing software -- with
-`pkgman` serving as the central orchestration tool.
+In the next chapter, **Collections** of **Package Sources** are
+introduced --- a modular approach to organizing and managing
+software --- with `pkgman` serving as the central orchestration tool.
 
 ---
 
