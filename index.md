@@ -74,7 +74,8 @@ Discussion is low-noise and technical.
 
 - **IRC**  
   `#zeppe-lin` on Libera.Chat  
-  <https://web.libera.chat/#zeppe-lin>
+  [Join via web client](https://web.libera.chat/#zeppe-lin) |
+  [View public chat logs](https://libera.catirclogs.org/zeppe-lin/)
 
 - **Mailing Lists**
 
