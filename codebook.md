@@ -356,10 +356,10 @@ umount -R $ROOTFS_STAGE1/run
 cd $ROOT_STAGE1/tmp
 
 gpg --detach-sign --armor \
-    --output rootfs-$VERSION-x86_64.tar.xz \
+    --output rootfs-$VERSION-x86_64.tar.xz.sig \
     rootfs-$VERSION-x86_64.tar.xz
 
 gpg --detach-sign --armor \
-    --output binpkgs-$VERSION-x86_64.tar.xz \
+    --output binpkgs-$VERSION-x86_64.tar.xz.sig \
     binpkgs-$VERSION-x86_64.tar.xz
 ```
