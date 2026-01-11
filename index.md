@@ -20,7 +20,8 @@ computing environment.
 ## Current Release {.unnumbered}
 
 **Zeppe-Lin v1.2**  ("Ghosts in the Rig")  
-Released January 9, 2026
+Released January 9, 2026  
+Includes post-release maintenance updates (v1.2.1).
 
 This is a structural maintenance release focused on logging, cron
 execution, and ABI alignment.
