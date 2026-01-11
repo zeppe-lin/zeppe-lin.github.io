@@ -111,8 +111,12 @@
   id="toc-toolchain-update-order"><span
   class="toc-section-number">3.1.1</span> Toolchain Update
   Order</a></li>
+  <li><a href="#system-release-metadata"
+  id="toc-system-release-metadata"><span
+  class="toc-section-number">3.1.2</span> System Release
+  Metadata</a></li>
   <li><a href="#other-core-packages" id="toc-other-core-packages"><span
-  class="toc-section-number">3.1.2</span> Other Core Packages</a></li>
+  class="toc-section-number">3.1.3</span> Other Core Packages</a></li>
   </ul></li>
   <li><a href="#other-collections" id="toc-other-collections"><span
   class="toc-section-number">3.2</span> Other Collections</a></li>
@@ -266,16 +270,31 @@
   <p><strong>Note:</strong></p>
   <ol start="0" type="1">
   <li><code>linux-headers</code><br />
-  Will be introduced once <code>glibc</code> is split accordingly.</li>
+  Will be introduced once <code>glibc</code> is split accordingly (<a
+  href="https://github.com/zeppe-lin/pkgsrc-core/issues/6">GH
+  #6</a>).</li>
   </ol>
   </blockquote>
   <p>Each package must be rebuilt and verified before proceeding. Other
   packages must not be updated until the toolchain is confirmed
   working.</p>
-  <h3 data-number="3.1.2" id="other-core-packages"><span
-  class="header-section-number">3.1.2</span> Other Core Packages</h3>
-  <p>After the toolchain is verified, the remaining packages in
-  <code>pkgsrc-core</code> may be updated.</p>
+  <h3 data-number="3.1.2" id="system-release-metadata"><span
+  class="header-section-number">3.1.2</span> System Release
+  Metadata</h3>
+  <p>After the toolchain is verified, update <code>os-release</code> in
+  the <code>filesystem</code> package.</p>
+  <p>Rules:</p>
+  <ul>
+  <li><p>Update <code>VERSION</code>, <code>VERSION_ID</code>, and
+  related fields to match the target release.</p></li>
+  <li><p>Do not update other core packages until <code>os-release</code>
+  is correct.</p></li>
+  </ul>
+  <h3 data-number="3.1.3" id="other-core-packages"><span
+  class="header-section-number">3.1.3</span> Other Core Packages</h3>
+  <p>After the toolchain is verified and system release metadata is
+  updated, the remaining packages in <code>pkgsrc-core</code> may be
+  updated.</p>
   <p>The following rules apply:</p>
   <ul>
   <li>Keep patches minimal; prefer upstream fixes.</li>
@@ -478,11 +497,11 @@
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOT_STAGE1</span>/tmp</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
 </main>
 
