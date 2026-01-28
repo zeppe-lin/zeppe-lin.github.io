@@ -2858,22 +2858,58 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   id="kernel-module-management-etcrc.modules"><span
   class="header-section-number">6.2.6</span> Kernel Module Management
   (/etc/rc.modules)</h3>
-  <p>The <code>/etc/rc.modules</code> file is used to load specific
+  <p>The <code>/etc/rc.modules</code> script is used to initialize
   kernel modules at boot. It begins by running
-  <code>/sbin/depmod -a</code> to map module dependencies, ensuring
-  proper functionality. After this, include commands like:</p>
+  <code>/sbin/depmod -a</code> to refresh the module dependency map,
+  ensuring correct load order.</p>
+  <p>After this, <code>rc.modules</code> delegates to the standalone
+  <code>modules-load(8)</code> utility. This utility reads configuration
+  files from the following directories:</p>
+  <ul>
+  <li><code>/etc/modules-load.d</code> — administrator overrides</li>
+  <li><code>/run/modules-load.d</code> — runtime configuration</li>
+  <li><code>/lib/modules-load.d</code> — vendor defaults</li>
+  </ul>
+  <p>Files must end with <code>.conf</code> and contain one module name
+  per line. Empty lines and lines beginning with <code>#</code> are
+  ignored. An empty or comment-only file in
+  <code>/etc/modules-load.d</code> disables vendor or runtime lists of
+  the same name.</p>
+  <p>Example configuration file
+  <code>/etc/modules-load.d/virtio.conf</code>:</p>
   <div class="sourceCode" id="cb167"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin/modprobe</span> virtio_net</span></code></pre></div>
-  <p>For modules requiring parameters, it’s better to configure settings
-  in <code>/etc/modprobe.d/</code> for persistent management. For
-  example, to set options for the <code>snd_hda_intel</code> module,
-  create a file like <code>/etc/modprobe.d/snd_hda_intel.conf</code>
-  with the following content:</p>
-  <pre><code>options snd_hda_intel probe_mask=8</code></pre>
-  <p>This approach ensures parameters are automatically applied when the
-  module is reloaded, making manual specification unnecessary and
-  adhering to best practices.</p>
-  <p>The <code>/etc/rc.modules</code> script is invoked by
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load virtio drivers at boot</span></span>
+<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="ex">virtio-net</span></span>
+<span id="cb167-3"><a href="#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="ex">virtio-blk</span></span></code></pre></div>
+  <blockquote>
+  <p><strong>Note:</strong><br />
+  For the design reasoning behind <code>modules-load</code> and its
+  configuration directories, see <a
+  href="https://github.com/zeppe-lin/modules-load/blob/master/RATIONALE.md">RATIONALE.md</a>
+  in the source tree.</p>
+  </blockquote>
+  <p>For modules requiring parameters, configure them in
+  <code>/etc/modprobe.d/</code> for persistent management.<br />
+  For example, to set options for the <code>snd_hda_intel</code> module,
+  create <code>/etc/modprobe.d/snd_hda_intel.conf</code>:</p>
+  <div class="sourceCode" id="cb168"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: limit snd_hda_intel probing to a specific device</span></span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (probe_mask is hardware-dependent; 8 is only an example)</span></span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="ex">options</span> snd_hda_intel probe_mask=8</span></code></pre></div>
+  <p>This ensures parameters are automatically applied whenever the
+  module is loaded, avoiding manual specification and following best
+  practice.</p>
+  <p>Custom one-off module commands may still be added directly to
+  <code>/etc/rc.modules</code> after the <code>modules-load</code> call,
+  e.g.:</p>
+  <div class="sourceCode" id="cb169"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: load loopback block device support at boot</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin/modprobe</span> loop</span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: force-load Intel HDA sound driver at boot</span></span>
+<span id="cb169-5"><a href="#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (normally auto-loaded; shown here for illustration)</span></span>
+<span id="cb169-6"><a href="#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin/modprobe</span> snd_hda_intel</span></code></pre></div>
+  <p>The <code>/etc/rc.modules</code> script itself is invoked by
   <code>/etc/rc</code> during the boot process.</p>
   <h3 data-number="6.2.7" id="custom-startup-commands-etcrc.local"><span
   class="header-section-number">6.2.7</span> Custom Startup Commands
@@ -2881,9 +2917,9 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   <p>User-defined actions are added to <code>/etc/rc.local</code>,
   executed as last step of a normal boot (invoked by
   <code>/etc/rc.multi</code>). Example:</p>
-  <div class="sourceCode" id="cb169"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start a monitoring app</span></span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/my_monitoring_app</span> <span class="kw">&amp;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb170"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start a monitoring app</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/my_monitoring_app</span> <span class="kw">&amp;</span></span></code></pre></div>
   <h3 data-number="6.2.8"
   id="from-boot-to-login-system-startup-sequence"><span
   class="header-section-number">6.2.8</span> From Boot to Login: System
@@ -2946,13 +2982,13 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   class="header-section-number">6.3.1</span> Hostname Configuration</h3>
   <p>The hostname identifies your system on the network.</p>
   <p>To set it temporarily, use:</p>
-  <div class="sourceCode" id="cb170"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="op">&lt;</span>new_hostname<span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb171"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="op">&lt;</span>new_hostname<span class="op">&gt;</span></span></code></pre></div>
   <p>For a permanent setting, edit <code>/etc/rc.conf</code> and
   set:</p>
-  <div class="sourceCode" id="cb171"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&#39;&lt;new_hostname&gt;&#39;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb172"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOSTNAME</span><span class="op">=</span><span class="st">&#39;&lt;new_hostname&gt;&#39;</span></span></code></pre></div>
   <p>For proper network function, edit <code>/etc/hosts</code> and add
   your hostname to the loopback lines:</p>
   <pre><code>127.0.0.1 localhost &lt;new_hostname&gt;
@@ -2962,18 +2998,18 @@ ruby-scm                        20250216-1          20250401-1</code></pre>
   class="header-section-number">6.3.2</span> Static Address</h3>
   <p>To configure a static IP, edit <code>/etc/rc.d/net</code>. Set the
   network interface, IP, subnet mask, and gateway. For example:</p>
-  <div class="sourceCode" id="cb173"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp11s0</span>
-<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="va">ADDR</span><span class="op">=</span>192.168.1.100</span>
-<span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="va">MASK</span><span class="op">=</span>24</span>
-<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="va">GW</span><span class="op">=</span>192.168.1.1</span></code></pre></div>
+  <div class="sourceCode" id="cb174"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp11s0</span>
+<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="va">ADDR</span><span class="op">=</span>192.168.1.100</span>
+<span id="cb174-3"><a href="#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="va">MASK</span><span class="op">=</span>24</span>
+<span id="cb174-4"><a href="#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="va">GW</span><span class="op">=</span>192.168.1.1</span></code></pre></div>
   <p>Set DNS in <code>/etc/resolv.conf</code>:</p>
   <pre><code>search &lt;your internal domain&gt;
 nameserver &lt;your DNS server&gt;</code></pre>
   <p>Start, stop or restart the service via:</p>
-  <div class="sourceCode" id="cb175"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/net</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb176"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/net</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>net</code> to the
@@ -2984,15 +3020,15 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <p>To get an IP address automatically via DHCP, install the
   <code>dhcpcd</code> package and edit <code>/etc/rc.d/dhcpcd</code> to
   specify the network interface (e.g., <code>enp5s0</code>):</p>
-  <div class="sourceCode" id="cb176"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp5s0</span></code></pre></div>
-  <p>Start, stop, or restart the service via:</p>
   <div class="sourceCode" id="cb177"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
-  <p>Check <code>dhcpcd</code>’s README for potential issues:</p>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>enp5s0</span></code></pre></div>
+  <p>Start, stop, or restart the service via:</p>
   <div class="sourceCode" id="cb178"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <p>Check <code>dhcpcd</code>’s README for potential issues:</p>
+  <div class="sourceCode" id="cb179"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> readme dhcpcd</span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>dhcpcd</code> to the
@@ -3002,24 +3038,24 @@ nameserver &lt;your DNS server&gt;</code></pre>
   class="header-section-number">6.3.4</span> Wireless Network</h3>
   <p>Ensure the wireless interface isn’t blocked. Use
   <code>rfkill(8)</code>:</p>
-  <div class="sourceCode" id="cb179"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> list</span>
-<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb179-4"><a href="#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> unblock <span class="op">&lt;</span>ID<span class="kw">|</span><span class="ex">TYPE</span><span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb180"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> list</span>
+<span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb180-4"><a href="#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rfkill</span> unblock <span class="op">&lt;</span>ID<span class="kw">|</span><span class="ex">TYPE</span><span class="op">&gt;</span></span></code></pre></div>
   <p>Install the <code>wpa-supplicant</code> package and edit
   <code>/etc/rc.d/wpa_supplicant</code> to set the wireless
   interface:</p>
-  <div class="sourceCode" id="cb180"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>wlp1s0</span></code></pre></div>
+  <div class="sourceCode" id="cb181"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEV</span><span class="op">=</span>wlp1s0</span></code></pre></div>
   <p>Update <code>/etc/wpa_supplicant.conf</code> based on your network
   settings. Common security configurations follow.</p>
   <h4 data-number="6.3.4.1" id="wpa-psk-pre-shared-key"><span
   class="header-section-number">6.3.4.1</span> WPA-PSK (Pre-Shared
   Key)</h4>
   <p>Generate a key with <code>wpa_passphrase(8)</code>:</p>
-  <div class="sourceCode" id="cb181"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wpa_passphrase</span> <span class="op">&lt;</span>MYSSID<span class="op">&gt;</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb182"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wpa_passphrase</span> <span class="op">&lt;</span>MYSSID<span class="op">&gt;</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span></span></code></pre></div>
   <p>Example <code>/etc/wpa_supplicant.conf</code>:</p>
   <pre><code>network={
     ssid=&quot;YOUR_NETWORK_NAME&quot;
@@ -3028,8 +3064,8 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <h4 data-number="6.3.4.2" id="wpa-eap-enterprise"><span
   class="header-section-number">6.3.4.2</span> WPA-EAP (Enterprise)</h4>
   <p>Generate a password hash:</p>
-  <div class="sourceCode" id="cb183"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> utf16le <span class="kw">|</span> <span class="ex">openssl</span> md4</span></code></pre></div>
+  <div class="sourceCode" id="cb184"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="op">&lt;</span>PASSPHRASE<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> utf16le <span class="kw">|</span> <span class="ex">openssl</span> md4</span></code></pre></div>
   <p>Example <code>/etc/wpa_supplicant.conf</code>:</p>
   <pre><code>network={
     ssid=&quot;YOUR_NETWORK_NAME&quot;
@@ -3049,10 +3085,10 @@ nameserver &lt;your DNS server&gt;</code></pre>
 }</code></pre>
   <p>For automatic IP, ensure the wireless interface is set in
   <code>/etc/rc.d/dhcpcd</code>. Start the services:</p>
-  <div class="sourceCode" id="cb186"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/wpa_supplicant</span> start</span>
-<span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> start</span></code></pre></div>
+  <div class="sourceCode" id="cb187"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/wpa_supplicant</span> start</span>
+<span id="cb187-3"><a href="#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/dhcpcd</span> start</span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To auto-start service at boot, add <code>wpa_supplicant</code> (and
@@ -3067,22 +3103,22 @@ nameserver &lt;your DNS server&gt;</code></pre>
   <p>Select your timezone from <code>/usr/share/zoneinfo</code> (e.g.,
   <code>Europe/Berlin</code>).</p>
   <p>Set the timezone immediately:</p>
-  <div class="sourceCode" id="cb187"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/Europe/Berlin /etc/localtime</span></code></pre></div>
+  <div class="sourceCode" id="cb188"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sfn</span> /usr/share/zoneinfo/Europe/Berlin /etc/localtime</span></code></pre></div>
   <p>To make it persistent, add the timezone to
   <code>/etc/rc.conf</code>:</p>
-  <div class="sourceCode" id="cb188"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&quot;Europe/Berlin&quot;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb189"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span><span class="st">&quot;Europe/Berlin&quot;</span></span></code></pre></div>
   <h3 data-number="6.4.2" id="system-clock-setup"><span
   class="header-section-number">6.4.2</span> System Clock Setup</h3>
   <p>Manually set the system clock using the
   <code>MMDDhhmmYYYY.ss</code> format:</p>
-  <div class="sourceCode" id="cb189"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
-<span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
+  <div class="sourceCode" id="cb190"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: March 27, 05:35, 2025</span></span>
+<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> 032705352025.00</span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>Manual configuration is temporary. Use NTP for continuous
@@ -3101,9 +3137,9 @@ nameserver &lt;your DNS server&gt;</code></pre>
   system clock.</p>
   <p>After installing <code>chrony</code>, start, stop, or restart the
   service via:</p>
-  <div class="sourceCode" id="cb190"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
+  <div class="sourceCode" id="cb191"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rc.d/chrony</span> [start<span class="kw">|</span><span class="ex">stop</span><span class="kw">|</span><span class="ex">restart]</span></span></code></pre></div>
   <blockquote>
   <p><strong>Important:</strong></p>
   <p>To enable automatic startup, add <code>chrony</code> to the
@@ -3142,8 +3178,8 @@ nameserver &lt;your DNS server&gt;</code></pre>
   default. To provide default files, use <code>/etc/skel</code>.</p>
   <p>The default shell <code>PATH</code> is defined in
   <code>/etc/profile</code>:</p>
-  <div class="sourceCode" id="cb191"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin:/usr/sbin:/bin:/usr/bin</span></span></code></pre></div>
+  <div class="sourceCode" id="cb192"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin:/usr/sbin:/bin:/usr/bin</span></span></code></pre></div>
   <p>This allows access to administrative commands without specifying
   full paths.</p>
   <h3 data-number="6.5.3"
@@ -3262,9 +3298,9 @@ dhcpcd[852]: no global addresses for default route
 dhcpcd[852]: timed out</code></pre>
   <p>You may try adding the following options to
   <code>/etc/dhcpcd/dhcpcd.conf</code>:</p>
-  <div class="sourceCode" id="cb194"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nolink</span>   <span class="co"># Ignore carrier status messages (for buggy drivers)</span></span>
-<span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="ex">noipv6</span>   <span class="co"># Disable IPv6 router advertisements</span></span></code></pre></div>
+  <div class="sourceCode" id="cb195"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nolink</span>   <span class="co"># Ignore carrier status messages (for buggy drivers)</span></span>
+<span id="cb195-2"><a href="#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="ex">noipv6</span>   <span class="co"># Disable IPv6 router advertisements</span></span></code></pre></div>
   <h4 data-number="7.2.1.3" id="client-id-issues"><span
   class="header-section-number">7.2.1.3</span> Client ID Issues</h4>
   <p>If your DHCPv4 network filters Client IDs by MAC address,
