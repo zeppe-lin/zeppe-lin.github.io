@@ -2787,32 +2787,66 @@ See `rc.d(7)` for more information.
 
 ### Kernel Module Management (/etc/rc.modules)
 
-The `/etc/rc.modules` file is used to load specific kernel modules at
+The `/etc/rc.modules` script is used to initialize kernel modules at
 boot.
-It begins by running `/sbin/depmod -a` to map module dependencies,
-ensuring proper functionality.
-After this, include commands like:
+It begins by running `/sbin/depmod -a` to refresh the module
+dependency map, ensuring correct load order.
+
+After this, `rc.modules` delegates to the standalone `modules-load(8)`
+utility.
+This utility reads configuration files from the following directories:
+
+- `/etc/modules-load.d` --- administrator overrides
+- `/run/modules-load.d` --- runtime configuration
+- `/lib/modules-load.d` --- vendor defaults
+
+Files must end with `.conf` and contain one module name per line.
+Empty lines and lines beginning with `#` are ignored.
+An empty or comment-only file in `/etc/modules-load.d` disables vendor
+or runtime lists of the same name.
+
+Example configuration file `/etc/modules-load.d/virtio.conf`:
 
 ```sh
-/sbin/modprobe virtio_net
+# Load virtio drivers at boot
+virtio-net
+virtio-blk
 ```
 
-For modules requiring parameters, it's better to configure settings in
-`/etc/modprobe.d/` for persistent management.
-For example, to set options for the `snd_hda_intel` module, create a
-file like `/etc/modprobe.d/snd_hda_intel.conf` with the following
-content:
+> **Note:**  
+> For the design reasoning behind `modules-load` and its configuration
+> directories, see
+> [RATIONALE.md](https://github.com/zeppe-lin/modules-load/blob/master/RATIONALE.md)
+> in the source tree.
 
-```
+For modules requiring parameters, configure them in `/etc/modprobe.d/`
+for persistent management.  
+For example, to set options for the `snd_hda_intel` module, create
+`/etc/modprobe.d/snd_hda_intel.conf`:
+
+```sh
+# Example: limit snd_hda_intel probing to a specific device
+# (probe_mask is hardware-dependent; 8 is only an example)
 options snd_hda_intel probe_mask=8
 ```
 
-This approach ensures parameters are automatically applied when the
-module is reloaded, making manual specification unnecessary and
-adhering to best practices.
+This ensures parameters are automatically applied whenever the module
+is loaded, avoiding manual specification and following best practice.
 
-The `/etc/rc.modules` script is invoked by `/etc/rc` during the boot
-process.
+Custom one-off module commands may still be added directly to
+`/etc/rc.modules` after the `modules-load` call, e.g.:
+
+```sh
+# Example: load loopback block device support at boot
+/sbin/modprobe loop
+
+# Example: force-load Intel HDA sound driver at boot
+# (normally auto-loaded; shown here for illustration)
+/sbin/modprobe snd_hda_intel
+```
+
+The `/etc/rc.modules` script itself is invoked by `/etc/rc` during the
+boot process.
 
 ### Custom Startup Commands (/etc/rc.local)
 
