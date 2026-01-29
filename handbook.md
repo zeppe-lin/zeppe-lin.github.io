@@ -1476,7 +1476,7 @@ Version:      2.3.1
 Release:      1
 Description:  Access Control List filesystem support
 URL:          http://savannah.nongnu.org/projects/acl
-Dependencies: attr
+Depends on:   attr
 ```
 
 #### Search Package Sources
