@@ -3367,8 +3367,8 @@ simplicity, and a certain irreverent independence.
 The name carries no technical meaning and should not be
 over-interpreted.
 
-Or you can consider it our our 'Whole Lotta Love' for Linux and GNU,
-just renamed!
+Or, if you prefer, you can consider it our "Whole Lotta Love" for
+Linux and GNU --- just renamed!
 
 #### Is Zeppe-Lin a fork of another distribution? {.unnumbered}
 
