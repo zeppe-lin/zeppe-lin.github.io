@@ -2086,14 +2086,14 @@ Lock a package to prevent upgrades indefinitely:
 
 ```sh
 # as root
-pkgman lock vim
+pkgman lock linux
 ```
 
 Unlock a package to resume updates:
 
 ```sh
 # as root
-pkgman unlock vim
+pkgman unlock linux
 ```
 
 Locked packages are useful for maintaining specific software versions
