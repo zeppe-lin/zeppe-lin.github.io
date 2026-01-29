@@ -2187,7 +2187,7 @@ libncurses      6.2-1          vim</code></pre>
   <code>--ignore</code>. Example:</p>
   <div class="sourceCode" id="cb127"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> <span class="at">--ignore</span><span class="op">=</span>vim,screen</span></code></pre></div>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> sysup <span class="at">--deps</span> <span class="at">--depsort</span> <span class="at">--group</span> <span class="at">--ignore</span><span class="op">=</span>linux,linux-firmware</span></code></pre></div>
   <p>Regularly revisit ignored packages to avoid security risks and
   dependency conflicts.</p>
   <h4 data-number="5.3.4.3" id="locking-packages"><span
@@ -2195,11 +2195,11 @@ libncurses      6.2-1          vim</code></pre>
   <p>Lock a package to prevent upgrades indefinitely:</p>
   <div class="sourceCode" id="cb128"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> lock vim</span></code></pre></div>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> lock linux</span></code></pre></div>
   <p>Unlock a package to resume updates:</p>
   <div class="sourceCode" id="cb129"><pre
   class="sourceCode sh"><code class="sourceCode bash"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> unlock vim</span></code></pre></div>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> unlock linux</span></code></pre></div>
   <p>Locked packages are useful for maintaining specific software
   versions critical to workflows.</p>
   <p>See <code>pkgman-lock(8)</code>, <code>pkgman-unlock(8)</code>, and
