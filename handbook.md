@@ -2074,7 +2074,7 @@ Example:
 
 ```sh
 # as root
-pkgman sysup --deps --depsort --group --ignore=vim,screen
+pkgman sysup --deps --depsort --group --ignore=linux,linux-firmware
 ```
 
 Regularly revisit ignored packages to avoid security risks and
