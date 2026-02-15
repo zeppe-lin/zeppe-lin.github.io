@@ -1531,7 +1531,7 @@ Search by description:
 pkgman dsearch -vv archive
 ```
 
-#### 4.6.1.4. Query Dependencies
+#### Query Dependencies
 
 Show direct dependencies:
 
@@ -1551,7 +1551,7 @@ Show detailed dependency tree:
 pkgman dep vim --recursive --tree
 ```
 
-#### 4.6.1.5. Build and Install Packages
+#### Build and Install Packages
 
 Build and install a package with dependencies (recommended):
 
@@ -1570,7 +1570,7 @@ pkgman install --deps --group --force xterm
 
 `--force` skips already installed packages during the retry.
 
-#### 4.6.1.6. Update Installed Packages
+#### Update Installed Packages
 
 Identify outdated packages:
 
