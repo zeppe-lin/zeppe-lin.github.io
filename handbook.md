@@ -782,7 +782,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 To find video and input drivers, run:
 
 ```sh
-# chrooted, as root
+# chrooted
 pkgman search -vv xf86-
 ```
 
@@ -817,16 +817,21 @@ Zeppe-Lin provides package sources for several window managers, but
 users are welcome to choose and contribute package sources for any
 window manager they prefer.
 
-#### Ratpoison
+To find available window managers, run:
 
-Currently, the `pkgsrc-desktop` repository provides the `ratpoison`
-window manager.
-You can install it with:
+```sh
+# chrooted
+pkgman dsearch -vv 'window manager'
+```
+
+Install with:
 
 ```sh
 # chrooted, as root
-pkgman install --deps --group ratpoison
+pkgman install --deps --group [WM]
 ```
+
+Replace `[WM]` with the window manager from the list (e.g., `icewm`).
 
 #### Unofficial: Window Maker
 
