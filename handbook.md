@@ -590,8 +590,6 @@ for p in $(pkgman path linux)/*.patch; do
 done
 ```
 
-vs
-
 > **Important:**
 >
 > It is highly recommended to perform a dry run to check for errors
@@ -1033,28 +1031,31 @@ The high-level tool `pkgman` manages the package source collections
 and orchestrates these low-level tasks for system-wide software
 management.
 
-- **Packages**:
+- **Packages**  
   Compressed archives (e.g., `tar.gz`) containing pre-built software.
 
-- **Package Sources**:
+- **Package Sources**  
   Files required to create these compressed archives (packages).
 
 To work with packages and package sources, Zeppe-Lin provides:
 
-- Low-level tools:
+|||
+|---|---|
+| **Low-Level Tools** ||
+| `pkgmk(8)`    | Build packages from sources              |
+| `pkgadd(8)`   | Install or upgrade a software package    |
+| `pkgrm(8)`    | Remove an installed software package     |
+| `pkginfo(1)`  | Inspect software package information     |
+| `rejmerge(8)` | Assist with upgrade conflicts            |
+| **High-Level Tool** ||
+| `pkgman(1)`   | Unified interface for package management |
 
-  - `pkgutils`: Installs or upgrades, removes, and inspects packages.
-  - `rejmerge`: Assist with upgrade conflicts.
-  - `pkgmk`: Building packages from sources.
+Packages built with `pkgmk(8)` are installed or upgraded using
+`pkgadd(8)`, and removed with `pkgrm(8)`.
+Files rejected during upgrades are resolved with `rejmerge(8)`.
 
-  Packages built with `pkgmk` are installed or upgraded using
-  `pkgutils`, and files rejected during upgrades are resolved with
-  `rejmerge`.
-
-- High-level tool:
-
-  - `pkgman`: Orchestrates package sources, dependencies, and system
-    updates, integrating `pkgutils` and `pkgmk`.
+`pkgman(1)` orchestrates package sources, dependencies, and system
+updates, integrating `pkgmk(8)`, `pkgadd(8)` and `pkgrm(8)`.
 
 ## What is a Package?
 
@@ -1071,11 +1072,11 @@ Zeppe-Lin packages follow a clear naming convention:
 name#version-release.pkg.tar.gz
 ```
 
-Components:
-
-- `name`    -- Package name.
-- `version` -- Version number.
-- `release` -- Build revision.
+| Component | Description |
+|---|---|
+| `name`    | Package name   |
+| `version` | Version number |
+| `release` | Build revision |
 
 Example:
 
@@ -1126,9 +1127,11 @@ usr/share/man/man1/ed.1.gz
 
 `pkgutils` provides the core utilities to handle packages:
 
-- `pkgadd(8)`: Installs or upgrades packages.
-- `pkgrm(8)`: Removes packages.
-- `pkginfo(1)`: Displays package details.
+| Utility | Description |
+|---|---|
+| `pkgadd(8)` | Installs or upgrades packages |
+| `pkgrm(8)` | Removes packages |
+| `pkginfo(1)` | Displays package details |
 
 ### Using pkgutils
 
@@ -1225,9 +1228,11 @@ Each rule in `/etc/pkgadd.conf` follows this format:
 EVENT   PATTERN   ACTION
 ```
 
-- `EVENT`: Currently, only `UPGRADE` is supported.
-- `PATTERN`: A regular expression matching filenames in the package.
-- `ACTION`: `YES` to upgrade files, `NO` to preserve them.
+| Field | Description |
+|---|---|
+| `EVENT`   | Currently, only `UPGRADE` is supported                 |
+| `PATTERN` | A regular expression matching filenames in the package |
+| `ACTION`  | `YES` to upgrade files, `NO` to preserve them          |
 
 Rules are processed sequentially, with the last matching rule taking
 priority.
@@ -1267,21 +1272,34 @@ semi-automatically.
 
 If files are present in `/var/lib/pkg/rejected`, `rejmerge(8)` prompts
 you to decide their fate.
-For each file, you can choose:
+For each file, you'll see a diff and be asked to press a key.
+
+For example, suppose the `bash` package updates `/etc/profile`:
 
 ```
-=======> file
-(diff output between installed file and rejected file)
-[K]eep [U]pgrade [M]erge [D]iff [S]kip
+=======> /etc/profile
+--- /etc/profile        2024-01-17 15:27:31.498548193 +0200
++++ /var/lib/pkg/rejected/etc/profile   2026-01-29 09:37:11.159726066 +0200
+@@ -8,7 +8,6 @@
+
+ export PATH="/sbin:/usr/sbin:/bin:/usr/bin"
+ export LESS="-RX"
+-export LANG=en_US.UTF-8
+
+ umask 022
+
+=======> [K]eep [U]pgrade [M]erge [D]iff [S]kip?
 ```
 
-Legend:
+At this prompt, you press a key to choose:
 
-- `[K]eep`: Retain the current file as it is.
-- `[U]pgrade`: Replace the current file with the new version.
-- `[M]erge`: Combine changes from the current and new versions.
-- `[D]iff`: Display differences between the current and new versions.
-- `[S]kip`: Defer the decision and revisit it later.
+| Key | Action | What it means in this example |
+|---|---|---------------------------------------------|
+| **K** | Keep | Keep your current `/etc/profile` (with `LANG=en_US.UTF-8`) |
+| **U** | Upgrade | Replace with the new package version (without `LANG=en_US.UTF-8`) |
+| **M** | Merge | Interactively combine both versions, so you can keep `LANG` but also accept other changes |
+| **D** | Diff | Re-display the differences shown above |
+| **S** | Skip | Defer the decision; you can revisit later |
 
 See `rejmerge(8)` for details.
 
@@ -1291,10 +1309,12 @@ Configurations for `rejmerge(8)` can be adjusted in
 `/etc/rejmerge.conf`.
 Key settings:
 
-- `rejmerge_diff`: Defines how differences are displayed.
-- `rejmerge_merge`: Controls how files are merged.
-- `EDITOR`: Specifies the editor for merges.
-- `PAGER`: Specifies the pager for differences.
+| Setting | Type | Purpose |
+|---|---|------------------------------------------------|
+| `rejmerge_diff` | function | Defines how differences between files are displayed |
+| `rejmerge_merge` | function | Controls how files are merged interactively |
+| `EDITOR` | variable | Specifies the editor used when manual editing is required |
+| `PAGER` | variable | Specifies the pager used to view differences |
 
 #### Example
 
@@ -1310,6 +1330,13 @@ Use `sdiff(1)` for merging files:
 rejmerge_merge() { sdiff -o $3 $1 $2 ; }
 ```
 
+Set preferred editor and pager:
+
+```sh
+EDITOR=vim
+PAGER=less
+```
+
 See `rejmerge.conf(5)` for more details.
 
 ## Low-level Tools: pkgmk
@@ -1322,9 +1349,11 @@ needed to build and install software.
 
 A **Package Source** typically contains:
 
-- `Pkgfile`: Defines metadata and build steps.
-- `.md5sum`: Ensures the integrity of downloaded files.
-- `.footprint`: Lists expected files in the final package.
+| File | Purpose |
+|--------------|-------------------------------------------|
+| `Pkgfile`    | Defines metadata and build steps          |
+| `.md5sum`    | Ensures the integrity of downloaded files |
+| `.footprint` | Lists expected files in the final package |
 
 A **Package Source** is the basic unit of software organization in
 Zeppe-Lin.
@@ -1338,9 +1367,9 @@ for broader software management workflows.
 
 The `Pkgfile` defines:
 
-- `name`, `version`, `release`: Package identity.
-- `source`: URL to download the software's source code.
-- `build()`: Instructions to compile and package the software.
+- `name`, `version`, `release` --- Package identity.
+- `source` --- URL to download the software's source code.
+- `build()` --- Instructions to compile and package the software.
 
 #### Example
 
@@ -1372,27 +1401,30 @@ into this directory, place the `Pkgfile` inside, and run:
 fakeroot pkgmk -d -cf /dev/null
 ```
 
-- `fakeroot`: Always use to avoid system risks.
-- `-d`: Downloads missing source files.
-- `-cf /dev/null`: Ignores `/etc/pkgmk.conf` and uses defaults.
+- `fakeroot` --- Always use to avoid system risks.
+- `-d` --- Downloads missing source files.
+- `-cf /dev/null` --- Ignores `/etc/pkgmk.conf` and uses defaults.
 
 On the first build, `pkgmk(8)` generates:
 
-- `.footprint`: Tracks package contents.
-- `.md5sum`: Ensures source files integrity.
+- `.footprint` --- Tracks package contents.
+- `.md5sum` --- Ensures source files integrity.
 
 The final package (e.g., `hello#2.12.1-1.pkg.tar.gz`) will be in the
 current directory.
 
 ### Configuring pkgmk
 
-Customize `pkgmk(8)` with `/etc/pkgmk.conf`.  Key settings:
+Customize `pkgmk(8)` with `/etc/pkgmk.conf`.
+Key settings:
 
-- `CFLAGS`, `CXXFLAGS`: Compiler optimization flags.
-- `PKGMK_SOURCE_MIRRORS`: Backup URLs for source archives.
-- `PKGMK_SOURCE_DIR`: Directory for source archives.
-- `PKGMK_PACKAGE_DIR`: Directory for built packages.
-- `PKGMK_WORK_DIR`: Temporary build directory.
+|||
+|------------------------|---------------------------------|
+| `CFLAGS`, `CXXFLAGS`   | Compiler optimization flags     |
+| `PKGMK_SOURCE_MIRRORS` | Backup URLs for source archives |
+| `PKGMK_SOURCE_DIR`     | Directory for source archives   |
+| `PKGMK_PACKAGE_DIR`    | Directory for built packages    |
+| `PKGMK_WORK_DIR`       | Temporary build directory       |
 
 #### Example
 
