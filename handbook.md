@@ -924,17 +924,50 @@ The latest release notes you can obtain
 
 ## Set Release And Sync
 
-Synchronize your local pkgsrc collections to match the new release
-branch.
-Replace `1.x` with the specific release you are upgrading to:
+To upgrade, synchronize your local pkgsrc collections with the new
+release branch.
+Replace `1.x` with the actual release branch you are targeting.
 
-```sh
-# as root
-git -C /usr/src/pkgsrc-core    switch 1.x
-git -C /usr/src/pkgsrc-system  switch 1.x
-git -C /usr/src/pkgsrc-xorg    switch 1.x
-git -C /usr/src/pkgsrc-desktop switch 1.x
-```
+> **Important:**
+>
+> The `1.x` branch applies to all **1.** releases (1.0, 1.1, 1.2, ...).
+> When a new major line appears, switch to its branch (e.g., `2.x`).
+> Verify your release against the
+> [current release](index.html#current-release) or the
+> [pkgsrc-core releases page](https://github.com/zeppe-lin/pkgsrc-core/releases/latest).
+
+1. **Fetch the latest branches** to ensure the release branch is
+   available locally:
+
+   ```sh
+   # as root
+   for x in core system xorg desktop; do
+       git -C /usr/src/pkgsrc-$x fetch --all
+   done
+   ```
+
+2. **Switch each repository** to the new release branch:
+
+   ```sh
+   # as root
+   for x in core system xorg desktop; do
+       git -C /usr/src/pkgsrc-$x switch --track origin/1.x
+   done
+   ```
+
+   If the branch already exists locally, you can omit
+   `--track origin/1.x` and simply run `git switch 1.x`.
+
+3. **Verify branch status**:
+
+   ```sh
+   for x in core system xorg desktop; do
+       git -C /usr/src/pkgsrc-$x status
+   done
+   ```
+
+   This confirms that each collection is now aligned with the chosen
+   release branch.
 
 ### Binary Upgrade
 
