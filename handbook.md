@@ -1451,8 +1451,8 @@ current directory.
 Customize `pkgmk(8)` with `/etc/pkgmk.conf`.
 Key settings:
 
-|||
-|------------------------|---------------------------------|
+| Setting | Purpose |
+|---|---|
 | `CFLAGS`, `CXXFLAGS`   | Compiler optimization flags     |
 | `PKGMK_SOURCE_MIRRORS` | Backup URLs for source archives |
 | `PKGMK_SOURCE_DIR`     | Directory for source archives   |
