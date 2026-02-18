@@ -3026,7 +3026,7 @@ Start, stop or restart the service via:
 
 ```sh
 # as root
-/etc/rc.d/net [start|stop|restart]
+/etc/rc.d/net {start|stop|restart}
 ```
 
 > **Important:**
@@ -3048,7 +3048,7 @@ Start, stop, or restart the service via:
 
 ```sh
 # as root
-/etc/rc.d/dhcpcd [start|stop|restart]
+/etc/rc.d/dhcpcd {start|stop|restart}
 ```
 
 Check `dhcpcd`'s README for potential issues:
@@ -3346,7 +3346,7 @@ After installing `chrony`, start, stop, or restart the service via:
 
 ```sh
 # as root
-/etc/rc.d/chrony [start|stop|restart]
+/etc/rc.d/chrony {start|stop|restart}
 ```
 
 > **Important:**
