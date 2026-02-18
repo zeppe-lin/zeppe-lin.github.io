@@ -3149,6 +3149,155 @@ Start the services:
 > To auto-start service at boot, add `wpa_supplicant` (and `dhcpcd` if
 > using dynamic IP) to the `SERVICES` line in `/etc/rc.conf`.
 
+### Bridge Networking
+
+A bridge allows you to connect a physical interface with virtual
+interfaces so they share the same network.
+This is commonly used for virtualization (e.g., QEMU).
+
+#### Bridge Interface
+
+Create `/etc/rc.d/bridge` to manage the bridge and physical device:
+
+```sh
+#!/bin/sh
+#
+# /etc/rc.d/bridge: start/stop bridge interface
+#
+
+DEV=eth0
+BRIDGE=br0
+
+case $1 in
+start)
+    /sbin/ip link add name $BRIDGE type bridge
+    /sbin/ip link set $BRIDGE up
+    /sbin/ip addr flush dev $DEV
+    /sbin/ip link set $DEV up
+    /sbin/ip link set $DEV master $BRIDGE
+    ;;
+stop)
+    /sbin/ip link set $DEV nomaster
+    /sbin/ip link set $DEV down
+    /sbin/ip link delete $BRIDGE type bridge
+    ;;
+restart)
+    $0 stop
+    $0 start
+    ;;
+status)
+    echo "Status not applicable: no persistent service"
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart|status}"
+    ;;
+esac
+```
+
+Start, stop, or restart the service via:
+
+```sh
+# as root
+/etc/rc.d/bridge {start|stop|restart}
+```
+
+> **Note:**
+>
+> If your system requires kernel modules such as `bridge`, `tun`,
+> `tap`, or `vhost`, list them in `/etc/modules-load.d/bridge.conf`,
+> so they are loaded automatically at boot.
+>
+> Example:
+>
+> ```sh
+> # /etc/modules-load.d/bridge.conf
+>
+> # Ethernet bridge driver
+> bridge
+>
+> # Universal TUN/TAP device driver
+> tun
+>
+> # TAP device driver
+> tap
+>
+> # Host kernel accelerator for virtio
+> vhost
+> ```
+
+#### Tap Interface
+
+A tap device provides a virtual interface for QEMU or other
+virtualization software.
+Attach it to the bridge to allow guest systems to communicate on the
+network.
+
+Create `/etc/rc.d/tap`:
+
+```sh
+#!/bin/sh
+#
+# /etc/rc.d/tap: start/stop tap interface
+#
+
+TAP=tap0
+USER=username
+GROUP=username
+BRIDGE=br0
+
+case $1 in
+start)
+    /sbin/ip tuntap add mode tap user $USER group $GROUP $TAP
+    /sbin/ip link set $TAP up
+    /sbin/ip link set $TAP master $BRIDGE
+    ;;
+stop)
+    /sbin/ip link set $TAP nomaster
+    /sbin/ip link set $TAP down
+    /sbin/ip tuntap del mode tap $TAP
+    ;;
+restart)
+    $0 stop
+    $0 start
+    ;;
+status)
+    echo "Status not applicable: no persistent service"
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart|status}"
+    ;;
+esac
+```
+
+> **Note:**
+>
+> The `USER` and `GROUP` variables define which system account owns
+> the tap device.
+> Set them to the user and group that will run QEMU or other
+> virtualization software.
+> This ensures proper permissions without needing root during guest
+> startup.
+
+Start, stop, or restart the service via:
+
+```sh
+# as root
+/etc/rc.d/tap {start|stop|restart}
+```
+
+> **Important:**  
+> To auto-start both bridge and tap services at boot, add them to the
+> `SERVICES` line in `/etc/rc.conf`:
+> ```sh
+> SERVICES="... net bridge tap"
+> ```
+
+> **Important:**  
+> `/etc/rc.d/bridge` and `/etc/rc.d/tap` services are not part of the
+> base system.  Only configure them if you need virtualization
+> networking.
+> For basic networking, see `net`, `dhcpcd`, and/or `wpa_supplicant`.
+
 ## Time and Date Configuration
 
 ### Timezone Setup
