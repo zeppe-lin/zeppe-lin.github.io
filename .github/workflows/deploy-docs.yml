@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  CNAME: zeppe-lin.org
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -24,8 +27,11 @@ jobs:
         run: |
           echo "Building documentation..."
           make all
-          mkdir -p public
-          cp *.html *.css CNAME robots.txt sitemap.xml public/
+          make WWWDIR=$PWD/public install
+          cd public
+          ../extra/gen_robots.sh  "$CNAME"
+          ../extra/gen_sitemap.sh "$CNAME"
+          echo "$CNAME" > CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
