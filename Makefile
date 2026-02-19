@@ -1,29 +1,13 @@
-# Zeppe-Lin documentation build
+.POSIX:
 
-SITE_DOMAIN = zeppe-lin.org
-CSS      := style.css
-TEMPLATE := template.html.in
-PANDOC   ?= pandoc
-PFLAGS   := -s --from=markdown-ascii_identifiers --to=html \
-		--syntax-highlighting=zenburn --css=$(CSS) \
-		--template=$(TEMPLATE) --toc --number-sections=true
-MD       := $(filter-out README.md,$(wildcard *.md))
-HTML     := $(MD:.md=.html)
-STATIC   := robots.txt sitemap.xml
+include config.mk
 
-all: $(HTML) $(STATIC)
+SUBDIRS = css src
 
-%.html: %.md $(CSS) $(TEMPLATE)
-	@printf '  PANDOC  %s\n' $<
-	@$(PANDOC) $(PFLAGS) $< -o $@
+all install uninstall clean:
+	for subdir in $(SUBDIRS); do (cd $$subdir; $(MAKE) $@); done
 
-robots.txt: gen_robots.sh
-	@./gen_robots.sh $(SITE_DOMAIN)
+release:
+	git tag -a v$(VERSION) -m v$(VERSION)
 
-sitemap.xml: gen_sitemap.sh $(HTML)
-	@./gen_sitemap.sh $(SITE_DOMAIN)
-
-clean:
-	@rm -f $(HTML) $(STATIC)
-
-.PHONY: all clean
+.PHONY: all install uninstall clean release
