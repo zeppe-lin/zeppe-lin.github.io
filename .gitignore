@@ -1,12 +1,6 @@
-# vim undo and swap files
 .*.un~
 *.swp
-
-# backup files
 *.bak
-
-# build artefacts
-*.html
 robots.txt
 sitemap.xml
 public/
