@@ -327,7 +327,7 @@ pkgman install --root=$ROOTFS_STAGE2 \
   --config-append="runscripts no" --force --deps --group -d \
   $(pkgman --config-set="pkgsrcdir /usr/src/pkgsrc-core" printf "%n\n")
 
-revdep
+chroot $ROOTFS_STAGE2 revdep
 ```
 
 Compress artifacts:
