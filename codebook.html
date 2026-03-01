@@ -120,6 +120,10 @@
   </ul></li>
   <li><a href="#other-collections" id="toc-other-collections"><span
   class="toc-section-number">3.2</span> Other Collections</a></li>
+  <li><a href="#package-deprecation-and-removal"
+  id="toc-package-deprecation-and-removal"><span
+  class="toc-section-number">3.3</span> Package Deprecation and
+  Removal</a></li>
   </ul></li>
   <li><a href="#rootfs-build-model" id="toc-rootfs-build-model"><span
   class="toc-section-number">4</span> ROOTFS BUILD MODEL</a>
@@ -313,6 +317,40 @@
   <li><code>pkgsrc-desktop</code></li>
   </ol>
   <p>Failures must be fixed immediately and must not be deferred.</p>
+  <h2 data-number="3.3" id="package-deprecation-and-removal"><span
+  class="header-section-number">3.3</span> Package Deprecation and
+  Removal</h2>
+  <p>Packages may be deprecated when no active maintainer exists or when
+  upstream support has ceased.</p>
+  <p>Rules:</p>
+  <ul>
+  <li>Deprecation must be performed on the current stable branch.
+  <ul>
+  <li><p>Set the Maintainer field in the Pkgfile to
+  UNMAINTAINED.</p></li>
+  <li><p>Commit message must use the form:</p>
+  <pre><code>[notify] &lt;package-name&gt;: marked UNMAINTAINED
+Maintainer set to UNMAINTAINED. Package scheduled for
+removal in the next release unless a new maintainer steps in.</code></pre></li>
+  <li><p><code>[notify]</code> commits ensure mailing lists and IRC are
+  informed.</p></li>
+  </ul></li>
+  <li>Removal must be performed in the next release branch.
+  <ul>
+  <li><p>Commit message must use the form:</p>
+  <pre><code>[notify] &lt;package-name&gt;: removed (unmaintained)
+Package was marked UNMAINTAINED in the previous branch and has
+now been removed for release hygiene.</code></pre></li>
+  </ul></li>
+  <li>This two‑step process ensures:
+  <ul>
+  <li>Users of the current branch are warned before removal.</li>
+  <li>The package disappears only when upgrading to the next release
+  series.</li>
+  <li>Transparency and predictability are preserved across
+  branches.</li>
+  </ul></li>
+  </ul>
   <hr />
   <h1 data-number="4" id="rootfs-build-model"><span
   class="header-section-number">4</span> ROOTFS BUILD MODEL</h1>
@@ -403,19 +441,19 @@
   <li>From the current stable branch, create a new branch in each
   repository.</li>
   </ol>
-  <div class="sourceCode" id="cb1"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>current_stable_branch<span class="op">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>current_stable_branch<span class="op">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>new_branch<span class="op">&gt;</span></span></code></pre></div>
   <p><strong>Example: creating the <code>2.x</code> release
   series</strong></p>
-  <div class="sourceCode" id="cb2"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> core system xorg desktop<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> checkout 1.x</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> checkout <span class="at">-b</span> 2.x</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> push origin 2.x</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> core system xorg desktop<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> checkout 1.x</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> checkout <span class="at">-b</span> 2.x</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> <span class="at">-C</span> pkgsrc-<span class="va">$x</span> push origin 2.x</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
   <p>Repositories involved:</p>
   <ul>
   <li><code>pkgsrc-core.git</code></li>
@@ -430,79 +468,79 @@
   class="header-section-number">7.2.1</span> Stage 1: Initial
   Rootfs</h3>
   <p>Build locally:</p>
-  <div class="sourceCode" id="cb3"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg/db</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE1</span> <span class="dt">\</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE1</span><span class="op">=</span>/mnt/rootfs-stage1</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE1</span>/var/lib/pkg/db</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE1</span> <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span></code></pre></div>
   <p>Or extract a published rootfs:</p>
-  <div class="sourceCode" id="cb4"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--numeric-owner</span> <span class="at">--xattrs</span> <span class="at">--xattrs-include</span><span class="op">=</span><span class="st">&#39;*&#39;</span> <span class="at">-xpf</span> <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  rootfs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE1</span></span></code></pre></div>
+  <div class="sourceCode" id="cb6"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--numeric-owner</span> <span class="at">--xattrs</span> <span class="at">--xattrs-include</span><span class="op">=</span><span class="st">&#39;*&#39;</span> <span class="at">-xpf</span> <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  rootfs-<span class="va">${VERSION}</span>-x86_64.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE1</span></span></code></pre></div>
   <h3 data-number="7.2.2" id="entering-the-chroot"><span
   class="header-section-number">7.2.2</span> Entering the Chroot</h3>
-  <div class="sourceCode" id="cb5"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev  <span class="va">$ROOTFS_STAGE1</span>/dev</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run  <span class="va">$ROOTFS_STAGE1</span>/run</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc  proc <span class="va">$ROOTFS_STAGE1</span>/proc</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none <span class="va">$ROOTFS_STAGE1</span>/sys</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 devpts <span class="dt">\</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$ROOTFS_STAGE1</span>/dev/pts</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
+  <div class="sourceCode" id="cb7"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as root</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/resolv.conf <span class="va">$ROOTFS_STAGE1</span>/etc/resolv.conf</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /dev  <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-B</span> /run  <span class="va">$ROOTFS_STAGE1</span>/run</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> proc  proc <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> sysfs none <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> devpts <span class="at">-o</span> noexec,nosuid,gid=tty,mode=0620 devpts <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$ROOTFS_STAGE1</span>/dev/pts</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE1</span> /bin/bash</span></code></pre></div>
   <h3 data-number="7.2.3" id="stage-2-build-and-assemble"><span
   class="header-section-number">7.2.3</span> Stage 2: Build and
   Assemble</h3>
-  <div class="sourceCode" id="cb6"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>1.2 <span class="co"># new release version</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE2</span><span class="op">=</span>/tmp/rootfs-<span class="va">${VERSION}</span>-x86_64</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg/db</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE2</span> <span class="dt">\</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ex">revdep</span></span></code></pre></div>
-  <p>Compress artifacts:</p>
-  <div class="sourceCode" id="cb7"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> <span class="va">$ROOTFS_STAGE2</span>.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE2</span> .</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /var/cache/pkgmk/packages .</span></code></pre></div>
-  <p>Cleanup:</p>
   <div class="sourceCode" id="cb8"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/dev</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/proc</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/sys</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/run</span></code></pre></div>
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /usr/src</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zeppe-lin/pkgsrc-core <span class="at">--branch</span> 1.x</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>1.2 <span class="co"># new release version</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">ROOTFS_STAGE2</span><span class="op">=</span>/tmp/rootfs-<span class="va">${VERSION}</span>-x86_64</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="va">$ROOTFS_STAGE2</span>/var/lib/pkg/db</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgman</span> install <span class="at">--root</span><span class="op">=</span><span class="va">$ROOTFS_STAGE2</span> <span class="dt">\</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--config-append</span><span class="op">=</span><span class="st">&quot;runscripts no&quot;</span> <span class="at">--force</span> <span class="at">--deps</span> <span class="at">--group</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">pkgman</span> <span class="at">--config-set</span><span class="op">=</span><span class="st">&quot;pkgsrcdir /usr/src/pkgsrc-core&quot;</span> printf <span class="st">&quot;%n\n&quot;</span><span class="va">)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> <span class="va">$ROOTFS_STAGE2</span> revdep</span></code></pre></div>
+  <p>Compress artifacts:</p>
+  <div class="sourceCode" id="cb9"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in chroot, as root</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> <span class="va">$ROOTFS_STAGE2</span>.tar.xz <span class="at">-C</span> <span class="va">$ROOTFS_STAGE2</span> .</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cJf</span> /tmp/binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /var/cache/pkgmk/packages .</span></code></pre></div>
+  <p>Cleanup:</p>
+  <div class="sourceCode" id="cb10"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/dev</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/proc</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/sys</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-R</span> <span class="va">$ROOTFS_STAGE1</span>/run</span></code></pre></div>
   <h2 data-number="7.3" id="appendix-c-artifact-signing"><span
   class="header-section-number">7.3</span> Appendix C: Artifact
   Signing</h2>
-  <div class="sourceCode" id="cb9"><pre
-  class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOT_STAGE1</span>/tmp</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
+  <div class="sourceCode" id="cb11"><pre
+  class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$ROOT_STAGE1</span>/tmp</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    rootfs-<span class="va">$VERSION</span>-x86_64.tar.xz</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--detach-sign</span> <span class="at">--armor</span> <span class="dt">\</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz.sig <span class="dt">\</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    binpkgs-<span class="va">$VERSION</span>-x86_64.tar.xz</span></code></pre></div>
 </main>
 
 </body>
