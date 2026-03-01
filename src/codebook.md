@@ -150,6 +150,40 @@ this order:
 
 Failures must be fixed immediately and must not be deferred.
 
+## Package Deprecation and Removal
+
+Packages may be deprecated when no active maintainer exists or when
+upstream support has ceased.
+
+Rules:
+
+- Deprecation must be performed on the current stable branch.
+  - Set the Maintainer field in the Pkgfile to UNMAINTAINED.
+  - Commit message must use the form:
+
+    ```
+    [notify] <package-name>: marked UNMAINTAINED
+    Maintainer set to UNMAINTAINED. Package scheduled for
+    removal in the next release unless a new maintainer steps in.
+    ```
+
+  - `[notify]` commits ensure mailing lists and IRC are informed.
+
+- Removal must be performed in the next release branch.
+  - Commit message must use the form:
+
+    ```
+    [notify] <package-name>: removed (unmaintained)
+    Package was marked UNMAINTAINED in the previous branch and has
+    now been removed for release hygiene.
+    ```
+
+- This two‑step process ensures:
+  - Users of the current branch are warned before removal.
+  - The package disappears only when upgrading to the next release
+    series.
+  - Transparency and predictability are preserved across branches.
+
 ---
 
 # ROOTFS BUILD MODEL
