@@ -116,15 +116,14 @@ Use `parted(8)` to partition the disk:
 
 ```sh
 # as root
-parted -s /dev/sda <<'EOF'
-mklabel gpt
-mkpart ESP fat32 1MiB 513MiB
-set 1 boot on
-name 1 efiboot
-mkpart primary 513MiB 100%
-name 2 luks
-quit
-EOF
+parted /dev/sda
+(parted) mklabel gpt
+(parted) mkpart ESP fat32 1MiB 513MiB
+(parted) set 1 boot on
+(parted) name 1 efiboot
+(parted) mkpart primary 513MiB 100%
+(parted) name 2 luks
+(parted) quit
 ```
 
 Encrypt `/dev/sda2` with LUKS and map it:
