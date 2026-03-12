@@ -459,10 +459,10 @@ the previous one:
 # chrooted, as root
 cd /usr/src/
 URL=https://github.com/zeppe-lin
-git clone ${URL}/pkgsrc-core    --branch 1.x
-git clone ${URL}/pkgsrc-system  --branch 1.x
-git clone ${URL}/pkgsrc-xorg    --branch 1.x
-git clone ${URL}/pkgsrc-desktop --branch 1.x
+git clone ${URL}/pkgsrc-core.git    --branch 1.x
+git clone ${URL}/pkgsrc-system.git  --branch 1.x
+git clone ${URL}/pkgsrc-xorg.git    --branch 1.x
+git clone ${URL}/pkgsrc-desktop.git --branch 1.x
 ```
 
 > **Important:**
