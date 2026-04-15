@@ -1,23 +1,22 @@
-# Zeppe-Lin Documentation
+OVERVIEW
+========
 
-This repository contains the source files for the official Zeppe-Lin
-documentation: handbook, codebook, release notes, and website index.
+This repository contains the sources for the official Zeppe-Lin
+documentation: handbook, codebook, release notes, and website
+homepage.
 
 Published at:
 
 - <https://zeppe-lin.github.io/>
 - <https://zeppe-lin.org/>
 
-## Build
+See repository branches for per-release updates.
+By default the `master` branch is empty.
 
-```sh
-make all
-make WWWDIR=$PWD/public install
-```
+---
 
-The GitHub Actions workflow handles deployment to Pages automatically.
-
-## License
+LICENSE
+=======
 
 This documentation is licensed under the
 [Creative Commons Attribution‑ShareAlike 3.0 Unported (CC BY‑SA 3.0)](https://creativecommons.org/licenses/by-sa/3.0/).
