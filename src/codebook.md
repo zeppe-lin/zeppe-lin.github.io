@@ -117,13 +117,12 @@ working.
 
 ### System Release Metadata
 
-After the toolchain is verified, update `os-release` in the
-`filesystem` package.
+After the toolchain is verified, update `os-release` package.
 
 Rules:
 
 - Update `VERSION`, `VERSION_ID`, and related fields to match the
-  target release.
+  target release in `os-release` file.
 
 - Do not update other core packages until `os-release` is correct.
 
