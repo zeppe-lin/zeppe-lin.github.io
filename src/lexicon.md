@@ -726,6 +726,10 @@ Preference for coherence over unrestricted state-space freedom.
 Removing explicit models until users themselves become the abstraction
 layer.
 
+## sacred KISS
+
+Doctrine that every explicit model risks spiritual corruption.
+
 ## cathedral engineering
 
 Constructing rigid semantic centers.
