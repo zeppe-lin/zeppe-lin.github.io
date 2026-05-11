@@ -350,7 +350,8 @@ Abstraction depending primarily on user virtue for correctness.
 
 ## undefined ritual zone
 
-Operational area where behavior usually works but no invariant exists.
+Operational area where behavior often works despite lacking
+enforceable semantics.
 
 ## semantic gravity
 
