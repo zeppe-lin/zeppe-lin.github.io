@@ -158,7 +158,7 @@ indirectly through ecology adaptation.
 
 ## bastard
 
-Adaptive operator compensating manually for missing invariants,
+Operator compensating manually for missing invariants,
 undefined boundaries, or folklore semantics.
 
 ## elder bastard
