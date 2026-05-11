@@ -341,7 +341,8 @@ actually originates.
 
 ## semantic split-brain
 
-Multiple incompatible realities coexisting operationally.
+Multiple incompatible authority surfaces simultaneously pretending to
+describe one coherent operation.
 
 ## trust-me-bro interface
 
