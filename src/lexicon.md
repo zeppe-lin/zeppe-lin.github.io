@@ -121,8 +121,8 @@ The invariant survives socially after enforcement died structurally.
 
 ## necromancy
 
-Reconstructing coherence from dead assumptions and fossilized
-expectations.
+Reconstructing operational coherence from fossilized assumptions and
+inherited contradictions.
 
 ## semantic séance
 
