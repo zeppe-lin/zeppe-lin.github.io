@@ -467,7 +467,7 @@ Local optimization corrupting long-term convergence behavior.
 
 ## bifurcation event
 
-Point where ecosystem splits into incompatible operational cultures.
+Moment ecosystem splits into incompatible operational cultures.
 
 ## control inversion
 
