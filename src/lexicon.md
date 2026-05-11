@@ -266,7 +266,7 @@ Accumulation of abandoned interfaces nobody dares remove.
 
 ## rediscovery loop
 
-Recurring relearning of previously solved failures because
+Recurring relearning of previously solved failures after
 institutional memory collapsed.
 
 ## operational superstition
