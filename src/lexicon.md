@@ -145,7 +145,7 @@ resonate together.
 
 ## cursed attractor
 
-Locally convenient behavior causing long-term ecosystem deformation.
+Locally convenient behavior producing long-term ecosystem deformation.
 
 ## semantic afterlife
 
