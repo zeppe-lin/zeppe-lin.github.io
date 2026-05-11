@@ -731,9 +731,9 @@ System simplicity preserved by externalizing suffering into operators.
 
 ## ZPLN
 
-Religion of enforced convergence.
+Religion of enforced semantic convergence.
 
-The system absorbs suffering so users do not become infrastructure.
+System absorbs invariant burden so users do not become infrastructure.
 
 ## folklore-driven system
 
