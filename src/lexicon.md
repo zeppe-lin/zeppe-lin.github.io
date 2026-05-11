@@ -201,7 +201,8 @@ semantics elegantly.
 
 ## entropy janitor
 
-Maintainer continuously cleaning emergent states nobody modeled.
+Maintainer continuously cleaning emergent states nobody formally
+modeled.
 
 ## semantic archaeologist
 
