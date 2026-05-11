@@ -429,7 +429,8 @@ Interface implying control over dynamics it cannot actually regulate.
 
 ## feedback hallucination
 
-Users believe corrective feedback exists, but the loop is disconnected.
+Users believe corrective feedback exists while the loop is
+structurally disconnected.
 
 ## open-loop engineering
 
