@@ -336,8 +336,8 @@ Boundary across which semantics remain mechanically coherent.
 
 ## authority fracture
 
-Mismatch between where users think meaning comes from and where it
-actually comes from.
+Mismatch between where users believe meaning originates and where it
+actually originates.
 
 ## semantic split-brain
 
