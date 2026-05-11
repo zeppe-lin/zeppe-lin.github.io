@@ -770,8 +770,8 @@ freedom.
 
 ## KISS necromancy
 
-Removing explicit models until users themselves become the abstraction
-layer.
+Removing explicit models until operators themselves become the
+abstraction layer.
 
 ## sacred KISS
 
