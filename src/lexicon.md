@@ -660,7 +660,8 @@ ecology still depends on them.
 
 ## semantic blood pact
 
-Undocumented dependency silently accepted as permanent reality.
+Undocumented dependency silently accepted as permanent operational
+reality.
 
 ## ecosystem memory leak
 
