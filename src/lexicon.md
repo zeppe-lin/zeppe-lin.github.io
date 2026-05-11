@@ -507,7 +507,7 @@ Formerly authoritative contract becoming operationally irrelevant.
 
 ## orphaned feedback loop
 
-Validation mechanism no longer connected to decision-making.
+Validation mechanism no longer connected to actual decisions.
 
 ## compensatory overfitting
 
