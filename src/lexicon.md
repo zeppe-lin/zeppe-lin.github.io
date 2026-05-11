@@ -641,8 +641,7 @@ incompatible truths.
 
 ## invariant gravity well
 
-Strongly enforced semantic center pulling surrounding behavior into
-coherence.
+Strong semantic center pulling surrounding behavior toward coherence.
 
 ## semantic dark matter
 
