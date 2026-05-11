@@ -598,7 +598,7 @@ Permanent interface deformation caused by compatibility trauma.
 ## local optimum cemetery
 
 Infrastructure graveyard full of solutions that solved immediate pain
-while murdering future coherence.
+while destroying future coherence.
 
 ---
 
