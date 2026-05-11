@@ -860,6 +860,7 @@ State where behavior is neither guaranteed nor forbidden.
 * “One bastard’s workaround is another generation’s undocumented
   dependency.”
 * “If the code cannot explain the behavior, folklore will.”
+* “Every ecosystem eventually documents its ghosts. Usually too late.”
 
 ---
 
