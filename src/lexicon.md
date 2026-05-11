@@ -442,7 +442,7 @@ Software continuously validating effects against enforced invariants.
 
 ## unstable equilibrium
 
-System appears operational until tiny perturbation causes semantic
+System appearing stable until tiny perturbation triggers semantic
 cascade.
 
 ## compensatory oscillation
