@@ -360,8 +360,8 @@ actually provides.
 
 ## ambiguity budget
 
-Maximum semantic uncertainty an ecosystem can survive before
-fragmentation.
+Maximum semantic uncertainty an ecosystem can absorb before
+fragmentation begins.
 
 ## invariant debt
 
