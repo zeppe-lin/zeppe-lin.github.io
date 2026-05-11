@@ -290,7 +290,7 @@ incoherence.
 
 ## ecosystem fracture
 
-Divergence into incompatible operational realities.
+Divergence into mutually incompatible operational realities.
 
 ## wrapper proliferation event
 
