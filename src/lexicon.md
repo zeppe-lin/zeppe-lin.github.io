@@ -434,7 +434,7 @@ structurally disconnected.
 
 ## open-loop engineering
 
-Software acting without observing consequences of its own actions.
+Software acting without validating consequences of its own behavior.
 
 ## closed-loop engineering
 
