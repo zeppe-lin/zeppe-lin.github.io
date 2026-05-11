@@ -511,8 +511,8 @@ Validation mechanism no longer connected to actual decisions.
 
 ## compensatory overfitting
 
-Users becoming experts at surviving broken environments instead of
-improving structure.
+Operators becoming experts at surviving broken environments instead of
+improving them.
 
 ## semantic phase transition
 
