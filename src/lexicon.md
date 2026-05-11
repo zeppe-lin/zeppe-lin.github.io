@@ -79,8 +79,8 @@ maintainer, or enforcement mechanism disappeared.
 
 ## semantic ghost
 
-Expectation still shaping behavior despite no longer being
-mechanically guaranteed anywhere.
+Residual semantic expectation surviving after the authoritative
+guarantee disappeared.
 
 ## undead behavior
 
