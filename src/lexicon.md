@@ -404,7 +404,8 @@ them.
 
 ## semantic overloading
 
-Single primitive forced to carry unrelated meanings.
+Single primitive forced to carry incompatible or unrelated meanings
+simultaneously.
 
 ## accidental protocol
 
