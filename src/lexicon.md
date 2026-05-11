@@ -172,7 +172,8 @@ Human functioning as missing subsystem.
 
 ## folklore priest
 
-User transmitting operational truth socially instead of mechanically.
+Operator transmitting operational truth socially instead of
+mechanically.
 
 ## semantic undertaker
 
