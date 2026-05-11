@@ -571,7 +571,7 @@ Ambiguity capable of mutating arbitrarily downstream.
 
 ## semantic blast radius
 
-How far misunderstanding propagates through ecosystem layers.
+Distance misunderstanding propagates through ecosystem layers.
 
 ## attractor basin
 
