@@ -631,8 +631,8 @@ Forcing fragmented ecosystem behavior back toward shared semantics.
 
 ## semantic immune response
 
-Ecosystem reaction against abstractions perceived as dangerous or
-authoritarian.
+Ecosystem reaction against abstractions perceived as dangerous,
+coercive, or spiritually impure.
 
 ## distributed schizophrenia
 
