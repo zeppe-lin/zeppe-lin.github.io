@@ -328,7 +328,7 @@ Explicit behavioral boundary.
 
 ## semantic authority surface
 
-Place where meaning is actually determined.
+Location where meaning is actually determined.
 
 ## invariant surface
 
