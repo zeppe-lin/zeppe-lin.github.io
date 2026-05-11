@@ -191,7 +191,8 @@ reappeared again.
 
 ## wrapper warlock
 
-User building increasingly elaborate shells around incoherent tooling.
+User constructing increasingly elaborate shells around incoherent
+tooling.
 
 ## coping virtuoso
 
