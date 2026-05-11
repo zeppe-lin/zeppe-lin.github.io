@@ -645,8 +645,8 @@ Strong semantic center pulling surrounding behavior toward coherence.
 
 ## semantic dark matter
 
-Undocumented assumptions exerting enormous influence despite
-invisibility.
+Undocumented assumptions exerting enormous operational influence
+despite remaining invisible.
 
 ## control necromancer
 
