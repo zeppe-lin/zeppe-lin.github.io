@@ -74,7 +74,7 @@ itself as essential complexity.
 
 ## ghost
 
-Lingering causal structure surviving after its originating rationale,
+Residual causal structure surviving after the original rationale,
 maintainer, or enforcement mechanism disappeared.
 
 ## semantic ghost
