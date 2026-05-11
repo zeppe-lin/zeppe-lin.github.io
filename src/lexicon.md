@@ -395,8 +395,7 @@ Gradual weakening of enforceable guarantees.
 
 ## abstraction poisoning
 
-Interface becoming actively misleading while still technically
-functional.
+Interface becoming misleading while remaining technically functional.
 
 ## hallucinated correctness
 
