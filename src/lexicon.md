@@ -257,7 +257,8 @@ Advanced ritual knowledge required for ordinary workflows.
 
 ## entropy export
 
-Preserving local simplicity by externalizing systemic complexity.
+Preserving local simplicity by externalizing systemic complexity
+elsewhere.
 
 ## semantic landfill
 
