@@ -756,7 +756,7 @@ enforce.
 ## user-space garbage collector
 
 Ecosystem stability achieved by exhausting or filtering incompatible
-users.
+operators.
 
 ## semantic libertarianism
 
