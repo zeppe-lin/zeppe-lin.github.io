@@ -525,8 +525,8 @@ semantics.
 
 ## distributed control fiction
 
-Belief that users are "in control" while nobody possesses enough
-global visibility to reason coherently.
+Belief that “users are in control” while no participant possesses
+enough visibility to reason compositionally about the system.
 
 ---
 
