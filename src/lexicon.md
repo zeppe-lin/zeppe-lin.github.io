@@ -697,12 +697,12 @@ folklore.
 
 ## first law of bastard thermodynamics
 
-Complexity cannot be destroyed.
-Only transferred.
+Every unenforced semantic boundary tends toward folklore.
 
 ## second law of bastard thermodynamics
 
-Every unenforced semantic boundary tends toward folklore.
+Operational folklore tends to accumulate faster than institutions
+remove it.
 
 ## third law of bastard thermodynamics
 
