@@ -320,7 +320,14 @@ expectation.
 
 ## ghost invariant
 
-Invariant still assumed after enforcement vanished.
+Formerly enforced invariant whose original enforcement mechanism
+vanished long ago, yet ecosystem behavior still unconsciously orbits
+its historical shape.
+
+Unlike a [zombie invariant](#zombie-invariant), operators no longer
+necessarily remember the invariant explicitly.
+The ecosystem merely inherited deformation around its former
+existence.
 
 ## contract
 
