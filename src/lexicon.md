@@ -136,7 +136,7 @@ crystallize around them.
 
 ## demonology
 
-Classification of recurring failure spirits inhabiting infrastructure.
+Classification of recurring infrastructure failure patterns.
 
 ## semantic poltergeist
 
