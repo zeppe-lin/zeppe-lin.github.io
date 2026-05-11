@@ -727,7 +727,7 @@ Isolating ambiguity so it cannot infect surrounding semantics.
 
 Religion of survivable entropy.
 
-The system remains pure by externalizing suffering.
+System simplicity preserved by externalizing suffering into operators.
 
 ## ZPLN
 
