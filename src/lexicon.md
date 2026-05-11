@@ -355,7 +355,8 @@ enforceable semantics.
 
 ## semantic gravity
 
-Tendency of users to infer stronger guarantees than actually provided.
+Tendency of users to infer stronger guarantees than the interface
+actually provides.
 
 ## ambiguity budget
 
