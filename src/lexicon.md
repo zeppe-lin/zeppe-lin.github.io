@@ -321,8 +321,8 @@ expectation.
 ## ghost invariant
 
 Formerly enforced invariant whose original enforcement mechanism
-vanished long ago, yet ecosystem behavior still unconsciously orbits
-its historical shape.
+vanished long ago, yet ecosystem behavior still deforms around its
+historical shape.
 
 Unlike a [zombie invariant](#zombie-invariant), operators no longer
 necessarily remember the invariant explicitly.
