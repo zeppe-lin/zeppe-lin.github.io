@@ -105,7 +105,19 @@ around them.
 
 ## zombie invariant
 
-Property everyone assumes exists although nothing enforces it anymore.
+Invariant socially assumed to exist despite no longer being
+mechanically enforced.
+
+Unlike a semantic ghost, a zombie invariant still actively shapes
+operational decisions.
+
+Typical form:
+
+- “everyone knows not to do that”
+- “the script assume this”
+- “it usually behaves correctly if operators stay disciplined”
+
+The invariant survives socially after enforcement died structurally.
 
 ## necromancy
 
