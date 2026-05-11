@@ -177,7 +177,8 @@ mechanically.
 
 ## semantic undertaker
 
-Maintainer cataloguing dead assumptions and decomposing abstractions.
+Maintainer cataloguing dead assumptions and decomposing lying
+abstractions.
 
 ## ghost shepherd
 
