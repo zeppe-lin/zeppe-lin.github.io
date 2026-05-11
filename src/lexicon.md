@@ -54,7 +54,7 @@ It migrates:
 - into future maintainers
 - into institutional suffering
 
-A distro is ultimately defined by where complexity is allowed to
+A distro is ultimately defined by where complexity is permitted to
 accumulate.
 
 Not all complexity is equal:
