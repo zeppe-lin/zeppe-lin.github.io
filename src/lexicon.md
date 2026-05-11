@@ -575,7 +575,7 @@ Distance misunderstanding propagates through ecosystem layers.
 
 ## attractor basin
 
-Stable behavioral pattern users naturally converge toward.
+Stable behavioral pattern ecosystem naturally converge toward.
 
 ## metastable basin
 
