@@ -651,7 +651,7 @@ despite remaining invisible.
 ## control necromancer
 
 Maintainer attempting to restore enforceable feedback loops to
-folklore systems.
+folklore-driven systems.
 
 ## abstraction burial ground
 
