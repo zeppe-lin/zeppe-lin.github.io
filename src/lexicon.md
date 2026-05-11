@@ -378,7 +378,7 @@ Accidental behavior mistaken for stable contract.
 
 ## semantic leak
 
-Internal detail escaping into public meaning.
+Internal implementation detail escaping into public meaning.
 
 ## semantic drift
 
