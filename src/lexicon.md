@@ -303,7 +303,7 @@ Workarounds layered atop workarounds atop workarounds.
 
 ## metastasis layer
 
-Workaround that became infrastructure.
+Workaround that silently became infrastructure.
 
 ---
 
