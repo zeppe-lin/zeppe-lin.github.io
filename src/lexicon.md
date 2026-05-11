@@ -187,7 +187,7 @@ Operator preventing undead semantics from escaping containment.
 ## patch necromancer
 
 Maintainer reviving decade-old fixes because the same pathology
-returned again.
+reappeared again.
 
 ## wrapper warlock
 
