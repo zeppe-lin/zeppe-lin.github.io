@@ -6,27 +6,29 @@ title: Zeppe-Lin House Lexicon
 
 ## Applied Cybernetic Necromancy in Haunted Infrastructure
 
-> "The system remembers nothing. The bastards remember everything."
+> “The system remembers nothing.
+> The bastards remember everything.“
 
 ---
 
 # Introduction
 
-This document emerged from long-form systems discussions around
+This document emerged from long-form autopsies around
 semantic drift, invariant collapse, folklore-driven ecosystems,
-cybernetics, package-management semantics, operational pathology, and
-the strange anthropology of UNIX-like infrastructure.
+cybernetics, package-management semantics, operational pathology,
+and the anthropology of long-lived UNIX infrastructure.
 
 The language is intentionally bastardized.
 
 Partly because IRC dialect evolved into compressed systems-theory
 poetry.  
-Partly because conventional engineering language often fails to
-describe what actually happens in long-lived software ecologies.  
-Partly because once a system becomes sufficiently haunted, technical
-vocabulary alone stops being expressive enough.
+Partly because normal engineering language often lacks vocabulary for
+what actually happens inside aging software ecologies.  
+Partly because once infrastructure becomes sufficiently haunted,
+conventional terminology stops being expressive enough.
 
-This lexicon attempts to formalize the in-house terminology.
+This lexicon exists to formalize operational ghosts before they
+fossilize into invisible culture.
 
 Not as a joke.
 But also absolutely as a joke.
