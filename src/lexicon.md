@@ -409,7 +409,7 @@ simultaneously.
 
 ## accidental protocol
 
-Undocumented behavior ecosystems start depending on.
+Undocumented behavior ecosystems begin depending upon compositionally.
 
 ---
 
