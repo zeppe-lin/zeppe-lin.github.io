@@ -150,7 +150,7 @@ Locally convenient behavior producing long-term ecosystem deformation.
 ## semantic afterlife
 
 Period where deleted behavior continues influencing runtime
-indirectly.
+indirectly through ecology adaptation.
 
 ---
 
