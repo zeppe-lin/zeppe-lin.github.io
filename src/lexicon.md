@@ -35,38 +35,33 @@ But also absolutely as a joke.
 
 xDDDD
 
----
+Complexity in long-lived systems rarely vanishes cleanly.
 
-# Core Principle
+When unresolved structurally, operational burden tends to migrate:
 
-## complexity displacement
-
-Complexity rarely disappears.
-
-It migrates:
-
-- into code
-- into interfaces
+- into operators
 - into wrappers
-- into operational discipline
-- into documentation
 - into folklore
+- into institutional memory
+- into compatibility layers
 - into future maintainers
-- into institutional suffering
 
-A distro is ultimately defined by where complexity is permitted to
-accumulate.
+A distro is ultimately defined by where it permits unresolved burden
+to accumulate.
 
 Not all complexity is equal:
 
-- essential complexity --- inherent to the problem domain
-- accidental complexity --- produced by poor modeling or
-  implementation
-- optional complexity --- introduced by non-essential features or
-  ambitions
+- essential complexity
+  --- inherent to the problem domain
 
-Most operational horror emerges when accidental complexity disguises
-itself as essential complexity.
+- accidental complexity
+  --- produced by poor modeling or implementation
+
+- optional complexity
+  --- introduced by non-essential features or ambitions
+
+Most infrastructure horror emerges when accidental complexity
+successfully disguises itself as essential complexity.
 
 ---
 
