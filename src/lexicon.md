@@ -485,7 +485,7 @@ abstractions.
 
 ## invariant starvation
 
-Condition where no layer possesses enough authority to enforce
+Condition where no layer possesses sufficient authority to enforce
 correctness.
 
 ## convergence engine
