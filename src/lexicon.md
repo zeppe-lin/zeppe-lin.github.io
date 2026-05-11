@@ -224,7 +224,7 @@ infrastructure.
 
 ## heat sink operator
 
-Human absorbing ecosystem chaos manually.
+Human absorbing ecosystem entropy manually.
 
 ---
 
