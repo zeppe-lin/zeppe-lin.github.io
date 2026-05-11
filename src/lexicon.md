@@ -281,7 +281,7 @@ protected against.
 ## semantic sinkhole
 
 Abstraction consuming increasing maintenance energy without
-stabilizing correctness.
+stabilizing semantics.
 
 ## local survivability
 
