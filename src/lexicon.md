@@ -369,7 +369,8 @@ Future instability accumulated by tolerating unenforced assumptions.
 
 ## semantic compression artifact
 
-Tiny interface carrying vastly more implied meaning than specified.
+Tiny interface carrying vastly more implied meaning than explicitly
+specified.
 
 ## implementation masquerading as interface
 
