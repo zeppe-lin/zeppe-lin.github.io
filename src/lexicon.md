@@ -861,12 +861,12 @@ State where behavior is neither guaranteed nor forbidden.
 This document is simultaneously:
 
 * systems theory
-* distributed systems anthropology
-* infrastructure pathology
 * cybernetics
+* infrastructure pathology
+* distributed systems anthropology
 * UNIX folklore analysis
 * operational trauma documentation
-* and black-metal IRC shitposting.
+* and IRC shitposting.
 
 The categories are not mutually exclusive.
 
