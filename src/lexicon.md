@@ -775,7 +775,7 @@ abstraction layer.
 
 ## sacred KISS
 
-Doctrine that every explicit model risks spiritual corruption.
+Doctrine that every explicit model itself risks spiritual corruption.
 
 ## cathedral engineering
 
