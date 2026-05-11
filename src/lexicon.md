@@ -271,7 +271,7 @@ institutional memory collapsed.
 
 ## operational superstition
 
-Rituals repeated because they once appeared to work.
+Ritual behavior repeated because it once appeared to work.
 
 ## cargo-cult invariant
 
