@@ -222,6 +222,9 @@ Designer shaping ecosystems toward shared semantic reality.
 Maintainer removing spiritually expensive abstractions from
 infrastructure.
 
+**Note:** candidate for removal.  
+**Reason:** ornamental rather than operational.
+
 ## heat sink operator
 
 Human absorbing ecosystem entropy manually.
@@ -602,6 +605,9 @@ Workaround layer accumulated around historical failures.
 
 Permanent interface deformation caused by compatibility trauma.
 
+**Note:** candidate for removal.  
+**Reason:** ornamental rather than operational.
+
 ## local optimum cemetery
 
 Infrastructure graveyard full of solutions that solved immediate pain
@@ -636,6 +642,9 @@ Repeated incidents gradually transforming into ecosystem truth.
 
 Forcing fragmented ecosystem behavior back toward shared semantics.
 
+**Note:** candidate for removal.  
+**Reason:** ornamental rather than operational.
+
 ## semantic immune response
 
 Ecosystem reaction against abstractions perceived as dangerous,
@@ -669,6 +678,9 @@ ecology still depends on them.
 
 Undocumented dependency silently accepted as permanent operational
 reality.
+
+**Note:** candidate for removal.  
+**Reason:** rather ornamental than operational.
 
 ## ecosystem memory leak
 
