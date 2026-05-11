@@ -417,7 +417,7 @@ Undocumented behavior ecosystems begin depending upon compositionally.
 
 ## regulator failure
 
-System no longer able to constrain its own state transitions.
+System loses ability to constrain its own state transitions.
 
 ## control surface
 
