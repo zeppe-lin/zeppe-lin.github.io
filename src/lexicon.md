@@ -471,8 +471,8 @@ Moment ecosystem splits into incompatible operational cultures.
 
 ## control inversion
 
-Operators adapting to tool pathologies more than tools adapt to
-operators.
+Operators adapting themselves to tooling pathologies more than tooling
+adapts to operators.
 
 ## adaptation debt
 
