@@ -745,7 +745,8 @@ Correctness emerges mechanically.
 
 ## authoritarian semantics
 
-Invalid states become unrepresentable.
+Semantics enforced strongly enough that invalid states become
+mechanically difficult or impossible to represent.
 
 ## hallucinated semantics
 
