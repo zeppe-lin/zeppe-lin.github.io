@@ -559,7 +559,7 @@ Forces collapsing ecosystem behavior toward shared semantics.
 
 ## divergence pressure
 
-Forces generating fragmented realities.
+Forces generating fragmented operational realities.
 
 ## bounded failure
 
