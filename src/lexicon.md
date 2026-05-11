@@ -253,7 +253,7 @@ space.
 
 ## workaround kung-fu
 
-Advanced ritual knowledge required to survive ordinary workflows.
+Advanced ritual knowledge required for ordinary workflows.
 
 ## entropy export
 
