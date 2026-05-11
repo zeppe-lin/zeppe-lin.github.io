@@ -315,7 +315,8 @@ Property mechanically defended by the system itself.
 
 ## soft invariant
 
-Property enforced mostly socially.
+Property enforced primarily through operator discipline or social
+expectation.
 
 ## ghost invariant
 
