@@ -131,7 +131,8 @@ determine what the system "really means".
 
 ## exorcism
 
-Removing ambiguous or undead semantics before they metastasize.
+Removing ambiguous, split-brain, or undead semantics before ecosystem
+crystallize around them.
 
 ## demonology
 
