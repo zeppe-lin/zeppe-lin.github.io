@@ -399,8 +399,8 @@ Interface becoming misleading while remaining technically functional.
 
 ## hallucinated correctness
 
-Users believing guarantees exist because the interface aesthetically
-implies them.
+Users inferring guarantees because the interface aesthetically implies
+them.
 
 ## semantic overloading
 
