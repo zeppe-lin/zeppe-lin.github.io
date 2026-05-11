@@ -538,7 +538,7 @@ Immediate behavior of the mechanism itself.
 
 ## second-order effect
 
-How failure propagates operationally.
+How behavior propagates operationally.
 
 ## third-order effect
 
