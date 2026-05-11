@@ -563,7 +563,7 @@ Forces generating fragmented operational realities.
 
 ## bounded failure
 
-Errors constrained into predictable forms.
+Failure constrained into predictable forms.
 
 ## unbounded failure field
 
