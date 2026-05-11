@@ -299,7 +299,7 @@ layer.
 
 ## recursive coping
 
-Workarounds for workarounds for workarounds.
+Workarounds layered atop workarounds atop workarounds.
 
 ## metastasis layer
 
