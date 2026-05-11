@@ -211,7 +211,7 @@ documentation.
 
 ## invariant blacksmith
 
-Engineer turning vibes into enforceable contracts.
+Engineer converting vibes into mechanically enforceable contracts.
 
 ## convergence engineer
 
