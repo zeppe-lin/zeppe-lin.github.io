@@ -503,7 +503,7 @@ can absorb it.
 
 ## regulatory necrosis
 
-Formerly authoritative contract becoming ignored operationally.
+Formerly authoritative contract becoming operationally irrelevant.
 
 ## orphaned feedback loop
 
