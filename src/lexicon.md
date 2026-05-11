@@ -215,7 +215,7 @@ Engineer converting vibes into mechanically enforceable contracts.
 
 ## convergence engineer
 
-Designer shaping ecosystems toward shared correctness surfaces.
+Designer shaping ecosystems toward shared semantic reality.
 
 ## cathedral exorcist
 
