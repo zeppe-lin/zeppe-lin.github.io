@@ -382,8 +382,8 @@ Internal implementation detail escaping into public meaning.
 
 ## semantic drift
 
-Divergence between implementation, docs, expectations, and original
-intent.
+Divergence between implementation, documentation, operational
+expectation, and original intent.
 
 ## model rot
 
