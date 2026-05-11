@@ -232,7 +232,7 @@ Human absorbing ecosystem entropy manually.
 
 ## coping infrastructure
 
-Complexity externalized into human discipline.
+Complexity externalized into operator discipline.
 
 ## workaround ecology
 
