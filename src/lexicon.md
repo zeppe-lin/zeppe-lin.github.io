@@ -285,7 +285,7 @@ stabilizing semantics.
 
 ## local survivability
 
-Ability to keep one installation functioning despite systemic
+Ability to keep one installation operational despite ecosystem
 incoherence.
 
 ## ecosystem fracture
