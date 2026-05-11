@@ -655,8 +655,8 @@ folklore-driven systems.
 
 ## abstraction burial ground
 
-Collection of interfaces nobody dares remove because unknown ecology
-depends on them.
+Collection of interfaces nobody removes because unknown downstream
+ecology still depends on them.
 
 ## semantic blood pact
 
