@@ -494,7 +494,7 @@ Mechanism forcing ecosystem behavior toward shared semantics.
 
 ## divergence engine
 
-Mechanism generating increasing operational fragmentation.
+Mechanism generating operational fragmentation.
 
 ## semantic thermal runaway
 
