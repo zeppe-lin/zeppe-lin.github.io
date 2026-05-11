@@ -791,7 +791,7 @@ Belief that only worthy operators deserve survivable systems.
 
 ## false simplicity
 
-Complexity hidden in operator cognition.
+Complexity hidden inside operator cognition.
 
 ## forbidden complexity
 
