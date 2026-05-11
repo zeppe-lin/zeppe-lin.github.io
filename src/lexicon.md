@@ -39,18 +39,34 @@ xDDDD
 
 # Core Principle
 
-Complexity cannot be destroyed.
-Only transferred:
+## complexity displacement
 
-* into code
-* into users
-* into wrappers
-* into documentation
-* into folklore
-* into future maintainers
-* into institutional suffering
+Complexity rarely disappears.
 
-A distro is ultimately defined by where it stores complexity.
+It migrates:
+
+- into code
+- into interfaces
+- into wrappers
+- into operational discipline
+- into documentation
+- into folklore
+- into future maintainers
+- into institutional suffering
+
+A distro is ultimately defined by where complexity is allowed to
+accumulate.
+
+Not all complexity is equal:
+
+- essential complexity --- inherent to the problem domain
+- accidental complexity --- produced by poor modeling or
+  implementation
+- optional complexity --- introduced by non-essential features or
+  ambitions
+
+Most operational horror emerges when accidental complexity disguises
+itself as essential complexity.
 
 ---
 
