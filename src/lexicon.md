@@ -709,7 +709,7 @@ disappeared.
 
 ## operational friction
 
-Pain deliberately introduced to discourage invalid states.
+Pain intentionally introduced to discourage invalid states.
 
 ## catastrophic cooling failure
 
