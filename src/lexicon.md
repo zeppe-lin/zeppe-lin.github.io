@@ -765,7 +765,8 @@ enforcement.
 
 ## invariant authoritarianism
 
-Preference for coherence over unrestricted state-space freedom.
+Preference for semantic coherence over unrestricted state-space
+freedom.
 
 ## KISS necromancy
 
