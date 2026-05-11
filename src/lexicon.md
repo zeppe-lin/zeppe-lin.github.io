@@ -275,8 +275,8 @@ Ritual behavior repeated because it once appeared to work.
 
 ## cargo-cult invariant
 
-Behavior preserved without understanding the original constraint it
-protected.
+Constraint preserved without understanding the original failure it
+protected against.
 
 ## semantic sinkhole
 
