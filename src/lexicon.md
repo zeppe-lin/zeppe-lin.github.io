@@ -108,8 +108,8 @@ around them.
 Invariant socially assumed to exist despite no longer being
 mechanically enforced.
 
-Unlike a semantic ghost, a zombie invariant still actively shapes
-operational decisions.
+Unlike a [semantic ghost](#semantic-ghost), a zombie invariant still
+actively shapes operational decisions.
 
 Typical form:
 
