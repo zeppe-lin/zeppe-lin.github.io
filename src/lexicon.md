@@ -51,14 +51,11 @@ to accumulate.
 
 Not all complexity is equal:
 
-- essential complexity
-  --- inherent to the problem domain
-
-- accidental complexity
-  --- produced by poor modeling or implementation
-
-- optional complexity
-  --- introduced by non-essential features or ambitions
+|||
+|---|---|
+| essential complexity  | inherent to the problem domain |
+| accidental complexity | produced by poor modeling or implementation |
+| optional complexity   | introduced by non-essential features or ambitions |
 
 Most infrastructure horror emerges when accidental complexity
 successfully disguises itself as essential complexity.
