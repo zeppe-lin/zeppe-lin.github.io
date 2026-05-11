@@ -704,7 +704,8 @@ Aggressive invariant enforcement preventing ambiguity growth.
 
 ## thermal ghost
 
-Historical workaround whose original cause vanished long ago.
+Historical workaround surviving after the original failure
+disappeared.
 
 ## operational friction
 
