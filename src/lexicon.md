@@ -79,7 +79,7 @@ maintainer, or enforcement mechanism disappeared.
 
 ## semantic ghost
 
-Expectation still shaping user behavior despite no longer being
+Expectation still shaping behavior despite no longer being
 mechanically guaranteed anywhere.
 
 ## undead behavior
