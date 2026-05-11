@@ -248,7 +248,8 @@ Uncontrolled proliferation of unofficial meanings.
 
 ## scripting hell
 
-Ecosystem where orchestration logic escaped entirely into user space.
+Condition where orchestration semantics escaped entirely into user
+space.
 
 ## workaround kung-fu
 
