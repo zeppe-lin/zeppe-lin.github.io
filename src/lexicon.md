@@ -365,7 +365,7 @@ fragmentation begins.
 
 ## invariant debt
 
-Future instability created by tolerating unenforced assumptions.
+Future instability accumulated by tolerating unenforced assumptions.
 
 ## semantic compression artifact
 
