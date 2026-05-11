@@ -294,7 +294,7 @@ Divergence into mutually incompatible operational realities.
 
 ## wrapper proliferation event
 
-Moment users collectively stop trusting the official abstraction
+Moment operators collectively stop trusting the official abstraction
 layer.
 
 ## recursive coping
