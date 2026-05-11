@@ -750,7 +750,8 @@ mechanically difficult or impossible to represent.
 
 ## hallucinated semantics
 
-Invalid expectations remain representable.
+Interface implying stronger guarantees than the system can actually
+enforce.
 
 ## user-space garbage collector
 
