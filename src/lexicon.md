@@ -399,10 +399,17 @@ Gradual weakening of enforceable guarantees.
 
 Interface becoming misleading while remaining technically functional.
 
-## hallucinated correctness
+## hallucinated semantics
 
-Users inferring guarantees because the interface aesthetically implies
-them.
+Users inferring stronger guarantees, coherence, or topology control
+than the system actually provides.
+
+Usually triggered by:
+
+- ambiguous interfaces
+- partial correctness
+- accidental success
+- split authority surfaces
 
 ## semantic overloading
 
