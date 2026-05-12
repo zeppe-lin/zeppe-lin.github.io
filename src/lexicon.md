@@ -710,11 +710,11 @@ folklore.
 
 ---
 
-# VIII. Bastard Thermodynamics
+# VIII. Semantic Entropy Dynamics
 
-## first law of bastard thermodynamics
+## first law of semantic entropy
 
-Every unenforced semantic boundary tends toward folklore.
+Unenforced semantics tend to migrate into folklore.
 
 ## second law of bastard thermodynamics
 
@@ -723,7 +723,7 @@ remove it.
 
 ## third law of bastard thermodynamics
 
-At absolute KISS, the users themselves become the abstraction layer.
+At absolute KISS, operators themselves become the abstraction layer.
 
 ## entropy laundering
 
