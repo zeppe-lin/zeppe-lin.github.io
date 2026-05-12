@@ -411,6 +411,19 @@ Usually triggered by:
 - accidental success
 - split authority surfaces
 
+## semantic counterfeit
+
+Abstraction projecting stronger semantic authority than the system can
+mechanically enforce.
+
+Counterfeit semantics are especially dangerous because partial
+correctness allows ecosystems to unconsciously stabilize around lies.
+
+> Not to be confused with
+> [hallucinated semantics](#hallucinated-semantics):
+> - Hallucinated semantics describes user perception.
+> - Semantic counterfeit describes system behavior.
+
 ## semantic overloading
 
 Single primitive forced to carry incompatible or unrelated meanings
