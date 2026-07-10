@@ -6501,6 +6501,1008 @@ behaving around its shape.
 
 ---
 
+# Ghosts and Undead Semantics
+
+The option was removed eight years ago.
+
+The parser no longer accepts it.
+
+The documentation no longer mentions it.
+
+A wrapper still checks whether operators tried to use it.
+
+A migration script still translates it.
+
+A compatibility test still expects its old side effect.
+
+One directory still exists because the option once wrote state there.
+
+Nobody considers the option supported.
+
+The ecosystem continues organizing itself around its absence.
+
+The feature is dead.
+
+Its causal structure has excellent uptime.
+
+---
+
+## Ghost
+
+A **ghost** is residual causal structure surviving after the original
+rationale, maintainer, mechanism, or contract disappeared.
+
+A ghost is not merely old code.
+
+Old code may still have a clear purpose and an active owner.
+
+A ghost exists when the original source of authority is gone, yet
+current behavior remains deformed around what used to be there.
+
+Examples include:
+
+* a directory preserved because an old tool once required it;
+* a configuration field copied although no current component reads it;
+* an execution order inherited from a race condition fixed years ago;
+* a wrapper preserving behavior whose original implementation
+  vanished;
+* a repository convention nobody can justify but nobody dares remove;
+* a codepath retained because an unknown downstream caller may depend
+  on it.
+
+> A ghost is a dependency whose maintainer is history.
+
+The important property is causal survival.
+
+The original thing may be absent.
+
+Its consequences are not.
+
+## Semantic Ghost
+
+A **semantic ghost** is a residual expectation surviving after the
+authoritative guarantee disappeared.
+
+The system no longer promises the behavior.
+
+Operators, callers, documentation, or compatibility logic continue to
+act as though some part of the promise remains.
+
+For example:
+
+* an interface once guaranteed one artifact per build;
+* the implementation later gained multi-artifact output;
+* callers still assume exactly one result;
+* the guarantee is gone;
+* the expectation still shapes orchestration.
+
+The semantic ghost is not necessarily executable code.
+
+It may live in:
+
+* operator expectation;
+* wrapper logic;
+* test assumptions;
+* naming conventions;
+* migration scripts;
+* documentation fragments;
+* downstream components.
+
+> A semantic ghost is a contract without a body.
+
+## Ghost Production
+
+Ghosts are usually produced through a sequence like this:
+
+```text
+behavior exists
+    ↓
+ecosystem adapts
+    ↓
+behavior becomes expected
+    ↓
+implementation or rationale disappears
+    ↓
+adaptations remain
+    ↓
+current system inherits the shape
+```
+
+The disappearance may occur through:
+
+* refactoring;
+* deprecation;
+* maintainer turnover;
+* backend replacement;
+* incomplete migration;
+* documentation cleanup;
+* compatibility preservation;
+* accidental removal.
+
+The ecosystem remembers through deformation.
+
+## Residue
+
+**Residue** is any remaining implementation, state, documentation, or
+behavior left after a feature or contract changes.
+
+Not all residue is a ghost.
+
+A migration marker may be deliberate and temporary.
+
+A compatibility adapter may remain clearly owned.
+
+A deprecated configuration field may still have a documented removal
+date.
+
+Residue becomes ghostly when:
+
+* its current purpose is unclear;
+* its authority is uncertain;
+* its removal risk cannot be bounded;
+* downstream dependence is suspected rather than known;
+* behavior persists without an active model.
+
+## Fossil
+
+A **fossil** is preserved evidence of an earlier system state that no
+longer participates materially in current behavior.
+
+Examples include:
+
+* an old comment;
+* an unused migration script in historical documentation;
+* a retired database schema kept for reference;
+* an archived configuration example.
+
+A fossil can help explain a ghost.
+
+It is not itself a ghost unless current behavior still depends on it.
+
+> Fossils tell you what died.  
+> Ghosts continue changing the temperature.
+
+## Zombie Invariant
+
+A **zombie invariant** is a formerly enforced property still
+consciously maintained through social discipline after mechanical
+enforcement disappeared.
+
+The ecosystem knows the rule.
+
+The system no longer preserves it.
+
+Typical forms include:
+
+* “everyone knows package names must not contain that character”;
+* “operators never combine those options”;
+* “maintainers always update both files together”;
+* “lifecycle scripts do not touch the host during target
+  installation”;
+* “the wrapper must run before the real command”.
+
+The rule remains operationally important.
+
+It is kept alive through:
+
+* review;
+* operator caution;
+* maintainer memory;
+* checklists;
+* custom scripts;
+* social correction.
+
+> A zombie invariant is a dead rule still reporting for work.
+
+The distinction from a soft invariant is historical.
+
+A soft invariant may have always been socially enforced.
+
+A zombie invariant was once mechanically preserved --- or widely
+believed to be --- and continues after that enforcement died.
+
+## Zombie Invariant Lifecycle
+
+A zombie invariant often follows this path:
+
+```text
+mechanical invariant
+        ↓
+enforcement weakened or removed
+        ↓
+ecosystem notices failures
+        ↓
+social rule preserves expected behavior
+        ↓
+new operators inherit the rule
+        ↓
+project forgets enforcement ever existed
+```
+
+At the end, the rule may be described as tradition, good practice, or
+obvious operator responsibility.
+
+The corpse has completed its rebranding.
+
+## Field Symptom: Forbidden Package Names
+
+An early package tool rejects names containing `/`.
+
+Later, the validation is removed during a parser rewrite.
+
+The package database and repository layout still cannot represent such
+names safely.
+
+Maintainers continue avoiding them.
+
+Reviewers reject offending packages manually.
+
+The documentation says package names “should not” contain `/`.
+
+The invariant remains:
+
+> Package names do not contain `/`.
+
+The system no longer enforces it.
+
+The maintainer community does.
+
+That is a zombie invariant.
+
+The clean repairs are:
+
+* restore mechanical rejection;
+* redesign the affected representations;
+* define an escaping model.
+
+The unclean repair is to continue blaming contributors for violating a
+rule the authoritative path happily accepts.
+
+## Ghost Invariant
+
+A **ghost invariant** is an extinct invariant whose historical shape
+continues deforming the ecosystem even though operators no longer
+remember the rule explicitly.
+
+Unlike a zombie invariant, nobody is consciously preserving it.
+
+The system has inherited adaptations made around the former property.
+
+Examples include:
+
+* a directory layout designed around a limit that no longer exists;
+* a fixed operation order preserved after the original race condition
+  disappeared;
+* a data field retained because old code once required it;
+* a wrapper branch whose triggering condition can no longer occur;
+* a repository split created for a tool that was later removed.
+
+> A zombie invariant is still being fed.  
+> A ghost invariant merely moves the furniture at night.
+
+## Field Symptom: The Empty Directory
+
+A base filesystem always creates:
+
+```text
+/var/lib/tool/legacy
+```
+
+No current component writes there.
+
+No documentation mentions it.
+
+Removal causes one old migration test to fail.
+
+The test was copied from an earlier release.
+
+The original tool used the directory to stage state during upgrades.
+
+That implementation disappeared years ago.
+
+Current installation scripts, tests, and filesystem layouts still
+preserve the directory.
+
+Nobody remembers the old invariant:
+
+> The staging directory exists before migration begins.
+
+The invariant is gone.
+
+Its topology remains.
+
+That is a ghost invariant.
+
+## Semantic Imprint
+
+A **semantic imprint** is the visible deformation left by an old
+contract or invariant.
+
+Imprints help identify ghosts.
+
+Examples include:
+
+* an otherwise unexplained field;
+* an unnecessary directory;
+* a suspicious ordering constraint;
+* a compatibility branch with no known caller;
+* a test asserting behavior absent from documentation;
+* an interface parameter no current implementation needs.
+
+An imprint is evidence.
+
+It does not prove the original rationale.
+
+The maintainer must still perform the autopsy.
+
+## Undead Behavior
+
+**Undead behavior** is an implementation artifact accidentally
+promoted into an ecosystem contract and kept operational after its
+original status should have ended.
+
+Examples include:
+
+* exact stdout wording used by callers;
+* undocumented exit-status combinations;
+* temporary filenames parsed by automation;
+* incidental ordering relied upon by scripts;
+* a bug-compatible path interpretation;
+* a fallback intended for recovery becoming normal operation.
+
+The behavior may never have been promised.
+
+Dependence gave it authority.
+
+> The behavior was never alive enough to deserve compatibility.  
+> The ecosystem adopted it anyway.
+
+## Accidental Contract
+
+An **accidental contract** is an observed behavior treated as a
+promise without an explicit decision to own it.
+
+Accidental contracts emerge when:
+
+1. the behavior is stable long enough to attract callers;
+2. no documented contract contradicts it clearly;
+3. the system partially validates dependence;
+4. changing it causes visible breakage;
+5. compatibility pressure reclassifies the observation as obligation.
+
+Not every observed behavior should become contractual.
+
+But once dependence exists, maintainers must decide explicitly whether
+to:
+
+* adopt the behavior;
+* deprecate it;
+* provide a migration;
+* reject the dependence;
+* contain it behind compatibility.
+
+Pretending no decision is required merely delegates the decision to
+the next incident.
+
+## Semantic Revenant
+
+A **semantic revenant** is behavior officially deprecated or declared
+dead yet still operationally required.
+
+A revenant differs from generic undead behavior because its death has
+already been announced.
+
+The project says:
+
+* do not use this;
+* this will be removed;
+* this is obsolete;
+* the replacement exists.
+
+The ecosystem replies by continuing to depend on it.
+
+Examples include:
+
+* a deprecated command required by release scripts;
+* an old package format still produced by current tooling;
+* a compatibility option needed by supported installations;
+* a retired database field read by migration code;
+* an obsolete path hardcoded in downstream automation.
+
+> Deprecated means “dead in documentation”.  
+> A revenant is what runtime files as an appeal.
+
+## Deprecation Without Exit
+
+A **deprecation without exit** announces the end of behavior without
+creating the path by which dependence can actually leave.
+
+It may lack:
+
+* a replacement;
+* migration tooling;
+* discovery of remaining callers;
+* a removal version;
+* compatibility boundaries;
+* structured warnings;
+* ownership.
+
+Such deprecations accumulate indefinitely.
+
+The documentation becomes a cemetery whose residents still answer
+production traffic.
+
+## Haunted Compatibility Layer
+
+A **haunted compatibility layer** preserves dead semantics because too
+much downstream ecology has adapted around them.
+
+Compatibility itself is not haunting.
+
+A healthy compatibility layer:
+
+* has explicit scope;
+* translates old behavior into current semantics;
+* remains contained;
+* records when it is used;
+* has a migration strategy;
+* does not infect new interfaces.
+
+A haunted compatibility layer:
+
+* grows without a removal condition;
+* reproduces old semantics internally;
+* requires special cases in unrelated components;
+* accepts new callers;
+* becomes the only path that still works reliably;
+* prevents the current model from becoming authoritative.
+
+> Compatibility preserves the past.  
+> Haunted compatibility lets the past keep committing.
+
+## Compatibility Necrosis
+
+**Compatibility necrosis** occurs when compatibility logic remains
+present but no longer serves a coherent migration purpose.
+
+The layer cannot be removed because unknown dependents may exist.
+
+It cannot be understood because the original model is gone.
+
+It cannot be extended cleanly because every branch preserves a
+different historical assumption.
+
+The code survives.
+
+Its reason has decomposed.
+
+## Field Symptom: The Old Package Format
+
+A package manager supports a legacy archive format through a
+compatibility parser.
+
+Initially, the parser converts old metadata into the current normal
+form.
+
+Years later:
+
+* new build tools still produce the old format;
+* repository tooling contains old-format branches;
+* current documentation teaches both formats;
+* new fields are encoded through legacy extension tricks;
+* callers inspect which format was used.
+
+The compatibility boundary no longer translates history.
+
+It manufactures current state.
+
+The old format is not merely supported.
+
+It is a semantic revenant with release engineering privileges.
+
+## Haunted Codepath
+
+A **haunted codepath** is a branch whose current necessity is unknown,
+whose removal risk is unbounded, and whose behavior may be depended
+upon outside visible contracts.
+
+Typical comments include:
+
+```text
+/* do not remove */
+```
+
+```text
+/* needed for old systems */
+```
+
+```text
+/* workaround */
+```
+
+```text
+/* FIXME: investigate */
+```
+
+The comments are often older than the maintainer reading them.
+
+A haunted codepath is not defined by ugliness.
+
+It is defined by missing causal knowledge combined with compatibility
+fear.
+
+## Fear-Based Retention
+
+**Fear-based retention** is preservation of behavior because the
+ecosystem cannot bound the consequences of removal.
+
+The fear may be rational.
+
+Unknown downstream dependence is still dependence.
+
+The pathology is institutional:
+
+* no inventory of callers;
+* no telemetry;
+* no deprecation path;
+* no contract tests;
+* no migration strategy;
+* no ownership.
+
+The project cannot prove the code is needed.
+
+It also cannot prove removal is safe.
+
+So the branch acquires tenure.
+
+> Nobody knows why it exists.  
+> This is treated as evidence that it must be important.
+
+## Semantic Afterlife
+
+**Semantic afterlife** is the period during which removed behavior
+continues influencing the ecosystem indirectly.
+
+Afterlife may persist through:
+
+* stored state;
+* wrappers;
+* compatibility adapters;
+* old artifacts;
+* tests;
+* documentation;
+* operator habit;
+* directory topology;
+* naming conventions;
+* downstream automation.
+
+Removal from one repository is not the end of a semantic life.
+
+The meaning may continue elsewhere.
+
+## Deletion Is Not Removal
+
+Deleting code removes implementation.
+
+It does not necessarily remove:
+
+* expectations;
+* artifacts;
+* state;
+* callers;
+* migration requirements;
+* compatibility behavior;
+* operator practice.
+
+A complete removal must identify which surfaces still carry the old
+meaning.
+
+```text
+delete implementation
+        ≠
+remove ecosystem dependency
+```
+
+> The code was deleted.  
+> The ecosystem did not receive the obituary.
+
+## Ghost Surface
+
+A **ghost surface** is a location where dead semantics remain
+externally observable.
+
+Examples include:
+
+* an accepted legacy option;
+* an old database field;
+* a directory still created;
+* a warning retained for scripts;
+* a filename form still recognized;
+* a compatibility result still exposed to callers.
+
+Ghost surfaces matter because they allow new dependence to form.
+
+A deprecated behavior that remains easy to invoke may continue
+acquiring new callers.
+
+Deprecation without friction is recruitment.
+
+## Ghost Propagation
+
+A ghost propagates when one component reproduces dead semantics for
+another.
+
+For example:
+
+```text
+legacy behavior
+    ↓
+compatibility wrapper
+    ↓
+new orchestrator copies wrapper assumption
+    ↓
+new documentation describes assumption
+    ↓
+new operator learns assumption
+```
+
+The original implementation may be gone.
+
+The ghost now has several independent hosts.
+
+## Ghost Host
+
+A **ghost host** is any current component, artifact, document, or
+operator practice carrying residual semantics.
+
+A single ghost may inhabit:
+
+* code;
+* state;
+* tests;
+* documentation;
+* wrappers;
+* institutional memory.
+
+Removing one host may not remove the ghost.
+
+This is why ghost hunting requires an ecosystem inventory rather than
+a repository search.
+
+## Ghost Drift
+
+**Ghost drift** occurs when residual semantics continue changing after
+the original authority disappeared.
+
+Different hosts may evolve the ghost differently.
+
+For example:
+
+* one wrapper preserves old exit statuses;
+* another preserves old filenames;
+* documentation preserves old option meaning;
+* operators preserve old command order.
+
+The ecosystem no longer has one legacy behavior.
+
+It has descendants.
+
+## Semantic Séance
+
+A **semantic séance** is the reconstruction of current meaning through
+historical evidence because no authoritative present contract is
+available.
+
+The maintainer consults:
+
+* old commits;
+* issue trackers;
+* mailing lists;
+* IRC logs;
+* release notes;
+* wrapper scripts;
+* forgotten tests;
+* comments from escaped maintainers.
+
+A séance is sometimes necessary.
+
+It becomes infrastructure pathology when ordinary maintenance requires
+one.
+
+> Archaeology is a method.  
+> It should not be the primary API.
+
+## Necromancy
+
+**Necromancy** is the practical work of restoring operational
+coherence from fossilized assumptions, residual state, and inherited
+contradictions.
+
+Necromancy may involve:
+
+* identifying the original invariant;
+* discovering current ghost hosts;
+* separating useful compatibility from residue;
+* reconstructing missing migration logic;
+* deciding which accidental behavior to adopt;
+* building a containment boundary;
+* deleting behavior only after its causal shape is understood.
+
+The term is humorous.
+
+The work is serious.
+
+A careless cleanup can destroy the only surviving representation of a
+contract the project forgot to write down.
+
+## Exorcism
+
+**Exorcism** is the deliberate removal or containment of undead
+semantics so they no longer influence current behavior without
+explicit authority.
+
+A successful exorcism may require:
+
+1. identify the ghost;
+2. locate every known host;
+3. reconstruct the original contract;
+4. decide which present behavior is legitimate;
+5. define the current authority surface;
+6. provide migration;
+7. contain compatibility;
+8. block new dependence;
+9. remove obsolete hosts;
+10. verify that the ecosystem remains coherent.
+
+Exorcism is not deletion with confidence.
+
+It is migration with evidence.
+
+## Adoption
+
+Sometimes the correct response is not exorcism.
+
+The ecosystem may have depended on an accidental behavior for years.
+
+The behavior may now be useful, coherent, and cheaper to own than to
+remove.
+
+**Adoption** is the explicit promotion of accidental or undead
+behavior into the current contract.
+
+Adoption requires:
+
+* stating the behavior;
+* defining scope;
+* adding tests;
+* enforcing invariants;
+* updating documentation;
+* removing contradictory paths;
+* accepting future compatibility obligations.
+
+> Not every ghost must be banished.  
+> Some need paperwork.
+
+Adoption is honest when the system gains an explicit owner.
+
+## Retirement
+
+**Retirement** is the controlled end of a behavior after dependence
+has been migrated or deliberately rejected.
+
+A retirement should define:
+
+* replacement;
+* affected callers;
+* migration path;
+* warning period;
+* removal version;
+* compatibility scope;
+* state conversion;
+* final verification.
+
+Retirement without caller discovery is hope wearing a calendar.
+
+## Field Symptom: The Meaning of Success
+
+An old tool prints a warning and exits zero after partial completion.
+
+Several scripts learn to treat this as successful enough.
+
+A newer implementation changes the warning and exits nonzero.
+
+The scripts break.
+
+Was the old behavior contractual?
+
+Originally, no.
+
+Operationally, yes.
+
+The ecosystem has several choices:
+
+* restore the old behavior;
+* provide a compatibility adapter;
+* migrate scripts to structured partial results;
+* reject partial success entirely;
+* explicitly adopt a new contract.
+
+The wrong response is:
+
+> Nobody should have parsed that.
+
+That may be historically true.
+
+It is not a migration strategy.
+
+## Field Symptom: The Unused Configuration Field
+
+A configuration file still contains:
+
+```text
+legacy_mode=no
+```
+
+No current component reads it.
+
+Removing the field causes operators to worry that old installations
+will break.
+
+A repository search finds no reader.
+
+An archived migration tool from nine years ago once used it.
+
+The field is now a fossil.
+
+If an external supported tool still reads it, it is a ghost surface.
+
+If current scripts consciously preserve it because they believe old
+tools need it, it participates in a zombie invariant.
+
+The correct classification depends on present causal effect, not age
+or appearance.
+
+## Field Symptom: The Order Nobody Changes
+
+A service script always creates a directory before loading a module.
+
+No current code requires that order.
+
+The sequence came from a kernel bug fixed twelve years ago.
+
+Operators no longer know the reason.
+
+Tests preserve the order because they copy production behavior.
+
+This is a ghost invariant.
+
+If maintainers consciously say, “the directory must exist first”, and
+enforce that rule socially, it has become a zombie invariant.
+
+If the order is observed by another component and treated as a
+promise, it has also become an accidental contract.
+
+One behavior may participate in several categories at different
+layers.
+
+The vocabulary is compositional.
+
+It is not a cabinet in which each corpse receives exactly one drawer.
+
+## Do Not Confuse
+
+**Old behavior** is not automatically a ghost.
+
+It may remain current, documented, and owned.
+
+**Legacy behavior** is not automatically undead.
+
+A compatibility contract may preserve it deliberately.
+
+**A semantic ghost** is not the same as a zombie invariant.
+
+A semantic ghost is residual expectation.
+
+A zombie invariant is a dead property still actively maintained
+through social discipline.
+
+**A ghost invariant** is not the same as a zombie invariant.
+
+A ghost invariant deforms the ecosystem even though nobody consciously
+remembers the rule.
+
+**Undead behavior** is not necessarily deprecated.
+
+It may never have been formally recognized at all.
+
+**A semantic revenant** has been declared obsolete but remains
+required.
+
+**A fossil** does not necessarily affect current behavior.
+
+A ghost does.
+
+**A haunted codepath** is not merely poorly documented code.
+
+Its removal risk is unbounded because its causal role is unknown.
+
+**Necromancy** is not automatically bad maintenance.
+
+Historical reconstruction may be necessary before safe change.
+
+**Exorcism** is not deleting strange code.
+
+It is removing the semantic dependence.
+
+**Compatibility** is not haunting when its scope, authority, and
+migration path remain explicit.
+
+## The Ghost Test
+
+When old or unexplained behavior appears, ask:
+
+1. What current behavior is being observed?
+2. Is the original implementation still present?
+3. Is the original rationale known?
+4. Was the behavior ever an explicit contract?
+5. Was a property once mechanically enforced?
+6. Is that property now maintained socially?
+7. Do operators consciously preserve the rule?
+8. Does the ecosystem remain deformed around a forgotten rule?
+9. Which components or documents host the residual meaning?
+10. Are current callers still acquiring dependence?
+11. Is the behavior officially deprecated?
+12. Is it still operationally required?
+13. Does compatibility translate the old behavior or reproduce it?
+14. Can the affected callers be inventoried?
+15. Is the behavior useful enough to adopt explicitly?
+16. Is migration cheaper and safer than preservation?
+17. Which state or artifacts carry the semantic afterlife?
+18. What would complete removal require?
+19. Can the ghost be contained at one boundary?
+20. Does the project possess enough evidence to exorcise it safely?
+
+The test prevents two common failures:
+
+* preserving every unexplained behavior forever;
+* deleting unexplained behavior and calling the resulting archaeology
+  a regression.
+
+## A Compact Classification
+
+Use this shorthand when distinguishing the dead:
+
+| Term | What survives? | Is it consciously maintained? |
+| ---- | -------------- | ----------------------------- |
+| **fossil** | historical evidence | no current causal role |
+| **semantic ghost** | expectation | not necessarily |
+| **zombie invariant** | socially enforced dead property | yes |
+| **ghost invariant** | deformation around forgotten property | no |
+| **undead behavior** | accidental behavior promoted into contract | often |
+| **semantic revenant** | deprecated but required behavior | yes, despite declared death |
+| **haunted compatibility layer** | dead semantics reproduced by compatibility | institutionally |
+| **haunted codepath** | unknown causal role and unbounded removal risk | preserved through fear |
+
+The categories overlap because systems are inconsiderate enough to
+produce compound hauntings.
+
+## Eleventh House Law
+
+> A ghost is not old code.  
+> It is old meaning still collecting rent.
+
+Drift explains how meanings separate.
+
+Ghosts explain how separated meanings survive after their original
+authority disappears.
+
+The next section is **Semantic Counterfeit and Hallucinated
+Semantics**: how interfaces project guarantees they cannot enforce,
+why partial correctness is more dangerous than obvious failure, and
+how ecosystems stabilize around lies that work just often enough.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
