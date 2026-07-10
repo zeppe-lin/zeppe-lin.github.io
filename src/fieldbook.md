@@ -443,6 +443,316 @@ The second prevents the repair from becoming theology.
 
 ---
 
+# Operational Burden and the Accounting of Simplicity
+
+A component is rewritten.
+
+Three configuration options disappear.  
+Two internal models are removed.  
+The code becomes smaller.
+
+The missing behavior reappears in:
+
+* a wrapper;
+* a repository convention;
+* an installation guide;
+* an operator checklist;
+* and a script called `final-fixed-real.sh`.
+
+The component is now simpler.
+
+The operation is not.
+
+---
+
+## Operational Burden
+
+**Operational burden** is the work the ecosystem must continuously
+perform to keep infrastructure usable, intelligible, and coherent.
+
+It includes work performed by components:
+
+* validating state;
+* normalizing inputs;
+* preserving metadata;
+* rejecting invalid operations;
+* reporting authoritative results;
+* migrating old representations.
+
+It also includes work performed outside components:
+
+* remembering command order;
+* reconciling incompatible state;
+* maintaining wrappers;
+* reading historical discussions;
+* carrying undocumented assumptions;
+* repairing the same failure locally;
+* teaching newcomers which documented behavior is fictional.
+
+Operational burden is not automatically evidence of bad design.
+
+Some burden belongs to the problem itself.
+
+The useful question is:
+
+> Does the burden arise from the domain, or from the way the ecosystem
+> chose to represent and distribute the domain?
+
+## Three Kinds of Complexity
+
+Not all complexity should be treated as one cursed substance.
+
+| Kind | Description |
+| ---- | -------------- |
+| **essential complexity** | Complexity inherent in the problem being solved. |
+| **accidental complexity** | Complexity introduced by representation, coupling, implementation, or a missing model. |
+| **optional complexity** | Complexity introduced by a feature, policy, or ambition the system could choose not to support. |
+
+Essential complexity must be managed.
+
+Accidental complexity should be removed when practical.
+
+Optional complexity should be justified against the burden it creates.
+
+This distinction prevents a common form of architectural theology:
+
+> The problem is complicated, therefore every complication in our
+> implementation is sacred.
+
+No.
+
+Some complications are the problem.
+
+Some are merely the furniture arrangement in the crypt.
+
+## Burden Migration
+
+When one layer stops performing necessary work, that work does not
+always disappear.
+
+It may migrate:
+
+```text
+component
+    ↓
+caller
+    ↓
+wrapper
+    ↓
+operator
+    ↓
+documentation
+    ↓
+folklore
+```
+
+For example, a component may stop publishing structured artifact
+identity.
+
+The artifact still needs an identity.
+
+The caller now reconstructs it from configuration.
+
+A wrapper later reconstructs it from a filename.
+
+An operator eventually remembers that one package uses a different
+filename rule.
+
+The original component became smaller.
+
+The ecosystem acquired archaeology.
+
+## Local Simplicity
+
+**Local simplicity** is simplicity measured within one selected
+boundary.
+
+Local simplicity can be genuine.
+
+A component with fewer responsibilities may be easier to understand,
+test, and replace.
+A smaller interface may expose a more honest contract.
+Removing accidental complexity is real progress.
+
+Local simplicity becomes misleading when necessary work has merely
+moved outside the measured boundary.
+
+> We removed the complexity from the program.  
+> It now lives in every program that calls it.
+
+That is not necessarily a bad trade.
+
+It is, however, a trade.
+
+## Entropy Export
+
+**Entropy export** is the movement of unresolved operational burden
+from one layer into another.
+
+Common destinations include:
+
+* operators;
+* wrappers;
+* overlays;
+* downstream components;
+* repository policy;
+* documentation;
+* institutional memory.
+
+The term is metaphorical.
+
+This is not a claim that software complexity obeys thermodynamic law.
+Accidental complexity can be eliminated.
+Optional complexity can be rejected.
+Better models can make a system genuinely simpler.
+
+Entropy export describes a narrower event:
+
+> One layer preserves its simplicity by requiring another layer to
+> absorb unresolved variation, ambiguity, or state reconciliation.
+
+Export may be deliberate and legitimate.
+
+A low-level component should not necessarily own every policy
+decision.
+An operator may reasonably retain control over local configuration.
+A wrapper may be the correct place for site-specific behavior.
+
+The pathology begins when the transfer is hidden, unbounded, or denied.
+
+## Entropy Laundering
+
+**Entropy laundering** is presenting exported operational burden as if
+it had been eliminated.
+
+Typical forms include:
+
+* counting lines of code while ignoring mandatory shell glue;
+* praising a small base system while excluding installation ritual;
+* removing a model and calling every resulting edge case “operator
+  choice”;
+* moving validation into documentation and declaring the interface
+  flexible;
+* depending on expert memory while claiming the system has no policy.
+
+> The code is simple because the operator has become complicated.
+
+Entropy laundering is an accounting failure.
+
+The burden remains inside the ecosystem.
+It has merely been moved to a column nobody wishes to publish.
+
+## Structural Ownership
+
+A burden is **structurally owned** when the ecosystem can answer:
+
+* which layer is responsible for it;
+* what representation carries it;
+* where it is validated;
+* how failure is reported;
+* what callers may assume;
+* how the responsibility changes under substitution.
+
+A burden may be assigned to an operator and still be structurally
+owned.
+
+For example, choosing a hostname is legitimately an operator decision.
+
+The system does not need to decide what the machine should be called.
+It does need to define:
+
+* where the hostname is stored;
+* what syntax is accepted;
+* which components consume it;
+* when a change takes effect;
+* how an invalid value is rejected.
+
+The operator owns the choice.
+
+The system owns the contract around that choice.
+
+Operator authority is not the same as architectural absence.
+
+## Field Symptom
+
+A build tool knows the exact artifact it produced.
+
+To remain “simple”, it exposes no structured result.
+
+An orchestrator must therefore:
+
+1. read the build tool's configuration;
+2. duplicate its naming rules;
+3. inspect the output directory;
+4. parse human-readable output;
+5. guess which file is authoritative.
+
+Later, another tool repeats the same reconstruction.
+
+The builder owns the fact but refuses supplier duty.
+
+Its local simplicity is purchased with ecosystem-wide coupling.
+
+> One component saved an API call.  
+> Five callers founded a priesthood.
+
+## Do Not Confuse
+
+**Small code** is not automatically entropy laundering.
+
+A small component with a narrow, explicit contract may be excellent
+architecture.
+
+**Operator control** is not automatically exported burden.
+
+Operators should own policy and local intent where appropriate.
+
+**Documentation** is not automatically coping infrastructure.
+
+Documentation is necessary even in coherent systems.
+It becomes a substitute for structure when correctness depends on
+remembering prose that the system could have enforced.
+
+**A wrapper** is not automatically evidence of failure.
+
+A wrapper may express legitimate local policy.
+It becomes coping infrastructure when it repeatedly reconstructs
+missing shared semantics.
+
+**Minimalism** is not the enemy.
+
+Unpriced externalization is.
+
+## The Accounting Test
+
+When a design is described as simpler, ask:
+
+1. Which code or model disappeared?
+2. Which obligation disappeared with it?
+3. Which obligations still exist?
+4. Where are those obligations performed now?
+5. Can the new owner express and enforce them?
+6. Is the transfer visible to operators and maintainers?
+7. Does substitution become easier or harder?
+8. Has the ecosystem become simpler, or only the selected component?
+
+The test is not intended to forbid local simplification.
+
+It prevents one subsystem from declaring victory while leaving the
+cleanup crew outside the measurement boundary.
+
+## Second House Law
+
+> The ecosystem always pays.  
+> The only question is where.
+
+A clean design does not eliminate every burden.
+
+It puts each burden somewhere that can name it, carry it, and refuse
+to pretend it belongs nowhere.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
