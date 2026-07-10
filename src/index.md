@@ -40,14 +40,18 @@ Highlights:
 
 ## Documentation {.unnumbered}
 
-Start here:
+Zeppe-Lin documentation is organized into three books, each answering
+a different question.
 
-- **[Handbook](handbook.html)**  
-  Installation, system layout, configuration, and daily operation.
+- **[The Handbook](handbook.html)**
+  How do I install, configure, and operate the system?
 
-- **[Codebook](codebook.html)**  
-  Source tree structure, build process, tooling, and internal
-  conventions.
+- **[The Codebook](codebook.html)**
+  How is the system built, maintained, and changed?
+
+- **[The Fieldbook](fieldbook.html)**
+  How do we observe, diagnose, and reason about the system and its
+  surrounding ecology?
 
 ## Previous Releases {.unnumbered}
 
