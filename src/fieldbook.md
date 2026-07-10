@@ -11,54 +11,44 @@ title: The Fieldbook
 
 ---
 
-# Introduction
+# Welcome to the House
 
-This document emerged from long-form autopsies around
-semantic drift, invariant collapse, folklore-driven ecosystems,
-cybernetics, package-management semantics, operational pathology,
-and the anthropology of long-lived UNIX infrastructure.
+You have probably met one of these systems.
 
-The language is intentionally bastardized.
+A command succeeds, but the operation does not.
 
-Partly because IRC dialect evolved into compressed systems-theory
-poetry.  
-Partly because normal engineering language often lacks vocabulary for
-what actually happens inside aging software ecologies.  
-Partly because once infrastructure becomes sufficiently haunted,
-conventional terminology stops being expressive enough.
+The documentation describes the happy path.
+The issue tracker describes the promised future.
+The implementation describes neither.
 
-This lexicon exists to formalize operational ghosts before they
-fossilize into invisible culture.
+An experienced operator explains that the command works, provided you:
 
-Not as a joke.
-But also absolutely as a joke.
+- run another command first;
+- disable one feature;
+- remember which root is authoritative;
+- ignore the man page in this particular case;
+- and never perform the operation during a full moon.
 
-xDDDD
+You ask where this contract is documented.
 
-Complexity in long-lived systems rarely vanishes cleanly.
+The operator points at an IRC log from 2011 or mailing list from 2008.
 
-When unresolved structurally, operational burden tends to migrate:
+This is not merely bad documentation.
+You are looking at an ecosystem that stores part of its execution
+model inside human memory.
 
-- into operators
-- into wrappers
-- into folklore
-- into institutional memory
-- into compatibility layers
-- into future maintainers
+The House calls that **coping infrastructure**.
 
-A distro is ultimately defined by where it permits unresolved burden
-to accumulate.
+When enough coping infrastructure accumulates, operators begin
+functioning as missing subsystems.
+The House calls those operators **bastards**.
 
-Not all complexity is equal:
+This book is an inventory of the mechanisms that manufactures them.
 
-|||
-|---|---|
-| essential complexity  | inherent to the problem domain |
-| accidental complexity | produced by poor modeling or implementation |
-| optional complexity   | introduced by non-essential features or ambitions |
+Not because the words are funny.
 
-Most infrastructure horror emerges when accidental complexity
-successfully disguises itself as essential complexity.
+They are funny because otherwise we would have to describe the same
+failure for the fourteenth time without laughing.
 
 ---
 
