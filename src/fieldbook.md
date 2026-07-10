@@ -33,9 +33,11 @@ An experienced operator explains that the command works, provided you:
 
 You ask where this contract is documented.
 
-The operator points at an IRC log from 2011 or mailing list from 2008.
+The operator points at an IRC log from 2011, a mailing list post from
+2012, or a wiki note from 2013.
 
 This is not merely bad documentation.
+
 You are looking at an ecosystem that stores part of its execution
 model inside human memory.
 
@@ -43,6 +45,7 @@ The House calls that **coping infrastructure**.
 
 When enough coping infrastructure accumulates, operators begin
 functioning as missing subsystems.
+
 The House calls those operators **bastards**.
 
 This book is an inventory of the mechanisms that manufactures them.
