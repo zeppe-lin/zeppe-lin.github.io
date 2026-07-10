@@ -11777,6 +11777,1456 @@ permanent doctrine.
 
 ---
 
+# From Lessons to Guardrails
+
+A malformed package enters the repository.
+
+The failure is diagnosed.
+
+A maintainer writes down the rule:
+
+> Package metadata must agree with artifact identity.
+
+Another maintainer adds the rule to a checklist.
+
+A third writes a validation script.
+
+The script is optional.
+
+Most maintainers install it.
+
+Automated imports do not.
+
+The documentation now says the repository prevents identity mismatch.
+
+The next malformed package arrives through automation.
+
+The lesson was understood.
+
+The mechanism was real.
+
+The authority claim was counterfeit.
+
+---
+
+## Lesson
+
+A **lesson** is a conclusion extracted from an incident, experiment,
+or historical pattern.
+
+A useful lesson identifies:
+
+* what failed;
+* why it failed;
+* which boundary was involved;
+* which assumption proved false;
+* which class of state should be prevented or handled differently;
+* what evidence supports the conclusion;
+* where the conclusion applies.
+
+For example:
+
+> Package filenames cannot serve as authoritative identity because
+> they are mutable, derived, and interpreted differently by several
+> components.
+
+That is a lesson.
+
+It is more durable than:
+
+> Fix package `foo` because its filename is wrong.
+
+The first identifies a failure class.
+
+The second identifies one corpse.
+
+## Lesson Extraction
+
+**Lesson extraction** is the act of converting one incident into a
+reusable statement about system behavior.
+
+A good extraction moves from:
+
+```text
+this package broke
+```
+
+toward:
+
+```text
+artifact identity is reconstructed independently at several boundaries
+```
+
+Then further toward:
+
+```text
+artifact identity needs one authority surface and a bound representation
+```
+
+Each step increases portability.
+
+But abstraction can go too far.
+
+A lesson such as:
+
+> All ambiguity is evil.
+
+is broad enough to be useless and authoritarian enough to become
+popular.
+
+A useful lesson remains connected to:
+
+* a mechanism;
+* a scope;
+* evidence;
+* a possible intervention.
+
+> Extract the failure shape.  
+> Do not grind the corpse into universal seasoning.
+
+## Doctrine
+
+**Doctrine** is a compressed lesson intended to guide future judgment.
+
+Examples include:
+
+* normalize before mutation;
+* documentation confesses;
+* artifacts should carry truth;
+* reject meanings the system cannot own;
+* couple components through contracts, not private implementation;
+* local survival is not system-level coherence.
+
+Doctrine is useful because maintainers cannot replay every historical
+autopsy during every review.
+
+It provides fast orientation.
+
+Doctrine becomes dangerous when:
+
+* its original scope disappears;
+* its evidence is forgotten;
+* exceptions become morally suspect;
+* compressed language replaces analysis;
+* the phrase is used to end discussion rather than begin it.
+
+> Doctrine is a cached autopsy.  
+> Invalidate it when the underlying world changes.
+
+## Doctrinal Compression
+
+**Doctrinal compression** turns a detailed conclusion into a memorable
+rule.
+
+For example:
+
+Detailed conclusion:
+
+> A backend may vary internally, but every backend used for package
+> extraction must produce equivalent normalized semantics before
+> filesystem mutation.
+
+Compressed doctrine:
+
+> The backend is not the invariant.
+> The normalization contract is.
+
+The compressed form is valuable because it can guide review quickly.
+
+It should still point toward the deeper model.
+
+Without that connection, the saying may be applied where no backend
+substitution or normalization boundary exists.
+
+Then the doctrine is no longer compression.
+
+It is decorative authority.
+
+## Memory Surface
+
+A **memory surface** preserves or communicates a lesson.
+
+Examples include:
+
+* documentation;
+* issue summaries;
+* commit messages;
+* comments;
+* release notes;
+* checklists;
+* tests;
+* hooks;
+* validation tools;
+* training material;
+* operator memory.
+
+Memory surfaces differ in:
+
+* authority;
+* scope;
+* discoverability;
+* durability;
+* enforcement strength;
+* maintenance cost.
+
+A rule in a man page and a rule in a parser may contain the same
+words.
+
+They do not perform the same system function.
+
+## Memory Prosthesis
+
+A **memory prosthesis** helps one operator, maintainer, or local
+workflow remember and apply a lesson.
+
+Examples include:
+
+* a personal pre-commit hook;
+* a shell wrapper checking a known trap;
+* an editor warning;
+* a release checklist;
+* a local validation script;
+* a comment beside a dangerous call;
+* a test run manually before publication.
+
+Memory prostheses are valuable.
+
+They reduce repeated local mistakes.
+
+They are especially useful while:
+
+* the failure class is still being understood;
+* false positives remain likely;
+* the project lacks authority to enforce the rule globally;
+* migration is incomplete;
+* operator judgment remains necessary.
+
+A memory prosthesis becomes misleading when its local effect is
+presented as a system-wide invariant.
+
+> A note beside your trapdoor is good engineering.  
+> It does not mean the building has acquired a safety code.
+
+## Advisory Surface
+
+An **advisory surface** reports a rule or risk without preventing the
+operation.
+
+Examples include:
+
+* warnings;
+* linter output;
+* documentation;
+* optional checks;
+* review comments;
+* deprecation messages.
+
+Advisory surfaces are appropriate when:
+
+* the state may be legitimate;
+* the model is not mature enough for strict rejection;
+* false positives would be costly;
+* operator judgment is required;
+* migration needs visibility before enforcement.
+
+An advisory surface should state its strength honestly.
+
+A warning is not a prohibition.
+
+A linter is not a repository invariant.
+
+A deprecation message is not a migration.
+
+## Procedure
+
+A **procedure** is a required human or automated sequence intended to
+preserve a lesson.
+
+Examples include:
+
+* mandatory review;
+* release checklists;
+* signed approval;
+* required staging;
+* explicit migration steps;
+* repository publication workflow.
+
+Procedures are stronger than advice because participation is expected
+to follow them.
+
+Their enforcement may still be social.
+
+A required checklist remains a soft invariant if the authoritative
+path can bypass it.
+
+## Procedural Guardrail
+
+A **procedural guardrail** constrains behavior through required
+process.
+
+Examples include:
+
+* two-person review before release;
+* mandatory package validation during publication;
+* a documented migration sequence;
+* a release process requiring database schema checks;
+* a rule that compatibility removal must inventory callers first.
+
+Procedural guardrails are useful when judgment matters.
+
+They can preserve nuances too difficult to encode mechanically.
+
+Their weakness is variability:
+
+* reviewers differ;
+* procedures are skipped under pressure;
+* automation may bypass them;
+* participants may interpret the rule differently;
+* familiarity may reduce attention.
+
+> A procedure is executable documentation with biological
+> dependencies.
+
+## Guardrail
+
+A **guardrail** is a mechanism that prevents, rejects, transforms, or
+contains a known failure class.
+
+A guardrail gives a lesson operational force.
+
+Examples include:
+
+* rejecting malformed metadata;
+* refusing an incoherent flag combination;
+* normalizing paths before extraction;
+* requiring artifact identity in a build result;
+* preventing publication when metadata and content disagree;
+* isolating legacy semantics behind one adapter;
+* serializing package database writers;
+* refusing lifecycle execution in an undefined context.
+
+> A guardrail is doctrine given a body.
+
+The body matters.
+
+The same lesson may be expressed as:
+
+```text
+“Do not combine these flags.”
+```
+
+or:
+
+```text
+parser rejects the combination before execution
+```
+
+The first relies on memory.
+
+The second changes reachable state.
+
+## Guardrail Scope
+
+Every guardrail has a scope.
+
+A guardrail may protect:
+
+* one operator;
+* one clone;
+* one repository;
+* one command path;
+* one component;
+* one publication service;
+* every supported installation.
+
+Scope should be stated explicitly.
+
+A local hook may perfectly protect one maintainer's commits.
+
+It does not protect:
+
+* server-side imports;
+* automated commits;
+* other clones;
+* alternate repositories;
+* downstream publication.
+
+The guardrail is real.
+
+Its scope is local.
+
+Calling it universal is authority laundering.
+
+## Authoritative Path
+
+The **authoritative path** is the execution or publication path whose
+result the ecosystem treats as official.
+
+Examples include:
+
+* the package repository accepting artifacts;
+* the package manager committing installed state;
+* the build system declaring a release artifact complete;
+* the source repository accepting changes;
+* the deployment system promoting a build.
+
+A guardrail becomes system-level only when it protects the
+authoritative path or every path capable of producing equivalent
+authoritative state.
+
+> A check that protects the side door is useful.  
+> Do not announce that the vault is secure while the loading bay
+> remains open.
+
+## Guardrail Placement
+
+Guardrails should be placed where:
+
+* the required facts are available;
+* the authority to reject exists;
+* failure occurs before expensive mutation;
+* all relevant paths cross;
+* the rule can be expressed accurately;
+* bypass is visible or impossible.
+
+Poor placement creates duplicate or inconsistent enforcement.
+
+For example:
+
+* checking package identity only in a frontend misses direct installer
+  invocation;
+* checking repository metadata only in local hooks misses imports;
+* validating archive paths after extraction is somewhat late;
+* warning operators after database corruption is not early rejection.
+
+The strongest guardrail is not always the deepest one.
+
+The correct placement is the boundary that owns the invariant.
+
+## Early Guardrail
+
+An **early guardrail** rejects or normalizes a dangerous state before
+authoritative mutation.
+
+Examples include:
+
+* parser rejection;
+* schema validation;
+* operation-plan validation;
+* artifact verification before publication;
+* capability checks before backend invocation.
+
+Early guardrails reduce recovery burden.
+
+They also produce clearer failure semantics because fewer side effects
+have occurred.
+
+> The cheapest corrupted database is the one the command refused to
+> create.
+
+## Late Guardrail
+
+A **late guardrail** detects or repairs failure after some mutation
+has already occurred.
+
+Examples include:
+
+* post-install verification;
+* database reconciliation;
+* repository audits;
+* integrity scans;
+* recovery scripts.
+
+Late guardrails are still valuable.
+
+Some failures cannot be detected early.
+
+External effects may require postcondition checks.
+
+But a late guardrail should not be used to excuse avoidable ambiguity
+at the entrance.
+
+## Preventive Guardrail
+
+A **preventive guardrail** blocks invalid state before it enters the
+system.
+
+## Detective Guardrail
+
+A **detective guardrail** identifies a violation after or during the
+operation.
+
+## Corrective Guardrail
+
+A **corrective guardrail** restores or reconciles state after a
+violation.
+
+A robust system may use all three:
+
+```text
+prevent invalid package metadata
+        ↓
+verify repository consistency
+        ↓
+repair or quarantine inconsistent artifacts
+```
+
+Prevention is not always sufficient.
+
+Detection and recovery remain necessary because:
+
+* bugs exist;
+* storage fails;
+* concurrent state changes;
+* old artifacts survive;
+* external components violate assumptions.
+
+## Mechanical Guardrail
+
+A **mechanical guardrail** is enforced directly by code, schema, state
+model, or transaction machinery.
+
+Examples include:
+
+* parser rejection;
+* database constraints;
+* required metadata fields;
+* transaction locks;
+* cryptographic verification;
+* typed result objects;
+* repository-side validation.
+
+Mechanical guardrails are consistent within their scope.
+
+They can still preserve the wrong lesson.
+
+A perfectly enforced misconception is not correctness.
+
+## Architectural Guardrail
+
+An **architectural guardrail** makes an invalid state difficult or
+impossible to express through the system's model.
+
+Examples include:
+
+* separate host and target context types;
+* artifacts that cannot exist without identity metadata;
+* transactions that cannot commit before validation;
+* APIs that represent partial outcomes explicitly;
+* content-addressed relationships binding metadata and artifacts.
+
+Architectural guardrails are powerful because callers do not need to
+remember every check.
+
+Their danger is ontology capture.
+
+If the model excludes legitimate states, architectural enforcement
+turns an incomplete understanding into structural law.
+
+> The strongest fence deserves the strongest autopsy.
+
+## Guardrail Ladder
+
+A lesson may mature through several levels:
+
+```text
+incident
+    ↓
+operator memory
+    ↓
+written note
+    ↓
+checklist
+    ↓
+optional validation
+    ↓
+mandatory procedure
+    ↓
+authoritative validation
+    ↓
+architectural invariant
+```
+
+This is not a mandatory progression.
+
+Some lessons should stop at documentation.
+
+Some require human judgment permanently.
+
+Some should become mechanical immediately.
+
+The ladder helps state current maturity and authority.
+
+It prevents a project from pretending the lesson has reached the final
+rung merely because the first script exists.
+
+## Structured Hope
+
+**Structured hope** is a proposal, issue, document, prototype, or
+local mechanism that gives a desired future enough form to inspect.
+
+Examples include:
+
+* a schema draft;
+* an optional validator;
+* a proposed API;
+* a local hook;
+* a migration design;
+* a conformance test not yet connected to integration.
+
+Structured hope matters because it moves desire out of vague
+conversation.
+
+It gives maintainers something to:
+
+* test;
+* criticize;
+* revise;
+* compare;
+* adopt;
+* reject.
+
+But it does not yet bind authoritative behavior.
+
+> Hope with a schema is better than hope with vibes.  
+> It remains hope.
+
+## Structural Hope
+
+**Structural hope** is sustained work to create the authority paths by
+which lessons can change shared behavior.
+
+It includes:
+
+* clarifying ownership;
+* creating binding surfaces;
+* aligning repositories;
+* building migration mechanisms;
+* assigning maintainers;
+* connecting tests to integration;
+* changing APIs;
+* funding review and maintenance;
+* closing bypass paths.
+
+Structured hope says:
+
+> Here is the desired contract.
+
+Structural hope asks:
+
+> What must the ecosystem change so this contract can become real?
+
+One produces a shape.
+
+The other produces leverage.
+
+## Guardrail Promotion
+
+**Guardrail promotion** is the movement of a lesson from weaker,
+local enforcement into stronger, shared enforcement.
+
+For example:
+
+```text
+maintainer remembers package-name rule
+        ↓
+rule added to checklist
+        ↓
+local validator written
+        ↓
+validator added to repository tooling
+        ↓
+server rejects malformed publication
+        ↓
+package parser rejects malformed identity at source
+```
+
+Each promotion changes:
+
+* scope;
+* authority;
+* failure timing;
+* maintenance burden;
+* operator freedom;
+* compatibility obligations.
+
+Promotion should therefore be deliberate.
+
+A local check may permit useful experimentation.
+
+A repository gate affects every contributor.
+
+A parser restriction affects every future state.
+
+## Guardrail Demotion
+
+**Guardrail demotion** occurs when a formerly mechanical or
+authoritative rule survives only in weaker form.
+
+Examples include:
+
+* parser validation removed during a rewrite;
+* mandatory repository check becoming optional;
+* test failure downgraded to warning;
+* schema constraint replaced by review convention;
+* one authoritative workflow replaced by several local scripts.
+
+Demotion may be justified.
+
+A rule may have been overly strict.
+
+The model may have changed.
+
+But accidental demotion creates zombie invariants:
+
+* the rule remains important;
+* the mechanism disappears;
+* maintainers continue enforcing it socially.
+
+## Guardrail Drift
+
+**Guardrail drift** occurs when a guardrail's enforced rule gradually
+separates from the failure it was meant to prevent.
+
+This may happen when:
+
+* the protected format changes;
+* the rule is copied to another context;
+* the implementation evolves;
+* exceptions accumulate;
+* the rationale is forgotten;
+* maintainers optimize the check without revisiting the model.
+
+For example, a validator originally checks:
+
+> Artifact metadata identity must match authoritative build identity.
+
+Years later, authoritative build identity disappears.
+
+The validator compares metadata only with the filename.
+
+The guardrail remains mandatory.
+
+It now mechanically enforces a weaker and possibly circular rule.
+
+The project still has enforcement.
+
+It has lost truth.
+
+## Fossilized Guardrail
+
+A **fossilized guardrail** continues blocking or shaping behavior
+after its original failure class no longer applies.
+
+Examples include:
+
+* rejecting names because an old storage backend could not escape
+  them;
+* forbidding concurrency after the database became transactional;
+* requiring a directory created for a retired migration tool;
+* blocking alternate roots because one historical script was unsafe.
+
+The rule may still be prudent.
+
+It needs a current rationale.
+
+A guardrail without a living autopsy becomes architectural
+superstition.
+
+## Guardrail Overfitting
+
+**Guardrail overfitting** occurs when enforcement prevents one
+observed incident but fails to capture the underlying failure class.
+
+Example:
+
+Incident:
+
+```text
+foo#1.2.pkg
+```
+
+contains metadata declaring:
+
+```text
+bar 1.2
+```
+
+Overfitted guardrail:
+
+> Reject artifacts named `foo#1.2.pkg` when metadata says `bar`.
+
+Structural guardrail:
+
+> Verify that bound artifact identity agrees with authoritative
+> publication identity for every artifact.
+
+The first memorizes the corpse.
+
+The second extracts the wound.
+
+## Guardrail Spill
+
+**Guardrail spill** occurs when one layer's enforcement begins
+imposing policy outside the semantic scope it legitimately owns.
+
+Examples include:
+
+* an archive parser deciding repository naming policy;
+* a repository gate deciding local installation policy;
+* a package manager forbidding operator configuration unrelated to
+  package integrity;
+* a build tool enforcing one distribution's release doctrine.
+
+Guardrails should preserve boundaries, not annex neighboring
+countries.
+
+## Guardrail Conflict
+
+**Guardrail conflict** occurs when different layers enforce
+incompatible rules over the same state.
+
+For example:
+
+* the builder permits uppercase package names;
+* the repository rejects them;
+* the installer normalizes them to lowercase;
+* the database treats names case-sensitively.
+
+Each layer may have a defensible rule.
+
+Together they produce a semantic grinder.
+
+Conflict indicates:
+
+* unclear authority;
+* inconsistent normalization;
+* several active models;
+* incomplete migration.
+
+## Bypass Path
+
+A **bypass path** reaches authoritative state without crossing the
+expected guardrail.
+
+Examples include:
+
+* direct pushes bypassing review;
+* imports bypassing local hooks;
+* low-level tool invocation bypassing a validated wrapper;
+* manual database editing;
+* alternate publication tools;
+* recovery mode with weaker checks.
+
+Some bypass paths are legitimate.
+
+Recovery may need exceptional authority.
+
+The important questions are:
+
+* Is the bypass explicit?
+* Who may use it?
+* What evidence is recorded?
+* How is state validated afterward?
+* Can ordinary automation use it accidentally?
+* Does documentation admit it exists?
+
+A hidden bypass converts a claimed invariant into a polite suggestion.
+
+## Escape Hatch
+
+An **escape hatch** is an explicit mechanism allowing operators to
+cross or suspend a guardrail deliberately.
+
+A good escape hatch:
+
+* requires clear intent;
+* explains the violated guarantee;
+* records use when appropriate;
+* limits scope;
+* permits later validation;
+* does not become the default path.
+
+Escape hatches preserve operator sovereignty.
+
+They also test whether the system can distinguish deliberate exception
+from accidental violation.
+
+> A door is better than a hole in the fence.  
+> Especially when the door has a sign saying where the wolves are.
+
+## Warning Versus Guardrail
+
+A warning communicates.
+
+A guardrail constrains.
+
+Suppose a tool detects an unsafe option combination.
+
+A warning says:
+
+```text
+warning: this combination may modify the host unexpectedly
+```
+
+A guardrail says:
+
+```text
+error: lifecycle scripts require an explicit execution context
+```
+
+The warning may be correct when:
+
+* expert operators possess valid reasons to continue;
+* compatibility requires temporary acceptance;
+* detection is uncertain.
+
+The guardrail is correct when:
+
+* the state has no coherent meaning;
+* damage is likely;
+* the system can identify the invalid condition precisely.
+
+The distinction should reflect policy, not implementation convenience.
+
+## Review as Guardrail
+
+Review can be a strong guardrail when:
+
+* the review scope is explicit;
+* reviewers receive the needed facts;
+* approval is mandatory;
+* bypass is controlled;
+* conclusions are recorded;
+* review occurs before authoritative mutation.
+
+Review becomes symbolic when:
+
+* reviewers lack artifact truth;
+* changes are too large to understand;
+* important behavior lives outside the diff;
+* approval is assumed;
+* automated paths bypass review;
+* reviewers verify presentation rather than semantics.
+
+More reviewers do not automatically produce stronger binding.
+
+They may produce more witnesses around the same weak artifact.
+
+## Witness Without Reduction
+
+**Witness without reduction** is the accumulation of observers without
+a corresponding reduction in uncertainty or failure probability.
+
+Examples include:
+
+* several reviewers checking a filename because the artifact lacks
+  identity metadata;
+* multiple dashboards displaying inconsistent state;
+* repeated manual approval around an ambiguous operation;
+* several logs narrating the same unstructured result.
+
+The system sees more.
+
+It does not know more.
+
+> Five people watching the boundary leak do not constitute a seal.
+
+## Symbolic Guardrail
+
+A **symbolic guardrail** looks authoritative but cannot constrain the
+relevant path.
+
+Examples include:
+
+* policy documents with no enforcement or review;
+* tests not connected to integration;
+* optional hooks described as mandatory behavior;
+* warnings counted as prevention;
+* schemas producers may ignore;
+* roadmaps presented as current architecture.
+
+Symbolic guardrails can preserve intent.
+
+They become dangerous when the project credits them with guarantees
+they cannot provide.
+
+## Enforcement Theater
+
+**Enforcement theater** is the performance of control without
+effective authority over the state being controlled.
+
+Typical symptoms include:
+
+* mandatory-looking checks that are easily bypassed;
+* review after publication;
+* validation against derived rather than authoritative state;
+* warnings labeled as policy enforcement;
+* dashboards with no corrective path;
+* signed forms certifying facts the signers cannot observe.
+
+The ecosystem acquires confidence.
+
+The invalid state remains reachable.
+
+## Guardrail Debt
+
+**Guardrail debt** is the future maintenance and migration cost
+created by enforcement whose model, scope, or rationale is incomplete.
+
+Debt accumulates when:
+
+* checks duplicate across layers;
+* rules lack ownership;
+* false positives require routine bypass;
+* compatibility exceptions multiply;
+* tests encode implementation details;
+* guardrails have no revision path;
+* enforcement is added faster than the system can explain it.
+
+Guardrails reduce some forms of debt.
+
+They can create others.
+
+A project with many unexplained checks may be safer in ordinary cases
+and nearly impossible to evolve.
+
+## Guardrail Budget
+
+A **guardrail budget** is the project's practical capacity to maintain
+its enforcement mechanisms accurately.
+
+The budget includes:
+
+* model clarity;
+* tests;
+* maintainers;
+* observability;
+* migration support;
+* review attention;
+* documentation;
+* incident evidence;
+* ability to remove obsolete checks.
+
+Adding a guardrail consumes this budget permanently until the rule is
+retired.
+
+The correct question is not only:
+
+> Can we add this check?
+
+It is also:
+
+> Can we maintain the meaning of this check for the next ten years?
+
+## From Doctrine to Invariant
+
+A lesson becomes an invariant through several transformations.
+
+### 1. Name the Failure Class
+
+Do not begin with the desired check.
+
+State what failure is being prevented.
+
+### 2. Identify the Authority Surface
+
+Determine which layer owns the relevant meaning.
+
+### 3. Define the Contract
+
+State accepted, rejected, and transformed states.
+
+### 4. Locate the Authoritative Path
+
+Find every path capable of producing the affected state.
+
+### 5. Choose Binding Strength
+
+Decide whether the lesson belongs in:
+
+* documentation;
+* warning;
+* procedure;
+* validation;
+* mechanical rejection;
+* architecture.
+
+### 6. Preserve Rationale
+
+Connect the mechanism to evidence and decision history.
+
+### 7. Plan Compatibility and Migration
+
+Existing state may already violate the new rule.
+
+### 8. Control Bypass
+
+Make exceptional paths explicit.
+
+### 9. Observe Consequences
+
+Measure false positives, missed cases, and operator adaptation.
+
+### 10. Revise or Retire
+
+The guardrail must remain capable of learning.
+
+## Field Symptom: Malformed Repository Metadata
+
+A package enters the repository with a missing dependency field.
+
+### Stage 1: Folklore
+
+Maintainers know the field is required.
+
+### Stage 2: Checklist
+
+Release procedure says:
+
+> Verify dependency metadata.
+
+### Stage 3: Local Validator
+
+One maintainer writes a script.
+
+### Stage 4: Shared Tool
+
+The script is committed and documented.
+
+### Stage 5: Required Procedure
+
+Release instructions require running it.
+
+### Stage 6: Authoritative Gate
+
+The repository rejects malformed publication.
+
+### Stage 7: Architectural Invariant
+
+The package representation cannot be constructed without an explicit
+dependency field or an explicit declaration that none exist.
+
+Each stage strengthens retention and enforcement.
+
+Each stage also narrows representable state.
+
+The correct stopping point depends on whether an empty or unknown
+field is legitimate.
+
+The strongest guardrail is not automatically the wisest one.
+
+## Field Symptom: Unsafe Alternate-Root Scripts
+
+Operators know lifecycle scripts may affect the host during
+target-root installation.
+
+Possible responses include:
+
+### Documentation
+
+Warn that script context remains host-relative.
+
+### Explicit Option
+
+Require:
+
+```text
+--run-host-context-scripts
+```
+
+### Rejection
+
+Refuse scripts during target installation.
+
+### Context Model
+
+Represent host, target, and script execution contexts explicitly.
+
+### Isolation
+
+Execute scripts in a defined target environment.
+
+These are not merely different implementation strengths.
+
+They represent different contracts.
+
+The project should not jump directly to the strongest-looking
+mechanism without deciding which semantics it intends to own.
+
+## Field Symptom: The Local Hook Becomes Policy
+
+A maintainer adds a local hook rejecting package names containing `/`.
+
+The rule works.
+
+The project documentation later says:
+
+> Package names cannot contain `/`.
+
+But:
+
+* imports bypass the hook;
+* another maintainer never installed it;
+* the package parser still accepts the name;
+* the repository can store malformed entries until a path collision
+  occurs.
+
+The lesson is good.
+
+The memory prosthesis is useful.
+
+The policy statement is stronger than the mechanism.
+
+The next promotion could be:
+
+* server-side repository validation;
+* parser rejection;
+* a package-name type that excludes `/`.
+
+Until then, the accurate statement is:
+
+> Authoritative repositories require package names without `/`;
+> current enforcement is incomplete.
+
+Confession before confidence.
+
+## Field Symptom: The Overfitted Regression Test
+
+An installation bug occurs only when package `foo` contains a hard
+link named `bar`.
+
+A regression test installs `foo` and checks that `bar` exists.
+
+The test passes under a backend that duplicates the file rather than
+preserving the hard-link relationship.
+
+The original failure involved link semantics.
+
+The test preserved appearance.
+
+The guardrail overfit the symptom.
+
+A stronger test would verify:
+
+* both paths exist;
+* they refer to the same inode or equivalent normalized relationship;
+* backend substitution preserves the contract.
+
+The test should remember the invariant, not merely the corpse's
+silhouette.
+
+## Field Symptom: Review After Truth Is Lost
+
+A release process asks three reviewers to verify package artifacts.
+
+Reviewers receive:
+
+* filenames;
+* checksums;
+* build logs;
+* repository entries.
+
+Artifacts carry no bound identity or provenance.
+
+Each reviewer manually reconciles the same evidence.
+
+The process has strong procedural ceremony.
+
+Its epistemic substrate is weak.
+
+Adding a fourth reviewer does not repair artifact truth.
+
+The correct guardrail may belong earlier:
+
+* structured build results;
+* bound manifests;
+* repository validation;
+* reproducible provenance.
+
+Review should judge policy and evidence.
+
+It should not repeatedly reconstruct basic facts the artifact boundary
+failed to carry.
+
+## Field Symptom: The Rule That Outlived Its Backend
+
+A project forbids package names longer than 32 characters.
+
+The limit came from an old database field.
+
+The database was replaced years ago.
+
+The parser still rejects longer names.
+
+Maintainers defend the limit as project simplicity.
+
+No current component requires it.
+
+The guardrail has fossilized.
+
+Possible responses include:
+
+* remove the limit;
+* identify another current constraint;
+* preserve the policy explicitly for human or compatibility reasons;
+* stage a migration if external tools still depend on it.
+
+The wrong response is:
+
+> It has always been forbidden, therefore the system must need it.
+
+History explains a rule.
+
+It does not automatically justify its continued authority.
+
+## Field Symptom: The Escape Hatch Becomes the Highway
+
+A tool rejects direct modification of package database state.
+
+It offers:
+
+```text
+--force-unsafe-database-edit
+```
+
+for recovery.
+
+Automation begins using the option because the normal path rejects one
+common workflow.
+
+Documentation starts recommending it.
+
+The escape hatch becomes the primary path.
+
+This is evidence that:
+
+* the guardrail is mis-scoped;
+* the model excludes legitimate state;
+* migration is incomplete;
+* or the surrounding workflow needs another boundary.
+
+The answer is not necessarily to remove the guardrail.
+
+The repeated bypass is a diagnostic signal.
+
+> When everybody uses the emergency exit, inspect the front door
+> before blaming the crowd.
+
+## Do Not Confuse
+
+**A lesson** is not yet doctrine.
+
+A lesson retains more context and evidence.
+
+**Doctrine** is not automatically dogma.
+
+Compressed guidance is necessary for efficient judgment.
+
+**A memory prosthesis** is not a failed guardrail.
+
+It may be the correct local or experimental mechanism.
+
+**A warning** is not a guardrail.
+
+It informs without preventing.
+
+**A procedure** is not necessarily weak.
+
+Human review may enforce judgments the system cannot model safely.
+
+**Mechanical enforcement** is not automatically correctness.
+
+A machine can enforce the wrong rule consistently.
+
+**An architectural invariant** is not always preferable.
+
+Structural exclusion is expensive to revise when the model changes.
+
+**A bypass** is not automatically a defect.
+
+Recovery and operator sovereignty may require explicit exceptions.
+
+**A test** is not automatically a guardrail.
+
+It must protect an authoritative path or reliably block regression.
+
+**More enforcement** is not always more coherence.
+
+Conflicting or mis-scoped guardrails can fracture authority further.
+
+**A local hook** is not project policy.
+
+Its scope ends where installation and authority end.
+
+**Guardrail removal** is not necessarily regression.
+
+An obsolete or overfitted rule may need retirement.
+
+## The Guardrail Test
+
+Before promoting a lesson into enforcement, ask:
+
+1. What incident or evidence produced the lesson?
+2. What reusable failure class was extracted?
+3. Which contract or invariant is involved?
+4. Where does semantic authority live?
+5. Which path produces authoritative state?
+6. What is the current memory surface?
+7. Is the mechanism advisory, procedural, mechanical, or
+   architectural?
+8. What scope does it actually protect?
+9. Which paths bypass it?
+10. Are those bypasses legitimate?
+11. Does the guardrail act before mutation?
+12. If not, how is state repaired?
+13. Does it prevent the failure class or only one symptom?
+14. Is the rule precise enough to enforce?
+15. What legitimate states might it reject?
+16. Does it preserve operator authority where appropriate?
+17. Does it duplicate another layer's enforcement?
+18. Can conflicting guardrails exist?
+19. Is the rationale discoverable?
+20. Are affected versions and contexts known?
+21. How will existing state migrate?
+22. What happens under backend substitution?
+23. What happens under alternate control planes?
+24. Is the mechanism attached to the authoritative path?
+25. Is it a shared guardrail or a local memory prosthesis?
+26. Is the project describing its binding strength honestly?
+27. What evidence would justify revision?
+28. What is the retirement condition?
+29. Can the project maintain this guardrail within its invariant
+    budget?
+30. Will future maintainers understand the rule or merely fear it?
+
+The objective is not maximum enforcement.
+
+The objective is a lesson placed at the weakest surface strong enough
+to preserve correctness honestly.
+
+## Sixteenth House Law
+
+> A guardrail is doctrine given a body.  
+> Make sure the body belongs to the right corpse.
+
+Part IV followed operational knowledge as it moved through people,
+wrappers, folklore, archives, doctrine, and enforcement.
+
+It showed how ecosystems remain alive after shared structure weakens,
+and how those compensations may eventually become real boundaries ---
+or harden into unexplained ritual.
+
+Part V turns to the system as a regulator.
+
+The next section is **Part V: Cybernetic Regulation and Ecosystem
+Evolution**, beginning with **Control Loops and Regulator Failure**:
+how observation becomes correction, why many systems collect evidence
+without learning, and what happens when operators themselves become
+the missing feedback path.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
