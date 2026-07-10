@@ -196,6 +196,253 @@ Operators carry memory, caution, habit, local knowledge, and folklore.
 Neither is outside the system merely because only one of them drinks
 coffee.
 
+---
+
+# Part I. The Foundational Tension {.unnumbered}
+
+A system has been running for fifteen years.
+
+Packages still install.  
+Services still start.  
+Upgrades usually finish.
+
+One operator knows which configuration file must be copied before the
+upgrade.
+Another knows which warning can be ignored.
+A third maintains a wrapper that nobody fully understands but
+everybody invokes.
+
+Remove those operators and the system stops being reliable.
+
+Was the system stable?
+
+Yes.
+
+Just not by itself.
+
+---
+
+# Local Survivability and System-Level Coherence
+
+Long-lived infrastructure is often judged at two different scales.
+
+**Local survivability** asks:
+
+> Can this installation be kept working?
+
+**System-level coherence** asks:
+
+> Can the ecosystem state what the operation means, preserve that
+> meaning across its boundaries, and enforce the result without
+> relying on hidden knowledge?
+
+These are not the same achievement.
+
+A local wrapper may keep one installation alive.
+
+An overlay may repair one package.
+
+An operator may remember that one command must always precede another.
+
+A mailing-list post may explain the failure perfectly.
+
+All of these can restore local survivability.
+
+None of them necessarily restores system-level coherence.
+
+> The machine works.  
+> The ecosystem just needs several humans installed as runtime
+> dependencies.
+
+## Local Survivability
+
+**Local survivability** is the ability of an installation or workflow
+to remain operational despite unresolved defects in the shared system.
+
+It may depend on:
+
+* local patches;
+* wrappers;
+* overlays;
+* undocumented command sequences;
+* operator discipline;
+* institutional memory;
+* avoiding certain valid-looking states;
+* knowing which failures are harmless.
+
+Local survivability is real engineering value.
+
+A workaround that keeps a production system alive is not fake merely
+because it is ugly.
+An operator who understands a broken boundary may prevent data loss
+while a cleaner design remains unavailable.
+
+The mistake is not surviving locally.
+
+The mistake is confusing survival with resolution.
+
+> A tourniquet is successful when the patient stops bleeding.  
+> It becomes architecture when nobody returns for the leg.
+
+## System-Level Coherence
+
+**System-level coherence** is the condition in which the system's
+semantics remain explicit, compatible, and mechanically defensible
+across the layers that compose them.
+
+A coherent system can answer:
+
+* Which component owns this operation?
+* Where is the authoritative state?
+* Which inputs are valid?
+* Which failures are expected?
+* What truth crosses the boundary?
+* What can callers safely assume?
+* What happens when one component is replaced?
+* Who rejects an invalid state?
+
+The answers do not need to be centralized.
+
+They need to agree.
+
+A system may consist of many small tools and still be coherent.
+Another may have one enormous orchestrator and remain incoherent.
+The number of components does not decide the matter.
+
+The question is whether their meanings compose.
+
+## The Foundational Trade
+
+Local survivability spends whatever is available now:
+
+* attention;
+* memory;
+* shell code;
+* repository convention;
+* operator expertise;
+* compatibility debt.
+
+System-level coherence spends engineering effort earlier:
+
+* explicit contracts;
+* normalized state;
+* invariant enforcement;
+* artifact metadata;
+* rejection paths;
+* migration work;
+* boundary design.
+
+Neither is free.
+
+The difference is where the bill is sent.
+
+```text
+local survivability
+    pays with operators, memory, and repeated adaptation
+
+system-level coherence
+    pays with models, contracts, and enforcement
+```
+
+A project under immediate pressure may rationally choose local
+survival.
+
+A project that repeatedly makes the same choice is no longer
+responding to an emergency.
+
+It is selecting an architecture.
+
+## Field Symptom
+
+A command accepts an operation and exits successfully.
+
+The resulting state is only correct if the operator already knows:
+
+* which root supplied dependency information;
+* which root received the files;
+* where lifecycle scripts executed;
+* and which configuration belonged to the host rather than the target.
+
+One installation may survive because its operator understands the
+split.
+
+The command surface remains globally incoherent because it presents
+several execution contexts as one operation without defining their
+relationship.
+
+Local competence has successfully concealed a missing model.
+
+## Do Not Confuse
+
+**Local survivability** is not the same as bad engineering.
+
+Sometimes local repair is the only responsible action available.
+
+**System-level coherence** is not the same as centralization.
+
+A coherent system may distribute authority across many components,
+provided their contracts and boundaries remain explicit.
+
+**Strictness** is not automatically coherence.
+
+A system can reject many states while enforcing the wrong model.
+
+**Flexibility** is not automatically survivability.
+
+An interface that accepts everything may merely postpone failure until
+the operator has fewer useful facts.
+
+## The Scaling Problem
+
+A small ecosystem can survive substantial incoherence because a few
+operators carry most of the missing context.
+
+They remember:
+
+* why the workaround exists;
+* which assumption it protects;
+* which apparent alternative is unsafe;
+* what happened the last time somebody removed it.
+
+As the ecosystem grows, those memories no longer propagate reliably.
+
+The same workaround is copied without its rationale.
+
+Different installations preserve different pieces.
+
+A local truth becomes distributed folklore.
+
+Eventually the ecosystem contains several working systems that are no
+longer working for the same reasons.
+
+> Folklore scales by losing packets.
+
+System-level coherence becomes important not because every
+installation must be identical, but because variation needs explicit
+boundaries.
+
+Without those boundaries, flexibility and drift become
+indistinguishable.
+
+## First House Law
+
+> Survival proves that the ecosystem compensated.  
+> It does not prove that the system was correct.
+
+This distinction will recur throughout the Fieldbook.
+
+Whenever a workaround, wrapper, convention, or expert operator keeps
+something alive, ask two questions:
+
+1. What local failure was successfully absorbed?
+2. Which shared boundary remains unresolved?
+
+The first question respects the repair.
+
+The second prevents the repair from becoming theology.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
