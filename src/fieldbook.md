@@ -1684,6 +1684,569 @@ this command means” is not yet an execution model.
 
 ---
 
+# Contracts and Invariants
+
+The command accepts the input.
+
+The operation begins.
+
+Halfway through, one component discovers that the requested state
+cannot be represented coherently.
+
+It prints a warning, performs the representable half, and exits
+successfully.
+
+The documentation calls the operation supported.
+
+The maintainers call the input unusual.
+
+The operator calls the backup.
+
+---
+
+## Contract
+
+A **contract** is an explicit statement of behavior owned by a
+component or system boundary.
+
+A useful contract identifies:
+
+* accepted inputs;
+* rejected inputs;
+* authoritative state;
+* produced outputs;
+* permitted state transitions;
+* failure conditions;
+* observable consequences;
+* guarantees that callers may rely upon.
+
+A contract does not need to describe every implementation detail.
+
+It needs to describe enough behavior for another layer to compose with
+it without reconstructing hidden assumptions.
+
+> A contract tells the caller where reasoning may stop.
+
+Without that stopping point, every caller must continue downward into
+implementation, configuration, history, or folklore.
+
+## Contract Scope
+
+Every contract has a scope.
+
+A component may guarantee:
+
+* syntax but not semantic validity;
+* file extraction but not package installation;
+* package construction but not repository publication;
+* state mutation but not service activation;
+* local execution but not alternate-root behavior.
+
+Narrow contracts are not inherently weak.
+
+A narrow contract that is explicit and complete within its scope is
+stronger than a broad contract assembled from implications.
+
+The problem begins when the interface advertises one operation while
+the implementation owns only several disconnected fragments.
+
+> The command name says “install”.  
+> The contract says “some files may become emotionally associated with
+> a directory”.
+
+## Contract Boundary
+
+A **contract boundary** is the point at which one layer's obligations
+end and another layer's obligations begin.
+
+A clean boundary answers:
+
+* what enters;
+* what leaves;
+* what remains internal;
+* what failures cross;
+* which facts survive the crossing;
+* which layer owns recovery.
+
+When these answers are implicit, callers begin rebuilding internal
+knowledge outside the component.
+
+That is how an implementation detail acquires diplomatic immunity.
+
+## Invariant
+
+An **invariant** is a property mechanically preserved across the state
+transitions for which the system claims responsibility.
+
+Examples include:
+
+* every installed package has one database record;
+* every published artifact has an identity manifest;
+* a transaction either commits completely or leaves authoritative
+  state unchanged;
+* dependency resolution and installation observe the same target
+  state;
+* malformed package names cannot enter an authoritative repository;
+* an artifact's recorded checksum matches its contents.
+
+An invariant is not merely a true statement about the current state.
+
+It is a property the system actively prevents itself from violating.
+
+> An invariant is a contract capable of punching back.
+
+## Contract and Invariant
+
+Contracts and invariants are related but not identical.
+
+A contract describes owned behavior.
+
+An invariant describes a property preserved by that behavior.
+
+For example, a transaction contract may state:
+
+* which operations participate;
+* when state becomes visible;
+* what failure means;
+* how rollback behaves.
+
+The corresponding invariant may be:
+
+> No observer can see a partially committed package transaction.
+
+The contract explains the mechanism's obligations.
+
+The invariant states the property that must survive every permitted
+transition.
+
+```text
+contract
+    defines permitted behavior
+
+implementation
+    performs state transitions
+
+invariant
+    must survive those transitions
+```
+
+A system may have documented contracts without useful invariants.
+
+It may also preserve invariants whose contracts are poorly exposed.
+
+The strongest boundaries possess both.
+
+## Rejection Path
+
+A **rejection path** is the behavior through which the system refuses
+an input or transition outside its contract.
+
+Rejection is part of semantics.
+
+A component that cannot support an operation coherently has several
+honest choices:
+
+1. reject it;
+2. constrain it to a smaller supported form;
+3. implement the missing model;
+4. expose the unresolved parts to a layer that explicitly owns them.
+
+The dishonest choice is partial acceptance combined with social blame.
+
+> “You should not have done that” is not a rejection path.  
+> It is an incident report written in the second person.
+
+A clear rejection path reduces the reachable ambiguity space.
+
+It tells operators and callers:
+
+* this state is outside the model;
+* no partial guarantee should be inferred;
+* failure occurs before authoritative mutation;
+* no folklore is required to discover the boundary.
+
+## Invalid State
+
+An **invalid state** is a state the system's current model explicitly
+refuses to represent or preserve.
+
+Invalidity should not be confused with unfamiliarity.
+
+A state is not invalid merely because maintainers dislike it.
+
+To reject a state honestly, the system should be able to explain which
+contract or invariant it violates.
+
+Otherwise “invalid” becomes a ceremonial word for “our current tooling
+is afraid”.
+
+## Unrepresentable State
+
+An **unrepresentable state** is a state excluded structurally by the
+model or data representation.
+
+This is stronger than runtime rejection.
+
+For example:
+
+* a typed result object may require artifact identity;
+* a transaction type may prevent commitment before validation;
+* a schema may require version and architecture fields;
+* an API may expose separate host and target contexts rather than one
+  ambiguous `root` string.
+
+When invalid states are unrepresentable, correctness no longer depends
+on every caller remembering to perform the same checks.
+
+This is powerful.
+
+It is also dangerous when the model is incomplete.
+
+A system can eliminate legitimate states merely by refusing to imagine
+them.
+
+## Guarded State
+
+A **guarded state** is representable but accessible only after
+explicit validation or authorization.
+
+Guarding is useful when:
+
+* the state is legitimate but dangerous;
+* migration requires temporary coexistence;
+* operator intent matters;
+* the model cannot yet encode the distinction structurally;
+* compatibility prevents immediate removal.
+
+Guarding is not failure.
+
+Pretending an unguarded state is safe because experienced operators
+usually avoid it is failure.
+
+## Soft Invariant
+
+A **soft invariant** is a property preserved mainly through
+convention, review, operator discipline, or social sanction.
+
+Examples include:
+
+* maintainers do not publish packages with ambiguous names;
+* operators never invoke two flags together;
+* lifecycle scripts avoid touching the host during alternate-root
+  installation;
+* repository contributors remember to update related metadata.
+
+Soft invariants are real control mechanisms.
+
+They simply execute in human memory and social process.
+
+Their cost appears as:
+
+* onboarding burden;
+* review burden;
+* inconsistent enforcement;
+* dependence on experienced participants;
+* vulnerability to turnover;
+* repeated rediscovery.
+
+> A soft invariant is an invariant with a biological implementation.
+
+The term should not be used to excuse missing enforcement.
+
+It should identify where enforcement actually lives.
+
+## Invariant Surface
+
+An **invariant surface** is a boundary across which a preserved
+property remains valid and visible.
+
+Suppose a build component guarantees that every successful build
+produces exactly one artifact with structured identity.
+
+That guarantee is useful only if the identity crosses the component
+boundary in a form callers can consume.
+
+If callers must infer it from stdout or filenames, the invariant may
+exist internally while disappearing at the surface.
+
+A property trapped inside one component is not yet an ecosystem
+contract.
+
+## Invariant Debt
+
+**Invariant debt** is future instability accumulated by relying on
+properties that are important but not mechanically preserved.
+
+Each unenforced assumption creates recurring obligations:
+
+* operators must remember it;
+* reviewers must detect violations;
+* wrappers must compensate;
+* documentation must warn;
+* support channels must explain;
+* future interfaces must preserve accidental behavior.
+
+The debt does not consist only of future code.
+
+It includes every human cycle spent keeping the assumption alive.
+
+## Contract Erosion
+
+**Contract erosion** is the gradual weakening of an owned behavioral
+boundary.
+
+It often begins innocently:
+
+* one edge case is tolerated;
+* one compatibility exception is added;
+* one caller depends on undocumented output;
+* one warning replaces rejection;
+* one temporary bypass becomes necessary for release.
+
+Over time, the contract remains in documentation while operational
+behavior acquires exceptions no single layer owns.
+
+The boundary still has a name.
+
+It no longer has enough force to stop anything.
+
+## Partial Correctness
+
+**Partial correctness** is correct behavior within a limited subset of
+inputs or states.
+
+Partial correctness is legitimate when the supported subset is
+explicit and unsupported cases are rejected.
+
+It becomes semantic counterfeit when the interface suggests a broader
+contract and allows unsupported cases to proceed far enough to look
+valid.
+
+```text
+honest partial correctness
+    narrow contract
+    explicit boundary
+    early rejection
+
+counterfeit completeness
+    broad interface
+    implicit boundary
+    partial mutation
+    operator blame
+```
+
+A constrained primitive is often preferable to counterfeit
+completeness.
+
+## Constrained Primitive
+
+A **constrained primitive** exposes deliberately limited semantics
+that the system can enforce completely.
+
+It is weaker than a complete model.
+
+It is stronger than an abstraction that pretends to unify states it
+cannot reconcile.
+
+For example, a package tool may support installation only into the
+currently running root.
+
+That is restrictive.
+
+It may nevertheless be coherent.
+
+Adding `--root` without defining dependency state, script context,
+database ownership, and runtime observation does not automatically
+produce a more capable model.
+
+It may produce one string carrying four incompatible promises.
+
+> A smaller truth is better than a larger lie.
+
+## Real Model
+
+A **real model** is a coherent authority surface whose contracts and
+invariants cover the operation it claims to represent.
+
+A real alternate-root model, for example, must define:
+
+* host context;
+* target context;
+* dependency context;
+* database ownership;
+* filesystem mutation;
+* lifecycle execution;
+* path interpretation;
+* failure and rollback;
+* artifact and state discovery.
+
+The model need not choose only one possible policy.
+
+It must make the policy explicit and compositionally available.
+
+## Invalid Abstraction
+
+An **invalid abstraction** presents several incompatible authority
+domains as one coherent operation.
+
+The problem is not merely that implementation is incomplete.
+
+The abstraction itself implies a unity the system does not possess.
+
+Typical symptoms include:
+
+* one flag changing only some phases of an operation;
+* one result reconstructed from several unrelated representations;
+* one transaction recorded across incompatible databases;
+* one interface accepting states different callers interpret
+  differently;
+* one success status covering partially completed work.
+
+> An invalid abstraction is a group photo of components that have
+> never met.
+
+## Field Symptom: The Successful Half-Install
+
+A package operation performs these steps:
+
+1. extracts files into a target root;
+2. resolves dependencies against the host database;
+3. executes lifecycle scripts on the host;
+4. fails to register the package in the target database;
+5. exits with a warning rather than failure.
+
+What is the contract?
+
+Possible interpretations include:
+
+* files were copied;
+* a package was installed;
+* the target became operational;
+* dependency state is now satisfied;
+* lifecycle changes belong to the host;
+* the operation partially succeeded.
+
+The interface supplies no authoritative answer.
+
+The system permitted several interpretations to survive one command.
+
+This is not merely a bug in step four.
+
+The operation lacks a contract capable of classifying its own result.
+
+## Field Symptom: The Forbidden Flag Combination
+
+A command accepts:
+
+```text
+tool --install --root=/mnt --run-scripts
+```
+
+Maintainers know the combination is unsafe.
+
+The parser accepts it.
+
+The man page does not forbid it.
+
+The implementation performs host-visible scripts against
+target-visible files.
+
+After an incident, the operator is told:
+
+> Nobody uses those options together.
+
+The ecosystem has a soft invariant:
+
+> Operators do not combine those flags.
+
+The interface has no rejection path.
+
+The documentation does not confess the boundary.
+
+The system accepts the state and later denies responsibility for its
+meaning.
+
+That is authority laundering.
+
+## Do Not Confuse
+
+**A contract** is not merely documentation.
+
+Documentation may express the contract. Behavior must own it.
+
+**An invariant** is not any desirable property.
+
+A desirable property becomes an invariant only when the system
+mechanically preserves it.
+
+**A soft invariant** is not imaginary.
+
+It is a real property implemented through human coordination.
+
+**Strict rejection** is not always good design.
+
+Rejecting legitimate variation because the model is too narrow may be
+ontology capture.
+
+**Broad acceptance** is not always flexibility.
+
+An interface that accepts a state it cannot interpret may only be
+postponing rejection until after mutation.
+
+**An edge case** is not automatically outside the contract.
+
+Sometimes an edge case reveals that the contract was never stated
+clearly enough.
+
+**Backward compatibility** is not automatically contract preservation.
+
+Compatibility may preserve behavior that was never intended to become
+authoritative.
+
+## The Contract Test
+
+For any claimed operation, ask:
+
+1. What exactly does the operation promise?
+2. Which inputs are valid?
+3. Which inputs are rejected?
+4. Which state transitions may occur?
+5. Which properties must remain invariant?
+6. What counts as success?
+7. What counts as failure?
+8. Can partial success exist?
+9. If so, how is it represented?
+10. Which component owns each phase?
+11. Which facts cross each boundary?
+12. Can callers stop reasoning at the contract?
+13. Which assumptions are mechanically preserved?
+14. Which assumptions remain soft invariants?
+15. What happens when the implementation encounters a state outside
+    the model?
+16. Does the interface advertise more coherence than the system owns?
+
+A contract is useful when these questions produce stable answers.
+
+If every answer begins with “normally”, the system has probably
+written its execution model in folklore.
+
+## Fifth House Law
+
+> Hope is not an invariant.
+
+A desired property, a documented intention, and a widely shared
+expectation may all be valuable.
+
+None becomes an invariant until the system can preserve it against
+mistakes, turnover, unusual inputs, and operators who have not read
+the correct decade of IRC logs.
+
+The next section is **Normalization Contracts**: how varied inputs are
+converted into stable meaning before they are permitted to mutate
+authoritative state.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
