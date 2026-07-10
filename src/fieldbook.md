@@ -3770,6 +3770,901 @@ wrapper.
 
 ---
 
+# Substitution Boundaries and Opaque Tools
+
+A maintainer dislikes the existing orchestration tool.
+
+It is too coupled, too old, too ceremonial, and written in the wrong
+language.
+
+So the maintainer writes a replacement.
+
+The new tool:
+
+* reads the same private configuration;
+* reconstructs the same artifact names;
+* invokes the same commands in the same undocumented order;
+* depends on the same output conventions;
+* inherits the same failure cases;
+* and adds a cleaner command-line interface.
+
+The old tool has been replaced.
+
+The architecture has not noticed.
+
+---
+
+## Substitution
+
+**Substitution** is the replacement of one component by another while
+preserving the contract expected by the surrounding system.
+
+A successful substitution may change:
+
+* implementation language;
+* internal data structures;
+* performance characteristics;
+* backend libraries;
+* user interface;
+* deployment model;
+* maintenance ownership.
+
+It should not silently change the semantics promised at the boundary.
+
+```text
+component A ─┐
+             ├─→ shared contract → surrounding system
+component B ─┘
+```
+
+The important object is not the implementation.
+
+It is the contract both implementations satisfy.
+
+> Replacement changes the body.  
+> Substitution preserves the skeleton.
+
+## Substitution Boundary
+
+A **substitution boundary** is an explicit contract across which one
+component can be replaced without forcing callers to reproduce or
+revise its internal assumptions.
+
+A useful substitution boundary defines:
+
+* accepted inputs;
+* structured outputs;
+* failure semantics;
+* state ownership;
+* artifact identity;
+* ordering requirements;
+* versioning expectations;
+* lifecycle responsibilities;
+* compatibility guarantees.
+
+The boundary need not make replacement effortless.
+
+It should make the cost visible and localized.
+
+Without such a boundary, replacement becomes ecosystem surgery.
+
+Every caller must be examined for private knowledge of the component
+being replaced.
+
+## Substitutability
+
+A component is **substitutable** when another implementation can
+satisfy its contract without requiring changes throughout the
+surrounding ecosystem.
+
+Substitutability is not binary.
+
+A component may be:
+
+* substitutable for one operation but not another;
+* substitutable only within one version range;
+* substitutable only through an adapter;
+* technically replaceable but operationally expensive to replace;
+* replaceable by one maintainer but not by ordinary ecosystem
+  participants.
+
+The relevant question is not merely:
+
+> Can another implementation exist?
+
+It is:
+
+> What must the rest of the ecosystem know or change for that
+> implementation to participate?
+
+## Opaque-Tool Boundary
+
+An **opaque-tool boundary** allows callers to use a component without
+owning its internal semantics.
+
+A caller may know:
+
+* what operation to request;
+* what input contract applies;
+* what structured result to expect;
+* which failures are possible.
+
+It should not need to know:
+
+* where the component stores temporary files;
+* how it computes internal paths;
+* which helper commands it invokes;
+* how it parses its private configuration;
+* which incidental message indicates success;
+* which implementation phase happened first.
+
+Opacity is not ignorance.
+
+It is disciplined ignorance made possible by a sufficient contract.
+
+> A good boundary tells the caller everything it needs.  
+> A bad boundary forces the caller to become a part-time maintainer of
+> the component behind it.
+
+## Black Box
+
+A **black box** is a component whose internal implementation is hidden
+or intentionally irrelevant to callers.
+
+A black box is useful only if its boundary carries enough truth.
+
+A component that hides its internals while withholding required
+results is not encapsulated.
+
+It is merely uncooperative.
+
+> A black box that does not publish its result is just a dark room
+> with a process ID.
+
+## Encapsulation
+
+**Encapsulation** keeps implementation decisions private behind a
+stable contract.
+
+Healthy encapsulation allows internal change without forcing callers
+to change.
+
+Unhealthy concealment withholds facts callers legitimately require.
+
+For example:
+
+* callers do not need to know how an artifact name is constructed;
+* callers do need to know which artifact was produced.
+
+The naming algorithm may remain encapsulated.
+
+The artifact identity cannot.
+
+## Substitution Cost
+
+**Substitution cost** is the total ecosystem cost of replacing one
+component with another.
+
+It includes more than implementation work.
+
+Possible costs include:
+
+* writing the replacement;
+* adapting callers;
+* migrating state;
+* converting configuration;
+* reproducing hidden behavior;
+* retraining operators;
+* updating documentation;
+* preserving compatibility;
+* changing automation;
+* validating equivalent failure semantics;
+* replacing institutional knowledge;
+* maintaining both implementations during transition.
+
+A substitution boundary does not eliminate these costs.
+
+It prevents them from spreading arbitrarily.
+
+## Local Substitution Cost
+
+**Local substitution cost** is the cost paid by the maintainer
+creating or adopting a replacement.
+
+A skilled maintainer may write a wrapper in one evening.
+
+The wrapper may work perfectly for that maintainer.
+
+This demonstrates that local escape is possible.
+
+It does not prove that the ecosystem possesses a substitution
+boundary.
+
+## Ecosystem Substitution Cost
+
+**Ecosystem substitution cost** is the cost paid across operators,
+repositories, tooling, automation, documentation, and dependent
+components.
+
+This is the cost relevant to architectural pluralism.
+
+A replacement that requires every operator to:
+
+* rewrite local scripts;
+* learn a new configuration model;
+* preserve compatibility wrappers;
+* understand hidden differences;
+* and debug divergent state;
+
+may be locally elegant while remaining ecosystemically expensive.
+
+> “I replaced it” and “it is replaceable” are different claims.
+
+## Private Escape Hatch
+
+A **private escape hatch** is an alternate tool or wrapper that
+reduces cost for one maintainer or installation without lowering
+substitution cost for the wider ecosystem.
+
+Private escape hatches are useful.
+
+They may:
+
+* prove that another design is possible;
+* preserve local survivability;
+* provide a migration laboratory;
+* expose missing contracts;
+* keep work moving while shared infrastructure stagnates.
+
+They become misleading when presented as evidence that the ecosystem
+already supports tool pluralism.
+
+## Tool Pluralism
+
+**Tool pluralism** is the coexistence of meaningfully substitutable
+components under boundaries that make replacement affordable beyond
+their original authors.
+
+Pluralism requires more than several executables.
+
+It requires:
+
+* shared or translatable contracts;
+* explicit state ownership;
+* stable artifact semantics;
+* bounded compatibility work;
+* understandable migration;
+* low enough substitution cost that alternatives can survive socially.
+
+Several tools may coexist while every one depends on the same hidden
+substrate assumptions.
+
+That is diversity of implementation.
+
+It is not yet diversity of architecture.
+
+## Parallel Control Planes
+
+**Parallel control planes** are multiple orchestration or management
+layers built around the same underlying components.
+
+They may be legitimate alternatives.
+
+They may also be repeated compensations for a missing shared boundary.
+
+Consider three package frontends.
+
+Each one:
+
+* reads package metadata independently;
+* computes dependency order independently;
+* invokes the same low-level tools;
+* parses their human-readable output;
+* maintains its own cache;
+* applies slightly different policy;
+* compensates for the same missing structured results.
+
+The ecosystem appears pluralistic.
+
+But each frontend has recreated the same priesthood around the same
+opaque rituals.
+
+> Three wrappers around one missing contract are not three
+> architectures.  
+> They are a committee studying the same hole.
+
+## Pluralism as Compensation
+
+**Pluralism as compensation** is apparent tool diversity produced by
+missing contracts, high substitution costs, or unresolved
+control-plane boundaries.
+
+Each alternative exists because the official path is insufficient.
+
+Each alternative must privately reconstruct the same missing
+semantics.
+
+This can still produce valuable experimentation.
+
+The diagnostic distinction is:
+
+* **tool pluralism** lowers ecosystem substitution cost;
+* **pluralism as compensation** distributes coping cost among several
+  implementations.
+
+One creates alternatives around a shared boundary.
+
+The other creates several local survivability strategies around the
+absence of one.
+
+## Interface Compatibility
+
+**Interface compatibility** means another component accepts or
+produces the same externally visible forms.
+
+This is necessary for substitution.
+
+It is not sufficient.
+
+Two tools may accept identical commands while differing in:
+
+* state ownership;
+* atomicity;
+* failure semantics;
+* lifecycle execution;
+* artifact completeness;
+* dependency interpretation;
+* concurrency behavior;
+* rollback guarantees.
+
+A familiar command-line syntax may conceal incompatible contracts.
+
+> Same flags, different physics.
+
+## Behavioral Compatibility
+
+**Behavioral compatibility** means another component preserves the
+semantics callers are entitled to rely upon.
+
+Behavioral compatibility is defined by contract, not by reproducing
+every historical accident.
+
+This creates a difficult question:
+
+> Which existing behaviors are contractual, and which are merely
+> observed?
+
+Without an explicit answer, replacement projects often preserve too
+much or too little.
+
+Preserve too little, and legitimate callers break.
+
+Preserve too much, and every old bug becomes constitutional law.
+
+## Compatibility Surface
+
+A **compatibility surface** is the set of externally observable
+behaviors a replacement may need to preserve.
+
+A controlled compatibility surface is:
+
+* explicit;
+* versioned;
+* documented;
+* testable;
+* bounded by declared contracts.
+
+An uncontrolled compatibility surface consists of everything any
+caller has ever observed.
+
+That surface grows without limit.
+
+> If every observation is a promise, maintenance becomes paleontology.
+
+## Compatibility Adapter
+
+A **compatibility adapter** translates between an old contract and a
+new one at a bounded location.
+
+Healthy migration may look like:
+
+```text
+old caller
+    ↓
+compatibility adapter
+    ↓
+new contract
+    ↓
+new component
+```
+
+The adapter contains legacy semantics so they do not infect the new
+component or every caller.
+
+An adapter becomes pathological when:
+
+* it must know every internal detail of both sides;
+* it grows indefinitely;
+* callers bypass it;
+* new features are implemented only through compatibility paths;
+* no removal or convergence plan exists.
+
+At that point, the adapter is no longer a bridge.
+
+It is a new country whose primary industry is customs paperwork.
+
+## Semantic Adapter
+
+A **semantic adapter** translates meaning, not merely syntax.
+
+For example, an old interface may return only a filename while a new
+interface returns a structured artifact result.
+
+A semantic adapter may:
+
+1. invoke the old component;
+2. validate the resulting artifact;
+3. reconstruct identity through an explicitly documented legacy rule;
+4. produce the new structured result;
+5. mark which assurances could not be recovered.
+
+The adapter makes the mismatch visible.
+
+A wrapper that simply renames options while preserving ambiguity is
+not a semantic adapter.
+
+It is cosmetic surgery on the same ghost.
+
+## Implementation Coupling
+
+**Implementation coupling** occurs when callers depend on private
+details of another component's implementation.
+
+Examples include:
+
+* reading its private configuration;
+* duplicating its naming rules;
+* depending on internal directory layout;
+* invoking undocumented helper commands;
+* assuming internal phase order;
+* parsing incidental log messages;
+* modifying its state database directly.
+
+Implementation coupling raises substitution cost because every
+replacement must either reproduce those internals or break callers.
+
+## Contract Coupling
+
+**Contract coupling** occurs when callers depend only on behavior
+explicitly promised at the boundary.
+
+All useful composition involves some coupling.
+
+The objective is not zero coupling.
+
+It is coupling to the right thing.
+
+> Components should be coupled by contracts, not by shared childhood
+> trauma.
+
+## Hidden Shared Substrate
+
+A **hidden shared substrate** is a lower-level assumption that several
+apparently independent tools all depend upon.
+
+Examples include:
+
+* one package database format;
+* one repository layout;
+* one archive naming convention;
+* one lifecycle-script environment;
+* one configuration language;
+* one implicit dependency model.
+
+The tools may expose different interfaces.
+
+Their architecture remains constrained by the substrate.
+
+This does not make them worthless alternatives.
+
+It does mean their apparent diversity should not be mistaken for
+independent semantic models.
+
+## Substrate Capture
+
+**Substrate capture** occurs when assumptions from a lower-level
+component become unavoidable throughout higher layers.
+
+The substrate stops being one implementation choice.
+
+It becomes the ontology within which every alternative must think.
+
+Replacing the top-level tool then changes little.
+
+The replacement inherits the same state model, failure shapes, and
+compatibility burden.
+
+## Boundary Extraction
+
+**Boundary extraction** is the process of turning hidden coupling into
+an explicit contract that can support substitution.
+
+Typical steps include:
+
+1. identify facts callers currently reconstruct;
+2. identify private behavior callers depend upon;
+3. separate stable semantics from historical accidents;
+4. publish structured inputs and results;
+5. define failure behavior;
+6. normalize state at the boundary;
+7. contain compatibility in adapters;
+8. migrate callers away from implementation knowledge;
+9. test alternate implementations against the contract.
+
+Boundary extraction may happen without rewriting the component.
+
+A small interface change can produce more architectural freedom than a
+complete rewrite preserving the same hidden assumptions.
+
+> A rewrite changes the code.  
+> Boundary extraction changes what the ecosystem is allowed to know.
+
+## Rewrite Without Extraction
+
+A **rewrite without extraction** replaces implementation while
+preserving the same implicit coupling.
+
+It often has these symptoms:
+
+* the new component reads the old private configuration;
+* callers remain responsible for artifact discovery;
+* the same state database remains semantically undocumented;
+* failure behavior changes accidentally;
+* compatibility is tested by “does my installation still work?”;
+* the replacement author becomes the only person who understands the
+  translation.
+
+The new code may still be better.
+
+It may be cleaner, safer, or easier to maintain.
+
+But the substitution boundary remains absent.
+
+The ecosystem has paid reimplementation cost without receiving
+architectural decoupling.
+
+## Field Symptom: The New Orchestrator
+
+A maintainer replaces an old package frontend.
+
+The new frontend:
+
+* computes dependency order more cleanly;
+* has better error messages;
+* uses a modern language;
+* exposes a simpler configuration file.
+
+But it still must:
+
+* read private configuration from the low-level package builder;
+* infer produced artifacts;
+* parse installer output;
+* repair database inconsistencies;
+* preserve undocumented option interactions.
+
+The replacement improves local maintenance.
+
+It does not lower ecosystem substitution cost because the missing
+contracts remain below it.
+
+The correct conclusion is not:
+
+> The rewrite failed.
+
+The correct conclusion is:
+
+> The rewrite improved one component but did not extract the shared
+> boundaries.
+
+## Field Symptom: Two Installers
+
+Two package installers accept the same package archive format.
+
+Installer A:
+
+* preserves extended attributes;
+* rejects path traversal;
+* commits database state transactionally;
+* refuses lifecycle scripts in an alternate root.
+
+Installer B:
+
+* ignores extended attributes;
+* normalizes paths differently;
+* writes database state after extraction;
+* runs lifecycle scripts against the host.
+
+They are interface-compatible at the filename level.
+
+They are not behaviorally substitutable under one installation
+contract.
+
+A shared package format alone does not create a substitution boundary.
+
+The ecosystem must also define installation semantics.
+
+## Field Symptom: The Replaceable Backend
+
+A system supports three archive libraries.
+
+All three must produce the same normalized install plan before
+filesystem mutation.
+
+The system verifies:
+
+* path containment;
+* ownership interpretation;
+* link relationships;
+* required metadata;
+* extraction completeness.
+
+One backend lacks support for required extended attributes.
+
+The operation is rejected before mutation.
+
+This is successful substitution.
+
+The backend differs.
+
+The contract does not.
+
+## Field Symptom: The Compatible CLI
+
+A replacement command reproduces every option of an older tool.
+
+Scripts continue running.
+
+But the replacement:
+
+* changes exit-status meaning;
+* writes warnings to stdout instead of stderr;
+* permits partial success;
+* orders operations differently;
+* omits one state update.
+
+The CLI is syntactically compatible.
+
+The operation is not semantically compatible.
+
+This is why substitution tests must examine contracts and invariants,
+not merely command acceptance.
+
+## Migration Boundary
+
+A **migration boundary** is the controlled interface through which
+state or callers move from one contract to another.
+
+A migration boundary should define:
+
+* old and new representations;
+* conversion rules;
+* unsupported cases;
+* rollback or recovery;
+* coexistence period;
+* authority during transition;
+* completion criteria;
+* removal conditions for compatibility logic.
+
+Without a migration boundary, the ecosystem may run both semantics
+indefinitely.
+
+Every component then needs to understand both.
+
+Transition becomes permanent bilingual confusion.
+
+## Dual Authority During Migration
+
+Migration often creates a period in which old and new representations
+coexist.
+
+The system must define which one is authoritative.
+
+Possible models include:
+
+* old state remains authoritative until one atomic cutover;
+* new state becomes authoritative and old state is generated for
+  compatibility;
+* writes occur through one layer that updates both representations;
+* coexistence is forbidden and migration occurs offline.
+
+The dangerous model is:
+
+> Both are authoritative, except when they disagree.
+
+That is not dual authority.
+
+That is an invitation to choose whichever answer hurts least during
+the incident.
+
+## Replacement Proof
+
+A **replacement proof** is evidence that a boundary supports more than
+one implementation without semantic leakage.
+
+Useful evidence includes:
+
+* conformance tests;
+* independent implementations;
+* migration exercises;
+* backend-specific failure injection;
+* compatibility tests focused on contracts;
+* removal of caller access to private internals;
+* successful operation under different implementations.
+
+A single replacement written by the original maintainer is useful
+evidence.
+
+It is not complete proof.
+
+The author may unconsciously reproduce knowledge that the boundary
+never expressed.
+
+Independent implementations are valuable because they expose hidden
+assumptions.
+
+> The second implementation is where the first contract discovers what
+> it forgot to say.
+
+## Conformance Suite
+
+A **conformance suite** tests whether an implementation satisfies the
+shared contract.
+
+It should test:
+
+* accepted inputs;
+* rejected inputs;
+* normalized results;
+* failure semantics;
+* state transitions;
+* invariant preservation;
+* concurrency behavior where relevant;
+* artifact truth;
+* migration behavior;
+* declared optional capabilities.
+
+A conformance suite does not need to force identical internal design.
+
+It should preserve externally promised meaning.
+
+A test suite written entirely around one implementation's internal
+behavior may freeze that implementation rather than validate the
+contract.
+
+## Capability Declaration
+
+Different implementations may legitimately support different optional
+capabilities.
+
+A **capability declaration** makes those differences explicit.
+
+For example, an archive backend may declare support for:
+
+* extended attributes;
+* ACLs;
+* sparse files;
+* numeric ownership;
+* specific compression formats.
+
+The surrounding system can then decide whether the implementation
+satisfies the requested operation.
+
+Capability declaration is preferable to optimistic invocation followed
+by semantic surprise.
+
+## Do Not Confuse
+
+**Replacement** is not automatically substitution.
+
+The old component can disappear while its assumptions remain
+everywhere.
+
+**Several tools** do not automatically create tool pluralism.
+
+Alternatives must reduce substitution cost beyond their original
+authors.
+
+**Opacity** is not concealment.
+
+A component may hide implementation details while publishing required
+facts.
+
+**Encapsulation** is not withholding.
+
+Facts needed by the boundary are not private merely because the
+component discovered them internally.
+
+**Interface compatibility** is not behavioral compatibility.
+
+The same syntax can invoke different semantics.
+
+**A rewrite** is not automatically boundary extraction.
+
+A rewrite may preserve every hidden coupling in cleaner code.
+
+**Compatibility** is not the same as reproducing every accident.
+
+The compatibility surface should be defined by owned behavior.
+
+**An adapter** is not automatically architectural debt.
+
+A bounded adapter may be the cleanest migration mechanism.
+
+**Substitution cost** is not only developer effort.
+
+Operator learning, state migration, automation, and institutional
+memory also count.
+
+**A shared substrate** is not automatically bad.
+
+It becomes capture when alternatives cannot define or replace its
+semantics.
+
+## The Substitution Test
+
+For any allegedly replaceable component, ask:
+
+1. What contract must a replacement satisfy?
+2. Which inputs are stable?
+3. Which results are structured?
+4. Which failure semantics are promised?
+5. Which state does the component own?
+6. Which internal details do callers currently know?
+7. Do callers read private configuration?
+8. Do callers reproduce naming or path rules?
+9. Do callers parse narration?
+10. Can an independent implementation satisfy the boundary?
+11. Is there a conformance suite?
+12. Are optional capabilities explicit?
+13. Which historical behaviors are contractual?
+14. Which are accidental?
+15. Can compatibility be contained in one adapter?
+16. How is state migrated?
+17. Which representation is authoritative during migration?
+18. What is the local substitution cost?
+19. What is the ecosystem substitution cost?
+20. Does the replacement reduce hidden coupling, or merely reproduce
+    it?
+21. Can ordinary operators choose among implementations without
+    becoming integration engineers?
+22. Does the ecosystem gain pluralism, or another private escape
+    hatch?
+
+If the replacement requires intimate knowledge of the old component,
+the boundary is not yet extracted.
+
+If only the replacement author can operate the alternative, the
+ecosystem has not acquired pluralism.
+
+It has acquired another specialist.
+
+## Eighth House Law
+
+> A second implementation does not prove a boundary exists.  
+> It often proves how much undocumented knowledge the first maintainer
+> carried.
+
+Substitution becomes architectural only when meaning survives the
+replacement without requiring the ecosystem to reenact the original
+implementation.
+
+The next section is **Boundary Extraction and Semantic Containment**:
+how to move from implicit coupling toward explicit contracts without
+building a grand abstraction that claims more coherence than the
+system can actually enforce.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
