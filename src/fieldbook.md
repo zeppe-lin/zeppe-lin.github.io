@@ -145,6 +145,57 @@ Learn where they enter the building.
 
 ---
 
+# Working Vocabulary {.unnumbered}
+
+Before opening the first corpse, we need to agree on what several
+ordinary words mean.
+
+This is not the Fieldbook's full vocabulary.
+It is only a small set of coordinates used throughout the book.
+
+| Term | Meaning |
+| --- | -------------- |
+| **operator** | A person operating an installation or composing a local workflow. |
+| **maintainer** | A person changing or governing shared project artifacts. |
+| **component** | A bounded technical unit such as a tool, library, service, or repository process. |
+| **system** | The intended technical model and the state transitions it claims to govern. |
+| **infrastructure** | The concrete code, databases, repositories, scripts, and deployment surfaces implementing the system. |
+| **ecosystem** | The coupled human and technical whole surrounding the system. |
+| **artifact** | A bounded output expected to carry identity and truth across a boundary. |
+| **semantics** | What an operation, interface, state, or artifact means. |
+| **invariant** | A property mechanically preserved by the system. |
+| **folklore** | Operational knowledge transmitted socially rather than mechanically. |
+
+These distinctions matter.
+
+A component may be correct in isolation while the system remains
+incoherent.
+
+The infrastructure may continue functioning while the ecosystem spends
+operators to keep it alive.
+
+The system may claim one semantic model while its artifacts, scripts,
+and maintainers enforce another.
+
+The word **user** is reserved for explicitly user-facing interfaces or
+quoted claims.
+In systems analysis, **operator** is usually more precise:
+the human is not merely consuming a product but participating in its
+control loop.
+
+Likewise, **software** refers to programs or code in general.
+It should not be used as shorthand for the entire ecosystem.
+
+The ecosystem contains both human and technical nodes.
+
+Components carry interfaces, defaults, state transitions, and
+compromises hardened into executable form.
+
+Operators carry memory, caution, habit, local knowledge, and folklore.
+
+Neither is outside the system merely because only one of them drinks
+coffee.
+
 # I. Ontology of Haunted Systems
 
 ## ghost
