@@ -80,6 +80,71 @@ The Fieldbook asks what kind of machine --- and what kind of operators
 
 ---
 
+# How to Read This Book {.unnumbered}
+
+This is not an alphabetical glossary.
+
+The terms form a causal model:
+
+```text
+authority
+    ↓
+boundary
+    ↓
+drift
+    ↓
+folklore
+    ↓
+regulation
+    ↓
+operator adaptation
+    ↓
+doctrine
+```
+
+Meaning first needs an owner.
+
+Authority needs a boundary.
+
+Weak boundaries allow meaning to drift.
+Drift is absorbed by wrappers, rituals, local conventions, and human
+memory.
+Those compensations become part of the control system.
+The control system manufactures operators adapted to its defects.
+Eventually the adaptation acquires a moral vocabulary and calls itself
+design philosophy.
+
+That is how a bug becomes a religion.
+
+The book therefore moves from mechanisms to consequences.
+
+It begins by asking where truth and authority live.
+It then follows what happens when their boundaries weaken: semantics
+drift, folklore accumulates, operators compensate, and local survival
+gradually becomes ecosystem structure.
+
+Examples throughout the book are drawn from concrete infrastructure
+autopsies: package systems, build tools, repositories, wrappers,
+interfaces, documentation, and operator workflows.
+
+They are evidence, not scripture.
+
+No individual incident is the center of the model.
+The same mechanism should remain recognizable when the component,
+language, project, or historical context changes.
+
+If a concept works only on one corpse, it is not yet a field concept.
+
+You may read the book from beginning to end, following the causal
+model, or enter through a familiar symptom and follow the surrounding
+terms.
+
+You do not need to memorize the ghosts.
+
+Learn where they enter the building.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
