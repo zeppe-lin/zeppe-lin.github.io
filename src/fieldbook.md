@@ -10547,6 +10547,1236 @@ component name.
 
 ---
 
+# Institutional Memory and Rediscovery
+
+The bug is reported.
+
+A maintainer performs the autopsy.
+
+The cause is identified.
+
+A patch is written.
+
+The patch is discussed, revised, and applied locally.
+
+The conversation ends.
+
+Three years later, the affected component is rewritten.
+
+The patch disappears.
+
+The same failure returns through a different codepath.
+
+A new maintainer performs the same autopsy and writes the same patch
+under a different filename.
+
+The project did not fail to preserve history.
+
+The original discussion is still available in a compressed IRC log
+inside a forgotten archive.
+
+The project preserved the evidence.
+
+It lost the conclusion.
+
+---
+
+## Institutional Memory
+
+**Institutional memory** is the ecosystem's ability to recover and
+apply past conclusions without depending on the continued presence of
+the people who originally reached them.
+
+Institutional memory must preserve more than events.
+
+It should allow future maintainers to determine:
+
+* what happened;
+* what was learned;
+* which assumption failed;
+* which boundary was involved;
+* what decision was made;
+* where that decision became authoritative;
+* which exceptions remained;
+* what evidence would justify revisiting it.
+
+A repository full of old discussions is historical storage.
+
+It becomes institutional memory only when current work can retrieve
+the relevant conclusion and connect it to present behavior.
+
+> History records that the corpse existed.  
+> Memory tells the next maintainer where it was buried and why the
+> shovel remains locked.
+
+## Project Learning
+
+A project **learns** when an observation changes its future behavior.
+
+The change may appear as:
+
+* a stronger contract;
+* a new invariant;
+* a regression test;
+* a normalization rule;
+* a migration;
+* a rejection path;
+* a documented limitation;
+* a repository guardrail;
+* a retired interface;
+* a revised design principle.
+
+Discussion alone is not project learning.
+
+Agreement alone is not project learning.
+
+A participant understanding the failure is individual learning.
+
+The project learns only when the conclusion survives participant
+turnover and affects later decisions.
+
+```text
+incident
+    ↓
+observation
+    ↓
+autopsy
+    ↓
+conclusion
+    ↓
+retained rationale
+    ↓
+binding or guidance
+    ↓
+changed future behavior
+```
+
+If the sequence ends at the autopsy, the ecosystem acquired knowledge
+without memory.
+
+## Rediscovery Loop
+
+A **rediscovery loop** is the recurring reconstruction of a previously
+known failure, constraint, or solution after the ecosystem loses the
+ability to retrieve or apply the earlier conclusion.
+
+The loop commonly looks like this:
+
+```text
+failure
+    ↓
+local diagnosis
+    ↓
+repair
+    ↓
+knowledge stored weakly
+    ↓
+participants or implementation change
+    ↓
+repair disappears
+    ↓
+same failure returns
+    ↓
+new diagnosis
+```
+
+The second diagnosis may use different terminology.
+
+The component may have a new name.
+
+The implementation may be written in another language.
+
+The failure shape remains the same.
+
+> Rediscovery is institutional amnesia with uptime.
+
+Rediscovery is not always avoidable.
+
+New evidence may genuinely require a fresh analysis.
+
+The pathology is repeating the same reasoning because the previous
+conclusion was never made recoverable.
+
+## Ecosystem Memory Leak
+
+An **ecosystem memory leak** is the continuous loss of usable
+conclusions from the project's active memory.
+
+The project may retain increasing amounts of raw historical material
+while losing the relationships that make the material operationally
+useful.
+
+Symptoms include:
+
+* old fixes repeatedly reappearing;
+* settled questions being relitigated;
+* compatibility code with forgotten rationale;
+* tests preserving behavior nobody can explain;
+* design proposals unaware of earlier attempts;
+* different repositories retaining different versions of one decision;
+* maintainers remembering that something was discussed but not what
+  was decided;
+* issue trackers containing several contradictory “final” conclusions.
+
+The ecosystem is storing information.
+
+It is leaking meaning.
+
+## Archival Illusion
+
+The **archival illusion** is the belief that information remains
+institutionally available merely because it still exists somewhere.
+
+Examples include:
+
+* an IRC log stored but not indexed;
+* an issue closed without a conclusion;
+* a mailing-list thread whose subject does not name the actual
+  failure;
+* a commit message containing the rationale for behavior later copied
+  into another repository;
+* a wiki page preserved but no longer linked from current
+  documentation;
+* a regression test with no explanation of the contract it protects.
+
+The information survives physically.
+
+Its retrieval cost exceeds the likelihood that anybody will find it
+before rediscovering the problem independently.
+
+> The answer exists.  
+> It has chosen a career in hiding.
+
+## Evidence and Conclusion
+
+An **evidence record** preserves observations:
+
+* logs;
+* reproductions;
+* stack traces;
+* state snapshots;
+* experiments;
+* discussion;
+* rejected hypotheses.
+
+A **conclusion record** preserves what the ecosystem decided those
+observations mean.
+
+The conclusion should identify:
+
+* the failure class;
+* the violated contract or invariant;
+* the affected scope;
+* the chosen repair;
+* remaining limitations;
+* the authoritative implementation;
+* conditions under which the conclusion should be revisited.
+
+Both are necessary.
+
+Evidence without conclusion forces every future maintainer to rerun
+the autopsy.
+
+Conclusion without evidence becomes doctrine that cannot be examined.
+
+> Evidence prevents mythology.  
+> Conclusion prevents archaeology from becoming the normal build
+> system.
+
+## Conclusion Loss
+
+**Conclusion loss** occurs when the reasoning process survives but its
+result does not.
+
+A long discussion may preserve:
+
+* several hypotheses;
+* competing proposals;
+* temporary misunderstandings;
+* jokes;
+* partial experiments;
+* changing terminology.
+
+If no final synthesis states what was learned, later readers must
+infer which statements remained valid at the end.
+
+The archive preserves the conversation's path.
+
+It does not necessarily preserve its destination.
+
+## Decision Trace
+
+A **decision trace** connects a current contract or behavior to the
+evidence and reasoning that produced it.
+
+A useful trace may include:
+
+* the relevant incident or issue;
+* the adopted model;
+* rejected alternatives;
+* compatibility constraints;
+* affected versions;
+* tests or guardrails;
+* migration notes;
+* the current authority surface.
+
+The trace need not be one enormous design document.
+
+It may be distributed through links, provided the chain remains intact
+and discoverable.
+
+For example:
+
+```text
+current documentation
+        ↓
+design decision
+        ↓
+incident autopsy
+        ↓
+regression test
+        ↓
+implementing commit
+```
+
+A decision trace allows future maintainers to distinguish:
+
+* deliberate constraint;
+* temporary workaround;
+* historical accident;
+* obsolete compatibility;
+* unexplained residue.
+
+## Orphaned Conclusion
+
+An **orphaned conclusion** is a correct lesson no longer connected to
+the component, contract, or behavior it was meant to govern.
+
+Examples include:
+
+* an issue explaining a filename invariant after the build system was
+  moved to another repository;
+* a regression test copied without its explanatory comment;
+* a wiki warning referring to an option that was renamed;
+* a design note describing a database schema no current documentation
+  links to;
+* a patch rationale preserved only in a downstream fork.
+
+The conclusion exists.
+
+The current system no longer points toward it.
+
+## Orphaned Evidence
+
+**Orphaned evidence** is historical material whose connection to
+current semantics has been lost.
+
+An old crash log may be useful.
+
+Without knowing:
+
+* the affected version;
+* the relevant state model;
+* the final fix;
+* whether the behavior still exists;
+
+it cannot guide current decisions reliably.
+
+Orphaned evidence is especially dangerous when quoted as timeless
+proof.
+
+The incident was real.
+
+Its applicability may not be.
+
+## Semantic Indexing
+
+**Semantic indexing** is organizing historical knowledge by the
+concepts and failure shapes it describes rather than only by component
+name, date, or original vocabulary.
+
+A past discussion may have used the words:
+
+* package filename;
+* build output;
+* frontend integration.
+
+A current maintainer may search for:
+
+* artifact identity;
+* supplier duty;
+* narrative coupling.
+
+Without semantic indexing, the same mechanism can become invisible
+after terminology evolves.
+
+Useful indexing may include:
+
+* tags;
+* cross-links;
+* summary documents;
+* term indexes;
+* stable failure-class names;
+* references from current code and documentation.
+
+The Fieldbook itself is partly a semantic index.
+
+It extracts recurring mechanisms from incidents whose original
+language varied.
+
+## Name Drift
+
+**Name drift** occurs when the terminology used for a failure changes
+while the underlying mechanism remains.
+
+Examples include:
+
+* “output parsing” later becoming “narrative coupling”;
+* “alternate-root bug” later becoming “authority fracture”;
+* “local workaround” later becoming “coping infrastructure”;
+* “several frontends” later becoming “pluralism as compensation”.
+
+New vocabulary can improve reasoning.
+
+It can also hide earlier evidence from search.
+
+A mature terminology should therefore point backward.
+
+The new name should make old incidents easier to classify, not harder
+to find.
+
+## Versioned Memory
+
+**Versioned memory** preserves the scope in which a conclusion was
+valid.
+
+A useful historical statement identifies:
+
+* affected versions;
+* implementation generation;
+* artifact format;
+* repository state;
+* backend;
+* migration stage;
+* whether the conclusion remains current.
+
+Without scope, an old truth may become current folklore.
+
+For example:
+
+> Rebuild the package database after upgrading.
+
+Versioned memory might say:
+
+> Required when upgrading from database schema 2 to schema 3 with
+> `pkgutils` older than 6.1.
+> Not required after migration completes.
+
+The first form is easy to repeat.
+
+The second form is safe to retire.
+
+## Living Documentation
+
+**Living documentation** is documentation maintained as part of the
+system's current authority and review process.
+
+It should:
+
+* describe present behavior;
+* identify current limitations;
+* link to deeper rationale where useful;
+* change when the contract changes;
+* distinguish historical behavior from current behavior;
+* remain testable where possible.
+
+Living documentation is not documentation rewritten constantly for
+aesthetic freshness.
+
+It remains alive because it participates in current change.
+
+## Dead Documentation
+
+**Dead documentation** remains available but no longer tracks
+authoritative behavior.
+
+It may still be historically valuable.
+
+It becomes dangerous when:
+
+* search results present it as current;
+* current documentation links to it without warning;
+* operators cannot distinguish versions;
+* obsolete advice still partially works;
+* no replacement exists.
+
+A dead page that fails completely is often less dangerous than one
+that remains correct in seven cases out of ten.
+
+Partial truth is excellent ghost habitat.
+
+## Regression Test as Memory
+
+A regression test is a strong memory substrate when it preserves:
+
+* the failure shape;
+* the expected contract;
+* the relevant boundary;
+* a concise rationale;
+* stable assertions.
+
+A test that merely reproduces one implementation detail may preserve
+the symptom while losing the lesson.
+
+For example:
+
+```text
+assert output_line_3 == "Built package foo"
+```
+
+may retain accidental narration.
+
+A stronger test might assert:
+
+```text
+build_result.artifact.identity == expected_identity
+```
+
+The first remembers typography.
+
+The second remembers the contract.
+
+> Tests remember exactly what they are told.  
+> Choose carefully what kind of ancestor you are creating.
+
+## Commit as Memory
+
+A commit can preserve:
+
+* the change;
+* the reason;
+* the affected contract;
+* the migration;
+* rejected alternatives.
+
+A commit message becomes weak institutional memory when it says only:
+
+```text
+fix build
+```
+
+The code records what changed.
+
+Future maintainers still need to rediscover why.
+
+A strong commit message does not need to contain the entire autopsy.
+
+It should identify the failure class and point toward the relevant
+decision trace.
+
+## Issue as Memory
+
+An issue can preserve:
+
+* reproductions;
+* evidence;
+* participants;
+* rejected hypotheses;
+* design alternatives;
+* migration concerns.
+
+Issues become poor memory when they close without a summary.
+
+A useful closing comment should state:
+
+* what was concluded;
+* what changed;
+* what remains unresolved;
+* which artifact or commit carries the decision;
+* when the issue should be reconsidered.
+
+Otherwise a closed issue means only that conversation ceased.
+
+## IRC Log as Memory
+
+IRC logs preserve:
+
+* spontaneous autopsies;
+* uncertainty;
+* competing interpretations;
+* vocabulary formation;
+* social context;
+* historical reactions;
+* sharp observations nobody formalized elsewhere.
+
+They are excellent laboratory notebooks.
+
+They are poor primary authority surfaces.
+
+A future maintainer should be able to learn from the log without
+needing to reconstruct the project solely from it.
+
+> IRC is where the ecosystem thinks aloud.  
+> The repository should eventually remember what it decided.
+
+## Mailing List as Memory
+
+Mailing lists preserve more deliberate reasoning than transient chat,
+but they share similar retention problems:
+
+* subject lines drift;
+* discussions branch;
+* conclusions remain implicit;
+* later corrections appear in another thread;
+* participants assume shared context;
+* old links disappear.
+
+The format encourages durable argument.
+
+It does not automatically produce durable conclusion.
+
+## Memory Prosthesis
+
+A **memory prosthesis** is a mechanism helping one participant or
+local workflow retain a lesson.
+
+Examples include:
+
+* a personal checklist;
+* a local hook;
+* a shell alias;
+* an editor warning;
+* a private notes file;
+* a wrapper detecting one known trap.
+
+Memory prostheses are useful.
+
+They reduce repeated local failure.
+
+They become institutional memory only when:
+
+* their lesson is made discoverable;
+* their scope is understood;
+* their authority is stated;
+* other participants can adopt or replace them;
+* the shared system acknowledges the burden they carry.
+
+A prosthesis helps one body.
+
+It does not automatically redesign the building.
+
+## Memory Promotion
+
+**Memory promotion** is the movement of a lesson from a weak or local
+memory substrate into a stronger institutional form.
+
+For example:
+
+```text
+operator memory
+        ↓
+IRC explanation
+        ↓
+issue summary
+        ↓
+documentation
+        ↓
+regression test
+        ↓
+binding invariant
+```
+
+Not every lesson must reach mechanical enforcement.
+
+Some lessons concern judgment, history, or local policy.
+
+The promotion target should match the lesson.
+
+The important step is deliberate placement.
+
+## Memory Demotion
+
+**Memory demotion** occurs when a formerly enforced or well-documented
+lesson survives only in weaker substrates.
+
+Examples include:
+
+* a removed parser check becoming a reviewer convention;
+* a deleted test becoming a wiki warning;
+* a retired migration tool becoming an IRC instruction;
+* a lost design document surviving in one maintainer's memory.
+
+Demotion may happen accidentally during rewrites and repository
+reorganization.
+
+It is one way zombie invariants are produced.
+
+## Retention Boundary
+
+A **retention boundary** defines where a class of knowledge is
+expected to live and how future work should recover it.
+
+Examples include:
+
+* current behavior in the manual;
+* design rationale in decision records;
+* incident evidence in issues;
+* invariant preservation in tests;
+* historical discussion in logs;
+* migration scope in release notes.
+
+Clear retention boundaries prevent every surface from attempting to
+preserve everything.
+
+They also prevent important conclusions from being stored only in the
+surface least capable of carrying them.
+
+## Memory Pipeline
+
+A healthy memory pipeline may look like:
+
+```text
+incident
+    ↓
+raw evidence
+    ↓
+autopsy
+    ↓
+named failure shape
+    ↓
+decision
+    ↓
+implementation and migration
+    ↓
+test or guardrail
+    ↓
+current documentation
+    ↓
+historical trace
+```
+
+Each surface performs a different function.
+
+The log preserves uncertainty.
+
+The issue preserves evidence and discussion.
+
+The decision record preserves the conclusion.
+
+The test preserves the expected property.
+
+The documentation confesses current behavior.
+
+The implementation binds it.
+
+The system learns because the chain remains connected.
+
+## Broken Memory Pipeline
+
+A broken pipeline often looks like:
+
+```text
+incident
+    ↓
+excellent IRC discussion
+    ↓
+local patch
+    ↓
+silence
+    ↓
+maintainer leaves
+    ↓
+rewrite
+    ↓
+incident
+```
+
+Nothing in the sequence was individually unreasonable.
+
+The missing transition was from local knowledge into durable project
+memory.
+
+## Relearning Tax
+
+The **relearning tax** is the time and risk spent reconstructing
+knowledge the ecosystem once possessed.
+
+It includes:
+
+* reproducing old failures;
+* searching archives;
+* interviewing elders;
+* reading obsolete code;
+* testing abandoned hypotheses again;
+* writing duplicate patches;
+* restoring context around compatibility behavior;
+* delaying changes because nobody trusts the remaining evidence.
+
+The relearning tax grows with:
+
+* turnover;
+* repository fragmentation;
+* vocabulary changes;
+* missing decision traces;
+* weak tests;
+* undocumented migrations;
+* growing semantic surface area.
+
+The project may appear conservative because every change requires
+extensive archaeology.
+
+In reality, it is repeatedly paying interest on lost conclusions.
+
+## Re-Litigation
+
+**Re-litigation** is the reopening of an old design question because
+the project retained neither a binding decision nor enough rationale
+to distinguish new evidence from forgotten argument.
+
+Re-litigation can be healthy when:
+
+* constraints changed;
+* new evidence appeared;
+* the old decision no longer fits;
+* the model was incomplete.
+
+It becomes pathological when the same participants reproduce the same
+arguments because nobody can establish what was previously learned.
+
+> Every question should remain revisable.  
+> It should not remain permanently newborn.
+
+## Patch Recurrence
+
+**Patch recurrence** occurs when functionally equivalent fixes
+reappear across time, forks, or rewrites.
+
+Patch recurrence is strong evidence of:
+
+* a recurring failure class;
+* weak upstream retention;
+* missing regression tests;
+* missing boundary extraction;
+* structural outsourcing;
+* a model defect surviving implementation change.
+
+The repeated patch is not merely duplication.
+
+It is the ecosystem voting with diff hunks.
+
+## Structural Amnesia
+
+**Structural amnesia** occurs when implementation changes erase the
+mechanisms through which previous lessons were preserved.
+
+A rewrite may remove:
+
+* old checks;
+* compatibility comments;
+* migration tests;
+* data constraints;
+* sequencing assumptions.
+
+If the rationale was never extracted, the new implementation
+reintroduces old failures.
+
+The code becomes modern.
+
+The ignorance becomes historically accurate.
+
+## Clean Rewrite Syndrome
+
+**Clean rewrite syndrome** is the belief that removing historical
+implementation also removes the history that shaped its constraints.
+
+The rewrite begins with a cleaner model.
+
+Then production rediscovers:
+
+* edge cases;
+* compatibility needs;
+* ordering requirements;
+* artifact ambiguity;
+* state recovery;
+* caller dependence.
+
+Some old complexity was accidental.
+
+Some was scar tissue around real failure.
+
+Without the autopsy, the rewrite cannot distinguish them.
+
+> The old code was ugly.  
+> Unfortunately, several ugly branches were the only surviving copies
+> of the field manual.
+
+## Institutional Learning Versus Institutional Hardening
+
+Institutional memory should preserve lessons without converting every
+past decision into untouchable doctrine.
+
+**Institutional learning** retains:
+
+* evidence;
+* rationale;
+* current contract;
+* conditions for revision.
+
+**Institutional hardening** retains only:
+
+* prohibition;
+* ritual;
+* authority;
+* fear of recurrence.
+
+Learning says:
+
+> We chose this because these conditions held.
+
+Hardening says:
+
+> We do not do that here.
+
+The first permits revision when conditions change.
+
+The second protects the conclusion by destroying the autopsy.
+
+## Memory and Doctrine
+
+Doctrine can compress lessons for quick orientation.
+
+Examples include:
+
+* normalize before mutation;
+* documentation confesses;
+* artifacts should carry truth;
+* reject meanings the system cannot own.
+
+These are useful.
+
+They become dangerous when repeated without the evidence and
+boundaries that make them applicable.
+
+The Fieldbook itself must therefore remain connected to concrete
+autopsies.
+
+Otherwise it becomes another source of elegant rules that future
+maintainers quote while violating their mechanisms.
+
+## Forgetting as Adaptation
+
+Not all forgetting is failure.
+
+An ecosystem must discard:
+
+* obsolete procedures;
+* superseded constraints;
+* dead compatibility;
+* irrelevant detail;
+* abandoned experiments.
+
+Perfect retention would bury current work under historical sediment.
+
+The objective is selective memory.
+
+Preserve:
+
+* reusable failure shapes;
+* active constraints;
+* design rationale;
+* migration evidence;
+* lessons whose recurrence remains possible.
+
+Retire:
+
+* conclusions no longer applicable;
+* obsolete operational instructions;
+* evidence disconnected from supported systems.
+
+Healthy memory includes the ability to forget deliberately.
+
+## Memory Garbage Collection
+
+**Memory garbage collection** is the deliberate review, migration, or
+retirement of obsolete institutional knowledge.
+
+It may involve:
+
+* marking old pages historical;
+* linking them to current replacements;
+* closing compatibility periods;
+* removing obsolete warnings;
+* summarizing old discussions;
+* deleting dead procedures from current guides;
+* preserving only the relevant autopsy.
+
+Memory garbage collection should not erase evidence needed to explain
+current constraints.
+
+The goal is not a spotless history.
+
+It is a navigable one.
+
+## Field Symptom: The Reappearing Database Race
+
+A package database update once followed this unsafe sequence:
+
+1. read current records;
+2. write a temporary database;
+3. replace the old database.
+
+Two concurrent operations could overwrite one another.
+
+A patch added locking.
+
+The patch lived in a downstream branch.
+
+Years later, the database code was rewritten upstream.
+
+The downstream patch no longer applied.
+
+No regression test modeled concurrent updates.
+
+The race returned.
+
+A new maintainer diagnosed it and added locking.
+
+The project had archived the old patch.
+
+It had not retained the invariant:
+
+> Package database updates are serialized across every writer.
+
+The durable lesson was not “apply this lock around these lines”.
+
+It was the invariant.
+
+## Field Symptom: The Issue Graveyard
+
+A project has six issues concerning alternate-root behavior.
+
+One says scripts should run in the target.
+
+One says scripts should never run.
+
+One proposes chroot execution.
+
+One documents current host execution.
+
+One was closed after a partial patch.
+
+One references an IRC discussion whose link has expired.
+
+Every issue contains useful evidence.
+
+No issue states the current model.
+
+The tracker has preserved disagreement perfectly.
+
+It has failed to produce memory.
+
+> An issue graveyard is still a graveyard even when every tombstone
+> has excellent Markdown.
+
+## Field Symptom: The Regression Test Nobody Understands
+
+A test creates an empty directory before invoking package removal.
+
+Removing the setup causes failure.
+
+Nobody knows why the directory matters.
+
+The test dates from an old migration.
+
+Possible interpretations include:
+
+* the directory remains part of the contract;
+* the implementation still contains a hidden assumption;
+* the test preserves obsolete behavior;
+* a downstream caller still depends on the path.
+
+The test has retained behavior but lost rationale.
+
+It is strong mechanical memory and weak explanatory memory.
+
+The correct response is not to delete it immediately.
+
+The correct response is an autopsy.
+
+## Field Symptom: The Forgotten Rejected Design
+
+A maintainer proposes storing package identity only in filenames.
+
+The proposal appears simple.
+
+An old mailing-list thread rejected the same design because:
+
+* filenames were mutable;
+* local overrides existed;
+* repository tools parsed them differently;
+* several artifact formats needed different suffixes.
+
+Nobody finds the thread.
+
+The project repeats the experiment and rediscovers the same failures.
+
+The old decision may still be wrong under current conditions.
+
+But the new work should begin from the old evidence, not from
+historical innocence.
+
+## Field Symptom: The Copy Without History
+
+A validation function is copied from one repository into another.
+
+The code survives.
+
+The comment explaining which malformed state it prevents does not.
+
+Years later, a maintainer simplifies the function and removes one
+check.
+
+The old failure returns in the second repository only.
+
+Behavior propagated.
+
+Rationale did not.
+
+This is memory packet loss through code reuse.
+
+## Field Symptom: The Famous IRC Line
+
+A sharp line from an IRC autopsy becomes popular:
+
+> Hope is not an invariant.
+
+The line spreads.
+
+Maintainers quote it during reviews.
+
+Over time, it is used to dismiss:
+
+* experimental proposals;
+* staged migration;
+* documentation work;
+* local prototypes;
+* design sketches.
+
+The original lesson was:
+
+> Do not confuse a desired property with mechanical enforcement.
+
+The compressed doctrine becomes:
+
+> Do not discuss anything not already enforced.
+
+The saying was retained.
+
+Its scope was not.
+
+Even house laws can become cargo cult.
+
+The House is not exempt from the House.
+
+## Do Not Confuse
+
+**Institutional memory** is not the same as retaining every historical
+artifact.
+
+Memory must remain recoverable and applicable.
+
+**Archival storage** is not useless.
+
+Raw evidence is necessary for future autopsy.
+
+**Rediscovery** is not always failure.
+
+A fresh analysis may reveal that old conclusions no longer apply.
+
+**A repeated discussion** is not automatically re-litigation.
+
+New participants may need to understand the reasoning.
+
+**A regression test** is not sufficient explanatory memory.
+
+It may preserve behavior without preserving why.
+
+**Documentation** is not the only memory substrate.
+
+Tests, schemas, artifacts, and code may retain stronger operational
+properties.
+
+**A decision record** is not scripture.
+
+It should state the conditions under which revision is appropriate.
+
+**Forgetting** is not always institutional weakness.
+
+Obsolete knowledge should be retired deliberately.
+
+**An elder maintainer** is not institutional memory.
+
+The elder may carry memory.
+The institution must survive their absence.
+
+**A rewrite** is not doomed to repeat history.
+
+It becomes vulnerable when previous constraints were never extracted
+from implementation.
+
+**A house saying** is not a substitute for an autopsy.
+
+Compression should lead toward the model, not replace it.
+
+## The Institutional Memory Test
+
+For every important incident or design decision, ask:
+
+1. What happened?
+2. What evidence was collected?
+3. What was the final diagnosis?
+4. Which contract or invariant was involved?
+5. What decision was made?
+6. Which alternatives were rejected?
+7. Why were they rejected?
+8. Where is the conclusion summarized?
+9. Which versions and contexts does it apply to?
+10. Where did the conclusion become authoritative?
+11. Which test or guardrail preserves it?
+12. Does current documentation describe the resulting behavior?
+13. Can a future maintainer discover the decision trace?
+14. Are the relevant terms searchable under current vocabulary?
+15. Has the conclusion been copied into another repository without its
+    rationale?
+16. Is any local memory prosthesis carrying unique knowledge?
+17. What happens when the current maintainer leaves?
+18. Could a rewrite erase the lesson?
+19. Are historical instructions clearly marked by scope?
+20. Are closed issues summarized?
+21. Can obsolete conclusions be retired safely?
+22. Is the project preserving evidence, conclusion, or both?
+23. Has the same failure or patch appeared before?
+24. Is the ecosystem learning, or merely remembering differently?
+
+A project has institutional memory when future work begins from
+retained conclusions rather than from the same blank confusion.
+
+## Fifteenth House Law
+
+> The archive remembers everything.  
+> The institution remembers only what it can find, interpret, and
+> bind.
+
+Institutional memory keeps the ecosystem from paying repeatedly for
+the same autopsy.
+
+The next section is **From Lessons to Guardrails**: how retained
+knowledge moves from explanation into procedure, validation, and
+mechanical enforcement without turning every historical scar into
+permanent doctrine.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
