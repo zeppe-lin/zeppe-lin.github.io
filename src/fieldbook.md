@@ -753,6 +753,384 @@ to pretend it belongs nowhere.
 
 ---
 
+# Part II. Semantic Authority and Boundaries {.unnumbered}
+
+A package manager reports that a package is installed.
+
+The package database contains no matching record.
+
+The files exist on disk.
+
+A wrapper reports success.
+
+A maintainer explains that the database is authoritative, except
+during upgrades, where the filesystem is authoritative, unless the
+package was installed into another root, in which case the
+configuration file determines what the command probably intended.
+
+The operation has four narrators.
+
+None of them has custody of the truth.
+
+---
+
+# Meaning Needs an Owner
+
+Every operation carries meaning.
+
+“Install this package” might mean:
+
+* place files into a target filesystem;
+* register package identity in a database;
+* satisfy dependencies;
+* execute lifecycle scripts;
+* preserve ownership and metadata;
+* make the resulting state discoverable to later operations.
+
+The command name does not decide which of these meanings the system
+owns.
+
+The implementation does.
+
+More precisely, meaning is determined by whichever layer can decide
+what state is valid, what facts are authoritative, and what happens
+when those facts disagree.
+
+> Authority is not where the documentation points.  
+> Authority is where disagreement stops.
+
+## Semantics
+
+**Semantics** are what an operation, interface, state, or artifact
+means inside the system.
+
+Syntax tells us that a command accepts `--root=/mnt`.
+
+Semantics tell us:
+
+* which operations observe the host;
+* which operations mutate `/mnt`;
+* where dependencies are resolved;
+* where lifecycle scripts execute;
+* which database records the result;
+* and whether the whole command still represents one coherent
+  operation.
+
+A syntactically valid command can be semantically incoherent.
+
+The parser may be satisfied while the system has already summoned four
+different realities.
+
+## Semantic Authority
+
+**Semantic authority** is the ability to define, validate, or enforce
+meaning.
+
+A layer possesses semantic authority when it can answer questions such
+as:
+
+* What state currently exists?
+* Which representation is authoritative?
+* Is this operation valid?
+* What result did the operation produce?
+* Which disagreement causes failure?
+* Which facts may callers rely upon?
+
+Semantic authority is not the same as influence.
+
+Documentation influences operator expectations.
+
+An issue influences future design.
+
+A wrapper influences execution.
+
+Only a layer capable of deciding or enforcing operational truth is
+authoritative for that truth.
+
+## Semantic Authority Surface
+
+A **semantic authority surface** is the boundary at which meaning
+becomes operationally binding.
+
+Examples include:
+
+* a database transaction that records installed package state;
+* a library API that validates and normalizes an operation;
+* an artifact manifest carrying identity and provenance;
+* a repository gate that rejects invalid metadata;
+* an orchestrator that owns the complete execution model;
+* an operator convention, when no technical layer owns the rule.
+
+The last case matters.
+
+If the system accepts an invalid-looking state and experienced
+operators prevent it only through discipline, then the operator
+community is part of the effective authority surface.
+
+The system may deny this in its architecture diagrams.
+
+Reality is not required to respect the diagrams.
+
+## Source of Truth
+
+A **source of truth** is the authoritative representation from which
+other representations are derived and against which disagreements are
+resolved.
+
+A source of truth should be identifiable.
+
+Consider package identity.
+
+Possible representations include:
+
+* the package database;
+* archive metadata;
+* the archive filename;
+* the build configuration;
+* the source directory name;
+* human-readable output;
+* repository metadata.
+
+Several of these may describe the same package.
+
+Only one may be authoritative for a particular operation.
+
+If the system cannot state which one wins when they disagree, it does
+not have several sources of truth.
+
+It has several witnesses and no judge.
+
+> Two sources of truth are usually one source of truth and one future
+> incident report.
+
+## Derived Representation
+
+A **derived representation** is a projection generated from an
+authoritative source.
+
+A package filename may be derived from package identity.
+
+A status line may be derived from transaction state.
+
+A generated configuration may be derived from declarative input.
+
+Derived representations are useful.
+
+The pathology begins when callers treat a projection as authoritative
+because the original source is inaccessible.
+
+For example:
+
+```text
+authoritative package identity
+        ↓
+generated filename
+        ↓
+caller reparses filename
+        ↓
+reconstructed package identity
+```
+
+The system started with truth.
+
+It converted truth into decoration.
+
+Another component then reverse-engineered the decoration to recover
+the truth.
+
+This is architecture performing a round trip through typography.
+
+## Semantic Locality
+
+**Semantic locality** describes where a particular meaning is
+permitted to live.
+
+For example:
+
+* archive interpretation may belong to an extraction layer;
+* package identity may belong to package metadata;
+* dependency policy may belong to an orchestrator;
+* local machine naming may belong to the operator;
+* validation of that name may belong to the system.
+
+Different architectures choose different semantic localities.
+
+A small-tool ecosystem may distribute authority across many
+components.
+
+A centralized system may place several meanings inside one service.
+
+Neither arrangement is inherently coherent or incoherent.
+
+The diagnostic question is:
+
+> Does each meaning live somewhere capable of owning it, and can other
+> layers consume it without reconstructing hidden knowledge?
+
+## Authority Fracture
+
+An **authority fracture** occurs when the ecosystem believes one layer
+owns a meaning while operational behavior assigns that meaning
+elsewhere.
+
+Common forms include:
+
+* documentation claims one behavior while implementation enforces
+  another;
+* an orchestrator appears authoritative but must infer facts from a
+  subordinate tool;
+* a database claims to represent state while operators trust the
+  filesystem instead;
+* a component accepts an operation but maintainers rely on folklore to
+  define the actual valid subset;
+* an artifact appears self-describing but its identity depends on
+  external configuration.
+
+Authority fracture is more dangerous than an openly missing feature.
+
+A missing feature produces a visible absence.
+
+A fractured authority surface produces several plausible answers.
+
+> One missing answer is a limitation.  
+> Three partially correct answers are an ecosystem.
+
+## Field Symptom
+
+A build component creates an artifact.
+
+It knows:
+
+* the artifact path;
+* the package identity;
+* the version;
+* the architecture;
+* the build result.
+
+It prints a human-readable line:
+
+```text
+Built package foo#1.2-1.pkg.tar.gz
+```
+
+The orchestrator needs the artifact path.
+
+Instead of receiving a structured result, it:
+
+1. captures stdout;
+2. searches for the word `Built`;
+3. extracts the final field;
+4. assumes the filename encodes package identity;
+5. checks whether that file exists.
+
+Which layer owns artifact identity?
+
+The builder knows it.
+
+The orchestrator needs it.
+
+The filename suggests it.
+
+The output narrates it.
+
+No explicit authority surface carries it across the boundary.
+
+The fact exists, but not in a form that can travel safely.
+
+> The truth was present at the scene.  
+> Unfortunately, it was wearing a sentence.
+
+## Authority Is Operational
+
+A project may declare a file, database, or interface authoritative.
+
+That declaration matters only while the system resolves disagreement
+through it.
+
+Suppose documentation says the package database is authoritative, but:
+
+* removal checks the filesystem directly;
+* upgrades infer old state from filenames;
+* repair scripts reconstruct records from installed files;
+* operators routinely edit the database by hand.
+
+The database remains important.
+
+It is not the sole authority surface the ecosystem actually uses.
+
+Authority is discovered by following conflict resolution.
+
+Ask:
+
+> When representations disagree, which one changes the others?
+
+That layer is closer to authority than whichever one has the grandest
+heading in the manual.
+
+## Do Not Confuse
+
+**Semantic authority** is not the same as centralization.
+
+Authority may be distributed across explicit, compatible boundaries.
+
+**Source of truth** does not mean one global database for everything.
+
+Different facts may have different authoritative sources.
+
+**Documentation** is not authoritative merely because it is official.
+
+Documentation can accurately describe authority.
+It does not create enforcement by typography.
+
+**Operator knowledge** is not unreal.
+
+When operators must preserve a rule for the system to remain correct,
+their knowledge is part of the effective control structure.
+
+The problem is not that humans participate.
+
+The problem is pretending they do not.
+
+**Several representations** do not automatically imply authority
+fracture.
+
+A system may have one authoritative representation and many useful
+derived projections.
+
+The fracture begins when disagreement has no explicit resolution path.
+
+## The Authority Test
+
+For any important fact, ask:
+
+1. Which component first knows it?
+2. Where is it stored?
+3. Which representation is authoritative?
+4. Which representations are derived?
+5. How do callers obtain it?
+6. What happens when representations disagree?
+7. Which layer can reject an invalid value?
+8. Can the fact cross its boundary without reconstruction?
+9. Does documentation describe the actual authority surface?
+10. Are operators silently completing the contract?
+
+If these questions produce different answers from different
+maintainers, the system does not merely have a documentation problem.
+
+It has an authority topology waiting to become folklore.
+
+## Third House Law
+
+> Meaning belongs to the layer that can enforce it.  
+> Everything else is commentary.
+
+The next task is therefore not to centralize all meaning.
+
+It is to give each meaning an honest owner, a visible boundary, and a
+form capable of surviving the crossing.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
