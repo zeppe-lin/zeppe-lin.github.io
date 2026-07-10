@@ -2,7 +2,7 @@
 
 include ../config.mk
 
-MD = codebook.md handbook.md index.md \
+MD = codebook.md fieldbook.md handbook.md index.md \
      v0.99.md v0.99.1.md v1.0.md v1.1.md v1.2.md
 
 HTML = $(MD:.md=.html)
