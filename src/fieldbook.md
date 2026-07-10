@@ -7473,7 +7473,7 @@ The test prevents two common failures:
 Use this shorthand when distinguishing the dead:
 
 | Term | What survives? | Is it consciously maintained? |
-| ---- | -------------- | ----------------------------- |
+| --------- | --------------------------- | -------------------- |
 | **fossil** | historical evidence | no current causal role |
 | **semantic ghost** | expectation | not necessarily |
 | **zombie invariant** | socially enforced dead property | yes |
@@ -7500,6 +7500,964 @@ The next section is **Semantic Counterfeit and Hallucinated
 Semantics**: how interfaces project guarantees they cannot enforce,
 why partial correctness is more dangerous than obvious failure, and
 how ecosystems stabilize around lies that work just often enough.
+
+---
+
+# Semantic Counterfeit and Hallucinated Semantics
+
+The command is called:
+
+```text
+install --atomic
+```
+
+It writes files first.
+
+Then it updates the database.
+
+Then it runs lifecycle scripts.
+
+If the database update fails, the files remain.
+
+If a lifecycle script fails, the database still reports success.
+
+The documentation says the operation is atomic.
+
+Maintainers explain that “atomic” means the important parts are
+*mostly* treated as one operation, provided nothing unusual happens.
+
+The interface has issued a guarantee.
+
+The implementation has issued several qualifications.
+
+The operator receives whichever definition survives the incident.
+
+---
+
+## Semantic Counterfeit
+
+**Semantic counterfeit** is behavior that projects stronger authority,
+coherence, or guarantees than the system can mechanically preserve.
+
+The interface appears to offer one stable meaning.
+
+The implementation owns only part of that meaning.
+
+Examples include:
+
+* a command named `atomic` whose effects can remain partially
+  committed;
+* an option named `root` that changes some execution contexts but not
+  others;
+* a result named `success` that includes incomplete outcomes;
+* a backend described as interchangeable despite different
+  installation semantics;
+* an artifact presented as self-describing while its identity depends
+  on external configuration;
+* a validation command that reports violations but cannot block the
+  authoritative path.
+
+The semantics are counterfeit not because every behavior is false.
+
+They are counterfeit because the interface presents partial truth with
+the authority of a complete contract.
+
+> A semantic counterfeit is a lie that passes enough tests to enter
+> circulation.
+
+## Counterfeit Authority
+
+A counterfeit interface borrows credibility from:
+
+* a strong name;
+* familiar syntax;
+* documentation;
+* partial success;
+* compatibility with common cases;
+* maintainer confidence;
+* similarity to another system;
+* the absence of immediate failure.
+
+The operator sees:
+
+```text
+--safe
+```
+
+and reasonably infers that the operation is safe within the documented
+scope.
+
+The implementation means:
+
+> safer than the path we had before, except for several states the
+> parser still accepts.
+
+The interface has borrowed authority from the word *safe* without
+paying the invariant cost required to own it.
+
+## Partial Correctness as Counterfeit Mint
+
+**Partial correctness** means that behavior is correct within a
+limited subset of inputs, states, or execution contexts.
+
+Partial correctness is normal.
+
+Most components support bounded domains.
+
+It becomes counterfeit when:
+
+* the supported subset is implicit;
+* unsupported states are accepted;
+* failure occurs after mutation;
+* the interface suggests broader coherence;
+* operators are blamed for discovering the real boundary.
+
+Consider an alternate-root operation that works correctly when:
+
+* no lifecycle scripts run;
+* dependencies are already satisfied;
+* the target database exists;
+* host and target configuration match.
+
+That may be useful partial correctness.
+
+It becomes counterfeit when the command accepts arbitrary roots,
+scripts, dependencies, and configuration while documentation calls the
+operation generally supported.
+
+```text
+honest partial correctness
+    narrow contract
+    explicit conditions
+    early rejection
+
+semantic counterfeit
+    broad interface
+    hidden conditions
+    partial behavior
+    social explanation afterward
+```
+
+> The dangerous lie is not “nothing works”.  
+> It is “everything works, except wherever the model stops”.
+
+## Hallucinated Semantics
+
+**Hallucinated semantics** are guarantees, relationships, or authority
+inferred by operators and callers beyond what the system actually
+provides.
+
+The hallucination may be encouraged by:
+
+* interface names;
+* familiar conventions;
+* documentation;
+* previous success;
+* analogy with another tool;
+* one component behaving more strongly than another;
+* partial validation by the system.
+
+Examples include:
+
+* assuming `--root` changes every relevant execution context;
+* assuming exit status zero means complete success;
+* assuming an artifact filename is authoritative identity;
+* assuming every backend behind one interface preserves the same
+  semantics;
+* assuming an optional check protects the authoritative repository;
+* assuming deprecation implies an available replacement;
+* assuming a package database describes every filesystem effect.
+
+Hallucinated semantics are not necessarily irrational.
+
+The interface often invites them.
+
+> Operators do not hallucinate in a vacuum.  
+> The interface supplies the mushrooms.
+
+## System Projection and Ecosystem Interpretation
+
+Semantic counterfeit and hallucinated semantics describe opposite
+sides of one failure.
+
+**Semantic counterfeit** is system-side projection.
+
+The interface appears to guarantee more than the implementation owns.
+
+**Hallucinated semantics** are ecosystem-side interpretation.
+
+Operators or callers infer the stronger guarantee.
+
+```text
+system projects strong meaning
+        ↓
+operator infers strong contract
+        ↓
+common case partially confirms it
+        ↓
+ecosystem depends on the inference
+```
+
+The system does not need to deceive intentionally.
+
+Names, defaults, and partial behavior are sufficient.
+
+## Semantic Gravity
+
+**Semantic gravity** is the tendency of an interface to attract
+stronger interpretations than its implementation warrants.
+
+Some words carry substantial conceptual mass:
+
+* `atomic`;
+* `safe`;
+* `root`;
+* `ignore`;
+* `lock`;
+* `transaction`;
+* `install`;
+* `portable`;
+* `compatible`;
+* `verified`.
+
+Calling a command `install` attracts expectations about:
+
+* files;
+* state registration;
+* dependency satisfaction;
+* lifecycle behavior;
+* later removal;
+* queryability;
+* rollback.
+
+The project may intend only:
+
+> extract files and record something if possible.
+
+The name still pulls operator expectations toward the larger
+operation.
+
+Semantic gravity cannot be eliminated through disclaimers alone.
+
+The system must either:
+
+* support the attracted meaning;
+* choose a narrower name;
+* constrain the interface;
+* reject unsupported interpretations;
+* split the operation into explicit phases.
+
+> Naming is not documentation.  
+> It is preloaded expectation.
+
+## Reachable Ambiguity Space
+
+The **reachable ambiguity space** is the set of materially different
+meanings an operator or caller can reasonably infer and partially
+validate through system behavior.
+
+Human imagination is unlimited.
+
+The relevant question is narrower:
+
+> Which interpretations can the interface plausibly attract and allow
+> to survive?
+
+For example, an `--ignore` option may plausibly mean:
+
+* do not update this package;
+* omit it from dependency resolution;
+* hide it from repository selection;
+* preserve its installed version;
+* suppress an error;
+* bypass one validation rule.
+
+If different subcommands implement different subsets of those
+meanings, the reachable ambiguity space is large.
+
+A constrained primitive reduces that space.
+
+Separate options such as:
+
+```text
+--hold-version
+--skip-repository
+--ignore-dependency-error
+```
+
+may be less elegant.
+
+They make the meanings harder to confuse.
+
+## Ambiguity Budget
+
+An **ambiguity budget** is the amount of semantic uncertainty an
+ecosystem can absorb before operators, callers, and components begin
+forming incompatible interpretations.
+
+Every interface consumes some ambiguity budget.
+
+Small uncertainties may be tolerable when:
+
+* the operation is local;
+* failure is reversible;
+* few callers exist;
+* operators receive immediate feedback;
+* state remains inspectable;
+* the boundary is unlikely to compose further.
+
+Ambiguity becomes expensive when:
+
+* artifacts cross machines;
+* several tools consume the result;
+* state persists for years;
+* failures are destructive;
+* automation removes human review;
+* compatibility freezes observed behavior;
+* different authority surfaces disagree.
+
+An ecosystem with strong contracts can afford more local flexibility.
+
+An ecosystem already saturated with folklore has little ambiguity
+budget left.
+
+> Ambiguity is cheap until somebody automates it.
+
+## Trust-Me-Bro Interface
+
+A **trust-me-bro interface** depends primarily on operator virtue,
+experience, or restraint for correctness.
+
+Typical forms include:
+
+* a dangerous option accepted without validation;
+* two incompatible flags allowed together;
+* an unrestricted string representing several semantic categories;
+* a command that requires callers to know undocumented phase order;
+* a public function whose valid inputs exist only in maintainer
+  memory.
+
+The interface says:
+
+> The system permits this.
+
+The maintainers mean:
+
+> Competent people know when not to use it.
+
+That is not operator sovereignty.
+
+It is an undocumented entrance exam attached to state mutation.
+
+## Undefined Ritual Zone
+
+An **undefined ritual zone** is an operational area where behavior
+often works despite lacking an enforceable contract.
+
+Examples include:
+
+* running lifecycle scripts under an alternate root;
+* manually repairing package databases;
+* mixing repository metadata from different generations;
+* invoking internal helper commands directly;
+* editing generated state;
+* reusing partially produced artifacts;
+* depending on warning text.
+
+The zone is not necessarily random.
+
+It may be stable enough for experienced operators to navigate.
+
+Its stability comes from ritual:
+
+* perform steps in one order;
+* avoid specific combinations;
+* inspect one file afterward;
+* rerun one command if a warning appears;
+* never automate the whole sequence.
+
+> Undefined does not mean unpredictable.  
+> Sometimes it means predictable only to the priesthood.
+
+## Semantic Overloading
+
+**Semantic overloading** occurs when one primitive carries several
+distinct meanings that cannot be enforced through one coherent
+contract.
+
+Examples include:
+
+* `root` meaning filesystem destination, database namespace,
+  configuration base, and script environment;
+* `ignore` meaning skip, hold, suppress, bypass, or hide;
+* `success` meaning complete, partial, recoverable, or merely
+  non-catastrophic;
+* `package` meaning source recipe, built artifact, repository entry,
+  or installed state;
+* `remove` meaning unregister, delete files, run lifecycle logic, or
+  all three.
+
+Overloading is not automatically wrong.
+
+A term may legitimately name a concept spanning several phases.
+
+It becomes pathological when the phases can diverge and the interface
+cannot represent the divergence.
+
+> One word can unify a model.  
+> It cannot manufacture one.
+
+## Semantic Compression Artifact
+
+A **semantic compression artifact** is a small interface element
+carrying more implied meaning than it explicitly represents.
+
+Examples include:
+
+* one boolean option controlling several policies;
+* one exit status representing several outcomes;
+* one filename encoding identity, version, release, architecture, and
+  format;
+* one `root` path standing for multiple namespaces;
+* one warning covering several failure classes.
+
+Compression is useful.
+
+Interfaces must remain manageable.
+
+But compression becomes dangerous when callers need to decompress the
+meaning differently.
+
+## Counterfeit Success
+
+**Counterfeit success** is a successful status that does not identify
+which promised effects actually occurred.
+
+Possible hidden outcomes include:
+
+* files installed, database update failed;
+* artifact created, publication failed;
+* validation warned, operation continued;
+* dependency resolution skipped;
+* lifecycle script failed;
+* rollback incomplete;
+* result reused from cache;
+* partial output remains valid.
+
+A success result should match the contract.
+
+If partial states are legitimate, they should be represented
+explicitly.
+
+> “Success” is not a bucket for everything that failed politely.
+
+## Counterfeit Safety
+
+**Counterfeit safety** is an interface implying that a dangerous
+operation has been contained when the actual protection remains
+partial, optional, or social.
+
+Examples include:
+
+* a `--safe` mode that only enables warnings;
+* a dry-run that still performs network or script side effects;
+* a validation tool disconnected from publication;
+* a transaction that cannot roll back lifecycle scripts;
+* a sandbox that shares writable host paths;
+* an alternate root that does not isolate execution context.
+
+The mechanism may improve safety.
+
+The counterfeit lies in presenting improvement as a complete boundary.
+
+## Counterfeit Portability
+
+**Counterfeit portability** occurs when an artifact or operation
+appears independent of its original environment but silently depends
+on ambient state.
+
+Examples include:
+
+* artifacts requiring undeclared host libraries;
+* packages whose scripts assume the build machine's filesystem layout;
+* configurations containing absolute paths from the producer;
+* repository metadata interpreted through local conventions;
+* “portable” scripts depending on one shell's behavior.
+
+The artifact crosses the boundary.
+
+Its assumptions remain behind, connected by invisible cable.
+
+## Counterfeit Pluralism
+
+**Counterfeit pluralism** is the appearance of meaningful alternatives
+where every alternative remains captured by the same unresolved
+substrate.
+
+Several frontends may exist.
+
+Each one must:
+
+* read the same private configuration;
+* infer the same artifact identity;
+* compensate for the same state ambiguity;
+* preserve the same accidental protocol.
+
+The ecosystem has several control panels.
+
+The machine room remains singular and haunted.
+
+## Authority Laundering
+
+**Authority laundering** presents socially enforced behavior as if it
+were mechanically guaranteed by the system.
+
+Typical phrases include:
+
+* “works when used correctly”;
+* “everyone knows not to do that”;
+* “supported for experienced operators”;
+* “the configuration is unusual”;
+* “that combination is technically valid but not sensible”;
+* “the documentation implies the intended use”.
+
+The system accepts the state.
+
+Operators enforce the real boundary socially.
+
+Maintainers then describe the result as system behavior.
+
+```text
+operator discipline
+        ↓
+stable common case
+        ↓
+appearance of system guarantee
+```
+
+Authority laundering often sustains semantic counterfeit.
+
+The interface projects coherence.
+
+The operator community supplies the missing enforcement.
+
+The project credits the interface.
+
+> The invariant is dead.  
+> The maintainers keep dressing it for meetings.
+
+## Counterfeit Lifecycle
+
+A semantic counterfeit often matures through this sequence:
+
+```text
+ambiguous interface
+        ↓
+common case works
+        ↓
+operators infer broad contract
+        ↓
+edge case fails
+        ↓
+maintainers explain intended use
+        ↓
+social rule develops
+        ↓
+documentation describes the social rule
+        ↓
+ecosystem treats rule as system guarantee
+```
+
+At the end, everyone agrees on the meaning.
+
+The system still does not enforce it.
+
+## Field Symptom: `--ignore`
+
+A package frontend provides:
+
+```text
+--ignore foo
+```
+
+One subcommand interprets this as:
+
+> Do not update `foo`.
+
+Another interprets it as:
+
+> Remove `foo` from dependency consideration.
+
+A third still resolves dependencies through `foo` but suppresses the
+resulting error.
+
+Operators infer that ignored packages remain installed and stable.
+
+The implementation supports several different semantics under one
+name.
+
+The interface has high semantic gravity.
+
+The reachable ambiguity space is large.
+
+The correct repair may include:
+
+* narrower options;
+* separate typed operations;
+* explicit per-command semantics;
+* rejection where no coherent meaning exists.
+
+Adding another paragraph to the man page may reduce surprise.
+
+It does not remove the counterfeit surface.
+
+## Field Symptom: Atomic Installation
+
+A package manager describes installation as atomic.
+
+Operationally:
+
+1. files are extracted;
+2. lifecycle scripts execute;
+3. the package database is updated;
+4. service state may change.
+
+Only the database update is transactional.
+
+Filesystem mutation cannot be fully rolled back.
+
+Lifecycle scripts may affect external state.
+
+The term `atomic` may honestly describe one phase.
+
+It counterfeits the whole operation if presented without scope.
+
+A better contract might say:
+
+> Package database registration is atomic.
+> Filesystem and lifecycle effects may require recovery after failure.
+
+Less beautiful.
+
+More useful during the fire.
+
+## Field Symptom: The Safe Hook
+
+A repository provides an optional validation hook.
+
+Maintainers who install it are protected from one class of malformed
+metadata.
+
+Documentation says:
+
+> Repository metadata is validated before commit.
+
+Imports, automation, and maintainers without the hook remain
+unprotected.
+
+The validation mechanism is real.
+
+The ecosystem-level guarantee is counterfeit.
+
+The hook is a memory prosthesis.
+
+Calling it a repository invariant launders local discipline into
+system authority.
+
+## Field Symptom: Supported Alternate Roots
+
+A tool accepts:
+
+```text
+--root=/mnt
+```
+
+Files are written beneath `/mnt`.
+
+Dependency resolution reads the host database.
+
+Configuration comes from the host.
+
+Lifecycle scripts run with host process context.
+
+The package database beneath `/mnt` is updated.
+
+The documentation says alternate roots are supported.
+
+What is supported?
+
+* alternate filesystem destination;
+* alternate package registration;
+* alternate dependency model;
+* alternate execution environment;
+* all of the above?
+
+The option produces enough correct behavior to validate the broad
+interpretation.
+
+It also preserves enough host dependence to violate it.
+
+This is semantic counterfeit.
+
+## Field Symptom: Self-Describing Artifact
+
+A package filename contains:
+
+```text
+foo#1.2-1-x86_64.pkg.tar.gz
+```
+
+The repository and installer infer identity from the name.
+
+The archive contains no manifest.
+
+The file may be renamed.
+
+Architecture is derived differently by another component.
+
+The artifact appears self-describing.
+
+Its truth depends on an external naming convention and shared parser
+behavior.
+
+The presentation is rich.
+
+The authority is absent.
+
+## Field Symptom: Successful Verification
+
+A command verifies an artifact and prints:
+
+```text
+verification successful
+```
+
+It checked the checksum.
+
+It did not check:
+
+* signature;
+* package identity;
+* provenance;
+* compatibility;
+* manifest consistency.
+
+The message may be true within one narrow scope.
+
+Without naming that scope, `verification successful` attracts a
+broader security interpretation.
+
+The system did not lie about the checksum.
+
+It counterfeited the meaning of verification.
+
+## Semantic Counterfeit Versus Ordinary Bug
+
+A bug violates the intended implementation.
+
+Semantic counterfeit may persist even when every line behaves as
+implemented.
+
+The problem is mismatch between:
+
+* projected contract;
+* actual authority;
+* enforceable subset;
+* ecosystem interpretation.
+
+Fixing one defect may leave the counterfeit intact.
+
+For example, repairing one rollback failure does not make an operation
+atomic if lifecycle effects remain irreversible.
+
+The name still projects more than the model owns.
+
+## Hallucination Containment
+
+A system cannot prevent operators from imagining every possible
+meaning.
+
+It can constrain hallucination by:
+
+* choosing precise names;
+* publishing explicit contracts;
+* separating distinct operations;
+* representing partial outcomes;
+* rejecting unsupported combinations;
+* making authority visible;
+* exposing structured truth;
+* reducing accidental success outside the supported model;
+* ensuring documentation confesses current limits.
+
+The objective is not to eliminate interpretation.
+
+It is to reduce the set of interpretations that runtime appears to
+validate.
+
+## Honest Interface
+
+An **honest interface** exposes no stronger guarantee than the system
+can enforce.
+
+Honesty may look like:
+
+* narrower commands;
+* longer names;
+* explicit phases;
+* structured result types;
+* visible limitations;
+* rejection of ambiguous combinations;
+* capability declarations;
+* partial outcomes represented directly;
+* warnings that do not masquerade as safety.
+
+An honest interface can still be inconvenient.
+
+Sometimes the inconvenience is the exact shape of unresolved reality.
+
+> Friction is cheaper than counterfeit confidence.
+
+## Semantic Friction
+
+**Semantic friction** is deliberate difficulty introduced to prevent
+operators or callers from crossing an important boundary accidentally.
+
+Examples include:
+
+* requiring an explicit unsafe option;
+* refusing ambiguous flag combinations;
+* separating destructive commands;
+* requiring a migration step;
+* forcing acknowledgment of partial semantics;
+* making implicit defaults visible.
+
+Friction should correspond to real risk.
+
+Arbitrary inconvenience is not semantic rigor.
+
+A useful friction point says:
+
+> You are leaving the model the system can defend.
+
+## Warning Surface
+
+A **warning surface** informs operators that a contract is weak,
+partial, or context-dependent.
+
+Warnings are valuable when:
+
+* the state remains legitimate;
+* operator judgment is required;
+* compatibility prevents rejection;
+* migration is underway;
+* the system can continue safely.
+
+Warnings become authority laundering when they substitute indefinitely
+for a boundary the system already knows how to enforce.
+
+> A warning is information.  
+> It is not a fence with yellow text painted on the grass.
+
+## Do Not Confuse
+
+**Semantic counterfeit** is not deliberate deception.
+
+A system can counterfeit meaning through inherited names, partial
+behavior, and unclear boundaries.
+
+**Hallucinated semantics** are not simply operator stupidity.
+
+The interface often supplies strong evidence for the interpretation.
+
+**Partial correctness** is not automatically counterfeit.
+
+It becomes counterfeit when the supported subset is hidden or the
+interface implies completeness.
+
+**A broad interface** is not automatically dishonest.
+
+It is honest when the system possesses a real model covering its
+breadth.
+
+**A warning** is not automatically insufficient.
+
+Some legitimate states require operator judgment.
+
+**Strict rejection** is not always the correct solution.
+
+The system may need to preserve operator authority or accept a
+temporarily broader migration surface.
+
+**Semantic friction** is not an excuse for hostile interfaces.
+
+Friction should guard a meaningful boundary.
+
+**Familiar terminology** is not automatically semantic gravity abuse.
+
+Common names are useful when their scope is defined.
+
+**Authority laundering** is not the same as a zombie invariant.
+
+A zombie invariant is the dead property maintained socially.
+
+Authority laundering is the process by which that social maintenance
+is presented as system enforcement.
+
+## The Counterfeit Test
+
+For any strong-looking interface or guarantee, ask:
+
+1. What meaning does the name naturally attract?
+2. What exact contract does the documentation state?
+3. Which parts are mechanically enforced?
+4. Which parts hold only in the common case?
+5. Which accepted states fall outside the model?
+6. Are unsupported states rejected before mutation?
+7. Can partial outcomes be represented?
+8. Does success identify which effects occurred?
+9. Which facts are authoritative?
+10. Do different callers infer different meanings?
+11. Which operator knowledge is required for safe use?
+12. Does the interface depend on “sensible” behavior?
+13. Are warnings substituting for rejection?
+14. Does one term carry several incompatible semantics?
+15. Is an optional mechanism presented as an ecosystem invariant?
+16. Does a backend limitation silently weaken the contract?
+17. Does the interface borrow familiar terminology from a stronger
+    model?
+18. Can a newcomer infer the supported boundary correctly?
+19. Does the system partially validate a broader interpretation?
+20. Is social discipline being presented as mechanical authority?
+21. Can the interface be narrowed without losing essential capability?
+22. Would a more explicit result reduce hallucination?
+23. Is the projected guarantee worth the invariant budget required to
+    own it?
+24. If the guarantee cannot be enforced, should the system rename,
+    constrain, split, or reject the operation?
+
+If maintainers must explain that the option does not mean what every
+reasonable operator thinks it means, the interface has already filed
+its confession.
+
+## Twelfth House Law
+
+> If an interface can lie, it will eventually acquire believers.
+
+Semantic counterfeit explains how weak guarantees gain the appearance
+of authority.
+
+Hallucinated semantics explain how the ecosystem converts that
+appearance into expectation, automation, and dependence.
+
+Part III has followed meaning as it drifts, dies, returns, and finally
+learns to impersonate a contract.
+
+Part IV turns to the ecosystem that keeps all of this operational.
+
+The next section is **Part IV: Folklore Ecology and Institutional
+Memory**, beginning with **Coping Infrastructure**: how wrappers,
+rituals, channels, conventions, and operator knowledge become the
+missing control structure around an incomplete system.
 
 ---
 
