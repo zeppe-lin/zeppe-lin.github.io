@@ -5630,6 +5630,877 @@ stop describing the same system.
 
 ---
 
+# Part III. Drift, Ghosts, and Counterfeit Semantics
+
+The man page describes one operation.
+
+The implementation performs another.
+
+The package database records part of it.
+
+The filesystem preserves the rest.
+
+A wrapper repairs one historical exception.
+
+An experienced operator knows which representation to trust in each
+case.
+
+Every layer is locally reasonable.
+
+Together they no longer describe the same system.
+
+Nothing failed all at once.
+
+The meanings simply stopped arriving at the same destination.
+
+---
+
+# Semantic Drift
+
+**Semantic drift** is the gradual divergence among:
+
+* implemented behavior;
+* documented behavior;
+* authoritative state;
+* artifact meaning;
+* operator expectation;
+* maintainer intention;
+* historical compatibility;
+* ecosystem practice.
+
+A system drifts when these representations continue evolving without a
+binding process that keeps them mutually coherent.
+
+> Semantic drift begins when the system tells several almost-correct
+> stories and nobody owns the disagreement.
+
+Drift is rarely announced.
+
+There is usually no commit titled:
+
+```text
+begin seven-year separation between documentation and reality
+```
+
+Instead, the divergence accumulates through individually tolerable
+changes:
+
+* one compatibility exception;
+* one warning instead of rejection;
+* one caller parsing an incidental output;
+* one backend behaving slightly differently;
+* one undocumented override;
+* one local workaround copied elsewhere;
+* one issue describing a future contract;
+* one maintainer remembering what the interface “really means”.
+
+Each change may preserve local survivability.
+
+Together they alter the system's semantic shape.
+
+## Semantic Alignment
+
+A system is **semantically aligned** when its major representations
+agree about the operation they describe.
+
+For an installation operation, alignment might require agreement
+among:
+
+* the command interface;
+* the execution plan;
+* the filesystem result;
+* the package database;
+* the artifact metadata;
+* the documentation;
+* subsequent query and removal operations.
+
+Alignment does not require every representation to contain identical
+information.
+
+It requires their relationships to be explicit and their disagreements
+to have defined resolution paths.
+
+For example:
+
+```text
+artifact metadata
+    defines package identity
+
+package database
+    records installed state
+
+filesystem
+    contains installed files
+
+documentation
+    describes the contract
+
+queries
+    derive their answers from authoritative state
+```
+
+Each representation performs a different role.
+
+The system remains aligned because those roles agree.
+
+## Divergence
+
+**Divergence** occurs when two representations that should correspond
+begin producing different answers.
+
+Examples include:
+
+* an artifact filename and its internal metadata disagree;
+* the package database claims a file is installed, but the file is
+  absent;
+* documentation describes rejection, but implementation accepts the
+  state;
+* a wrapper treats a warning as success while the underlying component
+  treats it as failure;
+* the host and target roots disagree about dependency state;
+* two frontends interpret the same low-level result differently.
+
+Divergence may be temporary and detectable.
+
+Drift begins when divergence persists, accumulates, or acquires
+dependents.
+
+> One disagreement is an incident.  
+> A stable population of disagreements is an ecology.
+
+## Drift Is a Process
+
+A bug is an event or defect.
+
+Drift is a process.
+
+A bug may cause drift when:
+
+1. the behavior persists;
+2. operators adapt to it;
+3. callers depend on it;
+4. documentation rationalizes it;
+5. compatibility preserves it;
+6. future changes treat it as prior art.
+
+The original defect may later disappear.
+
+The adaptations remain.
+
+This is why correcting implementation alone does not always restore
+coherence.
+
+The ecosystem may already have learned the old behavior.
+
+## The Drift Sequence
+
+A common drift sequence looks like this:
+
+```text
+contract is incomplete
+        ↓
+implementation chooses one behavior
+        ↓
+documentation generalizes from the common case
+        ↓
+operator encounters an exception
+        ↓
+local workaround preserves survival
+        ↓
+another component depends on the workaround
+        ↓
+compatibility preserves the dependency
+        ↓
+the exception becomes ecosystem behavior
+```
+
+At the beginning, the system lacked one explicit decision.
+
+At the end, changing that decision requires migration.
+
+## Drift Surfaces
+
+Drift can occur across several surfaces.
+
+### Interface Drift
+
+**Interface drift** occurs when the practical meaning of an interface
+changes while its visible syntax remains stable.
+
+The command still accepts:
+
+```text
+--root=/mnt
+```
+
+But over time:
+
+* one phase begins reading host configuration;
+* another begins writing target state;
+* a new lifecycle phase executes outside the target;
+* dependency resolution remains host-relative.
+
+The option name is unchanged.
+
+Its semantic radius has expanded.
+
+### Documentation Drift
+
+**Documentation drift** occurs when documentation no longer describes
+current operational behavior.
+
+This may happen because:
+
+* implementation changed;
+* edge cases accumulated;
+* compatibility behavior was never documented;
+* proposed behavior was written as present fact;
+* old limitations disappeared from memory;
+* several components now interpret the same term differently.
+
+Documentation drift is not always neglect.
+
+Sometimes the system itself no longer possesses one stable behavior to
+document.
+
+The writer is asked to produce one sentence for an operation with four
+authority surfaces.
+
+At that point, prose is being used as semantic compression against
+reality.
+
+### State Drift
+
+**State drift** occurs when representations of operational state stop
+corresponding.
+
+Examples include:
+
+* package database and filesystem divergence;
+* repository index and stored artifacts disagreeing;
+* generated configuration differing from declared configuration;
+* cached dependency state surviving changes to its source;
+* transaction records claiming completion after partial mutation.
+
+State drift is especially dangerous because later operations may
+choose different representations as authoritative.
+
+Install trusts the database.
+
+Remove trusts the filesystem.
+
+Upgrade trusts the filename.
+
+Repair trusts whichever answer still has data.
+
+### Artifact Drift
+
+**Artifact drift** occurs when the meaning associated with an artifact
+changes or separates from the artifact itself.
+
+Examples include:
+
+* a filename implies one version while internal metadata declares
+  another;
+* repository metadata describes an artifact that was replaced;
+* provenance no longer identifies the actual source revision;
+* a package format gains required semantics that old artifacts cannot
+  carry;
+* sidecar metadata becomes detached from the content it describes.
+
+### Operator-Expectation Drift
+
+**Operator-expectation drift** occurs when experienced operators and
+new operators infer different contracts from the same interface.
+
+Experienced operators may know:
+
+* which combinations are unsafe;
+* which warning indicates partial success;
+* which documented behavior is obsolete;
+* which artifact name is misleading;
+* which script must run afterward.
+
+New operators read the visible interface.
+
+Both groups are reasoning rationally from different evidence.
+
+The system has divided its semantics by tenure.
+
+### Institutional Drift
+
+**Institutional drift** occurs when a project's current doctrine,
+review habits, and design reflexes no longer match the conditions that
+produced them.
+
+A restriction may survive after its technical cause disappeared.
+
+A workaround may remain mandatory after the underlying component was
+replaced.
+
+A fear of complexity may survive while complexity has already migrated
+into operators.
+
+The institution preserves the conclusion and loses the autopsy.
+
+## Contract Erosion
+
+**Contract erosion** is the weakening of an explicit or implicit
+behavioral boundary through accumulated exceptions.
+
+A contract may begin clearly:
+
+> A successful installation records every installed file in the
+> package database.
+
+Then exceptions appear:
+
+* generated files are not recorded;
+* lifecycle-created files are not recorded;
+* compatibility files are not recorded;
+* files outside the target root are not recorded;
+* partial installation still returns success;
+* repair mode bypasses registration.
+
+Each exception may have a reason.
+
+Eventually the original statement remains only as introductory prose.
+
+The real contract becomes:
+
+> Most files are recorded, except those produced through paths whose
+> history you are expected to know.  
+> Contract erosion does not delete the boundary.  
+> It makes the boundary negotiable after every incident.
+
+## Exception Accretion
+
+**Exception accretion** is the accumulation of locally justified
+special cases around a shared contract.
+
+Exceptions are not inherently wrong.
+
+A mature system often needs:
+
+* compatibility;
+* migration;
+* hardware-specific behavior;
+* recovery paths;
+* operator overrides;
+* legacy artifact support.
+
+The problem is not the presence of exceptions.
+
+The problem is when exceptions:
+
+* are implemented at several layers;
+* lack explicit scope;
+* have no removal condition;
+* change authoritative behavior silently;
+* become visible to unrelated callers;
+* outnumber the cases covered by the original rule.
+
+At that point, the exception structure may be more authoritative than
+the nominal contract.
+
+## Model Rot
+
+**Model rot** occurs when an abstraction remains in use after its
+underlying model no longer corresponds to operational reality.
+
+The interface may still compile.
+
+The command may still run.
+
+The model has lost explanatory power.
+
+Examples include:
+
+* one `root` parameter standing for several execution contexts;
+* one package state representing files, database registration, and
+  lifecycle effects that can diverge;
+* one success status representing complete, partial, and recoverable
+  outcomes;
+* one repository model covering artifacts with incompatible metadata
+  guarantees;
+* one dependency expression interpreted differently by several
+  solvers.
+
+> Model rot is what happens when an abstraction survives by becoming
+> increasingly metaphorical.
+
+A rotten model forces every caller to reinterpret its terms.
+
+The abstraction remains syntactically central while semantic authority
+moves elsewhere.
+
+## Semantic Leak
+
+A **semantic leak** occurs when internal behavior becomes required
+knowledge outside the component that owns it.
+
+Examples include:
+
+* callers must know archive-backend path rules;
+* an orchestrator must know how a builder computes filenames;
+* operators must understand database write order;
+* repository tools must know temporary-file conventions;
+* wrappers must know which warning is emitted before a partial
+  success.
+
+A semantic leak increases coupling.
+
+It also creates new authority surfaces because external components
+begin making decisions based on internal facts.
+
+## Topology Leak
+
+A **topology leak** occurs when semantics escape the architectural
+layer that should own them and begin governing another layer
+indirectly.
+
+Examples include:
+
+* build semantics leaking into repository policy;
+* repository naming leaking into package identity;
+* lifecycle-script behavior leaking into alternate-root topology;
+* dependency semantics leaking into wrapper conventions;
+* local filesystem layout leaking into artifact contracts.
+
+A semantic leak exposes an internal fact.
+
+A topology leak changes which layer must reason about that fact.
+
+> A leak tells another component too much.  
+> A topology leak gives that component a new unpaid job.
+
+## Implicit Coupling
+
+**Implicit coupling** is dependence on behavior that has not been
+represented as a shared contract.
+
+Implicit coupling commonly appears as:
+
+* repeated configuration parsing;
+* reliance on command order;
+* environment-variable assumptions;
+* filename interpretation;
+* directory scanning;
+* database layout knowledge;
+* shared process context;
+* undocumented success phrases.
+
+Implicit coupling is a primary carrier of drift because each consumer
+may preserve and evolve its own interpretation.
+
+## Interpretation Fork
+
+An **interpretation fork** occurs when two consumers derive different
+meanings from the same ambiguous behavior.
+
+For example, a low-level tool returns exit status zero with a warning.
+
+Frontend A interprets this as success.
+
+Frontend B treats the warning as partial failure.
+
+A local script ignores both and checks whether one file appeared.
+
+The tool emitted one event.
+
+The ecosystem created three contracts.
+
+## Accidental Protocol
+
+An **accidental protocol** is undocumented behavior that other
+components begin depending upon compositionally.
+
+Examples include:
+
+* stdout wording;
+* filename shape;
+* warning order;
+* temporary-directory layout;
+* configuration precedence;
+* database record ordering;
+* timing assumptions;
+* exit status combined with filesystem inspection.
+
+Once several components depend on the behavior, changing it becomes a
+migration problem.
+
+The protocol was never designed.
+
+It nevertheless acquired clients.
+
+> The most permanent interface is accidental behavior with two
+> callers.
+
+## Drift Amplification
+
+Drift amplifies when one ambiguous layer feeds another.
+
+Consider:
+
+```text
+builder prints ambiguous result
+        ↓
+orchestrator guesses artifact
+        ↓
+repository derives identity from filename
+        ↓
+installer records filename-derived identity
+        ↓
+query tool reports database identity
+```
+
+One weak boundary becomes several apparently authoritative
+representations.
+
+Each downstream layer adds confidence.
+
+None adds truth.
+
+## Partial Success
+
+**Partial success** is an outcome in which some promised effects occur
+while others do not.
+
+Partial success is not inherently incoherent.
+
+A system can represent it honestly.
+
+For example:
+
+```text
+artifact produced
+publication failed
+artifact remains valid for local use
+```
+
+Drift begins when partial success is collapsed into an
+undifferentiated success or failure status.
+
+Different callers then infer different operational meanings.
+
+One retries and duplicates work.
+
+Another publishes the surviving artifact.
+
+Another deletes it.
+
+The result was real.
+
+The contract failed to name it.
+
+## Semantic Lag
+
+**Semantic lag** is the delay between operational change and the
+ecosystem's adaptation to its new meaning.
+
+After an interface changes:
+
+* documentation may lag;
+* wrappers may lag;
+* training material may lag;
+* cached state may lag;
+* operator expectation may lag;
+* compatibility may intentionally preserve old behavior.
+
+Some lag is unavoidable.
+
+A healthy migration manages it explicitly.
+
+Unmanaged lag becomes drift when old and new semantics coexist without
+a clear authority rule.
+
+## Compatibility Drift
+
+**Compatibility drift** occurs when behavior preserved for
+compatibility gradually becomes indistinguishable from current
+contract.
+
+A legacy exception may begin as:
+
+```text
+accept old package filename during migration
+```
+
+Years later:
+
+* new tools produce the old form;
+* documentation teaches it;
+* tests require it;
+* callers depend on its quirks;
+* removing it is called a breaking change.
+
+The compatibility path has stopped translating the past.
+
+It is generating the present.
+
+## Field Symptom: One Flag, Several Meanings
+
+A command introduces:
+
+```text
+--ignore
+```
+
+Initially, the flag means:
+
+> Ignore this package during one update operation.
+
+Later, callers use it to mean:
+
+* skip dependency resolution;
+* preserve an installed version;
+* suppress repository selection;
+* hide an error;
+* prevent automatic removal;
+* bypass one validation rule.
+
+The flag remains one string.
+
+Its operational meanings multiply.
+
+Documentation lists examples but cannot state one invariant.
+
+Different subcommands consume the flag differently.
+
+This is semantic overloading followed by drift.
+
+The honest repair may be:
+
+* separate flags;
+* separate typed operations;
+* a narrower constrained primitive;
+* explicit rejection of unsupported combinations.
+
+The dishonest repair is another paragraph beginning with “depending on
+context”.
+
+## Field Symptom: The Package Database Is Authoritative
+
+A project states:
+
+> The package database is authoritative.
+
+But operationally:
+
+* installation writes files before database state;
+* recovery reconstructs records from the filesystem;
+* removal skips missing files silently;
+* upgrades infer package identity from archive filenames;
+* operators manually edit database records;
+* scripts create untracked files.
+
+The statement may still describe the intended model.
+
+It no longer describes the whole control structure.
+
+The system has drifted from:
+
+```text
+database is authoritative
+```
+
+toward:
+
+```text
+database is normally preferred unless another representation contains
+more useful evidence during the current incident
+```
+
+The correct response is not necessarily to abolish the database.
+
+It is to identify which disagreements are legitimate, which are
+corruption, and which operations must restore alignment.
+
+## Field Symptom: The Correct Wrapper
+
+A wrapper repairs a low-level tool's ambiguous behavior.
+
+It:
+
+* validates inputs;
+* normalizes configuration;
+* rejects unsafe combinations;
+* interprets partial success correctly;
+* publishes a structured result.
+
+For its callers, the wrapper creates a coherent boundary.
+
+Years later, another caller bypasses it and invokes the low-level tool
+directly.
+
+Both paths remain supported.
+
+Now the ecosystem has:
+
+* one coherent contract through the wrapper;
+* one historical contract through direct invocation;
+* shared state modified by both.
+
+The wrapper was correct.
+
+The ecosystem failed to establish which surface became authoritative.
+
+Local repair without boundary closure created dual semantics.
+
+## Field Symptom: Documentation from Tomorrow
+
+An issue proposes that every built artifact will carry structured
+identity.
+
+The documentation is updated early to describe the future model.
+
+The implementation still publishes filenames and stdout.
+
+New callers depend on the documented guarantee.
+
+Maintainers explain that support is “in progress”.
+
+The project has created semantic lag deliberately and represented it
+as present truth.
+
+Documentation now describes tomorrow.
+
+Runtime remains loyal to yesterday.
+
+## Do Not Confuse
+
+**Semantic drift** is not all change.
+
+A system can evolve while keeping contracts, state, documentation, and
+migration aligned.
+
+**Variation** is not drift.
+
+Several representations or implementations may coexist under explicit
+boundaries.
+
+**An exception** is not automatically contract erosion.
+
+A scoped, tested exception with clear authority may be part of the
+contract.
+
+**A bug** is not automatically drift.
+
+Drift occurs when divergent meaning persists or acquires dependents.
+
+**Compatibility** is not automatically pathology.
+
+Compatibility becomes drift when legacy behavior escapes containment
+or becomes current semantics without explicit adoption.
+
+**Operator knowledge** is not itself drift.
+
+Operators may legitimately own policy and local intent.
+
+Drift occurs when their knowledge compensates for contradictory or
+missing system semantics.
+
+**Implementation detail** is not always a semantic leak.
+
+It becomes a leak when external correctness depends on knowing it.
+
+**A wrapper** is not automatically evidence of model rot.
+
+A wrapper may expose a clean boundary. The question is whether the
+ecosystem recognizes and closes around that boundary.
+
+## Detecting Drift
+
+Drift often becomes visible through disagreement.
+
+Useful comparisons include:
+
+* documentation versus implementation;
+* artifact metadata versus filename;
+* database state versus filesystem state;
+* producer result versus consumer inference;
+* host context versus target context;
+* current behavior versus compatibility tests;
+* maintainer explanation versus operator expectation;
+* two independent callers interpreting the same result.
+
+Independent implementations and new operators are especially valuable.
+
+They lack some of the hidden knowledge that allows drift to remain
+invisible.
+
+> The newcomer did not break the system.  
+> The newcomer failed to carry the undocumented patch in their nervous
+> system.
+
+## Drift Audit
+
+For any important operation, ask:
+
+1. What does the interface claim?
+2. What does the documentation describe?
+3. What state does the implementation actually mutate?
+4. Which representation is authoritative afterward?
+5. Which facts travel with the result?
+6. Which facts are reconstructed?
+7. What do experienced operators know that new operators do not?
+8. Which warnings or exceptions have become operationally normal?
+9. Which compatibility paths still influence current behavior?
+10. Do different callers interpret the same output differently?
+11. Are several representations allowed to disagree?
+12. How is disagreement detected?
+13. Which layer resolves it?
+14. Are partial outcomes represented explicitly?
+15. Has a once-narrow interface accumulated unrelated meanings?
+16. Are implementation details required outside their component?
+17. Does documentation describe current behavior or desired behavior?
+18. Has a local workaround become a shared dependency?
+19. Can an independent implementation infer the contract?
+20. Which correction would restore alignment rather than merely hide
+    one symptom?
+
+If every maintainer gives a different but historically defensible
+answer, the system is not merely complicated.
+
+It has drifted into several local truths.
+
+## Restoring Alignment
+
+Restoring alignment may require:
+
+* identifying one authority surface;
+* publishing structured truth;
+* normalizing representations;
+* rejecting ambiguous operations;
+* migrating old state;
+* updating documentation;
+* containing compatibility;
+* removing bypass paths;
+* converting soft invariants into guardrails;
+* explicitly adopting behavior that was previously accidental.
+
+Restoration does not always mean returning to the original design.
+
+The original design may no longer fit the ecosystem.
+
+The goal is not historical purity.
+
+The goal is one honest present.
+
+## Tenth House Law
+
+> Drift begins when “what the system does” requires a different answer
+> from every layer.
+
+Semantic drift explains how meaning separates.
+
+The next section, **Ghosts and Undead Semantics**, examines what
+remains after the original contract, rationale, or enforcement
+mechanism has already disappeared --- but the ecosystem continues
+behaving around its shape.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
