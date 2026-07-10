@@ -2247,6 +2247,680 @@ authoritative state.
 
 ---
 
+# Normalization Contracts
+
+Two archive backends extract the same package.
+
+The first preserves ownership, extended attributes, and hard-link
+relationships.
+
+The second rewrites ownership, ignores extended attributes, and turns
+one hard link into two independent files.
+
+Both return success.
+
+The package manager reports the same operation.
+
+The installed systems are not the same.
+
+The ecosystem does not have two interchangeable backends.
+
+It has two different definitions of installation wearing the same
+function signature.
+
+---
+
+## Representation Variance
+
+The same intended meaning can arrive in several representations.
+
+Examples include:
+
+* relative and absolute paths;
+* several archive formats;
+* different filename conventions;
+* symbolic and numeric ownership;
+* equivalent dependency expressions;
+* configuration assembled from multiple files;
+* artifact identity encoded in metadata, filenames, or directory
+  structure;
+* host and target paths describing different namespaces;
+* human-readable and machine-readable results.
+
+Variation is not automatically a defect.
+
+Different representations may be legitimate at an external boundary.
+Different backends may expose different native capabilities.
+Operators may need several ways to express the same intent.
+
+The problem begins when representational variation crosses into
+authoritative state without being reconciled.
+
+> Variation at the entrance is flexibility.  
+> Variation inside the state model is usually a future argument.
+
+## Normalization
+
+**Normalization** is the conversion of accepted representational
+variation into a stable form the system can reason about consistently.
+
+A normalization step may:
+
+* resolve syntax into explicit meaning;
+* make defaults visible;
+* translate backend-specific behavior;
+* validate required information;
+* reject contradictory inputs;
+* preserve information needed by later phases;
+* produce one internal representation from several external forms.
+
+Normalization is not merely tidying data.
+
+It is the moment where the system decides which differences matter and
+which differences must disappear.
+
+For example, these two dependency expressions may be syntactically
+different:
+
+```text
+foo >= 1.2
+foo>=1.2
+```
+
+If the system defines them as semantically equivalent, normalization
+may convert both into the same structured dependency object.
+
+But these two expressions are not necessarily equivalent:
+
+```text
+foo >= 1.2
+foo > 1.2
+```
+
+A normalizer must preserve the distinction.
+
+The purpose is not to make everything look alike.
+
+The purpose is to produce one stable language without destroying
+meaning.
+
+## Normalization Contract
+
+A **normalization contract** defines:
+
+* which external forms are accepted;
+* which distinctions are semantically meaningful;
+* which distinctions are erased;
+* which defaults are applied;
+* which information must be preserved;
+* which contradictions are rejected;
+* which normalized representation downstream layers may rely upon.
+
+The contract sits between varied input and authoritative behavior.
+
+```text
+external representations
+        ↓
+normalization contract
+        ↓
+stable internal meaning
+        ↓
+authoritative state transition
+```
+
+Downstream components should not need to know which accepted
+representation originally carried the meaning.
+
+> The backend is not the invariant.  
+> The normalization contract is.
+
+## Normal Form
+
+A **normal form** is the stable representation produced by
+normalization.
+
+A useful normal form is:
+
+* explicit;
+* complete enough for the operation;
+* independent of incidental input syntax;
+* stable across supported backends;
+* suitable for validation;
+* suitable for comparison;
+* suitable for serialization when required.
+
+For a package installation, a normal form might include:
+
+* package identity;
+* version and release;
+* architecture;
+* normalized destination paths;
+* ownership and mode;
+* link relationships;
+* extended attributes;
+* conflict information;
+* lifecycle operations;
+* target-state context.
+
+The exact form is architecture-specific.
+
+The important property is that later phases consume the normal form
+rather than repeatedly interpreting raw inputs.
+
+## Normalize Before Mutation
+
+Normalization should occur before ambiguous input is allowed to mutate
+authoritative state.
+
+The safe sequence is:
+
+```text
+input
+    ↓
+parse
+    ↓
+normalize
+    ↓
+validate
+    ↓
+construct operation plan
+    ↓
+mutate state
+```
+
+The dangerous sequence is:
+
+```text
+input
+    ↓
+partially interpret
+    ↓
+mutate some state
+    ↓
+discover ambiguity
+    ↓
+ask operator what the command probably meant
+```
+
+Once mutation begins, ambiguity becomes expensive.
+
+The system may need to:
+
+* roll back files;
+* repair databases;
+* reconstruct previous ownership;
+* undo lifecycle scripts;
+* distinguish partial success from failure;
+* explain which representation was believed at each phase.
+
+> Ambiguity is cheapest before it touches the filesystem.
+
+## Parse, Normalize, Validate
+
+Parsing, normalization, and validation are related but distinct.
+
+### Parsing
+
+**Parsing** converts syntax into a structured representation.
+
+It answers:
+
+> What did the input say?
+
+### Normalization
+
+**Normalization** resolves accepted variation into stable meaning.
+
+It answers:
+
+> Which differences matter, and what form will the system use?
+
+### Validation
+
+**Validation** determines whether the normalized meaning is permitted
+by the current contract.
+
+It answers:
+
+> May this operation proceed?
+
+For example, given:
+
+```text
+--root=/mnt/../target
+```
+
+Parsing may produce a path string.
+
+Normalization may resolve the path to `/target`.
+
+Validation may then determine whether `/target` is permitted as an
+installation root.
+
+Combining all three steps into one opaque function is possible.
+
+Failing to distinguish their responsibilities makes later reasoning
+harder.
+
+## Canonicalization
+
+**Canonicalization** selects one representation among several
+equivalent representations.
+
+It is one possible normalization technique.
+
+For example:
+
+```text
+./usr//bin/../bin/tool
+```
+
+may canonicalize to:
+
+```text
+usr/bin/tool
+```
+
+But canonicalization is not the entire normalization contract.
+
+A complete contract must also decide:
+
+* whether absolute paths are accepted;
+* whether `..` may escape a package root;
+* how symbolic links affect resolution;
+* whether path comparison occurs before or after extraction;
+* which namespace defines the root;
+* whether the original path should remain visible for diagnostics.
+
+Canonicalization without semantic context can destroy information or
+create false equivalence.
+
+> One canonical string does not guarantee one canonical meaning.
+
+## Lossless and Lossy Normalization
+
+Normalization may be **lossless** or **lossy**.
+
+A lossless normalizer preserves every distinction needed to reproduce
+the intended meaning.
+
+A lossy normalizer deliberately discards distinctions judged
+irrelevant to the contract.
+
+Loss is not automatically wrong.
+
+For example, insignificant whitespace may be discarded safely.
+
+Discarding ownership, capabilities, or hard-link relationships during
+package extraction may not be safe if installation semantics promise
+to preserve them.
+
+The contract must state which losses are permitted.
+
+Otherwise a backend limitation quietly becomes system policy.
+
+## Backend Capability
+
+A backend may lack capabilities required by the normalization
+contract.
+
+The system then has honest choices:
+
+1. reject that backend for the operation;
+2. constrain the supported contract;
+3. emulate the missing behavior;
+4. expose the limitation explicitly to a layer capable of choosing
+   policy.
+
+The dishonest choice is to accept the backend, silently degrade
+semantics, and continue reporting equivalent success.
+
+> “Supported backend” should mean “satisfies the contract”, not
+> “returned zero during testing”.
+
+## Backend Substitution
+
+A backend is substitutable when replacing it does not change the
+semantics promised by the surrounding boundary.
+
+This does not mean every backend must behave identically internally.
+
+It means their differences are contained behind the normalization
+contract.
+
+```text
+backend A ─┐
+backend B ─┼─→ normalization contract → stable operation plan
+backend C ─┘
+```
+
+If callers must branch on backend identity, the substitution boundary
+is weak.
+
+If the installed result changes according to backend quirks, the
+normalization contract is incomplete or absent.
+
+Backend pluralism without normalized semantics is not modularity.
+
+It is a lottery with plugins.
+
+## Field Symptom: Archive Extraction
+
+A package archive contains:
+
+* a directory;
+* a regular file;
+* a symbolic link;
+* a hard link;
+* an extended attribute;
+* numeric ownership;
+* a path containing `..`.
+
+One extraction backend:
+
+* rejects the escaping path;
+* preserves numeric ownership;
+* preserves the hard link;
+* restores the extended attribute.
+
+Another backend:
+
+* normalizes the path differently;
+* maps ownership through the current environment;
+* duplicates the hard-linked contents;
+* ignores the extended attribute.
+
+The package manager invokes either backend through an interface called
+`extract`.
+
+The interface is syntactically uniform.
+
+The installation semantics are not.
+
+The missing layer is not necessarily a better archive library.
+
+The missing layer is a normalization contract stating what package
+installation requires from any archive backend.
+
+The contract might require:
+
+* every path resolves beneath the installation root;
+* ownership is interpreted numerically;
+* link relationships are preserved;
+* unsupported metadata causes explicit failure;
+* extraction produces a normalized install plan before filesystem
+  mutation.
+
+Once that contract exists, backend selection becomes an implementation
+decision.
+
+Without it, backend selection changes the meaning of installation.
+
+## Field Symptom: Package Identity
+
+A package may be described by:
+
+* a source directory named `foo`;
+* configuration containing `name=foo`;
+* an archive named `foo#1.2-1.pkg.tar.gz`;
+* metadata declaring `foo`;
+* stdout saying `Built foo`;
+* repository state indexing the artifact as `foo`.
+
+These representations agree during ordinary operation.
+
+A local configuration overrides the archive filename.
+
+Now they disagree.
+
+Which representation wins?
+
+If each component chooses independently:
+
+* the builder publishes one identity;
+* the repository indexes another;
+* the installer records a third;
+* the operator sees a fourth in the filename.
+
+The system does not have package identity.
+
+It has a committee.
+
+A normalization contract should define:
+
+* which representation is authoritative at each boundary;
+* how derived names are produced;
+* whether disagreement is rejected;
+* which identity travels with the artifact;
+* whether callers may infer identity from filenames.
+
+The goal is not to prohibit every alternate representation.
+
+The goal is to stop identity from changing when nobody is looking.
+
+## Field Symptom: Configuration Layers
+
+A component reads configuration from:
+
+1. built-in defaults;
+2. a system file;
+3. a user file;
+4. command-line overrides;
+5. environment variables.
+
+Each source is individually simple.
+
+The effective behavior is not.
+
+A normalization contract should produce one explicit effective
+configuration before execution.
+
+That normal form should make visible:
+
+* which value won;
+* where it came from;
+* whether values were appended, replaced, or merged;
+* which conflicts were rejected;
+* which defaults were applied.
+
+Without normalization, every subsystem may interpret precedence
+differently.
+
+The ecosystem then has one configuration syntax and several
+operational realities.
+
+## Semantic Adapter
+
+A **semantic adapter** translates one representation or backend
+contract into the system's normal form.
+
+A semantic adapter is useful when:
+
+* an external tool cannot be changed;
+* migration requires old and new formats to coexist;
+* several backends expose different native interfaces;
+* compatibility must be contained at one boundary.
+
+A semantic adapter should absorb representation differences.
+
+It should not merely rename functions while leaking every backend
+quirk upward.
+
+A thin wrapper is not automatically an adapter.
+
+Sometimes it is only a new location from which to observe the same
+problem.
+
+## Compatibility Boundary
+
+A **compatibility boundary** contains legacy representations and
+converts them into current semantics.
+
+Healthy compatibility looks like:
+
+```text
+legacy representation
+        ↓
+compatibility adapter
+        ↓
+current normal form
+```
+
+Unhealthy compatibility looks like:
+
+```text
+legacy assumption
+        ↓
+special case in parser
+        ↓
+special case in planner
+        ↓
+special case in transaction
+        ↓
+special case in every caller
+```
+
+In the first case, the past is translated at one boundary.
+
+In the second, the past acquires citizenship everywhere.
+
+## Normalization and Policy
+
+Normalization should not silently decide policy that belongs
+elsewhere.
+
+For example, a path normalizer may determine that two syntactic paths
+refer to the same target.
+
+It should not necessarily decide whether overwriting that target is
+permitted.
+
+Likewise, an archive normalizer may expose that metadata cannot be
+preserved.
+
+A policy layer may then choose to:
+
+* reject the package;
+* warn and continue;
+* require an explicit override;
+* use another backend.
+
+The distinction is:
+
+* normalization makes meaning explicit;
+* policy chooses among explicit meanings.
+
+Mixing them can turn low-level implementation limitations into
+invisible system doctrine.
+
+## Normalization Failure
+
+A normalization failure occurs when the system cannot produce one
+coherent meaning from the supplied representation.
+
+Examples include:
+
+* two authoritative identity fields disagree;
+* a path escapes the permitted root;
+* a backend cannot preserve required metadata;
+* dependency syntax is ambiguous;
+* configuration sources specify incompatible modes;
+* host and target contexts cannot be reconciled.
+
+Normalization failure should normally occur before mutation.
+
+It should report:
+
+* which representations conflicted;
+* which contract could not be satisfied;
+* what information was missing;
+* whether a narrower operation remains available.
+
+A good failure message exposes the boundary.
+
+A bad one announces that something somewhere was invalid and invites
+the operator to begin divination.
+
+## Do Not Confuse
+
+**Normalization** is not making every input identical.
+
+It preserves meaningful differences and removes incidental ones.
+
+**Canonicalization** is not the whole normalization contract.
+
+A canonical string can still carry ambiguous semantics.
+
+**Validation** is not normalization.
+
+Validation decides whether normalized meaning is permitted.
+
+**A wrapper** is not automatically a semantic adapter.
+
+It must translate into a stable contract rather than merely forward
+quirks.
+
+**Backend independence** is not achieved by giving every backend the
+same function names.
+
+Substitution requires equivalent promised semantics.
+
+**Normalization** is not centralization.
+
+Each boundary may normalize the forms it owns.
+
+**Lossy normalization** is not automatically wrong.
+
+Unspecified loss is wrong.
+
+**Compatibility** is not inherently haunting.
+
+Compatibility becomes haunting when legacy semantics escape
+containment and infect every current layer.
+
+## The Normalization Test
+
+For every boundary accepting varied representations, ask:
+
+1. Which forms are accepted?
+2. Which differences are semantically meaningful?
+3. Which differences are incidental?
+4. What is the normal form?
+5. Which information must survive normalization?
+6. Which information may be discarded?
+7. Which defaults become explicit?
+8. Which contradictions cause rejection?
+9. Does normalization happen before state mutation?
+10. Can every supported backend satisfy the same contract?
+11. What happens when a backend lacks a required capability?
+12. Are backend limitations exposed or silently converted into policy?
+13. Can downstream components ignore the original representation?
+14. Can legacy forms be contained at one compatibility boundary?
+15. Does failure reveal the violated contract?
+16. Is the normalized result available as structured state?
+
+If callers repeatedly inspect raw input after normalization, the
+normal form is probably incomplete.
+
+If every backend requires special cases throughout the system, the
+normalization boundary is probably fictional.
+
+## Sixth House Law
+
+> The backend is replaceable.  
+> The meaning is not.
+
+A successful normalization contract allows implementations,
+representations, and compatibility mechanisms to change without
+forcing the ecosystem to renegotiate the operation each time.
+
+The next section is **Artifact Truth and Supplier Duty**: how facts
+already known by one component should cross a boundary as structured
+state instead of being reconstructed from filenames, configuration,
+and human narration.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
