@@ -57,6 +57,29 @@ failure for the fourteenth time without laughing.
 
 ---
 
+# Where This Book Fits {.unnumbered}
+
+Zeppe-Lin documentation is organized into three books.
+
+**[The Handbook](handbook.html)** explains how to install, configure,
+and operate the system.
+
+**[The Codebook](codebook.html)** explains how the system is built,
+maintained, and changed.
+
+**The Fieldbook** examines how systems acquire meaning, how their
+boundaries fail, how operators compensate, and how those compensations
+become infrastructure.
+
+The Handbook asks how to use the machine.
+
+The Codebook asks how to work on the machine.
+
+The Fieldbook asks what kind of machine --- and what kind of operators
+--- the ecosystem is manufacturing.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
