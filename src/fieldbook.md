@@ -4665,6 +4665,971 @@ system can actually enforce.
 
 ---
 
+# Boundary Extraction and Semantic Containment
+
+Three components depend on the same hidden behavior.
+
+Each reads the same configuration.
+
+Each reconstructs the same artifact name.
+
+Each handles one edge case differently.
+
+A maintainer proposes a shared abstraction.
+
+The new abstraction accepts every existing option, preserves every
+historical quirk, supports every backend, and promises to unify the
+entire operation.
+
+Six months later, the ecosystem has acquired:
+
+* the old hidden coupling;
+* a new abstraction layer;
+* three compatibility modes;
+* and a configuration option called `legacy_semantics`.
+
+The boundary was not extracted.
+
+The ambiguity received an office.
+
+---
+
+## Boundary Extraction
+
+**Boundary extraction** is the process of turning implicit coupling
+into an explicit, owned contract.
+
+It begins by asking:
+
+* Which facts already cross this boundary?
+* Which facts should cross it?
+* Which component first knows them?
+* Which assumptions are callers reconstructing?
+* Which behavior is stable enough to promise?
+* Which behavior should be rejected, contained, or left explicitly
+  local?
+
+The purpose is not to move every behavior into one new component.
+
+The purpose is to make the existing semantic relationship visible
+enough to reason about, validate, and eventually replace.
+
+> Boundary extraction is not adding a layer.  
+> It is discovering which layer was already there in human memory.
+
+## Hidden Boundary
+
+A **hidden boundary** exists whenever components interact through
+behavior that has not been represented as a contract.
+
+Examples include:
+
+* a caller reading another component's private configuration;
+* an orchestrator depending on command order;
+* a repository assuming a filename convention;
+* an installer assuming one archive backend's path behavior;
+* lifecycle scripts assuming a host context;
+* maintainers agreeing that two options must never be combined;
+* operators knowing which warning means success.
+
+The boundary exists operationally.
+
+It is merely undocumented in the system's structure.
+
+A hidden boundary does not disappear because all current maintainers
+understand it.
+
+That only means the boundary has been implemented in shared nervous
+tissue.
+
+## Extraction Target
+
+An **extraction target** is the smallest coherent semantic
+relationship worth making explicit.
+
+Good extraction targets are narrow.
+
+Examples include:
+
+* “return the exact artifact produced by this build”;
+* “normalize archive entries into an installation plan”;
+* “define which root owns dependency state”;
+* “publish package identity independently of filename presentation”;
+* “reject lifecycle execution when its context is undefined”;
+* “declare which repository metadata is authoritative”.
+
+Bad extraction targets usually sound like:
+
+* “abstract packaging”;
+* “unify all backends”;
+* “create one interface for every operation”;
+* “solve alternate roots generically”;
+* “make the whole toolchain pluggable”.
+
+These may eventually become legitimate projects.
+
+They are not useful first boundaries.
+
+> Extract the nerve before designing the replacement skeleton.
+
+## Minimal Honest Boundary
+
+A **minimal honest boundary** exposes the smallest contract that:
+
+* removes a real hidden coupling;
+* preserves the facts callers legitimately need;
+* rejects unsupported meanings;
+* does not imply broader coherence than the system owns.
+
+Suppose a builder knows the produced artifact path.
+
+A minimal honest boundary may simply provide:
+
+```text
+build()
+    → success
+    → artifact path
+    → artifact identity
+    → digest
+```
+
+It does not need to solve:
+
+* repository publication;
+* dependency policy;
+* installation;
+* signing;
+* remote distribution;
+* every future artifact type.
+
+Those may belong to later boundaries.
+
+The first obligation is to stop callers from parsing a sentence to
+discover which file exists.
+
+## Boundary Closure
+
+**Boundary closure** occurs when the system explicitly defines what a
+boundary accepts, rejects, and guarantees.
+
+A closed boundary does not need to support every meaningful state.
+
+It needs to classify every state that reaches it.
+
+Possible classifications include:
+
+* accepted;
+* normalized;
+* rejected;
+* unsupported;
+* delegated to another explicit authority;
+* preserved as opaque local policy.
+
+An implicit boundary avoids closure by leaving edge cases socially
+negotiable.
+
+That feels flexible until two components negotiate differently.
+
+> An open boundary says, “anything may happen”.  
+> An implicit boundary says, “anything may happen, but we will blame
+> you personally”.
+
+## Semantic Containment
+
+**Semantic containment** limits an abstraction to meanings the system
+can actually enforce.
+
+Containment prevents unsupported semantics from escaping into callers,
+artifacts, state, and ecosystem expectation.
+
+It may involve:
+
+* narrowing an interface;
+* separating two contexts;
+* rejecting ambiguous combinations;
+* converting legacy forms at one adapter;
+* keeping backend quirks behind a normalization layer;
+* refusing to expose partial behavior as one coherent operation;
+* marking an output as incomplete or unverified;
+* leaving local policy with the operator while binding the contract
+  around it.
+
+Semantic containment is not timidity.
+
+It is refusing to grant citizenship to meanings the system cannot
+govern.
+
+## Containment Boundary
+
+A **containment boundary** is the point beyond which an internal
+ambiguity, legacy behavior, or backend-specific quirk is not permitted
+to propagate.
+
+For example:
+
+```text
+legacy package filename
+        ↓
+compatibility parser
+        ↓
+normalized package identity
+        ↓
+current system
+```
+
+The legacy syntax remains accepted.
+
+Its peculiarities do not become mandatory knowledge for every current
+component.
+
+Without containment:
+
+```text
+legacy filename rule
+        ↓
+builder special case
+        ↓
+repository special case
+        ↓
+installer special case
+        ↓
+orchestrator special case
+        ↓
+operator folklore
+```
+
+The past is no longer supported.
+
+It is reproducing.
+
+## Containment Breach
+
+A **containment breach** occurs when internal or legacy semantics
+escape the boundary intended to isolate them.
+
+Typical symptoms include:
+
+* callers branching on backend identity;
+* normalized state still requiring raw input inspection;
+* compatibility flags appearing in unrelated components;
+* repository policy depending on builder internals;
+* operator documentation explaining private implementation order;
+* every replacement reproducing one historical quirk.
+
+A breach does not necessarily mean the boundary design was wrong.
+
+It may mean the normal form is incomplete, the contract is too weak,
+or one caller has quietly tunneled under the fence.
+
+> Every abstraction has one caller who believes “private” means “not
+> yet useful enough”.
+
+## Semantic Spill
+
+**Semantic spill** is the spread of meaning beyond the layer that
+should own it.
+
+Examples include:
+
+* archive semantics spilling into package policy;
+* build configuration spilling into orchestration;
+* database layout spilling into operator workflows;
+* repository naming spilling into package identity;
+* host assumptions spilling into alternate-root execution.
+
+Semantic spill raises coupling because more layers must understand the
+same unstable fact.
+
+Containment reduces spill by translating the fact once and exposing
+only the stable meaning.
+
+## Boundary Extraction Is Not Centralization
+
+A frequent mistake is to discover distributed ambiguity and respond by
+creating one central component responsible for everything.
+
+This can reduce some coupling.
+
+It can also create:
+
+* a semantic god object;
+* a new bottleneck;
+* policy capture;
+* excessive authority;
+* large migration cost;
+* a single interface carrying unrelated meanings.
+
+Boundary extraction asks:
+
+> Which responsibility already exists, and where can it be owned
+> honestly?
+
+It does not ask:
+
+> Which daemon deserves to become emperor?
+
+A distributed system can have clean boundaries.
+
+A centralized system can contain several invisible fractures.
+
+The number of processes is not the issue.
+
+The clarity of authority is.
+
+## Boundary Extraction Is Not Wrapper Proliferation
+
+A wrapper may help expose a boundary.
+
+For example, a wrapper around a legacy builder may convert its
+unstable output into a structured result.
+
+That is useful when the wrapper:
+
+* owns the translation explicitly;
+* validates the result;
+* contains legacy behavior;
+* publishes a stable contract;
+* has a migration path.
+
+A wrapper does not extract a boundary when it:
+
+* forwards every option unchanged;
+* preserves every ambiguity;
+* parses narration without validating state;
+* requires callers to understand the wrapped tool anyway;
+* becomes another place where quirks accumulate.
+
+> A wrapper is not a boundary merely because the call stack got
+> taller.
+
+## Boundary Extraction Is Not Documentation
+
+Documentation can identify a hidden boundary.
+
+It can explain:
+
+* current behavior;
+* known contradictions;
+* authority distribution;
+* migration constraints;
+* unsupported states.
+
+This is necessary work.
+
+But documentation alone does not extract the boundary.
+
+The extraction occurs when the semantic relationship acquires:
+
+* structured inputs;
+* structured outputs;
+* explicit ownership;
+* rejection behavior;
+* validation;
+* tests;
+* migration paths.
+
+Documentation confesses the hidden contract.
+
+Engineering gives it a body.
+
+## Extraction Seam
+
+An **extraction seam** is a location where hidden coupling can be
+intercepted and converted into an explicit contract with limited
+disruption.
+
+Useful seams often exist where:
+
+* one component already knows a fact before printing it;
+* raw input becomes internal state;
+* a backend result enters a higher layer;
+* a repository accepts an artifact;
+* a database mutation begins;
+* a compatibility format is parsed;
+* an orchestrator invokes a subordinate operation.
+
+A good seam has leverage.
+
+One change can remove duplicated reconstruction from several callers.
+
+For example, changing a builder to publish a result file may
+eliminate:
+
+* stdout parsing;
+* output-directory scanning;
+* filename reconstruction;
+* private configuration access;
+* ambiguity under concurrent builds.
+
+The best extraction work often looks small in the producer and
+enormous in the ecosystem.
+
+## Staged Extraction
+
+Large hidden boundaries are rarely repaired safely in one step.
+
+A staged extraction may proceed as follows.
+
+### 1. Observe the Current Boundary
+
+Identify:
+
+* current callers;
+* reconstructed facts;
+* private assumptions;
+* failure behavior;
+* compatibility dependencies;
+* operator folklore.
+
+Do not begin by designing the ideal interface.
+
+Begin by discovering the one already being performed socially.
+
+### 2. Name the Stable Meaning
+
+Separate:
+
+* durable semantics;
+* implementation accidents;
+* local policy;
+* historical compatibility;
+* unsupported ambiguity.
+
+This is often the hardest step.
+
+Every old behavior has at least one witness willing to call it a
+contract.
+
+### 3. Publish the Fact
+
+Expose the needed information as structured state.
+
+Examples include:
+
+* a result object;
+* a manifest;
+* a normalized plan;
+* an explicit context object;
+* a versioned record;
+* a stable machine-readable output mode.
+
+### 4. Validate the Boundary
+
+Define:
+
+* accepted forms;
+* rejected forms;
+* required fields;
+* disagreement behavior;
+* completion state;
+* failure semantics.
+
+### 5. Migrate Callers
+
+Move callers from reconstruction to consumption.
+
+A published contract that nobody uses is a museum exhibit.
+
+### 6. Contain Compatibility
+
+Place legacy behavior behind an adapter or compatibility boundary.
+
+Do not make every new caller bilingual.
+
+### 7. Remove Illicit Knowledge
+
+Prevent callers from continuing to read private configuration, parse
+narration, or inspect internal layout.
+
+This may require:
+
+* deprecations;
+* warnings;
+* access restrictions;
+* removal of unstable output;
+* conformance tests.
+
+### 8. Test Substitution
+
+Use another implementation, backend, or synthetic test double to
+reveal facts the contract forgot to express.
+
+### 9. Close the Boundary
+
+Once migration is complete, reject unsupported paths and delete
+duplicated reconstruction logic.
+
+Until this step, the old ghost still has keys.
+
+## Field Symptom: Structured Results Added, Coupling Preserved
+
+A builder gains a machine-readable result:
+
+```text
+{
+  "artifact": "foo#1.2-1.pkg.tar.gz"
+}
+```
+
+The orchestrator uses it.
+
+Progress.
+
+But the result contains only a filename.
+
+The orchestrator still needs to:
+
+* prepend the output directory;
+* infer package identity;
+* know the compression suffix;
+* determine whether the artifact is complete;
+* distinguish several concurrent builds.
+
+The boundary has been partially extracted.
+
+That is still valuable.
+
+The next step is not to declare failure.
+
+It is to identify which facts remain reconstructed and extend the
+contract only as far as necessary.
+
+Boundary extraction is iterative.
+
+The first useful contract need not be the final constitution.
+
+## Field Symptom: The Universal Root Object
+
+Maintainers discover that `--root` means different things in different
+phases.
+
+They introduce:
+
+```text
+RootContext
+```
+
+The object contains:
+
+* target path;
+* host database;
+* target database;
+* script root;
+* dependency root;
+* configuration root;
+* runtime root;
+* fallback root;
+* compatibility mode.
+
+Every function accepts it.
+
+No function agrees which fields are authoritative.
+
+The system has made ambiguity type-safe.
+
+> A struct containing every contradiction is not a model.  
+> It is a filing cabinet for unresolved theology.
+
+A better extraction may begin with separate explicit contexts:
+
+```text
+BuildContext
+InstallContext
+DependencyContext
+ScriptContext
+```
+
+Then define which operations are allowed to compose them.
+
+The goal is not the smallest number of types.
+
+It is the smallest number of lies.
+
+## Field Symptom: Repository Validation
+
+A repository accepts package artifacts.
+
+Historically, maintainers inspect filenames and metadata manually.
+
+The project adds a validation tool.
+
+At first, it runs locally and emits warnings.
+
+Later, the authoritative repository requires it before publication.
+
+The progression is:
+
+```text
+folklore
+    ↓
+memory prosthesis
+    ↓
+structured hope
+    ↓
+shared validation
+    ↓
+binding surface
+    ↓
+repository invariant
+```
+
+The boundary was extracted gradually.
+
+The important transition was not writing the validator.
+
+It was attaching validation to the authoritative publication path.
+
+## Field Symptom: Legacy Format Containment
+
+A package manager must continue accepting an old archive format.
+
+Instead of teaching every subsystem both old and new semantics, it:
+
+1. detects the old format;
+2. parses it in a compatibility module;
+3. converts it into the current normal form;
+4. rejects information that cannot be represented safely;
+5. records that compatibility translation occurred;
+6. exposes only current semantics downstream.
+
+The old format remains supported.
+
+The current system does not become old internally.
+
+That is containment.
+
+## Constrained Primitive
+
+A **constrained primitive** is often the correct first result of
+boundary extraction.
+
+Suppose the ecosystem cannot yet model arbitrary alternate-root
+lifecycle execution coherently.
+
+A constrained primitive may allow:
+
+* file installation into a target root;
+* database registration in that target;
+* no lifecycle scripts;
+* no host dependency assumptions;
+* explicit rejection of unsupported combinations.
+
+This primitive is less powerful than the advertised universal
+operation.
+
+It is more useful than an operation whose semantics change by phase.
+
+> The primitive does less.  
+> The operator knows what the less means.
+
+## Semantic Expansion
+
+**Semantic expansion** is the deliberate widening of a contract after
+the system acquires enough model and enforcement to support additional
+meanings.
+
+A healthy expansion proceeds by:
+
+1. naming the new case;
+2. defining its authority and state;
+3. extending the normal form;
+4. adding validation;
+5. defining failure behavior;
+6. testing invariants;
+7. updating compatibility expectations.
+
+An unhealthy expansion begins by accepting another option and
+postponing meaning until somebody reports damage.
+
+## Invalid Abstraction Versus Constrained Primitive
+
+Consider two interfaces.
+
+### Interface A
+
+```text
+install(package, root, scripts, deps, config)
+```
+
+It accepts every combination but interprets each argument differently
+across phases.
+
+### Interface B
+
+```text
+install_into_running_system(package)
+install_files_into_target(package, target)
+```
+
+It supports fewer operations but defines each one completely.
+
+Interface A is broader.
+
+Interface B is more composable.
+
+The difference is not simplicity versus sophistication.
+
+It is counterfeit completeness versus semantic containment.
+
+## Real Model Versus Permanent Constraint
+
+A constrained primitive should not automatically become permanent
+doctrine.
+
+Sometimes the system genuinely needs a broader model.
+
+Containment buys time and prevents false guarantees while that model
+is designed.
+
+The Fieldbook does not teach:
+
+> Reject everything difficult forever.
+
+It teaches:
+
+> Do not represent an unsolved operation as a solved abstraction.
+
+A constraint becomes pathological when maintainers treat the absence
+of a model as proof that the wider problem is illegitimate.
+
+## Boundary Surface Area
+
+Every boundary exposes semantic surface area.
+
+Surface area grows with:
+
+* accepted inputs;
+* configurable policy;
+* supported backends;
+* compatibility modes;
+* artifact types;
+* lifecycle phases;
+* state transitions;
+* context combinations.
+
+Each addition requires corresponding invariant capacity:
+
+* validation;
+* normalization;
+* tests;
+* documentation;
+* failure semantics;
+* migration handling;
+* review knowledge.
+
+When semantic surface area grows faster than invariant capacity, the
+difference is absorbed by folklore.
+
+```text
+semantic surface area
+        >
+invariant capacity
+
+        ↓
+
+operator compensation
+```
+
+The problem is not growth.
+
+The problem is growth without enough structure to own the new
+meanings.
+
+## Invariant Budget
+
+An **invariant budget** is the practical capacity of the project to
+define, enforce, test, and maintain the contracts exposed by its
+interfaces.
+
+The budget includes:
+
+* maintainer attention;
+* test infrastructure;
+* model clarity;
+* review capacity;
+* migration support;
+* artifact truth;
+* observability;
+* enforcement mechanisms.
+
+A feature may be individually useful and still exceed the system's
+current invariant budget.
+
+The honest options are:
+
+* increase the budget;
+* narrow the feature;
+* stage the implementation;
+* reject the unsupported portion;
+* accept explicit debt.
+
+The dishonest option is to expose the feature and finance the missing
+semantics with operator memory.
+
+## Over-Abstraction
+
+**Over-abstraction** occurs when a boundary claims to unify more
+meanings than the system can preserve coherently.
+
+Symptoms include:
+
+* many optional fields whose combinations are undefined;
+* one interface spanning unrelated lifecycle phases;
+* configuration replacing explicit types;
+* backend-specific branches in every caller;
+* “generic” operations interpreted differently by each implementation;
+* success statuses too broad to classify outcomes.
+
+Over-abstraction is not caused by abstraction itself.
+
+It is caused by authority claims exceeding invariant capacity.
+
+## Under-Abstraction
+
+**Under-abstraction** occurs when stable shared semantics remain
+duplicated across callers because no boundary exposes them.
+
+Symptoms include:
+
+* repeated parsing;
+* duplicated naming rules;
+* direct database manipulation;
+* many wrappers reconstructing the same fact;
+* identical validation implemented differently;
+* widespread dependence on private configuration.
+
+The system may suffer from over-abstraction and under-abstraction
+simultaneously:
+
+* one giant public interface claims too much;
+* several critical internal relationships remain implicit.
+
+This is common enough to deserve no surprise.
+
+## Semantic Quarantine
+
+**Semantic quarantine** is temporary containment of behavior whose
+contract is not yet understood well enough for general exposure.
+
+Examples include:
+
+* marking an interface experimental;
+* limiting a feature to one backend;
+* requiring an explicit unsafe flag;
+* isolating compatibility code;
+* preventing downstream composition;
+* refusing publication of artifacts lacking required truth.
+
+Quarantine should include a reason and an exit condition.
+
+Otherwise temporary containment becomes permanent purgatory.
+
+## Do Not Confuse
+
+**Boundary extraction** is not adding an abstraction layer.
+
+The new layer must remove hidden coupling and publish a real contract.
+
+**Semantic containment** is not feature hostility.
+
+It prevents unsupported meanings from becoming accidental promises.
+
+**A constrained primitive** is not automatically good design.
+
+It must still solve a real operation coherently.
+
+**A broad model** is not automatically over-abstraction.
+
+Breadth is legitimate when authority and invariants scale with it.
+
+**Centralization** is not automatically boundary repair.
+
+One central component may simply collect every ambiguity.
+
+**A wrapper** is not automatically coping infrastructure.
+
+A wrapper can be a legitimate semantic adapter when it owns
+translation and contains legacy behavior.
+
+**Compatibility** is not failed containment.
+
+Compatibility is healthy when translation remains bounded.
+
+**Rejecting an operation** is not proof that the boundary is honest.
+
+The system must reject according to a stated contract, not maintainer
+discomfort.
+
+**Publishing structured data** is not complete extraction.
+
+Callers must stop reconstructing the same facts elsewhere.
+
+**Migration** is not optional.
+
+A new boundary with no path away from the old coupling merely adds
+another authority surface.
+
+## The Boundary Extraction Test
+
+For any hidden or proposed boundary, ask:
+
+1. What semantic relationship already exists?
+2. Where is it currently implemented?
+3. Which parts live in code?
+4. Which parts live in operators?
+5. Which facts do callers reconstruct?
+6. Which component first knows those facts?
+7. What is the smallest useful extraction target?
+8. Which behavior is stable enough to promise?
+9. Which behavior is accidental?
+10. Which behavior belongs to local policy?
+11. Which states should be rejected?
+12. What is the normal form?
+13. What is the structured result?
+14. Where can compatibility be contained?
+15. Which callers must migrate?
+16. How will old access paths be removed?
+17. Can another implementation satisfy the contract?
+18. Does the extraction reduce semantic spill?
+19. Does it create a new central authority unnecessarily?
+20. Does the interface expose more surface area than the invariant
+    budget can support?
+21. Is the result a real model, a constrained primitive, or merely a
+    wrapper around ambiguity?
+22. What evidence will show that the boundary has actually closed?
+
+If the proposed abstraction requires a page of warnings describing
+what its arguments do in different phases, the boundary is probably
+not extracted.
+
+It has been narrated.
+
+## Ninth House Law
+
+> If the boundary is implicit, eventually someone will piss through
+> it.
+
+The purpose of boundary extraction is not architectural cleanliness
+for its own sake.
+
+It is to make the place where meaning changes visible before an
+operator discovers it experimentally.
+
+---
+
+Part II established where semantics acquire authority, how contracts
+bind behavior, how representations become normalized, how artifacts
+carry truth, and how substitution becomes possible.
+
+Part III descends into what happens when those structures weaken.
+
+The next section is **Part III: Drift, Ghosts, and Counterfeit
+Semantics**, beginning with **Semantic Drift**: how implementation,
+documentation, operator expectation, and historical behavior gradually
+stop describing the same system.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
