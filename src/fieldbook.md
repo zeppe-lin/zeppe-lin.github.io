@@ -2,9 +2,11 @@
 title: The Fieldbook
 ---
 
-# The Fieldbook
+[Back to Index](index.html)
 
-## Applied Cybernetic Necromancy in Haunted Infrastructure
+# The Fieldbook {.unnumbered}
+
+## Applied Cybernetic Necromancy in Haunted Infrastructure {.unnumbered}
 
 > “The system remembers nothing.
 > The bastards remember everything.“
