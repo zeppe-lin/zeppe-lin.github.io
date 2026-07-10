@@ -198,7 +198,7 @@ coffee.
 
 ---
 
-# Part I. The Foundational Tension {.unnumbered}
+# Part I. The Foundational Tension
 
 A system has been running for fifteen years.
 
@@ -753,7 +753,7 @@ to pretend it belongs nowhere.
 
 ---
 
-# Part II. Semantic Authority and Boundaries {.unnumbered}
+# Part II. Semantic Authority and Boundaries
 
 A package manager reports that a package is installed.
 
@@ -9373,6 +9373,1165 @@ learn different contracts, and how knowledge can spread widely while
 correctness still fails to converge.
 
 ---
+
+# Folklore and Distributed Local Truths
+
+The operation is undocumented.
+
+This does not mean nobody knows how it works.
+
+One operator knows which flag must be omitted.
+
+Another knows that the warning is harmless only before the database is
+created.
+
+A maintainer remembers the patch that introduced the behavior.
+
+An old mailing-list post explains the original rationale.
+
+A wiki page describes a workaround from a later implementation.
+
+All of them possess useful knowledge.
+
+None of them possesses the whole current contract.
+
+The ecosystem is not ignorant.
+
+Its knowledge has been distributed into incompatible human fragments.
+
+---
+
+## Folklore
+
+**Folklore** is operational knowledge transmitted socially rather than
+through authoritative state, explicit contracts, or mechanically
+enforced boundaries.
+
+Folklore may describe:
+
+* valid command sequences;
+* unsafe option combinations;
+* historical failure modes;
+* undocumented defaults;
+* compatibility assumptions;
+* repair procedures;
+* which representation to trust;
+* which warning can be ignored;
+* which maintainer understands the old codepath;
+* why one apparently unnecessary file must remain.
+
+Folklore is not synonymous with falsehood.
+
+It may be precise, tested, and essential.
+
+Its defining property is where authority lives.
+
+A system contract can be inspected and enforced independently of who
+remembers it.
+
+Folklore remains useful only while somebody carries, interprets, and
+transmits it.
+
+> Folklore is a contract implemented through witness continuity.
+
+## Operational Knowledge
+
+**Operational knowledge** is knowledge required to operate, repair, or
+interpret infrastructure correctly.
+
+It may live in:
+
+* code;
+* schemas;
+* tests;
+* documentation;
+* artifacts;
+* operator memory;
+* maintainer memory;
+* issue trackers;
+* support channels;
+* scripts;
+* conventions.
+
+The location matters.
+
+Knowledge stored in a parser can reject invalid input.
+
+Knowledge stored in a man page can guide an operator.
+
+Knowledge stored in one maintainer can disappear when the maintainer
+does.
+
+All three are knowledge.
+
+They possess different regulatory strength and retention properties.
+
+## Local Truth
+
+A **local truth** is an operational interpretation that is correct
+within one installation, workflow, component arrangement, or
+historical context.
+
+Examples include:
+
+* “this warning is safe to ignore on our repository”;
+* “this wrapper must run before upgrades on this installation”;
+* “our package names always match their source directories”;
+* “this backend is safe because we do not use extended attributes”;
+* “lifecycle scripts can run against our target root because our
+  scripts are written for it”.
+
+A local truth may be completely valid.
+
+The problem begins when it is generalized into an ecosystem contract
+without checking the assumptions that made it true.
+
+> “Works here” is evidence.  
+> It is not a topology.
+
+## Operational Truth
+
+**Operational truth** is an interpretation accurate enough to guide
+one real operation successfully.
+
+Operational truth may be narrower than the system's intended contract.
+
+For example:
+
+> On this installation, with this repository state, invoke the wrapper
+> before updating the package.
+
+That statement may be operationally true.
+
+It does not yet explain:
+
+* why the wrapper is necessary;
+* whether every installation requires it;
+* which invariant it restores;
+* whether the underlying component should change;
+* how long the workaround remains valid.
+
+Operational truth answers:
+
+> What keeps this case alive?
+
+A structural model must also answer:
+
+> What class of cases does this describe, and where should the
+> behavior be owned?
+
+## Shared Semantics
+
+**Shared semantics** are meanings that remain stable across the
+boundaries and participants expected to compose them.
+
+Shared semantics do not require identical local policy.
+
+Two operators may choose different repositories, service sets, or
+package versions while still sharing:
+
+* the meaning of installation;
+* the identity of an artifact;
+* the interpretation of success;
+* the ownership of package state;
+* the rules governing dependency resolution.
+
+Variation occurs inside an agreed model.
+
+Without shared semantics, the same command may describe different
+operations on different installations.
+
+The ecosystem then shares syntax while distributing meaning privately.
+
+## Distributed Folklore
+
+**Distributed folklore** is a collection of locally effective but
+mutually incomplete or incompatible operational truths.
+
+Each participant knows enough to survive one part of the ecosystem.
+
+No authoritative layer reconciles the pieces.
+
+For example:
+
+* operator A knows the correct upgrade sequence;
+* operator B knows how to repair the package database;
+* maintainer C knows which warning indicates a backend limitation;
+* maintainer D knows the historical reason for one compatibility path;
+* a wiki page preserves an older sequence;
+* an IRC log records a newer exception.
+
+Together, these fragments may describe the system.
+
+No ordinary operation can retrieve the complete description.
+
+> The execution model exists.  
+> It is sharded across people with no replication protocol.
+
+## Folklore Fragment
+
+A **folklore fragment** is one socially transmitted piece of
+operational knowledge.
+
+Examples include:
+
+* “never combine those flags”;
+* “delete this cache after changing that option”;
+* “ignore the first warning, not the second”;
+* “the database is authoritative unless repair mode was used”;
+* “that directory must exist before the upgrade”.
+
+Fragments become dangerous when detached from:
+
+* scope;
+* rationale;
+* version;
+* triggering conditions;
+* failure evidence;
+* removal conditions.
+
+A correct fragment copied without its context may become an incorrect
+rule.
+
+## Context Loss
+
+**Context loss** occurs when operational knowledge survives but the
+conditions under which it was true do not.
+
+A statement may originally mean:
+
+> With backend A before version 3, disable parallel extraction because
+> hard-link ordering is broken.
+
+After several transmissions, it becomes:
+
+> Never extract packages in parallel.
+
+The advice survives.
+
+Its boundary disappears.
+
+The ecosystem preserves the constraint while losing the model.
+
+> Folklore does not merely forget facts.  
+> It forgets where the facts stop being true.
+
+## Folklore Packet Loss
+
+**Folklore packet loss** is the gradual loss of conditions, rationale,
+and uncertainty as operational knowledge moves between people and
+surfaces.
+
+A typical transmission looks like this:
+
+```text
+incident
+    ↓
+detailed explanation
+    ↓
+short support answer
+    ↓
+wiki instruction
+    ↓
+shell comment
+    ↓
+ritual
+```
+
+At each stage, the knowledge may become easier to use.
+
+It may also lose:
+
+* why;
+* when;
+* for which versions;
+* under which backend;
+* against which state;
+* whether the rule is still current.
+
+> Folklore scales by losing packets.
+
+## Compression
+
+Social transmission requires compression.
+
+Operators under pressure do not always need a complete architectural
+history.
+
+They need:
+
+> Run this command, then retry.
+
+Compression is therefore useful.
+
+The danger is not compressed instruction.
+
+The danger is forgetting that compression occurred.
+
+A short operational rule should ideally point toward:
+
+* its scope;
+* its source;
+* its rationale;
+* its expiration condition;
+* a deeper autopsy.
+
+Otherwise the compressed form eventually becomes the only surviving
+form.
+
+## Ritual Compression
+
+**Ritual compression** converts causal knowledge into a sequence of
+actions.
+
+Instead of remembering:
+
+> The package database must be rebuilt because the schema changed
+> before the new query tool reads it.
+
+The ecosystem remembers:
+
+> Upgrade the package tools first, then rebuild the database.
+
+The sequence may remain correct.
+
+But if the schema changes again, operators may preserve the ritual
+while losing the ability to adapt it.
+
+Ritual compression optimizes execution.
+
+It weakens reasoning.
+
+## Narrative Authority
+
+**Narrative authority** is authority acquired because one explanation
+is repeated, remembered, or associated with an experienced
+participant.
+
+A statement may become accepted because:
+
+* an elder maintainer said it;
+* the same answer appears in several logs;
+* a wiki page repeats it;
+* operators have survived by following it;
+* no competing explanation remains available.
+
+Narrative authority can preserve real expertise.
+
+It can also outlive the evidence that justified it.
+
+> The story became canonical because everyone who remembered the
+> counterexample left.
+
+## Elder Knowledge
+
+**Elder knowledge** is operational knowledge carried by participants
+with long historical exposure to the ecosystem.
+
+It may include:
+
+* forgotten design constraints;
+* failed migrations;
+* reasons behind suspicious code;
+* knowledge of downstream dependents;
+* recognition of recurring failure shapes;
+* awareness that a “new” proposal was attempted before.
+
+Elder knowledge is valuable.
+
+It is also a fragile memory substrate.
+
+An ecosystem depending on elder knowledge should ask:
+
+* Which parts can become documentation?
+* Which parts can become tests?
+* Which parts can become invariants?
+* Which parts genuinely require judgment?
+* What happens when the elder leaves?
+
+Respecting expertise does not require storing the architecture inside
+one person's autobiography.
+
+## Propagation
+
+**Propagation** is the movement of knowledge through the ecosystem.
+
+Knowledge may propagate through:
+
+* documentation;
+* discussion;
+* mentoring;
+* patches;
+* scripts;
+* examples;
+* copied configuration;
+* issue trackers;
+* release notes.
+
+A widely propagated rule may still be weakly retained.
+
+Many operators may hear it once.
+
+Few may remember it when the relevant incident occurs years later.
+
+Propagation answers:
+
+> How far did the knowledge travel?
+
+It does not answer:
+
+> Can the ecosystem recover and apply it when needed?
+
+## Retention
+
+**Retention** is the ecosystem's ability to preserve usable knowledge
+across time, turnover, changing context, and implementation evolution.
+
+Retention requires more than storage.
+
+A dead issue containing the perfect answer is technically preserved.
+
+If nobody can find it, connect it to the current system, or
+distinguish it from obsolete discussion, the knowledge is poorly
+retained.
+
+Useful retention depends on:
+
+* discoverability;
+* current scope;
+* authority;
+* contextual evidence;
+* relation to present behavior;
+* maintenance;
+* connection to operational surfaces.
+
+> Archival survival is not institutional memory.  
+> A corpse can remain perfectly intact and still answer no questions.
+
+## Propagation Versus Retention
+
+Propagation and retention are independent.
+
+Knowledge may propagate widely and disappear quickly.
+
+Knowledge may remain deeply retained in one maintainer and fail to
+spread.
+
+| Pattern                                  | Propagation |                           Retention |
+| ---------------------------------------- | ----------: | ----------------------------------: |
+| one elder remembers the cause            |         low |                        locally high |
+| popular chat advice with no record       |        high |                                 low |
+| maintained documentation linked to tests |        high |                                high |
+| forgotten issue in an abandoned tracker  |         low | technically high, operationally low |
+| mechanically enforced invariant          |    implicit |               high within its scope |
+
+A healthy ecosystem needs both.
+
+But the strongest retention occurs when knowledge no longer needs to
+be remembered for correctness because it has become structure.
+
+## Memory Substrate
+
+A **memory substrate** is the medium through which an ecosystem
+preserves operational knowledge.
+
+Memory substrates include:
+
+* code;
+* tests;
+* schemas;
+* commit history;
+* issue trackers;
+* documentation;
+* release notes;
+* IRC logs;
+* mailing lists;
+* operator memory;
+* maintainer habit;
+* artifacts;
+* repository state.
+
+Different substrates preserve different kinds of knowledge.
+
+Code preserves behavior.
+
+Tests preserve selected expectations.
+
+Documentation preserves explanations.
+
+Logs preserve discussion and uncertainty.
+
+Human memory preserves context and judgment.
+
+No single substrate is sufficient.
+
+The problem begins when one substrate is expected to perform a role
+for which it is poorly suited.
+
+An IRC log can preserve an autopsy.
+
+It should not be the only enforcement mechanism for the discovered
+invariant.
+
+## Retention Capacity
+
+**Retention capacity** is the amount of operational knowledge an
+ecosystem can preserve in a discoverable, current, and usable form.
+
+Retention capacity depends on:
+
+* documentation quality;
+* indexing and search;
+* review practices;
+* stable links;
+* test coverage;
+* artifact truth;
+* maintainer continuity;
+* explicit contracts;
+* migration records;
+* binding surfaces.
+
+As system surface area grows, required retention grows.
+
+If the ecosystem adds:
+
+* more backends;
+* more compatibility modes;
+* more control planes;
+* more artifact formats;
+* more exceptions;
+
+without increasing retention capacity, knowledge begins escaping into
+local memory.
+
+The system gains features.
+
+The ecology gains elders.
+
+## Retention Debt
+
+**Retention debt** is future rediscovery work created when an
+important lesson is not preserved in a form the ecosystem can later
+recover and apply.
+
+Retention debt accumulates when:
+
+* fixes lack rationale;
+* issues close without conclusions;
+* workarounds lack scope;
+* tests reproduce behavior without explaining why;
+* documentation describes procedure without failure model;
+* compatibility paths have no removal condition;
+* decisions remain only in transient discussion.
+
+The debt is paid through:
+
+* repeated incidents;
+* duplicated patches;
+* contradictory explanations;
+* archaeology;
+* cautious preservation of obsolete behavior.
+
+## Institutional Memory
+
+**Institutional memory** is the set of conclusions, evidence, and
+operational models an ecosystem can recover independently of any one
+participant.
+
+Institutional memory is not merely a collection of archives.
+
+It requires that future maintainers can determine:
+
+* what was learned;
+* why it mattered;
+* which behavior changed;
+* which behavior remained;
+* what evidence supported the decision;
+* whether the conclusion still applies.
+
+Institutional memory turns history into usable context.
+
+## Social Checksum
+
+A **social checksum** is repeated independent confirmation that an
+operational rule remains valid.
+
+Examples include:
+
+* several operators reproducing the same failure;
+* independent implementations encountering the same hidden boundary;
+* multiple incidents confirming one workaround;
+* several maintainers agreeing on the same state model.
+
+Social checksums are useful evidence.
+
+They are not mechanical guarantees.
+
+Many people can consistently repeat one inherited mistake.
+
+> Consensus can verify transmission.  
+> It cannot verify semantics by itself.
+
+## Oral Compatibility Layer
+
+An **oral compatibility layer** is a socially transmitted explanation
+required to make old and current behavior coexist.
+
+Typical forms include:
+
+* “old packages need this command first”;
+* “that option changed meaning after version 4”;
+* “new repositories use the database, old ones use filenames”;
+* “this warning is expected only during migration”.
+
+The compatibility model exists.
+
+It is transmitted verbally rather than represented in adapters,
+versioned state, or migration tooling.
+
+This works while knowledgeable participants remain available.
+
+It fails when automation or newcomers encounter the old state without
+the oral layer installed.
+
+## Distributed Local Truths
+
+An ecosystem contains **distributed local truths** when different
+installations remain operational through different, locally coherent
+interpretations of the same shared system.
+
+For example:
+
+* installation A uses the official tool directly;
+* installation B requires a wrapper;
+* installation C carries a local patch;
+* installation D avoids the affected operation;
+* installation E repairs state afterward.
+
+Each installation works.
+
+The ecosystem cannot state one shared contract explaining why all five
+work.
+
+This is not automatically catastrophic.
+
+It may be a transitional or intentionally plural state.
+
+It becomes structural fragmentation when the local truths:
+
+* mutate shared artifacts differently;
+* produce incompatible state;
+* require conflicting documentation;
+* prevent common migration;
+* make support dependent on installation history.
+
+## Local Coherence
+
+**Local coherence** is consistency within one bounded environment.
+
+A locally coherent installation may possess:
+
+* one wrapper as the authoritative path;
+* one local package format;
+* one documented upgrade ritual;
+* one experienced operator;
+* one stable set of patches.
+
+The installation may be easier to reason about than the shared
+project.
+
+That is an important result.
+
+It also means the effective system boundary has moved from the project
+to the installation.
+
+## Shared-Reality Failure
+
+A **shared-reality failure** occurs when participants use the same
+vocabulary while referring to materially different operational models.
+
+They may all say:
+
+* “installed”;
+* “supported”;
+* “atomic”;
+* “repository”;
+* “ignore”;
+* “root”.
+
+But each term refers to different state transitions or guarantees.
+
+Discussion becomes difficult because disagreement appears to concern
+policy while participants are operating with different ontologies.
+
+> The argument is not always about what should happen.  
+> Sometimes each side is reporting a different machine.
+
+## Correctness Spread
+
+**Correctness spread** is the propagation of a valid repair, contract,
+or practice through the ecosystem.
+
+Correctness may spread through:
+
+* upstream patches;
+* repository updates;
+* documentation;
+* release adoption;
+* wrappers;
+* operator teaching;
+* copied configuration.
+
+The spread is incomplete when each recipient must reinterpret the fix.
+
+A mechanically enforced invariant spreads differently from a support
+answer.
+
+The invariant changes behavior wherever the implementation is adopted.
+
+The answer changes behavior only where it is understood and
+remembered.
+
+## Folklore Convergence
+
+**Folklore convergence** occurs when the ecosystem gradually settles
+on one socially transmitted practice without converting it into an
+authoritative contract.
+
+This may look like coherence.
+
+Everybody now knows:
+
+* which wrapper to use;
+* which option to avoid;
+* which sequence is canonical;
+* which warning is acceptable.
+
+The ecosystem has converged socially.
+
+The system remains mechanically permissive.
+
+Folklore convergence can be stable for years.
+
+Its weakness appears under:
+
+* turnover;
+* automation;
+* new control planes;
+* unfamiliar installations;
+* partial transmission;
+* deliberate experimentation.
+
+> Everybody knows the rule.  
+> Runtime continues accepting applications from people who do not.
+
+## Counter-Folklore
+
+**Counter-folklore** is an alternate operational tradition formed
+around different local experience.
+
+One group says:
+
+> Always rebuild the database after upgrades.
+
+Another says:
+
+> Never rebuild the database unless corruption is proven.
+
+Both rules may have emerged from real incidents under different system
+versions or repository states.
+
+Without retained context, the ecosystem interprets them as competing
+philosophies.
+
+The original disagreement may have been temporal.
+
+Folklore removed the timestamps.
+
+## Forked Memory
+
+**Forked memory** occurs when different communities preserve different
+histories and therefore different operational conclusions.
+
+A fork, downstream distribution, or long-lived local patch set may
+retain:
+
+* fixes rejected upstream;
+* constraints no longer present upstream;
+* alternate terminology;
+* different compatibility commitments;
+* different autopsies of the same incident.
+
+Forked memory is not inherently bad.
+
+It becomes difficult when participants assume their retained history
+is shared.
+
+## Field Symptom: The Upgrade Rule
+
+An operator says:
+
+> Always upgrade `pkgutils` before running a full system update.
+
+The rule is correct for a release where:
+
+* the package database format changed;
+* the old query tool could not read new records;
+* the updater depended on the new query behavior.
+
+Years later, the database migration disappears.
+
+The rule remains in:
+
+* a wiki page;
+* several personal scripts;
+* one copied installation guide;
+* operator habit.
+
+New operators ask why.
+
+Nobody remembers.
+
+The ecosystem has retained the ritual and lost the contract.
+
+This may be:
+
+* a cargo-cult invariant, if operators consciously preserve the rule;
+* a ghost invariant, if scripts preserve the order without anyone
+  knowing;
+* operational superstition, if the sequence continues solely because
+  it once worked;
+* a harmless fossil, if nothing depends on it and it no longer affects
+  behavior.
+
+Classification depends on present causal role.
+
+## Field Symptom: The IRC Fix
+
+A maintainer explains in IRC:
+
+> After a partial install, remove the stale database record before
+> retrying. Do not delete the files first, because the removal tool
+> uses the record to discover ownership.
+
+The advice is correct.
+
+Later transmissions become:
+
+1. “remove the stale record before retrying”;
+2. “remove the package record when install fails”;
+3. “delete failed packages from the database”;
+4. a script that deletes records after any nonzero exit.
+
+The original advice contained:
+
+* one failure class;
+* one state condition;
+* one operation order;
+* one reason.
+
+The final script preserved only the action.
+
+Folklore packet loss converted a repair into a corruption tool.
+
+## Field Symptom: Two Working Installations
+
+Two installations use the same package repositories.
+
+Installation A:
+
+* trusts package metadata;
+* rejects filename disagreement;
+* uses a local validation gate.
+
+Installation B:
+
+* derives identity from filenames;
+* permits metadata disagreement;
+* relies on an operator checklist.
+
+Both remain operational.
+
+A package with mismatched identity enters the repository.
+
+Installation A rejects it.
+
+Installation B installs it under the filename identity.
+
+Each installation behaves consistently with its local truth.
+
+The ecosystem no longer shares package identity semantics.
+
+This is distributed local coherence and system-level fracture.
+
+## Field Symptom: The Reappearing Patch
+
+A patch fixes a race in package database updates.
+
+It is discussed, applied locally, and later lost during a rewrite.
+
+Three years afterward, another operator reports the same corruption.
+
+A new patch is written.
+
+The issue tracker contains the old diagnosis, but:
+
+* the issue title used different terminology;
+* the old component name changed;
+* the conclusion was never summarized;
+* no regression test survived;
+* no invariant was documented.
+
+The knowledge was archived.
+
+It was not retained operationally.
+
+The ecosystem did not lack history.
+
+It lacked retrieval and binding.
+
+## Field Symptom: The Canonical Wrapper
+
+Several operators independently write wrappers around one command.
+
+Over time, one wrapper becomes popular.
+
+Documentation recommends it.
+
+Support answers assume it.
+
+The wrapper now carries:
+
+* input validation;
+* configuration normalization;
+* output interpretation;
+* recovery behavior.
+
+The ecosystem has achieved folklore convergence.
+
+The next question is architectural:
+
+> Should the wrapper become an authoritative boundary?
+
+Possible answers include:
+
+* yes, adopt and govern it;
+* move its semantics into the underlying component;
+* preserve it as an explicit policy layer;
+* keep it local because the behavior is installation-specific.
+
+The wrong answer is to call the problem solved while direct and
+wrapped paths continue defining different contracts.
+
+## Field Symptom: The Expert Explanation
+
+A newcomer asks why one option cannot be combined with another.
+
+An experienced maintainer explains:
+
+* historical implementation;
+* database topology;
+* lifecycle context;
+* one failed migration;
+* why rejection was never added.
+
+The explanation is excellent.
+
+The newcomer now understands the system.
+
+The interface remains unchanged.
+
+The ecosystem has successfully transferred the missing contract into
+one more nervous system.
+
+Teaching is valuable.
+
+It is not boundary closure.
+
+## Folklore and Authority Laundering
+
+Folklore becomes authority laundering when socially maintained
+knowledge is described as if the system enforces it.
+
+For example:
+
+> Package names cannot contain `/`.
+
+Operational reality:
+
+* the parser accepts `/`;
+* repository structure breaks;
+* maintainers reject such names manually.
+
+The folklore rule is real.
+
+The mechanical guarantee is not.
+
+The project launders authority if it claims the system prevents the
+state.
+
+Accurate language would say:
+
+> Current repositories require package names without `/`.
+> This is presently enforced through review, not by the package
+> parser.
+
+Less elegant.
+
+More honest.
+
+## Folklore and Operator Sovereignty
+
+Folklore is sometimes defended as operator sovereignty.
+
+The argument is:
+
+> Operators should understand and control their systems rather than
+> surrender decisions to central enforcement.
+
+This can be valid.
+
+Operators should own local policy.
+
+But sovereignty requires visible choices.
+
+An operator cannot meaningfully choose among semantics that the system
+has failed to represent.
+
+Knowing an undocumented trap is not sovereignty.
+
+It is successful adaptation to missing structure.
+
+> Freedom is choosing the policy.  
+> Folklore is remembering which floorboard contains the nail.
+
+## Folklore and Minimalism
+
+A minimal component may intentionally leave composition to operators.
+
+That can be a coherent design.
+
+The design becomes folklore-driven when composition depends on:
+
+* hidden ordering;
+* unstated state ownership;
+* accidental output;
+* incompatible local interpretations;
+* historical knowledge unavailable from the interface.
+
+Minimalism does not require ignorance.
+
+Small tools may expose precise contracts.
+
+The difference is whether the operator composes meanings or
+reconstructs them.
+
+## Folklore and Automation
+
+Automation can reduce folklore or harden it.
+
+Automation reduces folklore when it:
+
+* encodes an explicit contract;
+* validates state;
+* publishes structured results;
+* exposes failure semantics;
+* replaces repeated manual reconstruction.
+
+Automation hardens folklore when it:
+
+* encodes a ritual without its rationale;
+* parses unstable narration;
+* preserves hidden assumptions;
+* turns one local workaround into a shared dependency;
+* makes an accidental sequence faster and less visible.
+
+> Automation does not convert folklore into architecture.  
+> Sometimes it merely gives the folklore root privileges.
+
+## Do Not Confuse
+
+**Folklore** is not automatically false.
+
+It may preserve knowledge absent from formal surfaces.
+
+**Local truth** is not automatically parochial error.
+
+A local policy or workaround may be correct within its scope.
+
+**Shared semantics** do not require identical installations.
+
+They require agreement about the meaning of composed operations.
+
+**Propagation** is not retention.
+
+Knowledge can spread widely and still disappear when needed.
+
+**Archival storage** is not institutional memory.
+
+Stored information must remain discoverable, contextual, and connected
+to current behavior.
+
+**Consensus** is not a binding surface.
+
+A widely repeated rule may remain socially enforced.
+
+**Elder knowledge** is not the problem.
+
+Unacknowledged dependence on one elder is.
+
+**A ritual** is not automatically cargo cult.
+
+It may encode a necessary sequence.
+
+**Different local practices** are not automatically fragmentation.
+
+Variation becomes fracture when shared artifacts and operations
+acquire incompatible meanings.
+
+**Automation** is not automatically convergence.
+
+Several automated rituals may reproduce several local truths more
+efficiently.
+
+## The Folklore Test
+
+When important behavior is known socially, ask:
+
+1. What exactly is known?
+2. Who knows it?
+3. How did they learn it?
+4. Where else is it recorded?
+5. Is the knowledge current?
+6. What versions and contexts does it apply to?
+7. Which assumptions make it true?
+8. What evidence supports it?
+9. Is it local policy or shared semantics?
+10. Does another group preserve a conflicting rule?
+11. Has the knowledge been compressed into ritual?
+12. Which context was lost during transmission?
+13. How widely has the knowledge propagated?
+14. How reliably is it retained?
+15. Which memory substrate currently carries it?
+16. Can future maintainers discover it?
+17. Is it connected to tests or artifacts?
+18. Can it become a contract or guardrail?
+19. Does it require human judgment?
+20. Is the ecosystem laundering social enforcement as system
+    authority?
+21. Are several installations locally coherent under incompatible
+    meanings?
+22. Is automation encoding a model or merely a sequence?
+23. What happens when the elder operator leaves?
+24. What would turn this folklore into durable institutional memory?
+
+The goal is not to eradicate folklore.
+
+Every living ecosystem has stories, shortcuts, historical memory, and
+expert judgment.
+
+The goal is to prevent correctness from depending on folklore whose
+scope, authority, and retention nobody can state.
 
 ---
 
