@@ -10533,6 +10533,18 @@ expert judgment.
 The goal is to prevent correctness from depending on folklore whose
 scope, authority, and retention nobody can state.
 
+## Fourteenth House Law
+
+> If the system cannot carry the rule, the operators will.  
+> Each operator will carry a slightly different rule.
+
+Folklore explains how operational truth propagates socially.
+
+The next section is Institutional Memory and Rediscovery: how projects
+preserve or lose conclusions, why archived knowledge can still be
+operationally dead, and how the same failure returns wearing a new
+component name.
+
 ---
 
 # I. Ontology of Haunted Systems
