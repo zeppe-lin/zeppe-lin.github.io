@@ -2921,6 +2921,855 @@ and human narration.
 
 ---
 
+# Artifact Truth and Supplier Duty
+
+The build succeeds.
+
+A package archive appears in the output directory.
+
+The builder knows:
+
+* which artifact it created;
+* where it placed it;
+* which package identity it contains;
+* which configuration produced it;
+* whether the result is complete.
+
+The orchestrator receives none of those facts.
+
+It scans the directory, parses stdout, rereads the builder's
+configuration, and guesses which new file belongs to the operation.
+
+The producer knows.
+
+The consumer guesses.
+
+Architecture has selected divination.
+
+---
+
+## Artifact
+
+An **artifact** is a bounded output expected to carry identity or
+operational truth across a system boundary.
+
+Examples include:
+
+* a package archive;
+* a root filesystem image;
+* a binary;
+* a source tarball;
+* a repository index;
+* a database snapshot;
+* a generated configuration;
+* a patch;
+* a build manifest;
+* a signed release file.
+
+An artifact is not merely a file that exists after a command finishes.
+
+It participates in a larger operation.
+
+Other components may need to determine:
+
+* what it is;
+* where it came from;
+* which version it represents;
+* which architecture it targets;
+* which inputs produced it;
+* whether it is complete;
+* whether it can be trusted;
+* whether it replaces another artifact;
+* which semantics survive when it crosses the boundary.
+
+A file becomes an artifact when another layer must reason about it.
+
+## Artifact Truth
+
+**Artifact truth** is the set of authoritative facts that travel with
+an artifact --- or remain mechanically bound to it --- so consumers do
+not need to reconstruct its meaning from surrounding circumstances.
+
+Artifact truth may include:
+
+* identity;
+* version;
+* release;
+* architecture;
+* format;
+* content digest;
+* provenance;
+* build configuration;
+* dependency declarations;
+* creation time;
+* producer identity;
+* compatibility requirements;
+* intended destination;
+* transaction status.
+
+These facts do not all need to be embedded inside the artifact bytes.
+
+They may exist in:
+
+* an internal manifest;
+* a signed sidecar;
+* a repository record;
+* a transaction result;
+* a content-addressed store;
+* metadata bound through a digest.
+
+The important property is not physical location.
+
+It is binding.
+
+> Truth may travel beside the artifact.  
+> It may not wander nearby hoping consumers understand the
+> relationship.
+
+## Bound Metadata
+
+**Bound metadata** is metadata whose relationship to an artifact is
+mechanically established.
+
+The binding may use:
+
+* a checksum;
+* a signature;
+* a transaction identifier;
+* a repository object identity;
+* an immutable content address;
+* an explicit result object;
+* an atomic database record.
+
+A sidecar file named similarly to an artifact is not necessarily bound
+metadata.
+
+For example:
+
+```text
+foo#1.2-1.pkg.tar.gz
+foo#1.2-1.pkg.tar.gz.meta
+```
+
+The naming relationship is convenient.
+
+It becomes authoritative only if the system verifies that the metadata
+describes the actual artifact.
+
+Otherwise one filename is merely vouching for another filename.
+
+## Identity
+
+**Artifact identity** is the stable answer to:
+
+> What artifact is this?
+
+Identity may contain several fields:
+
+```text
+name      = foo
+version   = 1.2
+release   = 1
+arch      = x86_64
+format    = pkg.tar.gz
+```
+
+The exact model depends on the ecosystem.
+
+The important distinction is between identity and presentation.
+
+A filename may present identity:
+
+```text
+foo#1.2-1.pkg.tar.gz
+```
+
+But filenames are often:
+
+* mutable;
+* lossy;
+* filesystem-dependent;
+* ambiguous;
+* derived from configuration;
+* unable to carry complete provenance;
+* parsed differently by different components.
+
+> A filename is a label.  
+> Do not promote it to passport control merely because it contains
+> punctuation.
+
+## Identity Authority
+
+The system must define which representation is authoritative for
+artifact identity.
+
+Possible candidates include:
+
+* internal artifact metadata;
+* build state;
+* repository metadata;
+* the filename;
+* source configuration;
+* a transaction result.
+
+Several representations may coexist.
+
+Their relationship should be explicit.
+
+For example:
+
+```text
+package metadata
+    is authoritative
+
+filename
+    is derived from package metadata
+
+repository index
+    records the artifact digest and package metadata
+
+build result
+    identifies the exact produced artifact
+```
+
+If the filename and internal metadata disagree, the contract must
+define whether:
+
+* publication is rejected;
+* installation is rejected;
+* one representation is regenerated;
+* the disagreement is reported as corruption.
+
+“Usually they match” is not an identity model.
+
+## Provenance
+
+**Provenance** describes how an artifact came into existence.
+
+Useful provenance may include:
+
+* source revision;
+* build configuration;
+* tool versions;
+* applied patches;
+* build environment;
+* producer component;
+* input artifact digests;
+* signing identity;
+* reproducibility information.
+
+Not every artifact needs a complete forensic biography.
+
+The required provenance depends on the operation.
+
+A local temporary object may need little.
+
+A published package expected to cross machines and survive years may
+need substantially more.
+
+The contract should identify which provenance facts are necessary for:
+
+* verification;
+* debugging;
+* reproduction;
+* migration;
+* accountability;
+* compatibility.
+
+## Completeness
+
+An artifact may exist without being complete.
+
+For example, a builder may:
+
+1. create the archive path;
+2. begin writing content;
+3. fail;
+4. leave the partial archive behind.
+
+A consumer scanning the directory sees a plausible filename.
+
+The filesystem reports that the file exists.
+
+The build failed.
+
+Artifact truth therefore needs some notion of completion.
+
+Possible mechanisms include:
+
+* writing to a temporary path and renaming atomically;
+* recording completion in a transaction;
+* returning the artifact only after final validation;
+* publishing a manifest after all content is committed;
+* verifying the artifact before exposing it to consumers.
+
+> Existence is not completion.  
+> A corpse also exists.
+
+## Supplier Duty
+
+**Supplier duty** is the obligation of the component that first knows
+a fact to expose that fact in a stable form appropriate to its
+consumers.
+
+If a builder knows the exact artifact path, callers should not
+normally need to rediscover it.
+
+If an installer knows the resulting package state, later components
+should not infer it from filesystem debris.
+
+If a repository knows which digest corresponds to which package
+identity, consumers should not reconstruct the relationship from URL
+shape.
+
+Supplier duty does not mean exposing every internal detail.
+
+It means publishing the facts required at the boundary the component
+claims to support.
+
+> The component that creates the truth should not make every caller
+> reenact the crime scene.
+
+## Consumer Duty
+
+Supplier duty has a corresponding **consumer duty**.
+
+A consumer should use the published contract rather than depending on
+incidental internal behavior.
+
+If a builder returns a structured artifact result, an orchestrator
+should not continue parsing its status text because the old regex
+already works.
+
+Consumer duty includes:
+
+* respecting the authoritative representation;
+* validating the supplied result;
+* avoiding private configuration unless it is part of the contract;
+* not inferring additional guarantees from presentation;
+* reporting missing facts instead of silently guessing.
+
+A healthy boundary requires both sides.
+
+The supplier must publish enough truth.
+
+The consumer must stop excavating beneath it.
+
+## Structured Result
+
+A **structured result** is a machine-readable representation of an
+operation's authoritative outcome.
+
+For a package build, it might contain:
+
+```text
+status
+artifact_path
+package_identity
+artifact_digest
+manifest_path
+warnings
+```
+
+The representation may be:
+
+* an in-process object;
+* a stable command output mode;
+* a result file;
+* a transaction record;
+* a machine-readable stream;
+* an API response.
+
+The specific transport is secondary.
+
+The result must be:
+
+* explicit;
+* versioned when necessary;
+* unambiguous;
+* separate from human narration;
+* complete enough for callers;
+* honest about partial outcomes.
+
+## Human Narration
+
+Human-readable output serves operators.
+
+It may include:
+
+* progress;
+* explanation;
+* warnings;
+* summaries;
+* context;
+* humor, when the component has earned it.
+
+Human narration is not a reliable control interface unless the system
+deliberately defines it as one.
+
+Narration changes for reasons unrelated to semantics:
+
+* wording improves;
+* localization is added;
+* progress formatting changes;
+* timestamps appear;
+* errors become clearer;
+* lines are reordered;
+* color is introduced.
+
+A consumer depending on narration converts editorial change into
+protocol breakage.
+
+## Narrative Coupling
+
+**Narrative coupling** occurs when machine control depends on text
+intended for human presentation.
+
+Examples include:
+
+* parsing stdout to find the artifact path;
+* searching logs for a success phrase;
+* extracting identifiers from warning messages;
+* inferring state from command narration;
+* using terminal output as the only record of a transaction.
+
+> When stdout becomes protocol, every regex is a tiny priest.
+
+Narrative coupling is attractive because the information appears to
+already exist.
+
+But presence is not contract.
+
+A sentence may contain the truth while remaining an unstable way to
+carry it.
+
+## Machine-Readable Output
+
+A command-line component may provide machine-readable output through:
+
+* a dedicated option;
+* a stable record format;
+* a result file;
+* a null-delimited field list;
+* JSON or another structured representation;
+* a library interface.
+
+The format is less important than the contract.
+
+A machine-readable mode should define:
+
+* schema;
+* field meaning;
+* escaping;
+* versioning;
+* ordering guarantees;
+* failure representation;
+* compatibility expectations;
+* separation from diagnostics.
+
+Printing JSON does not automatically solve the problem.
+
+Unversioned, underspecified JSON can be folklore wearing braces.
+
+## Opaque-Tool Boundary
+
+An **opaque-tool boundary** allows one component to invoke another
+without reproducing the subordinate component's internal semantics.
+
+Opacity is useful.
+
+An orchestrator should not need to know:
+
+* how a builder computes its output directory;
+* how package names are assembled internally;
+* which temporary files it uses;
+* which archive implementation it selected;
+* how it orders internal phases.
+
+The builder should publish the facts required by the orchestration
+boundary.
+
+Opacity fails when the subordinate component withholds those facts.
+
+The caller then becomes dependent on private configuration and
+implementation details.
+
+> A black box is acceptable.  
+> A black box that requires callers to guess what came out is merely a
+> dark room.
+
+## Artifact-Borne Assurance
+
+**Artifact-borne assurance** means enough authoritative information
+crosses with the artifact that later boundaries can verify and
+interpret it without fresh social authorization.
+
+For example, a package artifact may carry or bind:
+
+* package identity;
+* file manifest;
+* digest;
+* format version;
+* architecture;
+* required installation semantics;
+* signature.
+
+A repository can then validate the artifact.
+
+An installer can interpret it.
+
+An operator can inspect it.
+
+A later audit can identify it.
+
+Without artifact-borne assurance, every boundary must ask another
+component --- or another human --- what the artifact probably means.
+
+## Witness Proliferation
+
+When artifacts carry insufficient truth, ecosystems often add
+witnesses.
+
+The build service records a log.
+
+The repository service records another log.
+
+The release process adds a checklist.
+
+A reviewer confirms the filename.
+
+An operator confirms the checksum.
+
+A maintainer confirms the configuration.
+
+Each witness may be locally useful.
+
+The larger pattern is dangerous:
+
+```text
+weak artifact truth
+        ↓
+boundary uncertainty
+        ↓
+additional witness
+        ↓
+manual interpretation
+        ↓
+responsibility diffusion
+```
+
+The ecosystem begins mistaking increased witnessing for increased
+control.
+
+> If an artifact needs five people to explain what it is, it is not
+> self-describing.  
+> It is holding a press conference.
+
+## Self-Describing Artifact
+
+A **self-describing artifact** carries enough information for the
+operations expected of it.
+
+Self-description is relative to purpose.
+
+A package archive does not need to contain the history of the project.
+It may need to expose:
+
+* identity;
+* format;
+* manifest;
+* compatibility requirements;
+* integrity information.
+
+A self-describing artifact does not eliminate external state.
+
+Repository policy, trust roots, dependency resolution, and local
+configuration may remain external.
+
+The goal is not total ontological independence.
+
+The goal is to prevent consumers from reconstructing facts the
+artifact boundary should already preserve.
+
+## Artifact Manifest
+
+An **artifact manifest** is structured metadata describing an
+artifact's identity, contents, or required semantics.
+
+A package manifest may include:
+
+* package name;
+* version;
+* release;
+* architecture;
+* files;
+* ownership;
+* modes;
+* links;
+* checksums;
+* lifecycle hooks;
+* format version.
+
+A manifest is useful when it is:
+
+* authoritative within its declared scope;
+* bound to the artifact;
+* validated before use;
+* versioned;
+* preserved across publication.
+
+A manifest generated only for display and ignored by all operations is
+not an authority surface.
+
+It is a very organized rumor.
+
+## Field Symptom: Identity in stdout
+
+A builder prints:
+
+```text
+Built package: foo#1.2-1.pkg.tar.gz
+```
+
+An orchestrator needs the artifact path.
+
+It captures stdout and extracts the text after the colon.
+
+This works until:
+
+* the message wording changes;
+* several artifacts are built;
+* a warning prints a similar line;
+* output is localized;
+* the artifact is placed in another directory;
+* the command fails after printing the filename;
+* progress output is redirected differently.
+
+The builder possessed the fact.
+
+It published narration rather than state.
+
+The orchestrator converted that narration into an accidental protocol.
+
+## Field Symptom: Reconstructing Identity from Configuration
+
+A builder reads:
+
+```text
+name=foo
+version=1.2
+release=1
+compression=gz
+```
+
+It creates an artifact.
+
+The orchestrator reads the same configuration and independently
+computes:
+
+```text
+foo#1.2-1.pkg.tar.gz
+```
+
+This avoids parsing stdout.
+
+It does not remove the coupling.
+
+The orchestrator now duplicates:
+
+* naming rules;
+* compression suffix rules;
+* override precedence;
+* version escaping;
+* output directory semantics;
+* future format changes.
+
+The system has replaced narrative coupling with implementation
+coupling.
+
+> The caller stopped reading the priest's announcement.  
+> It now studies the priest's private notes.
+
+## Field Symptom: Directory Scanning
+
+A command builds one or more artifacts in a shared output directory.
+
+The caller records the directory contents before the build, scans
+again afterward, and treats new files as results.
+
+This fails when:
+
+* concurrent builds run;
+* stale temporary files appear;
+* a build replaces an existing artifact;
+* several outputs are produced;
+* unrelated files arrive;
+* the build partially fails;
+* clock or filesystem ordering is unreliable.
+
+Directory scanning observes environmental change.
+
+It does not identify the authoritative result of one operation.
+
+## Field Symptom: The Orphaned Artifact
+
+A build creates a valid package archive and then fails while writing
+repository metadata.
+
+The command exits nonzero.
+
+The artifact remains.
+
+What is its status?
+
+Possible answers include:
+
+* valid but unpublished;
+* incomplete operation;
+* reusable local artifact;
+* forbidden residue;
+* candidate for retry;
+* untrusted because final validation never ran.
+
+The contract must represent this state.
+
+If the only result is success or failure, callers may either discard
+useful output or accidentally publish uncommitted output.
+
+Artifact truth includes lifecycle state, not only identity.
+
+## Transaction Result
+
+A **transaction result** describes the authoritative outcome of an
+operation, including any artifacts it produced.
+
+A useful transaction result may distinguish:
+
+* completed artifact;
+* partial artifact;
+* reused artifact;
+* published artifact;
+* failed operation with no valid output;
+* failed operation with recoverable output.
+
+This allows the system to represent reality without converting every
+non-ideal path into either total success or total disappearance.
+
+## Artifact Lifecycle
+
+An artifact may pass through several states:
+
+```text
+planned
+    ↓
+being produced
+    ↓
+produced
+    ↓
+validated
+    ↓
+published
+    ↓
+installed
+    ↓
+superseded
+    ↓
+retired
+```
+
+Different ecosystems need different states.
+
+The important point is that existence alone does not define lifecycle.
+
+A file appearing in a directory does not tell consumers whether it is
+validated, published, or authoritative.
+
+## Do Not Confuse
+
+**Artifact truth** is not the same as embedding every fact inside the
+artifact.
+
+Truth may be carried through bound external metadata.
+
+**A filename** is not useless.
+
+Filenames are valuable human projections and convenient lookup keys.
+
+They become dangerous when consumers treat them as the only
+authoritative identity representation.
+
+**Structured output** is not automatically a good contract.
+
+A structure with unstable or undocumented fields is still an
+accidental protocol.
+
+**Supplier duty** does not require exposing implementation details.
+
+It requires publishing the facts consumers legitimately need.
+
+**Consumer duty** does not forbid validation.
+
+Consumers should verify supplied facts.
+They should not reconstruct them from unrelated evidence unless
+recovery is explicitly part of the contract.
+
+**A self-describing artifact** is not a fully autonomous system.
+
+External trust policy and local intent may remain external.
+
+**More metadata** is not automatically better.
+
+Metadata without scope, binding, or consumers becomes sediment.
+
+**A successful command** is not proof of a completed artifact.
+
+Completion must be represented and validated.
+
+## The Artifact Truth Test
+
+For every artifact-producing operation, ask:
+
+1. Which component first knows that the artifact exists?
+2. How does it identify the exact artifact?
+3. Which identity fields are authoritative?
+4. Which representations are derived?
+5. How does the fact cross the component boundary?
+6. Is the result machine-readable?
+7. Is human narration separate from machine state?
+8. Is metadata bound to the artifact?
+9. How is completeness represented?
+10. What happens after partial failure?
+11. Can several artifacts be represented?
+12. Can concurrent operations be distinguished?
+13. Does the artifact carry enough truth for its consumers?
+14. Which provenance facts are required?
+15. Can consumers validate the supplied result?
+16. Are callers duplicating naming or configuration logic?
+17. Are callers scanning directories or parsing logs?
+18. Can the backend change without forcing consumers to relearn
+    identity?
+19. Does publication strengthen or replace artifact truth?
+20. When representations disagree, which one wins?
+
+If the producer knows the answer but every consumer derives it
+independently, supplier duty has failed.
+
+## Seventh House Law
+
+> Good architecture does not encode truth in operator messages.  
+> It publishes truth as contract.
+
+An artifact should cross a boundary carrying enough identity, state,
+and provenance to remain intelligible without ritual reconstruction.
+
+The next section is **Substitution Boundaries and Opaque Tools**: how
+components become genuinely replaceable, why several implementations
+do not automatically constitute pluralism, and how ecosystem-wide
+substitution differs from one maintainer successfully writing another
+wrapper.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
