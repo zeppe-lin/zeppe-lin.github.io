@@ -16037,6 +16037,1569 @@ that created it.
 
 ---
 
+# Selection Pressure and Cultural Evolution
+
+A project has weak upgrade semantics.
+
+Operators who trust the documented procedure eventually lose state.
+
+Operators who distrust it build wrappers, take snapshots, read every
+diff, and survive.
+
+The survivors become maintainers.
+
+They review future changes.
+
+They prefer tools that expose internals, avoid transactions, and leave
+every repair path manual.
+
+Not because these properties are universally better.
+
+Because those are the properties under which they learned to remain
+alive.
+
+Years later, the project explains its culture:
+
+> We value operators who understand their systems.
+
+This is true.
+
+The ecosystem has spent years killing the others.
+
+---
+
+## Selection Pressure
+
+**Selection pressure** is any recurring environmental condition that
+changes which operators, tools, practices, or beliefs are likely to
+persist.
+
+In a technical ecosystem, selection pressure may come from:
+
+* ambiguous interfaces;
+* high recovery cost;
+* incomplete documentation;
+* weak automation;
+* unstable compatibility;
+* maintainer scarcity;
+* manual publication;
+* difficult onboarding;
+* social reward;
+* repeated incidents;
+* local patch dependence.
+
+The ecosystem does not need to intend selection.
+
+Participants who cannot adapt may:
+
+* leave;
+* avoid contributing;
+* remain dependent on experts;
+* build separate tooling;
+* fork;
+* stop upgrading;
+* abandon the system.
+
+Participants who do adapt become more visible.
+
+Their habits increasingly define what the project considers normal.
+
+> The environment does not vote.  
+> It filters.
+
+## Fitness
+
+**Fitness** is the ability of an operator, tool, or practice to
+survive and remain useful under the ecosystem's actual conditions.
+
+Fitness is always relative to an environment.
+
+A private wrapper may be highly fit in an ecosystem with:
+
+* unstable output;
+* weak contracts;
+* manual state repair;
+* direct filesystem access.
+
+The same wrapper may be unnecessary or harmful in a system with:
+
+* structured results;
+* transactional state;
+* explicit recovery;
+* strong invariants.
+
+Fitness does not mean general superiority.
+
+It means successful adaptation to current conditions.
+
+## Local Fitness
+
+**Local fitness** is effectiveness within one installation, workflow,
+or community.
+
+Examples include:
+
+* a shell script matching one operator's habits;
+* a package overlay tailored to one repository;
+* a manual release process manageable by three maintainers;
+* a recovery ritual valid for one filesystem layout.
+
+Local fitness can be extremely high.
+
+It becomes misleading when treated as proof of ecosystem-wide
+suitability.
+
+## Ecosystem Fitness
+
+**Ecosystem fitness** is the ability of a mechanism to survive across:
+
+* operator turnover;
+* different installations;
+* changing implementations;
+* scale;
+* automation;
+* migration;
+* independent interpretation.
+
+A tool may be locally elegant and ecosystemically fragile.
+
+A procedure may work perfectly while the same three people remain
+present.
+
+The distinction mirrors local survivability and system-level coherence.
+
+> A thing can be fit for one cave and still die in daylight.
+
+## Technical Selection
+
+**Technical selection** rewards tools and practices that survive the
+system's machine-level conditions.
+
+For example, weak artifact truth selects for tools that:
+
+* scan directories;
+* parse filenames;
+* read private configuration;
+* maintain local caches;
+* distrust producer output.
+
+Ambiguous success selects for tools that:
+
+* inspect postconditions;
+* retry cautiously;
+* preserve logs;
+* compare several state representations.
+
+These tools become common because they work.
+
+Their prevalence does not prove the underlying boundary is
+appropriate.
+
+It proves the environment repeatedly rewards compensation.
+
+## Social Selection
+
+**Social selection** rewards participants who fit the community's
+norms, communication style, and initiation process.
+
+An ecosystem may select for operators who:
+
+* tolerate hostile support;
+* enjoy source archaeology;
+* have time for long discussions;
+* already know adjacent systems;
+* accept sparse documentation;
+* prefer oral mentorship;
+* share the dominant communication channel;
+* regard failure as initiation.
+
+Social selection may be stronger than technical selection.
+
+A newcomer may possess enough technical skill but fail to gain access
+to the knowledge routes through which the system is actually operated.
+
+## Epistemic Selection
+
+**Epistemic selection** rewards particular ways of knowing.
+
+An ecosystem may reward:
+
+* reading implementation over documentation;
+* historical memory over explicit contracts;
+* personal trust over published state;
+* intuition over reproducible diagnosis;
+* elder testimony over current tests;
+* local experimentation over shared models.
+
+These habits may arise rationally.
+
+If documentation drifts and tests preserve accidental behavior, source
+reading and elder knowledge may indeed produce better answers.
+
+Over time, the ecosystem may treat those epistemic habits as virtues
+independent of the conditions that made them useful.
+
+## Tool Selection
+
+**Tool selection** occurs when the ecosystem's defects favor tools
+that can compensate for them.
+
+For example:
+
+```text
+weak low-level contract
+        ↓
+frontends must reconstruct semantics
+        ↓
+most frontends fail
+        ↓
+one frontend accumulates extensive compatibility logic
+        ↓
+frontend becomes dominant
+```
+
+The winning tool may be:
+
+* better designed;
+* more adaptive;
+* maintained by stronger operators;
+* simply older and more scarred.
+
+Its success may result from absorbing more historical ambiguity than
+its competitors.
+
+## Scar Fitness
+
+**Scar fitness** is fitness derived from accumulated adaptations to
+historical failure.
+
+A tool with many special cases may survive because each special case
+protects against one known wound.
+
+A clean replacement may fail because it lacks those scars.
+
+This does not mean the old design is superior.
+
+It means the ecosystem still contains the conditions encoded by the
+scars.
+
+> The old tool is ugly because history kept writing patches on its
+> skin.
+
+## Cultural Evolution
+
+**Cultural evolution** is the change in shared habits, values,
+vocabulary, rituals, and doctrines produced by repeated technical and
+social selection.
+
+The culture may evolve toward:
+
+* suspicion;
+* conservatism;
+* local autonomy;
+* manual control;
+* historical literacy;
+* hostility to abstraction;
+* preference for small tools;
+* resistance to centralization;
+* pride in recovery skill;
+* tolerance for undocumented behavior.
+
+These traits may begin as practical adaptations.
+
+They later become identity.
+
+The causal chain is:
+
+```text
+technical condition
+        ↓
+successful adaptation
+        ↓
+social transmission
+        ↓
+status reward
+        ↓
+doctrine
+        ↓
+cultural norm
+```
+
+The culture is not separate from the infrastructure.
+
+It is one of the infrastructure's outputs.
+
+## Coevolution
+
+**Coevolution** occurs when technical and cultural structures adapt to
+one another recursively.
+
+For example:
+
+1. the system has weak automation;
+2. operators develop manual expertise;
+3. manual expertise becomes prestigious;
+4. automation proposals are distrusted;
+5. automation remains weak;
+6. manual expertise remains necessary.
+
+Neither side alone explains the result.
+
+The technology selects for the culture.
+
+The culture preserves the technology.
+
+## Cultural Feedback Loop
+
+A **cultural feedback loop** occurs when an adaptation changes the
+social environment in ways that reinforce the original condition.
+
+```text
+ambiguous system
+        ↓
+operators develop suspicion
+        ↓
+suspicion rewarded as expertise
+        ↓
+explicit abstraction distrusted
+        ↓
+boundaries remain implicit
+        ↓
+ambiguous system
+```
+
+The loop can remain stable for decades.
+
+Each generation experiences the resulting culture as inherited fact.
+
+## Path Dependence
+
+**Path dependence** means current structure depends strongly on the
+sequence of past adaptations, not only on present technical
+requirements.
+
+A project may preserve:
+
+* one package format;
+* one release ritual;
+* one repository layout;
+* one social hierarchy;
+* one review convention;
+
+because each later choice was built around the previous one.
+
+Another design might now be better.
+
+Migration cost makes history authoritative.
+
+Path dependence does not mean change is impossible.
+
+It means the present cannot be evaluated as though it were chosen from
+a blank state.
+
+## Historical Ratchet
+
+A **historical ratchet** is a mechanism through which complexity,
+compatibility, or social burden accumulates more easily than it can be
+removed.
+
+Examples include:
+
+* every workaround gains users;
+* every deprecated path acquires another exception;
+* every operator ritual becomes part of onboarding;
+* every private wrapper becomes release infrastructure;
+* every compatibility branch becomes evidence that removal is unsafe.
+
+Addition is local.
+
+Removal requires ecosystem proof.
+
+The ratchet turns easily in one direction.
+
+## Cultural Ratchet
+
+A **cultural ratchet** preserves adaptive norms after the technical
+conditions that produced them weaken or disappear.
+
+For example:
+
+* a project retains hostility to transactions after gaining a reliable
+  transaction model;
+* maintainers continue distrusting generated state after generation
+  becomes reproducible and inspectable;
+* newcomers are still expected to learn a historical ritual no current
+  component requires.
+
+The culture remembers the old environment through continued
+restriction.
+
+## Founder Effect
+
+A **founder effect** occurs when early participants shape norms that
+persist because later participants enter an already structured
+culture.
+
+Founders may establish:
+
+* preferred languages;
+* review style;
+* release cadence;
+* attitudes toward documentation;
+* definitions of simplicity;
+* expectations of operator knowledge;
+* accepted levels of breakage.
+
+These choices may be coherent.
+
+They become difficult to revisit because every surviving participant
+was selected partly through compatibility with them.
+
+> The first operators choose the maze.  
+> Later operators are judged by how quickly they learn it.
+
+## Population Bottleneck
+
+A **population bottleneck** occurs when the community shrinks, causing
+institutional knowledge and cultural variation to collapse into a
+smaller set of surviving participants.
+
+After a bottleneck:
+
+* one maintainer's preferences may become project doctrine;
+* alternative practices disappear;
+* folklore becomes less cross-checked;
+* support depends on fewer elders;
+* historical accidents gain authority through lack of opposition.
+
+The surviving culture may appear unusually coherent.
+
+Some of that coherence is loss of population.
+
+## Cultural Monoculture
+
+A **cultural monoculture** exists when most active participants share
+similar skills, assumptions, workflows, and failure tolerances.
+
+Monoculture can improve:
+
+* communication;
+* speed;
+* consistency;
+* trust;
+* review efficiency.
+
+It also reduces the ecosystem's ability to detect assumptions
+invisible to the dominant group.
+
+A monoculture of expert operators may fail to notice:
+
+* onboarding cliffs;
+* terminology ambiguity;
+* reliance on historical context;
+* missing automation;
+* inaccessible support channels;
+* local assumptions presented as universal.
+
+## Newcomer as Mutation
+
+A newcomer introduces variation.
+
+They may:
+
+* interpret an interface literally;
+* automate a ritual;
+* use another backend;
+* question a historical restriction;
+* lack one private wrapper;
+* apply familiar semantics from another ecosystem.
+
+Their failure is often treated as lack of adaptation.
+
+It may instead expose an assumption the current population no longer
+sees.
+
+> The newcomer is not always noise.  
+> Sometimes the newcomer is a conformance test with questions.
+
+## Independent Implementation as Mutation
+
+An independent implementation similarly introduces variation.
+
+It exposes:
+
+* undocumented contracts;
+* private state assumptions;
+* accidental protocols;
+* cultural expectations disguised as interfaces.
+
+When it fails, the project may conclude:
+
+> The implementation is immature.
+
+That may be correct.
+
+It may also mean the ecosystem's real contract was available only
+through cultural inheritance.
+
+## Variation
+
+**Variation** is the presence of different approaches,
+interpretations, tools, or operator practices.
+
+Variation supplies evidence.
+
+It reveals:
+
+* which properties are actually contractual;
+* which assumptions are local;
+* which interfaces attract several meanings;
+* which guardrails depend on one workflow.
+
+An ecosystem that eliminates all variation may become stable.
+
+It may also become unable to distinguish contract from convention.
+
+## Selection Against Legibility
+
+**Selection against legibility** occurs when making hidden structure
+explicit threatens successful adaptations, authority, or identity.
+
+A proposal to document a boundary may encounter resistance because it:
+
+* exposes inconsistency;
+* narrows discretionary interpretation;
+* reduces elder authority;
+* makes local divergence visible;
+* creates obligations to support or reject states explicitly.
+
+The ecosystem may prefer ambiguity because skilled participants know
+how to navigate it.
+
+Legibility helps newcomers and automation.
+
+It may reduce the advantage of those who already know the maze.
+
+## Selection Against Documentation
+
+Documentation may be selected against when:
+
+* behavior changes faster than prose;
+* experienced operators do not need it;
+* writing reveals unresolved semantics;
+* undocumented knowledge preserves social advantage;
+* maintainers fear creating compatibility promises;
+* direct support feels cheaper in the short term.
+
+The project may then develop a doctrine that documentation is
+inherently stale or unnecessary.
+
+Sometimes this diagnosis is accurate.
+
+Often it is an adaptation to a system that lacks stable contracts
+worth documenting.
+
+## Selection Against Tests
+
+Tests may be selected against when:
+
+* expected behavior is unclear;
+* maintainers rely on manual judgment;
+* environments vary;
+* implementation details change frequently;
+* tests expose contradictions nobody wants to resolve;
+* preserving historical behavior threatens desired refactoring.
+
+The culture may describe tests as brittle.
+
+They may be brittle because the contract is brittle.
+
+## Selection Against Automation
+
+Automation may be selected against when:
+
+* partial success is common;
+* operator judgment is unrepresented;
+* interfaces are ambiguous;
+* recovery is manual;
+* state lacks identity;
+* concurrent execution is unsafe.
+
+The ecosystem then preserves manual work because manual work contains
+the missing regulator.
+
+Automation proposals fail.
+
+The failure is remembered as evidence that automation itself is
+unsuitable.
+
+## Selection Against Abstraction
+
+Abstraction may be selected against when previous abstractions:
+
+* hid state;
+* overclaimed semantics;
+* centralized authority;
+* removed recovery access;
+* failed under edge cases;
+* required compatibility layers more complex than the original tools.
+
+The ecosystem learns:
+
+> Explicit composition is safer than abstraction.
+
+This may be a sound local lesson.
+
+It becomes cultural overreach when every boundary, type, or structured
+result is treated as the beginning of semantic counterfeit.
+
+## Selection for Inspectability
+
+Some traits are selected because they genuinely improve survival under
+uncertainty.
+
+**Inspectability** allows operators to:
+
+* read state directly;
+* understand artifacts;
+* bypass broken orchestration;
+* recover manually;
+* verify outcomes.
+
+Selection for inspectability can produce durable design virtues:
+
+* text formats;
+* small tools;
+* transparent state;
+* simple protocols;
+* explicit logs;
+* reversible operations.
+
+Not every adaptation is scar tissue.
+
+Some become broadly valuable architecture.
+
+## Selection for Reversibility
+
+High failure cost selects for reversible practices:
+
+* backups;
+* snapshots;
+* staged upgrades;
+* local package caches;
+* dry runs;
+* rollback plans;
+* conservative deployment.
+
+These are often good practices independent of the original defect.
+
+Cultural evolution can therefore distill real strengths from bad
+environments.
+
+The task is not to discard everything selected under pressure.
+
+It is to identify which traits remain valuable after the pressure
+changes.
+
+## Exaptation
+
+**Exaptation** occurs when a trait developed for one purpose becomes
+useful for another.
+
+Examples include:
+
+* a recovery wrapper becoming a stable orchestration API;
+* manual artifact inspection inspiring self-describing formats;
+* local overlays becoming a clean package-collection mechanism;
+* operator checklists becoming repository validation;
+* distrust of hidden state producing strong inspectability norms.
+
+The trait began as compensation.
+
+It later became legitimate design.
+
+> Scar tissue can become armor.  
+> It should still be inspected for infection.
+
+## Cultural Adaptation Versus Architectural Principle
+
+A **cultural adaptation** is a behavior that helped participants
+survive a specific environment.
+
+An **architectural principle** is a reusable design rule justified
+across a defined class of systems.
+
+The distinction requires analysis.
+
+For example:
+
+> Keep state inspectable.
+
+may be an architectural principle.
+
+> Never use a database.
+
+may be a cultural adaptation to one opaque and corrupt database
+implementation.
+
+The first preserves a property.
+
+The second preserves one historical reaction.
+
+## Moralization
+
+**Moralization** occurs when an adaptive practice is recast as a
+judgment about good and bad operators, tools, or designs.
+
+Examples include:
+
+* manual operation becomes responsible;
+* automation becomes laziness;
+* sparse documentation becomes seriousness;
+* difficult recovery becomes competence;
+* explicit validation becomes bureaucracy;
+* local patching becomes independence;
+* asking for stable interfaces becomes entitlement.
+
+Moralization strengthens retention because moral rules are easier to
+transmit than conditional technical conclusions.
+
+It also destroys scope.
+
+> A technical workaround says, “this avoids the bug”.  
+> A moral doctrine says, “good people do this”.
+
+## Constraint Moralization
+
+**Constraint moralization** is the treatment of a historical
+limitation as a virtue.
+
+For example:
+
+* missing dependency resolution becomes operator freedom;
+* lack of migration tooling becomes simplicity;
+* weak integration becomes modularity;
+* absence of structured results becomes UNIX transparency;
+* manual repair becomes educational rigor.
+
+The virtue may contain a real value.
+
+The limitation may still be a limitation.
+
+A project should be able to defend the value without denying the cost.
+
+## Virtue Laundering
+
+**Virtue laundering** presents adaptive burden as evidence of
+philosophical purity.
+
+The pattern is:
+
+```text
+missing mechanism
+        ↓
+operator compensates
+        ↓
+compensation aligns with valued trait
+        ↓
+missing mechanism reclassified as intentional virtue
+```
+
+For example:
+
+```text
+no coherent orchestration
+        ↓
+operators compose commands manually
+        ↓
+manual composition demonstrates control
+        ↓
+missing orchestration described as operator sovereignty
+```
+
+The operator control may be real.
+
+The causal account remains incomplete.
+
+## Doctrine Formation
+
+**Doctrine formation** occurs when selected practices are compressed
+into shared statements about how systems should be built and operated.
+
+Doctrines may include:
+
+* keep tools small;
+* avoid hidden state;
+* trust the filesystem;
+* prefer manual control;
+* reject universal abstractions;
+* let operators compose policy;
+* do not centralize authority.
+
+Each may contain hard-earned wisdom.
+
+Doctrine formation becomes dangerous when:
+
+* the originating conditions vanish;
+* counterexamples are excluded;
+* moralization replaces mechanism;
+* doctrine protects existing authority;
+* selected survivors are treated as the whole possible population.
+
+## Cultural Canonization
+
+**Cultural canonization** is the process through which one adaptation
+becomes the accepted interpretation of project values.
+
+The adaptation may be preserved through:
+
+* style guides;
+* review norms;
+* folklore;
+* slogans;
+* maintainer authority;
+* rejection of contrary proposals;
+* onboarding narratives.
+
+Once canonized, the practice no longer needs to prove its current
+usefulness.
+
+It is defended as identity.
+
+## Identity Defense
+
+**Identity defense** occurs when technical change is resisted because
+it threatens the culture's account of itself.
+
+A proposal for stronger dependency modeling may be heard as:
+
+> Operators are no longer trusted.
+
+A repository guardrail may be heard as:
+
+> Maintainers are being replaced by policy.
+
+A structured result may be heard as:
+
+> The low-level tool is becoming a framework.
+
+The proposal and the fear may concern different levels.
+
+Identity defense converts architectural discussion into existential
+argument.
+
+## Cultural Antibody
+
+A **cultural antibody** is a learned response that rejects changes
+resembling earlier harmful interventions.
+
+Examples include immediate resistance to:
+
+* central services;
+* binary formats;
+* automatic migration;
+* dependency solvers;
+* generic APIs;
+* mandatory validation.
+
+The response may protect the ecosystem from repeated injury.
+
+It may also reject materially different proposals sharing only
+superficial features with the old failure.
+
+> The antibody recognizes the logo.  
+> It has not yet read the contract.
+
+## Reform Resistance
+
+**Reform resistance** is opposition to structural repair arising from
+the ecosystem's accumulated adaptations, incentives, and identity.
+
+Resistance may be based on:
+
+* legitimate recovery concerns;
+* migration cost;
+* fear of hidden state;
+* distrust of maintainers;
+* loss of local autonomy;
+* threatened expertise;
+* compatibility burden;
+* doctrinal commitment.
+
+Treating all resistance as irrational is itself a regulatory failure.
+
+The resistance contains information about what the current system,
+however badly, still provides.
+
+## Adaptation Capture
+
+**Adaptation capture** occurs when participants who benefit from one
+coping structure gain enough influence to preserve the conditions
+requiring it.
+
+This need not be malicious.
+
+A maintainer of a complex wrapper may sincerely believe the underlying
+component should remain minimal.
+
+An elder operator may sincerely distrust enforcement that would remove
+their manual review.
+
+A downstream project may depend on ambiguity that permits local
+policy.
+
+Their adaptations have become interests.
+
+## Cultural Homeostasis
+
+**Cultural homeostasis** is the tendency of an ecosystem to restore
+familiar practices after attempted change.
+
+A new tool may provide structured outcomes.
+
+Operators wrap it to reproduce old command sequencing.
+
+A new repository gate may be added.
+
+Maintainers create bypass paths matching former discretion.
+
+A migration removes old configuration.
+
+Documentation reintroduces it as a recommended compatibility layer.
+
+The technical structure changes.
+
+The culture restores the old control pattern.
+
+## Reform Absorption
+
+**Reform absorption** occurs when a structural improvement is
+incorporated in a way that preserves the previous adaptive ecology.
+
+Examples include:
+
+* a structured result added but callers continue parsing stdout;
+* a validator added but kept optional;
+* a transaction added but operators still repair state manually
+  because lifecycle effects remain outside it;
+* a new frontend adopted but private wrappers remain authoritative.
+
+The reform exists.
+
+Its intended boundary effect is absorbed.
+
+## Superficial Modernization
+
+**Superficial modernization** changes implementation style without
+changing the selection pressures shaping the ecosystem.
+
+Examples include:
+
+* rewriting tools in a newer language;
+* replacing shell scripts with a service;
+* adding JSON output without defining semantics;
+* moving documentation to a modern platform;
+* adding dashboards without authority;
+* renaming historical concepts.
+
+The project looks current.
+
+Operators still perform the same missing regulation.
+
+## Ecological Lock-In
+
+**Ecological lock-in** occurs when technical components, operator
+practices, institutional memory, and cultural identity mutually depend
+on the existing arrangement.
+
+Changing one layer destabilizes the others.
+
+For example:
+
+```text
+weak package semantics
+    ↔ private wrappers
+    ↔ operator expertise
+    ↔ review authority
+    ↔ project doctrine
+```
+
+No single component can be replaced safely without addressing the
+ecology.
+
+This is why apparently small fixes can provoke disproportionate
+resistance.
+
+The proposal touches one function.
+
+The ecosystem hears a threat to its whole adaptation network.
+
+## Cultural Fork
+
+A **cultural fork** occurs when groups adapt to the same technical
+ancestry in different ways and preserve different values, practices,
+and memories.
+
+One fork may respond to weak infrastructure by:
+
+* adding automation;
+* extracting contracts;
+* centralizing validation.
+
+Another may respond by:
+
+* preserving manual control;
+* narrowing scope;
+* strengthening operator education.
+
+Both are legitimate evolutionary paths.
+
+Conflict arises when each treats its adaptations as the only faithful
+interpretation of shared ancestry.
+
+## Counter-Culture
+
+A **counter-culture** forms when participants define themselves
+against the dominant ecosystem's adaptations.
+
+It may advocate:
+
+* stronger contracts;
+* more automation;
+* explicit state;
+* easier onboarding;
+* different governance.
+
+Or the reverse:
+
+* less centralization;
+* more manual control;
+* removal of abstraction;
+* stronger local autonomy.
+
+Counter-cultures can expose blind spots.
+
+They can also form mirror doctrines whose primary coherence is
+opposition.
+
+> Folklore fights folklore.  
+> Each side calls the other's scars ideology.
+
+## Niche Construction
+
+**Niche construction** is the process by which participants modify the
+environment to favor their own successful adaptations.
+
+Examples include:
+
+* maintainers designing interfaces around their private wrappers;
+* release processes requiring historical knowledge they possess;
+* documentation assuming one workflow;
+* repository policy privileging one tool;
+* support channels centered on one time zone or social group.
+
+The ecosystem selects participants.
+
+Participants then redesign the ecosystem.
+
+## Cultural Fitness Landscape
+
+A **fitness landscape** describes which traits are rewarded or
+punished under the current environment.
+
+In one ecosystem, high fitness may require:
+
+* patience;
+* historical memory;
+* shell fluency;
+* comfort with manual recovery;
+* distrust of automation.
+
+In another:
+
+* API discipline;
+* test design;
+* distributed systems knowledge;
+* ability to work through formal review.
+
+Neither landscape is neutral.
+
+Each produces a different population and culture.
+
+Changing infrastructure changes the landscape.
+
+It also changes who can participate successfully.
+
+## Selection Blindness
+
+**Selection blindness** is failure to notice that the observed
+community is the result of filtering.
+
+Statements such as:
+
+* “our users prefer manual configuration”;
+* “contributors do not need more documentation”;
+* “nobody wants automation”;
+* “everyone understands the release process”;
+
+may be true of the surviving population.
+
+They do not reveal what potential participants attempted and
+abandoned.
+
+Selection blindness mistakes the output of the filter for universal
+preference.
+
+## Exit as Signal
+
+Participant exit is a weak but important signal.
+
+People leave for many reasons.
+
+No single departure proves design failure.
+
+Patterns matter:
+
+* repeated abandonment at the same onboarding step;
+* contributors disappearing after the same review conflict;
+* operators freezing upgrades after the same migration;
+* forks forming around the same missing boundary.
+
+Exit is difficult to observe because departed participants stop
+reporting.
+
+The ecosystem hears mostly from survivors.
+
+## Silence Bias
+
+**Silence bias** is the overrepresentation of participants who remain
+engaged long enough to provide feedback.
+
+The project receives detailed input from:
+
+* successful installers;
+* active contributors;
+* operators comfortable with current channels;
+* people willing to endure the existing process.
+
+Those who leave contribute silence.
+
+Silence is easy to interpret as satisfaction or irrelevance.
+
+It may be selection.
+
+## Cultural Metrics
+
+An ecosystem cannot measure culture fully, but useful signals include:
+
+* onboarding completion;
+* time to first successful contribution;
+* number of private wrappers;
+* concentration of release authority;
+* repeated support questions;
+* abandoned migrations;
+* reliance on specific elders;
+* frequency of bypass options;
+* divergence between documented and actual workflows;
+* recurring patch classes.
+
+Metrics should not become another counterfeit authority.
+
+They are observations requiring interpretation.
+
+## Intentional Selection
+
+Not all selection is accidental.
+
+A project may intentionally select for operators who:
+
+* understand source-based systems;
+* accept manual configuration;
+* value inspectability;
+* prefer small components;
+* assume responsibility for policy.
+
+This can be coherent.
+
+Intentional selection should state:
+
+* which knowledge is required;
+* which burden is essential;
+* which recovery capability is expected;
+* which complexity the project deliberately leaves to operators.
+
+The project should still distinguish essential demands from inherited
+defects.
+
+> A sharp tool may require skill.  
+> It need not require knowing which part of the handle was repaired in
+> 2011.
+
+## Cultural Refactoring
+
+**Cultural refactoring** is deliberate change to the habits,
+incentives, and narratives surrounding infrastructure.
+
+It may involve:
+
+* updating review norms;
+* making hidden work visible;
+* preserving operator escape hatches;
+* rewarding documentation and boundary extraction;
+* retiring scar prestige;
+* teaching current models rather than historical rituals;
+* changing how incidents assign responsibility;
+* acknowledging local and ecosystem costs separately.
+
+Technical repair without cultural refactoring may be absorbed.
+
+Cultural reform without technical repair becomes motivational
+literature.
+
+## Selection Pressure Audit
+
+A **selection pressure audit** examines what the ecosystem rewards,
+discourages, and filters out.
+
+Ask:
+
+* Which operators succeed?
+* Which fail or leave?
+* Which tools survive?
+* Which practices gain prestige?
+* Which proposals are rejected reflexively?
+* Which hidden burdens are treated as competence?
+* Which roles possess irreplaceable knowledge?
+* Which values arose from specific historical failures?
+* Which traits remain useful under current conditions?
+
+The audit does not ask whether the culture is good or bad.
+
+It asks what environment produced it.
+
+## Field Symptom: Manual Upgrade Culture
+
+The project has no reliable full-system transaction.
+
+Experienced operators:
+
+* read every package change;
+* update critical tools first;
+* keep local caches;
+* snapshot configuration;
+* rebuild broken dependents manually.
+
+This practice produces resilient operators.
+
+It also selects against:
+
+* infrequent users;
+* unattended systems;
+* large deployments;
+* people unable to monitor every upgrade.
+
+The project may deliberately prefer the first population.
+
+The honest doctrine is:
+
+> Upgrades require active operator review because the system does not
+> model every cross-package transition transactionally.
+
+The counterfeit doctrine is:
+
+> Automation is inherently irresponsible.
+
+## Field Symptom: The Tool That Survived
+
+Three package frontends are written.
+
+The cleanest one assumes:
+
+* structured builder output;
+* stable package identity;
+* consistent exit semantics.
+
+Those contracts do not exist.
+
+The frontend fails.
+
+Another frontend contains:
+
+* filename parsers;
+* compatibility tables;
+* wrapper detection;
+* database repair;
+* fallback heuristics.
+
+It survives and becomes standard.
+
+The ecosystem concludes that heuristic integration is the practical
+design.
+
+Selection favored the tool adapted to missing contracts.
+
+It did not prove missing contracts were desirable.
+
+## Field Symptom: Documentation Is for the Weak
+
+A project has sparse documentation.
+
+Successful operators learn through:
+
+* source reading;
+* IRC;
+* experimentation;
+* elder guidance.
+
+They become proud of their understanding.
+
+Requests for clearer documentation are treated as requests to remove
+required competence.
+
+But documentation could explain:
+
+* authority boundaries;
+* failure semantics;
+* state ownership;
+* recovery paths.
+
+Doing so would not remove systems knowledge.
+
+It would stop testing whether newcomers can locate the correct elder.
+
+The culture has moralized one memory substrate.
+
+## Field Symptom: The Failed Automation Project
+
+A maintainer automates release publication.
+
+The script reproduces the visible checklist.
+
+It fails because the human release maintainer also performs
+undocumented judgment:
+
+* noticing suspicious version changes;
+* recognizing incomplete artifacts;
+* interpreting one repository warning;
+* delaying publication after certain dependency changes.
+
+The project concludes:
+
+> Release publication cannot be automated.
+
+A better conclusion is:
+
+> The current control model contains unrepresented human judgment.
+
+Some judgment may remain human.
+
+The script failed because the workflow's semantics were incomplete,
+not because automation lacks moral fiber.
+
+## Field Symptom: The Rejected Transaction
+
+A proposal introduces transactional package database updates.
+
+Experienced operators object:
+
+* filesystem effects remain nontransactional;
+* lifecycle scripts can mutate external state;
+* rollback may hide evidence;
+* direct repair may become harder.
+
+These objections identify real counterfeit risks.
+
+The proposal is revised to claim only:
+
+> Database state commits atomically after validated extraction.
+
+This narrower model may be acceptable.
+
+The culture's suspicion improved the design.
+
+Selection produced valuable antibodies.
+
+The same antibodies would become harmful if they rejected the revised
+contract merely because it used the word *transaction*.
+
+## Field Symptom: The Fork That Automates Everything
+
+A downstream fork responds to manual burden by adding:
+
+* dependency resolution;
+* automatic migration;
+* repository validation;
+* service management;
+* centralized metadata.
+
+The upstream community sees loss of operator control.
+
+The downstream community sees removal of folklore.
+
+Both may be correct.
+
+The architectural question is not:
+
+> Which culture is enlightened?
+
+It is:
+
+* Which authority moved?
+* Which state became hidden?
+* Which local choices remain?
+* Which invariants became enforceable?
+* Which recovery paths disappeared?
+* Which operator burden was removed?
+* Which new infrastructure burden was created?
+
+Cultural conflict often contains an unresolved accounting problem.
+
+## Field Symptom: The Famous Bastard
+
+One operator can repair any broken installation.
+
+The operator becomes:
+
+* release gate;
+* incident commander;
+* historical archive;
+* support authority;
+* reviewer of dangerous changes.
+
+The ecosystem admires this resilience.
+
+It also shapes processes around the operator's presence.
+
+New tooling is judged partly by whether it preserves the operator's
+methods.
+
+The bastard has become part of the niche.
+
+Removing the underlying defects now appears to threaten ecosystem
+stability.
+
+This is ecological lock-in around embodied regulation.
+
+## Do Not Confuse
+
+**Selection pressure** is not deliberate exclusion.
+
+Environments filter participants even without policy.
+
+**Fitness** is not universal quality.
+
+A trait may be fit only under one defective environment.
+
+**Culture** is not merely attitude.
+
+It is a regulatory and memory structure shaped by technical
+conditions.
+
+**Manual practice** is not automatically cultural scar tissue.
+
+It may preserve legitimate operator authority.
+
+**A surviving tool** is not necessarily badly designed.
+
+Its scars may encode real compatibility obligations.
+
+**Resistance** is not automatically conservatism.
+
+It may preserve evidence missing from a proposed model.
+
+**A cultural antibody** is not automatically irrational.
+
+It may recognize a recurrent failure class.
+
+**Documentation** is not automatically inclusion.
+
+Poor documentation can create new counterfeits.
+
+**Onboarding difficulty** is not automatically exclusion.
+
+Some systems require substantial knowledge.
+
+**Intentional narrowness** is not failure.
+
+The project should identify which burdens are intentional.
+
+**Moralization** is not the same as values.
+
+Values become moralization when conditional adaptations are turned
+into judgments about people.
+
+**Cultural evolution** is not a decline narrative.
+
+Bad environments can select useful principles.
+
+**Structural repair** is not culturally neutral.
+
+Changing control changes authority, expertise, and participation.
+
+## The Selection Pressure Test
+
+For any stable technical culture, ask:
+
+1. Which operators tend to succeed?
+2. Which operators tend to leave?
+3. At which points do they leave?
+4. Which tools survive?
+5. What defects are those tools adapted to?
+6. Which habits reduce failure?
+7. Which habits remain after the failure disappears?
+8. Which practices receive status?
+9. Which burdens are reclassified as competence?
+10. Which constraints are moralized?
+11. Which values are genuinely architectural?
+12. Which values are reactions to historical injury?
+13. Which independent implementations failed?
+14. Did they fail because of poor design or hidden contracts?
+15. Which variation has the ecosystem lost?
+16. Is the active community a monoculture?
+17. Which assumptions are invisible to it?
+18. What does newcomer failure reveal?
+19. What does participant silence conceal?
+20. Which elders form bottlenecks?
+21. Which adaptations have become interests?
+22. Which reforms trigger cultural antibodies?
+23. What past injury do those antibodies recognize?
+24. Does the proposed reform preserve legitimate operator sovereignty?
+25. Is technical change being absorbed into old control patterns?
+26. Which historical ratchets are active?
+27. Can compatibility or ritual be retired?
+28. Which scars have become useful architecture?
+29. Which should remain doctrine?
+30. Which should be demoted to history?
+31. What population does the project intentionally serve?
+32. Are its actual selection pressures consistent with that claim?
+33. Does the culture preserve the system's values—or the system's
+    defects?
+34. What would cultural refactoring require alongside technical
+    repair?
+
+An ecosystem cannot avoid selection.
+
+It can choose whether to understand what it is selecting for.
+
+## Nineteenth House Law
+
+> Every system trains its operators.  
+> The curriculum is whatever keeps them from dying.
+
+Selection pressure explains why certain operators, tools, and beliefs
+survive.
+
+Cultural evolution explains how those adaptations become values,
+status, doctrine, and resistance.
+
+The next section is **Doctrine, Identity, and Institutional
+Self-Defense**: how selected adaptations become moral architecture,
+how projects defend their historical coping mechanisms as essence, and
+how to revise doctrine without erasing the evidence that made it
+persuasive.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
