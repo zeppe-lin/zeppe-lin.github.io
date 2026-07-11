@@ -20999,6 +20999,1979 @@ field term, repair boundary, and retained lesson.
 
 ---
 
+# Part VI. Autopsy and Field Method
+
+The package installation leaves files behind but no database record.
+
+The first explanation is:
+
+> The installer is broken.
+
+The second explanation is:
+
+> The database write happens after extraction, and failure between
+> those phases leaves an unregistered filesystem state.
+
+The third explanation is:
+
+> Installation is represented as one operation, but its effects are
+> committed through several authorities without a transaction result
+> capable of naming partial completion.
+
+The first statement identifies a victim.
+
+The second identifies a failure path.
+
+The third identifies a reusable mechanism.
+
+All three may be true.
+
+Only one travels well.
+
+---
+
+# How to Examine a Failure Without Worshipping the Corpse
+
+An **autopsy** is the disciplined reconstruction of how an incident
+became possible, which structures allowed it to persist, and where the
+ecosystem absorbed the resulting burden.
+
+The purpose is not merely to discover:
+
+* which line failed;
+* which command was wrong;
+* which maintainer introduced the behavior;
+* which release contained the regression.
+
+Those facts matter.
+
+A field autopsy also asks:
+
+* Which meaning was assumed?
+* Which authority owned that meaning?
+* Which boundary failed to carry it?
+* Which invariant was absent?
+* Which component first knew the relevant fact?
+* Which compensator kept the ecosystem operational?
+* Which adaptation may now survive the repair?
+* Which broader failure class does this incident instantiate?
+
+> Debugging explains why this process died.  
+> Autopsy explains why the ecosystem had already prepared a chair for
+> the corpse.
+
+## Incident
+
+An **incident** is a bounded event in which observed behavior diverges
+from expected or desired behavior.
+
+Examples include:
+
+* a package database and filesystem disagree;
+* an artifact is published under the wrong identity;
+* a supported option modifies the wrong root;
+* a retry duplicates an operation;
+* a wrapper and direct invocation produce different state;
+* a migration loses compatibility information.
+
+An incident has:
+
+* time;
+* context;
+* participating components;
+* inputs;
+* prior state;
+* observed transitions;
+* resulting state;
+* operator response.
+
+The incident is evidence.
+
+It is not yet the model.
+
+## Specimen
+
+A **specimen** is the concrete incident, artifact, component, log, or
+workflow selected for examination.
+
+A specimen may be:
+
+* one failed package;
+* one build log;
+* one database record;
+* one wrapper;
+* one release procedure;
+* one support conversation;
+* one historical patch.
+
+Specimens are useful because abstractions must remain grounded.
+
+The danger is **specimen capture**: treating the peculiarities of one
+incident as the entire failure class.
+
+> A specimen is where you enter the system.  
+> It is not where the system ends.
+
+## Corpse Worship
+
+**Corpse worship** is excessive attachment to one historical incident,
+component, or personality such that the resulting analysis no longer
+travels beyond it.
+
+Symptoms include:
+
+* every concept named after one tool;
+* every explanation requiring the same IRC history;
+* every lesson reduced to one maintainer's mistake;
+* every future case compared through superficial resemblance;
+* disagreement about historical detail replacing analysis of
+  mechanism.
+
+Corpse worship preserves vivid memory.
+
+It weakens field vocabulary.
+
+A useful field term should remain recognizable when:
+
+* the implementation language changes;
+* the component is replaced;
+* the project name disappears;
+* the original participants leave;
+* the same mechanism appears in another domain.
+
+## Symptom
+
+A **symptom** is an observable indication that a system property may
+have failed.
+
+Examples include:
+
+* stale files;
+* contradictory metadata;
+* unexpected warning;
+* repeated retry;
+* manual repair;
+* operator disagreement;
+* unexplained ordering requirement;
+* several wrappers around one command.
+
+A symptom does not identify the cause.
+
+The same symptom may arise from different mechanisms.
+
+For example, a missing package file may result from:
+
+* failed extraction;
+* lifecycle deletion;
+* local policy;
+* database corruption;
+* post-install cleanup;
+* incomplete migration.
+
+> Symptoms are honest about what was seen.  
+> They are usually promiscuous about why.
+
+## Failure
+
+A **failure** is the inability of a component, operation, or control
+loop to satisfy its relevant contract.
+
+A failure may be:
+
+* explicit;
+* silent;
+* partial;
+* recoverable;
+* masked by compensation;
+* visible only downstream.
+
+The contract matters.
+
+Without one, the observer may know that behavior was undesirable but
+not which property was violated.
+
+## Defect
+
+A **defect** is an implementation or design condition capable of
+producing failure.
+
+Examples include:
+
+* missing validation;
+* incorrect state ordering;
+* ambiguous result representation;
+* duplicated identity logic;
+* absent locking;
+* wrong authority selection.
+
+A defect may exist without producing an incident under current
+conditions.
+
+An incident may involve several defects.
+
+## Mechanism
+
+A **mechanism** is the causal structure through which conditions
+produce an outcome.
+
+A mechanism should explain:
+
+* what state existed;
+* which transition occurred;
+* which boundary carried or lost meaning;
+* which authority acted;
+* what feedback was absent;
+* how compensation altered the result.
+
+For example:
+
+```text
+files extracted
+        ↓
+database update fails
+        ↓
+operation reports generic failure
+        ↓
+caller cannot distinguish valid partial output
+        ↓
+operator reconstructs installed state manually
+```
+
+The mechanism is more useful than:
+
+> The installer sometimes leaves files behind.
+
+The second describes recurrence.
+
+The first explains production.
+
+## Root Cause
+
+A **root cause** is a causal condition selected as sufficiently
+upstream and actionable for the purpose of repair.
+
+The phrase is often abused.
+
+Complex systems rarely possess one metaphysical root.
+
+Possible roots for the same incident include:
+
+* immediate defect: database write failed;
+* contract defect: partial success was unrepresentable;
+* boundary defect: installer did not publish the exact committed
+  state;
+* regulatory defect: no postcondition verification existed;
+* institutional defect: the same failure had been diagnosed before but
+  no regression test survived.
+
+Each is valid at a different analytical depth.
+
+> The root cause is usually where the investigation budget stopped
+> digging.
+
+Use the term with scope:
+
+* immediate cause;
+* contributing cause;
+* structural cause;
+* retention cause;
+* ecological cause.
+
+## Proximate Cause
+
+A **proximate cause** is the immediate event producing the observed
+failure.
+
+Examples include:
+
+* process interruption;
+* malformed archive entry;
+* failed database rename;
+* stale cache;
+* missing file;
+* concurrent writer.
+
+Proximate causes matter for reproduction and immediate repair.
+
+They do not necessarily explain why the system could not contain the
+event.
+
+## Structural Cause
+
+A **structural cause** is a property of contracts, authority, state,
+or regulation that allows a class of proximate causes to produce
+recurring failure.
+
+Examples include:
+
+* partial outcomes cannot be represented;
+* callers reconstruct artifact identity;
+* validation is disconnected from publication;
+* two regulators own the same state;
+* compatibility semantics escape containment.
+
+Structural causes travel across implementations.
+
+## Ecological Cause
+
+An **ecological cause** is a relationship among technical and human
+mechanisms that allows the failure to persist, remain hidden, or
+recur.
+
+Examples include:
+
+* operators routinely repair state, masking the defect;
+* a private wrapper prevents common failures but leaves direct paths
+  exposed;
+* elder knowledge substitutes for documentation;
+* doctrine rejects the boundary needed for repair;
+* local patches prevent pressure from reaching the shared project.
+
+An ecological cause does not mean the operators caused the defect.
+
+It explains how the larger system adapted around it.
+
+## Cause Chain
+
+A **cause chain** is an ordered sequence connecting conditions to
+effects.
+
+For example:
+
+```text
+artifact identity absent
+        ↓
+repository derives identity from filename
+        ↓
+artifact renamed
+        ↓
+repository records false identity
+        ↓
+installer trusts repository
+        ↓
+database records false identity
+```
+
+Cause chains are useful.
+
+They can also oversimplify.
+
+Many incidents involve branches, feedback, and multiple contributing
+paths.
+
+## Causal Graph
+
+A **causal graph** represents several interacting causes, state
+transitions, and feedback paths.
+
+For example:
+
+```text
+             ┌─ filename parser A ─┐
+builder ─────┤                     ├─ conflicting identity
+             └─ filename parser B ─┘
+                         ↓
+                  operator repair
+                         ↓
+                local wrapper added
+                         ↓
+          common failures become invisible
+```
+
+The graph helps reveal:
+
+* duplicated authority;
+* feedback delay;
+* compensators;
+* hidden control loops;
+* where intervention would have leverage.
+
+A graph need not be mathematically formal.
+
+It should be explicit enough that another reader can challenge the
+claimed relationships.
+
+## Timeline
+
+A **timeline** records the sequence of relevant events.
+
+It should distinguish:
+
+* pre-existing state;
+* trigger;
+* operation phases;
+* first divergence;
+* detection;
+* compensation;
+* repair;
+* later recurrence.
+
+Timelines prevent explanations from moving causes backward.
+
+For example:
+
+* a warning printed after mutation did not prevent the mutation;
+* a wrapper added after an incident did not explain the original
+  success;
+* a database record created during repair was not authoritative during
+  failure.
+
+## State-Transition Trace
+
+A **state-transition trace** records how authoritative and derived
+state changed through the incident.
+
+Example:
+
+```text
+S0:
+    package absent
+    no files
+    no database record
+
+S1:
+    files extracted
+    no database record
+
+S2:
+    lifecycle script changes service state
+
+S3:
+    database update fails
+
+S4:
+    command reports failure
+    files remain
+    service changed
+    database absent
+```
+
+This trace makes partial outcome visible.
+
+Without it, the incident may be compressed into:
+
+> Installation failed.
+
+That sentence destroys most of the evidence.
+
+## State Inventory
+
+A **state inventory** lists every representation relevant to the
+operation.
+
+Possible entries include:
+
+* filesystem;
+* package database;
+* artifact metadata;
+* repository index;
+* process state;
+* configuration;
+* cache;
+* service state;
+* transaction log;
+* operator notes.
+
+For each representation, record:
+
+* owner;
+* scope;
+* update time;
+* authority;
+* derivation;
+* possibility of staleness;
+* recovery role.
+
+## Authority Map
+
+An **authority map** identifies which component or surface owns each
+meaning or state decision.
+
+Example:
+
+| Meaning              | Claimed authority | Operational authority               |
+| -------------------- | ----------------- | ----------------------------------- |
+| package identity     | artifact metadata | filename parser                     |
+| installed state      | package database  | database plus filesystem inspection |
+| publication validity | repository policy | release maintainer                  |
+| script context       | command option    | script implementation               |
+
+The difference between claimed and operational authority is often the
+incident.
+
+## Boundary Map
+
+A **boundary map** identifies where facts and state cross between
+components.
+
+For each boundary, ask:
+
+* What enters?
+* What leaves?
+* In what representation?
+* Which facts are lost?
+* Which facts are reconstructed?
+* What failures are expressible?
+* What assumptions leak through?
+* Who validates the transfer?
+
+Boundary maps reveal why one local defect becomes ecosystem coupling.
+
+## Contract Map
+
+A **contract map** records the promises relevant to each boundary.
+
+Contracts may come from:
+
+* implementation;
+* documentation;
+* tests;
+* artifact schema;
+* operator expectation;
+* compatibility behavior.
+
+Record disagreements explicitly.
+
+Do not resolve them by averaging.
+
+```text
+manual:
+    exit zero means installation succeeded
+
+implementation:
+    exit zero means primary process completed
+
+operator practice:
+    verify lifecycle output separately
+```
+
+The contradiction is evidence.
+
+## Compensation Map
+
+A **compensation map** identifies every mechanism offsetting the
+failure.
+
+Examples include:
+
+* wrapper;
+* checklist;
+* manual validation;
+* retry;
+* local patch;
+* support procedure;
+* avoidance;
+* special deployment order.
+
+For each compensator, record:
+
+* which failure it prevents;
+* which facts it reconstructs;
+* which authority it assumes;
+* who maintains it;
+* where it can be bypassed;
+* what new coupling it introduces.
+
+The compensation map prevents a repair from deleting a hidden
+subsystem.
+
+## Regulator Map
+
+A **regulator map** identifies:
+
+* desired state;
+* sensor;
+* controller;
+* actuator;
+* feedback;
+* latency;
+* authority.
+
+Example:
+
+| Function      | Mechanism                            |
+| ------------- | ------------------------------------ |
+| desired state | repository metadata matches artifact |
+| sensor        | nightly audit                        |
+| controller    | release maintainer                   |
+| actuator      | manual quarantine script             |
+| feedback      | rerun audit next night               |
+| latency       | up to 24 hours                       |
+| authority     | maintainer account                   |
+
+This reveals whether the system regulates or merely observes.
+
+## Evidence
+
+**Evidence** is any observation that constrains plausible
+explanations.
+
+Evidence may include:
+
+* logs;
+* state snapshots;
+* artifacts;
+* source code;
+* traces;
+* reproducible tests;
+* timestamps;
+* operator reports;
+* commit history;
+* configuration;
+* independent implementations.
+
+Evidence has quality dimensions:
+
+* directness;
+* completeness;
+* timing;
+* authority;
+* reproducibility;
+* possible contamination;
+* version relevance.
+
+## Observation
+
+An **observation** is a statement limited to what was directly seen.
+
+Example:
+
+> The archive existed after the process returned nonzero.
+
+This is stronger than:
+
+> The build completed but publication failed.
+
+The second is an interpretation requiring more evidence.
+
+Separating observation from inference prevents the autopsy from
+quietly promoting assumptions into facts.
+
+## Inference
+
+An **inference** is a conclusion drawn from evidence.
+
+Example:
+
+> Because the archive checksum matches the final manifest and the
+> failure occurred during repository upload, the artifact was probably
+> complete before publication failed.
+
+Useful autopsies mark inference honestly.
+
+They state:
+
+* supporting evidence;
+* uncertainty;
+* alternative explanations;
+* what additional observation would distinguish them.
+
+## Hypothesis
+
+A **hypothesis** is a proposed mechanism that could explain the
+evidence.
+
+A good hypothesis should predict something observable.
+
+For example:
+
+> The database write races because two writers replace the same
+> temporary file.
+
+Predictions:
+
+* concurrent operations reproduce the failure;
+* serialized operations do not;
+* both processes use the same temporary path;
+* one update disappears rather than corrupting individual records.
+
+A hypothesis that explains every possible outcome predicts nothing.
+
+## Rival Hypothesis
+
+A **rival hypothesis** is an alternate mechanism consistent with some
+of the same evidence.
+
+For the same missing database update:
+
+* write race;
+* disk-full failure;
+* permission error;
+* stale lock cleanup;
+* process interruption.
+
+Listing rivals reduces narrative lock-in.
+
+The first plausible story should not become doctrine merely because it
+was eloquent.
+
+## Disconfirming Evidence
+
+**Disconfirming evidence** is evidence that would weaken or falsify
+the current hypothesis.
+
+An autopsy should ask:
+
+* What result would show this mechanism is wrong?
+* Which observation does the hypothesis fail to explain?
+* Which case should succeed if the model is correct?
+* Does another implementation reproduce the failure?
+
+Without disconfirming evidence, analysis becomes literary confidence.
+
+## Reproduction
+
+A **reproduction** is a controlled recreation of the failure
+conditions.
+
+A useful reproduction should identify:
+
+* initial state;
+* inputs;
+* environment;
+* relevant versions;
+* expected transition;
+* observed transition;
+* cleanup;
+* frequency.
+
+A reproduction proves that one path can produce the symptom.
+
+It does not prove that every historical incident used that path.
+
+## Minimal Reproduction
+
+A **minimal reproduction** removes irrelevant conditions while
+preserving the failure.
+
+This helps isolate mechanism.
+
+But minimality can remove ecological context.
+
+A package database race reproduced with two direct low-level commands
+may omit the wrapper, scheduler, or operator process that makes the
+race likely in production.
+
+Use both:
+
+* minimal reproduction for mechanism;
+* ecological reproduction for operational context.
+
+## Negative Case
+
+A **negative case** is a similar operation in which the failure does
+not occur.
+
+Negative cases reveal boundaries.
+
+For example:
+
+* failure occurs with lifecycle scripts but not without them;
+* backend A fails while backend B succeeds;
+* direct invocation fails while wrapper invocation succeeds;
+* old artifacts fail while new manifests succeed;
+* concurrency triggers the issue while serialization does not.
+
+The difference between positive and negative cases is often more
+useful than either case alone.
+
+## Comparative Autopsy
+
+A **comparative autopsy** examines several incidents sharing a
+suspected mechanism.
+
+Comparison helps distinguish:
+
+* essential cause;
+* incidental detail;
+* local policy;
+* version-specific behavior;
+* recurring structural pattern.
+
+If several tools exhibit the same failure through different
+implementations, the shared boundary becomes a stronger candidate than
+any one codepath.
+
+## Counterfactual
+
+A **counterfactual** asks what would have happened if one condition
+were different.
+
+Examples include:
+
+* If artifact identity had been bound, would renaming matter?
+* If the operation represented partial success, would retry duplicate
+  work?
+* If publication validation were authoritative, would the malformed
+  artifact enter?
+* If the operator were absent, would the system recover?
+* If the wrapper were removed, which failures would reappear?
+
+Counterfactuals help identify leverage.
+
+They should remain tied to plausible system changes.
+
+## Intervention Point
+
+An **intervention point** is a location where changing one mechanism
+could alter the failure class.
+
+Possible intervention points include:
+
+* input validation;
+* normalization;
+* result publication;
+* state transaction;
+* authority cutover;
+* guardrail placement;
+* operator workflow;
+* institutional memory.
+
+Several intervention points may exist.
+
+The earliest technical point is not always the best.
+
+A parser may be unable to enforce repository policy.
+
+A repository may be too late to prevent destructive extraction.
+
+Intervention should occur where:
+
+* facts exist;
+* authority exists;
+* scope matches;
+* recovery remains possible.
+
+## Leverage Point
+
+A **leverage point** is an intervention point whose change affects
+several downstream compensations or failure paths.
+
+Examples include:
+
+* publishing exact artifact identity once;
+* making one repository gate authoritative;
+* representing partial outcomes explicitly;
+* separating host and target contexts;
+* serializing all database writers through one primitive.
+
+A high-leverage change may be small.
+
+Its value comes from the number of reconstructions it eliminates.
+
+## Repair
+
+A **repair** restores local or shared operation after failure.
+
+Repairs may be:
+
+* immediate;
+* local;
+* structural;
+* compensatory;
+* migratory;
+* preventive.
+
+An autopsy should distinguish:
+
+* what repaired the specimen;
+* what prevents recurrence;
+* what reduces the failure class;
+* what preserves evidence.
+
+## Immediate Repair
+
+An **immediate repair** restores the affected state.
+
+Examples include:
+
+* reconstructing one database record;
+* quarantining one artifact;
+* rerunning one failed phase;
+* restoring one configuration.
+
+Immediate repair is incident response.
+
+It may be correct without changing the underlying mechanism.
+
+## Structural Repair
+
+A **structural repair** changes a contract, invariant, authority
+surface, or regulator so the same failure class becomes less
+reachable.
+
+Examples include:
+
+* transaction result;
+* mandatory validation;
+* normalized identity;
+* explicit context;
+* locking;
+* migration boundary.
+
+## Ecological Repair
+
+An **ecological repair** changes both technical structure and
+compensatory relationships.
+
+It may include:
+
+* migrating wrappers;
+* re-skilling operators;
+* retaining recovery;
+* revising doctrine;
+* closing bypass paths;
+* promoting institutional memory.
+
+## Patch
+
+A **patch** is a concrete implementation change.
+
+A patch may perform:
+
+* immediate repair;
+* structural repair;
+* both;
+* neither.
+
+A patch that suppresses one warning may fix the incident report while
+preserving the mechanism.
+
+A patch that introduces one invariant may eliminate a class of
+incidents.
+
+Do not confuse diff size with causal depth.
+
+## Patch-Shaped Explanation
+
+A **patch-shaped explanation** describes the failure only in terms of
+the code change used to fix it.
+
+Example:
+
+> Add `flock()` before updating the database.
+
+This explains the patch.
+
+A field explanation might say:
+
+> Several independent writers mutate one authoritative database
+> through a nonserialized replacement sequence.
+
+The second remains useful if locking later moves into another library.
+
+## Term Extraction
+
+**Term extraction** names the reusable mechanism revealed by the
+autopsy.
+
+A useful term should:
+
+* identify a distinct causal pattern;
+* remain applicable outside the specimen;
+* exclude neighboring mechanisms;
+* suggest diagnostic questions;
+* avoid requiring historical trivia;
+* remain short enough to use in discussion.
+
+Examples:
+
+```text
+narrative coupling
+```
+
+names machine dependence on human-oriented output.
+
+```text
+zombie invariant
+```
+
+names a dead mechanical property maintained socially.
+
+```text
+authority laundering
+```
+
+names social enforcement presented as system guarantee.
+
+The term should compress the model.
+
+It should not replace it.
+
+## Term Inflation
+
+**Term inflation** occurs when every observed peculiarity receives a
+canonical name.
+
+This produces:
+
+* vocabulary burden;
+* overlapping definitions;
+* false precision;
+* ornate discussion;
+* concepts too narrow to travel.
+
+A new term is justified when existing vocabulary cannot distinguish
+the mechanism without repeated explanation.
+
+> Not every corpse needs a species.
+
+## Decorative Term
+
+A **decorative term** sounds memorable but contributes little
+diagnostic power.
+
+A term is decorative if it cannot answer:
+
+* What mechanism does it name?
+* How does it differ from adjacent terms?
+* What evidence identifies it?
+* What intervention follows?
+* Where does it stop applying?
+
+Humor is welcome.
+
+Mechanism pays the rent.
+
+## Generalization
+
+**Generalization** identifies the class of systems or incidents to
+which the mechanism applies.
+
+A responsible generalization states:
+
+* required conditions;
+* relevant boundaries;
+* likely symptoms;
+* exclusions;
+* uncertainty.
+
+For example:
+
+> Narrative coupling occurs whenever machine control depends on output
+> intended primarily for human narration.
+
+This applies across:
+
+* build tools;
+* deployment commands;
+* compilers;
+* monitoring scripts;
+* package managers.
+
+It does not imply every text protocol is accidental.
+
+A deliberately specified text protocol may be an excellent contract.
+
+## Generalization Ladder
+
+A **generalization ladder** moves through several levels:
+
+```text
+specific incident
+        ↓
+repeated symptom
+        ↓
+mechanism
+        ↓
+failure class
+        ↓
+field concept
+        ↓
+design principle
+```
+
+Example:
+
+```text
+wrapper broke after message changed
+        ↓
+callers parse stdout
+        ↓
+machine control depends on narration
+        ↓
+narrative coupling
+        ↓
+publish structured results
+```
+
+Climbing too little produces anecdote.
+
+Climbing too far produces theology.
+
+## Travel Test
+
+The **travel test** asks whether a concept remains useful after
+changing the specimen.
+
+Replace:
+
+* package builder with deployment tool;
+* filename with log message;
+* repository with API gateway;
+* operator with service automation;
+* IRC log with internal wiki.
+
+Does the mechanism still make sense?
+
+If not, the term may describe local history rather than a field
+pattern.
+
+## Stranger Test
+
+The **stranger test** asks whether a technically competent reader
+unfamiliar with the original project can understand and apply the
+concept.
+
+If the explanation requires:
+
+* old nicknames;
+* repository politics;
+* unexplained commands;
+* knowledge of one maintainer's personality;
+
+the concept remains trapped in folklore.
+
+Examples may retain local flavor.
+
+Definitions must travel.
+
+## Counterexample Test
+
+The **counterexample test** asks for cases that resemble the term
+superficially but should not qualify.
+
+For example:
+
+* a documented stable text protocol is not narrative coupling;
+* a deliberate compatibility adapter is not necessarily haunted;
+* operator judgment over local policy is not human-as-the-loop;
+* multiple tools under a conformance contract are not counterfeit
+  pluralism.
+
+Counterexamples sharpen boundaries.
+
+## Mechanism Preservation Test
+
+The **mechanism preservation test** asks whether a proposed repair
+removes the causal structure or only alters its appearance.
+
+Examples:
+
+* JSON output without schema may preserve accidental protocol;
+* rewriting the wrapper may preserve private configuration coupling;
+* adding a warning may preserve invalid reachable state;
+* moving validation to another optional hook may preserve open
+  regulation.
+
+If the same mechanism survives under new syntax, the repair is
+cosmetic.
+
+## Corpse Independence
+
+**Corpse independence** is the point at which the extracted concept no
+longer depends on the original specimen for intelligibility.
+
+The specimen remains valuable as evidence.
+
+The concept can now stand alone.
+
+A section achieves corpse independence when a reader can:
+
+* recognize the term in another system;
+* distinguish it from neighboring terms;
+* identify likely causes;
+* propose relevant interventions;
+* return to the original specimen and see it more clearly.
+
+## Autopsy Record
+
+An **autopsy record** is the durable output of the investigation.
+
+A useful record includes:
+
+1. incident summary;
+2. scope and versions;
+3. observations;
+4. state-transition trace;
+5. authority map;
+6. boundary map;
+7. contract disagreements;
+8. causal graph;
+9. compensators;
+10. hypotheses and disconfirming evidence;
+11. immediate repair;
+12. structural repair;
+13. migration and compatibility effects;
+14. retained lesson;
+15. regression or guardrail;
+16. unresolved questions;
+17. field terms applied or extracted.
+
+The record should distinguish fact from inference.
+
+## Autopsy Summary
+
+An **autopsy summary** is the concise conclusion future maintainers
+should be able to retrieve without replaying the entire investigation.
+
+A useful summary may say:
+
+> Package installation could leave unregistered files because
+> filesystem extraction and database registration were separate
+> commits, while the result contract represented only generic success
+> or failure.  Operators repaired the state manually, masking
+> recurrence.  The repair introduced an explicit partial result and
+> serialized registration.  Remaining lifecycle effects are still
+> nontransactional.
+
+This preserves:
+
+* mechanism;
+* compensation;
+* repair;
+* remaining limit.
+
+## Retained Lesson
+
+A **retained lesson** is the conclusion preserved in a form that can
+affect future work.
+
+Possible retention surfaces include:
+
+* documentation;
+* test;
+* schema;
+* parser rejection;
+* design record;
+* migration tool;
+* field term;
+* house law.
+
+The retention surface should match the lesson's strength.
+
+Not every lesson becomes a guardrail.
+
+Every important lesson should become recoverable.
+
+## Field Note
+
+A **field note** is a concise observation or provisional
+interpretation recorded before the full autopsy is complete.
+
+Field notes may include:
+
+* suspicious boundary;
+* observed state disagreement;
+* possible compensator;
+* historical clue;
+* rival hypothesis;
+* terminology candidate.
+
+Field notes should preserve uncertainty.
+
+They are not miniature verdicts.
+
+## Autopsy Hygiene
+
+**Autopsy hygiene** is the discipline of keeping evidence,
+interpretation, scope, and terminology clean enough for later review.
+
+Good hygiene includes:
+
+* preserve original artifacts;
+* record exact versions;
+* avoid modifying all evidence before inspection;
+* mark uncertain claims;
+* retain failed hypotheses;
+* distinguish current from historical behavior;
+* avoid naming concepts too early;
+* link repairs to observed mechanism;
+* state what remains unknown.
+
+## Evidence Destruction
+
+**Evidence destruction** occurs when immediate repair removes the
+information needed to understand the failure.
+
+Examples include:
+
+* deleting partial artifacts;
+* overwriting damaged databases;
+* rerunning commands before capturing state;
+* cleaning temporary directories;
+* editing configuration without recording the prior value;
+* summarizing logs while discarding originals.
+
+Operational safety may require rapid action.
+
+When possible:
+
+1. preserve state;
+2. copy artifacts;
+3. record timestamps;
+4. then repair.
+
+> Before exorcising the ghost, photograph the furniture.
+
+## Narrative Lock-In
+
+**Narrative lock-in** occurs when one early explanation shapes all
+later evidence collection.
+
+The incident is labeled:
+
+* operator error;
+* race;
+* backend bug;
+* corruption;
+* unsupported use.
+
+Investigators then collect evidence supporting the label and ignore
+alternative mechanisms.
+
+Use provisional language until the causal model survives rival
+hypotheses.
+
+## Blame Substitution
+
+**Blame substitution** replaces causal analysis with assignment of
+fault.
+
+Possible targets include:
+
+* operator;
+* maintainer;
+* old code;
+* new backend;
+* documentation;
+* distribution philosophy.
+
+Responsibility may matter.
+
+But blame does not reveal:
+
+* why the invalid state was reachable;
+* why the failure was not contained;
+* why compensation was necessary;
+* why recurrence remained possible.
+
+> Fault may identify who dropped the match.  
+> Autopsy asks why the building was storing petrol in the hallway.
+
+## Moral Compression
+
+**Moral compression** reduces a complex failure to a character
+judgment.
+
+Examples include:
+
+* careless operator;
+* lazy maintainer;
+* overengineering contributor;
+* stubborn upstream;
+* incompetent automation.
+
+Character may influence incidents.
+
+Field analysis requires mechanisms.
+
+Moral compression is attractive because it produces closure without
+migration.
+
+## Historical Capture
+
+**Historical capture** occurs when the original social conflict
+becomes more important than the mechanism.
+
+Discussion focuses on:
+
+* who proposed the patch;
+* who rejected it;
+* which fork was right;
+* who left;
+* which community betrayed the philosophy.
+
+These facts may explain institutional behavior.
+
+They should not consume the technical model.
+
+The Fieldbook uses history to reveal mechanism.
+
+It does not recruit corpses into current factional war.
+
+## Autopsy Depth
+
+An autopsy may stop at several depths.
+
+### Operational Depth
+
+What happened, and how do we repair this state?
+
+### Component Depth
+
+Which implementation defect produced it?
+
+### Boundary Depth
+
+Which contract or authority relationship allowed it?
+
+### Regulatory Depth
+
+Why was the failure not detected, prevented, or corrected?
+
+### Ecological Depth
+
+Which compensators and adaptations kept the system viable?
+
+### Institutional Depth
+
+Why did the lesson fail to bind or survive?
+
+### Cultural Depth
+
+Which doctrine or selection pressure preserves the structure?
+
+Not every incident requires every depth.
+
+The chosen depth should match the repair ambition.
+
+## Stop Condition
+
+A **stop condition** defines when the autopsy has enough explanation
+for its purpose.
+
+Possible stop conditions include:
+
+* local state safely restored;
+* proximate defect reproduced;
+* failure class named;
+* structural intervention identified;
+* migration designed;
+* retained lesson bound;
+* recurrence prevented.
+
+Without a stop condition, analysis can become infinite historical
+excavation.
+
+With too shallow a stop condition, the same corpse returns under
+another component name.
+
+## Field Method
+
+A practical field autopsy can proceed through the following sequence.
+
+### 1. Preserve the Scene
+
+Capture:
+
+* artifacts;
+* state;
+* logs;
+* versions;
+* configuration;
+* command line;
+* timestamps;
+* operator actions.
+
+Do not begin by cleaning.
+
+### 2. State the Symptom Narrowly
+
+Write only what was observed.
+
+Avoid cause words.
+
+Bad:
+
+> Database race corrupted installation.
+
+Better:
+
+> After two concurrent installations, one package's database record
+> was absent while its files remained.
+
+### 3. Inventory Representations
+
+List every relevant state surface and its claimed authority.
+
+### 4. Trace State Transitions
+
+Record the operation phase by phase.
+
+Identify the first divergence.
+
+### 5. Map Boundaries
+
+Show where facts crossed, disappeared, or were reconstructed.
+
+### 6. Map the Regulator
+
+Identify sensing, decision, correction, and verification.
+
+Mark missing or human-only functions.
+
+### 7. Inventory Compensation
+
+Record wrappers, rituals, operator judgment, and local repairs.
+
+### 8. Form Rival Hypotheses
+
+Avoid one-story certainty.
+
+State what evidence would distinguish them.
+
+### 9. Reproduce
+
+Use minimal and ecological reproductions where possible.
+
+### 10. Identify the Structural Cause
+
+Ask which contract, invariant, authority, or control-loop defect
+allowed the incident class.
+
+### 11. Select Intervention Points
+
+Separate immediate repair from structural and ecological repair.
+
+### 12. Test Generalization
+
+Compare another incident, implementation, or domain.
+
+### 13. Apply or Extract Field Terms
+
+Use existing vocabulary where it fits.
+
+Add a term only when it improves distinction and diagnosis.
+
+### 14. Preserve the Conclusion
+
+Create the decision trace, test, documentation, guardrail, or
+migration needed to retain the lesson.
+
+### 15. Revisit the Compensators
+
+Determine which may retire, which remain legitimate, and which need
+migration.
+
+## Field Autopsy Template
+
+```text
+Incident:
+    What happened?
+
+Scope:
+    Versions, components, environment, affected state.
+
+Observed symptom:
+    What was directly seen?
+
+Expected contract:
+    What should have happened?
+
+State inventory:
+    Which representations existed?
+
+State-transition trace:
+    How did state change?
+
+First divergence:
+    Where did expected and observed state separate?
+
+Authority map:
+    Who claimed and who exercised authority?
+
+Boundary failures:
+    Which facts were lost, reconstructed, or contradicted?
+
+Regulator:
+    Sensor, controller, actuator, feedback, latency.
+
+Compensators:
+    Which humans or tools kept the system operational?
+
+Hypotheses:
+    Candidate mechanisms.
+
+Disconfirming evidence:
+    What would prove each hypothesis wrong?
+
+Proximate cause:
+    Immediate trigger.
+
+Structural cause:
+    Contract, invariant, authority, or model defect.
+
+Ecological cause:
+    Adaptation or compensation preserving the failure.
+
+Immediate repair:
+    How was local state restored?
+
+Structural repair:
+    How is the failure class reduced?
+
+Migration:
+    Which existing state and callers must move?
+
+Retained lesson:
+    What should future work recover?
+
+Binding surface:
+    Where does the lesson gain force?
+
+Remaining limits:
+    What is still unresolved?
+
+Field terms:
+    Which reusable concepts apply?
+```
+
+## Field Symptom: The Broken Package Name
+
+A package archive is published as:
+
+```text
+foo#1.2-1.pkg.tar.gz
+```
+
+Internal metadata says:
+
+```text
+name=bar
+version=1.2
+release=1
+```
+
+### Weak Autopsy
+
+> Maintainer named the file incorrectly.
+
+Immediate repair:
+
+> Rename the archive.
+
+### Better Autopsy
+
+Observations:
+
+* filename and metadata disagree;
+* repository derives identity from filename;
+* installer trusts internal metadata;
+* query tool trusts repository record.
+
+Structural mechanism:
+
+* artifact identity has several authorities;
+* publication performs no binding validation;
+* consumers select different representations.
+
+Compensation:
+
+* release maintainer normally checks names manually.
+
+Field terms:
+
+* authority fracture;
+* artifact-truth failure;
+* human normalization;
+* soft invariant;
+* open regulatory loop.
+
+Structural repair:
+
+* define authoritative identity;
+* bind it to the artifact;
+* validate on publication;
+* contain legacy filename parsing.
+
+The corpse was one package.
+
+The mechanism was distributed identity.
+
+## Field Symptom: The Unsafe Root
+
+A package installed with `--root=/mnt` modifies the host.
+
+### Weak Autopsy
+
+> Lifecycle script is badly written.
+
+### Better Autopsy
+
+State transition:
+
+* files extracted into target;
+* dependencies resolved from host;
+* script runs with host process context;
+* target database updated.
+
+Structural mechanism:
+
+* one `root` value compresses several namespaces;
+* interface projects complete relocation;
+* implementation relocates only selected phases.
+
+Compensation:
+
+* experienced operators avoid scripts under alternate roots.
+
+Field terms:
+
+* semantic counterfeit;
+* semantic overloading;
+* authority fracture;
+* bastard formation;
+* zombie invariant, if the avoidance rule is socially enforced.
+
+Structural repair:
+
+* define explicit contexts;
+* reject unsupported script execution;
+* or provide a real isolated execution model.
+
+The script may still contain a bug.
+
+The interface made the bug part of the system.
+
+## Field Symptom: The Eternal Warning
+
+A validation tool reports malformed repository entries every night.
+
+The same entries remain.
+
+### Weak Autopsy
+
+> Maintainers ignore warnings.
+
+### Better Autopsy
+
+Regulator map:
+
+* sensor: nightly validator;
+* controller: no assigned owner;
+* actuator: manual repository edit;
+* feedback: next nightly run;
+* authority: validator cannot quarantine or reject.
+
+Structural mechanism:
+
+* observation exists without control;
+* repeated warnings saturate attention;
+* repository intake remains unguarded.
+
+Field terms:
+
+* observability theater;
+* detection without authority;
+* open regulatory loop;
+* alert saturation.
+
+Structural repair:
+
+* define ownership;
+* validate before publication;
+* quarantine invalid entries;
+* verify correction.
+
+The maintainers may still be inattentive.
+
+The system is also designed to require indefinite attentiveness.
+
+## Field Symptom: The Rewrite Reintroduces the Bug
+
+A rewritten component loses a historical validation check.
+
+### Weak Autopsy
+
+> New maintainer failed to port all behavior.
+
+### Better Autopsy
+
+Evidence:
+
+* old code contained check;
+* no test named the invariant;
+* rationale existed only in old issue;
+* rewrite preserved syntax but not hidden contract.
+
+Structural mechanism:
+
+* institutional memory lived in implementation;
+* rewrite caused memory demotion;
+* invariant became absent until incident recurrence.
+
+Field terms:
+
+* structural amnesia;
+* clean rewrite syndrome;
+* rediscovery loop;
+* zombie or ghost invariant, depending on current social enforcement.
+
+Structural repair:
+
+* recover the invariant;
+* add contract-level regression test;
+* link rationale;
+* audit neighboring hidden checks.
+
+The rewrite did not merely omit code.
+
+The project had failed to extract what the code knew.
+
+## Field Symptom: The Wrapper Everyone Needs
+
+Every experienced operator invokes a wrapper around one low-level
+command.
+
+### Weak Autopsy
+
+> The low-level command has poor ergonomics.
+
+### Better Autopsy
+
+Compensation inventory:
+
+* wrapper validates options;
+* serializes state;
+* interprets partial outcomes;
+* repairs metadata;
+* publishes exact artifacts.
+
+Structural mechanism:
+
+* several missing boundaries have accumulated at one coping layer.
+
+Field terms:
+
+* coping infrastructure;
+* shadow regulator;
+* metastasis layer;
+* embodied or scripted control plane;
+* boundary extraction candidate.
+
+Possible repair:
+
+* extract each hidden function;
+* decide which belong in low-level tool, orchestrator, repository, or
+  local policy;
+* migrate callers;
+* retire only the compensations that have acquired new owners.
+
+The wrapper may indeed improve ergonomics.
+
+That is not its only job.
+
+## Do Not Confuse
+
+**Autopsy** is not the same as debugging.
+
+Debugging may stop after the immediate defect is fixed.
+
+**A symptom** is not a cause.
+
+It may be produced by several mechanisms.
+
+**A proximate cause** is not necessarily a structural cause.
+
+The trigger may vary while the boundary defect remains.
+
+**A root cause** is not necessarily singular.
+
+Stateful ecosystems usually support several useful causal depths.
+
+**An operator mistake** is not irrelevant.
+
+Operator action may be part of the cause chain.
+
+It should not replace analysis of reachable state and visible
+contracts.
+
+**A historical explanation** is not automatically a current contract.
+
+Scope and version matter.
+
+**A field term** is not a diagnosis by itself.
+
+The mechanism must still be demonstrated.
+
+**A causal graph** is not truth because it has arrows.
+
+Every arrow is a claim requiring evidence.
+
+**A reproduction** is not proof that every observed incident shared
+the same cause.
+
+**A patch** is not proof that the mechanism was understood.
+
+It may only block one path.
+
+**Generalization** is not permission to ignore local detail.
+
+Local state determines whether the mechanism actually applies.
+
+**Corpse independence** does not mean forgetting the specimen.
+
+Evidence remains necessary to prevent doctrine from floating free.
+
+## The Autopsy Test
+
+Before declaring an incident understood, ask:
+
+1. What was directly observed?
+2. What is inferred?
+3. Which evidence supports each inference?
+4. Which versions and conditions apply?
+5. What was the initial state?
+6. What state transitions occurred?
+7. Where did the first divergence appear?
+8. Which representations disagreed?
+9. Which representation was claimed authoritative?
+10. Which representation was operationally authoritative?
+11. Which boundary lost or reconstructed meaning?
+12. Which contract was violated?
+13. Was the contract explicit, implicit, or hallucinated?
+14. What was the proximate cause?
+15. What was the structural cause?
+16. What was the ecological cause?
+17. Which regulator should have detected or corrected it?
+18. Which control-loop functions were missing?
+19. Which operators or tools compensated?
+20. Did that compensation hide recurrence?
+21. What rival hypotheses exist?
+22. What evidence would disconfirm the preferred explanation?
+23. Can the failure be reproduced?
+24. What negative case reveals the boundary?
+25. Does the proposed repair remove the mechanism?
+26. Which hidden functions might the repair remove accidentally?
+27. Which existing state must migrate?
+28. Which compatibility path remains?
+29. Which field terms fit?
+30. Are those terms distinct and useful?
+31. Does the concept pass the travel test?
+32. Does it pass the stranger test?
+33. Does it exclude relevant counterexamples?
+34. Is the analysis trapped in one historical conflict?
+35. What conclusion must be retained?
+36. Where will it bind?
+37. What remains uncertain?
+38. What would make the same failure recur under another name?
+
+An autopsy is complete enough when the ecosystem can change its future
+behavior without needing to preserve the original corpse as a runtime
+dependency.
+
+## Twenty-Second House Law
+
+> The corpse is evidence.  
+> It is not the ontology.
+
+A field method begins with concrete failure and ends with a mechanism
+that can travel.
+
+The next section is **Failure Maps and Comparative Diagnosis**: how to
+compare several incidents, locate recurring structures across
+components, and avoid mistaking shared symptoms for shared causes.
 
 ---
 
