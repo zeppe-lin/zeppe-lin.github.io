@@ -14631,9 +14631,1409 @@ repair can coexist with recurring structural failure.
 
 The next section is **Operator Adaptation and Bastard Formation**: how
 people exposed to weak regulation develop compensatory skill,
-suspicion, ritual, and identity—and how the ecosystem eventually
+suspicion, ritual, and identity --- and how the ecosystem eventually
 mistakes the operators it has injured for proof that its design is
 sound.
+
+---
+
+# Operator Adaptation and Bastard Formation
+
+The command reports success.
+
+The experienced operator checks the database.
+
+Then the filesystem.
+
+Then the artifact metadata.
+
+Then the service state.
+
+The newcomer asks why.
+
+The operator says:
+
+> Because success means the command stopped talking.
+
+The newcomer follows the documentation and damages the installation.
+
+The experienced operator repairs it, explains which documented step is
+not really safe, and adds another line to a private wrapper.
+
+The ecosystem records the incident as user error.
+
+The operator records it in muscle memory.
+
+---
+
+## Operator Adaptation
+
+**Operator adaptation** is the process by which people change their
+behavior, expectations, tools, and reasoning to compensate for
+recurring properties of the system.
+
+Operators may learn to:
+
+* distrust nominal success;
+* inspect several state representations;
+* avoid accepted but incoherent option combinations;
+* preserve undocumented command order;
+* maintain local wrappers;
+* distinguish harmless warnings from dangerous ones;
+* reconstruct artifact identity;
+* delay upgrades until another operator has survived them;
+* ask specific maintainers rather than consult current documentation.
+
+Adaptation is not automatically pathological.
+
+Every tool requires skill.
+
+Every environment rewards experience.
+
+The diagnostic question is:
+
+> Is the operator learning the system's legitimate model, or
+> compensating for the absence of one?
+
+## Adaptive Competence
+
+**Adaptive competence** is skill developed in response to the actual
+behavior of an environment rather than its declared interface alone.
+
+An adaptively competent operator may know:
+
+* which representation is usually stale;
+* which failure leaves recoverable output;
+* which internal component owns the practical truth;
+* which operations are only partially transactional;
+* which local policy must override package defaults;
+* which recovery sequence preserves the most evidence.
+
+This competence is real.
+
+It can be sophisticated and valuable.
+
+But its existence proves only that adaptation occurred.
+
+It does not prove the environment was well designed.
+
+> Rats learn mazes.  
+> The maze does not receive a usability award.
+
+## Bastard
+
+A **bastard** is an operator shaped into a compensatory subsystem by
+repeated exposure to weak contracts, incomplete regulation, semantic
+drift, and operational risk.
+
+The bastard does not merely know more commands.
+
+The bastard has learned where the machine lies.
+
+Typical bastard traits include:
+
+* suspicion of broad interface claims;
+* preference for inspecting authoritative state directly;
+* resistance to irreversible automation;
+* private recovery tooling;
+* attention to ordering and context;
+* historical awareness of recurrent failure;
+* rapid recognition of semantic counterfeit;
+* reluctance to trust documentation without comparing implementation;
+* ability to reconstruct state from incomplete evidence.
+
+The term is not praise or insult.
+
+It names a causal product.
+
+> The bastard is what the ecosystem compiles when it cannot compile
+> the invariant.
+
+## Bastard Formation
+
+**Bastard formation** is the process through which operator adaptation
+becomes stable expertise, identity, and ecosystem function.
+
+A common sequence is:
+
+```text
+system ambiguity
+        ↓
+operator failure
+        ↓
+manual recovery
+        ↓
+retained suspicion
+        ↓
+private workaround
+        ↓
+repeated success
+        ↓
+expert status
+        ↓
+ecosystem dependence
+```
+
+The first encounter produces confusion.
+
+The second produces caution.
+
+The fifth produces a script.
+
+The twentieth produces doctrine.
+
+Eventually the operator becomes the person everyone asks before using
+the feature the interface claims is straightforward.
+
+## Regulatory Apprenticeship
+
+**Regulatory apprenticeship** is the informal training through which
+an operator learns to perform missing control-loop functions.
+
+The apprentice learns:
+
+* what to observe;
+* which observations are trustworthy;
+* how to classify deviation;
+* when to intervene;
+* which actuator is safe;
+* how to verify correction;
+* which state must be preserved for later autopsy.
+
+This knowledge is often taught through:
+
+* incident participation;
+* side-channel explanation;
+* copied shell history;
+* supervised upgrades;
+* repair sessions;
+* warnings delivered after the dangerous action has already begun.
+
+Formal documentation may teach command syntax.
+
+Apprenticeship teaches system doubt.
+
+## Internal Control Model
+
+An **internal control model** is the operator's mental representation
+of how the system actually changes state.
+
+It may include beliefs such as:
+
+```text
+builder output
+    is informative but not authoritative
+
+artifact metadata
+    is usually authoritative unless produced by legacy backend
+
+package database
+    describes registered state
+
+filesystem
+    may contain unregistered residue
+
+exit status
+    does not represent partial completion
+```
+
+This model allows the operator to regulate ambiguity.
+
+It may be more accurate than the official documentation.
+
+It may also be:
+
+* local;
+* version-specific;
+* incomplete;
+* difficult to articulate;
+* contaminated by historical incidents no longer relevant.
+
+The operator carries a model.
+
+The system carries several representations.
+
+Correctness depends on the match.
+
+## State Triangulation
+
+**State triangulation** is the comparison of several imperfect
+representations to infer the most likely actual state.
+
+An operator may compare:
+
+* command output;
+* exit status;
+* filesystem contents;
+* database records;
+* artifact manifests;
+* service state;
+* timestamps;
+* logs;
+* repository indexes.
+
+No single representation is trusted completely.
+
+The operator reconstructs reality from disagreement.
+
+State triangulation is valuable during recovery.
+
+It becomes routine infrastructure when authoritative state is
+chronically weak.
+
+> One source of truth is architecture.  
+> Five sources and an experienced operator are forensic work.
+
+## Suspicion Discipline
+
+**Suspicion discipline** is the learned refusal to accept interface
+claims without checking the evidence relevant to the operation.
+
+Healthy suspicion asks:
+
+* What state actually changed?
+* Which component owns this result?
+* Is success complete?
+* Can this action be reversed?
+* Which context did the script use?
+* What survives if the next phase fails?
+
+Suspicion can be a professional virtue.
+
+It protects systems from:
+
+* ambiguous success;
+* unsafe defaults;
+* incomplete rollback;
+* counterfeit guarantees;
+* undocumented compatibility.
+
+But suspicion has a cost.
+
+Every operation becomes an autopsy performed in advance.
+
+## Defensive Interpretation
+
+**Defensive interpretation** is reading every interface through the
+possibility that its visible meaning is incomplete.
+
+For example:
+
+```text
+install
+```
+
+is interpreted as:
+
+> perform some subset of extraction, registration, dependency
+> handling, and lifecycle mutation; inspect afterward.
+
+```text
+--root=/mnt
+```
+
+is interpreted as:
+
+> alter at least one path base; determine manually which other
+> contexts remain host-relative.
+
+Defensive interpretation prevents damage.
+
+It also reveals that the public interface no longer carries enough
+trustworthy meaning by itself.
+
+## Operator Hardening
+
+**Operator hardening** is the development of protective habits after
+repeated exposure to failure.
+
+These habits may include:
+
+* making snapshots before ordinary operations;
+* delaying updates;
+* reading source before using new options;
+* running commands interactively before automating them;
+* preserving old binaries for recovery;
+* keeping local package copies;
+* avoiding concurrency;
+* maintaining private notes;
+* assuming every warning may hide partial mutation.
+
+Hardening may be rational.
+
+It may substantially improve survivability.
+
+The cost is transferred into:
+
+* time;
+* attention;
+* caution;
+* storage;
+* duplicated infrastructure;
+* resistance to change.
+
+The operator becomes safer because the environment has become
+expensive to trust.
+
+## Adaptive Burden
+
+**Adaptive burden** is the ongoing cost of remaining compatible with
+an incomplete or drifting system.
+
+It includes:
+
+* remembering exceptions;
+* maintaining wrappers;
+* reviewing every update for semantic changes;
+* recovering undocumented state;
+* teaching newcomers;
+* verifying routine operations manually;
+* carrying obsolete compatibility knowledge;
+* distinguishing current truth from folklore.
+
+Adaptive burden differs from learning cost.
+
+Learning cost may decline after mastery.
+
+Adaptive burden persists because the operator must continue
+compensating.
+
+## Adaptive Tax
+
+The **adaptive tax** is the portion of operational effort spent not on
+the operator's intended work, but on remaining adapted to the
+infrastructure.
+
+Examples include:
+
+* checking that a successful command succeeded;
+* repairing state after supported operations;
+* reading release discussions before routine upgrades;
+* updating private wrappers after interface changes;
+* reproducing old environments to understand artifacts;
+* maintaining separate paths for direct and wrapped invocation.
+
+The tax may be invisible in project accounting.
+
+It appears as operator competence.
+
+> The system is cheap because the operator pays in attention.
+
+## Embodied Control Plane
+
+An **embodied control plane** exists when human knowledge and action
+provide the practical orchestration, validation, and recovery logic
+that the technical system lacks.
+
+The operator decides:
+
+* which operation is safe;
+* which backend may be used;
+* which state is authoritative;
+* whether a warning permits continuation;
+* how partial success should be interpreted;
+* when migration has completed.
+
+These are control-plane decisions.
+
+They happen inside a person.
+
+The component boundary appears minimal because the orchestration layer
+has become biological.
+
+## Embodied Compatibility Layer
+
+An **embodied compatibility layer** is an operator who translates
+between old and current semantics through remembered context.
+
+The operator knows:
+
+* which artifact versions require old handling;
+* which configuration fields changed meaning;
+* which command sequence belongs to each release;
+* which historical behavior remains active;
+* which compatibility warning is safe.
+
+Without the operator, old and new states cannot coexist reliably.
+
+The compatibility mechanism exists.
+
+It is not deployable.
+
+## Trauma-Shaped Expertise
+
+**Trauma-shaped expertise** is skill organized around avoiding
+failures the operator has previously experienced.
+
+The phrase is metaphorical.
+
+The relevant pattern is:
+
+```text
+unexpected failure
+        ↓
+high recovery cost
+        ↓
+strong retained association
+        ↓
+future avoidance
+```
+
+An operator who once lost package database state may:
+
+* distrust concurrent operations forever;
+* preserve redundant backups;
+* reject a new transactional implementation;
+* insist on ritual sequencing after the original race was fixed.
+
+The expertise contains real evidence.
+
+It may also preserve obsolete fear.
+
+> Scar tissue remembers the knife.  
+> It does not automatically know whether the knife is still present.
+
+## Skill and Scar
+
+A **skill** increases the operator's ability to understand and control
+the system.
+
+A **scar** is an adaptation whose continued necessity has not been
+re-evaluated.
+
+The same behavior may contain both.
+
+For example, verifying database consistency after an upgrade may be:
+
+* sound postcondition checking;
+* a response to one old migration defect;
+* a ritual retained after the defect disappeared.
+
+Distinguishing skill from scar requires:
+
+* current evidence;
+* explicit contracts;
+* controlled tests;
+* historical scope;
+* confidence that removal is observable and reversible.
+
+## Bastard Reflex
+
+A **bastard reflex** is an immediate protective response formed
+through repeated exposure.
+
+Examples include:
+
+* “never trust generated configuration”;
+* “never use the frontend for recovery”;
+* “never upgrade the package manager and libc together”;
+* “always inspect the archive before installation”;
+* “never run scripts under an alternate root”.
+
+Reflexes reduce decision time.
+
+They are useful in familiar danger.
+
+They become doctrinal hazards when applied outside the conditions that
+formed them.
+
+## Generalized Distrust
+
+**Generalized distrust** occurs when rational suspicion of specific
+weak boundaries expands into suspicion of every abstraction,
+automation, or shared mechanism.
+
+The operator has seen:
+
+* wrappers conceal failure;
+* transactions prove partial;
+* documentation describe wishes;
+* generic interfaces erase context.
+
+The operator concludes:
+
+* all wrappers are lies;
+* all automation reduces control;
+* all abstractions hide truth;
+* all shared policy threatens sovereignty.
+
+The conclusion is understandable.
+
+It is also broader than the evidence.
+
+A system can manufacture opposition to good structure by repeatedly
+shipping bad structure under the same names.
+
+## Abstraction Allergy
+
+**Abstraction allergy** is a learned rejection of abstraction caused
+by exposure to abstractions that projected coherence they did not
+possess.
+
+The operator may prefer:
+
+* direct commands;
+* explicit files;
+* manual sequencing;
+* visible state mutation;
+* locally understood scripts.
+
+These preferences may produce excellent systems.
+
+They may also prevent boundary extraction when every shared contract
+is treated as the beginning of another semantic counterfeit.
+
+> The operator does not hate abstraction.  
+> The operator hates being lied to through a function call.
+
+## Automation Allergy
+
+**Automation allergy** is reluctance to automate operations whose
+state, failure semantics, or recovery path cannot be trusted.
+
+This reluctance may be correct.
+
+Automation amplifies:
+
+* ambiguity;
+* concurrency;
+* stale observations;
+* partial success;
+* bypass of human interpretation.
+
+The allergy becomes pathological when preserved after the system
+gains:
+
+* structured outcomes;
+* idempotent operations;
+* explicit invariants;
+* reliable postcondition checks;
+* safe rollback.
+
+The operator's model must be allowed to learn too.
+
+## Competence Inversion
+
+**Competence inversion** occurs when the system's missing structure is
+reclassified as an operator competence requirement.
+
+The pattern is:
+
+```text
+system accepts incoherent state
+        ↓
+experienced operators avoid it
+        ↓
+new operator enters it
+        ↓
+failure occurs
+        ↓
+new operator is declared incompetent
+```
+
+The system exposed no binding boundary.
+
+The ecosystem judges the operator for failing to carry folklore.
+
+> The trap was documented socially.  
+> Therefore the foot is at fault.
+
+Competence inversion protects the interface from criticism by making
+adaptation a prerequisite for legitimacy.
+
+## Expertise Laundering
+
+**Expertise laundering** is the presentation of operator compensation
+as evidence that the system itself is coherent.
+
+For example:
+
+* upgrades succeed because experienced maintainers perform manual
+  sequencing;
+* repository integrity holds because one person reviews every
+  artifact;
+* alternate roots work because operators avoid lifecycle scripts;
+* database corruption is rare because nobody runs operations
+  concurrently.
+
+The project observes stable outcomes.
+
+It attributes them to design.
+
+The stabilizing work performed by experts disappears from the
+explanation.
+
+> The system takes credit for the operator's scar tissue.
+
+## Operator-Blame Loop
+
+An **operator-blame loop** is a regulatory pattern in which system
+failure produces operator adaptation rather than system correction.
+
+```text
+ambiguous interface
+        ↓
+operator misinterprets state
+        ↓
+failure
+        ↓
+operator blamed
+        ↓
+operator becomes more cautious
+        ↓
+common-case failures decline
+        ↓
+interface remains unchanged
+```
+
+The loop stabilizes the ecosystem.
+
+It does so by changing people instead of infrastructure.
+
+## Survivorship Filter
+
+A **survivorship filter** is the loss of participants unable or
+unwilling to absorb the ecosystem's adaptive burden.
+
+Those who remain are more likely to:
+
+* tolerate ambiguity;
+* enjoy archaeology;
+* maintain private tooling;
+* accept high initiation cost;
+* identify with the project's difficulty;
+* regard missing structure as freedom or rigor.
+
+The surviving population is not representative of everyone who
+attempted to operate the system.
+
+This matters when maintainers assess usability.
+
+> Everyone still here understands it.  
+> The people who did not understand it are, by definition, not still
+> here.
+
+## Survivor Validation
+
+**Survivor validation** is the claim that the system is usable because
+its remaining participants use it successfully.
+
+This evidence is real but biased.
+
+It measures:
+
+* compatibility with selected operators;
+* not necessarily clarity of the interface;
+* survivability under accumulated folklore;
+* not necessarily system-level coherence.
+
+A demanding system may intentionally serve a narrow audience.
+
+The honest claim is:
+
+> This system expects operators to own these explicit
+> responsibilities.
+
+The counterfeit claim is:
+
+> The system is simple; unsuitable operators merely failed to
+> understand it.
+
+## Selection Pressure
+
+**Selection pressure** is the tendency of an environment to retain
+participants and tools adapted to its recurring conditions.
+
+A weakly regulated ecosystem selects for operators who:
+
+* distrust abstraction;
+* value manual control;
+* retain historical knowledge;
+* tolerate breakage;
+* build private tools;
+* prefer direct access to state;
+* treat documentation as advisory.
+
+It also selects for tools that:
+
+* expose internals;
+* remain scriptable;
+* permit recovery;
+* tolerate manual intervention;
+* avoid strict models;
+* preserve old behavior.
+
+Selection pressure does not require deliberate policy.
+
+The environment rewards what survives.
+
+## Initiation Cost
+
+**Initiation cost** is the burden a newcomer must absorb before using
+the system safely.
+
+It may include learning:
+
+* terminology;
+* command syntax;
+* architecture;
+* local policy;
+* historical exceptions;
+* unsupported combinations;
+* recovery practice;
+* social routes to current truth.
+
+Some initiation cost is legitimate.
+
+A source-based operating system should not pretend to require no
+systems knowledge.
+
+The diagnostic issue is whether the cost teaches:
+
+* meaningful control;
+* or accumulated compensation.
+
+## Onboarding Cliff
+
+An **onboarding cliff** occurs when the visible interface supports
+basic operation until one hidden boundary suddenly requires extensive
+historical or local knowledge.
+
+The newcomer progresses normally:
+
+1. follows installation guide;
+2. configures repositories;
+3. installs packages;
+4. reaches one exceptional state;
+5. discovers that safe continuation requires several years of
+   folklore.
+
+The interface provided a ramp.
+
+The contract ended at a cliff.
+
+## Apprenticeship Bottleneck
+
+An **apprenticeship bottleneck** occurs when safe operation requires
+direct training from a small number of experienced participants.
+
+Documentation may be extensive.
+
+The missing knowledge concerns:
+
+* judgment;
+* current exceptions;
+* unwritten authority;
+* repair confidence;
+* recognition of misleading states.
+
+The bottleneck limits:
+
+* contributor growth;
+* operator independence;
+* succession;
+* automation;
+* geographic and temporal reach.
+
+## Elder Bottleneck
+
+An **elder bottleneck** is dependence on one or a few operators whose
+internal models carry irreplaceable regulatory knowledge.
+
+Symptoms include:
+
+* releases wait for one person;
+* difficult incidents are deferred until an elder appears;
+* code cannot be removed because only one person may remember why it
+  exists;
+* newcomers receive contradictory answers until the elder resolves
+  them;
+* migration cannot finish because nobody else trusts the state.
+
+The elder may be extraordinarily competent.
+
+That competence is precisely why the structural dependence can remain
+hidden.
+
+## Bastard Bus Factor
+
+The **bastard bus factor** is the number of compensatory operators
+whose disappearance would expose unresolved boundaries.
+
+Ordinary bus factor asks:
+
+> Who can maintain the code?
+
+Bastard bus factor also asks:
+
+> Who knows which parts of the system cannot be trusted as written?
+
+A project may have many developers and one bastard.
+
+Its implementation bus factor is healthy.
+
+Its operational model remains one accident away from rediscovery.
+
+## Automation Substitution Failure
+
+**Automation substitution failure** occurs when a workflow previously
+stabilized by an experienced operator is automated without
+representing the operator's hidden regulatory work.
+
+The automation reproduces:
+
+* the commands;
+* the ordering;
+* the nominal conditions.
+
+It omits:
+
+* suspicion;
+* state triangulation;
+* contextual judgment;
+* recognition of partial outcomes;
+* decision to stop;
+* post-repair verification.
+
+The manual process seemed simple because the operator performed
+several unrecorded comparisons.
+
+The automation executes the visible ritual and fails.
+
+> The script replaced the hands.  
+> Nobody replaced the doubt.
+
+## Field Symptom: Exit Zero
+
+A package installation exits zero.
+
+The experienced operator checks:
+
+* package database entry;
+* installed file list;
+* lifecycle-script output;
+* service state.
+
+The newcomer assumes success.
+
+A lifecycle script failed silently.
+
+The service is misconfigured.
+
+The project responds:
+
+> Experienced operators always inspect the log.
+
+The ecosystem has transformed incomplete success semantics into an
+operator qualification.
+
+A structural repair may include:
+
+* explicit lifecycle result;
+* partial-success state;
+* postcondition validation;
+* failure propagation.
+
+The inspection habit may remain valuable.
+
+It should not be the only contract.
+
+## Field Symptom: The New Operator Uses the Manual
+
+A manual says:
+
+```text
+pkgman update --root /mnt foo
+```
+
+The new operator runs the command.
+
+Files enter `/mnt`.
+
+Dependencies are resolved against the host.
+
+A lifecycle script modifies the host.
+
+An experienced operator says:
+
+> You never use `--root` with packages that have scripts.
+
+The restriction is absent from the interface and manual.
+
+The operator learns the rule through damage.
+
+The ecosystem has completed one unit of regulatory apprenticeship.
+
+## Field Symptom: The Private Wrapper
+
+An operator maintains:
+
+```text
+safe-pkg-update
+```
+
+The wrapper:
+
+* verifies repository state;
+* checks free space;
+* locks the package database;
+* snapshots configuration;
+* invokes the package frontend;
+* runs `rejmerge`;
+* checks reverse dependencies;
+* summarizes partial failure.
+
+The official operation is described as:
+
+```text
+pkgman sysup
+```
+
+The wrapper is not merely convenience.
+
+It is the operator's control plane.
+
+If every experienced operator carries an equivalent wrapper, the
+project should inspect which responsibilities the official operation
+has outsourced.
+
+## Field Symptom: The Rewrite Rejected by Elders
+
+A new implementation offers:
+
+* structured results;
+* transactional database updates;
+* explicit operation contexts;
+* conformance tests.
+
+Experienced operators resist it.
+
+They distrust:
+
+* the new abstraction;
+* automatic rollback;
+* hidden internal state;
+* stricter rejection.
+
+Their resistance may contain valid evidence:
+
+* recovery paths are insufficient;
+* the transaction excludes lifecycle effects;
+* direct state inspection became harder;
+* the conformance suite misses historical cases.
+
+It may also contain scars from previous counterfeit abstractions.
+
+The correct response is neither:
+
+* dismiss the elders as conservative;
+* nor preserve every inherited ritual.
+
+The project must separate:
+
+* current failure evidence;
+* legitimate operator sovereignty;
+* outdated adaptive reflex;
+* unresolved model defects.
+
+## Field Symptom: The System Works for Everyone Here
+
+A project receives reports that installation is confusing.
+
+Maintainers respond:
+
+> Nobody in the community has trouble with it.
+
+The active community consists primarily of operators who:
+
+* survived the installation;
+* enjoy manual recovery;
+* carry local notes;
+* know which documentation is outdated;
+* can reach maintainers through IRC.
+
+The statement may be factually correct.
+
+It says little about the operators filtered out before joining.
+
+This is survivor validation.
+
+## Field Symptom: The Missing Maintainer
+
+One maintainer understands the package database migration path.
+
+The migration is undocumented.
+
+The code contains several unexplained branches.
+
+The maintainer leaves.
+
+The next release retains every branch out of caution.
+
+Nobody knows:
+
+* which state each branch handles;
+* whether migration is complete;
+* which branch is safe to remove;
+* whether new installations still require compatibility.
+
+The elder disappeared.
+
+The system inherited a haunted codepath and an apprenticeship vacancy.
+
+## Field Symptom: The Hostile Support Answer
+
+A newcomer asks why an apparently supported operation damaged state.
+
+The answer is:
+
+> Read the source.
+
+Reading source may genuinely be appropriate in a small, transparent
+system.
+
+But the response can conceal two different contracts:
+
+### Legitimate transparency
+
+> The implementation is intentionally small, the relevant behavior is
+> explicit, and operators are expected to inspect it before extending
+> the system.
+
+### Competence inversion
+
+> The public interface projects one meaning, the implementation
+> performs another, and operators are responsible for discovering the
+> disagreement retrospectively.
+
+The same phrase can defend sovereignty or launder a missing boundary.
+
+## Cruelty Transfer
+
+**Cruelty transfer** occurs when the sharpness of a technical boundary
+is moved into social interaction.
+
+The system does not reject the invalid state.
+
+An experienced participant rejects the person who entered it.
+
+Examples include:
+
+* ridicule for trusting documented behavior;
+* contempt for missing folklore;
+* status gained through surviving unnecessary danger;
+* initiation through preventable failure;
+* hostility toward requests for explicit contracts.
+
+The technical edge remains.
+
+It has been attached to community behavior.
+
+> The parser could have said no.  
+> Instead, the mailing list does.
+
+## Scar Prestige
+
+**Scar prestige** is status acquired through visible survival of
+difficult infrastructure.
+
+Operators may take pride in:
+
+* repairing catastrophic upgrades;
+* maintaining ancient systems;
+* understanding undocumented internals;
+* surviving sparse documentation;
+* carrying private patches.
+
+The pride is understandable.
+
+Difficult work deserves recognition.
+
+Scar prestige becomes harmful when simplifying the system threatens
+the status derived from mastering its defects.
+
+The ecosystem may then defend adaptive burden as culture.
+
+## Difficulty Capture
+
+**Difficulty capture** occurs when avoidable operational difficulty
+becomes part of the ecosystem's identity and legitimacy.
+
+Claims may include:
+
+* “serious operators know this”;
+* “automation is for people who do not understand their systems”;
+* “documentation would attract the wrong users”;
+* “if you cannot recover manually, you should not use it”;
+* “the sharp edges teach responsibility”.
+
+Some difficulty does teach.
+
+Some merely injures and selects.
+
+The Fieldbook asks which.
+
+## Bastard Identity
+
+**Bastard identity** forms when compensatory skill becomes part of how
+operators understand themselves and their relationship to the system.
+
+The operator may value:
+
+* independence;
+* suspicion;
+* direct control;
+* resilience;
+* historical continuity;
+* refusal to trust marketing semantics.
+
+These values can be excellent.
+
+The danger is conflating them with the defects that produced them.
+
+A coherent system need not abolish:
+
+* operator sovereignty;
+* inspectability;
+* manual recovery;
+* explicit control.
+
+It should abolish the requirement that operators be wounded before
+they can use those capabilities safely.
+
+## Adaptive Lock-In
+
+**Adaptive lock-in** occurs when operator practices, identity,
+tooling, and doctrine make structural repair socially expensive even
+after it becomes technically possible.
+
+A new boundary may threaten:
+
+* private wrappers;
+* established expertise;
+* familiar recovery paths;
+* direct access patterns;
+* status hierarchies;
+* local autonomy.
+
+The old system survives partly because the ecology has organized
+itself around compensating for it.
+
+Repair must therefore migrate not only code and state, but human
+control.
+
+## De-Skilling Fear
+
+**De-skilling fear** is concern that stronger contracts or automation
+will make operators less capable of understanding and recovering the
+system.
+
+This concern is legitimate when automation:
+
+* hides state;
+* removes manual paths;
+* centralizes authority;
+* prevents inspection;
+* replaces judgment with opaque policy;
+* makes recovery dependent on unavailable infrastructure.
+
+A good structural repair should distinguish:
+
+* removing repeated reconstruction;
+* from removing operator visibility and authority.
+
+The goal is not to make operators ignorant.
+
+It is to stop requiring ignorance repair as a core competency.
+
+> An invariant can remove the trap without confiscating the map.
+
+## Re-Skilling
+
+**Re-skilling** is the movement of operator expertise from
+compensating for missing structure toward exercising explicit control
+over a coherent system.
+
+Instead of learning:
+
+* which warning lies;
+* which database field to edit;
+* which wrapper repairs the wrapper;
+
+operators may learn:
+
+* how authority is divided;
+* how to inspect structured state;
+* how to select policy;
+* how to invoke recovery transactions;
+* how to extend contracts safely;
+* how to diagnose genuine exceptional conditions.
+
+Structural repair should not eliminate expertise.
+
+It should improve what expertise is spent on.
+
+## Operator Sovereignty
+
+**Operator sovereignty** is the ability of operators to understand,
+choose, and control policy affecting their installations.
+
+Sovereignty requires:
+
+* inspectable state;
+* explicit authority;
+* reversible choices;
+* documented contracts;
+* meaningful escape hatches;
+* local policy boundaries;
+* recovery access.
+
+It does not require:
+
+* ambiguous success;
+* undocumented option combinations;
+* state reconstruction;
+* mandatory folklore;
+* private wrapper archaeology.
+
+> Sovereignty is control over the machine.  
+> It is not responsibility for guessing what the machine meant.
+
+## Humane Explicitness
+
+**Humane explicitness** is the design principle that important system
+boundaries should be visible before an operator crosses them.
+
+It may take the form of:
+
+* precise command names;
+* early rejection;
+* capability declarations;
+* structured partial outcomes;
+* explicit context selection;
+* visible authority;
+* warnings with actionable scope;
+* dry-run plans;
+* postcondition reports.
+
+Humane explicitness does not remove danger from systems work.
+
+It prevents the system from disguising danger as ordinary success.
+
+## Do Not Confuse
+
+**Operator adaptation** is not automatically evidence of bad design.
+
+Expertise naturally develops around legitimate complexity.
+
+**A bastard** is not simply an expert operator.
+
+The term identifies expertise formed through compensatory regulation.
+
+**Suspicion** is not cynicism.
+
+It may be disciplined response to incomplete contracts.
+
+**Operator hardening** is not always obsolete scar tissue.
+
+Many defensive habits remain sound operational practice.
+
+**Automation allergy** is not irrational resistance.
+
+Automation over ambiguous semantics can amplify damage.
+
+**Manual control** is not coping infrastructure by definition.
+
+It may be an intentional policy surface.
+
+**A difficult system** is not automatically incoherent.
+
+Some domains are inherently difficult.
+
+**A narrow audience** is not automatically a usability failure.
+
+The project should state its required knowledge honestly.
+
+**Newcomer failure** is not automatically system failure.
+
+Operators remain responsible for reading contracts and understanding
+risk.
+
+**Operator responsibility** does not excuse missing contracts.
+
+Responsibility requires a boundary the operator can observe.
+
+**Community toughness** is not the same as cruelty transfer.
+
+Direct, demanding technical culture can remain precise without blaming
+people for undocumented semantics.
+
+**Structural repair** is not de-skilling.
+
+It can move expertise toward higher-value judgment.
+
+## The Bastard Formation Test
+
+When operator expertise appears essential, ask:
+
+1. What does the operator know that the system does not represent?
+2. Which observations does the operator compare?
+3. Which representations are distrusted?
+4. What failure originally produced the habit?
+5. Does the habit remain necessary?
+6. Is it skill, scar, or both?
+7. Which control-loop functions does the operator perform?
+8. Is the operator in the loop or the entire loop?
+9. Which private tools carry the adaptation?
+10. Can the operation survive without them?
+11. How is the knowledge transmitted?
+12. Is apprenticeship required?
+13. How many elders carry unique models?
+14. What is the bastard bus factor?
+15. Are newcomers failing because of inherent complexity or missing
+    structure?
+16. Does the community blame operators for accepted system states?
+17. Is expert compensation being credited to system design?
+18. Has the system selected for one operator personality?
+19. Who left before becoming adapted?
+20. Has difficulty become part of project identity?
+21. Would structural repair threaten established expertise or
+    authority?
+22. Does the proposed repair preserve inspectability and operator
+    sovereignty?
+23. Can hidden judgment be converted into explicit choice?
+24. Can repeated reconstruction become structured state?
+25. Can automation represent the operator's stopping conditions?
+26. Which adaptive reflexes should remain?
+27. Which should be retired?
+28. What would re-skilling look like?
+29. Is the ecosystem manufacturing capable operators—or merely
+    operators capable of surviving it?
+30. Does the project want bastards, or does it merely need them?
+
+The goal is not to eliminate bastards.
+
+An ecosystem needs operators capable of skepticism, recovery, and
+independent judgment.
+
+The goal is to stop using those operators as missing infrastructure
+while pretending their scars are a feature of the machine.
+
+## Eighteenth House Law
+
+> The system injures the operator.  
+> The scar is documented as expertise.
+
+Operator adaptation explains how weak regulation becomes human
+capability.
+
+Bastard formation explains how that capability becomes selection
+pressure, status, doctrine, and ecosystem identity.
+
+The next section is **Selection Pressure and Cultural Evolution**: how
+systems retain the operators, tools, and beliefs best adapted to their
+defects—and how the resulting culture begins defending the conditions
+that created it.
 
 ---
 
