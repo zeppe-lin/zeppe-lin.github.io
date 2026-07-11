@@ -19345,6 +19345,1659 @@ implementation automatically produces a healthier ecosystem.
 
 ---
 
+# Ecological Refactoring and Viable Change
+
+A maintainer rewrites the package builder.
+
+The new implementation has:
+
+* structured results;
+* explicit artifact identity;
+* better error handling;
+* fewer global variables;
+* half the code.
+
+The old wrapper is removed.
+
+The first release fails.
+
+The wrapper had also been:
+
+* normalizing local configuration;
+* serializing concurrent builds;
+* preserving logs;
+* rejecting one unsafe option combination;
+* moving partial artifacts into quarantine;
+* translating old package names;
+* and informing the release maintainer which warning required manual
+  review.
+
+None of these functions appeared in the wrapper's name.
+
+Several did not appear in its comments.
+
+The implementation was cleaner.
+
+The ecosystem had lost a subsystem.
+
+> You removed four hundred lines of shell.  
+> Three maintainers were reintroduced as dependencies.
+
+---
+
+## Ecological Refactoring
+
+**Ecological refactoring** is the deliberate improvement of technical,
+operational, institutional, and cultural structure while preserving or
+migrating the functions that currently keep the ecosystem viable.
+
+Ordinary code refactoring changes internal structure while preserving
+externally observable behavior.
+
+Ecological refactoring must consider a larger boundary.
+
+It may need to preserve or migrate:
+
+* contracts;
+* artifacts;
+* state;
+* compatibility;
+* operator workflows;
+* recovery paths;
+* institutional knowledge;
+* authority;
+* local policy;
+* support capacity;
+* project doctrine.
+
+The unit of change is not only the component.
+
+It is the network of compensations, expectations, and control loops
+surrounding the component.
+
+## Viable Change
+
+A **viable change** improves one or more structural properties without
+destroying the ecosystem's ability to operate, recover, and continue
+evolving.
+
+A viable change should answer:
+
+* What becomes more coherent?
+* Which existing function moves?
+* Which burden disappears?
+* Which new burden appears?
+* Who owns the new mechanism?
+* How does existing state migrate?
+* How do operators recover?
+* Which compatibility promises remain?
+* Which knowledge must be retained?
+* Which authority changes?
+
+A technically correct change may still be ecologically nonviable.
+
+For example:
+
+* a new artifact format may be internally excellent but impossible to
+  introduce without abandoning supported repositories;
+* a transactional database may preserve state but remove the only
+  usable manual recovery path;
+* a strict validator may enforce the right rule while rejecting years
+  of legitimate legacy artifacts;
+* a clean API may fail because every caller depends on undocumented
+  side effects.
+
+> Correctness is necessary.  
+> Adoption is also part of reality.
+
+## Change Ecology
+
+A **change ecology** is the set of components, participants,
+artifacts, state, practices, and authorities affected by a proposed
+change.
+
+For one package-build result, the change ecology may include:
+
+* the builder;
+* frontends;
+* repository tools;
+* release scripts;
+* package filenames;
+* caches;
+* local wrappers;
+* documentation;
+* downstream repositories;
+* operator habits;
+* recovery procedures.
+
+The apparent interface may contain five fields.
+
+Its ecology may contain ten years.
+
+## Coupled Change
+
+A **coupled change** is a change whose correctness depends on
+coordinated movement across several surfaces.
+
+Examples include:
+
+* changing package identity representation;
+* introducing transactional state;
+* splitting one overloaded context into several explicit contexts;
+* replacing filename-derived truth with artifact manifests;
+* making validation authoritative;
+* removing a compatibility path.
+
+Coupling does not imply bad design.
+
+Some changes are inherently cross-system.
+
+The mistake is pretending a coupled change can be completed by
+modifying one repository and announcing the new truth.
+
+## Migration Dimensions
+
+Ecological change may involve several distinct migrations.
+
+| Migration                   | What moves?                          |
+| --------------------------- | ------------------------------------ |
+| **semantic migration**      | meaning and contract                 |
+| **state migration**         | stored representations               |
+| **artifact migration**      | produced and consumed formats        |
+| **control migration**       | sensing, decision, and correction    |
+| **authority migration**     | who or what decides                  |
+| **operator migration**      | workflows and responsibilities       |
+| **knowledge migration**     | rationale and recovery understanding |
+| **compatibility migration** | old callers and states               |
+| **cultural migration**      | habits, doctrine, and status         |
+| **governance migration**    | ownership and maintenance authority  |
+
+A project may complete one dimension and fail another.
+
+For example:
+
+* code begins producing structured identity;
+* repositories still trust filenames;
+* operators still inspect names manually;
+* documentation still describes the old format.
+
+The semantic migration began.
+
+The ecology did not converge.
+
+## Compensation Inventory
+
+A **compensation inventory** identifies the mechanisms currently
+preserving operation around the component being changed.
+
+Inventory candidates include:
+
+* wrappers;
+* patches;
+* hooks;
+* cron jobs;
+* checklists;
+* support procedures;
+* local conventions;
+* database repair scripts;
+* release rituals;
+* undocumented operator checks;
+* bypass paths;
+* old artifacts;
+* downstream adaptations.
+
+For each compensation, ask:
+
+* Which failure does it prevent?
+* Which state does it observe?
+* Which decision does it make?
+* Which side effect does it repair?
+* Which local policy does it preserve?
+* Who maintains it?
+* What depends on it?
+* Is its function still necessary?
+
+The inventory should happen before removal.
+
+> Do not delete the ugly wrapper until you know what it has been
+> eating.
+
+## Hidden Function
+
+A **hidden function** is work performed by a component, operator, or
+convention that is not represented in its nominal interface or
+documented purpose.
+
+A script called `build-release` may also:
+
+* validate repository state;
+* serialize access;
+* choose policy;
+* repair malformed metadata;
+* preserve provenance;
+* notify one maintainer;
+* suppress one unreliable backend.
+
+Hidden functions are common in coping infrastructure.
+
+They accumulate because the mechanism is already in the path.
+
+A proposed replacement may preserve the named function and lose the
+hidden ones.
+
+## Functional Extraction
+
+**Functional extraction** is the identification and relocation of
+necessary behavior from a compensating mechanism into explicit, owned
+boundaries.
+
+Suppose a wrapper performs:
+
+```text
+input validation
+build invocation
+artifact discovery
+partial-failure detection
+quarantine
+```
+
+The replacement design may relocate these functions to:
+
+```text
+parser
+builder result contract
+transaction result
+repository intake boundary
+```
+
+The wrapper can then shrink or disappear.
+
+The goal is not to preserve the wrapper.
+
+It is to preserve the legitimate work.
+
+## Compensator
+
+A **compensator** is any mechanism or participant offsetting
+unresolved structure elsewhere.
+
+Examples include:
+
+* operator;
+* wrapper;
+* local patch;
+* validation checklist;
+* compatibility script;
+* support channel;
+* downstream fork.
+
+A compensator may contain:
+
+* essential policy;
+* accidental behavior;
+* historical compatibility;
+* useful observation;
+* obsolete ritual.
+
+It must be decomposed before replacement.
+
+Treating the compensator as pure waste is how projects delete the only
+working copy of their execution model.
+
+## Compensator Deletion
+
+**Compensator deletion** removes a coping mechanism without relocating
+the functions it supplied.
+
+The visible result may be simplification:
+
+* fewer scripts;
+* fewer options;
+* fewer branches;
+* fewer manual steps.
+
+The operational result may be:
+
+* missing validation;
+* lost recovery;
+* hidden concurrency;
+* new operator burden;
+* repeated incidents;
+* support escalation.
+
+> The rewrite eliminated technical debt by returning it to the
+> operators.
+
+## Regulatory Amputation
+
+**Regulatory amputation** is compensator deletion specifically
+affecting the ecosystem's sensing, decision, correction, or
+verification functions.
+
+For example, removing a release checklist may remove:
+
+* the only identity validation;
+* the only dependency sanity check;
+* the only review of partial artifacts.
+
+The release process becomes shorter.
+
+The control loop becomes open.
+
+## Boundary Repair
+
+**Boundary repair** strengthens the place where meaning, state, or
+authority crosses between components.
+
+Examples include:
+
+* structured results;
+* explicit contexts;
+* bound manifests;
+* normalized plans;
+* rejection paths;
+* authority declarations;
+* transactional state;
+* conformance tests.
+
+Boundary repair often produces more ecological value than replacing
+the component itself.
+
+A small result object can remove duplicated parsing from six callers.
+
+A complete rewrite can preserve every hidden coupling.
+
+## Rewrite Versus Refactoring
+
+A **rewrite** replaces implementation.
+
+An **ecological refactoring** changes the relationship among
+implementation, operators, state, and authority.
+
+A rewrite may participate in ecological refactoring.
+
+It does not guarantee one.
+
+```text
+rewrite:
+    new code
+
+ecological refactoring:
+    new ownership of meaning and work
+```
+
+The difference becomes visible after the new code enters the old
+ecology.
+
+Does operator burden fall?
+
+Do bypass paths close?
+
+Does authority converge?
+
+Do artifacts become more truthful?
+
+Can old compensations retire?
+
+If not, the ecosystem may have received implementation modernization
+without structural change.
+
+## Ecological Regression
+
+An **ecological regression** is a local technical improvement that
+worsens the larger ecosystem.
+
+Examples include:
+
+* reducing component code while increasing caller duplication;
+* strengthening one guardrail while destroying recovery;
+* removing compatibility before state migration;
+* centralizing authority without preserving local policy;
+* automating a workflow while losing human stopping conditions;
+* simplifying an interface by making outcomes less expressive.
+
+Ecological regression does not mean the local improvement was
+imaginary.
+
+The implementation may genuinely be cleaner.
+
+The accounting boundary was too small.
+
+## Ecological Gain
+
+An **ecological gain** reduces total burden or increases coherence
+across the ecosystem, even if one component becomes larger.
+
+Examples include:
+
+* adding a result structure that removes five parsers;
+* adding validation that eliminates repeated manual review;
+* adding an adapter that contains legacy semantics;
+* adding explicit contexts that remove operator guesswork;
+* retaining a recovery interface around transactional state.
+
+The component may become more complex.
+
+The ecosystem becomes simpler.
+
+> Sometimes two hundred new lines are the cheapest way to delete five
+> humans from the runtime dependency graph.
+
+## Burden Relocation
+
+**Burden relocation** is the movement of work, complexity, risk, or
+authority from one part of the ecosystem to another.
+
+Every change relocates some burden.
+
+A strict parser moves burden:
+
+* from recovery;
+* to input preparation.
+
+A repository gate moves burden:
+
+* from operators after publication;
+* to producers before acceptance.
+
+Automation moves burden:
+
+* from repeated human execution;
+* to model design and maintenance.
+
+The correct question is not:
+
+> Did complexity increase?
+
+It is:
+
+> Which burden moved, where, and under whose authority?
+
+## Burden Conservation
+
+There is no literal law of complexity conservation.
+
+But unresolved work rarely vanishes because one component stops
+performing it.
+
+It moves into:
+
+* callers;
+* operators;
+* state;
+* support;
+* compatibility;
+* future incidents.
+
+The House therefore uses a practical assumption:
+
+> When a change claims to remove burden, locate the state transition
+> through which the burden disappeared.
+
+If no such transition exists, the burden probably changed owners.
+
+## Minimum Viable Coherence
+
+**Minimum viable coherence** is the smallest improved system state in
+which the new semantics are explicit enough to operate safely and
+migrate further.
+
+For example, a package-build refactor may initially guarantee only:
+
+* exact artifact result;
+* explicit package identity;
+* clear partial-failure state;
+* compatibility adapter for old callers.
+
+It may not yet provide:
+
+* new repository format;
+* complete provenance;
+* remote builds;
+* ecosystem-wide backend substitution.
+
+The system has become coherent at one boundary.
+
+Further changes can build from it.
+
+This is preferable to an ambitious redesign that cannot become
+authoritative anywhere.
+
+## Transitional Contract
+
+A **transitional contract** defines behavior during migration between
+old and new semantics.
+
+It should state:
+
+* which representations are accepted;
+* which representation is authoritative;
+* how translation occurs;
+* which guarantees remain weaker;
+* how partial migration is detected;
+* which paths may still produce old state;
+* when the transition ends.
+
+For example:
+
+```text
+new artifacts:
+    identity from bound manifest
+
+legacy artifacts:
+    identity parsed once by compatibility adapter
+
+repository index:
+    records normalized identity for both
+
+new production:
+    legacy format forbidden
+```
+
+This allows old state to survive without granting it perpetual
+citizenship.
+
+## Bridge
+
+A **bridge** is a temporary mechanism connecting old and new
+contracts.
+
+A good bridge:
+
+* has explicit direction;
+* translates at one boundary;
+* records usage;
+* prevents new dependence on old semantics;
+* has removal criteria;
+* does not become the preferred path.
+
+A bridge becomes permanent infrastructure when traffic grows faster
+than migration.
+
+Then the project must decide whether to:
+
+* adopt it;
+* redesign it;
+* finish migration;
+* admit that the new side never became authoritative.
+
+## Scaffold
+
+A **scaffold** is temporary support allowing new structure to become
+load-bearing.
+
+Examples include:
+
+* dual-write verification;
+* compatibility wrappers;
+* shadow validation;
+* migration tooling;
+* operator checklists during rollout;
+* old and new result comparison.
+
+Scaffolds are useful.
+
+They become ecological sediment when nobody defines when the building
+can stand without them.
+
+## Dual Running
+
+**Dual running** executes old and new paths in parallel for
+comparison.
+
+For example:
+
+```text
+old filename-derived identity
+new manifest identity
+        ↓
+compare
+        ↓
+report disagreement
+```
+
+Dual running can reveal:
+
+* hidden assumptions;
+* state divergence;
+* unsupported legacy cases;
+* incomplete normalization;
+* operator workflows depending on old output.
+
+It should usually begin with one path authoritative and the other
+observational.
+
+Allowing both paths to mutate authoritative state independently
+creates two regulators and one future incident.
+
+## Shadow Mode
+
+**Shadow mode** allows a new mechanism to observe and compute results
+without controlling authoritative state.
+
+Examples include:
+
+* a dependency planner generating proposals;
+* a validator reporting what it would reject;
+* a new resolver comparing its plan with current practice;
+* a transaction engine modeling an operation without committing it.
+
+Shadow mode reduces deployment risk.
+
+It does not prove the mechanism can govern production safely.
+
+Eventually, authority must move or the new system remains structured
+hope.
+
+## Authority Cutover
+
+An **authority cutover** is the explicit moment when the new
+representation, component, or path becomes authoritative.
+
+The cutover should define:
+
+* previous authority;
+* new authority;
+* state conversion;
+* write ownership;
+* rollback conditions;
+* compatibility behavior;
+* operator procedure.
+
+Without explicit cutover, both old and new systems may continue
+writing state.
+
+Every disagreement then becomes a local referendum.
+
+## State Migration
+
+**State migration** converts existing stored state into the
+representation required by the new contract.
+
+A migration should address:
+
+* valid old state;
+* malformed old state;
+* partially migrated state;
+* interrupted conversion;
+* rollback;
+* repeat execution;
+* concurrent access;
+* verification;
+* provenance of repaired values.
+
+The cleanest new schema is not viable if the project cannot determine
+what old state means.
+
+## Semantic Migration
+
+**Semantic migration** changes what an operation or representation
+means.
+
+This is harder than changing syntax.
+
+For example:
+
+```text
+old “success”:
+    command completed enough to continue
+
+new “success”:
+    every declared effect completed
+```
+
+Callers must change their reasoning.
+
+Tests must change.
+
+Documentation must change.
+
+Operators may need new recovery procedures.
+
+A compatibility adapter can translate syntax.
+
+It cannot always make one semantic model equivalent to another.
+
+## Operator Migration
+
+**Operator migration** changes what operators need to observe, decide,
+and do.
+
+A viable change may remove responsibilities such as:
+
+* artifact discovery;
+* manual identity checking;
+* command ordering;
+* state reconstruction.
+
+It may introduce responsibilities such as:
+
+* approving an explicit plan;
+* choosing a recovery policy;
+* managing an escape hatch;
+* interpreting capability failures.
+
+Operator migration should be documented as a change in control, not
+merely a new command syntax.
+
+## Role Migration
+
+**Role migration** transfers one system function from one participant
+or component to another.
+
+Examples include:
+
+* operator validation becomes repository validation;
+* wrapper normalization becomes builder output;
+* elder judgment becomes explicit policy review;
+* local patch management becomes upstream maintenance;
+* support-channel repair becomes recovery tooling.
+
+Role migration affects:
+
+* authority;
+* workload;
+* expertise;
+* status;
+* failure accountability.
+
+Ignoring these effects creates cultural resistance that appears
+irrational only because the proposal omitted the human architecture.
+
+## Knowledge Migration
+
+**Knowledge migration** moves rationale and operational understanding
+into the surfaces needed by the new system.
+
+It may include:
+
+* decision records;
+* migration guides;
+* conformance tests;
+* updated manuals;
+* recovery documentation;
+* retained incident evidence;
+* comments explaining compatibility branches.
+
+Deleting the old code before extracting its knowledge produces
+structural amnesia.
+
+## Expertise Extraction
+
+**Expertise extraction** identifies the tacit comparisons and
+decisions experienced operators perform and represents them where
+appropriate.
+
+This may involve asking operators:
+
+* What makes you stop the operation?
+* Which state do you inspect first?
+* Which warning changes your decision?
+* Which exceptions are legitimate?
+* How do you know repair succeeded?
+* Which evidence do you preserve?
+
+The goal is not to automate every judgment.
+
+It is to distinguish:
+
+* repeatable validation;
+* local policy;
+* historical habit;
+* genuine expert interpretation.
+
+## Operator Role Preservation
+
+A structural change should preserve meaningful operator authority even
+when it removes repeated compensation.
+
+For example, replacing manual dependency reconstruction with a planner
+may still preserve:
+
+* plan inspection;
+* explicit confirmation;
+* local overrides;
+* policy configuration;
+* refusal;
+* manual execution;
+* recovery access.
+
+The operator loses clerical reconstruction.
+
+The operator retains policy.
+
+## Re-Skilling Plan
+
+A **re-skilling plan** prepares operators for the new control model.
+
+It should explain:
+
+* which old habits are no longer required;
+* which old habits remain valuable;
+* which state is now authoritative;
+* how failures are represented;
+* how to inspect plans and results;
+* how recovery works;
+* which escape hatches remain;
+* which new risks appear.
+
+Without re-skilling, experienced operators may continue compensating
+for defects that no longer exist.
+
+Their old wrappers can reintroduce the old semantics around the new
+system.
+
+## Compatibility Envelope
+
+A **compatibility envelope** defines which old callers, artifacts, and
+states the new system will support during and after migration.
+
+The envelope may be defined by:
+
+* version;
+* artifact format;
+* state schema;
+* operation;
+* backend;
+* time period;
+* support level.
+
+A clear envelope prevents compatibility from expanding through fear.
+
+It also prevents new production from choosing old semantics merely
+because they remain accepted.
+
+## Compatibility Budget
+
+A **compatibility budget** is the amount of old behavior the project
+can realistically preserve without overwhelming current contracts and
+maintenance.
+
+The budget includes:
+
+* implementation branches;
+* test surface;
+* migration knowledge;
+* operator confusion;
+* documentation;
+* security exposure;
+* inability to simplify authority.
+
+Compatibility is not free.
+
+Rejecting all compatibility may also be nonviable.
+
+The budget forces explicit accounting.
+
+## Legacy Intake Boundary
+
+A **legacy intake boundary** is the single location where old state or
+artifacts enter the current model.
+
+It should:
+
+* detect legacy forms;
+* validate them;
+* translate into current normal form;
+* record information loss;
+* reject unrepresentable states;
+* prevent legacy semantics from spreading downstream.
+
+A healthy system may support ancient artifacts indefinitely while
+remaining current internally.
+
+The age enters once.
+
+## New-Production Rule
+
+A **new-production rule** prevents current components from creating
+legacy states accepted only for compatibility.
+
+For example:
+
+```text
+read old format:
+    yes
+
+write old format:
+    no
+```
+
+Without this rule, compatibility becomes reproduction.
+
+Migration cannot converge because the system keeps manufacturing the
+past.
+
+## Reversibility
+
+**Reversibility** is the ability to undo, contain, or recover from a
+change without losing authoritative state or operator control.
+
+Useful reversible strategies include:
+
+* shadow mode;
+* staged rollout;
+* dual-read with single-write;
+* snapshots;
+* transaction logs;
+* feature flags;
+* preserved old readers;
+* explicit rollback conversion.
+
+Reversibility lowers reform risk.
+
+It can also preserve indecision indefinitely.
+
+A reversible transition still needs a direction.
+
+## Rollback Contract
+
+A **rollback contract** defines what restoration means.
+
+Does rollback restore:
+
+* code?
+* database schema?
+* artifacts?
+* configuration?
+* lifecycle effects?
+* operator workflow?
+* repository authority?
+
+A binary downgrade does not necessarily restore state semantics.
+
+> “We can reinstall the old executable” is not a rollback plan.  
+> It is access to an earlier accomplice.
+
+## Irreversible Change
+
+Some changes are inherently or practically irreversible:
+
+* publishing new artifact semantics;
+* deleting historical state;
+* changing authority;
+* removing a supported format;
+* migrating community workflow;
+* redistributing maintainership.
+
+Irreversibility does not forbid change.
+
+It raises the evidence, migration, and communication requirements.
+
+## Change Budget
+
+A **change budget** is the ecosystem's capacity to absorb migration
+work, temporary complexity, learning, and risk.
+
+The budget includes:
+
+* maintainer time;
+* operator attention;
+* test infrastructure;
+* support capacity;
+* release cadence;
+* compatibility work;
+* documentation;
+* state recovery.
+
+A technically superior design may fail because the ecosystem cannot
+finance the transition.
+
+Viability includes maintenance economics.
+
+## Migration Saturation
+
+**Migration saturation** occurs when the ecosystem has more
+simultaneous transitions than operators and maintainers can understand
+or support.
+
+Symptoms include:
+
+* compatibility layers interacting;
+* documentation describing several generations;
+* support unable to identify state version;
+* operators freezing upgrades;
+* temporary paths becoming permanent;
+* incomplete cutovers.
+
+A project should prefer several closed migrations over one permanent
+era of transition.
+
+## Change Sequencing
+
+**Change sequencing** orders migration steps so each stage has one
+clear authority and recoverable state.
+
+A useful sequence may be:
+
+1. publish structured results;
+2. migrate callers;
+3. observe disagreement;
+4. make the result authoritative;
+5. prohibit new use of old output;
+6. retain one compatibility adapter;
+7. remove direct legacy paths.
+
+A poor sequence begins by deleting the old path and later discovers
+which facts callers needed.
+
+## Semantic Dependency Order
+
+Changes have dependency order just like packages.
+
+For example:
+
+```text
+artifact truth
+    before repository validation
+
+explicit partial outcomes
+    before automatic retry
+
+state generation identity
+    before destructive reconciliation
+
+defined local policy
+    before centralized enforcement
+```
+
+Installing a guardrail before the needed truth exists produces
+enforcement theater or false rejection.
+
+## Pilot Boundary
+
+A **pilot boundary** applies the new contract within one limited but
+real authority surface.
+
+Examples include:
+
+* one repository collection;
+* one artifact type;
+* one noncritical installation;
+* one build backend;
+* one release branch.
+
+A pilot differs from a toy prototype because it handles authoritative
+state within bounded scope.
+
+It tests not only code but:
+
+* operation;
+* support;
+* migration;
+* recovery;
+* doctrine;
+* ownership.
+
+## Viability Window
+
+A **viability window** is a transitional period during which both old
+and new mechanisms can be supported without excessive ambiguity.
+
+The window should be long enough for:
+
+* state migration;
+* operator learning;
+* caller adaptation;
+* incident discovery.
+
+It should be short enough to prevent:
+
+* permanent dual authority;
+* new legacy dependence;
+* indefinite documentation branching;
+* compatibility necrosis.
+
+## Ratchet Release
+
+**Ratchet release** removes one historical accumulation mechanism so
+the ecosystem can actually simplify.
+
+Examples include:
+
+* preventing new legacy artifacts;
+* closing direct bypass paths;
+* deleting duplicate parsers after caller migration;
+* refusing new use of deprecated options;
+* making one result authoritative.
+
+Without ratchet release, new structure is added while old structure
+continues growing.
+
+The project modernizes by accumulation.
+
+## Convergence
+
+**Convergence** is the movement from several active semantic paths
+toward one current contract, with old state either translated,
+contained, or retired.
+
+Convergence does not require one implementation.
+
+It requires compatible meaning.
+
+Several backends may remain.
+
+Several operator policies may remain.
+
+The ecosystem converges when they compose through shared boundaries
+rather than private reconstruction.
+
+## Reform Absorption
+
+**Reform absorption** occurs when the ecology adopts the new mechanism
+while preserving the old control structure.
+
+Examples include:
+
+* structured results added, but wrappers continue parsing narration;
+* repository validation added, but maintainers habitually bypass it;
+* explicit operation plans added, but scripts invoke execution
+  directly;
+* transactional state added, but operators still edit storage manually
+  because recovery was not migrated.
+
+The reform exists.
+
+The selection pressure remains.
+
+## Reform Reversal
+
+**Reform reversal** occurs when operators or downstream tools recreate
+removed behavior around the new system.
+
+For example:
+
+* a strict API rejects ambiguous state;
+* a wrapper adds an `--unsafe-legacy` mode;
+* documentation recommends the wrapper;
+* the rejected state becomes common again.
+
+The ecosystem has restored its familiar ambiguity.
+
+This may reveal that:
+
+* the new model excluded legitimate needs;
+* migration was incomplete;
+* operator authority was removed;
+* cultural homeostasis defeated boundary closure.
+
+## Reform Capture
+
+**Reform capture** occurs when a new mechanism becomes subordinate to
+the old ecology's interests and adaptations.
+
+A new validator may be configured permanently in warning mode.
+
+A new planner may be used only to reproduce existing manual choices.
+
+A new repository service may preserve every local exception through
+policy plugins.
+
+The mechanism changes.
+
+The old burden distribution survives.
+
+## Big-Bang Coherence
+
+**Big-bang coherence** is the attempt to replace a fragmented ecology
+with one complete new model in a single cutover.
+
+The attraction is obvious:
+
+* no long compatibility period;
+* no duplicate code;
+* one clean architecture;
+* fewer transitional compromises.
+
+The risks include:
+
+* hidden functions omitted;
+* old state misunderstood;
+* recovery unavailable;
+* operator expertise discarded;
+* authority shifting unexpectedly;
+* entire failure surface appearing at once.
+
+Big-bang change may be justified when:
+
+* scope is small;
+* state is disposable;
+* users are tightly coordinated;
+* rollback is strong;
+* the old system is already untenable.
+
+It should not be chosen merely because migration code is aesthetically
+unpleasant.
+
+## Permanent Transition
+
+A **permanent transition** is a migration whose temporary duality
+becomes the normal system.
+
+Symptoms include:
+
+* both old and new formats still produced;
+* every component understands both;
+* documentation branches indefinitely;
+* nobody knows which authority should win;
+* compatibility code receives new features;
+* removal criteria remain aspirational.
+
+A permanent transition is often worse than choosing either model
+honestly.
+
+It combines both burdens and gains neither clarity.
+
+## Field Symptom: Removing the Canonical Wrapper
+
+A wrapper around a package builder has become the practical ecosystem
+boundary.
+
+It:
+
+* validates configuration;
+* serializes builds;
+* reports exact artifacts;
+* handles partial failure;
+* logs provenance.
+
+A rewrite of the builder makes artifact results explicit.
+
+Maintainers remove the wrapper.
+
+Concurrency races return.
+
+Partial artifacts remain in the output directory.
+
+Provenance logs disappear.
+
+The new builder solved artifact truth.
+
+The wrapper had been solving several other boundaries.
+
+A viable change would:
+
+1. inventory wrapper functions;
+2. move serialization into build-state ownership;
+3. move quarantine into the transaction model;
+4. preserve provenance explicitly;
+5. migrate callers;
+6. then remove the wrapper.
+
+## Field Symptom: Mandatory Validation Meets Legacy State
+
+A repository begins rejecting packages whose manifests lack explicit
+architecture.
+
+Current packages are valid.
+
+Ten years of legacy packages omit the field because architecture was
+once repository-global.
+
+The gate is correct under the new model.
+
+The migration is nonviable if it immediately invalidates the
+historical repository.
+
+Possible transition:
+
+* infer legacy architecture at one intake boundary;
+* mark the value as reconstructed;
+* write explicit architecture into new repository records;
+* require the field for new publication;
+* gradually repack or retire old artifacts.
+
+The rule becomes authoritative without declaring history corrupt by
+surprise.
+
+## Field Symptom: The Transactional Database
+
+A new package database commits atomically.
+
+The old text database could be repaired manually with an editor.
+
+The new store requires a recovery tool.
+
+The recovery tool does not yet exist.
+
+The transaction model reduces routine corruption.
+
+One severe failure now leaves operators unable to inspect or repair
+state.
+
+The change may still be worthwhile.
+
+Viability requires:
+
+* complete export;
+* integrity checking;
+* recovery tooling;
+* transaction logs;
+* documented rebuild path;
+* explicit authority.
+
+Transactional safety should not be purchased by deleting operator
+sovereignty.
+
+## Field Symptom: The New Dependency Planner
+
+A read-only dependency planner produces an inspectable plan.
+
+Operators continue resolving dependencies manually because:
+
+* the planner does not represent local holds;
+* its output omits repository choice;
+* applying the plan requires another undocumented script;
+* failures cannot be traced to a decision.
+
+The implementation is correct within its model.
+
+The operator workflow was not migrated.
+
+The planner remains structured hope.
+
+## Field Symptom: The Optional Result Interface
+
+A low-level tool adds:
+
+```text
+--result-file=PATH
+```
+
+New callers may receive structured state.
+
+Existing callers keep parsing stdout.
+
+Documentation continues showing the old path.
+
+The human-readable message remains frozen for compatibility.
+
+The result interface never becomes authoritative.
+
+The project now maintains two protocols.
+
+Ecological refactoring requires caller migration and ratchet release:
+
+* document the result interface as the machine contract;
+* migrate shared callers;
+* permit narration to evolve;
+* eventually reject new integrations based on stdout parsing.
+
+## Field Symptom: The Lost Release Maintainer
+
+A release process is automated after its maintainer leaves.
+
+The automation reproduces the checklist.
+
+Releases begin shipping inconsistent dependency metadata.
+
+The maintainer had also been:
+
+* recognizing suspicious version transitions;
+* comparing repository collections;
+* delaying publication after toolchain updates;
+* requiring extra review for bootstrap packages.
+
+The visible procedure was migrated.
+
+The hidden controller was not.
+
+Expertise extraction should have preceded automation.
+
+Some decisions may become mechanical.
+
+Others may remain explicit human review gates.
+
+## Field Symptom: The Cleaner Package Format
+
+A new package format carries:
+
+* identity;
+* dependencies;
+* manifest;
+* provenance;
+* format version.
+
+The old repository index derives identity from filenames.
+
+The installer trusts internal metadata.
+
+The query tool trusts the repository index.
+
+The new format enters without repository migration.
+
+The ecosystem now has better artifacts and stronger disagreement.
+
+The artifact change was locally correct.
+
+Authority migration was omitted.
+
+## Field Symptom: Recovery Removed as an Internal Detail
+
+A rewrite hides database layout behind a clean API.
+
+Direct state editing is no longer supported.
+
+This improves encapsulation.
+
+But the API provides no operation for:
+
+* reconstructing state after partial failure;
+* inspecting transaction history;
+* importing recovered records;
+* overriding damaged metadata.
+
+Maintainers call direct editing an implementation detail.
+
+Operators call it the only recovery path.
+
+A viable design distinguishes:
+
+* ordinary callers, which should use the API;
+* exceptional recovery, which needs explicit controlled access.
+
+Encapsulation should remove accidental coupling.
+
+It should not criminalize survival.
+
+## Field Symptom: The Eternal Compatibility Flag
+
+A new parser introduces explicit package identity.
+
+Legacy callers may pass:
+
+```text
+--legacy-name-semantics
+```
+
+The flag is intended for one release.
+
+Three years later:
+
+* new scripts use it;
+* documentation recommends it for “maximum compatibility”;
+* tests cover it more thoroughly than the new path;
+* maintainers fear removal.
+
+The bridge has become a highway.
+
+The migration lacked a new-production rule and ratchet release.
+
+## Field Symptom: The Successful Pilot That Never Expands
+
+One repository collection uses authoritative validation successfully.
+
+Other collections remain manual.
+
+The pilot demonstrates:
+
+* lower incident rate;
+* clear diagnostics;
+* manageable maintenance.
+
+Expansion never happens because:
+
+* no maintainer owns shared rollout;
+* policy differences are unresolved;
+* local maintainers fear authority loss;
+* documentation remains collection-specific.
+
+The technical experiment succeeded.
+
+Structural hope did not receive governance.
+
+## Do Not Confuse
+
+**Ecological refactoring** is not preserving every existing behavior.
+
+Some compensations should be removed.
+
+**Viability** is not reluctance to change.
+
+A viable migration may require decisive authority cutover.
+
+**Compatibility** is not the same as permanent dual semantics.
+
+Compatibility should translate or contain.
+
+**Operator migration** is not merely training.
+
+It changes control responsibilities.
+
+**Expertise extraction** is not replacing experts with code.
+
+Some judgment should remain human and explicit.
+
+**A clean rewrite** is not automatically ecological regression.
+
+It becomes one when the wider functions are lost or burden increases.
+
+**A larger component** is not automatically an ecological gain.
+
+Internal complexity must still have clear ownership and scope.
+
+**Reversibility** is not indefinite indecision.
+
+A migration needs direction and completion criteria.
+
+**A pilot** is not proof of ecosystem viability.
+
+It tests bounded authority, not every context.
+
+**Shadow mode** is not enforcement.
+
+It generates evidence before authority moves.
+
+**A recovery interface** is not a license for ordinary callers to
+violate encapsulation.
+
+Exceptional authority should remain explicit.
+
+**Cultural resistance** is not automatically obstruction.
+
+It may identify functions the proposal failed to preserve.
+
+**Preserving operator sovereignty** does not require preserving manual
+clerical work.
+
+**Migration code** is not automatically waste.
+
+It may be the mechanism that lets a new contract become real without
+destroying the ecology.
+
+## The Ecological Refactoring Test
+
+Before changing a mature component or boundary, ask:
+
+1. What nominal function does the component perform?
+2. What hidden functions does it perform?
+3. Which operators compensate around it?
+4. Which wrappers, hooks, and scripts depend on it?
+5. Which artifacts and state encode its assumptions?
+6. Which support procedures rely on its current behavior?
+7. Which failure classes does the current ecology already contain?
+8. Which functions should disappear?
+9. Which functions must move?
+10. Where should each function be owned?
+11. What boundary becomes more explicit?
+12. Which authority changes?
+13. Which local policy remains?
+14. What is the minimum viable coherent stage?
+15. Which migration dimensions are involved?
+16. How does existing state migrate?
+17. How do existing artifacts migrate?
+18. Which old callers remain supported?
+19. What is the compatibility envelope?
+20. Can new production create legacy state?
+21. Where is the legacy intake boundary?
+22. Which path is authoritative during transition?
+23. Is dual running observational or mutating?
+24. When does authority cut over?
+25. What is the rollback contract?
+26. Which changes are irreversible?
+27. Which recovery paths remain?
+28. What operator knowledge must be extracted?
+29. Which operator duties disappear?
+30. Which new duties appear?
+31. What does re-skilling require?
+32. Which doctrines or identities are affected?
+33. What legitimate resistance should influence the design?
+34. Could cultural homeostasis recreate the old behavior?
+35. How will bypass paths be handled?
+36. What is the change budget?
+37. Can support absorb the transition?
+38. What are the bridge-removal criteria?
+39. What ratchet prevents new legacy dependence?
+40. How will the ecosystem know convergence occurred?
+41. Does the change reduce total burden or merely relocate it
+    invisibly?
+42. Can the old compensator be removed without reopening the failure
+    it contained?
+43. Who owns the new structure after the original reformer leaves?
+44. Is the ecosystem becoming more coherent—or merely more
+    modern-looking?
+
+A viable change does not preserve every scar.
+
+It discovers what the scar has been doing before cutting it away.
+
+## Twenty-First House Law
+
+> Before you kill the workaround, find out what it has been keeping
+> alive.
+
+Ecological refactoring completes the regulatory model.
+
+Systems do not evolve through code alone.
+
+They evolve through changes in:
+
+* authority;
+* state;
+* operator work;
+* compatibility;
+* memory;
+* doctrine;
+* selection pressure.
+
+A cleaner component can produce a weaker ecosystem.
+
+A larger component can reduce total complexity.
+
+A successful reform is not one that merely lands.
+
+It is one after which the old compensations can finally retire without
+taking correctness with them.
+
+Part VI turns from theory to field practice.
+
+The next section is **Part VI: Autopsy and Field Method**, beginning
+with **How to Examine a Failure Without Worshipping the Corpse**: a
+repeatable method for moving from incident evidence to causal model,
+field term, repair boundary, and retained lesson.
+
+---
 
 
 ---
