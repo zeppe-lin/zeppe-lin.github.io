@@ -26673,6 +26673,2113 @@ and when the ecosystem may safely retire its old compensators.
 
 ---
 
+# Repair Verification and Closure
+
+The package repository stops reporting malformed artifacts.
+
+The maintainer closes the issue.
+
+Three months later, someone discovers that malformed artifacts are
+still entering through an import path the validator does not inspect.
+
+The dashboard remained green.
+
+The issue remained closed.
+
+The failure remained employed.
+
+Nothing was repaired at the authoritative boundary.
+
+The sensor merely stopped seeing the path where the damage moved.
+
+> Silence after a patch may mean success.  
+> It may also mean the corpse changed rooms.
+
+---
+
+## Verification
+
+**Verification** determines whether an intervention produced the state
+and mechanism change it claimed to produce.
+
+Verification asks:
+
+* Did the intended state change?
+* Did the failure path become unreachable?
+* Did authority move where intended?
+* Did bypass paths remain?
+* Did another symptom replace the first?
+* Did operator burden actually fall?
+* Can old compensators retire?
+* Does the result remain true under repetition, interruption, and
+  migration?
+
+Verification is not one successful test.
+
+It is evidence that the repair objective now holds within its declared
+scope.
+
+## Validation and Verification
+
+The words are often used interchangeably.
+
+The Fieldbook distinguishes them as follows.
+
+**Validation** asks whether an input, artifact, plan, or state
+satisfies a contract.
+
+**Verification** asks whether the system or repair behaves according
+to its claimed design.
+
+For example:
+
+* repository validation checks whether an artifact identity is
+  coherent;
+* repair verification checks whether every authoritative publication
+  path now applies that validation.
+
+Validation examines the specimen.
+
+Verification examines the claim.
+
+## Closure
+
+**Closure** is the justified conclusion that an incident, defect, or
+failure class has been addressed sufficiently within an explicit
+boundary.
+
+Closure should state:
+
+* what is closed;
+* at which depth;
+* across which scope;
+* under which versions;
+* with which remaining limitations;
+* under which reopening conditions.
+
+A closed incident does not necessarily mean:
+
+* the structural cause is removed;
+* every affected installation is repaired;
+* legacy state is migrated;
+* compensators may retire;
+* recurrence is impossible.
+
+> “Closed” is a scope claim.
+>
+> Without scope, it is office furniture.
+
+## Closure Boundary
+
+A **closure boundary** defines where the project claims the repair now
+holds.
+
+Examples include:
+
+* one damaged installation;
+* one codepath;
+* one repository collection;
+* all new artifacts;
+* all supported package formats;
+* every supported installation after version 6.2;
+* legacy intake but not legacy production.
+
+The closure boundary should match the evidence.
+
+If verification covered only one frontend, do not claim:
+
+> Package installation is now transactional.
+
+Claim:
+
+> The frontend now reports partial database-registration failure
+> explicitly.
+
+Precision is not weakness.
+
+It is protection against future institutional memory lying politely.
+
+## Closure Depth
+
+Closure may occur at several depths.
+
+### Incident Closure
+
+The affected state is repaired.
+
+### Defect Closure
+
+The immediate implementation defect is corrected.
+
+### Structural Closure
+
+The contract, authority, or invariant preventing the failure class is
+repaired.
+
+### Regulatory Closure
+
+The control loop can now detect, reject, correct, and verify the
+relevant deviation.
+
+### Ecological Closure
+
+Compensatory operator work and surrounding workarounds can safely
+retire or change role.
+
+### Institutional Closure
+
+The lesson is retained in tests, documentation, decisions, and current
+doctrine.
+
+A project may close one depth while leaving another open.
+
+That is legitimate if stated honestly.
+
+## Closure Claim
+
+A **closure claim** is the precise assertion the verification process
+must support.
+
+Examples:
+
+> New artifacts cannot enter the authoritative repository when bound
+> identity disagrees with publication metadata.
+
+> Concurrent package-database writers either serialize or receive an
+> explicit conflict before commit.
+
+> Target-root installation rejects lifecycle execution unless an
+> execution context is selected explicitly.
+
+These are stronger than:
+
+* “artifact handling fixed”;
+* “race solved”;
+* “alternate roots safer”.
+
+A closure claim should be:
+
+* testable;
+* scoped;
+* authority-aware;
+* falsifiable;
+* compatible with known limitations.
+
+## Proof Obligation
+
+A **proof obligation** is the evidence required to justify one closure
+claim.
+
+This need not mean mathematical proof.
+
+For a repository validator, proof obligations may include:
+
+* malformed artifacts are rejected;
+* valid artifacts remain accepted;
+* imports cross the same check;
+* direct publication cannot bypass it;
+* legacy translation behaves as documented;
+* quarantine preserves evidence;
+* repository state remains unchanged after rejection.
+
+The claim determines the proof obligations.
+
+The patch does not.
+
+## Repair Evidence
+
+**Repair evidence** is the collection of observations supporting
+closure.
+
+Useful evidence may include:
+
+* regression tests;
+* conformance tests;
+* state-transition traces;
+* negative tests;
+* fault injection;
+* shadow comparisons;
+* migration reports;
+* audit results;
+* reduced operator intervention;
+* bypass inventory;
+* independent implementation results;
+* production observation.
+
+Evidence should cover both:
+
+* expected success;
+* expected failure.
+
+A repair that proves only the happy path has not verified the boundary
+that failed.
+
+## Positive Verification
+
+**Positive verification** demonstrates that valid operations still
+succeed under the repaired model.
+
+Examples include:
+
+* valid artifact publishes;
+* valid alternate-root operation completes;
+* serialized database update commits;
+* structured result is consumed correctly;
+* migrated legacy artifact installs.
+
+Positive verification protects against over-repair.
+
+## Negative Verification
+
+**Negative verification** demonstrates that invalid, incoherent, or
+unsupported states are rejected or contained as intended.
+
+Examples include:
+
+* mismatched artifact identity is rejected;
+* unsafe flag combination fails before mutation;
+* stale database writer cannot overwrite current state;
+* legacy production is prohibited;
+* malformed archive path cannot escape target.
+
+Negative verification is essential for guardrails.
+
+The system's ability to succeed says little about its ability to say
+no.
+
+> The happy path proves the road exists.  
+> The rejection path proves the cliff has a fence.
+
+## Boundary Verification
+
+**Boundary verification** demonstrates that meaning crosses a
+component boundary without loss, reconstruction, or unauthorized
+reinterpretation.
+
+For a structured build result, verify that:
+
+* the producer publishes exact artifact path;
+* the result identifies completion state;
+* consumers do not scan directories;
+* consumers do not parse narration;
+* diagnostics may change without breaking integration;
+* alternate backends satisfy the same contract.
+
+Boundary verification tests the relationship among components.
+
+It does not stop at one unit test inside the producer.
+
+## Authority Verification
+
+**Authority verification** demonstrates that the repaired mechanism
+acts on the state the ecosystem actually treats as authoritative.
+
+For repository intake, verify:
+
+* every official publication path crosses validation;
+* accepted state is committed only after validation;
+* bypass requires explicit exceptional authority;
+* derived indexes cannot override artifact truth;
+* post-publication audits agree with intake decisions.
+
+A validator may be perfectly correct and still irrelevant if
+authoritative state can enter elsewhere.
+
+## Control-Loop Verification
+
+**Control-loop verification** demonstrates that sensing, decision,
+actuation, and feedback are connected around the intended state.
+
+For a reconciliation mechanism, verify:
+
+1. deviation is observed;
+2. the correct state generation is identified;
+3. a decision is made under explicit authority;
+4. correction changes the intended representation;
+5. postconditions are re-observed;
+6. repeated correction is safe;
+7. failures remain visible.
+
+A green status after repair is not enough.
+
+The status must measure the invariant rather than merely the
+actuator's own output.
+
+## Mechanism Verification
+
+**Mechanism verification** tests whether the causal structure
+identified by the autopsy has actually changed.
+
+Suppose the original mechanism was:
+
+```text
+producer knows artifact identity
+        ↓
+publishes only narration
+        ↓
+caller parses text
+```
+
+A patch adds JSON output.
+
+Mechanism verification asks:
+
+* Do callers use the JSON?
+* Is the JSON contract specified?
+* Does the producer still require directory scanning?
+* Can narration change independently?
+* Is the JSON authoritative?
+* Are old parsers still used by shared tools?
+
+If callers continue parsing stdout, the mechanism survives.
+
+The new output is decoration.
+
+## Symptom Verification
+
+**Symptom verification** confirms that the visible failure no longer
+appears in the tested case.
+
+This is useful.
+
+It is weaker than mechanism verification.
+
+A timeout increase may remove one retry symptom.
+
+The underlying ambiguous completion state may remain.
+
+A renamed option may reduce misuse.
+
+The overloaded semantic model may remain.
+
+Symptom verification is one evidence layer, not closure by itself.
+
+## Regression
+
+A **regression** is the return of previously working behavior to a
+known broken state after change.
+
+Example:
+
+* locking existed;
+* rewrite removed it;
+* concurrent update failure returned.
+
+Regression tests are well suited to regression.
+
+## Recurrence
+
+A **recurrence** is the reappearance of the same failure mechanism
+through a different implementation, state path, or symptom.
+
+Example:
+
+* old frontend parsed narration;
+* new frontend scans directories;
+* both reconstruct artifact truth the producer fails to publish.
+
+A regression test for one parser may not prevent recurrence through
+another reconstruction path.
+
+Structural verification should target the mechanism class.
+
+## Regression Test
+
+A **regression test** reproduces a previously observed failure and
+asserts the expected repaired behavior.
+
+A good regression test records:
+
+* the failure shape;
+* the violated contract;
+* the repair objective;
+* the expected rejection or result;
+* enough rationale to survive implementation change.
+
+A weak regression test preserves one incidental output.
+
+For example:
+
+```text
+assert stderr == "invalid package"
+```
+
+is weaker than:
+
+```text
+assert publication.status == REJECTED
+assert repository.generation == previous_generation
+assert quarantine.contains(artifact)
+```
+
+The first remembers wording.
+
+The second remembers state.
+
+## Structural Regression Test
+
+A **structural regression test** asserts the contract or invariant
+rather than one historical implementation detail.
+
+Examples include:
+
+* every backend preserves hard-link semantics;
+* every publication path validates bound identity;
+* every database writer detects stale generation;
+* every target-root script requires explicit context.
+
+Structural regression tests may require:
+
+* shared conformance suites;
+* integration tests;
+* multiple implementations;
+* authority-path tests.
+
+## Conformance Test
+
+A **conformance test** determines whether an implementation satisfies
+one shared contract.
+
+Conformance tests are especially useful for:
+
+* backends;
+* alternate frontends;
+* repositories;
+* artifact readers;
+* compatibility adapters;
+* recovery tools.
+
+A conformance suite should test:
+
+* accepted state;
+* rejected state;
+* partial outcome;
+* interruption;
+* identity;
+* normalization;
+* capability limits.
+
+The second implementation often reveals which expectations the first
+suite forgot to encode.
+
+## End-to-End Verification
+
+**End-to-end verification** follows the operation across every
+relevant authority and state boundary.
+
+For artifact publication:
+
+```text
+builder
+    ↓
+artifact finalization
+    ↓
+manifest binding
+    ↓
+repository intake
+    ↓
+index generation
+    ↓
+consumer verification
+```
+
+Unit tests may prove each component locally.
+
+End-to-end verification proves the composition.
+
+A locally correct ecosystem can still compose into nonsense.
+
+## Independent Verification
+
+**Independent verification** uses another mechanism or representation
+to check the result without sharing the same critical assumption.
+
+Examples include:
+
+* verify repository index against bound artifact metadata;
+* verify database ownership against filesystem state;
+* compare new planner result with explicit dependency graph;
+* inspect transaction generation independently of command status.
+
+Two validators reading the same derived record are not independent.
+
+Independence concerns assumptions, not filenames or implementation
+languages.
+
+## Orthogonal Evidence
+
+**Orthogonal evidence** constrains the claim through a different
+observational path.
+
+For package installation:
+
+* transaction result says committed;
+* database contains package record;
+* filesystem ownership matches manifest;
+* lifecycle status is explicit.
+
+Agreement among orthogonal surfaces increases confidence.
+
+Agreement among duplicated projections of one source may not.
+
+## Fault Injection
+
+**Fault injection** deliberately introduces controlled failure to test
+containment and recovery.
+
+Examples include:
+
+* interrupt between extraction and registration;
+* corrupt one manifest field;
+* race two writers;
+* fail repository commit after upload;
+* deny permission during migration;
+* terminate recovery halfway;
+* make one backend omit capability.
+
+Fault injection tests the states ordinary success cannot reach
+reliably.
+
+It is especially valuable when the repair claims:
+
+* atomicity;
+* partial-result honesty;
+* rollback;
+* idempotence;
+* quarantine;
+* recovery.
+
+## Adversarial Case
+
+An **adversarial case** is an input or state designed to challenge the
+boundary rather than represent ordinary use.
+
+Examples include:
+
+* identity differs only by case;
+* legacy artifact lacks one field;
+* operation repeats after ambiguous timeout;
+* two valid packages claim one path;
+* script mutates host while target root is selected;
+* repository import bypasses normal frontend.
+
+Adversarial cases test whether the model is coherent at its edges.
+
+They are not hostile users.
+
+They are contracts asking difficult questions.
+
+## Negative Space
+
+**Negative space** is the set of states and paths the repair claims
+should no longer be reachable.
+
+Verification should inspect negative space.
+
+For example:
+
+* no caller parses stdout;
+* no new legacy artifact is produced;
+* no publication bypass avoids validation;
+* no concurrent writer commits stale state;
+* no lifecycle script executes under implicit context.
+
+Absence is difficult to prove.
+
+It can be supported through:
+
+* code search;
+* path inventory;
+* access control;
+* instrumentation;
+* conformance tests;
+* removed interfaces;
+* production observation.
+
+## Bypass Verification
+
+**Bypass verification** inventories and tests every path capable of
+avoiding the new mechanism.
+
+Possible bypasses include:
+
+* direct low-level invocation;
+* import tools;
+* recovery mode;
+* manual database editing;
+* disabled hooks;
+* alternate repository;
+* old frontend;
+* privileged override.
+
+For each bypass, determine:
+
+* Is it intended?
+* Who may use it?
+* What guarantee is weakened?
+* Is use observable?
+* Must post-verification occur?
+* Can ordinary automation reach it accidentally?
+
+A hidden bypass turns structural closure into etiquette.
+
+## Escape-Hatch Verification
+
+An escape hatch should be verified separately.
+
+Test that it:
+
+* requires explicit intent;
+* narrows scope;
+* emits a clear weakened-guarantee result;
+* preserves evidence;
+* does not silently become default;
+* remains usable for real recovery;
+* triggers later reconciliation where needed.
+
+A guardrail without a working recovery path may be safer on ordinary
+days and catastrophic on the day it matters.
+
+## Migration Verification
+
+**Migration verification** demonstrates that old state moved into the
+new model without loss, ambiguity, or permanent dual authority.
+
+Verify:
+
+* source state classification;
+* converted state;
+* rejected or quarantined cases;
+* interruption behavior;
+* repeat execution;
+* rollback or forward recovery;
+* authority cutover;
+* absence of new legacy production;
+* final convergence.
+
+A migration is not complete because the tool exited zero.
+
+It is complete when the old authority can stop writing.
+
+## Compatibility Verification
+
+**Compatibility verification** confirms that supported old callers or
+artifacts continue functioning through the declared compatibility
+boundary.
+
+It should also confirm that:
+
+* compatibility does not leak internally;
+* unsupported state is rejected honestly;
+* new production does not depend on old semantics;
+* translation loss is recorded;
+* removal criteria remain measurable.
+
+Compatibility verification protects both history and convergence.
+
+## Cutover Verification
+
+**Cutover verification** demonstrates that authority moved exactly
+once and that every relevant writer agrees.
+
+Verify:
+
+* old writers are disabled or read-only;
+* new authority contains migrated state;
+* readers use the new representation;
+* rollback conditions are understood;
+* no split-brain state remains;
+* old caches or indexes cannot regain authority.
+
+A cutover without cutover verification creates two truths and a
+calendar event.
+
+## Postcondition Verification
+
+**Postcondition verification** checks that the promised final state
+actually holds after the operation.
+
+Examples:
+
+* rejected artifact absent from repository index;
+* failed installation leaves explicit partial state;
+* repaired database agrees with filesystem ownership;
+* migration generation advanced;
+* old format no longer produced.
+
+Postcondition verification should observe authoritative state directly
+where possible.
+
+Do not infer final state solely from the repair command's exit status.
+
+## Repair-Invariant Verification
+
+Repairs have their own invariants.
+
+Verify during intervention that:
+
+* evidence is preserved;
+* only one authority writes;
+* interruption remains recoverable;
+* source state remains valid until cutover;
+* no new incompatible state appears;
+* repeated execution is safe;
+* operator policy remains intact.
+
+A repair can remove the original defect while corrupting the
+migration.
+
+## Idempotence Verification
+
+To verify idempotence:
+
+1. apply the repair;
+2. observe the postcondition;
+3. apply the repair again;
+4. verify no unintended additional effect;
+5. repeat after interruption where relevant.
+
+A command returning success twice is not enough.
+
+The state transition must remain stable.
+
+## Recovery Verification
+
+**Recovery verification** demonstrates that the system can return from
+failure without requiring undocumented reconstruction.
+
+Test:
+
+* failure detection;
+* evidence preservation;
+* available recovery choices;
+* authority;
+* resumption;
+* rollback or forward repair;
+* postcondition;
+* operator visibility.
+
+Recovery should be tested before the emergency.
+
+> A recovery procedure first executed during catastrophe is not a
+> procedure.  
+> It is live research with damaged state.
+
+## Rollback Verification
+
+Rollback verification must identify what is and is not restored.
+
+Test separately:
+
+* executable version;
+* database schema;
+* data generation;
+* artifact format;
+* configuration;
+* filesystem effects;
+* external lifecycle effects;
+* authority.
+
+A binary downgrade may restore code while leaving new state
+unreadable.
+
+A database rollback may restore records while leaving services
+changed.
+
+Rollback claims should confess their boundary.
+
+## Forward-Recovery Verification
+
+Forward recovery should prove that partial or damaged state can move
+to one valid current condition.
+
+Verify:
+
+* source evidence is sufficient;
+* reconstructed values are marked where uncertain;
+* operation can resume;
+* repeated recovery is safe;
+* postconditions are explicit;
+* old partial state does not remain authoritative.
+
+## Production Verification
+
+**Production verification** observes the repaired mechanism under real
+workload and authority.
+
+It may include:
+
+* pilot deployment;
+* shadow comparison;
+* canary repository;
+* staged rollout;
+* audit;
+* operator reports;
+* incident-rate comparison;
+* bypass telemetry.
+
+Production evidence matters because test environments may omit:
+
+* historical state;
+* concurrency;
+* unusual workflows;
+* operator behavior;
+* downstream tools;
+* real authority paths.
+
+Production verification should not replace pre-deployment tests.
+
+It complements them.
+
+## Shadow Verification
+
+**Shadow verification** runs the new mechanism observationally beside
+the old authority.
+
+It can compare:
+
+* validation decisions;
+* dependency plans;
+* identity derivation;
+* migration results;
+* transaction outcomes.
+
+Shadow mode is useful for discovering disagreement before cutover.
+
+Its limitations include:
+
+* no proof of actuation;
+* no proof of recovery;
+* no proof that participants will accept the decision;
+* no proof that authority integration works.
+
+## Pilot Verification
+
+A **pilot** applies the repair to a bounded real authority surface.
+
+Pilot verification should examine:
+
+* correctness;
+* support burden;
+* operator adaptation;
+* bypass;
+* compatibility;
+* recovery;
+* ownership;
+* doctrinal resistance.
+
+A successful pilot proves bounded viability.
+
+Expansion remains another intervention.
+
+## Canary
+
+A **canary** is a deliberately limited early deployment used to detect
+failure before broader exposure.
+
+A canary should have:
+
+* representative state;
+* strong observability;
+* easy rollback or containment;
+* clear stop conditions;
+* limited blast radius.
+
+A canary that excludes every difficult legacy case may prove only that
+clean state remains clean.
+
+## Observation Window
+
+An **observation window** is the period during which the project
+watches for recurrence, ecological regression, or unanticipated burden
+after repair.
+
+The appropriate window depends on:
+
+* operation frequency;
+* release cadence;
+* migration duration;
+* feedback delay;
+* seasonal workflows;
+* number of affected installations.
+
+One week may be enough for a command run hourly.
+
+One release may be insufficient for a migration performed annually.
+
+## Quiet Period
+
+A **quiet period** is time without reported incidents.
+
+Quiet is evidence.
+
+It is weak when:
+
+* the operation is rare;
+* users left;
+* warnings were suppressed;
+* compensators still hide the failure;
+* reporting channels changed;
+* the broken path is no longer observed.
+
+> No reports is a measurement.
+>
+> It is not automatically a miracle.
+
+## Incident-Rate Verification
+
+Incident frequency before and after repair may provide useful
+evidence.
+
+But frequency must be interpreted with:
+
+* workload;
+* population;
+* detection sensitivity;
+* reporting behavior;
+* migration stage;
+* compensator use.
+
+A lower incident rate may mean:
+
+* repair succeeded;
+* operators avoid the path;
+* monitoring weakened;
+* users abandoned the operation;
+* the symptom changed.
+
+## Operator-Burden Verification
+
+A structural repair should often reduce repeated operator work.
+
+Measure whether operators still need to:
+
+* inspect several representations;
+* run private wrappers;
+* sequence commands manually;
+* repair state;
+* ask elders;
+* interpret ambiguous warnings;
+* preserve old tools.
+
+If the technical patch lands and operator work remains unchanged, the
+ecology may not have moved.
+
+## Compensator Retirement
+
+**Compensator retirement** removes or demotes a workaround after the
+system has acquired the function it carried.
+
+Candidates include:
+
+* wrappers;
+* checklists;
+* hooks;
+* manual audits;
+* local patches;
+* warnings;
+* special command sequences;
+* elder approval.
+
+Retirement should occur only after:
+
+* function inventory;
+* replacement ownership;
+* verification;
+* migration;
+* observation;
+* rollback or restoration plan.
+
+## Retirement Test
+
+A **retirement test** asks whether the ecosystem remains coherent when
+the old compensator is absent.
+
+Examples:
+
+* remove wrapper in one pilot workflow;
+* disable manual identity check after authoritative validation;
+* stop nightly reconciliation after transaction closure;
+* remove compatibility parser after legacy intake ends;
+* let another maintainer perform release without elder intervention.
+
+The compensator's absence is itself a test condition.
+
+> You do not know that the crutch is obsolete until the patient walks
+> without it.
+
+## Staged Retirement
+
+**Staged retirement** reduces compensator authority gradually.
+
+Possible stages:
+
+```text
+authoritative
+    ↓
+required fallback
+    ↓
+advisory
+    ↓
+available for recovery
+    ↓
+removed
+```
+
+Staging helps reveal hidden dependence before deletion.
+
+It also prevents old mechanisms from remaining authoritative merely
+because removal feels risky.
+
+## Compensator Demotion
+
+**Compensator demotion** keeps an old tool or practice for:
+
+* audit;
+* recovery;
+* independent verification;
+* historical artifacts;
+
+while removing it from the ordinary control path.
+
+For example, a manual database checker may remain as an independent
+audit after installation gains strong postconditions.
+
+The tool survives.
+
+Its job improves.
+
+## Compensator Persistence
+
+A compensator may remain necessary after repair because:
+
+* the structural repair covers only new state;
+* legacy state remains;
+* independent verification remains valuable;
+* exceptional recovery requires it;
+* another failure class shares the same tool.
+
+Do not delete a compensator merely to prove the reform was complete.
+
+Do not preserve it as ordinary infrastructure merely because history
+once needed it.
+
+## Compensation Reappearance
+
+**Compensation reappearance** occurs when operators recreate the old
+workaround after formal retirement.
+
+This is evidence that:
+
+* the new mechanism omits a needed function;
+* operator policy was lost;
+* trust is insufficient;
+* recovery is weak;
+* old habits persist;
+* documentation failed;
+* authority shifted illegibly.
+
+Reappearance should trigger investigation.
+
+It should not be dismissed automatically as resistance.
+
+## Ecological Regression
+
+An **ecological regression** is a repaired local mechanism accompanied
+by worse total operation elsewhere.
+
+Examples include:
+
+* stronger validation causes routine use of unsafe bypass;
+* transaction hides state operators need for recovery;
+* structured result exists, but callers gain another compatibility
+  layer;
+* centralized policy removes legitimate local control;
+* reduced code size increases support burden.
+
+Verification must include the surrounding ecology.
+
+Otherwise the component may pass every test while the system becomes
+harder to operate.
+
+## Burden-Shift Verification
+
+**Burden-shift verification** checks where work moved after repair.
+
+Ask:
+
+* Did producer complexity rise?
+* Did caller complexity fall?
+* Did operator decisions become explicit?
+* Did recovery become harder?
+* Did support workload change?
+* Did local policy survive?
+* Did one maintainer become a bottleneck?
+* Did new infrastructure require continuous care?
+
+A burden may move appropriately.
+
+The move should be visible and intentional.
+
+## Authority-Shift Verification
+
+When repair moves authority, verify that:
+
+* participants know the new owner;
+* old authority cannot silently continue;
+* override paths are explicit;
+* governance matches technical control;
+* failure accountability follows authority;
+* documentation and access control agree.
+
+Technical cutover without governance cutover produces institutional
+split brain.
+
+## Doctrine Verification
+
+A repair may require doctrinal change.
+
+Verify whether current project language now reflects:
+
+* the new boundary;
+* the remaining limitations;
+* operator responsibilities;
+* retired rituals;
+* changed authority.
+
+If the implementation changes but doctrine still teaches the old
+compensation, culture may reintroduce it.
+
+## Documentation Verification
+
+Documentation should be checked against the repaired contract.
+
+Verify:
+
+* command semantics;
+* rejection behavior;
+* partial outcomes;
+* migration;
+* recovery;
+* compatibility;
+* authority;
+* escape hatches.
+
+Do not merely append a note saying:
+
+> This issue has been fixed.
+
+Replace the old execution model.
+
+## Institutional Verification
+
+**Institutional verification** asks whether future maintainers can
+recover:
+
+* the incident;
+* the mechanism;
+* the repair objective;
+* the chosen intervention;
+* rejected alternatives;
+* tests;
+* remaining limitations;
+* reopening conditions.
+
+The repair should survive:
+
+* turnover;
+* rewrite;
+* repository reorganization;
+* terminology change.
+
+A fix remembered only by its author is still running in volatile
+memory.
+
+## Closure Artifact
+
+A **closure artifact** is the durable record demonstrating why closure
+was claimed.
+
+It may include:
+
+* repair decision record;
+* test references;
+* migration report;
+* validation results;
+* updated authority map;
+* compensator retirement list;
+* known limitations;
+* reopening conditions.
+
+The closure artifact should be concise enough to retrieve and detailed
+enough to challenge.
+
+## Closure Report
+
+A closure report may use the following structure:
+
+```text
+Closure claim:
+    What is now believed true?
+
+Scope:
+    Which versions, paths, and states are covered?
+
+Original mechanism:
+    What produced the failure?
+
+Intervention:
+    What causal relationship changed?
+
+Authority:
+    Where is the rule now enforced?
+
+Verification evidence:
+    Tests, traces, pilots, audits, fault injection.
+
+Negative verification:
+    Which invalid states are now rejected or contained?
+
+Bypass:
+    Which exceptional paths remain?
+
+Migration:
+    Which old state was converted or contained?
+
+Recovery:
+    How does failure now recover?
+
+Compensators:
+    Which retired, remain, or changed role?
+
+Operator burden:
+    What work disappeared or moved?
+
+Remaining limits:
+    What is still unresolved?
+
+Reopening conditions:
+    What evidence invalidates this closure?
+```
+
+## Reopening Condition
+
+A **reopening condition** is an observation that should invalidate or
+narrow the closure claim.
+
+Examples include:
+
+* another authoritative path bypasses validation;
+* a supported backend fails conformance;
+* new legacy artifacts are produced;
+* operator reconciliation remains routinely necessary;
+* migration leaves split authority;
+* recovery cannot restore state after interruption.
+
+Reopening conditions make closure falsifiable.
+
+They prevent “fixed” from becoming a doctrine immune to evidence.
+
+## Residual Risk
+
+**Residual risk** is the known possibility of failure remaining after
+repair.
+
+Examples include:
+
+* lifecycle effects remain nontransactional;
+* manual recovery is still required for storage corruption;
+* legacy artifacts lose one provenance field during translation;
+* direct privileged bypass can violate the invariant;
+* one unsupported backend remains outside conformance.
+
+Residual risk should be:
+
+* explicit;
+* scoped;
+* owned;
+* monitored where practical.
+
+Confessing residual risk strengthens closure.
+
+It does not weaken it.
+
+## Remaining Limitation
+
+A **remaining limitation** is a known boundary the repair does not
+claim to cross.
+
+Examples:
+
+> Database commit is atomic; filesystem and lifecycle effects are not.
+
+> New artifacts carry bound identity; legacy artifacts are translated
+> from filenames at intake.
+
+> Repository publication is guarded; direct local installation remains
+> operator-controlled.
+
+A limitation prevents future maintainers from extending the closure
+claim by folklore.
+
+## Partial Closure
+
+**Partial closure** is honest closure over part of the mechanism or
+ecology.
+
+Examples include:
+
+* new production fixed, legacy state pending;
+* one repository collection migrated;
+* structured result available, callers not yet moved;
+* regulator detects and quarantines, automatic repair pending.
+
+Partial closure should identify:
+
+* completed boundary;
+* open boundary;
+* transitional authority;
+* next required intervention.
+
+Partial closure is superior to false totality.
+
+## False Closure
+
+**False closure** is the claim that a failure is resolved when
+evidence supports only symptom suppression, local repair, or narrower
+scope.
+
+Common forms include:
+
+* issue closed after adding warning;
+* incident closed after manual state repair;
+* race closed after documentation says “do not run concurrently”;
+* migration closed while old writers remain active;
+* artifact truth closed while repositories still derive identity from
+  names.
+
+False closure turns current uncertainty into future rediscovery.
+
+## Premature Closure
+
+**Premature closure** occurs when the project stops investigating or
+verifying after the first plausible repair.
+
+It is encouraged by:
+
+* release pressure;
+* visible symptom disappearance;
+* elegant patch;
+* strong maintainer confidence;
+* desire to reduce issue backlog;
+* familiar explanation.
+
+Premature closure is a reasoning failure before it is a tracking
+failure.
+
+## Administrative Closure
+
+**Administrative closure** ends a ticket or discussion without
+claiming full technical resolution.
+
+This may be appropriate when:
+
+* issue moved elsewhere;
+* scope changed;
+* project will not support the state;
+* no maintainer is available;
+* risk is accepted;
+* problem is documented as limitation.
+
+Administrative closure should say so.
+
+A closed issue does not need to impersonate a repaired system.
+
+## Closure Theater
+
+**Closure theater** is the production of artifacts and status signals
+that suggest completion without evidence that the mechanism changed.
+
+Examples include:
+
+* issue labels;
+* green dashboards;
+* release-note claims;
+* test count increases;
+* deprecation notices;
+* rewritten documentation.
+
+These surfaces may all be useful.
+
+The theater occurs when they substitute for authority-path
+verification.
+
+## Green-State Counterfeit
+
+A **green-state counterfeit** occurs when the indicator reports
+success because it observes a representation the repair itself
+controls.
+
+Example:
+
+* reconciliation rewrites the database;
+* dashboard reads only the database;
+* filesystem remains inconsistent;
+* dashboard turns green.
+
+The regulator corrected the metric.
+
+Not the invariant.
+
+## Metric Capture
+
+**Metric capture** occurs when the measured indicator becomes the
+practical repair objective, displacing the underlying system property.
+
+Examples include:
+
+* zero warnings;
+* all tests green;
+* no open issues;
+* audit count zero;
+* migration percentage 100.
+
+Metrics help.
+
+They become dangerous when participants optimize the indicator while
+changing what it means.
+
+## Test Capture
+
+**Test capture** occurs when implementation is shaped to satisfy the
+existing test rather than the contract the test was intended to
+represent.
+
+Examples include:
+
+* special-case fixture path;
+* preserve one output line;
+* skip unsupported backend;
+* mark flaky recovery test optional;
+* mock away authority boundaries.
+
+A passing test suite may then preserve the appearance of closure.
+
+## Verification Bias
+
+**Verification bias** is the tendency to seek evidence confirming the
+chosen repair while ignoring paths that would challenge it.
+
+Countermeasures include:
+
+* rival reviewers;
+* adversarial cases;
+* negative tests;
+* independent implementation;
+* explicit reopening conditions;
+* operator observation;
+* bypass audit.
+
+## Author Verification
+
+The repair author possesses valuable context.
+
+The author also carries the strongest narrative commitment to the
+intervention.
+
+Independent review should ask:
+
+* What claim is actually supported?
+* Which path was not tested?
+* Which assumption is shared by test and code?
+* What would falsify closure?
+* Which compensator still exists?
+
+## Review Verification
+
+Reviewers should verify more than code quality.
+
+They should examine:
+
+* causal fit;
+* proof obligations;
+* authority;
+* migration;
+* recovery;
+* operator burden;
+* closure scope;
+* retained lesson.
+
+Code review can confirm that the patch does what it says.
+
+Field verification asks whether what it says is enough.
+
+## Verification Debt
+
+**Verification debt** is uncertainty accumulated when repairs land
+without adequate proof of scope, mechanism change, or ecological
+effect.
+
+Debt appears later as:
+
+* fear of removing workarounds;
+* repeated manual audits;
+* inability to simplify code;
+* duplicated checks;
+* conservative operator habits;
+* reopened incidents;
+* argument over whether a failure was ever fixed.
+
+Verification debt makes old code expensive to trust and expensive to
+delete.
+
+## Closure Debt
+
+**Closure debt** is unresolved work hidden behind a completed status.
+
+Examples include:
+
+* legacy migration not finished;
+* bypass paths unowned;
+* compensators still required;
+* documentation stale;
+* tests local rather than structural;
+* residual risk unrecorded.
+
+Closure debt is especially dangerous because ordinary tracking no
+longer shows it.
+
+## Proof-Carrying Repair
+
+A **proof-carrying repair** arrives with the evidence necessary to
+evaluate its closure claim.
+
+It may include:
+
+* reproduction;
+* structural test;
+* migration plan;
+* failure injection;
+* authority map;
+* bypass inventory;
+* recovery test;
+* compensator analysis.
+
+The phrase is metaphorical.
+
+The point is that the patch should not force every reviewer to
+reconstruct why it closes the mechanism.
+
+## Closure Ladder
+
+A repair may advance through several closure states:
+
+```text
+incident contained
+        ↓
+local state repaired
+        ↓
+defect corrected
+        ↓
+structural test passes
+        ↓
+authority path verified
+        ↓
+migration converges
+        ↓
+compensators retire
+        ↓
+lesson retained
+```
+
+The ladder helps prevent the first successful step from being credited
+as the last.
+
+## Closure Gate
+
+A **closure gate** is a required condition before the project declares
+one depth of repair complete.
+
+Possible gates include:
+
+* regression test merged;
+* authority-path integration test passes;
+* migration report complete;
+* no new legacy production;
+* recovery tested;
+* compensator retired in pilot;
+* documentation updated;
+* decision record linked.
+
+Closure gates should match project capacity.
+
+They should not become ceremonial checkboxes detached from the
+mechanism.
+
+## Closure Budget
+
+Verification and closure consume:
+
+* maintainer time;
+* test infrastructure;
+* production observation;
+* migration support;
+* operator attention.
+
+The project cannot verify everything maximally.
+
+The verification budget should scale with:
+
+* blast radius;
+* irreversibility;
+* authority change;
+* history of recurrence;
+* difficulty of recovery;
+* amount of hidden compensation.
+
+High-radius structural changes deserve deeper closure evidence.
+
+## Confidence Level
+
+A project may state confidence explicitly.
+
+For example:
+
+### Confirmed Locally
+
+Reproduction no longer fails in one environment.
+
+### Verified Structurally
+
+Contract-level tests show the mechanism changed.
+
+### Verified Across Implementations
+
+Conformance holds across supported backends.
+
+### Verified Operationally
+
+Pilot or production evidence confirms the authority path.
+
+### Ecologically Closed
+
+Compensators retired and operator burden changed as intended.
+
+These labels need not become bureaucracy.
+
+They prevent one test from being remembered as universal proof.
+
+## Closure and Time
+
+Some closure claims can be verified immediately.
+
+Others require time.
+
+Immediate:
+
+* parser rejects invalid combination;
+* manifest binds identity;
+* stale generation cannot commit.
+
+Time-dependent:
+
+* no new legacy production appears;
+* support burden falls;
+* operators stop using wrapper;
+* recurrence disappears across release cycle;
+* doctrine changes.
+
+Do not wait indefinitely for perfect certainty.
+
+Do not confuse immediate technical evidence with completed ecological
+migration.
+
+## Field Symptom: The Green Repository
+
+A repository dashboard reports:
+
+```text
+invalid artifacts: 0
+```
+
+Investigation shows:
+
+* validation runs only on interactive publication;
+* imports bypass it;
+* dashboard counts validator rejections;
+* imported malformed artifacts are never counted.
+
+The indicator is green because the sensor does not observe the bypass.
+
+Verification requires:
+
+* path inventory;
+* import tests;
+* authority mapping;
+* repository audit against artifacts.
+
+The repair did not fail.
+
+The closure claim was larger than the observed path.
+
+## Field Symptom: The Race Test Passes
+
+A regression test runs two database writers.
+
+The test passes one thousand times.
+
+Production still loses updates.
+
+The test uses:
+
+* one process namespace;
+* one filesystem;
+* one temporary-path configuration.
+
+Production uses:
+
+* containers;
+* shared storage;
+* separately configured temporary directories.
+
+The lock identity differs.
+
+The test verified local serialization.
+
+The closure claim required global writer serialization.
+
+## Field Symptom: The Structured Result Nobody Uses
+
+The builder adds a structured result.
+
+Unit tests pass.
+
+Documentation describes it.
+
+Two shared frontends still parse stdout.
+
+One downstream tool scans the output directory.
+
+The producer boundary improved.
+
+Ecosystem mechanism closure has not occurred.
+
+Accurate status:
+
+> Structured artifact results are available and verified.
+> Caller migration is incomplete; narration remains
+> compatibility-sensitive.
+
+False status:
+
+> Narrative coupling fixed.
+
+## Field Symptom: The Retired Wrapper Returns
+
+A wrapper is removed after a new orchestrator lands.
+
+Operators recreate it privately.
+
+Investigation shows the wrapper had also provided:
+
+* dry-run presentation;
+* local policy override;
+* recovery logging.
+
+The orchestrator absorbed validation and serialization.
+
+It did not preserve operator decision surfaces.
+
+The new wrapper is not necessarily nostalgia.
+
+It is evidence of incomplete role migration.
+
+## Field Symptom: The Migration Reaches One Hundred Percent
+
+Migration tooling reports:
+
+```text
+100% complete
+```
+
+The metric means:
+
+* every database row has a new schema version.
+
+But:
+
+* old tools still write old rows;
+* one recovery path restores old backups;
+* imported artifacts recreate missing fields;
+* operators still run compatibility mode.
+
+State conversion completed.
+
+Authority convergence did not.
+
+The migration is numerically complete and structurally ongoing.
+
+## Field Symptom: The Warning Disappears
+
+A noisy warning is removed after maintainers conclude it is harmless.
+
+Incident volume falls.
+
+Later, the same state produces silent corruption under a new backend.
+
+The warning had been:
+
+* overbroad;
+* annoying;
+* the only surviving sensor for one real failure.
+
+Correct repair would have:
+
+* narrowed the condition;
+* improved classification;
+* retained detection for the actual invariant.
+
+Silence verified nothing.
+
+## Field Symptom: The Manual Audit Is Removed
+
+Installation gains transactional database registration.
+
+The project removes the operator's manual filesystem audit.
+
+Later, lifecycle scripts still create unregistered files.
+
+The transaction repair closed one state boundary.
+
+The audit had covered a broader ecological property.
+
+The correct retirement may be:
+
+* demote audit from every install;
+* retain it after lifecycle changes or as periodic independent
+  verification.
+
+Compensator scope must be compared with repair scope.
+
+## Field Symptom: The New Validator Rejects Everything Strange
+
+A repository validator correctly rejects:
+
+* malformed identity;
+* missing manifest;
+* unknown architecture.
+
+It also rejects:
+
+* legitimate local architecture names;
+* historical packages with reconstructable metadata;
+* experimental repository policy.
+
+Operators begin using `--force`.
+
+The validator enforces an overbroad model.
+
+Verification should have included:
+
+* valid edge cases;
+* local policy;
+* migration;
+* false-positive rate;
+* escape-hatch use.
+
+The guardrail works.
+
+The ecosystem routes around it.
+
+## Field Symptom: The Recovery Test Uses Clean State
+
+A recovery tool is tested by creating a synthetic damaged database.
+
+It succeeds.
+
+Real incidents involve:
+
+* partial filesystem effects;
+* old format records;
+* interrupted lifecycle scripts;
+* uncertain artifact provenance.
+
+The test proves one reconstruction path.
+
+It does not verify real recovery ecology.
+
+Recovery tests should include historical specimens and fault-injected
+state.
+
+## Field Symptom: No One Reports the Bug
+
+A project concludes a repair succeeded because no new issue appears.
+
+But:
+
+* the affected option is rarely used;
+* documentation removed the example;
+* experienced operators still avoid it;
+* newcomers who fail do not remain in the community.
+
+The quiet period reflects selection and avoidance.
+
+Not necessarily closure.
+
+## Do Not Confuse
+
+**Verification** is not the same as validation.
+
+Validation classifies state; verification evaluates the repair claim.
+
+**Closure** is not absolute certainty.
+
+It is justified confidence within an explicit boundary.
+
+**A passing regression test** is not structural closure.
+
+It may preserve only one specimen.
+
+**No recurrence** is not proof of mechanism removal.
+
+Exposure or observation may have changed.
+
+**A green dashboard** is not proof of invariant health.
+
+The sensor may observe the wrong representation.
+
+**A successful migration command** is not migration completion.
+
+Authority and new production must converge.
+
+**A structured interface** is not boundary closure if callers ignore
+it.
+
+**A retired workaround** is not proof it was obsolete.
+
+Operators may have lost a necessary function.
+
+**A remaining compensator** is not proof the repair failed.
+
+Its scope may be broader or intentionally independent.
+
+**Production observation** is not a substitute for fault injection.
+
+Rare failure paths may remain dormant.
+
+**Fault injection** is not complete production proof.
+
+Real ecology contains history, people, and authority.
+
+**Independent implementations** are not independent if they share one
+assumption.
+
+**Administrative closure** is not technical dishonesty if labeled
+accurately.
+
+**Partial closure** is not failure.
+
+False total closure is.
+
+**Residual risk** is not an excuse.
+
+It is a defined remaining boundary.
+
+**Reopening an issue** is not proof the earlier work was useless.
+
+New evidence may narrow or invalidate the closure claim.
+
+## The Repair Verification Test
+
+Before declaring a repair closed, ask:
+
+1. What exact closure claim is being made?
+2. What is its scope?
+3. At which closure depth does it operate?
+4. What was the original mechanism?
+5. Which causal relationship changed?
+6. What proof obligations follow from the claim?
+7. What positive cases were tested?
+8. What negative cases were tested?
+9. What adversarial cases were tested?
+10. What fault injection was performed?
+11. Which state transitions were observed?
+12. Which authoritative state was inspected?
+13. Does the repair act on every authoritative path?
+14. Which bypass paths remain?
+15. Are bypasses explicit and observable?
+16. Does the escape hatch work for real recovery?
+17. Is the repair idempotent?
+18. Can it resume after interruption?
+19. Does rollback restore the claimed scope?
+20. Is forward recovery possible?
+21. Are repair invariants preserved during transition?
+22. Does migration classify every old state?
+23. Can new production recreate legacy state?
+24. Has authority cut over?
+25. Do old writers remain?
+26. Do all supported implementations pass conformance?
+27. Are tests independent of the repaired representation?
+28. Are orthogonal observations available?
+29. Could the metric become green while the invariant remains broken?
+30. Does the test preserve the mechanism or only one symptom?
+31. Has recurrence through another path been considered?
+32. Has one incident sink merely stopped reporting?
+33. What production evidence exists?
+34. Is the observation window appropriate to operation frequency?
+35. Did incident reporting or exposure change?
+36. Did operator burden actually decrease?
+37. Which compensators remain?
+38. Which may retire?
+39. Has retirement been tested?
+40. Did any compensator reappear?
+41. What hidden function might that reveal?
+42. Did burden move into another component or participant?
+43. Did authority move as intended?
+44. Did legitimate operator policy survive?
+45. Did recovery become harder?
+46. Did false positives create bypass culture?
+47. Did false negatives preserve counterfeit confidence?
+48. Is documentation consistent with the new contract?
+49. Is doctrine consistent with the new operator role?
+50. Is the decision trace retained?
+51. What residual risk remains?
+52. Who owns that risk?
+53. What reopening conditions are explicit?
+54. What evidence would falsify closure?
+55. Can a future maintainer understand why this issue was closed?
+56. Can the ecosystem survive without the old workaround?
+57. Has the failure mechanism disappeared—or merely become quiet?
+
+A repair is closed when the evidence supports the claimed boundary,
+the old causal path no longer governs ordinary operation, and the
+ecosystem can explain what remains open.
+
+## Twenty-Fifth House Law
+
+> A failure is not closed when the symptom disappears.  
+> It is closed when the old mechanism can no longer produce it inside
+> the boundary you claim to own.
+
+Repair verification turns intervention into evidence.
+
+Closure turns evidence into a bounded institutional claim.
+
+Without verification, every patch becomes a new source of folklore:
+
+* somebody says it was fixed;
+* somebody else still runs the wrapper;
+* nobody remembers which path was tested;
+* the next rewrite removes the protection;
+* the corpse returns under a new issue number.
+
+The next section is **Field Reports and Durable Findings**: how to
+write incident records, decision traces, diagnostic summaries, and
+reusable field entries that remain useful after the original
+participants, components, and vocabulary have changed.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
