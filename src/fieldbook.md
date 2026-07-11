@@ -24561,6 +24561,2118 @@ for the highest-leverage one.
 
 ---
 
+# Intervention Design and Repair Selection
+
+A package artifact carries the wrong identity.
+
+Five repairs are proposed.
+
+One maintainer wants to rename the file.
+
+Another wants the repository to reject it.
+
+A third wants the builder to emit a manifest.
+
+A fourth wants the installer to ignore filenames.
+
+A fifth wants documentation explaining how maintainers should check
+the package before publication.
+
+Every proposal addresses something real.
+
+Only some address the mechanism.
+
+Only some possess the facts needed to act.
+
+Only some can reach the authoritative path.
+
+The loudest fix is not necessarily the strongest one.
+
+The earliest fix is not necessarily located at the right authority.
+
+The broadest fix may solve the entire problem by introducing three new
+ones.
+
+> Repair begins after diagnosis.  
+> Damage begins when diagnosis is mistaken for permission to patch
+> anywhere.
+
+---
+
+## Intervention
+
+An **intervention** is a deliberate change intended to alter a causal
+path, state transition, authority relationship, or regulatory loop.
+
+An intervention may:
+
+* prevent a state;
+* reject an operation;
+* normalize an input;
+* publish missing truth;
+* contain legacy behavior;
+* migrate state;
+* repair damage;
+* change authority;
+* add observability;
+* close a control loop;
+* relocate operator work;
+* revise doctrine.
+
+An intervention is defined by what causal relationship it changes.
+
+A code change that leaves the mechanism intact may be maintenance.
+
+It is not necessarily an effective intervention.
+
+## Repair
+
+A **repair** is an intervention intended to restore or improve
+correctness after a defect or failure has been identified.
+
+Repairs may target:
+
+* one incident;
+* one component;
+* one boundary;
+* one failure class;
+* one control loop;
+* one ecological adaptation;
+* one institutional retention path.
+
+The scope should be explicit.
+
+A local repair can be completely correct within its intended scope.
+
+It becomes misleading only when credited with structural effects it
+does not possess.
+
+## Repair Selection
+
+**Repair selection** is the process of choosing among possible
+interventions based on:
+
+* causal fit;
+* authority;
+* available facts;
+* scope;
+* timing;
+* compatibility;
+* reversibility;
+* ecological burden;
+* maintenance capacity;
+* operator policy.
+
+Repair selection asks not merely:
+
+> What change can stop this symptom?
+
+It asks:
+
+> Which change most honestly alters the mechanism at a boundary
+> capable of owning the result?
+
+## Repair Objective
+
+A **repair objective** states the property the intervention should
+establish.
+
+Examples include:
+
+* malformed artifact identity cannot enter an authoritative
+  repository;
+* package installation represents partial completion explicitly;
+* callers no longer reconstruct artifact paths from narration;
+* target-root operations cannot execute scripts in an undefined
+  context;
+* package database writers cannot commit concurrently;
+* legacy metadata enters current semantics through one intake
+  boundary.
+
+A repair objective should be stated before choosing the mechanism.
+
+Otherwise the available patch tends to define the problem.
+
+> When the only tool is a warning, every invariant begins looking
+> advisory.
+
+## Repair Scope
+
+**Repair scope** defines the states, operations, components, and
+participants the intervention is intended to affect.
+
+Possible scopes include:
+
+* one damaged installation;
+* one command path;
+* one repository;
+* one artifact format;
+* one backend;
+* every supported installation;
+* all future production;
+* legacy intake only.
+
+Scope controls the meaning of success.
+
+A local validation hook can fully satisfy:
+
+> Protect my clone from malformed package metadata.
+
+It cannot satisfy:
+
+> Authoritative repositories reject malformed metadata.
+
+## Repair Depth
+
+Repairs may operate at several depths.
+
+### Symptom Repair
+
+Stops or hides one visible outcome.
+
+Examples include:
+
+* rename one file;
+* suppress one warning;
+* recreate one missing directory;
+* retry one command.
+
+### Defect Repair
+
+Corrects one implementation defect.
+
+Examples include:
+
+* fix parser logic;
+* add missing lock;
+* propagate one error;
+* preserve one metadata field.
+
+### Boundary Repair
+
+Changes how meaning or state crosses components.
+
+Examples include:
+
+* structured result;
+* bound manifest;
+* normalization contract;
+* explicit context.
+
+### Regulatory Repair
+
+Changes sensing, decision, correction, or verification.
+
+Examples include:
+
+* make validation authoritative;
+* add quarantine;
+* verify repair;
+* assign an owner.
+
+### Ecological Repair
+
+Migrates compensators, operator roles, and local adaptations.
+
+### Institutional Repair
+
+Preserves the lesson through tests, decisions, documentation, and
+doctrine.
+
+Deeper is not automatically better.
+
+The repair depth should match the intended failure class and available
+change budget.
+
+## Causal Fit
+
+**Causal fit** is the degree to which an intervention acts on the
+mechanism actually producing the failure.
+
+Example:
+
+Mechanism:
+
+```text
+producer knows artifact path
+        ↓
+publishes only human narration
+        ↓
+caller parses text
+```
+
+High-fit intervention:
+
+```text
+producer publishes structured artifact result
+```
+
+Low-fit intervention:
+
+```text
+caller uses a more tolerant regular expression
+```
+
+The low-fit repair may restore operation.
+
+It preserves narrative coupling.
+
+## Intervention Surface
+
+An **intervention surface** is the location where the repair acts.
+
+Possible surfaces include:
+
+* input parser;
+* operation planner;
+* producer result;
+* artifact schema;
+* repository intake;
+* installer;
+* database transaction;
+* operator interface;
+* release procedure;
+* documentation;
+* governance.
+
+The correct surface usually has:
+
+* the relevant facts;
+* authority over the state;
+* sufficient scope;
+* acceptable compatibility cost;
+* a reliable way to verify the result.
+
+## Fact–Authority Alignment
+
+**Fact–authority alignment** occurs when the intervention surface
+possesses both:
+
+1. enough truth to classify the state correctly;
+2. enough authority to enforce or alter the outcome.
+
+Examples:
+
+* the builder knows which artifact it created but may not own
+  repository policy;
+* the repository owns publication but may lack internal artifact
+  truth;
+* the installer owns filesystem mutation but may not own package
+  naming policy;
+* the operator owns local policy but should not reconstruct package
+  identity.
+
+The strongest intervention point is often where facts and authority
+can be brought together with the least duplication.
+
+> Truth without authority writes reports.  
+> Authority without truth writes incident reports.
+
+## Earliest Valid Intervention
+
+The **earliest valid intervention** is the earliest point in the
+causal path where:
+
+* the failure can be identified accurately;
+* the relevant authority exists;
+* legitimate states can still be distinguished;
+* correction remains cheaper than recovery.
+
+Earlier is usually cheaper.
+
+Earlier is not always valid.
+
+For example:
+
+* a source parser may know a package name but not repository policy;
+* a builder may know artifact identity but not whether publication is
+  allowed;
+* a repository may know policy but be too late to prevent unsafe local
+  extraction.
+
+Several guardrails may be appropriate at different scopes.
+
+## Last Responsible Intervention
+
+The **last responsible intervention** is the final boundary at which
+the failure can be prevented before authoritative or destructive state
+becomes difficult to repair.
+
+Examples include:
+
+* artifact validation before repository commit;
+* path validation before extraction;
+* operation-plan validation before mutation;
+* transaction verification before declaring success.
+
+A system may use earlier advisory checks and one later authoritative
+check.
+
+The last responsible intervention should not depend on optional
+memory.
+
+## Prevention
+
+**Prevention** makes the failure state unreachable or rejects it
+before harmful mutation.
+
+Examples include:
+
+* parser rejection;
+* schema constraint;
+* capability validation;
+* conflict detection;
+* transaction locking;
+* required artifact metadata.
+
+Prevention is attractive because it reduces recovery.
+
+It is appropriate when:
+
+* the invalid state is well defined;
+* false rejection is acceptable;
+* authority is clear;
+* compatibility can be migrated;
+* the system possesses required facts.
+
+## Rejection
+
+**Rejection** refuses an input, state, or operation because its
+meaning is invalid, unsupported, or unsafe.
+
+A good rejection states:
+
+* what was rejected;
+* which contract was violated;
+* whether the state can be transformed;
+* which supported alternative exists;
+* whether an escape hatch is available.
+
+Rejection is the correct response when the system cannot own the
+requested meaning.
+
+> An honest refusal is a stronger interface than a successful
+> ambiguity.
+
+## Normalization
+
+**Normalization** converts several acceptable representations into one
+internal meaning.
+
+Use normalization when:
+
+* variation is legitimate;
+* semantics can be preserved;
+* one normal form exists;
+* conversion can occur before mutation.
+
+Do not reject harmless representation variance merely because one
+format is preferred.
+
+Do not normalize states whose semantic difference matters.
+
+For example:
+
+```text
+Foo
+foo
+```
+
+may be safely normalized under one case-insensitive identity model.
+
+It must not be normalized if the repository treats them as distinct
+package identities.
+
+## Validation
+
+**Validation** determines whether state satisfies a contract.
+
+Validation may:
+
+* permit;
+* reject;
+* warn;
+* quarantine;
+* request human judgment.
+
+Validation alone does not define the intervention.
+
+Its regulatory strength depends on:
+
+* placement;
+* authority;
+* bypass;
+* response;
+* postcondition.
+
+## Transformation
+
+A **transformation** converts an input or state into another valid
+state.
+
+Examples include:
+
+* legacy metadata into current normal form;
+* old configuration into a versioned schema;
+* partial artifact records into quarantine state;
+* filename identity into bound metadata during migration.
+
+Transformation is appropriate when:
+
+* meaning is recoverable;
+* information loss is known;
+* authority for the conversion exists;
+* the result is marked honestly.
+
+## Containment
+
+**Containment** prevents a defect, ambiguity, or legacy semantic from
+propagating beyond one boundary.
+
+Examples include:
+
+* compatibility adapter;
+* quarantine;
+* normalization layer;
+* restricted backend;
+* disabled lifecycle execution;
+* local policy wrapper.
+
+Containment may be temporary or permanent.
+
+It is often the best repair when complete redesign is too expensive
+but propagation can be stopped.
+
+## Quarantine
+
+**Quarantine** isolates state that cannot yet be accepted, rejected,
+or repaired safely.
+
+Examples include:
+
+* malformed artifact;
+* partially migrated database;
+* uncertain package identity;
+* incomplete build output;
+* unsupported backend result.
+
+Quarantine is useful when:
+
+* evidence must be preserved;
+* automatic repair would guess;
+* immediate rejection would destroy useful state;
+* human judgment is required.
+
+A quarantine state should be explicit.
+
+A file left in the output directory with a suspicious suffix is not a
+quarantine model.
+
+It is debris with aspirations.
+
+## Migration
+
+**Migration** moves existing state, callers, artifacts, or semantics
+into a new contract.
+
+Migration is required when the repair changes what previously accepted
+state means.
+
+A repair without migration may be correct for new production and
+destructive for history.
+
+Migration should define:
+
+* source state;
+* target state;
+* translation;
+* unrepresentable cases;
+* interruption behavior;
+* verification;
+* rollback;
+* authority cutover.
+
+## Adoption
+
+**Adoption** explicitly incorporates previously accidental or local
+behavior into the current contract.
+
+Adopt when:
+
+* dependence is widespread;
+* behavior is useful;
+* semantics can be defined;
+* migration away would cost more than ownership;
+* the system can enforce the result.
+
+Adoption is not surrender.
+
+It converts accidental authority into explicit responsibility.
+
+## Deprecation
+
+**Deprecation** marks behavior for retirement while preserving it
+temporarily.
+
+A useful deprecation includes:
+
+* reason;
+* replacement;
+* discovery of use;
+* warning or telemetry;
+* migration path;
+* removal condition.
+
+Deprecation alone is not a repair.
+
+It is a transition declaration.
+
+## Retirement
+
+**Retirement** removes behavior after legitimate dependence has been
+migrated, adopted elsewhere, or deliberately rejected.
+
+Retirement should remove:
+
+* production path;
+* authority;
+* documentation;
+* tests preserving obsolete semantics;
+* new caller access.
+
+Historical evidence may remain.
+
+## Recovery
+
+**Recovery** restores useful state after failure.
+
+Recovery may include:
+
+* rollback;
+* repair;
+* reconstruction;
+* replay;
+* reconciliation;
+* restore from snapshot;
+* manual editing through an explicit recovery interface.
+
+Recovery does not prevent recurrence.
+
+It is nevertheless part of system correctness.
+
+A design with excellent prevention and no recovery assumes its own
+perfection.
+
+## Reconciliation
+
+**Reconciliation** compares representations and brings them back into
+a defined relationship.
+
+Examples include:
+
+* package database versus filesystem;
+* repository index versus artifacts;
+* desired configuration versus current state;
+* transaction log versus committed records.
+
+Reconciliation requires an authority rule.
+
+Without one, the tool merely chooses which disagreement to overwrite.
+
+## Regeneration
+
+**Regeneration** recreates derived state from an authoritative source.
+
+Examples include:
+
+* rebuild repository index from bound artifacts;
+* regenerate cache from package database;
+* reconstruct query index from manifests.
+
+Regeneration is strong when derivation is explicit and complete.
+
+It is dangerous when the allegedly derived state contains unique
+information.
+
+## Rollback
+
+**Rollback** attempts to return state to a prior valid condition.
+
+Rollback may be:
+
+* complete;
+* partial;
+* compensating;
+* best effort.
+
+The contract should state which effects can be reversed.
+
+Database rollback does not undo:
+
+* service starts;
+* external network actions;
+* arbitrary lifecycle scripts;
+* messages sent;
+* files modified outside the transaction.
+
+Calling a partial compensating action rollback may create another
+semantic counterfeit.
+
+## Forward Recovery
+
+**Forward recovery** moves damaged or partial state into a new valid
+state rather than restoring the exact previous state.
+
+Examples include:
+
+* complete database registration for already extracted files;
+* finalize an interrupted migration;
+* republish an already valid artifact;
+* reconstruct missing metadata.
+
+Forward recovery is often safer than rollback when effects are
+irreversible or the prior state is unavailable.
+
+## Compensating Action
+
+A **compensating action** offsets an effect that cannot be literally
+reversed.
+
+Examples include:
+
+* disable a service started by a failed script;
+* remove files installed before transaction failure;
+* publish a corrected repository record;
+* create a new transaction reversing accounting state.
+
+Compensation should not be described as atomic rollback unless the
+resulting contract truly supports that claim.
+
+## Policy
+
+**Policy** is a choice among several legitimate system states.
+
+Examples include:
+
+* which package version to install;
+* which repository to prefer;
+* whether to permit a local override;
+* whether to accept a recoverable warning;
+* when to schedule an upgrade.
+
+Policy belongs to the authority designated to make the choice, often
+the operator or repository maintainer.
+
+## Invariant
+
+An **invariant** is a property the system must preserve regardless of
+policy.
+
+Examples include:
+
+* artifact identity is internally consistent;
+* path traversal cannot escape the target;
+* database writes do not interleave corruptly;
+* operation results identify partial completion honestly.
+
+Confusing policy with invariant causes two opposite failures:
+
+* over-enforcement of legitimate operator choice;
+* under-enforcement of structural correctness.
+
+## Policy–Invariant Split
+
+A **policy–invariant split** separates:
+
+* what must always be true;
+* what may be chosen.
+
+Example:
+
+```text
+invariant:
+    every dependency decision refers to a real package identity
+
+policy:
+    which valid provider the operator prefers
+```
+
+A repair should enforce the invariant while preserving policy at the
+correct authority surface.
+
+## Operator Decision Point
+
+An **operator decision point** is a boundary where human policy or
+judgment is intentionally required.
+
+A good decision point presents:
+
+* relevant state;
+* available choices;
+* consequences;
+* defaults;
+* reversibility;
+* required authority.
+
+A bad decision point presents:
+
+* an ambiguous warning;
+* several unexplained commands;
+* no structured state;
+* no verification.
+
+Human judgment should decide policy.
+
+It should not reconstruct missing facts before policy can even be
+understood.
+
+## Escape Hatch
+
+An **escape hatch** permits deliberate exception to a guardrail or
+normal path.
+
+Use an escape hatch when:
+
+* recovery requires exceptional authority;
+* local policy may legitimately differ;
+* migration needs temporary bypass;
+* experts need controlled access to raw state.
+
+A good escape hatch is:
+
+* explicit;
+* narrow;
+* observable;
+* reversible where possible;
+* excluded from ordinary automation;
+* honest about weakened guarantees.
+
+## Repair Boundary
+
+A **repair boundary** is the scope within which the intervention can
+guarantee its result.
+
+Examples include:
+
+* local installation;
+* one artifact;
+* one repository transaction;
+* one database generation;
+* one release.
+
+A repair boundary prevents vague claims such as:
+
+> The package system is now safe.
+
+More accurate:
+
+> Repository intake now rejects artifacts whose bound identity
+> disagrees with publication metadata.
+
+## Postcondition
+
+A **postcondition** is the state that must hold after the
+intervention.
+
+Examples include:
+
+* artifact quarantined and absent from repository index;
+* database and filesystem ownership records agree;
+* no new legacy artifacts produced;
+* caller receives exact structured result;
+* failed migration leaves source state authoritative.
+
+Repairs should be designed around postconditions, not merely command
+success.
+
+## Repair Invariant
+
+A **repair invariant** is a property that must remain true while
+correction is being applied.
+
+Examples include:
+
+* evidence is preserved;
+* only one writer owns state;
+* no new publication occurs during reconciliation;
+* old authority remains valid until cutover;
+* recovery is repeatable;
+* interruption cannot create a less interpretable state.
+
+A repair can fix the original problem and still be unsafe if its own
+transition is poorly modeled.
+
+## Idempotence
+
+An intervention is **idempotent** when repeating it does not produce
+additional unintended effects after the desired state has been
+reached.
+
+Idempotence is valuable for:
+
+* retries;
+* interrupted recovery;
+* automation;
+* distributed control;
+* operator uncertainty.
+
+Not every repair can be perfectly idempotent.
+
+The system should know when repetition is safe.
+
+## Monotonic Repair
+
+A **monotonic repair** moves state progressively toward a valid
+condition without reopening previously resolved parts.
+
+Examples include:
+
+* marking each migrated artifact independently;
+* quarantining invalid entries before rebuilding an index;
+* recording completed transaction phases.
+
+Monotonicity reduces restart complexity.
+
+## Repair Atomicity
+
+**Repair atomicity** means the correction becomes visible as one
+committed state transition within its declared scope.
+
+For example:
+
+* replace the repository index only after every new entry validates;
+* write the repaired database to a new generation and switch authority
+  once.
+
+Repair atomicity should not be claimed across effects outside the
+transaction.
+
+## Repair Observability
+
+**Repair observability** is the ability to determine:
+
+* whether intervention began;
+* which state it examined;
+* which actions it took;
+* which items changed;
+* which cases failed;
+* whether postconditions hold.
+
+Opaque repair creates fear-based retention.
+
+Maintainers preserve old workarounds because they cannot prove the new
+mechanism actually covers the old failure.
+
+## Repair Provenance
+
+**Repair provenance** records:
+
+* which intervention changed state;
+* under whose authority;
+* using which input evidence;
+* against which generation;
+* with which result.
+
+Provenance is especially important when repair reconstructs uncertain
+state.
+
+## Repair Verification
+
+**Repair verification** confirms that:
+
+* the local state is valid;
+* the targeted mechanism is blocked or altered;
+* no new contradiction was introduced;
+* bypass paths are understood;
+* compensators may safely retire.
+
+Verification is the subject of the next section.
+
+It should still influence design from the beginning.
+
+A repair that cannot be verified is difficult to distinguish from a
+confident mutation.
+
+## Leverage
+
+**Leverage** is the amount of failure reduction or burden removal
+produced by one intervention.
+
+High-leverage repairs often:
+
+* publish one missing fact used by many callers;
+* enforce one invariant at an authoritative path;
+* normalize one representation before several downstream phases;
+* close one control loop;
+* contain one legacy semantic at intake.
+
+Leverage should be evaluated against:
+
+* migration cost;
+* blast radius;
+* maintenance burden;
+* compatibility risk;
+* operator sovereignty.
+
+## Narrow Repair
+
+A **narrow repair** changes the smallest surface capable of satisfying
+the repair objective.
+
+Narrow repairs reduce:
+
+* migration;
+* unintended effects;
+* maintenance surface;
+* ecological disruption.
+
+A narrow repair is not the same as a shallow patch.
+
+A structured result added at one producer boundary may be narrow and
+structural.
+
+## Broad Repair
+
+A **broad repair** changes several components, contracts, or
+authorities.
+
+Broad repair may be necessary when:
+
+* the failure is distributed;
+* authority itself is fractured;
+* state migration spans several surfaces;
+* no one boundary owns enough truth;
+* compensators are deeply coupled.
+
+Broad repair requires stronger sequencing and viability planning.
+
+## Minimal Sufficient Repair
+
+A **minimal sufficient repair** is the smallest intervention set that
+satisfies the stated objective and preserves necessary recovery and
+compatibility.
+
+It avoids:
+
+* cosmetic under-repair;
+* ideological redesign;
+* unrelated cleanup;
+* speculative generalization.
+
+Minimal sufficient does not mean minimal code.
+
+It means no unnecessary authority or semantic expansion.
+
+## Repair Stack
+
+A **repair stack** combines several interventions at different depths.
+
+Example:
+
+```text
+immediate:
+    quarantine malformed artifact
+
+boundary:
+    bind identity to artifact
+
+regulatory:
+    validate at repository intake
+
+migration:
+    translate legacy artifacts
+
+institutional:
+    add regression test and decision record
+```
+
+The stack addresses:
+
+* current damage;
+* future prevention;
+* historical state;
+* retained learning.
+
+One intervention rarely performs every role well.
+
+## Defense in Depth
+
+**Defense in depth** uses several independent controls to protect one
+property.
+
+For artifact identity:
+
+* builder emits manifest;
+* artifact binds manifest;
+* repository validates identity;
+* installer verifies artifact;
+* audits reconcile repository state.
+
+The controls should fail independently where practical.
+
+Five checks derived from one filename are not defense in depth.
+
+They are repetition in formation.
+
+## Redundant Guardrail
+
+A **redundant guardrail** protects a property already enforced
+elsewhere.
+
+Redundancy may be useful when:
+
+* blast radius is high;
+* components cross trust boundaries;
+* independent verification is cheap;
+* state may become corrupted after earlier validation.
+
+Redundancy becomes wasteful or contradictory when layers enforce
+different models.
+
+## Repair Sequencing
+
+**Repair sequencing** orders interventions so each stage has:
+
+* one authority;
+* valid state;
+* known compatibility;
+* recoverable transitions.
+
+Example:
+
+1. publish artifact manifests;
+2. validate them in shadow mode;
+3. migrate repository records;
+4. make manifest identity authoritative;
+5. prevent new filename-only artifacts;
+6. remove duplicate parsers.
+
+Wrong order:
+
+1. delete filename parsers;
+2. discover old artifacts have no manifest;
+3. ask operators to reconstruct identity manually.
+
+## Dependency of Repairs
+
+Repairs may depend on one another.
+
+Examples:
+
+```text
+structured partial result
+    before safe automatic retry
+```
+
+```text
+bound identity
+    before authoritative repository validation
+```
+
+```text
+explicit execution context
+    before lifecycle isolation
+```
+
+```text
+caller inventory
+    before compatibility removal
+```
+
+A guardrail installed before its truth source exists may enforce
+fiction.
+
+## Repair Window
+
+A **repair window** is the period during which intervention can occur
+with acceptable risk and disruption.
+
+Consider:
+
+* state mutability;
+* release cycle;
+* operator availability;
+* rollback capacity;
+* compatibility deadlines;
+* accumulated damage.
+
+Delayed repair may allow:
+
+* more dependents;
+* more legacy state;
+* more folklore;
+* higher migration cost.
+
+Immediate repair may act before the model is understood.
+
+## Containment First
+
+**Containment first** is a strategy that stops propagation before
+completing the full structural repair.
+
+Examples include:
+
+* quarantine malformed artifacts;
+* disable unsafe backend;
+* serialize operations;
+* prohibit one option combination;
+* freeze new legacy production.
+
+Containment buys analytical and migration time.
+
+It should remain honest about what is unresolved.
+
+## Repair Later
+
+**Repair later** is acceptable when:
+
+* immediate containment limits damage;
+* evidence is preserved;
+* ownership is assigned;
+* the unresolved mechanism remains visible;
+* follow-up has a binding surface.
+
+Without these conditions, “later” becomes folklore's preferred release
+date.
+
+## Risk
+
+Repair risk includes:
+
+* state loss;
+* false rejection;
+* migration failure;
+* authority confusion;
+* compatibility breakage;
+* operator lockout;
+* ecological regression;
+* loss of recovery;
+* hidden function deletion.
+
+Risk should be compared with status-quo risk.
+
+Doing nothing is an intervention that preserves every current failure
+path.
+
+## Status-Quo Risk
+
+**Status-quo risk** is the expected cost of leaving the current
+mechanism active.
+
+It includes:
+
+* incident recurrence;
+* operator burden;
+* compatibility accretion;
+* elder dependence;
+* state corruption;
+* onboarding loss;
+* future migration cost.
+
+The status quo should not receive zero risk merely because it already
+exists.
+
+## Repair Blast Radius
+
+**Repair blast radius** is the scope of state and participants
+affected if the intervention behaves incorrectly.
+
+A parser check may affect every future package.
+
+A local wrapper affects one workflow.
+
+A database migration affects all recorded state.
+
+High-radius repair requires:
+
+* stronger evidence;
+* staged rollout;
+* observability;
+* rollback or forward recovery;
+* explicit ownership.
+
+## False Positive
+
+A **false positive** occurs when a guardrail classifies legitimate
+state as invalid.
+
+False positives matter because they:
+
+* block real work;
+* train operators to bypass enforcement;
+* create distrust;
+* increase support burden;
+* transform escape hatches into normal paths.
+
+A theoretically correct invariant with poorly available facts may
+produce practical false positives.
+
+## False Negative
+
+A **false negative** occurs when invalid state passes the
+intervention.
+
+False negatives matter because they preserve the failure class while
+creating confidence that it was solved.
+
+The acceptable balance depends on:
+
+* damage severity;
+* reversibility;
+* human review;
+* policy versus invariant;
+* migration stage.
+
+## Repair Confidence
+
+**Repair confidence** is justified belief that the intervention
+addresses the mechanism within its declared scope.
+
+Confidence may derive from:
+
+* reproduction;
+* causal model;
+* negative tests;
+* comparative cases;
+* conformance tests;
+* shadow mode;
+* pilot deployment;
+* postcondition verification;
+* independent review.
+
+Confidence should be proportional to evidence, not diff elegance.
+
+## Repair Theater
+
+**Repair theater** is visible intervention that creates confidence
+without materially changing the relevant causal path.
+
+Examples include:
+
+* warning added to a bypassable path;
+* documentation updated while implementation remains contradictory;
+* dashboard created without correction authority;
+* validator added but not required;
+* wrapper rewritten while private coupling remains;
+* option renamed without semantic split.
+
+The system appears responsive.
+
+The failure class remains employed.
+
+## Patch Theater
+
+**Patch theater** is rapid code modification presented as resolution
+before the mechanism or scope is understood.
+
+Typical sequence:
+
+```text
+incident
+    ↓
+visible symptom patched
+    ↓
+issue closed
+    ↓
+compensators remain
+    ↓
+recurrence through another path
+```
+
+Speed may be appropriate for containment.
+
+The theater lies in claiming closure.
+
+## Repair Laundering
+
+**Repair laundering** presents local compensation as shared structural
+repair.
+
+Examples include:
+
+* one maintainer's hook described as repository validation;
+* one wrapper described as fixed low-level semantics;
+* one patched installation presented as project behavior;
+* one successful manual migration described as migration tooling.
+
+The repair is real.
+
+Its scope is misrepresented.
+
+## Cosmetic Repair
+
+A **cosmetic repair** changes presentation without changing semantic
+authority.
+
+Examples include:
+
+* clearer warning;
+* renamed option;
+* reformatted output;
+* new documentation phrase.
+
+Cosmetic repair can still be valuable.
+
+It becomes misleading when credited with invariant strength.
+
+## Compensatory Repair
+
+A **compensatory repair** adds another mechanism around the defect
+rather than changing it.
+
+Examples include:
+
+* wrapper;
+* reconciliation job;
+* manual checklist;
+* retry policy;
+* local patch.
+
+Compensatory repair may be the best viable choice.
+
+It should be treated as:
+
+* an explicit layer;
+* with ownership;
+* with a contract;
+* with known bypass;
+* with a future review point.
+
+## Over-Repair
+
+**Over-repair** changes more authority, state, or behavior than
+required by the failure class.
+
+Examples include:
+
+* forbidding every lifecycle script because one script lacks
+  target-root semantics;
+* replacing the entire package database to fix one missing lock;
+* centralizing all repository policy to enforce one structural
+  invariant;
+* banning local overrides because one override created ambiguous
+  state.
+
+Over-repair increases migration and cultural resistance.
+
+It may also destroy legitimate policy.
+
+## Under-Repair
+
+**Under-repair** restores the specimen while leaving the structural
+mechanism available.
+
+Examples include:
+
+* rename one artifact;
+* delete one stale record;
+* teach one operator;
+* increase timeout;
+* preserve one expected message.
+
+Under-repair may be appropriate incident response.
+
+It is not failure-class closure.
+
+## Ideological Repair
+
+An **ideological repair** chooses intervention based primarily on
+preferred architecture rather than demonstrated causal fit.
+
+Examples include:
+
+* introducing a service because centralized control is fashionable;
+* refusing a state model because text files are culturally preferred;
+* rewriting in another language;
+* adding a universal plugin interface;
+* removing all automation.
+
+The preferred architecture may still be good.
+
+The autopsy should be able to explain why it fits this mechanism.
+
+## Architecture Smuggling
+
+**Architecture smuggling** uses a local incident as justification for
+a broader design change whose necessity has not been established.
+
+For example:
+
+> One builder lacks structured results, therefore all package
+> operations should move into one daemon.
+
+The daemon may solve the problem.
+
+It also changes:
+
+* authority;
+* deployment;
+* failure domains;
+* recovery;
+* operator control.
+
+Those changes deserve their own argument.
+
+## Repair Capture
+
+**Repair capture** occurs when the intervention is shaped to preserve
+the interests or adaptations of one component, role, or group rather
+than the failure objective.
+
+Examples include:
+
+* validator designed to preserve a maintainer's manual approval
+  monopoly;
+* new API reproducing every private wrapper assumption;
+* repository repair that exports more burden to operators;
+* automation that centralizes local policy unnecessarily.
+
+Capture may be unconscious.
+
+Explicit repair objectives and authority maps help expose it.
+
+## Policy Capture
+
+**Policy capture** occurs when a structural invariant mechanism begins
+deciding legitimate policy outside its scope.
+
+Example:
+
+A repository validator should enforce:
+
+> artifact identity is consistent.
+
+It should not silently decide:
+
+> package version 2 is preferable to version 1.
+
+The first is structural integrity.
+
+The second is policy.
+
+## Recovery Capture
+
+**Recovery capture** occurs when a repair path becomes the normal
+operational path.
+
+Examples include:
+
+* `--force` used for ordinary updates;
+* database repair run after every install;
+* quarantine manually approved without fixing producer;
+* rollback used as expected completion.
+
+Recovery has become compensation.
+
+The normal model is no longer governing reality.
+
+## Field Symptom: Wrong Artifact Identity
+
+Observed:
+
+```text
+filename:
+    foo#1.2-1.pkg.tar.gz
+
+manifest:
+    bar 1.2-1
+```
+
+Possible interventions:
+
+### Rename the File
+
+Scope:
+
+* repairs one artifact presentation.
+
+Does not resolve:
+
+* which identity is authoritative;
+* whether repository state is already wrong;
+* whether consumers trust filename or manifest.
+
+### Installer Ignores Filename
+
+Scope:
+
+* protects installation if manifest is trustworthy.
+
+Does not protect:
+
+* repository indexing;
+* publication;
+* query tools;
+* signatures tied to external identity.
+
+### Repository Rejects Disagreement
+
+Scope:
+
+* prevents malformed publication.
+
+Requires:
+
+* access to both identities;
+* authority over intake;
+* compatibility plan for old artifacts.
+
+### Builder Emits Bound Identity
+
+Scope:
+
+* creates artifact truth.
+
+Does not alone guarantee:
+
+* repository enforcement;
+* caller migration.
+
+### Documentation Checklist
+
+Scope:
+
+* memory prosthesis for maintainers.
+
+Useful during migration.
+
+Not an invariant.
+
+A likely repair stack:
+
+1. quarantine malformed artifact;
+2. define manifest identity as authoritative;
+3. bind manifest to artifact;
+4. validate at repository intake;
+5. migrate legacy artifacts;
+6. update installer and query tools;
+7. prohibit new filename-only production.
+
+## Field Symptom: Alternate-Root Script Damage
+
+Observed:
+
+* files written beneath target root;
+* lifecycle script modifies host state.
+
+Possible interventions:
+
+### Warning
+
+Appropriate when:
+
+* behavior remains supported;
+* operator judgment may permit it;
+* compatibility prevents rejection temporarily.
+
+### Reject All Scripts
+
+Appropriate when:
+
+* script context is undefined;
+* no safe supported meaning exists.
+
+Risk:
+
+* blocks legitimate explicit host-context scripts.
+
+### Explicit Script Context
+
+Possible model:
+
+```text
+--script-context=host
+--script-context=target
+--no-scripts
+```
+
+Requires:
+
+* defined execution semantics;
+* capability checks;
+* honest isolation claims.
+
+### Full Isolation
+
+Strongest possible mechanism.
+
+Also highest:
+
+* complexity;
+* maintenance;
+* compatibility;
+* authority change.
+
+The correct repair depends on the desired contract.
+
+Do not choose isolation merely because it sounds complete.
+
+Do not choose warning merely because it is easy.
+
+## Field Symptom: Database Race
+
+Observed:
+
+* concurrent writers lose one package record.
+
+Possible interventions:
+
+### Documentation
+
+> Do not run package operations concurrently.
+
+Soft invariant.
+
+May be viable for one local tool.
+
+### Wrapper Lock
+
+Contains concurrency if every path uses wrapper.
+
+Fails under bypass.
+
+### Shared Lock Primitive
+
+Protects all cooperating writers.
+
+Requires:
+
+* one lock namespace;
+* defined stale-lock recovery;
+* reader semantics.
+
+### Transactional Database
+
+May solve broader state problems.
+
+Could be over-repair if introduced only for one lock defect.
+
+### Optimistic Generation Check
+
+Rejects stale writers before commit.
+
+May preserve concurrency with explicit conflict.
+
+The repair objective determines the mechanism:
+
+> Serialize writers
+
+is different from:
+
+> Permit concurrent planning but reject stale commits.
+
+## Field Symptom: Repeated Malformed Repository Entries
+
+Possible interventions:
+
+### Nightly Audit
+
+Detective guardrail.
+
+Useful for existing drift.
+
+### Intake Validation
+
+Preventive guardrail.
+
+Protects future publication.
+
+### Producer Validation
+
+Earlier feedback.
+
+Does not replace intake authority.
+
+### Schema Change
+
+May make missing fields unrepresentable.
+
+Requires migration.
+
+### Human Review
+
+Useful for policy and exceptional cases.
+
+Wasteful for deterministic structural checks.
+
+A strong repair stack may use all of them with distinct roles.
+
+## Field Symptom: Caller Parses stdout
+
+Possible interventions:
+
+### Freeze Wording
+
+Restores compatibility.
+
+Preserves accidental protocol.
+
+### Add More Distinct Marker
+
+Example:
+
+```text
+RESULT: artifact=...
+```
+
+Better than prose parsing.
+
+Still requires a specified protocol.
+
+### Machine-Readable Mode
+
+Good boundary if:
+
+* schema is defined;
+* diagnostics are separate;
+* completion is explicit;
+* versioning exists.
+
+### Library API
+
+May be appropriate for in-process integration.
+
+Not automatically superior.
+
+### Result File
+
+Useful across process boundaries and long operations.
+
+The correct transport depends on environment.
+
+The repair objective is:
+
+> Publish structured authoritative result separately from narration.
+
+## Field Symptom: Optional Validation Already Works
+
+A local validator catches every known malformed package.
+
+Possible next steps:
+
+1. verify false-positive rate;
+2. define scope and contract;
+3. run in shadow mode across authoritative intake;
+4. compare with maintainer decisions;
+5. add quarantine;
+6. make rejection authoritative;
+7. preserve explicit bypass for recovery;
+8. remove claims that local hooks alone provide the invariant.
+
+The script may need little change.
+
+The real intervention is authority migration.
+
+## Field Symptom: New Strict Parser Breaks Legacy State
+
+A parser begins rejecting old package names.
+
+Possible responses:
+
+### Disable Strictness
+
+Preserves compatibility.
+
+Also preserves new malformed production.
+
+### Grandfather Existing Names
+
+Requires a reliable way to distinguish existing state.
+
+### Legacy Intake Adapter
+
+Reads old form, produces current identity, prevents new old-form
+output.
+
+### Bulk Migration
+
+Converts all supported state.
+
+May be expensive but produces clean cutover.
+
+### Explicit Unsupported Boundary
+
+Rejects ancient state and documents scope.
+
+May be legitimate for a small project with limited maintenance
+capacity.
+
+Repair selection is not only technical.
+
+It includes the project's actual compatibility budget.
+
+## Field Symptom: Operator Performs Manual Reconciliation
+
+An operator compares filesystem and database after every upgrade.
+
+Possible interventions:
+
+### Automate the Comparison
+
+Creates a detective guardrail.
+
+### Fix Transaction Ordering
+
+May remove the recurring inconsistency.
+
+### Add Postcondition Verification
+
+Closes the operation loop.
+
+### Preserve Manual Audit
+
+Useful independent verification.
+
+The operator's existing practice may contain:
+
+* structural detection;
+* local policy;
+* historical fear.
+
+Extract before automating.
+
+## Repair Selection Matrix
+
+A compact selection guide:
+
+| Condition                                      | Likely intervention              |
+| ---------------------------------------------- | -------------------------------- |
+| state has no coherent meaning                  | reject                           |
+| several forms share one meaning                | normalize                        |
+| old meaning must enter current system          | compatibility adapter            |
+| uncertain state must be preserved              | quarantine                       |
+| current state violates a recoverable invariant | reconcile or regenerate          |
+| old behavior is useful and widespread          | adopt                            |
+| old behavior has a viable replacement          | deprecate and migrate            |
+| irreversible effect already occurred           | forward recovery or compensation |
+| failure propagates across boundaries           | contain                          |
+| missing fact causes caller reconstruction      | publish structured truth         |
+| validation lacks authority                     | move it onto authoritative path  |
+| operator owns legitimate choice                | expose explicit policy decision  |
+| mechanism is not yet understood                | contain and preserve evidence    |
+
+The matrix suggests inquiry.
+
+It is not a substitute for one.
+
+## Repair Decision Record
+
+A **repair decision record** should state:
+
+```text
+Failure class:
+    What mechanism is being addressed?
+
+Objective:
+    What property should hold?
+
+Scope:
+    Which state and paths are covered?
+
+Selected intervention:
+    What changes?
+
+Authority:
+    Who owns the new decision?
+
+Facts:
+    Which observations support the decision?
+
+Rejected alternatives:
+    Why were they not selected?
+
+Compatibility:
+    Which old state remains?
+
+Migration:
+    How does it move?
+
+Recovery:
+    What happens after interruption or failure?
+
+Operator policy:
+    Which choices remain local?
+
+Verification:
+    How will closure be demonstrated?
+
+Retirement:
+    Which compensators or legacy paths may disappear?
+
+Remaining limits:
+    What is still not solved?
+```
+
+This record prevents the chosen mechanism from later being remembered
+as inevitable.
+
+## Do Not Confuse
+
+**Intervention** is not synonymous with code change.
+
+Authority, procedure, documentation, and migration may be intervention
+surfaces.
+
+**Prevention** is not always superior to recovery.
+
+Some failures cannot be prevented completely.
+
+**Rejection** is not hostility.
+
+It is appropriate when the operation has no coherent supported
+meaning.
+
+**Normalization** is not permission to erase meaningful differences.
+
+Only equivalent representations should converge.
+
+**Quarantine** is not failure disposal.
+
+It preserves uncertain state for later judgment.
+
+**Migration** is not compatibility forever.
+
+It should move toward authority convergence.
+
+**Adoption** is not capitulation to bugs.
+
+It is explicit ownership of useful existing behavior.
+
+**A warning** is not automatically weak design.
+
+It may be appropriate for policy or uncertain classification.
+
+**A guardrail** is not automatically the correct repair.
+
+The guardrail must sit at the right authority surface.
+
+**A local repair** is not inferior.
+
+Its scope is simply narrower.
+
+**A broad redesign** is not automatically structural.
+
+It may preserve the same mechanism at greater cost.
+
+**The earliest intervention** is not always valid.
+
+Facts and authority must align.
+
+**The deepest repair** is not automatically viable.
+
+The ecology must survive migration.
+
+**Operator choice** is not an invariant violation.
+
+Do not automate policy under the banner of correctness.
+
+**An escape hatch** is not a failed guardrail.
+
+It may preserve recovery and sovereignty.
+
+**Defense in depth** is not repeated dependence on one representation.
+
+Controls should contribute independent assurance.
+
+## The Intervention Design Test
+
+Before selecting a repair, ask:
+
+1. What mechanism is being changed?
+2. What is the repair objective?
+3. What is the intended scope?
+4. Is the target a symptom, defect, boundary, regulator, ecology, or
+   institution?
+5. Which state must become unreachable?
+6. Which state must remain legitimate?
+7. What facts are required to classify the state?
+8. Which component first knows those facts?
+9. Which surface possesses authority?
+10. Can facts and authority be aligned?
+11. What is the earliest valid intervention?
+12. What is the last responsible intervention?
+13. Should the system reject, normalize, transform, contain,
+    quarantine, migrate, adopt, or retire?
+14. Which choice belongs to operator policy?
+15. Which property must be invariant?
+16. Are policy and invariant separated?
+17. What immediate repair is required?
+18. What structural repair is required?
+19. What ecological migration is required?
+20. Which compensators currently preserve operation?
+21. What hidden functions do they perform?
+22. Which compensators may retire?
+23. Which must remain?
+24. What compatibility envelope applies?
+25. Can new production create legacy state?
+26. What is the authority during transition?
+27. What postcondition defines success?
+28. What repair invariants must hold during transition?
+29. Is the repair idempotent?
+30. Can it be resumed?
+31. Is forward recovery safer than rollback?
+32. Which effects are irreversible?
+33. What evidence must be preserved?
+34. What is the repair blast radius?
+35. What false positives are possible?
+36. What false negatives are possible?
+37. How will operators bypass the mechanism legitimately?
+38. Can bypass become normal operation?
+39. Does the repair close a control loop?
+40. Does it merely move observation?
+41. Does the repair reduce total burden?
+42. Or relocate burden into another invisible substrate?
+43. Is the intervention narrow but structural?
+44. Or broad but cosmetic?
+45. Does it require a repair stack?
+46. What is the correct sequence?
+47. Which repair depends on another?
+48. What status-quo risk accumulates during delay?
+49. What change budget exists?
+50. Can the project maintain the selected mechanism?
+51. How will confidence be established?
+52. Can another case in the mechanism class be repaired by the same
+    intervention?
+53. Is the incident being used to smuggle unrelated architecture?
+54. Is an existing ideology choosing the repair before the mechanism
+    is considered?
+55. Does the repair preserve legitimate operator sovereignty?
+56. What remaining limitation must be confessed?
+
+A repair is well selected when it acts where the system possesses
+enough truth, enough authority, and enough scope to alter the
+mechanism without annexing unrelated policy.
+
+## Twenty-Fourth House Law
+
+> Fix the failure at the narrowest boundary that owns both the truth
+> and the right to say no.
+
+Intervention design chooses how the system should change.
+
+Repair selection balances:
+
+* causal depth;
+* authority;
+* compatibility;
+* recovery;
+* operator control;
+* ecological viability.
+
+The most dramatic repair is not necessarily the most structural.
+
+The smallest repair is not necessarily superficial.
+
+The right repair is the one that changes the relevant causal path and
+can prove the change within an honest boundary.
+
+The next section is **Repair Verification and Closure**: how to
+demonstrate that an intervention altered the mechanism rather than
+merely suppressing the symptom, how to detect ecological regression,
+and when the ecosystem may safely retire its old compensators.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
