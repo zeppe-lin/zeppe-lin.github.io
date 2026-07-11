@@ -20955,7 +20955,7 @@ Before changing a mature component or boundary, ask:
 42. Can the old compensator be removed without reopening the failure
     it contained?
 43. Who owns the new structure after the original reformer leaves?
-44. Is the ecosystem becoming more coherent—or merely more
+44. Is the ecosystem becoming more coherent --- or merely more
     modern-looking?
 
 A viable change does not preserve every scar.
@@ -26765,8 +26765,7 @@ A closed incident does not necessarily mean:
 * compensators may retire;
 * recurrence is impossible.
 
-> “Closed” is a scope claim.
->
+> “Closed” is a scope claim.  
 > Without scope, it is office furniture.
 
 ## Closure Boundary
@@ -28749,7 +28748,7 @@ Before declaring a repair closed, ask:
 54. What evidence would falsify closure?
 55. Can a future maintainer understand why this issue was closed?
 56. Can the ecosystem survive without the old workaround?
-57. Has the failure mechanism disappeared—or merely become quiet?
+57. Has the failure mechanism disappeared --- or merely become quiet?
 
 A repair is closed when the evidence supports the claimed boundary,
 the old causal path no longer governs ordinary operation, and the
@@ -28777,6 +28776,2103 @@ The next section is **Field Reports and Durable Findings**: how to
 write incident records, decision traces, diagnostic summaries, and
 reusable field entries that remain useful after the original
 participants, components, and vocabulary have changed.
+
+---
+
+# Field Reports and Durable Findings
+
+The incident is diagnosed.
+
+The repair lands.
+
+The issue closes.
+
+The useful conclusion is distributed across:
+
+* one IRC log;
+* two commits;
+* a mailing-list correction;
+* a test whose name describes the symptom;
+* a release note saying only “fixed package handling”;
+* one maintainer who remembers why the first patch was rejected.
+
+Five years later, the same mechanism appears in another component.
+
+The archive contains everything required to understand it.
+
+The next maintainer cannot find the conclusion before reproducing the
+failure.
+
+The project preserved history.
+
+It failed to publish a finding.
+
+> An investigation that cannot be retrieved becomes folklore with
+> attachments.
+
+---
+
+## Field Report
+
+A **field report** is a structured account of an observed system
+condition, incident, failure mechanism, intervention, or recurring
+ecological pattern.
+
+A useful field report connects:
+
+* concrete evidence;
+* state and authority;
+* causal interpretation;
+* compensating behavior;
+* repair;
+* remaining uncertainty;
+* reusable findings.
+
+A field report is not merely an incident narrative.
+
+It should help another investigator answer:
+
+* What happened?
+* What does the evidence support?
+* Which mechanism was active?
+* Which boundary owned the failure?
+* What changed?
+* Which lesson travels?
+* What remains unresolved?
+
+## Durable Finding
+
+A **durable finding** is a conclusion preserved with enough evidence,
+scope, rationale, and present-tense linkage to remain useful after:
+
+* participant turnover;
+* component replacement;
+* vocabulary change;
+* repository reorganization;
+* implementation rewrite;
+* migration;
+* historical distance.
+
+Durability does not mean permanence.
+
+A durable finding remains:
+
+* recoverable;
+* interpretable;
+* challengeable;
+* scoped;
+* revisable.
+
+> A durable finding survives long enough to be proven wrong properly.
+
+## Finding
+
+A **finding** is a supported conclusion produced by investigation.
+
+Examples include:
+
+> Package identity was operationally controlled by filename parsing,
+> despite internal metadata being described as authoritative.
+
+> The repository audit detected malformed artifacts but lacked
+> authority to prevent publication.
+
+> The wrapper supplied serialization, artifact discovery, and
+> partial-failure handling, not merely convenience.
+
+> The rewrite reintroduced the defect because the invariant had never
+> been extracted from implementation.
+
+A finding should identify what the evidence establishes.
+
+It should not inflate:
+
+```text
+one malformed package
+```
+
+into:
+
+```text
+all package formats are fundamentally incoherent
+```
+
+## Observation, Finding, and Doctrine
+
+These three layers should remain distinct.
+
+### Observation
+
+> The artifact filename declared `foo`, while internal metadata
+> declared `bar`.
+
+### Finding
+
+> Artifact identity had two active authority surfaces, and consumers
+> selected different ones.
+
+### Doctrine
+
+> Truth should be published by the layer capable of enforcing it.
+
+Observation is local evidence.
+
+Finding is causal interpretation.
+
+Doctrine is compressed guidance.
+
+A strong report preserves the chain among them.
+
+## Incident Report
+
+An **incident report** records what happened during one operational
+event.
+
+It usually emphasizes:
+
+* impact;
+* timeline;
+* affected state;
+* response;
+* restoration;
+* immediate follow-up.
+
+Incident reports are necessary for operational accountability.
+
+They may stop before structural or ecological analysis.
+
+## Autopsy Report
+
+An **autopsy report** explains the mechanism through which the
+incident became possible and persisted.
+
+It emphasizes:
+
+* state transitions;
+* authority;
+* contracts;
+* boundaries;
+* regulators;
+* compensators;
+* causal depth;
+* intervention points.
+
+## Decision Record
+
+A **decision record** explains what was chosen, why, under which
+conditions, and with which rejected alternatives.
+
+It emphasizes:
+
+* problem statement;
+* constraints;
+* selected contract;
+* authority;
+* tradeoffs;
+* migration;
+* consequences;
+* revision conditions.
+
+## Closure Report
+
+A **closure report** states why the project believes a repair claim is
+now supported.
+
+It emphasizes:
+
+* closure boundary;
+* verification;
+* migration;
+* bypass;
+* compensator retirement;
+* residual risk;
+* reopening conditions.
+
+## Field Entry
+
+A **field entry** extracts one reusable mechanism from one or more
+reports.
+
+It emphasizes:
+
+* definition;
+* causal signature;
+* field symptoms;
+* counterexamples;
+* diagnostic questions;
+* intervention patterns;
+* relation to adjacent terms.
+
+The same investigation may produce all five artifacts.
+
+They serve different purposes.
+
+> One document should not be forced to perform every kind of memory.
+
+## Report Surface
+
+A **report surface** is the location where a report or finding is
+published and maintained.
+
+Examples include:
+
+* issue tracker;
+* documentation repository;
+* decision-record directory;
+* incident archive;
+* test suite;
+* release notes;
+* fieldbook;
+* code comment.
+
+Each surface has different strengths.
+
+| Surface         | Strong at                   | Weak at                |
+| --------------- | --------------------------- | ---------------------- |
+| issue           | evidence and discussion     | current conclusion     |
+| commit          | exact implementation change | broad context          |
+| test            | executable expectation      | rationale              |
+| manual          | current contract            | historical uncertainty |
+| decision record | rationale and tradeoffs     | runtime enforcement    |
+| field entry     | reusable mechanism          | incident detail        |
+| release note    | operator-visible change     | full causal model      |
+
+Durable memory usually requires linkage among several surfaces.
+
+## Conclusion Surface
+
+A **conclusion surface** is the place where the final supported
+interpretation is stated clearly enough to retrieve without
+reconstructing the entire discussion.
+
+A conclusion surface should answer:
+
+* What was concluded?
+* Which scope applies?
+* What evidence supports it?
+* Where is the current authority?
+* What changed?
+* What remains open?
+* What would invalidate the conclusion?
+
+An issue containing one hundred comments but no conclusion surface
+preserves discussion, not institutional memory.
+
+## Evidence Surface
+
+An **evidence surface** preserves raw or minimally interpreted
+material.
+
+Examples include:
+
+* logs;
+* artifacts;
+* state snapshots;
+* reproduction scripts;
+* traces;
+* benchmark output;
+* historical messages.
+
+Evidence surfaces should be linked from conclusions.
+
+Conclusions should not replace evidence when later review may matter.
+
+## Binding Surface
+
+A **binding surface** gives a conclusion operational force.
+
+Examples include:
+
+* parser rejection;
+* test;
+* schema;
+* transaction;
+* repository gate;
+* typed result;
+* access-control rule.
+
+A report may explain the lesson.
+
+A binding surface determines whether the system learned it
+mechanically.
+
+## Surface Chain
+
+A healthy retention path may look like:
+
+```text
+raw evidence
+    ↓
+incident report
+    ↓
+autopsy finding
+    ↓
+decision record
+    ↓
+implementation and migration
+    ↓
+test or guardrail
+    ↓
+current documentation
+    ↓
+field entry
+```
+
+Not every incident needs every surface.
+
+The important property is that the chain from evidence to current
+behavior remains recoverable.
+
+## Report Spine
+
+A **report spine** is the minimal sequence of statements allowing a
+reader to understand the investigation without following every
+historical branch.
+
+A strong spine usually contains:
+
+1. observed condition;
+2. expected contract;
+3. first divergence;
+4. structural mechanism;
+5. compensator;
+6. intervention;
+7. verification;
+8. remaining limitation;
+9. durable finding.
+
+The spine is not a summary of every discussion.
+
+It is the load-bearing reasoning.
+
+## Report Body
+
+The **report body** contains supporting detail:
+
+* timeline;
+* alternative hypotheses;
+* evidence;
+* rejected explanations;
+* migration effects;
+* implementation notes;
+* operator reports;
+* related incidents.
+
+A reader should be able to understand the finding from the spine and
+audit it through the body.
+
+## Finding Statement
+
+A **finding statement** should be:
+
+* causal;
+* scoped;
+* evidence-bearing;
+* falsifiable;
+* free of unnecessary historical dependency.
+
+Weak:
+
+> The package tool is unreliable.
+
+Better:
+
+> Under concurrent writers, package database replacement was not
+> serialized, allowing one valid update to overwrite another.
+
+Stronger, if evidence supports it:
+
+> Every database writer used the same nonserialized replacement
+> contract; wrappers reduced ordinary exposure but direct invocation
+> remained unsafe.
+
+The strongest statement is not the broadest.
+
+It is the most precise statement supported by the evidence.
+
+## Scope Statement
+
+A **scope statement** identifies where the finding applies.
+
+It may specify:
+
+* versions;
+* components;
+* operation phases;
+* artifact formats;
+* repositories;
+* backends;
+* migration generations;
+* operator workflows;
+* supported and unsupported states.
+
+Example:
+
+> Applies to package-database writers before version 6.2 when
+> operating on one database without the shared lock primitive.
+> Read-only queries are unaffected.
+
+Scope protects the finding from both underuse and overgeneralization.
+
+## Applicability Condition
+
+An **applicability condition** is a property that must hold before the
+finding can be transferred to another case.
+
+For narrative coupling:
+
+* machine behavior depends on output intended primarily for humans;
+* producer already knows the required fact;
+* no stable protocol owns the output.
+
+A deliberately specified line protocol does not satisfy the condition
+merely because it is text.
+
+Applicability conditions keep field terms diagnostic.
+
+## Exclusion Condition
+
+An **exclusion condition** states when the finding should not be
+applied.
+
+Examples:
+
+> This is not authority fracture if one representation is clearly
+> derived and every consumer treats it as nonauthoritative.
+
+> This is not human-as-the-loop when the operator chooses policy from
+> complete structured state and the system performs sensing and
+> verification.
+
+Exclusions prevent category capture.
+
+## Confidence Statement
+
+A **confidence statement** records how strongly the evidence supports
+the finding.
+
+Possible forms include:
+
+* confirmed by direct trace;
+* reproduced locally;
+* reproduced across two backends;
+* inferred from state and timing;
+* historically reported but not reproducible;
+* plausible, with rival hypothesis unresolved.
+
+Confidence should match evidence.
+
+Avoid replacing uncertainty with confident grammar.
+
+## Uncertainty Register
+
+An **uncertainty register** records unresolved questions relevant to
+the finding.
+
+Examples include:
+
+* whether one downstream caller still uses the old path;
+* whether legacy artifacts contain enough information for lossless
+  migration;
+* whether the warning existed before the first observed incident;
+* whether one operator workaround remains necessary.
+
+Uncertainty belongs in the report.
+
+Hiding it does not improve the finding.
+
+## Evidence Chain
+
+An **evidence chain** connects each important conclusion to
+observations capable of supporting it.
+
+Example:
+
+```text
+finding:
+    publication validation was bypassable
+
+evidence:
+    import tool wrote repository state directly
+
+evidence:
+    malformed artifact entered through import
+
+evidence:
+    validator logs contain no corresponding event
+
+authority:
+    imported repository state was visible to consumers
+```
+
+An evidence chain prevents retrospective certainty from floating free
+of the incident.
+
+## Decision Chain
+
+A **decision chain** connects:
+
+* observed failure;
+* extracted mechanism;
+* chosen objective;
+* selected intervention;
+* implementation;
+* verification;
+* current authority.
+
+Future maintainers should be able to determine why one repair was
+chosen over another.
+
+## Contradiction Record
+
+A **contradiction record** preserves disagreements among:
+
+* documentation;
+* implementation;
+* tests;
+* operator practice;
+* historical behavior.
+
+Example:
+
+```text
+manual:
+    --root relocates installation
+
+implementation:
+    file extraction only
+
+operator practice:
+    scripts disabled manually
+
+test:
+    verifies target filesystem only
+```
+
+The contradiction itself may be the finding.
+
+Do not “clean up” reports by selecting one story before authority is
+resolved.
+
+## Supersession
+
+**Supersession** occurs when a newer finding, contract, or decision
+replaces an older one.
+
+A superseded record should state:
+
+* what replaced it;
+* why;
+* which scope remains historical;
+* whether old evidence remains relevant;
+* which migration separated the two models.
+
+Do not silently edit old reports until they appear to have predicted
+the future.
+
+History should remain legible.
+
+## Supersession Link
+
+A **supersession link** connects an old conclusion to the current one.
+
+Example:
+
+> Superseded by `ADR-0042`: package identity is now bound through
+> manifests.  This report remains applicable to legacy filename-only
+> artifacts accepted by the compatibility intake path.
+
+The old finding survives with narrowed scope.
+
+## Tombstone
+
+A **tombstone** is a concise record marking a retired behavior,
+authority surface, or document.
+
+A useful tombstone states:
+
+* what was removed;
+* when;
+* why;
+* what replaced it;
+* where historical evidence lives;
+* whether any compatibility remains.
+
+Tombstones prevent deleted paths from becoming ghosts whose purpose
+must be rediscovered later.
+
+> Delete the code.  
+> Leave the grave marker.
+
+## Semantic Tombstone
+
+A **semantic tombstone** records the retirement of one meaning, not
+merely one implementation.
+
+Example:
+
+> `--root` no longer implies lifecycle relocation.
+> The option now controls filesystem destination only.
+> Script execution requires explicit context.
+
+This prevents the old semantic from surviving in operator expectation
+after the code changes.
+
+## Record Versioning
+
+**Record versioning** preserves how findings change over time.
+
+A record may move through:
+
+* provisional;
+* confirmed;
+* revised;
+* narrowed;
+* superseded;
+* retired.
+
+Versioning need not create heavy process.
+
+The important property is that readers can distinguish:
+
+* current claim;
+* old claim;
+* reason for change.
+
+## Present-Tense Linkage
+
+**Present-tense linkage** connects a historical finding to current
+code, documentation, tests, and authority.
+
+A finding becomes operationally dead when it remains historically
+correct but no current surface points to it.
+
+Present-tense linkage may include:
+
+* links from current manual;
+* test comments;
+* design-record references;
+* fieldbook term index;
+* migration notes;
+* code comments at compatibility boundaries.
+
+## Retrieval Path
+
+A **retrieval path** is the route by which a future maintainer is
+expected to find the relevant conclusion.
+
+Possible paths include:
+
+* searching the field term;
+* following a test reference;
+* reading a decision record;
+* consulting the current manual;
+* tracing a compatibility adapter comment;
+* finding related incidents through tags.
+
+A report should not assume future maintainers know:
+
+* the original issue number;
+* the old component name;
+* the maintainer nickname;
+* the historical vocabulary.
+
+## Addressability
+
+**Addressability** is the ability to refer reliably to a finding or
+report.
+
+Useful addressability may come from:
+
+* stable file path;
+* record identifier;
+* section anchor;
+* persistent issue link;
+* commit reference;
+* canonical term.
+
+A screenshot pasted into chat is evidence.
+
+It is weakly addressable.
+
+## Discoverability
+
+**Discoverability** is the likelihood that a relevant report will be
+found before the same reasoning is repeated.
+
+Discoverability improves through:
+
+* meaningful titles;
+* current terminology;
+* historical aliases;
+* tags;
+* cross-links;
+* indexes;
+* concise conclusion surfaces;
+* references from current code.
+
+## Semantic Discoverability
+
+**Semantic discoverability** means findings can be retrieved by
+mechanism, not only by original component name or symptom.
+
+For example, an old issue titled:
+
+> pkgmk output broken
+
+should become discoverable under:
+
+* narrative coupling;
+* artifact discovery;
+* structured result;
+* supplier duty.
+
+This is one purpose of field vocabulary.
+
+## Alias Record
+
+An **alias record** maps old and local terminology to current field
+concepts.
+
+Examples:
+
+```text
+“output parsing”
+    → narrative coupling
+
+“manual safety rule”
+    → soft invariant
+
+“two package identities”
+    → authority fracture
+
+“works only through wrapper”
+    → coping infrastructure / shadow regulator
+```
+
+Aliases prevent terminology improvement from making history harder to
+search.
+
+## Index
+
+An **index** organizes findings by:
+
+* mechanism;
+* component;
+* symptom;
+* authority surface;
+* operator burden;
+* historical period;
+* repair type.
+
+A fieldbook index should allow both entry paths:
+
+* “I know the term.”
+* “I know the symptom.”
+
+## Finding Graph
+
+A **finding graph** connects reports and concepts through
+relationships such as:
+
+* caused by;
+* compensated by;
+* superseded by;
+* verified by;
+* contradicts;
+* migrated through;
+* example of;
+* counterexample to.
+
+A simple set of links may be enough.
+
+The graph need not become a knowledge platform nobody maintains.
+
+## Report Decay
+
+**Report decay** is the gradual loss of usefulness even when the
+report remains available.
+
+Decay may occur through:
+
+* stale links;
+* missing artifacts;
+* vocabulary drift;
+* version ambiguity;
+* moved repositories;
+* deleted tests;
+* superseded contracts;
+* lost authority linkage.
+
+A report can remain textually intact and operationally dead.
+
+## Link Rot
+
+**Link rot** is the loss of referenced material because locations
+disappear.
+
+Mitigation may include:
+
+* stable repositories;
+* archived evidence;
+* copied essential excerpts;
+* content-addressed artifacts;
+* local references.
+
+## Pointer Rot
+
+**Pointer rot** occurs when a link still resolves but no longer
+identifies the relevant conclusion.
+
+Examples include:
+
+* issue thread now contains hundreds of unrelated comments;
+* wiki page changed meaning;
+* branch moved;
+* “latest” documentation no longer describes the incident version.
+
+The pointer exists.
+
+The target meaning drifted.
+
+## Context Rot
+
+**Context rot** is the loss of surrounding assumptions needed to
+understand a report.
+
+Examples include:
+
+* command names changed;
+* repositories split;
+* roles moved;
+* artifact formats evolved;
+* old terms disappeared.
+
+Context rot is reduced by explicit scope and semantic indexing.
+
+## Authority Rot
+
+**Authority rot** occurs when a report describes an authority
+structure that no longer exists.
+
+For example:
+
+> Repository filenames are authoritative.
+
+Later, manifests become authoritative.
+
+The old report may remain correct for legacy artifacts only.
+
+Without supersession, readers may apply historical authority to
+current state.
+
+## Schema Rot
+
+**Schema rot** occurs when a report's conceptual categories no longer
+match the system.
+
+An old report may discuss:
+
+* “installation success” as binary;
+
+while the current system models:
+
+* planned;
+* mutated;
+* partially committed;
+* committed;
+* recovered.
+
+The evidence may still matter.
+
+The old schema compresses it incorrectly.
+
+## Terminology Rot
+
+**Terminology rot** occurs when a term continues being used after its
+meaning changes.
+
+For example:
+
+* `package name` once meant filename stem;
+* later it means manifest identity;
+* later it means repository-qualified identity.
+
+Reports should define critical terms under their historical scope.
+
+## Report Fossil
+
+A **report fossil** is a preserved document whose findings remain
+historically interesting but are no longer connected to current
+decisions or state.
+
+Fossils are useful.
+
+They should be marked historical.
+
+The danger is a fossil appearing in search results as current
+doctrine.
+
+## Zombie Report
+
+A **zombie report** is an obsolete report still used as current
+operational guidance.
+
+Examples include:
+
+* old migration procedure still linked from installation docs;
+* retired workaround still recommended;
+* old authority map still cited in support;
+* test description referring to semantics no longer enforced.
+
+## Ghost Report
+
+A **ghost report** is a lost or inaccessible conclusion whose effects
+remain in code, process, or doctrine.
+
+Nobody can find the report.
+
+The system still behaves as though everyone remembers it.
+
+## Report Maintenance
+
+**Report maintenance** keeps durable findings connected to current
+reality.
+
+Maintenance may involve:
+
+* updating scope;
+* adding supersession links;
+* repairing references;
+* attaching current terms;
+* marking historical status;
+* linking new recurrences;
+* updating authority;
+* recording retirement.
+
+Report maintenance should focus on high-value findings.
+
+Not every old incident needs continuous editorial care.
+
+## Maintenance Trigger
+
+A **maintenance trigger** is an event requiring report review.
+
+Examples include:
+
+* rewrite;
+* authority migration;
+* format change;
+* compatibility removal;
+* new recurrence;
+* terminology revision;
+* guardrail retirement;
+* repository move.
+
+High-risk structural changes should include memory review as part of
+migration.
+
+## Finding Promotion
+
+**Finding promotion** moves a conclusion into stronger or more
+discoverable institutional surfaces.
+
+Example:
+
+```text
+IRC diagnosis
+    ↓
+issue summary
+    ↓
+decision record
+    ↓
+test
+    ↓
+manual
+    ↓
+field entry
+```
+
+Promotion should not duplicate the same prose everywhere.
+
+Each surface should carry the part appropriate to its function.
+
+## Finding Demotion
+
+**Finding demotion** moves a conclusion into a weaker surface.
+
+Examples include:
+
+* invariant removed from code but retained in documentation;
+* test deleted but rationale left in issue;
+* current guidance moved into archive;
+* shared policy becoming local convention.
+
+Demotion may be justified.
+
+It should be explicit because it changes how the ecosystem preserves
+the rule.
+
+## Finding Adoption
+
+**Finding adoption** occurs when one project's local conclusion
+becomes a shared ecosystem principle, test, or interface contract.
+
+Adoption requires checking:
+
+* applicability;
+* authority;
+* differences in state model;
+* migration;
+* local policy.
+
+A field term may travel.
+
+The repair may not.
+
+## Finding Portability
+
+**Finding portability** is the ability of a conclusion to guide
+analysis in another component or ecosystem.
+
+Portability improves when the finding identifies:
+
+* mechanism;
+* required conditions;
+* boundary;
+* authority;
+* likely symptoms;
+* exclusions.
+
+Portability decreases when it depends on:
+
+* local personalities;
+* one command name;
+* one implementation language;
+* one historical argument;
+* one exact patch.
+
+## Finding Compression
+
+**Finding compression** produces a shorter statement that preserves
+the causal core.
+
+Detailed:
+
+> The repository validator ran only during interactive publication,
+> while imports wrote authoritative state directly.  Maintainers
+> repaired imported malformed artifacts after nightly audits.
+
+Compressed:
+
+> Detection existed outside the authoritative path; operators supplied
+> the controller and actuator.
+
+Field term:
+
+> Open regulatory loop.
+
+House compression:
+
+> The system had a sensor and called it governance.
+
+Each level serves a different reading speed.
+
+The chain should remain recoverable.
+
+## Lossy Finding Compression
+
+**Lossy finding compression** removes qualifications necessary for
+correct application.
+
+Example:
+
+Original:
+
+> Human review remains necessary for contextual package policy, but
+> structural identity checks can be enforced mechanically.
+
+Lossy compression:
+
+> Human review is obsolete.
+
+The shorter statement is memorable.
+
+It is wrong.
+
+## Report Voice
+
+A field report should distinguish:
+
+* what was observed;
+* what is inferred;
+* what is believed;
+* what was decided;
+* what remains uncertain.
+
+Useful phrasing includes:
+
+* “The trace shows…”
+* “This suggests…”
+* “The available evidence does not distinguish…”
+* “The project chose…”
+* “This finding applies to…”
+* “The repair does not address…”
+
+Avoid using certainty as a substitute for structure.
+
+## Report Tone
+
+A report may be sharp.
+
+It should remain diagnostic.
+
+Humor should compress a mechanism.
+
+It should not obscure:
+
+* uncertainty;
+* participant responsibility;
+* operator impact;
+* current scope.
+
+> The machine lied through three interfaces and one release note.
+
+is useful if the report then identifies those interfaces and the
+conflicting contracts.
+
+A joke without mechanism is decoration.
+
+A mechanism without memorable compression may not survive.
+
+Use both.
+
+## Naming Reports
+
+Report titles should include:
+
+* mechanism or failure shape;
+* affected boundary;
+* relevant component where helpful.
+
+Weak:
+
+> Build bug
+
+Better:
+
+> Artifact discovery depended on human-readable builder output
+
+Better still, after field classification:
+
+> Narrative coupling at the builder result boundary
+
+Historical symptoms can remain as aliases.
+
+## Report Identity
+
+A report should carry:
+
+* stable identifier;
+* date;
+* authors or maintainers;
+* status;
+* scope;
+* related artifacts;
+* supersession;
+* current authority link.
+
+The report itself is an artifact.
+
+It should not require archaeology to determine whether it is current.
+
+## Report Provenance
+
+**Report provenance** records where the evidence and conclusions came
+from.
+
+It may include:
+
+* incident source;
+* logs;
+* participants;
+* affected versions;
+* reproduction environment;
+* relevant commits;
+* prior reports.
+
+Provenance helps later readers distinguish:
+
+* direct observation;
+* inherited claim;
+* reconstructed history.
+
+## Authorial Authority
+
+The report author has authority to describe the evidence and reasoning
+they performed.
+
+The author does not automatically own:
+
+* current contract;
+* project policy;
+* historical truth beyond the evidence;
+* future interpretation.
+
+Reports should distinguish:
+
+* finding;
+* decision;
+* implementation authority.
+
+## Multi-Author Report
+
+A multi-author report may contain disagreement.
+
+Do not erase disagreement merely to produce one voice.
+
+Record:
+
+* shared observations;
+* competing hypotheses;
+* selected decision;
+* unresolved objections;
+* conditions that would reopen the question.
+
+Consensus is not required for evidence to remain useful.
+
+## Minority Finding
+
+A **minority finding** is a supported interpretation not adopted as
+project decision.
+
+It may remain valuable when:
+
+* evidence is incomplete;
+* migration cost decides against it;
+* later events support it;
+* selected repair fails.
+
+Record why it was not adopted.
+
+Otherwise future maintainers may rediscover it and assume nobody
+considered it.
+
+## Rejected Alternative
+
+A **rejected alternative** should be preserved when future maintainers
+are likely to propose it again.
+
+Record:
+
+* what it was;
+* which objective it served;
+* why it was rejected;
+* which conditions could change the decision.
+
+“Too complex” is often insufficient.
+
+Specify where complexity appeared and which budget it exceeded.
+
+## Failed Repair Record
+
+A **failed repair record** preserves interventions that did not alter
+the mechanism or produced unacceptable side effects.
+
+Examples include:
+
+* optional validator bypassed by imports;
+* parser fix preserving narrative coupling;
+* migration losing operator recovery;
+* stricter guardrail causing universal `--force`.
+
+Failed repairs are valuable evidence.
+
+Do not erase them from history because the final patch differs.
+
+## Negative Knowledge
+
+**Negative knowledge** is retained understanding of what does not work
+and why.
+
+It prevents repeated experiments.
+
+Examples include:
+
+* directory scanning cannot identify exact artifact under concurrent
+  builds;
+* warning-only enforcement does not protect automated imports;
+* binary downgrade does not restore migrated database state;
+* one universal root object cannot represent host and target authority
+  honestly.
+
+Negative knowledge is part of institutional memory.
+
+## Counterexample Record
+
+A **counterexample record** preserves a case that limits or falsifies
+a field concept or proposed repair.
+
+For example:
+
+> This wrapper is not coping infrastructure; it contains deliberate
+> local policy and remains necessary after boundary repair.
+
+Counterexamples keep the vocabulary from becoming theology.
+
+## Finding Bundle
+
+A **finding bundle** groups related reports, decisions, tests, and
+field entries around one failure class.
+
+Example:
+
+```text
+artifact truth bundle:
+    incident reports
+    identity decision
+    manifest schema
+    repository validation tests
+    legacy migration
+    fieldbook entry
+```
+
+Bundles improve retrieval across time and repository boundaries.
+
+## Field Dossier
+
+A **field dossier** is a broader collection tracking one recurring
+mechanism across several incidents or projects.
+
+It may include:
+
+* comparative failure map;
+* recurring signatures;
+* historical variants;
+* rejected repairs;
+* current doctrine;
+* open questions.
+
+A dossier is useful for high-value recurring mechanisms such as:
+
+* authority fracture;
+* narrative coupling;
+* partial success;
+* human-as-the-loop;
+* compatibility necrosis.
+
+## Report Granularity
+
+A report should be neither:
+
+* so broad that evidence and scope disappear;
+* nor so narrow that the structural mechanism is fragmented across
+  many documents.
+
+Possible granularity:
+
+* one incident;
+* one mechanism class;
+* one migration;
+* one authority change;
+* one repair program.
+
+Use links rather than forcing every level into one document.
+
+## Report Saturation
+
+**Report saturation** occurs when the volume of records exceeds the
+ecosystem's ability to maintain, retrieve, or distinguish them.
+
+Symptoms include:
+
+* duplicate incident reports;
+* contradictory current guidance;
+* abandoned decision records;
+* indexes nobody updates;
+* every patch producing ceremonial paperwork.
+
+More records do not automatically produce more memory.
+
+The retention system needs its own scope and maintenance budget.
+
+## Documentation Bureaucracy
+
+**Documentation bureaucracy** is report production disconnected from
+actual retrieval, decisions, or binding surfaces.
+
+Examples include:
+
+* mandatory templates filled with generic text;
+* duplicated summaries nobody reads;
+* closure reports not linked from code;
+* decision records written after implementation only to satisfy
+  process.
+
+The answer is not to abandon records.
+
+It is to preserve fewer, stronger conclusion surfaces.
+
+## Report Minimalism
+
+**Report minimalism** preserves the smallest record capable of
+carrying the lesson durably.
+
+For a minor defect, this may be:
+
+* precise commit message;
+* regression test;
+* one manual correction.
+
+For a structural failure, it may require:
+
+* autopsy;
+* decision record;
+* migration;
+* field entry.
+
+Minimalism is proportional to causal and ecological depth.
+
+## Durable Compression
+
+**Durable compression** is concise enough for retrieval but connected
+strongly enough to evidence and authority that future readers can
+expand it.
+
+A good house law is durable compression when:
+
+* its mechanism is defined;
+* examples exist;
+* counterexamples limit it;
+* current decisions link to it.
+
+Without expansion paths, compressed doctrine becomes slogan storage.
+
+## Report Lifecycle
+
+A report may pass through:
+
+```text
+draft
+    ↓
+reviewed
+    ↓
+current
+    ↓
+revised
+    ↓
+superseded
+    ↓
+historical
+```
+
+The lifecycle should be visible.
+
+A draft hypothesis should not appear beside current doctrine without
+status.
+
+## Report Ownership
+
+Every high-value current report should have an owner or ownership
+surface.
+
+Ownership may belong to:
+
+* component maintainers;
+* documentation maintainers;
+* architecture group;
+* release process;
+* project as shared responsibility.
+
+Ownership includes:
+
+* reviewing supersession;
+* repairing links;
+* updating scope;
+* marking historical state.
+
+Unowned current documentation drifts into counterfeit authority.
+
+## Finding Review
+
+A **finding review** examines whether the conclusion follows from
+evidence and whether its scope is accurate.
+
+Review questions include:
+
+* Are observations separated from inference?
+* Are rival hypotheses represented?
+* Is authority mapped correctly?
+* Is the generalization justified?
+* Are exclusions clear?
+* Does the intervention actually follow?
+* Does current implementation match the report?
+
+## Periodic Review
+
+Not every report requires scheduled review.
+
+Periodic review is useful for:
+
+* constitutional decisions;
+* compatibility boundaries;
+* high-risk recovery procedures;
+* current field entries;
+* identity and authority models.
+
+Review may be triggered by change rather than calendar.
+
+## Field Report Template
+
+```text
+Report ID:
+    Stable identifier.
+
+Status:
+    Draft, current, superseded, historical.
+
+Title:
+    Mechanism and affected boundary.
+
+Scope:
+    Versions, components, operations, state.
+
+Incident or question:
+    What prompted the investigation?
+
+Observed evidence:
+    What was directly seen?
+
+Expected contract:
+    What should have happened?
+
+State-transition trace:
+    How did state change?
+
+Authority map:
+    Claimed and operational authority.
+
+Boundary map:
+    Facts transferred, lost, or reconstructed.
+
+Regulator map:
+    Sensor, controller, actuator, feedback.
+
+Compensators:
+    Human and technical adaptations.
+
+Hypotheses:
+    Candidate explanations.
+
+Disconfirming evidence:
+    What would weaken each explanation?
+
+Findings:
+    Supported causal conclusions.
+
+Confidence:
+    Strength and limits of evidence.
+
+Decision:
+    What the project chose.
+
+Intervention:
+    What changed.
+
+Verification:
+    Evidence supporting closure.
+
+Migration:
+    State, callers, artifacts, operators.
+
+Remaining limitations:
+    What is still open?
+
+Durable findings:
+    What should travel beyond the specimen?
+
+Field terms:
+    Existing or proposed concepts.
+
+Counterexamples:
+    Similar cases that do not fit.
+
+Related records:
+    Evidence, issues, commits, tests, manuals.
+
+Supersession:
+    What this replaces or what replaced it.
+
+Reopening conditions:
+    What evidence would require review.
+```
+
+## Compact Finding Template
+
+```text
+Finding:
+    What mechanism was established?
+
+Evidence:
+    Which observations support it?
+
+Scope:
+    Where does it apply?
+
+Authority:
+    Which layer owns the relevant meaning?
+
+Compensation:
+    What kept the ecosystem viable?
+
+Intervention:
+    What changed the causal path?
+
+Verification:
+    How was the claim tested?
+
+Limit:
+    What remains unresolved?
+
+Field concept:
+    Which reusable term applies?
+```
+
+## Field Entry Template
+
+```text
+Term:
+    Canonical name.
+
+Definition:
+    Precise mechanism.
+
+Causal signature:
+    Typical sequence.
+
+Structural signature:
+    Authority and boundary arrangement.
+
+Field symptoms:
+    Observable clues.
+
+Evidence:
+    What confirms the diagnosis?
+
+Counterexamples:
+    Similar cases outside the term.
+
+Adjacent terms:
+    Important distinctions.
+
+Interventions:
+    Common repair directions.
+
+Failure of repair:
+    How the mechanism survives cosmetic change.
+
+Examples:
+    Concrete specimens.
+
+Diagnostic test:
+    Questions for field use.
+
+House compression:
+    Memorable statement preserving the mechanism.
+```
+
+## Field Symptom: The Closed Issue Without a Finding
+
+An issue contains:
+
+* reproduction;
+* several patches;
+* discussion of filename identity;
+* one rejected manifest proposal;
+* final local fix.
+
+The issue closes after one patch lands.
+
+No closing summary states:
+
+* which identity became authoritative;
+* whether other consumers migrated;
+* whether legacy artifacts remain;
+* what the patch did not solve.
+
+Future maintainers find the issue.
+
+They cannot determine which comments survived.
+
+The correct repair is not another archive.
+
+It is a conclusion surface.
+
+## Field Symptom: The Excellent Commit Message
+
+A commit message explains the entire database race.
+
+The code is later moved into another repository through a squash
+merge.
+
+The message disappears from ordinary history.
+
+The invariant remains only in one old object database.
+
+The commit was good memory.
+
+The decision trace was not portable.
+
+A current test or design record should carry the conclusion across
+repository movement.
+
+## Field Symptom: The Test With No Name
+
+A test creates two concurrent writers and checks final database state.
+
+It is named:
+
+```text
+test_issue_47
+```
+
+Issue 47 is later inaccessible.
+
+The test still protects the invariant.
+
+Future maintainers do not know:
+
+* why concurrency matters;
+* which contract it preserves;
+* whether it can be simplified.
+
+Mechanical memory survives.
+
+Semantic discoverability fails.
+
+Better:
+
+```text
+test_concurrent_writers_cannot_commit_stale_generation
+```
+
+with a short reference to the autopsy.
+
+## Field Symptom: The Manual Updated in Place
+
+A manual once said package identity came from filenames.
+
+It is edited to say identity comes from manifests.
+
+No historical note or migration boundary remains.
+
+Legacy artifacts still use filename parsing.
+
+Readers now believe:
+
+* filename authority never existed;
+* legacy behavior is a bug;
+* old incident reports are confused.
+
+The current manual should describe current truth.
+
+A migration note or superseded decision should preserve historical
+scope.
+
+## Field Symptom: The House Law Escapes
+
+A maintainer quotes:
+
+> Hope is not an invariant.
+
+The phrase is used to reject a prototype validator because it is not
+yet authoritative.
+
+The original field entry distinguishes:
+
+* structured hope;
+* structural hope;
+* guardrail.
+
+The compression escaped its expansion path.
+
+The report system should link doctrine back to the mechanism.
+
+Otherwise the Fieldbook manufactures its own ghosts.
+
+## Field Symptom: The Historical IRC Autopsy
+
+An IRC log contains the first correct explanation of a package
+identity defect.
+
+It includes:
+
+* sharp observations;
+* false starts;
+* jokes;
+* local names;
+* no final summary.
+
+The log should remain preserved.
+
+A durable finding might extract:
+
+> Artifact identity was reconstructed independently by builder,
+> repository, and installer.  The accepted repair defined manifest
+> identity as authoritative and contained filename parsing at legacy
+> intake.
+
+The log is evidence.
+
+The finding is institutional memory.
+
+## Field Symptom: The Report That Became Wrong
+
+A report concludes that database serialization is sufficient.
+
+Later evidence shows:
+
+* lifecycle scripts mutate the database through another path;
+* the shared lock does not cover them.
+
+The report should not be deleted.
+
+It should be revised:
+
+> Original closure applied only to package-manager writers.
+> Script-mediated database mutation remains outside the lock boundary.
+
+The report became narrower.
+
+Institutional memory improved.
+
+## Field Symptom: The Rejected Alternative Returns
+
+A proposal to add a universal context object was rejected because it
+compressed host, target, build, and script authority into one
+structure.
+
+Years later, another maintainer proposes `OperationEnvironment` with
+the same shape.
+
+The old decision record is titled only:
+
+> Refactor context handling
+
+Search does not find it.
+
+A semantic alias such as:
+
+* overloaded context;
+* authority compression;
+* universal root object;
+
+would make the prior reasoning discoverable.
+
+## Field Symptom: The Report Nobody Owns
+
+A recovery guide is correct when written.
+
+Three releases later:
+
+* transaction format changed;
+* rollback command changed;
+* one step is dangerous;
+* the original author left.
+
+The guide remains prominently linked.
+
+The report surface projects current authority.
+
+No current owner exists.
+
+This is authority rot.
+
+A historical marker is safer than an unowned living guide.
+
+## Field Symptom: The Perfect Archive
+
+The project preserves:
+
+* every mailing-list post;
+* every IRC log;
+* every release tarball;
+* every commit.
+
+A maintainer investigating alternate-root semantics searches for:
+
+* root;
+* chroot;
+* target;
+* scripts;
+* install.
+
+Hundreds of results appear.
+
+No record states the current contract or identifies the historical
+transition.
+
+The archive is complete.
+
+The retrieval path is broken.
+
+## Do Not Confuse
+
+**A field report** is not the same as an issue transcript.
+
+It should contain a retrievable conclusion spine.
+
+**A durable finding** is not an immutable truth.
+
+It must remain revisable.
+
+**A summary** is not automatically a conclusion surface.
+
+It may repeat events without naming the mechanism.
+
+**A decision record** is not runtime authority.
+
+It explains what should bind elsewhere.
+
+**A test** is not sufficient rationale.
+
+It may preserve behavior without meaning.
+
+**Documentation** is not evidence by itself.
+
+It is a claim about current contract.
+
+**Raw evidence** is not noise.
+
+It allows future conclusions to be challenged.
+
+**Supersession** is not deletion.
+
+Historical scope should remain legible.
+
+**A tombstone** is not clutter.
+
+It prevents semantic resurrection through ignorance.
+
+**An index** is not institutional memory by itself.
+
+The indexed items must carry usable conclusions.
+
+**More reports** do not automatically improve retention.
+
+Report saturation can hide important findings.
+
+**A field term** is not a substitute for evidence.
+
+It classifies a demonstrated mechanism.
+
+**A house law** is not doctrine without scope.
+
+Its expansion path must remain available.
+
+**A historical report** is not useless.
+
+It becomes dangerous only when presented as current.
+
+**A current report** is not current because its file remains in the
+main branch.
+
+Its authority and ownership must remain active.
+
+## The Durable Finding Test
+
+Before publishing or retaining a finding, ask:
+
+1. What was directly observed?
+2. What is inferred?
+3. What conclusion does the evidence support?
+4. What rival explanation remains?
+5. What is the confidence level?
+6. Which scope applies?
+7. Which versions and states are included?
+8. Which conditions exclude application?
+9. Which authority surface is involved?
+10. Which contract was expected?
+11. Which mechanism produced the result?
+12. Which compensator kept operation viable?
+13. What intervention changed the mechanism?
+14. How was the repair verified?
+15. Which limitation remains?
+16. What would falsify or narrow the finding?
+17. Where is raw evidence preserved?
+18. Where is the conclusion surface?
+19. Where is the decision record?
+20. Where does the lesson bind?
+21. Where is current behavior documented?
+22. Can a future maintainer retrieve the conclusion without reading
+    the full discussion?
+23. Can they audit the evidence if needed?
+24. Does the title name the mechanism?
+25. Are historical aliases recorded?
+26. Is the finding semantically discoverable?
+27. Can it be found under current terminology?
+28. Can it be found under the original symptom?
+29. Is its status visible?
+30. Is it current, superseded, or historical?
+31. Is there a supersession link?
+32. Does a tombstone exist for retired meaning?
+33. Does the report still point to current authority?
+34. Has authority changed since publication?
+35. Has terminology changed?
+36. Has context or schema rot affected interpretation?
+37. Does the finding pass the stranger test?
+38. Does it pass the travel test?
+39. Are counterexamples preserved?
+40. Is the field term more precise than ordinary language?
+41. Does the compression preserve causal structure?
+42. Can the doctrine be expanded back into evidence?
+43. Is the report owned?
+44. What event should trigger review?
+45. Is the record proportionate to the failure depth?
+46. Is documentation being produced for retrieval or ceremony?
+47. Which other reports duplicate this conclusion?
+48. Can they be linked or consolidated?
+49. Which failed repairs should be retained?
+50. Which rejected alternatives are likely to return?
+51. What negative knowledge should future maintainers inherit?
+52. Does the report preserve uncertainty honestly?
+53. Does it distinguish project decision from investigator opinion?
+54. Can the conclusion survive repository movement or rewrite?
+55. Can the ecosystem apply the lesson without preserving the original
+    participants?
+56. Has the investigation produced a finding—or merely another
+    archive?
+
+A finding is durable when another competent person can recover its
+mechanism, scope, evidence, and current relevance before reproducing
+the same failure.
+
+## Twenty-Sixth House Law
+
+> A repository remembers bytes.  
+> An institution remembers conclusions.
+
+Field reports turn incidents into addressable evidence.
+
+Durable findings turn evidence into reusable institutional knowledge.
+
+A healthy report system does not attempt to preserve every
+conversation as current truth.
+
+It preserves:
+
+* evidence for audit;
+* conclusions for retrieval;
+* decisions for rationale;
+* tests for behavior;
+* documentation for current contract;
+* field concepts for transfer;
+* tombstones for retired meaning.
+
+The next section is **The Field Operator's Checklist**: a compact
+working method for entering an unfamiliar system, locating authority,
+recognizing compensation, testing a suspected field concept, and
+leaving behind a finding rather than another story.
 
 ---
 
