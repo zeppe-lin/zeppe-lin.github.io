@@ -22975,6 +22975,1592 @@ components, and avoid mistaking shared symptoms for shared causes.
 
 ---
 
+# Failure Maps and Comparative Diagnosis
+
+Four installations report that a package disappeared.
+
+On the first system, the archive never extracted the file.
+
+On the second, a lifecycle script deleted it.
+
+On the third, the file remains on disk but the package database no
+longer records it.
+
+On the fourth, the package was replaced by another package owning the
+same path.
+
+The issue tracker groups all four reports under:
+
+> Package files go missing.
+
+A patch adds a post-install existence check.
+
+One incident disappears.
+
+Three acquire a new warning.
+
+The symptoms matched.
+
+The mechanisms did not.
+
+---
+
+## Comparative Diagnosis
+
+**Comparative diagnosis** is the examination of several incidents to
+determine:
+
+* which properties they share;
+* which properties differ;
+* whether they arise from one mechanism;
+* whether one intervention can address them;
+* whether superficial similarity is hiding distinct failure classes.
+
+One incident provides depth.
+
+Comparison provides boundaries.
+
+A single autopsy may reveal a plausible mechanism.
+
+Several autopsies show where that mechanism stops applying.
+
+> One corpse tells a story.  
+> Several corpses reveal whether the story has a species.
+
+## Failure Map
+
+A **failure map** is a structured representation of incidents,
+mechanisms, boundaries, authority, compensators, and interventions
+across a comparison set.
+
+A failure map may be:
+
+* a table;
+* a causal graph;
+* a matrix;
+* a timeline comparison;
+* a state-transition overlay;
+* an authority diagram;
+* a cluster of field terms.
+
+The form is secondary.
+
+A useful failure map makes visible:
+
+* shared symptoms;
+* distinct causes;
+* recurring boundary failures;
+* common compensators;
+* repeated authority fractures;
+* intervention leverage;
+* uncertainty.
+
+## Comparison Set
+
+A **comparison set** is the group of incidents selected for
+comparative analysis.
+
+A comparison set may contain incidents linked by:
+
+* one symptom;
+* one component;
+* one operation;
+* one artifact type;
+* one field term;
+* one historical period;
+* one suspected structural cause;
+* one compensating mechanism.
+
+Selection matters.
+
+A comparison set built only from known confirming cases may
+manufacture a false pattern.
+
+Include:
+
+* positive cases;
+* negative cases;
+* near misses;
+* cases with similar symptoms but known different causes;
+* cases with different symptoms but suspected shared cause.
+
+## Case
+
+A **case** is one incident represented in enough detail for
+comparison.
+
+At minimum, a case should identify:
+
+* symptom;
+* context;
+* initial state;
+* state transition;
+* first divergence;
+* claimed contract;
+* operational authority;
+* proximate cause;
+* structural cause;
+* compensator;
+* repair;
+* remaining uncertainty.
+
+A title such as:
+
+> Installation failed
+
+is not a case.
+
+It is a weather report from inside the building.
+
+## Comparison Axis
+
+A **comparison axis** is one dimension along which cases are examined.
+
+Useful axes include:
+
+* symptom;
+* trigger;
+* operation phase;
+* state representation;
+* authority;
+* boundary;
+* contract;
+* backend;
+* timing;
+* concurrency;
+* compensator;
+* detection path;
+* repair;
+* recurrence;
+* affected scope.
+
+Several incidents may align on one axis and diverge on another.
+
+For example:
+
+| Case | Symptom      | First divergence | Structural cause           |
+| ---- | ------------ | ---------------- | -------------------------- |
+| A    | missing file | extraction       | backend semantic mismatch  |
+| B    | missing file | lifecycle phase  | undeclared script effect   |
+| C    | missing file | database query   | state-registration failure |
+| D    | missing file | upgrade conflict | ownership-model ambiguity  |
+
+The shared symptom does not justify one repair.
+
+## Symptom Cluster
+
+A **symptom cluster** is a group of incidents producing similar
+observable outcomes.
+
+Examples include:
+
+* missing files;
+* stale database records;
+* wrong package identity;
+* repeated retries;
+* inconsistent repositories;
+* wrapper dependence;
+* failed alternate-root operations.
+
+A symptom cluster is useful for discovery and support triage.
+
+It is not yet a mechanism class.
+
+> Symptoms are how incidents queue.  
+> Mechanisms are how they should be repaired.
+
+## Mechanism Class
+
+A **mechanism class** is a group of incidents produced through the
+same relevant causal structure.
+
+For example, these incidents may form one mechanism class:
+
+* a build frontend parses stdout for artifact path;
+* a deployment script parses logs for release identifier;
+* a test harness parses a warning for completion status.
+
+Their symptoms differ.
+
+Their mechanism is shared:
+
+> Machine control depends on human narration.
+
+The mechanism class is **narrative coupling**.
+
+A useful mechanism class should suggest similar interventions across
+its cases.
+
+## Failure Signature
+
+A **failure signature** is a set of properties indicating that a
+particular mechanism may be active.
+
+A signature is not one string or error code.
+
+It may combine:
+
+* state disagreement;
+* operation order;
+* authority distribution;
+* type of compensation;
+* failure timing;
+* recovery behavior.
+
+For narrative coupling, the signature may include:
+
+* caller parses human-readable output;
+* wording changes break integration;
+* producer already knows the required fact;
+* no structured result exists;
+* several callers implement different parsers.
+
+For a zombie invariant:
+
+* property remains operationally required;
+* mechanical enforcement disappeared;
+* maintainers preserve it socially;
+* violations are blamed on operator competence.
+
+## Causal Signature
+
+A **causal signature** describes the sequence of events characteristic
+of a mechanism.
+
+Example:
+
+```text
+fact known by producer
+        ↓
+fact emitted only as narration
+        ↓
+caller parses narration
+        ↓
+presentation changes
+        ↓
+machine integration fails
+```
+
+Different components may exhibit the same causal signature.
+
+This supports generalization.
+
+## Structural Signature
+
+A **structural signature** identifies the recurring arrangement of
+authority, contracts, and boundaries behind incidents.
+
+Examples include:
+
+```text
+one operation
+    several state authorities
+    no explicit partial result
+```
+
+```text
+several implementations
+    one hidden substrate
+    callers know internals
+```
+
+```text
+validation exists
+    authoritative path bypasses it
+    operators repair afterward
+```
+
+The structural signature often matters more than the immediate
+trigger.
+
+## Authority Signature
+
+An **authority signature** describes how claimed and operational
+authority are distributed.
+
+Example:
+
+```text
+claimed authority:
+    artifact manifest
+
+operational authority:
+    repository filename
+
+recovery authority:
+    operator judgment
+```
+
+Several incidents with different symptoms may share the same authority
+signature.
+
+That suggests a common structural repair.
+
+## Boundary Signature
+
+A **boundary signature** records which facts fail to cross, are
+reconstructed, or become ambiguous.
+
+Example:
+
+```text
+producer knows:
+    artifact identity
+    exact path
+    completion state
+
+boundary publishes:
+    exit status
+    human message
+
+caller reconstructs:
+    path
+    identity
+    completion
+```
+
+This signature can recur in builders, deployment tools, backup
+systems, and compilers.
+
+## Regulatory Signature
+
+A **regulatory signature** describes the shape of the control loop.
+
+Examples include:
+
+### Detection without authority
+
+```text
+sensor present
+controller human
+actuator manual
+authoritative path remains open
+```
+
+### Human-as-the-loop
+
+```text
+system mutates
+operator senses
+operator interprets
+operator repairs
+operator verifies
+```
+
+### Competing regulators
+
+```text
+two controllers
+one state
+different setpoints
+repeated oscillation
+```
+
+Regulatory signatures help distinguish technical defects from
+recurring control failures.
+
+## Ecological Signature
+
+An **ecological signature** describes the compensations and
+adaptations surrounding a failure.
+
+Examples include:
+
+* every experienced operator carries a wrapper;
+* one elder resolves ambiguous state;
+* support channels repeat the same repair;
+* local patches mask shared defects;
+* newcomers fail at one undocumented boundary;
+* direct and wrapped paths remain semantically different.
+
+Ecological signatures reveal where the ecosystem has absorbed
+unresolved work.
+
+## Evidence Matrix
+
+An **evidence matrix** compares cases against candidate mechanisms.
+
+Example:
+
+| Evidence                       | Case A | Case B | Case C |
+| ------------------------------ | -----: | -----: | -----: |
+| producer knows exact artifact  |    yes |    yes |     no |
+| caller parses stdout           |    yes |    yes |     no |
+| failure follows message change |    yes |     no |     no |
+| directory scanning used        |     no |    yes |    yes |
+| private configuration read     |     no |     no |    yes |
+
+The matrix may suggest:
+
+* A and B share narrative coupling;
+* B and C share artifact-discovery weakness;
+* no single mechanism explains all three.
+
+This prevents one attractive term from swallowing every adjacent
+failure.
+
+## Shared Symptom, Different Cause
+
+The most common comparative error is assuming that shared symptoms
+imply shared mechanisms.
+
+Consider repeated package-install failure.
+
+Possible mechanisms include:
+
+* malformed artifact;
+* unavailable dependency;
+* filesystem exhaustion;
+* database lock contention;
+* lifecycle-script failure;
+* repository identity mismatch;
+* unsupported backend capability.
+
+The symptom is one command returning nonzero.
+
+The interventions differ radically.
+
+## Different Symptom, Shared Cause
+
+The reverse is equally important.
+
+One structural defect may produce several symptoms.
+
+Suppose package identity lacks one authoritative representation.
+
+Possible symptoms include:
+
+* wrong upgrade selected;
+* package removal affects another package;
+* repository index disagrees with archive;
+* query output changes after rename;
+* duplicate package records;
+* signature verified against the wrong name.
+
+Different incidents share one structural cause:
+
+> Artifact identity is reconstructed independently across boundaries.
+
+A field concept often becomes visible only through this kind of
+comparison.
+
+## Mechanism Convergence
+
+**Mechanism convergence** occurs when different implementations or
+workflows produce similar failure through the same underlying
+structural arrangement.
+
+For example:
+
+* shell wrapper;
+* Python frontend;
+* C++ orchestrator;
+
+all parse the same human-readable builder output.
+
+Their code differs.
+
+Their mechanism converges on narrative coupling.
+
+Mechanism convergence strengthens the case that the problem belongs to
+the boundary rather than one implementation.
+
+## Mechanism Divergence
+
+**Mechanism divergence** occurs when similar interfaces or symptoms
+arise from different causal structures.
+
+Two commands named `install` may fail differently:
+
+* one because extraction and registration are separate commits;
+* another because lifecycle effects escape its transaction;
+* another because dependency state is stale.
+
+The interface category is shared.
+
+The mechanism diverges.
+
+## Family Resemblance
+
+**Family resemblance** is partial similarity among incidents without
+one single mechanism explaining every case.
+
+For example, alternate-root failures may share:
+
+* host assumptions;
+* overloaded context;
+* filesystem redirection;
+* lifecycle ambiguity.
+
+But individual incidents may involve different combinations.
+
+Family resemblance is useful for organizing inquiry.
+
+It should not be mistaken for one precise diagnosis.
+
+## Compound Failure
+
+A **compound failure** contains several mechanisms contributing to one
+incident.
+
+Example:
+
+```text
+artifact identity absent
+        +
+caller parses stdout
+        +
+repository trusts filename
+        +
+retry lacks operation identity
+        ↓
+duplicate publication under wrong identity
+```
+
+Patching one mechanism may reduce but not eliminate the incident.
+
+Comparative diagnosis should allow cases to belong to several
+mechanism classes.
+
+Vocabulary is compositional.
+
+The system is under no obligation to fail one concept at a time.
+
+## Failure Stack
+
+A **failure stack** is an ordered set of mechanisms in which one
+failure creates conditions for another.
+
+Example:
+
+```text
+weak artifact truth
+        ↓
+consumer reconstruction
+        ↓
+authority fracture
+        ↓
+semantic drift
+        ↓
+operator compensation
+        ↓
+folklore
+```
+
+A failure stack explains why a seemingly small boundary defect can
+generate wide ecological consequences.
+
+The stack should not be treated as inevitable.
+
+Each transition is an opportunity for containment.
+
+## Shared Substrate
+
+A **shared substrate** is a component, representation, or assumption
+used by several incidents or tools.
+
+Examples include:
+
+* one package database;
+* one filename grammar;
+* one archive backend;
+* one repository index;
+* one lifecycle environment;
+* one configuration source.
+
+Several failures may correlate because they depend on the same
+substrate.
+
+This does not prove the substrate itself is defective.
+
+It identifies a possible common cause and a high-leverage observation
+point.
+
+## Common-Mode Failure
+
+A **common-mode failure** occurs when one shared condition causes
+several otherwise independent components or safeguards to fail
+together.
+
+Examples include:
+
+* builder, repository, and installer all derive identity from the same
+  malformed filename;
+* primary and backup indexes are generated from the same corrupt
+  database;
+* several validators depend on one incomplete schema;
+* independent frontends read the same stale configuration.
+
+Apparent redundancy provides no protection when all paths share the
+same assumption.
+
+> Three witnesses reading the same forged document are not independent
+> confirmation.
+
+## Correlated Failure
+
+**Correlated failure** occurs when several incidents become more
+likely under the same conditions, without necessarily sharing one
+direct cause.
+
+For example, low disk space may increase:
+
+* partial artifacts;
+* database-write failures;
+* missing logs;
+* failed rollbacks.
+
+The failures correlate through environment.
+
+Their immediate mechanisms remain distinct.
+
+## Hidden Common Cause
+
+A **hidden common cause** is an upstream condition not initially
+visible in the individual incidents.
+
+Examples include:
+
+* all malformed packages came from one outdated build template;
+* several database failures followed one filesystem behavior;
+* multiple wrappers broke because one output contract changed;
+* several migration incidents resulted from one undocumented authority
+  cutover.
+
+Comparative timelines often reveal hidden common causes.
+
+## Independent Recurrence
+
+**Independent recurrence** occurs when the same mechanism appears
+separately without one shared triggering event.
+
+For example, several teams independently parse human-readable output
+because the producer exposes no structured result.
+
+The incidents are not caused by one parser.
+
+They are independently generated by the same missing boundary.
+
+Independent recurrence is strong evidence of structural pressure.
+
+## Repetition
+
+**Repetition** is the same incident or defect occurring again under
+similar conditions.
+
+Example:
+
+* the same malformed artifact is repeatedly republished.
+
+## Recurrence
+
+**Recurrence** is the return of the same failure mechanism, possibly
+through a different component, implementation, or symptom.
+
+Example:
+
+* old frontend parsed stdout;
+* rewritten frontend scans directories;
+* both reconstruct artifact truth absent from the producer boundary.
+
+The implementation changed.
+
+The structural failure recurred.
+
+> Repetition is the same corpse returning.  
+> Recurrence is the same murderer changing clothes.
+
+## Recurrence Pattern
+
+A **recurrence pattern** identifies how a failure class reappears
+across time.
+
+Useful patterns include:
+
+* after every rewrite;
+* under each new backend;
+* whenever automation replaces an operator;
+* at authority cutover;
+* after elder turnover;
+* when compatibility becomes current production;
+* when optional checks are treated as invariants.
+
+Recurrence patterns suggest where institutional memory or boundary
+extraction is failing.
+
+## Failure Topology
+
+**Failure topology** describes the arrangement through which errors
+propagate across components and state surfaces.
+
+Examples include:
+
+### Chain
+
+```text
+builder → repository → installer → database
+```
+
+### Fan-out
+
+```text
+one malformed artifact
+    → frontend A
+    → frontend B
+    → repository tool
+```
+
+### Feedback loop
+
+```text
+repair script
+    → changes state
+    → monitor interprets as error
+    → invokes repair script
+```
+
+### Split authority
+
+```text
+filename authority ← artifact → metadata authority
+```
+
+Topology indicates where containment and regulation may have leverage.
+
+## Propagation Path
+
+A **propagation path** is the sequence through which one defect or
+ambiguity affects downstream state.
+
+For each step, ask:
+
+* What representation crossed?
+* Which fact was lost?
+* Which component trusted it?
+* Was validation possible?
+* Was the effect reversible?
+* Did compensation hide the propagation?
+
+## Containment Point
+
+A **containment point** is a boundary where the failure could have
+been stopped before reaching further components.
+
+For a malformed artifact:
+
+* producer validation;
+* artifact-finalization check;
+* repository intake;
+* installer verification.
+
+Several containment points may exist.
+
+The best point usually combines:
+
+* early timing;
+* sufficient facts;
+* appropriate authority;
+* broad path coverage;
+* manageable compatibility cost.
+
+## Blast Radius
+
+**Blast radius** is the scope of state, operators, or components
+affected by one failure.
+
+A local build failure has narrow blast radius.
+
+A malformed artifact entering an authoritative repository may affect
+every installation.
+
+Comparative diagnosis should distinguish:
+
+* incident frequency;
+* incident severity;
+* blast radius;
+* detectability;
+* recoverability.
+
+A rare high-radius failure may deserve stronger guardrails than a
+common local failure.
+
+## Failure Density
+
+**Failure density** is the concentration of incidents around one
+boundary, component, or operation.
+
+High density may indicate:
+
+* complex but legitimate domain behavior;
+* weak contracts;
+* overloaded semantics;
+* poor observability;
+* repeated operator misuse;
+* one highly visible component receiving failures created elsewhere.
+
+Do not assume the component with the most reports owns the defect.
+
+Frontends often become the reporting surface for failures originating
+below them.
+
+## Incident Sink
+
+An **incident sink** is a component or team where failures accumulate
+because it is the first visible or accessible surface, not necessarily
+because it causes them.
+
+Examples include:
+
+* package frontend blamed for builder ambiguity;
+* support channel blamed for weak documentation;
+* repository maintainer blamed for malformed producer artifacts;
+* installer blamed for package lifecycle effects.
+
+Incident sinks distort diagnosis by concentrating reports away from
+structural causes.
+
+## Blame Topology
+
+A **blame topology** describes where the ecosystem assigns
+responsibility relative to where failure is produced and regulated.
+
+Example:
+
+```text
+builder omits structured result
+        ↓
+frontend guesses wrong
+        ↓
+operator sees wrong artifact
+        ↓
+frontend receives bug report
+```
+
+The incident enters through the frontend.
+
+The missing fact originated at the builder boundary.
+
+## Comparative Timeline
+
+A **comparative timeline** aligns several cases by operation phase
+rather than calendar time.
+
+Example:
+
+| Phase         | Case A          | Case B   | Case C                |
+| ------------- | --------------- | -------- | --------------------- |
+| input         | valid           | valid    | ambiguous             |
+| normalization | complete        | skipped  | partial               |
+| mutation      | succeeds        | partial  | succeeds              |
+| registration  | fails           | succeeds | wrong identity        |
+| reporting     | generic failure | success  | success               |
+| repair        | manual DB edit  | none     | repository correction |
+
+This reveals whether incidents diverge early or late.
+
+## State-Transition Overlay
+
+A **state-transition overlay** places several cases on one intended
+state model.
+
+Intended:
+
+```text
+absent
+    ↓
+planned
+    ↓
+mutating
+    ↓
+validated
+    ↓
+committed
+```
+
+Cases may diverge:
+
+```text
+Case A:
+    mutating → failed with residue
+
+Case B:
+    validated → reporting failure
+
+Case C:
+    committed → later external mutation
+```
+
+The overlay helps determine whether one richer state model could
+represent all cases honestly.
+
+## Repair Map
+
+A **repair map** links mechanisms to possible interventions.
+
+Example:
+
+| Mechanism            | Immediate repair         | Structural repair               |
+| -------------------- | ------------------------ | ------------------------------- |
+| narrative coupling   | restore expected wording | structured result               |
+| authority fracture   | reconcile records        | define authoritative identity   |
+| open regulatory loop | manual correction        | bind validation to authority    |
+| zombie invariant     | teach rule               | restore enforcement or redesign |
+| compatibility drift  | isolate one legacy case  | legacy intake boundary          |
+
+The repair map prevents one popular intervention from being applied
+indiscriminately.
+
+## Intervention Portability
+
+**Intervention portability** is the degree to which one repair can
+address the same mechanism across different cases.
+
+A structured result is portable across many narrative-coupling
+incidents.
+
+A package-specific filename patch is not.
+
+Portable interventions often target:
+
+* contracts;
+* authority;
+* normalization;
+* state representation;
+* control loops.
+
+## Repair Specificity
+
+**Repair specificity** is how narrowly an intervention targets one
+symptom or mechanism.
+
+A highly specific repair may be appropriate when:
+
+* blast radius is narrow;
+* migration risk is high;
+* mechanism is unique;
+* immediate containment matters.
+
+A broader structural repair may be appropriate when:
+
+* recurrence is widespread;
+* several callers reconstruct the same fact;
+* one boundary causes many incidents;
+* compensation cost is high.
+
+## Leverage Ranking
+
+**Leverage ranking** compares intervention points by expected
+ecological effect.
+
+Possible criteria include:
+
+* number of incidents addressed;
+* number of callers simplified;
+* blast radius reduced;
+* compatibility cost;
+* authority fit;
+* implementation effort;
+* operator burden removed;
+* risk of ecological regression;
+* ability to verify success.
+
+The smallest patch may have low leverage.
+
+The largest redesign may have low viability.
+
+The best intervention often sits between them.
+
+## False Equivalence
+
+**False equivalence** treats incidents as members of one failure class
+because they share language, component, or visible outcome.
+
+Examples include:
+
+* every failed install called an installer bug;
+* every wrapper called coping infrastructure;
+* every manual step called folklore;
+* every old behavior called a ghost;
+* every disagreement called authority fracture.
+
+Field terms lose value when used as atmospheric adjectives.
+
+Diagnosis requires the mechanism.
+
+## False Distinction
+
+A **false distinction** treats incidents as unrelated because they
+occur in different components, languages, or communities.
+
+Examples include:
+
+* build-output parsing and deployment-log parsing treated as
+  unrelated;
+* repository identity mismatch and installer identity mismatch treated
+  as separate;
+* human release review and operator post-install verification treated
+  as unrelated labor.
+
+Comparative diagnosis may reveal the same boundary or regulatory
+pattern beneath different local vocabulary.
+
+## Category Capture
+
+**Category capture** occurs when an existing term becomes so broad
+that every nearby incident is classified under it.
+
+For example, calling every human intervention:
+
+> coping infrastructure
+
+hides distinctions among:
+
+* legitimate policy;
+* exceptional judgment;
+* routine reconstruction;
+* recovery;
+* social enforcement;
+* institutional memory.
+
+A fieldbook should increase resolution.
+
+Not replace every noun with one preferred metaphor.
+
+## Novelty Bias
+
+**Novelty bias** favors the newest incident, tool, or explanation over
+older cases.
+
+A new backend failure may appear unprecedented because:
+
+* terminology changed;
+* old evidence is poorly indexed;
+* the component is new;
+* maintainers are unfamiliar with the historical mechanism.
+
+Comparative diagnosis should search for structural recurrence before
+declaring a new species.
+
+## Familiarity Bias
+
+**Familiarity bias** forces a new incident into an old explanation
+because the old mechanism is well understood.
+
+For example, every package corruption may be blamed on concurrency
+because one famous historical race shaped maintainer memory.
+
+The known mechanism becomes a narrative attractor.
+
+Rival hypotheses protect against it.
+
+## Survivor Comparison
+
+**Survivor comparison** examines only successful installations or
+tools.
+
+This may hide:
+
+* failed implementations;
+* abandoned users;
+* discarded workflows;
+* patches never upstreamed;
+* systems frozen before migration.
+
+Failure maps should include exits and abandoned paths where evidence
+exists.
+
+The ecology's missing members may contain the strongest selection
+signal.
+
+## Comparative Field Method
+
+A practical comparative diagnosis can proceed as follows.
+
+### 1. Define the Question
+
+Examples:
+
+* Why do packages become unremovable?
+* Why do several frontends require wrappers?
+* Why do alternate-root operations fail differently?
+* Why does one invariant repeatedly disappear during rewrites?
+
+### 2. Build the Comparison Set
+
+Include:
+
+* representative incidents;
+* different implementations;
+* negative cases;
+* historical recurrences;
+* successful compensations.
+
+### 3. Normalize Case Descriptions
+
+Use the same fields for every case:
+
+* symptom;
+* state;
+* boundary;
+* authority;
+* regulator;
+* compensator;
+* repair.
+
+Do not compare one detailed autopsy with three issue titles.
+
+### 4. Separate Symptom from Mechanism
+
+Create one list of shared observations and another of suspected causal
+structures.
+
+### 5. Build the Evidence Matrix
+
+Mark:
+
+* present;
+* absent;
+* unknown;
+* disputed.
+
+Unknown is not false.
+
+### 6. Compare State Transitions
+
+Find:
+
+* common phase;
+* first divergence;
+* shared unrepresentable state;
+* repeated partial outcome.
+
+### 7. Compare Authority
+
+Determine whether cases share:
+
+* one missing owner;
+* split authority;
+* reconstructed truth;
+* recovery authority located in operators.
+
+### 8. Compare Boundaries
+
+Identify which facts repeatedly fail to cross.
+
+### 9. Compare Regulators
+
+Look for:
+
+* detection without authority;
+* human-as-the-loop;
+* competing setpoints;
+* feedback delay;
+* saturation.
+
+### 10. Compare Compensators
+
+Determine whether the same wrapper, ritual, or expertise recurs.
+
+### 11. Form Mechanism Classes
+
+Group only cases supported by shared causal signatures.
+
+### 12. Search for Counterexamples
+
+Find cases that look similar but should remain outside the class.
+
+### 13. Identify Failure Stacks
+
+Some cases require several terms.
+
+Do not force exclusive classification.
+
+### 14. Rank Intervention Points
+
+Separate:
+
+* immediate containment;
+* high-leverage structural repair;
+* ecological migration.
+
+### 15. Test Portability
+
+Ask whether the repair applies to another case in the mechanism class.
+
+### 16. Preserve the Map
+
+Link incidents, conclusions, tests, and field terms so future
+recurrence can be recognized.
+
+## Comparative Diagnosis Matrix
+
+```text
+Case:
+    Identifier and scope.
+
+Symptom:
+    What was observed?
+
+First divergence:
+    Where did expected state separate?
+
+Proximate cause:
+    Immediate trigger.
+
+Structural cause:
+    Contract, authority, state, or boundary failure.
+
+Authority signature:
+    Claimed versus operational authority.
+
+Boundary signature:
+    Facts lost or reconstructed.
+
+Regulatory signature:
+    Sensor, controller, actuator, feedback.
+
+Ecological signature:
+    Compensators and adaptations.
+
+Field terms:
+    Candidate mechanism classes.
+
+Immediate repair:
+    Local restoration.
+
+Structural intervention:
+    Failure-class repair.
+
+Counterexample:
+    Similar case that does not fit.
+
+Uncertainty:
+    Missing or disputed evidence.
+```
+
+## Field Symptom: Four Missing Files
+
+### Case A: Extraction Failure
+
+The backend ignores one archive entry type.
+
+Signature:
+
+* file absent immediately after extraction;
+* database never records it;
+* backend capability differs.
+
+Mechanism:
+
+* backend substitution without normalized semantics.
+
+### Case B: Lifecycle Deletion
+
+The file is extracted and later removed by a script.
+
+Signature:
+
+* file visible before lifecycle phase;
+* script owns deletion;
+* database still records the file.
+
+Mechanism:
+
+* undeclared lifecycle effect and state drift.
+
+### Case C: Registration Failure
+
+The file remains, but package queries report it missing.
+
+Signature:
+
+* filesystem contains file;
+* database registration incomplete;
+* generic failure result.
+
+Mechanism:
+
+* partial success unrepresented across split commits.
+
+### Case D: Ownership Conflict
+
+Another package replaces the path.
+
+Signature:
+
+* file content changes during upgrade;
+* both packages claim or implied ownership;
+* removal order affects result.
+
+Mechanism:
+
+* ownership-model ambiguity.
+
+The same symptom requires four diagnoses.
+
+## Field Symptom: Three Different Breakages
+
+Three incidents occur:
+
+1. wrong package selected for upgrade;
+2. package removal affects another package;
+3. repository query returns duplicate identities.
+
+Comparison reveals:
+
+* every component reconstructs package identity from filenames;
+* parsers differ;
+* artifacts carry no bound identity;
+* renaming changes operational meaning.
+
+Different symptoms share one structural cause:
+
+> Artifact identity lacks one authority surface.
+
+One intervention --- bound artifact identity with normalized
+repository records --- has high portability.
+
+## Field Symptom: The Wrapper Family
+
+A build wrapper, deployment wrapper, and backup wrapper appear
+unrelated.
+
+Comparison shows each wrapper:
+
+* invokes a low-level command;
+* parses human narration;
+* scans for resulting artifacts;
+* reconstructs completion state;
+* adds postcondition checks.
+
+The commands differ.
+
+The ecological signature matches.
+
+The mechanism class includes:
+
+* narrative coupling;
+* supplier-duty failure;
+* human or scripted normalization;
+* shadow regulation.
+
+The repair should target result contracts and completion semantics,
+not merely rewrite each wrapper.
+
+## Field Symptom: Repeated Rewrite Regression
+
+Three rewritten components reintroduce different bugs:
+
+* package-name validation disappears;
+* database locking disappears;
+* alternate-root rejection disappears.
+
+The immediate defects differ.
+
+Comparison shows:
+
+* each rule lived only in implementation;
+* no design record named the invariant;
+* tests reproduced common cases, not rejected states;
+* rewrites preserved interface syntax but not historical rationale.
+
+Shared mechanism:
+
+* structural amnesia caused by missing institutional retention.
+
+The intervention is not one additional code review.
+
+It is invariant extraction and decision tracing before rewrite.
+
+## Field Symptom: Every Tool Blames the Repository
+
+Several frontends report invalid package identity.
+
+The repository appears to be the incident sink.
+
+Comparison reveals:
+
+* malformed artifacts originate from one build template;
+* repository intake does not validate;
+* frontends detect disagreement differently.
+
+There are two intervention points:
+
+1. correct the producer template;
+2. add authoritative repository validation.
+
+Repairing only the repository contains the failure.
+
+Repairing only the producer leaves future malformed sources
+uncontained.
+
+Comparative diagnosis reveals the failure stack.
+
+## Field Symptom: Two Successful Validators
+
+Two validators both report repository consistency.
+
+Later, an installer discovers malformed artifacts.
+
+Comparison shows:
+
+* validator A checks repository index against filenames;
+* validator B checks signatures over the same index;
+* neither inspects internal artifact metadata;
+* both trust one derived identity representation.
+
+The validators are independent implementations.
+
+They share one common-mode assumption.
+
+Their agreement is not independent evidence.
+
+## Field Symptom: Automation and Human Review Disagree
+
+Human release review accepts an artifact.
+
+Automated validation rejects it.
+
+Possible conclusions include:
+
+* automation is too strict;
+* human review missed the defect;
+* policy and structural integrity are mixed;
+* old artifacts require compatibility translation;
+* each regulator has a different setpoint.
+
+Comparative diagnosis should map:
+
+* what each observes;
+* which rule each applies;
+* which authority each owns;
+* whether disagreement is legitimate.
+
+“Human versus machine” is not the mechanism.
+
+## Do Not Confuse
+
+**A failure map** is not a list of issue links.
+
+Cases must be normalized enough to compare.
+
+**Shared symptoms** do not prove shared cause.
+
+**Different symptoms** do not prove unrelated cause.
+
+**Correlation** is not common-mode failure.
+
+Several incidents may share conditions without sharing one direct
+mechanism.
+
+**A shared substrate** is not automatically defective.
+
+It may simply be the propagation path.
+
+**Mechanism convergence** is not proof of identical implementation
+bugs.
+
+The structural arrangement may be shared while code differs.
+
+**Family resemblance** is not a precise mechanism class.
+
+It is an organizational clue.
+
+**A compound failure** does not require one grand term.
+
+Several existing terms may describe its layers more accurately.
+
+**A common repair** is not proof of a common mechanism.
+
+Generic retries or warnings may mask several unrelated failures.
+
+**A field term** is not a cluster label chosen for convenience.
+
+It should identify causal structure.
+
+**A negative case** is not irrelevant because it succeeded.
+
+Success often reveals the missing condition.
+
+**An incident sink** is not necessarily innocent.
+
+It may both receive and contribute to failure.
+
+**A repeated patch** is not automatically structural recurrence.
+
+The same local defect may simply remain unfixed.
+
+**Independent validators** are not independent evidence if they share
+one authority source.
+
+## The Comparative Diagnosis Test
+
+When several incidents appear related, ask:
+
+1. What is the comparison question?
+2. Why were these cases selected?
+3. Which relevant cases were excluded?
+4. Are case descriptions equally detailed?
+5. What symptoms are shared?
+6. Which symptoms differ?
+7. Where does each case first diverge?
+8. Which state representations disagree?
+9. What is each proximate cause?
+10. What is each structural cause?
+11. Which authority signatures match?
+12. Which boundary signatures match?
+13. Which regulatory signatures match?
+14. Which ecological signatures match?
+15. Are incidents linked by one shared substrate?
+16. Is the substrate causal, propagating, or merely visible?
+17. Could a hidden common cause explain the set?
+18. Are the failures correlated or common-mode?
+19. Which cases are independent recurrences?
+20. Which are repetitions of one defect?
+21. Does one mechanism explain several symptoms?
+22. Does one symptom contain several mechanisms?
+23. Which cases have only family resemblance?
+24. Which cases are compound failures?
+25. What counterexamples constrain the proposed class?
+26. What negative cases reveal the boundary?
+27. Is one component merely the incident sink?
+28. Does blame topology differ from failure topology?
+29. Which compensators recur?
+30. Which intervention points recur?
+31. Would one repair apply across the mechanism class?
+32. What is its compatibility cost?
+33. Could a shared repair create ecological regression in one case?
+34. Which intervention has the highest leverage?
+35. Which case should remain separate?
+36. Is vocabulary increasing diagnostic resolution?
+37. Or is one fashionable term absorbing every nearby problem?
+38. Does the comparison reveal a reusable field concept?
+39. Can another investigator reproduce the grouping from the evidence?
+40. What future incident should this map help recognize?
+
+A comparison is useful when it narrows mechanism.
+
+It has failed when several unrelated corpses are arranged until they
+resemble a doctrine.
+
+## Twenty-Third House Law
+
+> Similar wounds do not prove the same weapon.  
+> Different wounds do not prove different hands.
+
+Comparative diagnosis turns isolated incidents into bounded failure
+classes.
+
+Failure maps show where mechanisms recur, where they diverge, and
+which interventions travel.
+
+The next section is **Intervention Design and Repair Selection**: how
+to choose among rejection, normalization, migration, guardrails,
+recovery, and operator policy without mistaking the most dramatic fix
+for the highest-leverage one.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
