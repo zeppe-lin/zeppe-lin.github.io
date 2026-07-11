@@ -8,7 +8,7 @@ title: The Fieldbook
 
 ## Applied Cybernetic Necromancy in Haunted Infrastructure {.unnumbered}
 
-> “The system remembers nothing.
+> “The system remembers nothing.  
 > The bastards remember everything.“
 
 ---
