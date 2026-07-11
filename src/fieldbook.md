@@ -13227,6 +13227,1416 @@ the missing feedback path.
 
 ---
 
+# Part V. Cybernetic Regulation and Ecosystem Evolution
+
+The repository detects malformed metadata.
+
+It records the violation.
+
+It displays the violation on a dashboard.
+
+It emails three maintainers.
+
+One maintainer notices the message two days later.
+
+The artifact has already been installed on several systems.
+
+A support channel develops a repair procedure.
+
+The project proudly reports that the repository has comprehensive
+observability.
+
+The ecosystem saw the failure.
+
+It did not regulate it.
+
+---
+
+# Control Loops and Regulator Failure
+
+A **control loop** is a process through which a system:
+
+1. observes relevant state;
+2. compares that state with a desired condition;
+3. decides whether correction is necessary;
+4. applies corrective action;
+5. observes the result.
+
+In simplified form:
+
+```text
+desired state
+      ↓
+comparison ← observed state
+      ↓
+correction
+      ↓
+system changes
+      ↓
+new observation
+```
+
+The loop matters because correctness is rarely a one-time property.
+
+State changes.
+
+Components fail.
+
+Operators intervene.
+
+Artifacts age.
+
+Repositories drift.
+
+A system remains coherent only if violations are detected and
+corrected through some regulatory path.
+
+> Observation tells you what happened.  
+> Regulation changes what happens next.
+
+## Regulation
+
+**Regulation** is the preservation of a desired property despite
+change, disturbance, uncertainty, or component failure.
+
+A regulator may preserve:
+
+* package database consistency;
+* repository integrity;
+* artifact identity;
+* dependency closure;
+* service availability;
+* filesystem ownership;
+* configuration state;
+* publication policy.
+
+Regulation does not require perfect stability.
+
+A regulated system may experience errors.
+
+The relevant question is whether it can:
+
+* detect deviation;
+* classify it;
+* respond appropriately;
+* return to an acceptable state;
+* retain the lesson.
+
+## Desired State
+
+The **desired state** is the condition the regulator attempts to
+preserve or reach.
+
+Examples include:
+
+* every repository artifact has valid bound identity;
+* every installed package record corresponds to filesystem state;
+* only verified artifacts enter the authoritative repository;
+* dependency state is satisfiable;
+* lifecycle execution occurs in a defined context;
+* package database updates are serialized.
+
+Desired state may be:
+
+* a fixed value;
+* a range;
+* an invariant;
+* a policy;
+* an operator-selected target.
+
+The desired state must be explicit enough for disagreement to become
+an error rather than a discussion.
+
+## Setpoint
+
+A **setpoint** is a particular desired value or condition used by a
+regulator.
+
+For example:
+
+```text
+repository consistency = valid
+```
+
+or:
+
+```text
+installed version of foo = 1.2-1
+```
+
+Not every system property has one numeric setpoint.
+
+In infrastructure, setpoints often take the form of contracts and
+invariants.
+
+The important property is that the regulator can distinguish:
+
+* acceptable state;
+* deviation;
+* states requiring operator policy;
+* states it cannot classify.
+
+## Observed State
+
+**Observed state** is the representation available to the regulator.
+
+It may come from:
+
+* databases;
+* filesystems;
+* manifests;
+* command results;
+* logs;
+* metrics;
+* operator reports;
+* repository indexes;
+* probes;
+* checksums;
+* process state.
+
+Observed state is not automatically actual state.
+
+Every observation has:
+
+* scope;
+* delay;
+* fidelity;
+* interpretation;
+* possible blind spots.
+
+A package database may report one installed state.
+
+The filesystem may expose another.
+
+A regulator must know which observation is authoritative and how to
+handle disagreement.
+
+## Error Signal
+
+An **error signal** is the meaningful difference between observed
+state and desired state.
+
+Examples include:
+
+* artifact metadata disagrees with publication identity;
+* a database record refers to a missing file;
+* dependency closure is unsatisfied;
+* an operation returned partial success;
+* two components claim authority over the same state;
+* a lifecycle script executed outside its declared context.
+
+A raw event is not necessarily an error signal.
+
+The regulator must interpret the event relative to a model.
+
+```text
+observation
+    +
+desired state
+    +
+comparison rule
+    =
+error signal
+```
+
+A warning line without a contract may be evidence.
+
+It is not yet a reliable error signal.
+
+## Sensor
+
+A **sensor** is the mechanism that produces observations.
+
+In software infrastructure, sensors include:
+
+* validation commands;
+* integrity scans;
+* database queries;
+* health checks;
+* filesystem watchers;
+* build results;
+* test suites;
+* operator reports;
+* monitoring systems.
+
+A sensor may detect:
+
+* current state;
+* change;
+* absence;
+* disagreement;
+* timing;
+* failed expectations.
+
+A sensor does not correct what it detects.
+
+It contributes evidence to the loop.
+
+## Controller
+
+A **controller** decides how to respond to an error signal.
+
+The controller may be:
+
+* code;
+* policy;
+* an operator;
+* a maintainer;
+* a scheduler;
+* a repository service;
+* a package manager;
+* a procedure.
+
+The controller determines:
+
+* whether the deviation matters;
+* what correction is appropriate;
+* whether human approval is required;
+* whether to retry, reject, quarantine, repair, or escalate.
+
+The controller needs both authority and a sufficiently accurate model.
+
+A controller with authority but no model becomes destructive.
+
+A controller with a model but no authority becomes documentation.
+
+## Actuator
+
+An **actuator** is the mechanism that changes system state.
+
+Examples include:
+
+* rejecting publication;
+* rolling back a transaction;
+* rewriting inconsistent metadata;
+* quarantining an artifact;
+* reinstalling files;
+* updating a database;
+* restarting a service;
+* disabling an unsafe path;
+* applying a migration.
+
+The actuator closes the practical loop.
+
+Without actuation, the system may observe and reason indefinitely
+while state remains unchanged.
+
+> A dashboard is a sensor.  
+> It is not a wrench.
+
+## Plant
+
+In control theory, the **plant** is the system being controlled.
+
+Here, the plant may be:
+
+* a package repository;
+* an installed system;
+* a build pipeline;
+* a package database;
+* an artifact publication process;
+* the wider ecosystem itself.
+
+The term is useful because it separates:
+
+* the thing changing;
+* the mechanism observing it;
+* the mechanism deciding;
+* the mechanism correcting.
+
+In poorly bounded infrastructure, these roles blur.
+
+The package manager mutates state, observes part of it, reports
+another part, and depends on operators to correct the rest.
+
+The plant and regulator have entered a complicated personal
+relationship.
+
+## Closed Loop
+
+A **closed-loop system** uses the observed result of its own action to
+guide further action.
+
+For example:
+
+```text
+publish artifact
+    ↓
+validate repository state
+    ↓
+detect mismatch
+    ↓
+quarantine artifact
+    ↓
+revalidate repository
+```
+
+The loop is closed because correction depends on observed outcome.
+
+Closed loops are useful when:
+
+* disturbances are expected;
+* state may diverge;
+* actions may fail;
+* recovery matters;
+* the environment changes.
+
+## Open Loop
+
+An **open-loop system** performs an action without observing whether
+the desired result occurred.
+
+For example:
+
+```text
+copy package files
+    ↓
+assume installation succeeded
+```
+
+Open-loop control can be appropriate when:
+
+* the operation is simple;
+* outcomes are highly predictable;
+* verification is more expensive than failure;
+* the effect is reversible;
+* another layer performs validation.
+
+It becomes dangerous when the system claims guarantees that require
+feedback it does not possess.
+
+> An open loop is not careless by definition.  
+> It becomes careless when it advertises closed-loop confidence.
+
+## Loop Closure
+
+**Loop closure** occurs when sensing, decision, and correction become
+connected around the authoritative state.
+
+A validation script does not close the loop merely by existing.
+
+The loop closes when:
+
+* the authoritative operation crosses the check;
+* violations produce defined decisions;
+* decisions can alter the path;
+* correction is verified;
+* bypass is explicit.
+
+For example:
+
+```text
+artifact submitted
+        ↓
+authoritative validation
+        ↓
+accept or quarantine
+        ↓
+repository state updated
+        ↓
+repository consistency rechecked
+```
+
+The check is now part of the regulator.
+
+Before that, it may have been a memory prosthesis.
+
+## Open Regulatory Loop
+
+An **open regulatory loop** contains some regulatory functions but
+lacks a complete path from error to verified correction.
+
+Common forms include:
+
+```text
+observe → warn → stop
+```
+
+```text
+observe → operator repairs → no verification
+```
+
+```text
+mutate → verify → report failure → leave state inconsistent
+```
+
+```text
+detect → create issue → continue accepting same state
+```
+
+The system possesses awareness.
+
+It does not possess closure.
+
+## Observability
+
+**Observability** is the ability to infer relevant internal state from
+available outputs and measurements.
+
+Good observability may reveal:
+
+* what happened;
+* when;
+* where;
+* under which inputs;
+* with which state transition;
+* which component participated;
+* whether the operation completed.
+
+Observability is necessary for diagnosis and regulation.
+
+It is not sufficient.
+
+A perfectly observable failure may continue indefinitely if no
+controller owns correction.
+
+## Observability Theater
+
+**Observability theater** is the accumulation of logs, metrics,
+dashboards, and alerts without corresponding authority or mechanisms
+to change the failing path.
+
+Symptoms include:
+
+* repeated alerts for a known invariant violation;
+* dashboards displaying contradictory state without reconciliation;
+* detailed reports generated after irreversible mutation;
+* incident tickets automatically created and automatically ignored;
+* metrics proving a failure is normal.
+
+> The dashboard knows exactly how the building burns.  
+> The sprinkler remains on the roadmap.
+
+Observability theater is not caused by monitoring itself.
+
+The failure is treating awareness as regulation.
+
+## Telemetry Without Semantics
+
+**Telemetry without semantics** is measurement that lacks a model
+connecting observations to actionable state.
+
+A system may report:
+
+* exit statuses;
+* file counts;
+* durations;
+* warning totals;
+* queue lengths;
+* package counts.
+
+These values become useful only when the ecosystem knows:
+
+* what acceptable ranges are;
+* which deviations matter;
+* who owns the response;
+* what correction is safe.
+
+More measurements do not automatically produce a stronger regulator.
+
+They may produce a larger archive of uninterpreted distress.
+
+## Detection Without Authority
+
+**Detection without authority** occurs when a component can identify a
+violation but cannot affect the authoritative path.
+
+Examples include:
+
+* a local hook detecting malformed commits while imports bypass it;
+* an audit tool finding repository corruption but lacking quarantine
+  authority;
+* a frontend recognizing unsafe installation while direct invocation
+  remains supported;
+* a test detecting contract failure after release.
+
+Detection may still be valuable.
+
+It becomes structurally weak when the ecosystem credits it as
+enforcement.
+
+## Authority Without Observation
+
+**Authority without observation** occurs when a controller can mutate
+or reject state but lacks sufficient information to decide correctly.
+
+Examples include:
+
+* a repository gate validating filenames without artifact metadata;
+* a cleanup tool deleting files without package ownership state;
+* an orchestrator retrying operations without structured outcomes;
+* a policy engine enforcing rules against stale caches.
+
+This regulator can act.
+
+It cannot see.
+
+> Blind authority is not regulation.  
+> It is a loaded actuator looking for a theory.
+
+## Correction Without Verification
+
+**Correction without verification** occurs when a repair is applied
+but the system does not observe whether the desired state was
+restored.
+
+For example:
+
+```text
+database inconsistency detected
+        ↓
+repair script rewrites records
+        ↓
+operation exits zero
+```
+
+The script may have:
+
+* repaired the state;
+* repaired only one representation;
+* introduced another disagreement;
+* failed silently;
+* acted against stale observations.
+
+A complete loop observes the postcondition.
+
+## Regulatory Latency
+
+**Regulatory latency** is the delay between deviation and corrective
+response.
+
+Latency may arise from:
+
+* batch validation;
+* human review;
+* support-channel availability;
+* delayed monitoring;
+* slow propagation of repository metadata;
+* release cadence;
+* manual approval.
+
+Some latency is acceptable.
+
+The relevant question is how much damage can accumulate before
+correction.
+
+A malformed artifact detected:
+
+* before publication;
+* after publication;
+* after installation;
+* after years of archival reuse;
+
+represents the same semantic error at very different regulatory costs.
+
+## Feedback Delay
+
+**Feedback delay** is the delay between an action and observation of
+its result.
+
+Long feedback delay makes regulation harder because:
+
+* several actions may occur before failure is visible;
+* causality becomes ambiguous;
+* corrections may target obsolete state;
+* operators may repeat actions unnecessarily;
+* incompatible compensations may accumulate.
+
+Delayed feedback is common in:
+
+* release processes;
+* distributed repositories;
+* long-running builds;
+* package upgrades;
+* compatibility migrations.
+
+The system should represent delay explicitly where possible.
+
+## Stale Error
+
+A **stale error** is an error signal based on state that has already
+changed.
+
+For example:
+
+* an audit reports a package missing after another operation restored
+  it;
+* a retry acts on a failure whose transaction later completed;
+* a maintainer repairs repository state based on an old index;
+* automation removes an artifact already superseded.
+
+Stale error is dangerous when actuators are destructive.
+
+The regulator must identify the state generation or transaction to
+which the observation belongs.
+
+## Feedback Gain
+
+**Feedback gain** describes how strongly a regulator responds to an
+observed error.
+
+In infrastructure, high gain may mean:
+
+* immediate rollback;
+* aggressive retry;
+* automatic deletion;
+* repository-wide quarantine;
+* full rebuild after one inconsistency.
+
+Low gain may mean:
+
+* warning;
+* deferred review;
+* local repair;
+* gradual migration.
+
+High gain is useful when:
+
+* the error signal is reliable;
+* damage spreads quickly;
+* correction is reversible;
+* authority is clear.
+
+High gain is dangerous when observations are ambiguous.
+
+> Strong correction applied to weak truth is how a warning becomes an
+> outage.
+
+## Overcorrection
+
+**Overcorrection** occurs when the response exceeds what is necessary
+to restore the desired state.
+
+Examples include:
+
+* rebuilding an entire system after one stale package record;
+* deleting all cached artifacts after one corrupt file;
+* disabling parallelism globally after one backend race;
+* banning an artifact form because one parser mishandled it.
+
+Overcorrection often produces folklore:
+
+* operators learn to bypass the regulator;
+* escape hatches become normal;
+* warnings are ignored;
+* local patches weaken enforcement.
+
+A regulator that punishes every deviation maximally trains the
+ecosystem to conceal deviation.
+
+## Undercorrection
+
+**Undercorrection** occurs when the response reduces symptoms without
+restoring the relevant invariant.
+
+Examples include:
+
+* suppressing a warning;
+* deleting one malformed repository record without fixing publication;
+* reinstalling a file without repairing ownership state;
+* restarting a service without correcting configuration;
+* documenting an unsafe option combination without rejecting it.
+
+Undercorrection preserves local survival while leaving the failure
+class active.
+
+## Oscillation
+
+**Oscillation** occurs when competing or delayed corrections
+repeatedly move state between alternatives without convergence.
+
+For example:
+
+```text
+tool A normalizes package name to lowercase
+        ↓
+tool B restores repository spelling
+        ↓
+tool A normalizes again
+```
+
+Other forms include:
+
+* automation repeatedly reinstalling a package an operator removes;
+* two dependency solvers choosing incompatible versions;
+* a configuration generator overwriting local edits that are then
+  restored by a management script;
+* recovery logic retrying an operation that partially succeeds each
+  time.
+
+Oscillation is evidence that:
+
+* regulators have different setpoints;
+* feedback is delayed;
+* authority is unclear;
+* corrections are not idempotent;
+* local policy conflicts with shared policy.
+
+> When two regulators disagree, the filesystem becomes their argument.
+
+## Regulatory Conflict
+
+**Regulatory conflict** occurs when multiple controllers attempt to
+govern the same state under incompatible models or desired conditions.
+
+Examples include:
+
+* package manager versus configuration manager;
+* repository validator versus local publication script;
+* operator wrapper versus low-level tool;
+* service supervisor versus lifecycle scripts;
+* host package database versus target package database.
+
+Conflict may be explicit and legitimate.
+
+Local policy may override shared defaults.
+
+The system needs a priority or composition model.
+
+Without one, each controller treats the other's correction as
+disturbance.
+
+## Competing Setpoints
+
+Two regulators may observe the same state and pursue different desired
+conditions.
+
+For example:
+
+```text
+repository policy:
+    package foo must be version 2
+
+local operator policy:
+    package foo must remain version 1
+```
+
+This is not necessarily failure.
+
+The ecosystem may provide a hold mechanism.
+
+Failure occurs when the distinction is implicit and each layer
+repeatedly undoes the other.
+
+Explicit local policy creates composition.
+
+Hidden local policy creates oscillation.
+
+## Deadband
+
+A **deadband** is a range of deviation tolerated without correction.
+
+Deadbands are useful when:
+
+* minor variation is harmless;
+* measurement is noisy;
+* correction cost is high;
+* operator policy permits a range;
+* immediate convergence is unnecessary.
+
+For example, a repository mirror may temporarily lag without requiring
+repair.
+
+A deadband becomes dangerous when it hides accumulating invariant
+debt.
+
+The system should know whether tolerated deviation is:
+
+* harmless variation;
+* temporary inconsistency;
+* deferred work;
+* unsupported state.
+
+## Regulatory Saturation
+
+**Regulatory saturation** occurs when the regulator reaches the limit
+of its corrective capacity.
+
+Examples include:
+
+* maintainers cannot process alerts fast enough;
+* support channels cannot diagnose every installation;
+* repository review cannot inspect growing artifact volume;
+* repair scripts cannot handle accumulated corruption;
+* operators lack enough time to reconcile repeated drift.
+
+At saturation:
+
+* queues grow;
+* warnings normalize;
+* incidents receive shallow treatment;
+* local workarounds proliferate;
+* enforcement weakens informally.
+
+The regulator still exists.
+
+It can no longer match disturbance volume.
+
+## Alert Saturation
+
+**Alert saturation** occurs when the volume or repetition of warnings
+exceeds operator attention.
+
+Operators respond by:
+
+* filtering alerts;
+* ignoring familiar failures;
+* delaying investigation;
+* creating local suppression;
+* treating exceptional state as normal.
+
+An alert system can therefore destroy its own sensor value.
+
+> A warning repeated forever becomes environmental sound.
+
+Alert saturation is often evidence that the system needs:
+
+* stronger prevention;
+* better classification;
+* aggregation;
+* ownership;
+* automated correction;
+* retirement of obsolete warnings.
+
+## Regulator Failure
+
+A **regulator failure** occurs when the control structure cannot
+preserve its desired state.
+
+Common regulator failures include:
+
+* no clear desired state;
+* insufficient observation;
+* ambiguous error signals;
+* missing authority;
+* ineffective actuators;
+* excessive latency;
+* no post-correction verification;
+* conflicting controllers;
+* saturation;
+* adaptation that changes the target without acknowledging it.
+
+A component may work correctly while the regulator fails.
+
+For example:
+
+* the validator correctly reports malformed metadata;
+* the repository correctly accepts everything submitted;
+* the operator correctly repairs bad entries afterward.
+
+Every component performs its local role.
+
+The control loop remains open.
+
+## Human-in-the-Loop Regulation
+
+A **human-in-the-loop regulator** requires operator or maintainer
+judgment within the control process.
+
+This is appropriate when:
+
+* policy is contextual;
+* recovery is destructive;
+* evidence is incomplete;
+* tradeoffs cannot be encoded safely;
+* exceptional authority is required;
+* the operation is rare.
+
+Human participation is not inherently weak.
+
+A well-designed human-in-the-loop system provides:
+
+* clear observations;
+* bounded choices;
+* explicit authority;
+* structured results;
+* safe actuators;
+* postcondition verification;
+* retained rationale.
+
+The human supplies judgment.
+
+The system supplies state.
+
+## Human-as-the-Loop Regulation
+
+**Human-as-the-loop regulation** occurs when the operator supplies not
+only judgment but the missing sensing, interpretation, memory,
+decision, correction, and verification.
+
+The operator must:
+
+1. notice the failure;
+2. reconstruct state;
+3. infer the intended contract;
+4. select a repair;
+5. execute commands;
+6. verify results;
+7. remember the lesson;
+8. teach the next operator.
+
+This is not merely a human-in-the-loop system.
+
+The human is the loop.
+
+> The software has an operator interface.  
+> The ecosystem has an operator-shaped control plane.
+
+## Operator Regulator
+
+An **operator regulator** is an operator functioning as the practical
+controller for unresolved system state.
+
+The operator may reconcile:
+
+* filesystem and database state;
+* artifact and repository identity;
+* current and legacy behavior;
+* host and target contexts;
+* documentation and implementation.
+
+Expert operators often become excellent regulators.
+
+They possess:
+
+* broad observability;
+* historical context;
+* flexible reasoning;
+* authority to cross boundaries;
+* improvisational actuators.
+
+This makes them valuable.
+
+It also makes structural defects difficult to see.
+
+The system appears coherent because the operator supplies the missing
+coherence continuously.
+
+## Regulatory Outsourcing
+
+**Regulatory outsourcing** occurs when a component or project shifts
+control-loop functions into operators, downstream tools, or local
+infrastructure.
+
+Examples include:
+
+* “callers must validate this”;
+* “operators should inspect the result”;
+* “frontends can reject unsafe combinations”;
+* “repositories may enforce their own naming rules”;
+* “scripts should repair partial state”.
+
+Outsourcing may be legitimate.
+
+A low-level component should not own every policy.
+
+The key questions are:
+
+* Is the responsibility explicit?
+* Does the recipient possess required facts?
+* Does it possess authority?
+* Is every relevant path covered?
+* Can outcomes be verified?
+* Does the ecosystem still claim the original guarantee?
+
+> Delegation names the next owner.  
+> Outsourcing merely points away from the fire.
+
+## Missing Regulator
+
+A **missing regulator** exists when a property is expected but no
+component or participant clearly owns the full feedback loop needed to
+preserve it.
+
+Typical symptoms include:
+
+* everybody agrees the rule matters;
+* several tools observe parts of it;
+* nobody can reject authoritative state;
+* operators repair violations manually;
+* documentation describes an intended invariant;
+* the same incident recurs.
+
+The property exists doctrinally.
+
+Its regulator does not.
+
+## Shadow Regulator
+
+A **shadow regulator** is an unofficial mechanism that practically
+preserves state where the declared system does not.
+
+Examples include:
+
+* a release maintainer manually rejecting malformed packages;
+* a wrapper repairing package state;
+* a nightly script reconciling repositories;
+* an IRC channel guiding recovery;
+* a downstream patch enforcing an upstream rule.
+
+The shadow regulator may be more effective than the official path.
+
+It remains fragile because its authority, maintenance, and scope are
+often implicit.
+
+## Regulatory Capture by Folklore
+
+**Regulatory capture by folklore** occurs when socially transmitted
+rules become the primary control logic for system correctness.
+
+Operators learn:
+
+* what to inspect;
+* which deviation matters;
+* how strongly to respond;
+* when to bypass a warning;
+* how to verify repair.
+
+The folklore now supplies:
+
+* sensor interpretation;
+* controller policy;
+* actuator selection;
+* feedback criteria.
+
+The system retains commands.
+
+The ecology supplies regulation.
+
+## Adaptive Regulator
+
+An **adaptive regulator** changes its response based on observed
+conditions or historical outcomes.
+
+Operators are adaptive regulators.
+
+They can:
+
+* recognize new failure shapes;
+* revise policy;
+* combine weak evidence;
+* select context-sensitive repairs;
+* learn from previous interventions.
+
+This adaptability is one reason human coping infrastructure can
+preserve systems with poor formal models.
+
+It is also why the system may evolve around operator compensation
+instead of repairing its own boundaries.
+
+The adaptive regulator hides the fixed regulator's weakness.
+
+## Regulatory Selection Pressure
+
+When a system repeatedly fails in predictable ways, it creates
+**selection pressure** for operators and tools adapted to those
+failures.
+
+Successful participants learn to:
+
+* distrust nominal success;
+* inspect several state representations;
+* preserve historical command order;
+* maintain private wrappers;
+* recognize misleading warnings;
+* avoid unsupported but accepted states.
+
+The ecosystem begins selecting for people who can survive its
+regulatory gaps.
+
+This is where cybernetics becomes anthropology.
+
+## Field Symptom: Repository Audit Without Quarantine
+
+A nightly job verifies repository metadata.
+
+It detects:
+
+* missing manifests;
+* identity disagreement;
+* orphaned indexes;
+* invalid dependency declarations.
+
+The report is emailed to maintainers.
+
+Publication remains open.
+
+Malformed artifacts continue entering the repository between audits.
+
+The job is a strong sensor.
+
+The maintainers form the controller.
+
+Manual repository tools provide actuators.
+
+The loop has:
+
+* long latency;
+* limited capacity;
+* uncertain ownership;
+* repeated exposure before correction.
+
+Possible improvements include:
+
+* validation before publication;
+* automatic quarantine;
+* transaction-bound manifests;
+* explicit repair status;
+* post-correction verification.
+
+The audit remains useful.
+
+It should not be mistaken for repository integrity.
+
+## Field Symptom: Package Repair by Operator
+
+A package installation fails after writing files but before recording
+the database state.
+
+The package manager reports a generic failure.
+
+The operator:
+
+1. inspects the filesystem;
+2. reads the build log;
+3. identifies installed files;
+4. reconstructs package identity;
+5. repairs the database;
+6. verifies future removal.
+
+The operator has performed:
+
+* sensing;
+* state estimation;
+* error classification;
+* correction;
+* postcondition verification.
+
+The package manager performed mutation.
+
+The operator performed regulation.
+
+## Field Symptom: Automatic Retry
+
+A repository publication command times out after uploading an
+artifact.
+
+Automation sees nonzero status and retries.
+
+The first operation actually completed.
+
+The retry creates:
+
+* duplicate metadata;
+* conflicting publication records;
+* another timeout.
+
+The regulator observed an ambiguous error signal and applied high-gain
+correction without checking state.
+
+The correct model requires:
+
+* operation identity;
+* idempotent publication;
+* structured partial outcomes;
+* post-timeout state query.
+
+Retry is not inherently safe.
+
+It is an actuator.
+
+## Field Symptom: Two Configuration Managers
+
+A local script ensures:
+
+```text
+service = disabled
+```
+
+A package lifecycle script ensures:
+
+```text
+service = enabled
+```
+
+Every package upgrade enables the service.
+
+Every local reconciliation disables it.
+
+Both tools succeed.
+
+The state oscillates.
+
+The failure is not unreliability.
+
+Each regulator reliably pursues a different setpoint.
+
+The ecosystem needs an authority rule:
+
+* package scripts establish defaults;
+* local configuration owns final state;
+* lifecycle scripts must not override explicit local policy.
+
+Without that rule, correctness depends on which regulator ran last.
+
+## Field Symptom: Warning as Control System
+
+A tool detects that lifecycle scripts may affect the host during
+alternate-root installation.
+
+It prints a warning and continues.
+
+Experienced operators stop the operation when the warning appears.
+
+Automation ignores it.
+
+The project says the danger is “handled by a warning.”
+
+Operationally:
+
+* the tool supplies the sensor;
+* operator folklore supplies the controller;
+* interruption supplies the actuator;
+* automation lacks the controller entirely.
+
+The loop exists only in interactive use.
+
+The claimed contract does not survive automation.
+
+## Field Symptom: Dashboard-Driven Repair
+
+A dashboard shows package database inconsistency.
+
+Operators click a repair action.
+
+The action rewrites database state.
+
+The dashboard immediately turns green.
+
+But the repair check reads the database only.
+
+The filesystem remains inconsistent.
+
+The loop closed around one representation rather than the system
+invariant.
+
+The regulator successfully corrected its own sensor.
+
+> When the metric becomes the setpoint, the dashboard can heal while
+> the machine remains sick.
+
+## Do Not Confuse
+
+**Observation** is not regulation.
+
+The system must possess a path from error to verified correction.
+
+**Automation** is not automatically closed-loop control.
+
+A script may repeat open-loop actions faster.
+
+**Human participation** is not regulator failure.
+
+Human judgment may be the correct controller for exceptional states.
+
+**Human-as-the-loop** is not the same as human-in-the-loop.
+
+In the former, the operator reconstructs the entire control structure.
+
+**A warning** is not an actuator.
+
+It changes state only if a recipient notices and responds.
+
+**A retry** is not automatically correction.
+
+Without operation identity and state observation, it may amplify
+damage.
+
+**A dashboard** is not an authority surface.
+
+It may observe state while lacking power to change it.
+
+**Strong correction** is not strong regulation.
+
+High gain applied to weak observations creates instability.
+
+**Stable output** is not proof of a stable loop.
+
+An ecosystem may remain stable because operators continuously
+compensate.
+
+**Several regulators** are not automatically a problem.
+
+They require explicit scope, priority, and composition.
+
+**A local repair** is not loop closure.
+
+The correction must be verified and the failure class must have an
+owner.
+
+## The Control-Loop Test
+
+For any important invariant or desired property, ask:
+
+1. What is the desired state?
+2. Who defines it?
+3. Which state is observed?
+4. Which representation is authoritative?
+5. What sensor produces the observation?
+6. How current is the observation?
+7. What constitutes an error signal?
+8. Who or what interprets it?
+9. Which controller owns the response?
+10. What authority does the controller possess?
+11. Which actuator changes state?
+12. Can the actuator reach the authoritative path?
+13. Is correction applied before or after damage?
+14. Is the result observed afterward?
+15. Can the loop distinguish partial success?
+16. Is the correction idempotent?
+17. Can feedback become stale?
+18. How much latency exists?
+19. How much error can accumulate during that latency?
+20. Are multiple regulators acting on the same state?
+21. Do they share a setpoint?
+22. Can their actions oscillate?
+23. Is the regulator saturated?
+24. Are alerts exceeding human attention?
+25. Which functions are performed by operators?
+26. Does the system expose enough state for human judgment?
+27. Is operator labor acknowledged as part of the loop?
+28. Is a shadow regulator carrying the real guarantee?
+29. Does observability lead to authority?
+30. Does correction restore the invariant or merely silence the
+    sensor?
+31. Can the loop retain lessons from repeated failure?
+32. Would closing the loop reduce operator burden or merely automate
+    an ambiguous policy?
+
+If the ecosystem can describe the error precisely but can only hope
+that somebody notices, it has a sensor.
+
+It does not yet have a regulator.
+
+## Seventeenth House Law
+
+> A system that can observe failure but cannot alter the failing path
+> is not regulating.  
+> It is documenting its own defeat.
+
+Control loops explain how systems preserve desired state.
+
+Regulator failure explains why observability, warning, and expert
+repair can coexist with recurring structural failure.
+
+The next section is **Operator Adaptation and Bastard Formation**: how
+people exposed to weak regulation develop compensatory skill,
+suspicion, ritual, and identity—and how the ecosystem eventually
+mistakes the operators it has injured for proof that its design is
+sound.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
