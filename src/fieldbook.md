@@ -10,9 +10,9 @@ revision: 1
 
 [Back to Index](index.html)
 
-# The Fieldbook {.unnumbered}
+# The Fieldbook {.unnumbered .unlisted}
 
-## Applied Cybernetic Necromancy in Haunted Infrastructure {.unnumbered}
+## Applied Cybernetic Necromancy in Haunted Infrastructure {.unnumbered .unlisted}
 
 > “The system remembers nothing.  
 > The bastards remember everything.”
@@ -149,7 +149,7 @@ You do not need to memorize the ghosts.
 
 Learn where they enter the building.
 
-## Contents {.unnumbered}
+## Contents {.unnumbered .unlisted}
 
 1. [Part I. The Foundational Tension](#part-i-the-foundational-tension)
 2. [Part II. Semantic Authority and Boundaries](#part-ii-semantic-authority-and-boundaries)
@@ -246,7 +246,7 @@ Just not by itself.
 
 ---
 
-# Local Survivability and System-Level Coherence
+## Local Survivability and System-Level Coherence
 
 Long-lived infrastructure is often judged at two different scales.
 
@@ -278,7 +278,7 @@ None of them necessarily restores system-level coherence.
 > The ecosystem just needs several humans installed as runtime
 > dependencies.
 
-## Local Survivability
+### Local Survivability
 
 **Local survivability** is the ability of an installation or workflow
 to remain operational despite unresolved defects in the shared system.
@@ -308,7 +308,7 @@ The mistake is confusing survival with resolution.
 > A tourniquet is successful when the patient stops bleeding.  
 > It becomes architecture when nobody returns for the leg.
 
-## System-Level Coherence
+### System-Level Coherence
 
 **System-level coherence** is the condition in which the system's
 semantics remain explicit, compatible, and mechanically defensible
@@ -335,7 +335,7 @@ The number of components does not decide the matter.
 
 The question is whether their meanings compose.
 
-## The Foundational Trade
+### The Foundational Trade
 
 Local survivability spends whatever is available now:
 
@@ -376,7 +376,7 @@ responding to an emergency.
 
 It is selecting an architecture.
 
-## Field Symptom
+### Field Symptom
 
 A command accepts an operation and exits successfully.
 
@@ -396,7 +396,7 @@ relationship.
 
 Local competence has successfully concealed a missing model.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Local survivability** is not the same as bad engineering.
 
@@ -416,7 +416,7 @@ A system can reject many states while enforcing the wrong model.
 An interface that accepts everything may merely postpone failure until
 the operator has fewer useful facts.
 
-## The Scaling Problem
+### The Scaling Problem
 
 A small ecosystem can survive substantial incoherence because a few
 operators carry most of the missing context.
@@ -448,7 +448,7 @@ boundaries.
 Without those boundaries, flexibility and drift become
 indistinguishable.
 
-## First House Law
+### First House Law
 
 > Survival proves that the ecosystem compensated.  
 > It does not prove that the system was correct.
@@ -467,7 +467,7 @@ The second prevents the repair from becoming theology.
 
 ---
 
-# Operational Burden and the Accounting of Simplicity
+## Operational Burden and the Accounting of Simplicity
 
 A component is rewritten.
 
@@ -489,7 +489,7 @@ The operation is not.
 
 ---
 
-## Operational Burden
+### Operational Burden
 
 **Operational burden** is the work the ecosystem must continuously
 perform to keep infrastructure usable, intelligible, and coherent.
@@ -522,7 +522,7 @@ The useful question is:
 > Does the burden arise from the domain, or from the way the ecosystem
 > chose to represent and distribute the domain?
 
-## Three Kinds of Complexity
+### Three Kinds of Complexity
 
 Not all complexity should be treated as one cursed substance.
 
@@ -549,7 +549,7 @@ Some complications are the problem.
 
 Some are merely the furniture arrangement in the crypt.
 
-## Burden Migration
+### Burden Migration
 
 When one layer stops performing necessary work, that work does not
 always disappear.
@@ -586,7 +586,7 @@ The original component became smaller.
 
 The ecosystem acquired archaeology.
 
-## Local Simplicity
+### Local Simplicity
 
 **Local simplicity** is simplicity measured within one selected
 boundary.
@@ -608,7 +608,7 @@ That is not necessarily a bad trade.
 
 It is, however, a trade.
 
-## Entropy Export
+### Entropy Export
 
 **Entropy export** is the movement of unresolved operational burden
 from one layer into another.
@@ -644,7 +644,7 @@ A wrapper may be the correct place for site-specific behavior.
 
 The pathology begins when the transfer is hidden, unbounded, or denied.
 
-## Entropy Laundering
+### Entropy Laundering
 
 **Entropy laundering** is presenting exported operational burden as if
 it had been eliminated.
@@ -666,7 +666,7 @@ Entropy laundering is an accounting failure.
 The burden remains inside the ecosystem.
 It has merely been moved to a column nobody wishes to publish.
 
-## Structural Ownership
+### Structural Ownership
 
 A burden is **structurally owned** when the ecosystem can answer:
 
@@ -697,7 +697,7 @@ The system owns the contract around that choice.
 
 Operator authority is not the same as architectural absence.
 
-## Field Symptom
+### Field Symptom
 
 A build tool knows the exact artifact it produced.
 
@@ -720,7 +720,7 @@ Its local simplicity is purchased with ecosystem-wide coupling.
 > One component saved an API call.  
 > Five callers founded a priesthood.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Small code** is not automatically entropy laundering.
 
@@ -747,7 +747,7 @@ missing shared semantics.
 
 Unpriced externalization is.
 
-## The Accounting Test
+### The Accounting Test
 
 When a design is described as simpler, ask:
 
@@ -765,7 +765,7 @@ The test is not intended to forbid local simplification.
 It prevents one subsystem from declaring victory while leaving the
 cleanup crew outside the measurement boundary.
 
-## Second House Law
+### Second House Law
 
 > The ecosystem always pays.  
 > The only question is where.
@@ -798,7 +798,7 @@ None of them has custody of the truth.
 
 ---
 
-# Meaning Needs an Owner
+## Meaning Needs an Owner
 
 Every operation carries meaning.
 
@@ -823,7 +823,7 @@ when those facts disagree.
 > Authority is not where the documentation points.  
 > Authority is where disagreement stops.
 
-## Semantics
+### Semantics
 
 **Semantics** are what an operation, interface, state, or artifact
 means inside the system.
@@ -845,7 +845,7 @@ A syntactically valid command can be semantically incoherent.
 The parser may be satisfied while the system has already summoned four
 different realities.
 
-## Semantic Authority
+### Semantic Authority
 
 **Semantic authority** is the ability to define, validate, or enforce
 meaning.
@@ -871,7 +871,7 @@ A wrapper influences execution.
 Only a layer capable of deciding or enforcing operational truth is
 authoritative for that truth.
 
-## Semantic Authority Surface
+### Semantic Authority Surface
 
 A **semantic authority surface** is the boundary at which meaning
 becomes operationally binding.
@@ -895,7 +895,7 @@ The system may deny this in its architecture diagrams.
 
 Reality is not required to respect the diagrams.
 
-## Source of Truth
+### Source of Truth
 
 A **source of truth** is the authoritative representation from which
 other representations are derived and against which disagreements are
@@ -927,7 +927,7 @@ It has several witnesses and no judge.
 > Two sources of truth are usually one source of truth and one future
 > incident report.
 
-## Derived Representation
+### Derived Representation
 
 A **derived representation** is a projection generated from an
 authoritative source.
@@ -964,7 +964,7 @@ the truth.
 
 This is architecture performing a round trip through typography.
 
-## Semantic Locality
+### Semantic Locality
 
 **Semantic locality** describes where a particular meaning is
 permitted to live.
@@ -991,7 +991,7 @@ The diagnostic question is:
 > Does each meaning live somewhere capable of owning it, and can other
 > layers consume it without reconstructing hidden knowledge?
 
-## Authority Fracture
+### Authority Fracture
 
 An **authority fracture** occurs when the ecosystem believes one layer
 owns a meaning while operational behavior assigns that meaning
@@ -1019,7 +1019,7 @@ A fractured authority surface produces several plausible answers.
 > One missing answer is a limitation.  
 > Three partially correct answers are an ecosystem.
 
-## Field Symptom
+### Field Symptom
 
 A build component creates an artifact.
 
@@ -1064,7 +1064,7 @@ The fact exists, but not in a form that can travel safely.
 > The truth was present at the scene.  
 > Unfortunately, it was wearing a sentence.
 
-## Authority Is Operational
+### Authority Is Operational
 
 A project may declare a file, database, or interface authoritative.
 
@@ -1091,7 +1091,7 @@ Ask:
 That layer is closer to authority than whichever one has the grandest
 heading in the manual.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Semantic authority** is not the same as centralization.
 
@@ -1123,7 +1123,7 @@ derived projections.
 
 The fracture begins when disagreement has no explicit resolution path.
 
-## The Authority Test
+### The Authority Test
 
 For any important fact, ask:
 
@@ -1143,7 +1143,7 @@ maintainers, the system does not merely have a documentation problem.
 
 It has an authority topology waiting to become folklore.
 
-## Third House Law
+### Third House Law
 
 > Meaning belongs to the layer that can enforce it.  
 > Everything else is commentary.
@@ -1155,7 +1155,7 @@ form capable of surviving the crossing.
 
 ---
 
-# Binding Surfaces
+## Binding Surfaces
 
 The failure is understood.
 
@@ -1175,7 +1175,7 @@ It lacked somewhere for knowledge to become structure.
 
 ---
 
-## Binding Surface
+### Binding Surface
 
 A **binding surface** is a mechanism through which an observation,
 decision, policy, or lesson can alter authoritative system behavior.
@@ -1198,7 +1198,7 @@ Without one, even a perfect diagnosis may remain commentary.
 > A correct observation with nowhere to bind is a well-documented
 > scream.
 
-## Observation and Control
+### Observation and Control
 
 Observation is necessary for regulation.
 
@@ -1234,7 +1234,7 @@ The ecosystem learns what happened.
 
 The system continues doing it.
 
-## Knowledge Without Authority
+### Knowledge Without Authority
 
 Knowledge can exist in many places:
 
@@ -1268,7 +1268,7 @@ The prose may explain the rule.
 
 The parser and repository gate give the rule a body.
 
-## Documentation Confesses; Issues Desire
+### Documentation Confesses; Issues Desire
 
 The House uses a simple epistemic boundary:
 
@@ -1313,7 +1313,7 @@ already repaired it.
 The project acquires documentation from tomorrow and behavior from
 yesterday.
 
-## Canonizing the Contradiction
+### Canonizing the Contradiction
 
 **Canonizing the contradiction** means documenting a known
 inconsistency accurately before it dissolves back into folklore.
@@ -1344,7 +1344,7 @@ repair is unavailable.
 
 It becomes dangerous when confession is mistaken for absolution.
 
-## Structured Hope
+### Structured Hope
 
 **Structured hope** is a concrete proposal, issue, design note, hook,
 or convention that gives a desired property inspectable form without
@@ -1368,7 +1368,7 @@ It remains hope.
 
 > Hope with headings is still hope.
 
-## Structural Hope
+### Structural Hope
 
 **Structural hope** is sustained effort to create or strengthen the
 binding surfaces through which observations can become system
@@ -1391,7 +1391,7 @@ One names the destination.
 The other constructs a road not made entirely of maintainers
 remembering to turn left.
 
-## Guardrail
+### Guardrail
 
 A **guardrail** is a binding mechanism that prevents or contains a
 known failure class.
@@ -1420,7 +1420,7 @@ A guardrail need not solve the entire model.
 It may simply prevent the ecosystem from entering a state known to be
 unreasonably difficult to interpret.
 
-## Memory Prosthesis
+### Memory Prosthesis
 
 A **memory prosthesis** preserves a lesson without necessarily
 enforcing it across the shared ecosystem.
@@ -1454,7 +1454,7 @@ It does not automatically protect:
 > A hook in your clone is not project law.  
 > It is your future self leaving a note beside the trapdoor.
 
-## Field Symptom: The Perfect Issue
+### Field Symptom: The Perfect Issue
 
 An operator discovers that a package operation behaves differently
 depending on whether a target root already contains a package
@@ -1497,7 +1497,7 @@ The problem is not lack of signal.
 
 The signal has nowhere to land.
 
-## Field Symptom: The Optional Hook
+### Field Symptom: The Optional Hook
 
 A maintainer writes a hook that rejects malformed package metadata.
 
@@ -1525,7 +1525,7 @@ That may be the correct first step.
 It becomes authority laundering when the local protection is presented
 as a system-wide invariant.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **A binding surface** is not necessarily centralized.
 
@@ -1568,7 +1568,7 @@ observer, not a regulator.
 Five maintainers agreeing that a state is invalid does not make the
 state mechanically unreachable.
 
-## Binding Strength
+### Binding Strength
 
 Binding surfaces differ in strength.
 
@@ -1605,7 +1605,7 @@ The lesson is:
 > Know whether a rule is advice, procedure, enforcement, or
 > architecture.
 
-## Symbolic Binding
+### Symbolic Binding
 
 **Symbolic binding** occurs when an ecosystem creates an artifact that
 looks authoritative without giving it operational force.
@@ -1627,7 +1627,7 @@ concludes the rule now exists.
 > The invariant has been rendered beautifully in Markdown.  
 > Runtime remains unconvinced.
 
-## Boundary Between Memory and Enforcement
+### Boundary Between Memory and Enforcement
 
 A healthy ecosystem needs both memory surfaces and binding surfaces.
 
@@ -1676,7 +1676,7 @@ The objective is not to freeze truth.
 
 It is to make the current truth operationally visible.
 
-## The Binding Test
+### The Binding Test
 
 For any claimed rule or lesson, ask:
 
@@ -1695,7 +1695,7 @@ For any claimed rule or lesson, ask:
 
 This test prevents the project from confusing knowledge with control.
 
-## Fourth House Law
+### Fourth House Law
 
 > A lesson without a binding surface becomes folklore with good
 > typography.
@@ -1708,7 +1708,7 @@ this command means” is not yet an execution model.
 
 ---
 
-# Contracts and Invariants
+## Contracts and Invariants
 
 The command accepts the input.
 
@@ -1728,7 +1728,7 @@ The operator calls the backup.
 
 ---
 
-## Contract
+### Contract
 
 A **contract** is an explicit statement of behavior owned by a
 component or system boundary.
@@ -1754,7 +1754,7 @@ it without reconstructing hidden assumptions.
 Without that stopping point, every caller must continue downward into
 implementation, configuration, history, or folklore.
 
-## Contract Scope
+### Contract Scope
 
 Every contract has a scope.
 
@@ -1778,7 +1778,7 @@ the implementation owns only several disconnected fragments.
 > The contract says “some files may become emotionally associated with
 > a directory”.
 
-## Contract Boundary
+### Contract Boundary
 
 A **contract boundary** is the point at which one layer's obligations
 end and another layer's obligations begin.
@@ -1797,7 +1797,7 @@ knowledge outside the component.
 
 That is how an implementation detail acquires diplomatic immunity.
 
-## Invariant
+### Invariant
 
 An **invariant** is a property mechanically preserved across the state
 transitions for which the system claims responsibility.
@@ -1819,7 +1819,7 @@ It is a property the system actively prevents itself from violating.
 
 > An invariant is a contract capable of punching back.
 
-## Contract and Invariant
+### Contract and Invariant
 
 Contracts and invariants are related but not identical.
 
@@ -1860,7 +1860,7 @@ It may also preserve invariants whose contracts are poorly exposed.
 
 The strongest boundaries possess both.
 
-## Rejection Path
+### Rejection Path
 
 A **rejection path** is the behavior through which the system refuses
 an input or transition outside its contract.
@@ -1889,7 +1889,7 @@ It tells operators and callers:
 * failure occurs before authoritative mutation;
 * no folklore is required to discover the boundary.
 
-## Invalid State
+### Invalid State
 
 An **invalid state** is a state the system's current model explicitly
 refuses to represent or preserve.
@@ -1904,7 +1904,7 @@ contract or invariant it violates.
 Otherwise “invalid” becomes a ceremonial word for “our current tooling
 is afraid”.
 
-## Unrepresentable State
+### Unrepresentable State
 
 An **unrepresentable state** is a state excluded structurally by the
 model or data representation.
@@ -1929,7 +1929,7 @@ It is also dangerous when the model is incomplete.
 A system can eliminate legitimate states merely by refusing to imagine
 them.
 
-## Guarded State
+### Guarded State
 
 A **guarded state** is representable but accessible only after
 explicit validation or authorization.
@@ -1947,7 +1947,7 @@ Guarding is not failure.
 Pretending an unguarded state is safe because experienced operators
 usually avoid it is failure.
 
-## Soft Invariant
+### Soft Invariant
 
 A **soft invariant** is a property preserved mainly through
 convention, review, operator discipline, or social sanction.
@@ -1979,7 +1979,7 @@ The term should not be used to excuse missing enforcement.
 
 It should identify where enforcement actually lives.
 
-## Invariant Surface
+### Invariant Surface
 
 An **invariant surface** is a boundary across which a preserved
 property remains valid and visible.
@@ -1996,7 +1996,7 @@ exist internally while disappearing at the surface.
 A property trapped inside one component is not yet an ecosystem
 contract.
 
-## Invariant Debt
+### Invariant Debt
 
 **Invariant debt** is future instability accumulated by relying on
 properties that are important but not mechanically preserved.
@@ -2014,7 +2014,7 @@ The debt does not consist only of future code.
 
 It includes every human cycle spent keeping the assumption alive.
 
-## Contract Erosion
+### Contract Erosion
 
 **Contract erosion** is the gradual weakening of an owned behavioral
 boundary.
@@ -2034,7 +2034,7 @@ The boundary still has a name.
 
 It no longer has enough force to stop anything.
 
-## Partial Correctness
+### Partial Correctness
 
 **Partial correctness** is correct behavior within a limited subset of
 inputs or states.
@@ -2062,7 +2062,7 @@ counterfeit completeness
 A constrained primitive is often preferable to counterfeit
 completeness.
 
-## Constrained Primitive
+### Constrained Primitive
 
 A **constrained primitive** exposes deliberately limited semantics
 that the system can enforce completely.
@@ -2087,7 +2087,7 @@ It may produce one string carrying four incompatible promises.
 
 > A smaller truth is better than a larger lie.
 
-## Real Model
+### Real Model
 
 A **real model** is a coherent authority surface whose contracts and
 invariants cover the operation it claims to represent.
@@ -2108,7 +2108,7 @@ The model need not choose only one possible policy.
 
 It must make the policy explicit and compositionally available.
 
-## Invalid Abstraction
+### Invalid Abstraction
 
 An **invalid abstraction** presents several incompatible authority
 domains as one coherent operation.
@@ -2129,7 +2129,7 @@ Typical symptoms include:
 > An invalid abstraction is a group photo of components that have
 > never met.
 
-## Field Symptom: The Successful Half-Install
+### Field Symptom: The Successful Half-Install
 
 A package operation performs these steps:
 
@@ -2158,7 +2158,7 @@ This is not merely a bug in step four.
 
 The operation lacks a contract capable of classifying its own result.
 
-## Field Symptom: The Forbidden Flag Combination
+### Field Symptom: The Forbidden Flag Combination
 
 A command accepts:
 
@@ -2192,7 +2192,7 @@ meaning.
 
 That is authority laundering.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **A contract** is not merely documentation.
 
@@ -2227,7 +2227,7 @@ clearly enough.
 Compatibility may preserve behavior that was never intended to become
 authoritative.
 
-## The Contract Test
+### The Contract Test
 
 For any claimed operation, ask:
 
@@ -2254,7 +2254,7 @@ A contract is useful when these questions produce stable answers.
 If every answer begins with “normally”, the system has probably
 written its execution model in folklore.
 
-## Fifth House Law
+### Fifth House Law
 
 > Hope is not an invariant.
 
@@ -2271,7 +2271,7 @@ authoritative state.
 
 ---
 
-# Normalization Contracts
+## Normalization Contracts
 
 Two archive backends extract the same package.
 
@@ -2294,7 +2294,7 @@ function signature.
 
 ---
 
-## Representation Variance
+### Representation Variance
 
 The same intended meaning can arrive in several representations.
 
@@ -2323,7 +2323,7 @@ authoritative state without being reconciled.
 > Variation at the entrance is flexibility.  
 > Variation inside the state model is usually a future argument.
 
-## Normalization
+### Normalization
 
 **Normalization** is the conversion of accepted representational
 variation into a stable form the system can reason about consistently.
@@ -2368,7 +2368,7 @@ The purpose is not to make everything look alike.
 The purpose is to produce one stable language without destroying
 meaning.
 
-## Normalization Contract
+### Normalization Contract
 
 A **normalization contract** defines:
 
@@ -2398,7 +2398,7 @@ representation originally carried the meaning.
 > The backend is not the invariant.  
 > The normalization contract is.
 
-## Normal Form
+### Normal Form
 
 A **normal form** is the stable representation produced by
 normalization.
@@ -2431,7 +2431,7 @@ The exact form is architecture-specific.
 The important property is that later phases consume the normal form
 rather than repeatedly interpreting raw inputs.
 
-## Normalize Before Mutation
+### Normalize Before Mutation
 
 Normalization should occur before ambiguous input is allowed to mutate
 authoritative state.
@@ -2479,11 +2479,11 @@ The system may need to:
 
 > Ambiguity is cheapest before it touches the filesystem.
 
-## Parse, Normalize, Validate
+### Parse, Normalize, Validate
 
 Parsing, normalization, and validation are related but distinct.
 
-### Parsing
+#### Parsing
 
 **Parsing** converts syntax into a structured representation.
 
@@ -2491,7 +2491,7 @@ It answers:
 
 > What did the input say?
 
-### Normalization
+#### Normalization
 
 **Normalization** resolves accepted variation into stable meaning.
 
@@ -2499,7 +2499,7 @@ It answers:
 
 > Which differences matter, and what form will the system use?
 
-### Validation
+#### Validation
 
 **Validation** determines whether the normalized meaning is permitted
 by the current contract.
@@ -2526,7 +2526,7 @@ Combining all three steps into one opaque function is possible.
 Failing to distinguish their responsibilities makes later reasoning
 harder.
 
-## Canonicalization
+### Canonicalization
 
 **Canonicalization** selects one representation among several
 equivalent representations.
@@ -2561,7 +2561,7 @@ create false equivalence.
 
 > One canonical string does not guarantee one canonical meaning.
 
-## Lossless and Lossy Normalization
+### Lossless and Lossy Normalization
 
 Normalization may be **lossless** or **lossy**.
 
@@ -2583,7 +2583,7 @@ The contract must state which losses are permitted.
 
 Otherwise a backend limitation quietly becomes system policy.
 
-## Backend Capability
+### Backend Capability
 
 A backend may lack capabilities required by the normalization
 contract.
@@ -2602,7 +2602,7 @@ semantics, and continue reporting equivalent success.
 > “Supported backend” should mean “satisfies the contract”, not
 > “returned zero during testing”.
 
-## Backend Substitution
+### Backend Substitution
 
 A backend is substitutable when replacing it does not change the
 semantics promised by the surrounding boundary.
@@ -2628,7 +2628,7 @@ Backend pluralism without normalized semantics is not modularity.
 
 It is a lottery with plugins.
 
-## Field Symptom: Archive Extraction
+### Field Symptom: Archive Extraction
 
 A package archive contains:
 
@@ -2680,7 +2680,7 @@ decision.
 
 Without it, backend selection changes the meaning of installation.
 
-## Field Symptom: Package Identity
+### Field Symptom: Package Identity
 
 A package may be described by:
 
@@ -2722,7 +2722,7 @@ The goal is not to prohibit every alternate representation.
 
 The goal is to stop identity from changing when nobody is looking.
 
-## Field Symptom: Configuration Layers
+### Field Symptom: Configuration Layers
 
 A component reads configuration from:
 
@@ -2753,7 +2753,7 @@ differently.
 The ecosystem then has one configuration syntax and several
 operational realities.
 
-## Semantic Adapter
+### Semantic Adapter
 
 A **semantic adapter** translates one representation or backend
 contract into the system's normal form.
@@ -2775,7 +2775,7 @@ A thin wrapper is not automatically an adapter.
 Sometimes it is only a new location from which to observe the same
 problem.
 
-## Compatibility Boundary
+### Compatibility Boundary
 
 A **compatibility boundary** contains legacy representations and
 converts them into current semantics.
@@ -2808,7 +2808,7 @@ In the first case, the past is translated at one boundary.
 
 In the second, the past acquires citizenship everywhere.
 
-## Normalization and Policy
+### Normalization and Policy
 
 Normalization should not silently decide policy that belongs
 elsewhere.
@@ -2837,7 +2837,7 @@ The distinction is:
 Mixing them can turn low-level implementation limitations into
 invisible system doctrine.
 
-## Normalization Failure
+### Normalization Failure
 
 A normalization failure occurs when the system cannot produce one
 coherent meaning from the supplied representation.
@@ -2865,7 +2865,7 @@ A good failure message exposes the boundary.
 A bad one announces that something somewhere was invalid and invites
 the operator to begin divination.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Normalization** is not making every input identical.
 
@@ -2902,7 +2902,7 @@ Unspecified loss is wrong.
 Compatibility becomes haunting when legacy semantics escape
 containment and infect every current layer.
 
-## The Normalization Test
+### The Normalization Test
 
 For every boundary accepting varied representations, ask:
 
@@ -2929,7 +2929,7 @@ normal form is probably incomplete.
 If every backend requires special cases throughout the system, the
 normalization boundary is probably fictional.
 
-## Sixth House Law
+### Sixth House Law
 
 > The backend is replaceable.  
 > The meaning is not.
@@ -2945,7 +2945,7 @@ and human narration.
 
 ---
 
-# Artifact Truth and Supplier Duty
+## Artifact Truth and Supplier Duty
 
 The build succeeds.
 
@@ -2972,7 +2972,7 @@ Architecture has selected divination.
 
 ---
 
-## Artifact
+### Artifact
 
 An **artifact** is a bounded output expected to carry identity or
 operational truth across a system boundary.
@@ -3008,7 +3008,7 @@ Other components may need to determine:
 
 A file becomes an artifact when another layer must reason about it.
 
-## Artifact Truth
+### Artifact Truth
 
 **Artifact truth** is the set of authoritative facts that travel with
 an artifact --- or remain mechanically bound to it --- so consumers do
@@ -3050,7 +3050,7 @@ It is binding.
 > It may not wander nearby hoping consumers understand the
 > relationship.
 
-## Bound Metadata
+### Bound Metadata
 
 **Bound metadata** is metadata whose relationship to an artifact is
 mechanically established.
@@ -3082,7 +3082,7 @@ describes the actual artifact.
 
 Otherwise one filename is merely vouching for another filename.
 
-## Identity
+### Identity
 
 **Artifact identity** is the stable answer to:
 
@@ -3122,7 +3122,7 @@ But filenames are often:
 > Do not promote it to passport control merely because it contains
 > punctuation.
 
-## Identity Authority
+### Identity Authority
 
 The system must define which representation is authoritative for
 artifact identity.
@@ -3166,7 +3166,7 @@ define whether:
 
 “Usually they match” is not an identity model.
 
-## Provenance
+### Provenance
 
 **Provenance** describes how an artifact came into existence.
 
@@ -3200,7 +3200,7 @@ The contract should identify which provenance facts are necessary for:
 * accountability;
 * compatibility.
 
-## Completeness
+### Completeness
 
 An artifact may exist without being complete.
 
@@ -3230,7 +3230,7 @@ Possible mechanisms include:
 > Existence is not completion.  
 > A corpse also exists.
 
-## Supplier Duty
+### Supplier Duty
 
 **Supplier duty** is the obligation of the component that first knows
 a fact to expose that fact in a stable form appropriate to its
@@ -3254,7 +3254,7 @@ claims to support.
 > The component that creates the truth should not make every caller
 > reenact the crime scene.
 
-## Consumer Duty
+### Consumer Duty
 
 Supplier duty has a corresponding **consumer duty**.
 
@@ -3279,7 +3279,7 @@ The supplier must publish enough truth.
 
 The consumer must stop excavating beneath it.
 
-## Structured Result
+### Structured Result
 
 A **structured result** is a machine-readable representation of an
 operation's authoritative outcome.
@@ -3315,7 +3315,7 @@ The result must be:
 * complete enough for callers;
 * honest about partial outcomes.
 
-## Human Narration
+### Human Narration
 
 Human-readable output serves operators.
 
@@ -3344,7 +3344,7 @@ Narration changes for reasons unrelated to semantics:
 A consumer depending on narration converts editorial change into
 protocol breakage.
 
-## Narrative Coupling
+### Narrative Coupling
 
 **Narrative coupling** occurs when machine control depends on text
 intended for human presentation.
@@ -3367,7 +3367,7 @@ But presence is not contract.
 A sentence may contain the truth while remaining an unstable way to
 carry it.
 
-## Machine-Readable Output
+### Machine-Readable Output
 
 A command-line component may provide machine-readable output through:
 
@@ -3395,7 +3395,7 @@ Printing JSON does not automatically solve the problem.
 
 Unversioned, underspecified JSON can be folklore wearing braces.
 
-## Opaque-Tool Boundary
+### Opaque-Tool Boundary
 
 An **opaque-tool boundary** allows one component to invoke another
 without reproducing the subordinate component's internal semantics.
@@ -3422,7 +3422,7 @@ implementation details.
 > A black box that requires callers to guess what came out is merely a
 > dark room.
 
-## Artifact-Borne Assurance
+### Artifact-Borne Assurance
 
 **Artifact-borne assurance** means enough authoritative information
 crosses with the artifact that later boundaries can verify and
@@ -3449,7 +3449,7 @@ A later audit can identify it.
 Without artifact-borne assurance, every boundary must ask another
 component --- or another human --- what the artifact probably means.
 
-## Witness Proliferation
+### Witness Proliferation
 
 When artifacts carry insufficient truth, ecosystems often add
 witnesses.
@@ -3489,7 +3489,7 @@ control.
 > self-describing.  
 > It is holding a press conference.
 
-## Self-Describing Artifact
+### Self-Describing Artifact
 
 A **self-describing artifact** carries enough information for the
 operations expected of it.
@@ -3515,7 +3515,7 @@ The goal is not total ontological independence.
 The goal is to prevent consumers from reconstructing facts the
 artifact boundary should already preserve.
 
-## Artifact Manifest
+### Artifact Manifest
 
 An **artifact manifest** is structured metadata describing an
 artifact's identity, contents, or required semantics.
@@ -3547,7 +3547,7 @@ not an authority surface.
 
 It is a very organized rumor.
 
-## Field Symptom: Identity in stdout
+### Field Symptom: Identity in stdout
 
 A builder prints:
 
@@ -3575,7 +3575,7 @@ It published narration rather than state.
 
 The orchestrator converted that narration into an accidental protocol.
 
-## Field Symptom: Reconstructing Identity from Configuration
+### Field Symptom: Reconstructing Identity from Configuration
 
 A builder reads:
 
@@ -3614,7 +3614,7 @@ coupling.
 > The caller stopped reading the priest's announcement.  
 > It now studies the priest's private notes.
 
-## Field Symptom: Directory Scanning
+### Field Symptom: Directory Scanning
 
 A command builds one or more artifacts in a shared output directory.
 
@@ -3635,7 +3635,7 @@ Directory scanning observes environmental change.
 
 It does not identify the authoritative result of one operation.
 
-## Field Symptom: The Orphaned Artifact
+### Field Symptom: The Orphaned Artifact
 
 A build creates a valid package archive and then fails while writing
 repository metadata.
@@ -3662,7 +3662,7 @@ useful output or accidentally publish uncommitted output.
 
 Artifact truth includes lifecycle state, not only identity.
 
-## Transaction Result
+### Transaction Result
 
 A **transaction result** describes the authoritative outcome of an
 operation, including any artifacts it produced.
@@ -3679,7 +3679,7 @@ A useful transaction result may distinguish:
 This allows the system to represent reality without converting every
 non-ideal path into either total success or total disappearance.
 
-## Artifact Lifecycle
+### Artifact Lifecycle
 
 An artifact may pass through several states:
 
@@ -3708,7 +3708,7 @@ The important point is that existence alone does not define lifecycle.
 A file appearing in a directory does not tell consumers whether it is
 validated, published, or authoritative.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Artifact truth** is not the same as embedding every fact inside the
 artifact.
@@ -3749,7 +3749,7 @@ Metadata without scope, binding, or consumers becomes sediment.
 
 Completion must be represented and validated.
 
-## The Artifact Truth Test
+### The Artifact Truth Test
 
 For every artifact-producing operation, ask:
 
@@ -3778,7 +3778,7 @@ For every artifact-producing operation, ask:
 If the producer knows the answer but every consumer derives it
 independently, supplier duty has failed.
 
-## Seventh House Law
+### Seventh House Law
 
 > Good architecture does not encode truth in operator messages.  
 > It publishes truth as contract.
@@ -3794,7 +3794,7 @@ wrapper.
 
 ---
 
-# Substitution Boundaries and Opaque Tools
+## Substitution Boundaries and Opaque Tools
 
 A maintainer dislikes the existing orchestration tool.
 
@@ -3818,7 +3818,7 @@ The architecture has not noticed.
 
 ---
 
-## Substitution
+### Substitution
 
 **Substitution** is the replacement of one component by another while
 preserving the contract expected by the surrounding system.
@@ -3848,7 +3848,7 @@ It is the contract both implementations satisfy.
 > Replacement changes the body.  
 > Substitution preserves the skeleton.
 
-## Substitution Boundary
+### Substitution Boundary
 
 A **substitution boundary** is an explicit contract across which one
 component can be replaced without forcing callers to reproduce or
@@ -3875,7 +3875,7 @@ Without such a boundary, replacement becomes ecosystem surgery.
 Every caller must be examined for private knowledge of the component
 being replaced.
 
-## Substitutability
+### Substitutability
 
 A component is **substitutable** when another implementation can
 satisfy its contract without requiring changes throughout the
@@ -3901,7 +3901,7 @@ It is:
 > What must the rest of the ecosystem know or change for that
 > implementation to participate?
 
-## Opaque-Tool Boundary
+### Opaque-Tool Boundary
 
 An **opaque-tool boundary** allows callers to use a component without
 owning its internal semantics.
@@ -3930,7 +3930,7 @@ It is disciplined ignorance made possible by a sufficient contract.
 > A bad boundary forces the caller to become a part-time maintainer of
 > the component behind it.
 
-## Black Box
+### Black Box
 
 A **black box** is a component whose internal implementation is hidden
 or intentionally irrelevant to callers.
@@ -3945,7 +3945,7 @@ It is merely uncooperative.
 > A black box that does not publish its result is just a dark room
 > with a process ID.
 
-## Encapsulation
+### Encapsulation
 
 **Encapsulation** keeps implementation decisions private behind a
 stable contract.
@@ -3964,7 +3964,7 @@ The naming algorithm may remain encapsulated.
 
 The artifact identity cannot.
 
-## Substitution Cost
+### Substitution Cost
 
 **Substitution cost** is the total ecosystem cost of replacing one
 component with another.
@@ -3990,7 +3990,7 @@ A substitution boundary does not eliminate these costs.
 
 It prevents them from spreading arbitrarily.
 
-## Local Substitution Cost
+### Local Substitution Cost
 
 **Local substitution cost** is the cost paid by the maintainer
 creating or adopting a replacement.
@@ -4004,7 +4004,7 @@ This demonstrates that local escape is possible.
 It does not prove that the ecosystem possesses a substitution
 boundary.
 
-## Ecosystem Substitution Cost
+### Ecosystem Substitution Cost
 
 **Ecosystem substitution cost** is the cost paid across operators,
 repositories, tooling, automation, documentation, and dependent
@@ -4024,7 +4024,7 @@ may be locally elegant while remaining ecosystemically expensive.
 
 > “I replaced it” and “it is replaceable” are different claims.
 
-## Private Escape Hatch
+### Private Escape Hatch
 
 A **private escape hatch** is an alternate tool or wrapper that
 reduces cost for one maintainer or installation without lowering
@@ -4043,7 +4043,7 @@ They may:
 They become misleading when presented as evidence that the ecosystem
 already supports tool pluralism.
 
-## Tool Pluralism
+### Tool Pluralism
 
 **Tool pluralism** is the coexistence of meaningfully substitutable
 components under boundaries that make replacement affordable beyond
@@ -4067,7 +4067,7 @@ That is diversity of implementation.
 
 It is not yet diversity of architecture.
 
-## Parallel Control Planes
+### Parallel Control Planes
 
 **Parallel control planes** are multiple orchestration or management
 layers built around the same underlying components.
@@ -4097,7 +4097,7 @@ opaque rituals.
 > architectures.  
 > They are a committee studying the same hole.
 
-## Pluralism as Compensation
+### Pluralism as Compensation
 
 **Pluralism as compensation** is apparent tool diversity produced by
 missing contracts, high substitution costs, or unresolved
@@ -4121,7 +4121,7 @@ One creates alternatives around a shared boundary.
 The other creates several local survivability strategies around the
 absence of one.
 
-## Interface Compatibility
+### Interface Compatibility
 
 **Interface compatibility** means another component accepts or
 produces the same externally visible forms.
@@ -4145,7 +4145,7 @@ A familiar command-line syntax may conceal incompatible contracts.
 
 > Same flags, different physics.
 
-## Behavioral Compatibility
+### Behavioral Compatibility
 
 **Behavioral compatibility** means another component preserves the
 semantics callers are entitled to rely upon.
@@ -4165,7 +4165,7 @@ Preserve too little, and legitimate callers break.
 
 Preserve too much, and every old bug becomes constitutional law.
 
-## Compatibility Surface
+### Compatibility Surface
 
 A **compatibility surface** is the set of externally observable
 behaviors a replacement may need to preserve.
@@ -4185,7 +4185,7 @@ That surface grows without limit.
 
 > If every observation is a promise, maintenance becomes paleontology.
 
-## Compatibility Adapter
+### Compatibility Adapter
 
 A **compatibility adapter** translates between an old contract and a
 new one at a bounded location.
@@ -4217,7 +4217,7 @@ At that point, the adapter is no longer a bridge.
 
 It is a new country whose primary industry is customs paperwork.
 
-## Semantic Adapter
+### Semantic Adapter
 
 A **semantic adapter** translates meaning, not merely syntax.
 
@@ -4239,7 +4239,7 @@ not a semantic adapter.
 
 It is cosmetic surgery on the same ghost.
 
-## Implementation Coupling
+### Implementation Coupling
 
 **Implementation coupling** occurs when callers depend on private
 details of another component's implementation.
@@ -4257,7 +4257,7 @@ Examples include:
 Implementation coupling raises substitution cost because every
 replacement must either reproduce those internals or break callers.
 
-## Contract Coupling
+### Contract Coupling
 
 **Contract coupling** occurs when callers depend only on behavior
 explicitly promised at the boundary.
@@ -4271,7 +4271,7 @@ It is coupling to the right thing.
 > Components should be coupled by contracts, not by shared childhood
 > trauma.
 
-## Hidden Shared Substrate
+### Hidden Shared Substrate
 
 A **hidden shared substrate** is a lower-level assumption that several
 apparently independent tools all depend upon.
@@ -4294,7 +4294,7 @@ This does not make them worthless alternatives.
 It does mean their apparent diversity should not be mistaken for
 independent semantic models.
 
-## Substrate Capture
+### Substrate Capture
 
 **Substrate capture** occurs when assumptions from a lower-level
 component become unavoidable throughout higher layers.
@@ -4308,7 +4308,7 @@ Replacing the top-level tool then changes little.
 The replacement inherits the same state model, failure shapes, and
 compatibility burden.
 
-## Boundary Extraction
+### Boundary Extraction
 
 **Boundary extraction** is the process of turning hidden coupling into
 an explicit contract that can support substitution.
@@ -4333,7 +4333,7 @@ complete rewrite preserving the same hidden assumptions.
 > A rewrite changes the code.  
 > Boundary extraction changes what the ecosystem is allowed to know.
 
-## Rewrite Without Extraction
+### Rewrite Without Extraction
 
 A **rewrite without extraction** replaces implementation while
 preserving the same implicit coupling.
@@ -4357,7 +4357,7 @@ But the substitution boundary remains absent.
 The ecosystem has paid reimplementation cost without receiving
 architectural decoupling.
 
-## Field Symptom: The New Orchestrator
+### Field Symptom: The New Orchestrator
 
 A maintainer replaces an old package frontend.
 
@@ -4390,7 +4390,7 @@ The correct conclusion is:
 > The rewrite improved one component but did not extract the shared
 > boundaries.
 
-## Field Symptom: Two Installers
+### Field Symptom: Two Installers
 
 Two package installers accept the same package archive format.
 
@@ -4417,7 +4417,7 @@ A shared package format alone does not create a substitution boundary.
 
 The ecosystem must also define installation semantics.
 
-## Field Symptom: The Replaceable Backend
+### Field Symptom: The Replaceable Backend
 
 A system supports three archive libraries.
 
@@ -4442,7 +4442,7 @@ The backend differs.
 
 The contract does not.
 
-## Field Symptom: The Compatible CLI
+### Field Symptom: The Compatible CLI
 
 A replacement command reproduces every option of an older tool.
 
@@ -4463,7 +4463,7 @@ The operation is not semantically compatible.
 This is why substitution tests must examine contracts and invariants,
 not merely command acceptance.
 
-## Migration Boundary
+### Migration Boundary
 
 A **migration boundary** is the controlled interface through which
 state or callers move from one contract to another.
@@ -4486,7 +4486,7 @@ Every component then needs to understand both.
 
 Transition becomes permanent bilingual confusion.
 
-## Dual Authority During Migration
+### Dual Authority During Migration
 
 Migration often creates a period in which old and new representations
 coexist.
@@ -4510,7 +4510,7 @@ That is not dual authority.
 That is an invitation to choose whichever answer hurts least during
 the incident.
 
-## Replacement Proof
+### Replacement Proof
 
 A **replacement proof** is evidence that a boundary supports more than
 one implementation without semantic leakage.
@@ -4539,7 +4539,7 @@ assumptions.
 > The second implementation is where the first contract discovers what
 > it forgot to say.
 
-## Conformance Suite
+### Conformance Suite
 
 A **conformance suite** tests whether an implementation satisfies the
 shared contract.
@@ -4565,7 +4565,7 @@ A test suite written entirely around one implementation's internal
 behavior may freeze that implementation rather than validate the
 contract.
 
-## Capability Declaration
+### Capability Declaration
 
 Different implementations may legitimately support different optional
 capabilities.
@@ -4586,7 +4586,7 @@ satisfies the requested operation.
 Capability declaration is preferable to optimistic invocation followed
 by semantic surprise.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Replacement** is not automatically substitution.
 
@@ -4634,7 +4634,7 @@ memory also count.
 It becomes capture when alternatives cannot define or replace its
 semantics.
 
-## The Substitution Test
+### The Substitution Test
 
 For any allegedly replaceable component, ask:
 
@@ -4672,7 +4672,7 @@ ecosystem has not acquired pluralism.
 
 It has acquired another specialist.
 
-## Eighth House Law
+### Eighth House Law
 
 > A second implementation does not prove a boundary exists.  
 > It often proves how much undocumented knowledge the first maintainer
@@ -4689,7 +4689,7 @@ system can actually enforce.
 
 ---
 
-# Boundary Extraction and Semantic Containment
+## Boundary Extraction and Semantic Containment
 
 Three components depend on the same hidden behavior.
 
@@ -4718,7 +4718,7 @@ The ambiguity received an office.
 
 ---
 
-## Boundary Extraction
+### Boundary Extraction
 
 **Boundary extraction** is the process of turning implicit coupling
 into an explicit, owned contract.
@@ -4741,7 +4741,7 @@ enough to reason about, validate, and eventually replace.
 > Boundary extraction is not adding a layer.  
 > It is discovering which layer was already there in human memory.
 
-## Hidden Boundary
+### Hidden Boundary
 
 A **hidden boundary** exists whenever components interact through
 behavior that has not been represented as a contract.
@@ -4766,7 +4766,7 @@ understand it.
 That only means the boundary has been implemented in shared nervous
 tissue.
 
-## Extraction Target
+### Extraction Target
 
 An **extraction target** is the smallest coherent semantic
 relationship worth making explicit.
@@ -4796,7 +4796,7 @@ They are not useful first boundaries.
 
 > Extract the nerve before designing the replacement skeleton.
 
-## Minimal Honest Boundary
+### Minimal Honest Boundary
 
 A **minimal honest boundary** exposes the smallest contract that:
 
@@ -4831,7 +4831,7 @@ Those may belong to later boundaries.
 The first obligation is to stop callers from parsing a sentence to
 discover which file exists.
 
-## Boundary Closure
+### Boundary Closure
 
 **Boundary closure** occurs when the system explicitly defines what a
 boundary accepts, rejects, and guarantees.
@@ -4858,7 +4858,7 @@ That feels flexible until two components negotiate differently.
 > An implicit boundary says, “anything may happen, but we will blame
 > you personally”.
 
-## Semantic Containment
+### Semantic Containment
 
 **Semantic containment** limits an abstraction to meanings the system
 can actually enforce.
@@ -4883,7 +4883,7 @@ Semantic containment is not timidity.
 It is refusing to grant citizenship to meanings the system cannot
 govern.
 
-## Containment Boundary
+### Containment Boundary
 
 A **containment boundary** is the point beyond which an internal
 ambiguity, legacy behavior, or backend-specific quirk is not permitted
@@ -4926,7 +4926,7 @@ The past is no longer supported.
 
 It is reproducing.
 
-## Containment Breach
+### Containment Breach
 
 A **containment breach** occurs when internal or legacy semantics
 escape the boundary intended to isolate them.
@@ -4948,7 +4948,7 @@ or one caller has quietly tunneled under the fence.
 > Every abstraction has one caller who believes “private” means “not
 > yet useful enough”.
 
-## Semantic Spill
+### Semantic Spill
 
 **Semantic spill** is the spread of meaning beyond the layer that
 should own it.
@@ -4967,7 +4967,7 @@ same unstable fact.
 Containment reduces spill by translating the fact once and exposing
 only the stable meaning.
 
-## Boundary Extraction Is Not Centralization
+### Boundary Extraction Is Not Centralization
 
 A frequent mistake is to discover distributed ambiguity and respond by
 creating one central component responsible for everything.
@@ -5000,7 +5000,7 @@ The number of processes is not the issue.
 
 The clarity of authority is.
 
-## Boundary Extraction Is Not Wrapper Proliferation
+### Boundary Extraction Is Not Wrapper Proliferation
 
 A wrapper may help expose a boundary.
 
@@ -5026,7 +5026,7 @@ A wrapper does not extract a boundary when it:
 > A wrapper is not a boundary merely because the call stack got
 > taller.
 
-## Boundary Extraction Is Not Documentation
+### Boundary Extraction Is Not Documentation
 
 Documentation can identify a hidden boundary.
 
@@ -5056,7 +5056,7 @@ Documentation confesses the hidden contract.
 
 Engineering gives it a body.
 
-## Extraction Seam
+### Extraction Seam
 
 An **extraction seam** is a location where hidden coupling can be
 intercepted and converted into an explicit contract with limited
@@ -5088,13 +5088,13 @@ eliminate:
 The best extraction work often looks small in the producer and
 enormous in the ecosystem.
 
-## Staged Extraction
+### Staged Extraction
 
 Large hidden boundaries are rarely repaired safely in one step.
 
 A staged extraction may proceed as follows.
 
-### 1. Observe the Current Boundary
+#### 1. Observe the Current Boundary
 
 Identify:
 
@@ -5109,7 +5109,7 @@ Do not begin by designing the ideal interface.
 
 Begin by discovering the one already being performed socially.
 
-### 2. Name the Stable Meaning
+#### 2. Name the Stable Meaning
 
 Separate:
 
@@ -5124,7 +5124,7 @@ This is often the hardest step.
 Every old behavior has at least one witness willing to call it a
 contract.
 
-### 3. Publish the Fact
+#### 3. Publish the Fact
 
 Expose the needed information as structured state.
 
@@ -5137,7 +5137,7 @@ Examples include:
 * a versioned record;
 * a stable machine-readable output mode.
 
-### 4. Validate the Boundary
+#### 4. Validate the Boundary
 
 Define:
 
@@ -5148,19 +5148,19 @@ Define:
 * completion state;
 * failure semantics.
 
-### 5. Migrate Callers
+#### 5. Migrate Callers
 
 Move callers from reconstruction to consumption.
 
 A published contract that nobody uses is a museum exhibit.
 
-### 6. Contain Compatibility
+#### 6. Contain Compatibility
 
 Place legacy behavior behind an adapter or compatibility boundary.
 
 Do not make every new caller bilingual.
 
-### 7. Remove Illicit Knowledge
+#### 7. Remove Illicit Knowledge
 
 Prevent callers from continuing to read private configuration, parse
 narration, or inspect internal layout.
@@ -5173,19 +5173,19 @@ This may require:
 * removal of unstable output;
 * conformance tests.
 
-### 8. Test Substitution
+#### 8. Test Substitution
 
 Use another implementation, backend, or synthetic test double to
 reveal facts the contract forgot to express.
 
-### 9. Close the Boundary
+#### 9. Close the Boundary
 
 Once migration is complete, reject unsupported paths and delete
 duplicated reconstruction logic.
 
 Until this step, the old ghost still has keys.
 
-## Field Symptom: Structured Results Added, Coupling Preserved
+### Field Symptom: Structured Results Added, Coupling Preserved
 
 A builder gains a machine-readable result:
 
@@ -5222,7 +5222,7 @@ Boundary extraction is iterative.
 
 The first useful contract need not be the final constitution.
 
-## Field Symptom: The Universal Root Object
+### Field Symptom: The Universal Root Object
 
 Maintainers discover that `--root` means different things in different
 phases.
@@ -5269,7 +5269,7 @@ The goal is not the smallest number of types.
 
 It is the smallest number of lies.
 
-## Field Symptom: Repository Validation
+### Field Symptom: Repository Validation
 
 A repository accepts package artifacts.
 
@@ -5303,7 +5303,7 @@ The important transition was not writing the validator.
 
 It was attaching validation to the authoritative publication path.
 
-## Field Symptom: Legacy Format Containment
+### Field Symptom: Legacy Format Containment
 
 A package manager must continue accepting an old archive format.
 
@@ -5322,7 +5322,7 @@ The current system does not become old internally.
 
 That is containment.
 
-## Constrained Primitive
+### Constrained Primitive
 
 A **constrained primitive** is often the correct first result of
 boundary extraction.
@@ -5346,7 +5346,7 @@ It is more useful than an operation whose semantics change by phase.
 > The primitive does less.  
 > The operator knows what the less means.
 
-## Semantic Expansion
+### Semantic Expansion
 
 **Semantic expansion** is the deliberate widening of a contract after
 the system acquires enough model and enforcement to support additional
@@ -5365,11 +5365,11 @@ A healthy expansion proceeds by:
 An unhealthy expansion begins by accepting another option and
 postponing meaning until somebody reports damage.
 
-## Invalid Abstraction Versus Constrained Primitive
+### Invalid Abstraction Versus Constrained Primitive
 
 Consider two interfaces.
 
-### Interface A
+#### Interface A
 
 ```text
 install(package, root, scripts, deps, config)
@@ -5378,7 +5378,7 @@ install(package, root, scripts, deps, config)
 It accepts every combination but interprets each argument differently
 across phases.
 
-### Interface B
+#### Interface B
 
 ```text
 install_into_running_system(package)
@@ -5395,7 +5395,7 @@ The difference is not simplicity versus sophistication.
 
 It is counterfeit completeness versus semantic containment.
 
-## Real Model Versus Permanent Constraint
+### Real Model Versus Permanent Constraint
 
 A constrained primitive should not automatically become permanent
 doctrine.
@@ -5416,7 +5416,7 @@ It teaches:
 A constraint becomes pathological when maintainers treat the absence
 of a model as proof that the wider problem is illegitimate.
 
-## Boundary Surface Area
+### Boundary Surface Area
 
 Every boundary exposes semantic surface area.
 
@@ -5459,7 +5459,7 @@ The problem is not growth.
 The problem is growth without enough structure to own the new
 meanings.
 
-## Invariant Budget
+### Invariant Budget
 
 An **invariant budget** is the practical capacity of the project to
 define, enforce, test, and maintain the contracts exposed by its
@@ -5490,7 +5490,7 @@ The honest options are:
 The dishonest option is to expose the feature and finance the missing
 semantics with operator memory.
 
-## Over-Abstraction
+### Over-Abstraction
 
 **Over-abstraction** occurs when a boundary claims to unify more
 meanings than the system can preserve coherently.
@@ -5508,7 +5508,7 @@ Over-abstraction is not caused by abstraction itself.
 
 It is caused by authority claims exceeding invariant capacity.
 
-## Under-Abstraction
+### Under-Abstraction
 
 **Under-abstraction** occurs when stable shared semantics remain
 duplicated across callers because no boundary exposes them.
@@ -5530,7 +5530,7 @@ simultaneously:
 
 This is common enough to deserve no surprise.
 
-## Semantic Quarantine
+### Semantic Quarantine
 
 **Semantic quarantine** is temporary containment of behavior whose
 contract is not yet understood well enough for general exposure.
@@ -5548,7 +5548,7 @@ Quarantine should include a reason and an exit condition.
 
 Otherwise temporary containment becomes permanent purgatory.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Boundary extraction** is not adding an abstraction layer.
 
@@ -5593,7 +5593,7 @@ Callers must stop reconstructing the same facts elsewhere.
 A new boundary with no path away from the old coupling merely adds
 another authority surface.
 
-## The Boundary Extraction Test
+### The Boundary Extraction Test
 
 For any hidden or proposed boundary, ask:
 
@@ -5628,7 +5628,7 @@ not extracted.
 
 It has been narrated.
 
-## Ninth House Law
+### Ninth House Law
 
 > If the boundary is implicit, eventually someone will piss through
 > it.
@@ -5679,7 +5679,7 @@ The meanings simply stopped arriving at the same destination.
 
 ---
 
-# Semantic Drift
+## Semantic Drift
 
 **Semantic drift** is the gradual divergence among:
 
@@ -5722,7 +5722,7 @@ Each change may preserve local survivability.
 
 Together they alter the system's semantic shape.
 
-## Semantic Alignment
+### Semantic Alignment
 
 A system is **semantically aligned** when its major representations
 agree about the operation they describe.
@@ -5767,7 +5767,7 @@ Each representation performs a different role.
 
 The system remains aligned because those roles agree.
 
-## Divergence
+### Divergence
 
 **Divergence** occurs when two representations that should correspond
 begin producing different answers.
@@ -5792,7 +5792,7 @@ dependents.
 > One disagreement is an incident.  
 > A stable population of disagreements is an ecology.
 
-## Drift Is a Process
+### Drift Is a Process
 
 A bug is an event or defect.
 
@@ -5816,7 +5816,7 @@ coherence.
 
 The ecosystem may already have learned the old behavior.
 
-## The Drift Sequence
+### The Drift Sequence
 
 A common drift sequence looks like this:
 
@@ -5842,11 +5842,11 @@ At the beginning, the system lacked one explicit decision.
 
 At the end, changing that decision requires migration.
 
-## Drift Surfaces
+### Drift Surfaces
 
 Drift can occur across several surfaces.
 
-### Interface Drift
+#### Interface Drift
 
 **Interface drift** occurs when the practical meaning of an interface
 changes while its visible syntax remains stable.
@@ -5868,7 +5868,7 @@ The option name is unchanged.
 
 Its semantic radius has expanded.
 
-### Documentation Drift
+#### Documentation Drift
 
 **Documentation drift** occurs when documentation no longer describes
 current operational behavior.
@@ -5893,7 +5893,7 @@ authority surfaces.
 At that point, prose is being used as semantic compression against
 reality.
 
-### State Drift
+#### State Drift
 
 **State drift** occurs when representations of operational state stop
 corresponding.
@@ -5917,7 +5917,7 @@ Upgrade trusts the filename.
 
 Repair trusts whichever answer still has data.
 
-### Artifact Drift
+#### Artifact Drift
 
 **Artifact drift** occurs when the meaning associated with an artifact
 changes or separates from the artifact itself.
@@ -5932,7 +5932,7 @@ Examples include:
   carry;
 * sidecar metadata becomes detached from the content it describes.
 
-### Operator-Expectation Drift
+#### Operator-Expectation Drift
 
 **Operator-expectation drift** occurs when experienced operators and
 new operators infer different contracts from the same interface.
@@ -5951,7 +5951,7 @@ Both groups are reasoning rationally from different evidence.
 
 The system has divided its semantics by tenure.
 
-### Institutional Drift
+#### Institutional Drift
 
 **Institutional drift** occurs when a project's current doctrine,
 review habits, and design reflexes no longer match the conditions that
@@ -5967,7 +5967,7 @@ into operators.
 
 The institution preserves the conclusion and loses the autopsy.
 
-## Contract Erosion
+### Contract Erosion
 
 **Contract erosion** is the weakening of an explicit or implicit
 behavioral boundary through accumulated exceptions.
@@ -5997,7 +5997,7 @@ The real contract becomes:
 > Contract erosion does not delete the boundary.  
 > It makes the boundary negotiable after every incident.
 
-## Exception Accretion
+### Exception Accretion
 
 **Exception accretion** is the accumulation of locally justified
 special cases around a shared contract.
@@ -6027,7 +6027,7 @@ The problem is when exceptions:
 At that point, the exception structure may be more authoritative than
 the nominal contract.
 
-## Model Rot
+### Model Rot
 
 **Model rot** occurs when an abstraction remains in use after its
 underlying model no longer corresponds to operational reality.
@@ -6058,7 +6058,7 @@ A rotten model forces every caller to reinterpret its terms.
 The abstraction remains syntactically central while semantic authority
 moves elsewhere.
 
-## Semantic Leak
+### Semantic Leak
 
 A **semantic leak** occurs when internal behavior becomes required
 knowledge outside the component that owns it.
@@ -6077,7 +6077,7 @@ A semantic leak increases coupling.
 It also creates new authority surfaces because external components
 begin making decisions based on internal facts.
 
-## Topology Leak
+### Topology Leak
 
 A **topology leak** occurs when semantics escape the architectural
 layer that should own them and begin governing another layer
@@ -6098,7 +6098,7 @@ A topology leak changes which layer must reason about that fact.
 > A leak tells another component too much.  
 > A topology leak gives that component a new unpaid job.
 
-## Implicit Coupling
+### Implicit Coupling
 
 **Implicit coupling** is dependence on behavior that has not been
 represented as a shared contract.
@@ -6117,7 +6117,7 @@ Implicit coupling commonly appears as:
 Implicit coupling is a primary carrier of drift because each consumer
 may preserve and evolve its own interpretation.
 
-## Interpretation Fork
+### Interpretation Fork
 
 An **interpretation fork** occurs when two consumers derive different
 meanings from the same ambiguous behavior.
@@ -6134,7 +6134,7 @@ The tool emitted one event.
 
 The ecosystem created three contracts.
 
-## Accidental Protocol
+### Accidental Protocol
 
 An **accidental protocol** is undocumented behavior that other
 components begin depending upon compositionally.
@@ -6160,7 +6160,7 @@ It nevertheless acquired clients.
 > The most permanent interface is accidental behavior with two
 > callers.
 
-## Drift Amplification
+### Drift Amplification
 
 Drift amplifies when one ambiguous layer feeds another.
 
@@ -6185,7 +6185,7 @@ Each downstream layer adds confidence.
 
 None adds truth.
 
-## Partial Success
+### Partial Success
 
 **Partial success** is an outcome in which some promised effects occur
 while others do not.
@@ -6217,7 +6217,7 @@ The result was real.
 
 The contract failed to name it.
 
-## Semantic Lag
+### Semantic Lag
 
 **Semantic lag** is the delay between operational change and the
 ecosystem's adaptation to its new meaning.
@@ -6238,7 +6238,7 @@ A healthy migration manages it explicitly.
 Unmanaged lag becomes drift when old and new semantics coexist without
 a clear authority rule.
 
-## Compatibility Drift
+### Compatibility Drift
 
 **Compatibility drift** occurs when behavior preserved for
 compatibility gradually becomes indistinguishable from current
@@ -6262,7 +6262,7 @@ The compatibility path has stopped translating the past.
 
 It is generating the present.
 
-## Field Symptom: One Flag, Several Meanings
+### Field Symptom: One Flag, Several Meanings
 
 A command introduces:
 
@@ -6303,7 +6303,7 @@ The honest repair may be:
 The dishonest repair is another paragraph beginning with “depending on
 context”.
 
-## Field Symptom: The Package Database Is Authoritative
+### Field Symptom: The Package Database Is Authoritative
 
 A project states:
 
@@ -6340,7 +6340,7 @@ The correct response is not necessarily to abolish the database.
 It is to identify which disagreements are legitimate, which are
 corruption, and which operations must restore alignment.
 
-## Field Symptom: The Correct Wrapper
+### Field Symptom: The Correct Wrapper
 
 A wrapper repairs a low-level tool's ambiguous behavior.
 
@@ -6371,7 +6371,7 @@ The ecosystem failed to establish which surface became authoritative.
 
 Local repair without boundary closure created dual semantics.
 
-## Field Symptom: Documentation from Tomorrow
+### Field Symptom: Documentation from Tomorrow
 
 An issue proposes that every built artifact will carry structured
 identity.
@@ -6391,7 +6391,7 @@ Documentation now describes tomorrow.
 
 Runtime remains loyal to yesterday.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Semantic drift** is not all change.
 
@@ -6433,7 +6433,7 @@ It becomes a leak when external correctness depends on knowing it.
 A wrapper may expose a clean boundary. The question is whether the
 ecosystem recognizes and closes around that boundary.
 
-## Detecting Drift
+### Detecting Drift
 
 Drift often becomes visible through disagreement.
 
@@ -6457,7 +6457,7 @@ invisible.
 > The newcomer failed to carry the undocumented patch in their nervous
 > system.
 
-## Drift Audit
+### Drift Audit
 
 For any important operation, ask:
 
@@ -6488,7 +6488,7 @@ answer, the system is not merely complicated.
 
 It has drifted into several local truths.
 
-## Restoring Alignment
+### Restoring Alignment
 
 Restoring alignment may require:
 
@@ -6511,7 +6511,7 @@ The goal is not historical purity.
 
 The goal is one honest present.
 
-## Tenth House Law
+### Tenth House Law
 
 > Drift begins when “what the system does” requires a different answer
 > from every layer.
@@ -6525,7 +6525,7 @@ behaving around its shape.
 
 ---
 
-# Ghosts and Undead Semantics
+## Ghosts and Undead Semantics
 
 The option was removed eight years ago.
 
@@ -6551,7 +6551,7 @@ Its causal structure has excellent uptime.
 
 ---
 
-## Ghost
+### Ghost
 
 A **ghost** is residual causal structure surviving after the original
 rationale, maintainer, mechanism, or contract disappeared.
@@ -6582,7 +6582,7 @@ The original thing may be absent.
 
 Its consequences are not.
 
-## Semantic Ghost
+### Semantic Ghost
 
 A **semantic ghost** is a residual expectation surviving after the
 authoritative guarantee disappeared.
@@ -6614,7 +6614,7 @@ It may live in:
 
 > A semantic ghost is a contract without a body.
 
-## Ghost Production
+### Ghost Production
 
 Ghosts are usually produced through a sequence like this:
 
@@ -6645,7 +6645,7 @@ The disappearance may occur through:
 
 The ecosystem remembers through deformation.
 
-## Residue
+### Residue
 
 **Residue** is any remaining implementation, state, documentation, or
 behavior left after a feature or contract changes.
@@ -6667,7 +6667,7 @@ Residue becomes ghostly when:
 * downstream dependence is suspected rather than known;
 * behavior persists without an active model.
 
-## Fossil
+### Fossil
 
 A **fossil** is preserved evidence of an earlier system state that no
 longer participates materially in current behavior.
@@ -6686,7 +6686,7 @@ It is not itself a ghost unless current behavior still depends on it.
 > Fossils tell you what died.  
 > Ghosts continue changing the temperature.
 
-## Zombie Invariant
+### Zombie Invariant
 
 A **zombie invariant** is a formerly enforced property still
 consciously maintained through social discipline after mechanical
@@ -6725,7 +6725,7 @@ A soft invariant may have always been socially enforced.
 A zombie invariant was once mechanically preserved --- or widely
 believed to be --- and continues after that enforcement died.
 
-## Zombie Invariant Lifecycle
+### Zombie Invariant Lifecycle
 
 A zombie invariant often follows this path:
 
@@ -6748,7 +6748,7 @@ obvious operator responsibility.
 
 The corpse has completed its rebranding.
 
-## Field Symptom: Forbidden Package Names
+### Field Symptom: Forbidden Package Names
 
 An early package tool rejects names containing `/`.
 
@@ -6782,7 +6782,7 @@ The clean repairs are:
 The unclean repair is to continue blaming contributors for violating a
 rule the authoritative path happily accepts.
 
-## Ghost Invariant
+### Ghost Invariant
 
 A **ghost invariant** is an extinct invariant whose historical shape
 continues deforming the ecosystem even though operators no longer
@@ -6804,7 +6804,7 @@ Examples include:
 > A zombie invariant is still being fed.  
 > A ghost invariant merely moves the furniture at night.
 
-## Field Symptom: The Empty Directory
+### Field Symptom: The Empty Directory
 
 A base filesystem always creates:
 
@@ -6837,7 +6837,7 @@ Its topology remains.
 
 That is a ghost invariant.
 
-## Semantic Imprint
+### Semantic Imprint
 
 A **semantic imprint** is the visible deformation left by an old
 contract or invariant.
@@ -6859,7 +6859,7 @@ It does not prove the original rationale.
 
 The maintainer must still perform the autopsy.
 
-## Undead Behavior
+### Undead Behavior
 
 **Undead behavior** is an implementation artifact accidentally
 promoted into an ecosystem contract and kept operational after its
@@ -6881,7 +6881,7 @@ Dependence gave it authority.
 > The behavior was never alive enough to deserve compatibility.  
 > The ecosystem adopted it anyway.
 
-## Accidental Contract
+### Accidental Contract
 
 An **accidental contract** is an observed behavior treated as a
 promise without an explicit decision to own it.
@@ -6908,7 +6908,7 @@ to:
 Pretending no decision is required merely delegates the decision to
 the next incident.
 
-## Semantic Revenant
+### Semantic Revenant
 
 A **semantic revenant** is behavior officially deprecated or declared
 dead yet still operationally required.
@@ -6936,7 +6936,7 @@ Examples include:
 > Deprecated means “dead in documentation”.  
 > A revenant is what runtime files as an appeal.
 
-## Deprecation Without Exit
+### Deprecation Without Exit
 
 A **deprecation without exit** announces the end of behavior without
 creating the path by which dependence can actually leave.
@@ -6956,7 +6956,7 @@ Such deprecations accumulate indefinitely.
 The documentation becomes a cemetery whose residents still answer
 production traffic.
 
-## Haunted Compatibility Layer
+### Haunted Compatibility Layer
 
 A **haunted compatibility layer** preserves dead semantics because too
 much downstream ecology has adapted around them.
@@ -6984,7 +6984,7 @@ A haunted compatibility layer:
 > Compatibility preserves the past.  
 > Haunted compatibility lets the past keep committing.
 
-## Compatibility Necrosis
+### Compatibility Necrosis
 
 **Compatibility necrosis** occurs when compatibility logic remains
 present but no longer serves a coherent migration purpose.
@@ -7000,7 +7000,7 @@ The code survives.
 
 Its reason has decomposed.
 
-## Field Symptom: The Old Package Format
+### Field Symptom: The Old Package Format
 
 A package manager supports a legacy archive format through a
 compatibility parser.
@@ -7024,7 +7024,7 @@ The old format is not merely supported.
 
 It is a semantic revenant with release engineering privileges.
 
-## Haunted Codepath
+### Haunted Codepath
 
 A **haunted codepath** is a branch whose current necessity is unknown,
 whose removal risk is unbounded, and whose behavior may be depended
@@ -7055,7 +7055,7 @@ A haunted codepath is not defined by ugliness.
 It is defined by missing causal knowledge combined with compatibility
 fear.
 
-## Fear-Based Retention
+### Fear-Based Retention
 
 **Fear-based retention** is preservation of behavior because the
 ecosystem cannot bound the consequences of removal.
@@ -7082,7 +7082,7 @@ So the branch acquires tenure.
 > Nobody knows why it exists.  
 > This is treated as evidence that it must be important.
 
-## Semantic Afterlife
+### Semantic Afterlife
 
 **Semantic afterlife** is the period during which removed behavior
 continues influencing the ecosystem indirectly.
@@ -7104,7 +7104,7 @@ Removal from one repository is not the end of a semantic life.
 
 The meaning may continue elsewhere.
 
-## Deletion Is Not Removal
+### Deletion Is Not Removal
 
 Deleting code removes implementation.
 
@@ -7130,7 +7130,7 @@ remove ecosystem dependency
 > The code was deleted.  
 > The ecosystem did not receive the obituary.
 
-## Ghost Surface
+### Ghost Surface
 
 A **ghost surface** is a location where dead semantics remain
 externally observable.
@@ -7151,7 +7151,7 @@ acquiring new callers.
 
 Deprecation without friction is recruitment.
 
-## Ghost Propagation
+### Ghost Propagation
 
 A ghost propagates when one component reproduces dead semantics for
 another.
@@ -7174,7 +7174,7 @@ The original implementation may be gone.
 
 The ghost now has several independent hosts.
 
-## Ghost Host
+### Ghost Host
 
 A **ghost host** is any current component, artifact, document, or
 operator practice carrying residual semantics.
@@ -7193,7 +7193,7 @@ Removing one host may not remove the ghost.
 This is why ghost hunting requires an ecosystem inventory rather than
 a repository search.
 
-## Ghost Drift
+### Ghost Drift
 
 **Ghost drift** occurs when residual semantics continue changing after
 the original authority disappeared.
@@ -7211,7 +7211,7 @@ The ecosystem no longer has one legacy behavior.
 
 It has descendants.
 
-## Semantic Séance
+### Semantic Séance
 
 A **semantic séance** is the reconstruction of current meaning through
 historical evidence because no authoritative present contract is
@@ -7236,7 +7236,7 @@ one.
 > Archaeology is a method.  
 > It should not be the primary API.
 
-## Necromancy
+### Necromancy
 
 **Necromancy** is the practical work of restoring operational
 coherence from fossilized assumptions, residual state, and inherited
@@ -7259,7 +7259,7 @@ The work is serious.
 A careless cleanup can destroy the only surviving representation of a
 contract the project forgot to write down.
 
-## Exorcism
+### Exorcism
 
 **Exorcism** is the deliberate removal or containment of undead
 semantics so they no longer influence current behavior without
@@ -7282,7 +7282,7 @@ Exorcism is not deletion with confidence.
 
 It is migration with evidence.
 
-## Adoption
+### Adoption
 
 Sometimes the correct response is not exorcism.
 
@@ -7309,7 +7309,7 @@ Adoption requires:
 
 Adoption is honest when the system gains an explicit owner.
 
-## Retirement
+### Retirement
 
 **Retirement** is the controlled end of a behavior after dependence
 has been migrated or deliberately rejected.
@@ -7327,7 +7327,7 @@ A retirement should define:
 
 Retirement without caller discovery is hope wearing a calendar.
 
-## Field Symptom: The Meaning of Success
+### Field Symptom: The Meaning of Success
 
 An old tool prints a warning and exits zero after partial completion.
 
@@ -7359,7 +7359,7 @@ That may be historically true.
 
 It is not a migration strategy.
 
-## Field Symptom: The Unused Configuration Field
+### Field Symptom: The Unused Configuration Field
 
 A configuration file still contains:
 
@@ -7386,7 +7386,7 @@ tools need it, it participates in a zombie invariant.
 The correct classification depends on present causal effect, not age
 or appearance.
 
-## Field Symptom: The Order Nobody Changes
+### Field Symptom: The Order Nobody Changes
 
 A service script always creates a directory before loading a module.
 
@@ -7413,7 +7413,7 @@ The vocabulary is compositional.
 
 It is not a cabinet in which each corpse receives exactly one drawer.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Old behavior** is not automatically a ghost.
 
@@ -7461,7 +7461,7 @@ It is removing the semantic dependence.
 **Compatibility** is not haunting when its scope, authority, and
 migration path remain explicit.
 
-## The Ghost Test
+### The Ghost Test
 
 When old or unexplained behavior appears, ask:
 
@@ -7492,7 +7492,7 @@ The test prevents two common failures:
 * deleting unexplained behavior and calling the resulting archaeology
   a regression.
 
-## A Compact Classification
+### A Compact Classification
 
 Use this shorthand when distinguishing the dead:
 
@@ -7510,7 +7510,7 @@ Use this shorthand when distinguishing the dead:
 The categories overlap because systems are inconsiderate enough to
 produce compound hauntings.
 
-## Eleventh House Law
+### Eleventh House Law
 
 > A ghost is not old code.  
 > It is old meaning still collecting rent.
@@ -7527,7 +7527,7 @@ how ecosystems stabilize around lies that work just often enough.
 
 ---
 
-# Semantic Counterfeit and Hallucinated Semantics
+## Semantic Counterfeit and Hallucinated Semantics
 
 The command is called:
 
@@ -7558,7 +7558,7 @@ The operator receives whichever definition survives the incident.
 
 ---
 
-## Semantic Counterfeit
+### Semantic Counterfeit
 
 **Semantic counterfeit** is behavior that projects stronger authority,
 coherence, or guarantees than the system can mechanically preserve.
@@ -7589,7 +7589,7 @@ the authority of a complete contract.
 > A semantic counterfeit is a lie that passes enough tests to enter
 > circulation.
 
-## Counterfeit Authority
+### Counterfeit Authority
 
 A counterfeit interface borrows credibility from:
 
@@ -7619,7 +7619,7 @@ The implementation means:
 The interface has borrowed authority from the word *safe* without
 paying the invariant cost required to own it.
 
-## Partial Correctness as Counterfeit Mint
+### Partial Correctness as Counterfeit Mint
 
 **Partial correctness** means that behavior is correct within a
 limited subset of inputs, states, or execution contexts.
@@ -7665,7 +7665,7 @@ semantic counterfeit
 > The dangerous lie is not “nothing works”.  
 > It is “everything works, except wherever the model stops”.
 
-## Hallucinated Semantics
+### Hallucinated Semantics
 
 **Hallucinated semantics** are guarantees, relationships, or authority
 inferred by operators and callers beyond what the system actually
@@ -7699,7 +7699,7 @@ The interface often invites them.
 > Operators do not hallucinate in a vacuum.  
 > The interface supplies the mushrooms.
 
-## System Projection and Ecosystem Interpretation
+### System Projection and Ecosystem Interpretation
 
 Semantic counterfeit and hallucinated semantics describe opposite
 sides of one failure.
@@ -7726,7 +7726,7 @@ The system does not need to deceive intentionally.
 
 Names, defaults, and partial behavior are sufficient.
 
-## Semantic Gravity
+### Semantic Gravity
 
 **Semantic gravity** is the tendency of an interface to attract
 stronger interpretations than its implementation warrants.
@@ -7774,7 +7774,7 @@ The system must either:
 > Naming is not documentation.  
 > It is preloaded expectation.
 
-## Reachable Ambiguity Space
+### Reachable Ambiguity Space
 
 The **reachable ambiguity space** is the set of materially different
 meanings an operator or caller can reasonably infer and partially
@@ -7813,7 +7813,7 @@ may be less elegant.
 
 They make the meanings harder to confuse.
 
-## Ambiguity Budget
+### Ambiguity Budget
 
 An **ambiguity budget** is the amount of semantic uncertainty an
 ecosystem can absorb before operators, callers, and components begin
@@ -7847,7 +7847,7 @@ budget left.
 
 > Ambiguity is cheap until somebody automates it.
 
-## Trust-Me-Bro Interface
+### Trust-Me-Bro Interface
 
 A **trust-me-bro interface** depends primarily on operator virtue,
 experience, or restraint for correctness.
@@ -7873,7 +7873,7 @@ That is not operator sovereignty.
 
 It is an undocumented entrance exam attached to state mutation.
 
-## Undefined Ritual Zone
+### Undefined Ritual Zone
 
 An **undefined ritual zone** is an operational area where behavior
 often works despite lacking an enforceable contract.
@@ -7903,7 +7903,7 @@ Its stability comes from ritual:
 > Undefined does not mean unpredictable.  
 > Sometimes it means predictable only to the priesthood.
 
-## Semantic Overloading
+### Semantic Overloading
 
 **Semantic overloading** occurs when one primitive carries several
 distinct meanings that cannot be enforced through one coherent
@@ -7931,7 +7931,7 @@ cannot represent the divergence.
 > One word can unify a model.  
 > It cannot manufacture one.
 
-## Semantic Compression Artifact
+### Semantic Compression Artifact
 
 A **semantic compression artifact** is a small interface element
 carrying more implied meaning than it explicitly represents.
@@ -7952,7 +7952,7 @@ Interfaces must remain manageable.
 But compression becomes dangerous when callers need to decompress the
 meaning differently.
 
-## Counterfeit Success
+### Counterfeit Success
 
 **Counterfeit success** is a successful status that does not identify
 which promised effects actually occurred.
@@ -7975,7 +7975,7 @@ explicitly.
 
 > “Success” is not a bucket for everything that failed politely.
 
-## Counterfeit Safety
+### Counterfeit Safety
 
 **Counterfeit safety** is an interface implying that a dangerous
 operation has been contained when the actual protection remains
@@ -7994,7 +7994,7 @@ The mechanism may improve safety.
 
 The counterfeit lies in presenting improvement as a complete boundary.
 
-## Counterfeit Portability
+### Counterfeit Portability
 
 **Counterfeit portability** occurs when an artifact or operation
 appears independent of its original environment but silently depends
@@ -8012,7 +8012,7 @@ The artifact crosses the boundary.
 
 Its assumptions remain behind, connected by invisible cable.
 
-## Counterfeit Pluralism
+### Counterfeit Pluralism
 
 **Counterfeit pluralism** is the appearance of meaningful alternatives
 where every alternative remains captured by the same unresolved
@@ -8031,7 +8031,7 @@ The ecosystem has several control panels.
 
 The machine room remains singular and haunted.
 
-## Authority Laundering
+### Authority Laundering
 
 **Authority laundering** presents socially enforced behavior as if it
 were mechanically guaranteed by the system.
@@ -8070,7 +8070,7 @@ The project credits the interface.
 > The invariant is dead.  
 > The maintainers keep dressing it for meetings.
 
-## Counterfeit Lifecycle
+### Counterfeit Lifecycle
 
 A semantic counterfeit often matures through this sequence:
 
@@ -8096,7 +8096,7 @@ At the end, everyone agrees on the meaning.
 
 The system still does not enforce it.
 
-## Field Symptom: `--ignore`
+### Field Symptom: `--ignore`
 
 A package frontend provides:
 
@@ -8135,7 +8135,7 @@ Adding another paragraph to the man page may reduce surprise.
 
 It does not remove the counterfeit surface.
 
-## Field Symptom: Atomic Installation
+### Field Symptom: Atomic Installation
 
 A package manager describes installation as atomic.
 
@@ -8165,7 +8165,7 @@ Less beautiful.
 
 More useful during the fire.
 
-## Field Symptom: The Safe Hook
+### Field Symptom: The Safe Hook
 
 A repository provides an optional validation hook.
 
@@ -8188,7 +8188,7 @@ The hook is a memory prosthesis.
 Calling it a repository invariant launders local discipline into
 system authority.
 
-## Field Symptom: Supported Alternate Roots
+### Field Symptom: Supported Alternate Roots
 
 A tool accepts:
 
@@ -8223,7 +8223,7 @@ It also preserves enough host dependence to violate it.
 
 This is semantic counterfeit.
 
-## Field Symptom: Self-Describing Artifact
+### Field Symptom: Self-Describing Artifact
 
 A package filename contains:
 
@@ -8248,7 +8248,7 @@ The presentation is rich.
 
 The authority is absent.
 
-## Field Symptom: Successful Verification
+### Field Symptom: Successful Verification
 
 A command verifies an artifact and prints:
 
@@ -8275,7 +8275,7 @@ The system did not lie about the checksum.
 
 It counterfeited the meaning of verification.
 
-## Semantic Counterfeit Versus Ordinary Bug
+### Semantic Counterfeit Versus Ordinary Bug
 
 A bug violates the intended implementation.
 
@@ -8296,7 +8296,7 @@ atomic if lifecycle effects remain irreversible.
 
 The name still projects more than the model owns.
 
-## Hallucination Containment
+### Hallucination Containment
 
 A system cannot prevent operators from imagining every possible
 meaning.
@@ -8318,7 +8318,7 @@ The objective is not to eliminate interpretation.
 It is to reduce the set of interpretations that runtime appears to
 validate.
 
-## Honest Interface
+### Honest Interface
 
 An **honest interface** exposes no stronger guarantee than the system
 can enforce.
@@ -8341,7 +8341,7 @@ Sometimes the inconvenience is the exact shape of unresolved reality.
 
 > Friction is cheaper than counterfeit confidence.
 
-## Semantic Friction
+### Semantic Friction
 
 **Semantic friction** is deliberate difficulty introduced to prevent
 operators or callers from crossing an important boundary accidentally.
@@ -8363,7 +8363,7 @@ A useful friction point says:
 
 > You are leaving the model the system can defend.
 
-## Warning Surface
+### Warning Surface
 
 A **warning surface** informs operators that a contract is weak,
 partial, or context-dependent.
@@ -8382,7 +8382,7 @@ for a boundary the system already knows how to enforce.
 > A warning is information.  
 > It is not a fence with yellow text painted on the grass.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Semantic counterfeit** is not deliberate deception.
 
@@ -8427,7 +8427,7 @@ A zombie invariant is the dead property maintained socially.
 Authority laundering is the process by which that social maintenance
 is presented as system enforcement.
 
-## The Counterfeit Test
+### The Counterfeit Test
 
 For any strong-looking interface or guarantee, ask:
 
@@ -8463,7 +8463,7 @@ If maintainers must explain that the option does not mean what every
 reasonable operator thinks it means, the interface has already filed
 its confession.
 
-## Twelfth House Law
+### Twelfth House Law
 
 > If an interface can lie, it will eventually acquire believers.
 
@@ -8515,7 +8515,7 @@ It has simply implemented the missing boundary in:
 
 ---
 
-# Coping Infrastructure
+## Coping Infrastructure
 
 **Coping infrastructure** is the collection of technical and human
 mechanisms that compensates for missing, weak, or contradictory system
@@ -8551,7 +8551,7 @@ It means the mechanism compensates for a boundary it does not own.
 > The infrastructure did not solve the contradiction.  
 > It hired the ecosystem to carry it.
 
-## Compensation
+### Compensation
 
 **Compensation** is behavior that offsets a defect or missing
 capability elsewhere in the system.
@@ -8582,7 +8582,7 @@ At that point, the compensating mechanism is no longer merely helping.
 
 It has joined the execution model.
 
-## Workaround
+### Workaround
 
 A **workaround** is a bounded response that avoids or repairs a known
 failure without correcting its underlying cause.
@@ -8609,7 +8609,7 @@ The mistake is allowing the workaround to become invisible.
 > Emergency repair is engineering.  
 > Forgetting that it was emergency repair is architecture.
 
-## Workaround Ecology
+### Workaround Ecology
 
 A **workaround ecology** emerges when several compensations become
 interdependent and collectively stabilize the system.
@@ -8641,7 +8641,7 @@ This resilience is real.
 
 So is the difficulty of determining where correctness lives.
 
-## Ecology
+### Ecology
 
 In this book, **ecology** describes the pattern of interaction among:
 
@@ -8670,7 +8670,7 @@ The ecology may still be survivable.
 > The component crashes.  
 > The ecosystem develops a personality disorder and continues booting.
 
-## Coping Layer
+### Coping Layer
 
 A **coping layer** is one bounded mechanism performing compensatory
 work.
@@ -8697,7 +8697,7 @@ That happens when it acquires:
 
 Until then, it remains a compensation around the shared model.
 
-## Temporary Normalization Layer
+### Temporary Normalization Layer
 
 A **temporary normalization layer** is a human or technical mechanism
 that reconciles incompatible representations before the rest of the
@@ -8733,7 +8733,7 @@ It is called temporary with the traditional infrastructure meaning:
 
 > currently entering its second decade.
 
-## Human Normalization
+### Human Normalization
 
 **Human normalization** occurs when operators or maintainers reconcile
 ambiguity that components cannot resolve mechanically.
@@ -8758,7 +8758,7 @@ facts.
 > Reconstructing a filename suffix for the nine-hundredth time does
 > not.
 
-## Operator as Runtime Dependency
+### Operator as Runtime Dependency
 
 An operator becomes a **runtime dependency** when correct operation
 requires knowledge or action that is neither represented nor enforced
@@ -8779,7 +8779,7 @@ The package database does not list the dependency.
 
 The installation fails when it is absent.
 
-## The System Spends People
+### The System Spends People
 
 A weak system may preserve itself by consuming operator resources.
 
@@ -8807,7 +8807,7 @@ as part of its control structure.
 If not, the project may describe itself as simple precisely because
 the largest subsystem is not stored in the repository.
 
-## Invisible Labor
+### Invisible Labor
 
 **Invisible labor** is required ecosystem work omitted from the
 system's accounting.
@@ -8834,7 +8834,7 @@ The system did not suddenly become more complicated.
 
 The hidden subsystem became unavailable.
 
-## Survival-First Validation
+### Survival-First Validation
 
 **Survival-first validation** treats continued operation as the
 primary evidence that a workaround or change is correct.
@@ -8868,7 +8868,7 @@ It does not necessarily answer:
 >
 > It does not prove that the system learned.
 
-## Local Repair
+### Local Repair
 
 A **local repair** restores one installation, workflow, or repository
 without necessarily changing the shared system.
@@ -8896,7 +8896,7 @@ A repair tells us:
 A good local repair should leave behind enough evidence for later
 boundary work.
 
-## Structural Repair
+### Structural Repair
 
 A **structural repair** changes the shared authority, contract, or
 invariant responsible for the failure class.
@@ -8931,7 +8931,7 @@ structural repair
 The sequence fails when the ecosystem stops after local survival and
 forgets to perform the autopsy.
 
-## Recursive Coping
+### Recursive Coping
 
 **Recursive coping** occurs when one workaround compensates for
 defects introduced or exposed by another workaround.
@@ -8951,7 +8951,7 @@ Together they form a shadow architecture with no declared owner.
 > The workaround has developed dependencies.  
 > Congratulations on the new subsystem.
 
-## Metastasis Layer
+### Metastasis Layer
 
 A **metastasis layer** is a workaround that escaped its original scope
 and began functioning as shared infrastructure.
@@ -8971,7 +8971,7 @@ The problem is not that the workaround grew.
 The problem is that it spread without acquiring a contract, authority
 surface, or acknowledged maintenance role.
 
-## Wrapper Proliferation
+### Wrapper Proliferation
 
 **Wrapper proliferation** occurs when operators repeatedly create new
 control surfaces around a component they no longer trust directly.
@@ -9003,7 +9003,7 @@ Useful questions include:
 > When every operator writes a wrapper, the interface has received
 > unusually detailed feedback.
 
-## Scripting Hell
+### Scripting Hell
 
 **Scripting hell** is a condition in which essential orchestration,
 validation, recovery, and state interpretation have escaped into
@@ -9027,7 +9027,7 @@ Scripting hell appears when:
 > The pathology is an execution model distributed across seventeen
 > files named `doit`.
 
-## Ritual
+### Ritual
 
 A **ritual** is a repeated operational sequence whose correctness
 depends on preserving order or conditions not fully represented by the
@@ -9048,7 +9048,7 @@ The danger is that the knowledge survives only as sequence.
 When the environment changes, operators can preserve the ritual while
 its protection disappears.
 
-## Operational Superstition
+### Operational Superstition
 
 **Operational superstition** is ritual preserved after its causal
 relationship to current behavior becomes unknown.
@@ -9071,7 +9071,7 @@ retire it.
 > Nobody knows whether the goat is still required.  
 > The release process continues budgeting for one goat.
 
-## Cargo-Cult Invariant
+### Cargo-Cult Invariant
 
 A **cargo-cult invariant** is a constraint preserved without
 understanding the failure it originally prevented.
@@ -9103,7 +9103,7 @@ the rule.
 A cargo-cult invariant preserves the rule consciously while forgetting
 its mechanism.
 
-## Support Channel as Component
+### Support Channel as Component
 
 A support channel becomes an effective **component** when ordinary
 operation depends on participants translating system behavior into
@@ -9134,7 +9134,7 @@ will remain:
 > “Ask IRC” is a support strategy.  
 > It is not a stable machine interface.
 
-## Field Symptom: The Correct Wrapper
+### Field Symptom: The Correct Wrapper
 
 A low-level package tool prints ambiguous human-readable output.
 
@@ -9153,7 +9153,7 @@ The wrapper is excellent coping infrastructure.
 
 What happens next determines its architectural role.
 
-### Path A: Boundary Extraction
+#### Path A: Boundary Extraction
 
 The project:
 
@@ -9166,7 +9166,7 @@ The project:
 
 The coping layer becomes a real boundary.
 
-### Path B: Permanent Duality
+#### Path B: Permanent Duality
 
 The project continues supporting:
 
@@ -9183,7 +9183,7 @@ The difference is not wrapper quality.
 
 It is boundary closure.
 
-## Field Symptom: The Operator Checklist
+### Field Symptom: The Operator Checklist
 
 Before publishing a release, a maintainer checks:
 
@@ -9218,7 +9218,7 @@ The checklist was not shameful.
 
 It was an early implementation.
 
-## Field Symptom: The Magic Upgrade Sequence
+### Field Symptom: The Magic Upgrade Sequence
 
 Operators know that a major upgrade requires:
 
@@ -9243,7 +9243,7 @@ The problem is when the system:
 
 The ecosystem has implemented a transaction protocol as ritual.
 
-## Field Symptom: The Repairing Support Channel
+### Field Symptom: The Repairing Support Channel
 
 An operator reports that package removal left untracked files.
 
@@ -9271,7 +9271,7 @@ The incident should generate two outputs:
 Without the second output, the channel will perform the same
 normalization again for the next operator.
 
-## Field Symptom: The Personal Patch Set
+### Field Symptom: The Personal Patch Set
 
 A maintainer carries local patches that:
 
@@ -9298,7 +9298,7 @@ The patch set is not wrong.
 
 The ecology must account for the divergence it creates.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Coping infrastructure** is not synonymous with bad code.
 
@@ -9346,7 +9346,7 @@ exist.
 
 Automating folklore can make the folklore faster and harder to inspect.
 
-## The Coping Test
+### The Coping Test
 
 When an ecosystem depends on wrappers, rituals, or experienced
 operators, ask:
@@ -9383,7 +9383,7 @@ The purpose of the test is not to condemn coping.
 It is to prevent successful coping from making structural failure
 invisible.
 
-## Thirteenth House Law
+### Thirteenth House Law
 
 > The system is not stable.  
 > The bastards are.
@@ -9398,7 +9398,7 @@ correctness still fails to converge.
 
 ---
 
-# Folklore and Distributed Local Truths
+## Folklore and Distributed Local Truths
 
 The operation is undocumented.
 
@@ -9425,7 +9425,7 @@ Its knowledge has been distributed into incompatible human fragments.
 
 ---
 
-## Folklore
+### Folklore
 
 **Folklore** is operational knowledge transmitted socially rather than
 through authoritative state, explicit contracts, or mechanically
@@ -9458,7 +9458,7 @@ transmits it.
 
 > Folklore is a contract implemented through witness continuity.
 
-## Operational Knowledge
+### Operational Knowledge
 
 **Operational knowledge** is knowledge required to operate, repair, or
 interpret infrastructure correctly.
@@ -9490,7 +9490,7 @@ All three are knowledge.
 
 They possess different regulatory strength and retention properties.
 
-## Local Truth
+### Local Truth
 
 A **local truth** is an operational interpretation that is correct
 within one installation, workflow, component arrangement, or
@@ -9513,7 +9513,7 @@ without checking the assumptions that made it true.
 > “Works here” is evidence.  
 > It is not a topology.
 
-## Operational Truth
+### Operational Truth
 
 **Operational truth** is an interpretation accurate enough to guide
 one real operation successfully.
@@ -9544,7 +9544,7 @@ A structural model must also answer:
 > What class of cases does this describe, and where should the
 > behavior be owned?
 
-## Shared Semantics
+### Shared Semantics
 
 **Shared semantics** are meanings that remain stable across the
 boundaries and participants expected to compose them.
@@ -9567,7 +9567,7 @@ operations on different installations.
 
 The ecosystem then shares syntax while distributing meaning privately.
 
-## Distributed Folklore
+### Distributed Folklore
 
 **Distributed folklore** is a collection of locally effective but
 mutually incomplete or incompatible operational truths.
@@ -9592,7 +9592,7 @@ No ordinary operation can retrieve the complete description.
 > The execution model exists.  
 > It is sharded across people with no replication protocol.
 
-## Folklore Fragment
+### Folklore Fragment
 
 A **folklore fragment** is one socially transmitted piece of
 operational knowledge.
@@ -9617,7 +9617,7 @@ Fragments become dangerous when detached from:
 A correct fragment copied without its context may become an incorrect
 rule.
 
-## Context Loss
+### Context Loss
 
 **Context loss** occurs when operational knowledge survives but the
 conditions under which it was true do not.
@@ -9640,7 +9640,7 @@ The ecosystem preserves the constraint while losing the model.
 > Folklore does not merely forget facts.  
 > It forgets where the facts stop being true.
 
-## Folklore Packet Loss
+### Folklore Packet Loss
 
 **Folklore packet loss** is the gradual loss of conditions, rationale,
 and uncertainty as operational knowledge moves between people and
@@ -9675,7 +9675,7 @@ It may also lose:
 
 > Folklore scales by losing packets.
 
-## Compression
+### Compression
 
 Social transmission requires compression.
 
@@ -9703,7 +9703,7 @@ A short operational rule should ideally point toward:
 Otherwise the compressed form eventually becomes the only surviving
 form.
 
-## Ritual Compression
+### Ritual Compression
 
 **Ritual compression** converts causal knowledge into a sequence of
 actions.
@@ -9726,7 +9726,7 @@ Ritual compression optimizes execution.
 
 It weakens reasoning.
 
-## Narrative Authority
+### Narrative Authority
 
 **Narrative authority** is authority acquired because one explanation
 is repeated, remembered, or associated with an experienced
@@ -9747,7 +9747,7 @@ It can also outlive the evidence that justified it.
 > The story became canonical because everyone who remembered the
 > counterexample left.
 
-## Elder Knowledge
+### Elder Knowledge
 
 **Elder knowledge** is operational knowledge carried by participants
 with long historical exposure to the ecosystem.
@@ -9776,7 +9776,7 @@ An ecosystem depending on elder knowledge should ask:
 Respecting expertise does not require storing the architecture inside
 one person's autobiography.
 
-## Propagation
+### Propagation
 
 **Propagation** is the movement of knowledge through the ecosystem.
 
@@ -9806,7 +9806,7 @@ It does not answer:
 
 > Can the ecosystem recover and apply it when needed?
 
-## Retention
+### Retention
 
 **Retention** is the ecosystem's ability to preserve usable knowledge
 across time, turnover, changing context, and implementation evolution.
@@ -9832,7 +9832,7 @@ Useful retention depends on:
 > Archival survival is not institutional memory.  
 > A corpse can remain perfectly intact and still answer no questions.
 
-## Propagation Versus Retention
+### Propagation Versus Retention
 
 Propagation and retention are independent.
 
@@ -9854,7 +9854,7 @@ A healthy ecosystem needs both.
 But the strongest retention occurs when knowledge no longer needs to
 be remembered for correctness because it has become structure.
 
-## Memory Substrate
+### Memory Substrate
 
 A **memory substrate** is the medium through which an ecosystem
 preserves operational knowledge.
@@ -9897,7 +9897,7 @@ An IRC log can preserve an autopsy.
 It should not be the only enforcement mechanism for the discovered
 invariant.
 
-## Retention Capacity
+### Retention Capacity
 
 **Retention capacity** is the amount of operational knowledge an
 ecosystem can preserve in a discoverable, current, and usable form.
@@ -9932,7 +9932,7 @@ The system gains features.
 
 The ecology gains elders.
 
-## Retention Debt
+### Retention Debt
 
 **Retention debt** is future rediscovery work created when an
 important lesson is not preserved in a form the ecosystem can later
@@ -9956,7 +9956,7 @@ The debt is paid through:
 * archaeology;
 * cautious preservation of obsolete behavior.
 
-## Institutional Memory
+### Institutional Memory
 
 **Institutional memory** is the set of conclusions, evidence, and
 operational models an ecosystem can recover independently of any one
@@ -9975,7 +9975,7 @@ It requires that future maintainers can determine:
 
 Institutional memory turns history into usable context.
 
-## Social Checksum
+### Social Checksum
 
 A **social checksum** is repeated independent confirmation that an
 operational rule remains valid.
@@ -9996,7 +9996,7 @@ Many people can consistently repeat one inherited mistake.
 > Consensus can verify transmission.  
 > It cannot verify semantics by itself.
 
-## Oral Compatibility Layer
+### Oral Compatibility Layer
 
 An **oral compatibility layer** is a socially transmitted explanation
 required to make old and current behavior coexist.
@@ -10018,7 +10018,7 @@ This works while knowledgeable participants remain available.
 It fails when automation or newcomers encounter the old state without
 the oral layer installed.
 
-## Distributed Local Truths
+### Distributed Local Truths
 
 An ecosystem contains **distributed local truths** when different
 installations remain operational through different, locally coherent
@@ -10049,7 +10049,7 @@ It becomes structural fragmentation when the local truths:
 * prevent common migration;
 * make support dependent on installation history.
 
-## Local Coherence
+### Local Coherence
 
 **Local coherence** is consistency within one bounded environment.
 
@@ -10069,7 +10069,7 @@ That is an important result.
 It also means the effective system boundary has moved from the project
 to the installation.
 
-## Shared-Reality Failure
+### Shared-Reality Failure
 
 A **shared-reality failure** occurs when participants use the same
 vocabulary while referring to materially different operational models.
@@ -10091,7 +10091,7 @@ policy while participants are operating with different ontologies.
 > The argument is not always about what should happen.  
 > Sometimes each side is reporting a different machine.
 
-## Correctness Spread
+### Correctness Spread
 
 **Correctness spread** is the propagation of a valid repair, contract,
 or practice through the ecosystem.
@@ -10116,7 +10116,7 @@ The invariant changes behavior wherever the implementation is adopted.
 The answer changes behavior only where it is understood and
 remembered.
 
-## Folklore Convergence
+### Folklore Convergence
 
 **Folklore convergence** occurs when the ecosystem gradually settles
 on one socially transmitted practice without converting it into an
@@ -10149,7 +10149,7 @@ Its weakness appears under:
 > Everybody knows the rule.  
 > Runtime continues accepting applications from people who do not.
 
-## Counter-Folklore
+### Counter-Folklore
 
 **Counter-folklore** is an alternate operational tradition formed
 around different local experience.
@@ -10172,7 +10172,7 @@ The original disagreement may have been temporal.
 
 Folklore removed the timestamps.
 
-## Forked Memory
+### Forked Memory
 
 **Forked memory** occurs when different communities preserve different
 histories and therefore different operational conclusions.
@@ -10191,7 +10191,7 @@ Forked memory is not inherently bad.
 It becomes difficult when participants assume their retained history
 is shared.
 
-## Field Symptom: The Upgrade Rule
+### Field Symptom: The Upgrade Rule
 
 An operator says:
 
@@ -10230,7 +10230,7 @@ This may be:
 
 Classification depends on present causal role.
 
-## Field Symptom: The IRC Fix
+### Field Symptom: The IRC Fix
 
 A maintainer explains in IRC:
 
@@ -10258,7 +10258,7 @@ The final script preserved only the action.
 
 Folklore packet loss converted a repair into a corruption tool.
 
-## Field Symptom: Two Working Installations
+### Field Symptom: Two Working Installations
 
 Two installations use the same package repositories.
 
@@ -10288,7 +10288,7 @@ The ecosystem no longer shares package identity semantics.
 
 This is distributed local coherence and system-level fracture.
 
-## Field Symptom: The Reappearing Patch
+### Field Symptom: The Reappearing Patch
 
 A patch fixes a race in package database updates.
 
@@ -10314,7 +10314,7 @@ The ecosystem did not lack history.
 
 It lacked retrieval and binding.
 
-## Field Symptom: The Canonical Wrapper
+### Field Symptom: The Canonical Wrapper
 
 Several operators independently write wrappers around one command.
 
@@ -10347,7 +10347,7 @@ Possible answers include:
 The wrong answer is to call the problem solved while direct and
 wrapped paths continue defining different contracts.
 
-## Field Symptom: The Expert Explanation
+### Field Symptom: The Expert Explanation
 
 A newcomer asks why one option cannot be combined with another.
 
@@ -10372,7 +10372,7 @@ Teaching is valuable.
 
 It is not boundary closure.
 
-## Folklore and Authority Laundering
+### Folklore and Authority Laundering
 
 Folklore becomes authority laundering when socially maintained
 knowledge is described as if the system enforces it.
@@ -10404,7 +10404,7 @@ Less elegant.
 
 More honest.
 
-## Folklore and Operator Sovereignty
+### Folklore and Operator Sovereignty
 
 Folklore is sometimes defended as operator sovereignty.
 
@@ -10429,7 +10429,7 @@ It is successful adaptation to missing structure.
 > Freedom is choosing the policy.  
 > Folklore is remembering which floorboard contains the nail.
 
-## Folklore and Minimalism
+### Folklore and Minimalism
 
 A minimal component may intentionally leave composition to operators.
 
@@ -10450,7 +10450,7 @@ Small tools may expose precise contracts.
 The difference is whether the operator composes meanings or
 reconstructs them.
 
-## Folklore and Automation
+### Folklore and Automation
 
 Automation can reduce folklore or harden it.
 
@@ -10473,7 +10473,7 @@ Automation hardens folklore when it:
 > Automation does not convert folklore into architecture.  
 > Sometimes it merely gives the folklore root privileges.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Folklore** is not automatically false.
 
@@ -10518,7 +10518,7 @@ acquire incompatible meanings.
 Several automated rituals may reproduce several local truths more
 efficiently.
 
-## The Folklore Test
+### The Folklore Test
 
 When important behavior is known socially, ask:
 
@@ -10557,7 +10557,7 @@ expert judgment.
 The goal is to prevent correctness from depending on folklore whose
 scope, authority, and retention nobody can state.
 
-## Fourteenth House Law
+### Fourteenth House Law
 
 > If the system cannot carry the rule, the operators will.  
 > Each operator will carry a slightly different rule.
@@ -10571,7 +10571,7 @@ component name.
 
 ---
 
-# Institutional Memory and Rediscovery
+## Institutional Memory and Rediscovery
 
 The bug is reported.
 
@@ -10605,7 +10605,7 @@ It lost the conclusion.
 
 ---
 
-## Institutional Memory
+### Institutional Memory
 
 **Institutional memory** is the ecosystem's ability to recover and
 apply past conclusions without depending on the continued presence of
@@ -10633,7 +10633,7 @@ the relevant conclusion and connect it to present behavior.
 > Memory tells the next maintainer where it was buried and why the
 > shovel remains locked.
 
-## Project Learning
+### Project Learning
 
 A project **learns** when an observation changes its future behavior.
 
@@ -10678,7 +10678,7 @@ changed future behavior
 If the sequence ends at the autopsy, the ecosystem acquired knowledge
 without memory.
 
-## Rediscovery Loop
+### Rediscovery Loop
 
 A **rediscovery loop** is the recurring reconstruction of a previously
 known failure, constraint, or solution after the ecosystem loses the
@@ -10721,7 +10721,7 @@ New evidence may genuinely require a fresh analysis.
 The pathology is repeating the same reasoning because the previous
 conclusion was never made recoverable.
 
-## Ecosystem Memory Leak
+### Ecosystem Memory Leak
 
 An **ecosystem memory leak** is the continuous loss of usable
 conclusions from the project's active memory.
@@ -10746,7 +10746,7 @@ The ecosystem is storing information.
 
 It is leaking meaning.
 
-## Archival Illusion
+### Archival Illusion
 
 The **archival illusion** is the belief that information remains
 institutionally available merely because it still exists somewhere.
@@ -10771,7 +10771,7 @@ before rediscovering the problem independently.
 > The answer exists.  
 > It has chosen a career in hiding.
 
-## Evidence and Conclusion
+### Evidence and Conclusion
 
 An **evidence record** preserves observations:
 
@@ -10807,7 +10807,7 @@ Conclusion without evidence becomes doctrine that cannot be examined.
 > Conclusion prevents archaeology from becoming the normal build
 > system.
 
-## Conclusion Loss
+### Conclusion Loss
 
 **Conclusion loss** occurs when the reasoning process survives but its
 result does not.
@@ -10828,7 +10828,7 @@ The archive preserves the conversation's path.
 
 It does not necessarily preserve its destination.
 
-## Decision Trace
+### Decision Trace
 
 A **decision trace** connects a current contract or behavior to the
 evidence and reasoning that produced it.
@@ -10871,7 +10871,7 @@ A decision trace allows future maintainers to distinguish:
 * obsolete compatibility;
 * unexplained residue.
 
-## Orphaned Conclusion
+### Orphaned Conclusion
 
 An **orphaned conclusion** is a correct lesson no longer connected to
 the component, contract, or behavior it was meant to govern.
@@ -10890,7 +10890,7 @@ The conclusion exists.
 
 The current system no longer points toward it.
 
-## Orphaned Evidence
+### Orphaned Evidence
 
 **Orphaned evidence** is historical material whose connection to
 current semantics has been lost.
@@ -10913,7 +10913,7 @@ The incident was real.
 
 Its applicability may not be.
 
-## Semantic Indexing
+### Semantic Indexing
 
 **Semantic indexing** is organizing historical knowledge by the
 concepts and failure shapes it describes rather than only by component
@@ -10948,7 +10948,7 @@ The Fieldbook itself is partly a semantic index.
 It extracts recurring mechanisms from incidents whose original
 language varied.
 
-## Name Drift
+### Name Drift
 
 **Name drift** occurs when the terminology used for a failure changes
 while the underlying mechanism remains.
@@ -10969,7 +10969,7 @@ A mature terminology should therefore point backward.
 The new name should make old incidents easier to classify, not harder
 to find.
 
-## Versioned Memory
+### Versioned Memory
 
 **Versioned memory** preserves the scope in which a conclusion was
 valid.
@@ -11000,7 +11000,7 @@ The first form is easy to repeat.
 
 The second form is safe to retire.
 
-## Living Documentation
+### Living Documentation
 
 **Living documentation** is documentation maintained as part of the
 system's current authority and review process.
@@ -11019,7 +11019,7 @@ aesthetic freshness.
 
 It remains alive because it participates in current change.
 
-## Dead Documentation
+### Dead Documentation
 
 **Dead documentation** remains available but no longer tracks
 authoritative behavior.
@@ -11039,7 +11039,7 @@ that remains correct in seven cases out of ten.
 
 Partial truth is excellent ghost habitat.
 
-## Regression Test as Memory
+### Regression Test as Memory
 
 A regression test is a strong memory substrate when it preserves:
 
@@ -11073,7 +11073,7 @@ The second remembers the contract.
 > Tests remember exactly what they are told.  
 > Choose carefully what kind of ancestor you are creating.
 
-## Commit as Memory
+### Commit as Memory
 
 A commit can preserve:
 
@@ -11098,7 +11098,7 @@ A strong commit message does not need to contain the entire autopsy.
 It should identify the failure class and point toward the relevant
 decision trace.
 
-## Issue as Memory
+### Issue as Memory
 
 An issue can preserve:
 
@@ -11121,7 +11121,7 @@ A useful closing comment should state:
 
 Otherwise a closed issue means only that conversation ceased.
 
-## IRC Log as Memory
+### IRC Log as Memory
 
 IRC logs preserve:
 
@@ -11143,7 +11143,7 @@ needing to reconstruct the project solely from it.
 > IRC is where the ecosystem thinks aloud.  
 > The repository should eventually remember what it decided.
 
-## Mailing List as Memory
+### Mailing List as Memory
 
 Mailing lists preserve more deliberate reasoning than transient chat,
 but they share similar retention problems:
@@ -11159,7 +11159,7 @@ The format encourages durable argument.
 
 It does not automatically produce durable conclusion.
 
-## Memory Prosthesis
+### Memory Prosthesis
 
 A **memory prosthesis** is a mechanism helping one participant or
 local workflow retain a lesson.
@@ -11189,7 +11189,7 @@ A prosthesis helps one body.
 
 It does not automatically redesign the building.
 
-## Memory Promotion
+### Memory Promotion
 
 **Memory promotion** is the movement of a lesson from a weak or local
 memory substrate into a stronger institutional form.
@@ -11218,7 +11218,7 @@ The promotion target should match the lesson.
 
 The important step is deliberate placement.
 
-## Memory Demotion
+### Memory Demotion
 
 **Memory demotion** occurs when a formerly enforced or well-documented
 lesson survives only in weaker substrates.
@@ -11235,7 +11235,7 @@ reorganization.
 
 It is one way zombie invariants are produced.
 
-## Retention Boundary
+### Retention Boundary
 
 A **retention boundary** defines where a class of knowledge is
 expected to live and how future work should recover it.
@@ -11255,7 +11255,7 @@ preserve everything.
 They also prevent important conclusions from being stored only in the
 surface least capable of carrying them.
 
-## Memory Pipeline
+### Memory Pipeline
 
 A healthy memory pipeline may look like:
 
@@ -11295,7 +11295,7 @@ The implementation binds it.
 
 The system learns because the chain remains connected.
 
-## Broken Memory Pipeline
+### Broken Memory Pipeline
 
 A broken pipeline often looks like:
 
@@ -11320,7 +11320,7 @@ Nothing in the sequence was individually unreasonable.
 The missing transition was from local knowledge into durable project
 memory.
 
-## Relearning Tax
+### Relearning Tax
 
 The **relearning tax** is the time and risk spent reconstructing
 knowledge the ecosystem once possessed.
@@ -11351,7 +11351,7 @@ extensive archaeology.
 
 In reality, it is repeatedly paying interest on lost conclusions.
 
-## Re-Litigation
+### Re-Litigation
 
 **Re-litigation** is the reopening of an old design question because
 the project retained neither a binding decision nor enough rationale
@@ -11370,7 +11370,7 @@ arguments because nobody can establish what was previously learned.
 > Every question should remain revisable.  
 > It should not remain permanently newborn.
 
-## Patch Recurrence
+### Patch Recurrence
 
 **Patch recurrence** occurs when functionally equivalent fixes
 reappear across time, forks, or rewrites.
@@ -11388,7 +11388,7 @@ The repeated patch is not merely duplication.
 
 It is the ecosystem voting with diff hunks.
 
-## Structural Amnesia
+### Structural Amnesia
 
 **Structural amnesia** occurs when implementation changes erase the
 mechanisms through which previous lessons were preserved.
@@ -11408,7 +11408,7 @@ The code becomes modern.
 
 The ignorance becomes historically accurate.
 
-## Clean Rewrite Syndrome
+### Clean Rewrite Syndrome
 
 **Clean rewrite syndrome** is the belief that removing historical
 implementation also removes the history that shaped its constraints.
@@ -11434,7 +11434,7 @@ Without the autopsy, the rewrite cannot distinguish them.
 > Unfortunately, several ugly branches were the only surviving copies
 > of the field manual.
 
-## Institutional Learning Versus Institutional Hardening
+### Institutional Learning Versus Institutional Hardening
 
 Institutional memory should preserve lessons without converting every
 past decision into untouchable doctrine.
@@ -11465,7 +11465,7 @@ The first permits revision when conditions change.
 
 The second protects the conclusion by destroying the autopsy.
 
-## Memory and Doctrine
+### Memory and Doctrine
 
 Doctrine can compress lessons for quick orientation.
 
@@ -11487,7 +11487,7 @@ autopsies.
 Otherwise it becomes another source of elegant rules that future
 maintainers quote while violating their mechanisms.
 
-## Forgetting as Adaptation
+### Forgetting as Adaptation
 
 Not all forgetting is failure.
 
@@ -11519,7 +11519,7 @@ Retire:
 
 Healthy memory includes the ability to forget deliberately.
 
-## Memory Garbage Collection
+### Memory Garbage Collection
 
 **Memory garbage collection** is the deliberate review, migration, or
 retirement of obsolete institutional knowledge.
@@ -11541,7 +11541,7 @@ The goal is not a spotless history.
 
 It is a navigable one.
 
-## Field Symptom: The Reappearing Database Race
+### Field Symptom: The Reappearing Database Race
 
 A package database update once followed this unsafe sequence:
 
@@ -11575,7 +11575,7 @@ The durable lesson was not “apply this lock around these lines”.
 
 It was the invariant.
 
-## Field Symptom: The Issue Graveyard
+### Field Symptom: The Issue Graveyard
 
 A project has six issues concerning alternate-root behavior.
 
@@ -11602,7 +11602,7 @@ It has failed to produce memory.
 > An issue graveyard is still a graveyard even when every tombstone
 > has excellent Markdown.
 
-## Field Symptom: The Regression Test Nobody Understands
+### Field Symptom: The Regression Test Nobody Understands
 
 A test creates an empty directory before invoking package removal.
 
@@ -11627,7 +11627,7 @@ The correct response is not to delete it immediately.
 
 The correct response is an autopsy.
 
-## Field Symptom: The Forgotten Rejected Design
+### Field Symptom: The Forgotten Rejected Design
 
 A maintainer proposes storing package identity only in filenames.
 
@@ -11649,7 +11649,7 @@ The old decision may still be wrong under current conditions.
 But the new work should begin from the old evidence, not from
 historical innocence.
 
-## Field Symptom: The Copy Without History
+### Field Symptom: The Copy Without History
 
 A validation function is copied from one repository into another.
 
@@ -11668,7 +11668,7 @@ Rationale did not.
 
 This is memory packet loss through code reuse.
 
-## Field Symptom: The Famous IRC Line
+### Field Symptom: The Famous IRC Line
 
 A sharp line from an IRC autopsy becomes popular:
 
@@ -11702,7 +11702,7 @@ Even house laws can become cargo cult.
 
 The House is not exempt from the House.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Institutional memory** is not the same as retaining every historical
 artifact.
@@ -11752,7 +11752,7 @@ from implementation.
 
 Compression should lead toward the model, not replace it.
 
-## The Institutional Memory Test
+### The Institutional Memory Test
 
 For every important incident or design decision, ask:
 
@@ -11785,7 +11785,7 @@ For every important incident or design decision, ask:
 A project has institutional memory when future work begins from
 retained conclusions rather than from the same blank confusion.
 
-## Fifteenth House Law
+### Fifteenth House Law
 
 > The archive remembers everything.  
 > The institution remembers only what it can find, interpret, and
@@ -11801,7 +11801,7 @@ permanent doctrine.
 
 ---
 
-# From Lessons to Guardrails
+## From Lessons to Guardrails
 
 A malformed package enters the repository.
 
@@ -11833,7 +11833,7 @@ The authority claim was counterfeit.
 
 ---
 
-## Lesson
+### Lesson
 
 A **lesson** is a conclusion extracted from an incident, experiment,
 or historical pattern.
@@ -11864,7 +11864,7 @@ The first identifies a failure class.
 
 The second identifies one corpse.
 
-## Lesson Extraction
+### Lesson Extraction
 
 **Lesson extraction** is the act of converting one incident into a
 reusable statement about system behavior.
@@ -11908,7 +11908,7 @@ A useful lesson remains connected to:
 > Extract the failure shape.  
 > Do not grind the corpse into universal seasoning.
 
-## Doctrine
+### Doctrine
 
 **Doctrine** is a compressed lesson intended to guide future judgment.
 
@@ -11937,7 +11937,7 @@ Doctrine becomes dangerous when:
 > Doctrine is a cached autopsy.  
 > Invalidate it when the underlying world changes.
 
-## Doctrinal Compression
+### Doctrinal Compression
 
 **Doctrinal compression** turns a detailed conclusion into a memorable
 rule.
@@ -11966,7 +11966,7 @@ Then the doctrine is no longer compression.
 
 It is decorative authority.
 
-## Memory Surface
+### Memory Surface
 
 A **memory surface** preserves or communicates a lesson.
 
@@ -11998,7 +11998,7 @@ words.
 
 They do not perform the same system function.
 
-## Memory Prosthesis
+### Memory Prosthesis
 
 A **memory prosthesis** helps one operator, maintainer, or local
 workflow remember and apply a lesson.
@@ -12031,7 +12031,7 @@ presented as a system-wide invariant.
 > A note beside your trapdoor is good engineering.  
 > It does not mean the building has acquired a safety code.
 
-## Advisory Surface
+### Advisory Surface
 
 An **advisory surface** reports a rule or risk without preventing the
 operation.
@@ -12061,7 +12061,7 @@ A linter is not a repository invariant.
 
 A deprecation message is not a migration.
 
-## Procedure
+### Procedure
 
 A **procedure** is a required human or automated sequence intended to
 preserve a lesson.
@@ -12083,7 +12083,7 @@ Their enforcement may still be social.
 A required checklist remains a soft invariant if the authoritative
 path can bypass it.
 
-## Procedural Guardrail
+### Procedural Guardrail
 
 A **procedural guardrail** constrains behavior through required
 process.
@@ -12111,7 +12111,7 @@ Their weakness is variability:
 > A procedure is executable documentation with biological
 > dependencies.
 
-## Guardrail
+### Guardrail
 
 A **guardrail** is a mechanism that prevents, rejects, transforms, or
 contains a known failure class.
@@ -12149,7 +12149,7 @@ The first relies on memory.
 
 The second changes reachable state.
 
-## Guardrail Scope
+### Guardrail Scope
 
 Every guardrail has a scope.
 
@@ -12181,7 +12181,7 @@ Its scope is local.
 
 Calling it universal is authority laundering.
 
-## Authoritative Path
+### Authoritative Path
 
 The **authoritative path** is the execution or publication path whose
 result the ecosystem treats as official.
@@ -12202,7 +12202,7 @@ authoritative state.
 > Do not announce that the vault is secure while the loading bay
 > remains open.
 
-## Guardrail Placement
+### Guardrail Placement
 
 Guardrails should be placed where:
 
@@ -12227,7 +12227,7 @@ The strongest guardrail is not always the deepest one.
 
 The correct placement is the boundary that owns the invariant.
 
-## Early Guardrail
+### Early Guardrail
 
 An **early guardrail** rejects or normalizes a dangerous state before
 authoritative mutation.
@@ -12248,7 +12248,7 @@ have occurred.
 > The cheapest corrupted database is the one the command refused to
 > create.
 
-## Late Guardrail
+### Late Guardrail
 
 A **late guardrail** detects or repairs failure after some mutation
 has already occurred.
@@ -12270,17 +12270,17 @@ External effects may require postcondition checks.
 But a late guardrail should not be used to excuse avoidable ambiguity
 at the entrance.
 
-## Preventive Guardrail
+### Preventive Guardrail
 
 A **preventive guardrail** blocks invalid state before it enters the
 system.
 
-## Detective Guardrail
+### Detective Guardrail
 
 A **detective guardrail** identifies a violation after or during the
 operation.
 
-## Corrective Guardrail
+### Corrective Guardrail
 
 A **corrective guardrail** restores or reconciles state after a
 violation.
@@ -12305,7 +12305,7 @@ Detection and recovery remain necessary because:
 * old artifacts survive;
 * external components violate assumptions.
 
-## Mechanical Guardrail
+### Mechanical Guardrail
 
 A **mechanical guardrail** is enforced directly by code, schema, state
 model, or transaction machinery.
@@ -12326,7 +12326,7 @@ They can still preserve the wrong lesson.
 
 A perfectly enforced misconception is not correctness.
 
-## Architectural Guardrail
+### Architectural Guardrail
 
 An **architectural guardrail** makes an invalid state difficult or
 impossible to express through the system's model.
@@ -12349,7 +12349,7 @@ turns an incomplete understanding into structural law.
 
 > The strongest fence deserves the strongest autopsy.
 
-## Guardrail Ladder
+### Guardrail Ladder
 
 A lesson may mature through several levels:
 
@@ -12384,7 +12384,7 @@ The ladder helps state current maturity and authority.
 It prevents a project from pretending the lesson has reached the final
 rung merely because the first script exists.
 
-## Structured Hope
+### Structured Hope
 
 **Structured hope** is a proposal, issue, document, prototype, or
 local mechanism that gives a desired future enough form to inspect.
@@ -12415,7 +12415,7 @@ But it does not yet bind authoritative behavior.
 > Hope with a schema is better than hope with vibes.  
 > It remains hope.
 
-## Structural Hope
+### Structural Hope
 
 **Structural hope** is sustained work to create the authority paths by
 which lessons can change shared behavior.
@@ -12444,7 +12444,7 @@ One produces a shape.
 
 The other produces leverage.
 
-## Guardrail Promotion
+### Guardrail Promotion
 
 **Guardrail promotion** is the movement of a lesson from weaker,
 local enforcement into stronger, shared enforcement.
@@ -12482,7 +12482,7 @@ A repository gate affects every contributor.
 
 A parser restriction affects every future state.
 
-## Guardrail Demotion
+### Guardrail Demotion
 
 **Guardrail demotion** occurs when a formerly mechanical or
 authoritative rule survives only in weaker form.
@@ -12507,7 +12507,7 @@ But accidental demotion creates zombie invariants:
 * the mechanism disappears;
 * maintainers continue enforcing it socially.
 
-## Guardrail Drift
+### Guardrail Drift
 
 **Guardrail drift** occurs when a guardrail's enforced rule gradually
 separates from the failure it was meant to prevent.
@@ -12537,7 +12537,7 @@ The project still has enforcement.
 
 It has lost truth.
 
-## Fossilized Guardrail
+### Fossilized Guardrail
 
 A **fossilized guardrail** continues blocking or shaping behavior
 after its original failure class no longer applies.
@@ -12557,7 +12557,7 @@ It needs a current rationale.
 A guardrail without a living autopsy becomes architectural
 superstition.
 
-## Guardrail Overfitting
+### Guardrail Overfitting
 
 **Guardrail overfitting** occurs when enforcement prevents one
 observed incident but fails to capture the underlying failure class.
@@ -12589,7 +12589,7 @@ The first memorizes the corpse.
 
 The second extracts the wound.
 
-## Guardrail Spill
+### Guardrail Spill
 
 **Guardrail spill** occurs when one layer's enforcement begins
 imposing policy outside the semantic scope it legitimately owns.
@@ -12605,7 +12605,7 @@ Examples include:
 Guardrails should preserve boundaries, not annex neighboring
 countries.
 
-## Guardrail Conflict
+### Guardrail Conflict
 
 **Guardrail conflict** occurs when different layers enforce
 incompatible rules over the same state.
@@ -12628,7 +12628,7 @@ Conflict indicates:
 * several active models;
 * incomplete migration.
 
-## Bypass Path
+### Bypass Path
 
 A **bypass path** reaches authoritative state without crossing the
 expected guardrail.
@@ -12657,7 +12657,7 @@ The important questions are:
 
 A hidden bypass converts a claimed invariant into a polite suggestion.
 
-## Escape Hatch
+### Escape Hatch
 
 An **escape hatch** is an explicit mechanism allowing operators to
 cross or suspend a guardrail deliberately.
@@ -12679,7 +12679,7 @@ from accidental violation.
 > A door is better than a hole in the fence.  
 > Especially when the door has a sign saying where the wolves are.
 
-## Warning Versus Guardrail
+### Warning Versus Guardrail
 
 A warning communicates.
 
@@ -12713,7 +12713,7 @@ The guardrail is correct when:
 
 The distinction should reflect policy, not implementation convenience.
 
-## Review as Guardrail
+### Review as Guardrail
 
 Review can be a strong guardrail when:
 
@@ -12737,7 +12737,7 @@ More reviewers do not automatically produce stronger binding.
 
 They may produce more witnesses around the same weak artifact.
 
-## Witness Without Reduction
+### Witness Without Reduction
 
 **Witness without reduction** is the accumulation of observers without
 a corresponding reduction in uncertainty or failure probability.
@@ -12756,7 +12756,7 @@ It does not know more.
 
 > Five people watching the boundary leak do not constitute a seal.
 
-## Symbolic Guardrail
+### Symbolic Guardrail
 
 A **symbolic guardrail** looks authoritative but cannot constrain the
 relevant path.
@@ -12775,7 +12775,7 @@ Symbolic guardrails can preserve intent.
 They become dangerous when the project credits them with guarantees
 they cannot provide.
 
-## Enforcement Theater
+### Enforcement Theater
 
 **Enforcement theater** is the performance of control without
 effective authority over the state being controlled.
@@ -12793,7 +12793,7 @@ The ecosystem acquires confidence.
 
 The invalid state remains reachable.
 
-## Guardrail Debt
+### Guardrail Debt
 
 **Guardrail debt** is the future maintenance and migration cost
 created by enforcement whose model, scope, or rationale is incomplete.
@@ -12815,7 +12815,7 @@ They can create others.
 A project with many unexplained checks may be safer in ordinary cases
 and nearly impossible to evolve.
 
-## Guardrail Budget
+### Guardrail Budget
 
 A **guardrail budget** is the project's practical capacity to maintain
 its enforcement mechanisms accurately.
@@ -12843,29 +12843,29 @@ It is also:
 
 > Can we maintain the meaning of this check for the next ten years?
 
-## From Doctrine to Invariant
+### From Doctrine to Invariant
 
 A lesson becomes an invariant through several transformations.
 
-### 1. Name the Failure Class
+#### 1. Name the Failure Class
 
 Do not begin with the desired check.
 
 State what failure is being prevented.
 
-### 2. Identify the Authority Surface
+#### 2. Identify the Authority Surface
 
 Determine which layer owns the relevant meaning.
 
-### 3. Define the Contract
+#### 3. Define the Contract
 
 State accepted, rejected, and transformed states.
 
-### 4. Locate the Authoritative Path
+#### 4. Locate the Authoritative Path
 
 Find every path capable of producing the affected state.
 
-### 5. Choose Binding Strength
+#### 5. Choose Binding Strength
 
 Decide whether the lesson belongs in:
 
@@ -12876,57 +12876,57 @@ Decide whether the lesson belongs in:
 * mechanical rejection;
 * architecture.
 
-### 6. Preserve Rationale
+#### 6. Preserve Rationale
 
 Connect the mechanism to evidence and decision history.
 
-### 7. Plan Compatibility and Migration
+#### 7. Plan Compatibility and Migration
 
 Existing state may already violate the new rule.
 
-### 8. Control Bypass
+#### 8. Control Bypass
 
 Make exceptional paths explicit.
 
-### 9. Observe Consequences
+#### 9. Observe Consequences
 
 Measure false positives, missed cases, and operator adaptation.
 
-### 10. Revise or Retire
+#### 10. Revise or Retire
 
 The guardrail must remain capable of learning.
 
-## Field Symptom: Malformed Repository Metadata
+### Field Symptom: Malformed Repository Metadata
 
 A package enters the repository with a missing dependency field.
 
-### Stage 1: Folklore
+#### Stage 1: Folklore
 
 Maintainers know the field is required.
 
-### Stage 2: Checklist
+#### Stage 2: Checklist
 
 Release procedure says:
 
 > Verify dependency metadata.
 
-### Stage 3: Local Validator
+#### Stage 3: Local Validator
 
 One maintainer writes a script.
 
-### Stage 4: Shared Tool
+#### Stage 4: Shared Tool
 
 The script is committed and documented.
 
-### Stage 5: Required Procedure
+#### Stage 5: Required Procedure
 
 Release instructions require running it.
 
-### Stage 6: Authoritative Gate
+#### Stage 6: Authoritative Gate
 
 The repository rejects malformed publication.
 
-### Stage 7: Architectural Invariant
+#### Stage 7: Architectural Invariant
 
 The package representation cannot be constructed without an explicit
 dependency field or an explicit declaration that none exist.
@@ -12940,18 +12940,18 @@ field is legitimate.
 
 The strongest guardrail is not automatically the wisest one.
 
-## Field Symptom: Unsafe Alternate-Root Scripts
+### Field Symptom: Unsafe Alternate-Root Scripts
 
 Operators know lifecycle scripts may affect the host during
 target-root installation.
 
 Possible responses include:
 
-### Documentation
+#### Documentation
 
 Warn that script context remains host-relative.
 
-### Explicit Option
+#### Explicit Option
 
 Require:
 
@@ -12959,15 +12959,15 @@ Require:
 --run-host-context-scripts
 ```
 
-### Rejection
+#### Rejection
 
 Refuse scripts during target installation.
 
-### Context Model
+#### Context Model
 
 Represent host, target, and script execution contexts explicitly.
 
-### Isolation
+#### Isolation
 
 Execute scripts in a defined target environment.
 
@@ -12978,7 +12978,7 @@ They represent different contracts.
 The project should not jump directly to the strongest-looking
 mechanism without deciding which semantics it intends to own.
 
-## Field Symptom: The Local Hook Becomes Policy
+### Field Symptom: The Local Hook Becomes Policy
 
 A maintainer adds a local hook rejecting package names containing `/`.
 
@@ -13015,7 +13015,7 @@ Until then, the accurate statement is:
 
 Confession before confidence.
 
-## Field Symptom: The Overfitted Regression Test
+### Field Symptom: The Overfitted Regression Test
 
 An installation bug occurs only when package `foo` contains a hard
 link named `bar`.
@@ -13040,7 +13040,7 @@ A stronger test would verify:
 The test should remember the invariant, not merely the corpse's
 silhouette.
 
-## Field Symptom: Review After Truth Is Lost
+### Field Symptom: Review After Truth Is Lost
 
 A release process asks three reviewers to verify package artifacts.
 
@@ -13073,7 +13073,7 @@ Review should judge policy and evidence.
 It should not repeatedly reconstruct basic facts the artifact boundary
 failed to carry.
 
-## Field Symptom: The Rule That Outlived Its Backend
+### Field Symptom: The Rule That Outlived Its Backend
 
 A project forbids package names longer than 32 characters.
 
@@ -13104,7 +13104,7 @@ History explains a rule.
 
 It does not automatically justify its continued authority.
 
-## Field Symptom: The Escape Hatch Becomes the Highway
+### Field Symptom: The Escape Hatch Becomes the Highway
 
 A tool rejects direct modification of package database state.
 
@@ -13137,7 +13137,7 @@ The repeated bypass is a diagnostic signal.
 > When everybody uses the emergency exit, inspect the front door
 > before blaming the crowd.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **A lesson** is not yet doctrine.
 
@@ -13187,7 +13187,7 @@ Its scope ends where installation and authority end.
 
 An obsolete or overfitted rule may need retirement.
 
-## The Guardrail Test
+### The Guardrail Test
 
 Before promoting a lesson into enforcement, ask:
 
@@ -13229,7 +13229,7 @@ The objective is not maximum enforcement.
 The objective is a lesson placed at the weakest surface strong enough
 to preserve correctness honestly.
 
-## Sixteenth House Law
+### Sixteenth House Law
 
 > A guardrail is doctrine given a body.  
 > Make sure the body belongs to the right corpse.
@@ -13276,7 +13276,7 @@ It did not regulate it.
 
 ---
 
-# Control Loops and Regulator Failure
+## Control Loops and Regulator Failure
 
 A **control loop** is a process through which a system:
 
@@ -13318,7 +13318,7 @@ corrected through some regulatory path.
 > Observation tells you what happened.  
 > Regulation changes what happens next.
 
-## Regulation
+### Regulation
 
 **Regulation** is the preservation of a desired property despite
 change, disturbance, uncertainty, or component failure.
@@ -13346,7 +13346,7 @@ The relevant question is whether it can:
 * return to an acceptable state;
 * retain the lesson.
 
-## Desired State
+### Desired State
 
 The **desired state** is the condition the regulator attempts to
 preserve or reach.
@@ -13371,7 +13371,7 @@ Desired state may be:
 The desired state must be explicit enough for disagreement to become
 an error rather than a discussion.
 
-## Setpoint
+### Setpoint
 
 A **setpoint** is a particular desired value or condition used by a
 regulator.
@@ -13400,7 +13400,7 @@ The important property is that the regulator can distinguish:
 * states requiring operator policy;
 * states it cannot classify.
 
-## Observed State
+### Observed State
 
 **Observed state** is the representation available to the regulator.
 
@@ -13435,7 +13435,7 @@ The filesystem may expose another.
 A regulator must know which observation is authoritative and how to
 handle disagreement.
 
-## Error Signal
+### Error Signal
 
 An **error signal** is the meaningful difference between observed
 state and desired state.
@@ -13467,7 +13467,7 @@ A warning line without a contract may be evidence.
 
 It is not yet a reliable error signal.
 
-## Sensor
+### Sensor
 
 A **sensor** is the mechanism that produces observations.
 
@@ -13496,7 +13496,7 @@ A sensor does not correct what it detects.
 
 It contributes evidence to the loop.
 
-## Controller
+### Controller
 
 A **controller** decides how to respond to an error signal.
 
@@ -13524,7 +13524,7 @@ A controller with authority but no model becomes destructive.
 
 A controller with a model but no authority becomes documentation.
 
-## Actuator
+### Actuator
 
 An **actuator** is the mechanism that changes system state.
 
@@ -13548,7 +13548,7 @@ while state remains unchanged.
 > A dashboard is a sensor.  
 > It is not a wrench.
 
-## Plant
+### Plant
 
 In control theory, the **plant** is the system being controlled.
 
@@ -13576,7 +13576,7 @@ another part, and depends on operators to correct the rest.
 The plant and regulator have entered a complicated personal
 relationship.
 
-## Closed Loop
+### Closed Loop
 
 A **closed-loop system** uses the observed result of its own action to
 guide further action.
@@ -13605,7 +13605,7 @@ Closed loops are useful when:
 * recovery matters;
 * the environment changes.
 
-## Open Loop
+### Open Loop
 
 An **open-loop system** performs an action without observing whether
 the desired result occurred.
@@ -13632,7 +13632,7 @@ feedback it does not possess.
 > An open loop is not careless by definition.  
 > It becomes careless when it advertises closed-loop confidence.
 
-## Loop Closure
+### Loop Closure
 
 **Loop closure** occurs when sensing, decision, and correction become
 connected around the authoritative state.
@@ -13665,7 +13665,7 @@ The check is now part of the regulator.
 
 Before that, it may have been a memory prosthesis.
 
-## Open Regulatory Loop
+### Open Regulatory Loop
 
 An **open regulatory loop** contains some regulatory functions but
 lacks a complete path from error to verified correction.
@@ -13692,7 +13692,7 @@ The system possesses awareness.
 
 It does not possess closure.
 
-## Observability
+### Observability
 
 **Observability** is the ability to infer relevant internal state from
 available outputs and measurements.
@@ -13714,7 +13714,7 @@ It is not sufficient.
 A perfectly observable failure may continue indefinitely if no
 controller owns correction.
 
-## Observability Theater
+### Observability Theater
 
 **Observability theater** is the accumulation of logs, metrics,
 dashboards, and alerts without corresponding authority or mechanisms
@@ -13735,7 +13735,7 @@ Observability theater is not caused by monitoring itself.
 
 The failure is treating awareness as regulation.
 
-## Telemetry Without Semantics
+### Telemetry Without Semantics
 
 **Telemetry without semantics** is measurement that lacks a model
 connecting observations to actionable state.
@@ -13760,7 +13760,7 @@ More measurements do not automatically produce a stronger regulator.
 
 They may produce a larger archive of uninterpreted distress.
 
-## Detection Without Authority
+### Detection Without Authority
 
 **Detection without authority** occurs when a component can identify a
 violation but cannot affect the authoritative path.
@@ -13779,7 +13779,7 @@ Detection may still be valuable.
 It becomes structurally weak when the ecosystem credits it as
 enforcement.
 
-## Authority Without Observation
+### Authority Without Observation
 
 **Authority without observation** occurs when a controller can mutate
 or reject state but lacks sufficient information to decide correctly.
@@ -13798,7 +13798,7 @@ It cannot see.
 > Blind authority is not regulation.  
 > It is a loaded actuator looking for a theory.
 
-## Correction Without Verification
+### Correction Without Verification
 
 **Correction without verification** occurs when a repair is applied
 but the system does not observe whether the desired state was
@@ -13824,7 +13824,7 @@ The script may have:
 
 A complete loop observes the postcondition.
 
-## Regulatory Latency
+### Regulatory Latency
 
 **Regulatory latency** is the delay between deviation and corrective
 response.
@@ -13853,7 +13853,7 @@ A malformed artifact detected:
 
 represents the same semantic error at very different regulatory costs.
 
-## Feedback Delay
+### Feedback Delay
 
 **Feedback delay** is the delay between an action and observation of
 its result.
@@ -13876,7 +13876,7 @@ Delayed feedback is common in:
 
 The system should represent delay explicitly where possible.
 
-## Stale Error
+### Stale Error
 
 A **stale error** is an error signal based on state that has already
 changed.
@@ -13894,7 +13894,7 @@ Stale error is dangerous when actuators are destructive.
 The regulator must identify the state generation or transaction to
 which the observation belongs.
 
-## Feedback Gain
+### Feedback Gain
 
 **Feedback gain** describes how strongly a regulator responds to an
 observed error.
@@ -13926,7 +13926,7 @@ High gain is dangerous when observations are ambiguous.
 > Strong correction applied to weak truth is how a warning becomes an
 > outage.
 
-## Overcorrection
+### Overcorrection
 
 **Overcorrection** occurs when the response exceeds what is necessary
 to restore the desired state.
@@ -13948,7 +13948,7 @@ Overcorrection often produces folklore:
 A regulator that punishes every deviation maximally trains the
 ecosystem to conceal deviation.
 
-## Undercorrection
+### Undercorrection
 
 **Undercorrection** occurs when the response reduces symptoms without
 restoring the relevant invariant.
@@ -13964,7 +13964,7 @@ Examples include:
 Undercorrection preserves local survival while leaving the failure
 class active.
 
-## Oscillation
+### Oscillation
 
 **Oscillation** occurs when competing or delayed corrections
 repeatedly move state between alternatives without convergence.
@@ -13998,7 +13998,7 @@ Oscillation is evidence that:
 
 > When two regulators disagree, the filesystem becomes their argument.
 
-## Regulatory Conflict
+### Regulatory Conflict
 
 **Regulatory conflict** occurs when multiple controllers attempt to
 govern the same state under incompatible models or desired conditions.
@@ -14020,7 +14020,7 @@ The system needs a priority or composition model.
 Without one, each controller treats the other's correction as
 disturbance.
 
-## Competing Setpoints
+### Competing Setpoints
 
 Two regulators may observe the same state and pursue different desired
 conditions.
@@ -14046,7 +14046,7 @@ Explicit local policy creates composition.
 
 Hidden local policy creates oscillation.
 
-## Deadband
+### Deadband
 
 A **deadband** is a range of deviation tolerated without correction.
 
@@ -14071,7 +14071,7 @@ The system should know whether tolerated deviation is:
 * deferred work;
 * unsupported state.
 
-## Regulatory Saturation
+### Regulatory Saturation
 
 **Regulatory saturation** occurs when the regulator reaches the limit
 of its corrective capacity.
@@ -14096,7 +14096,7 @@ The regulator still exists.
 
 It can no longer match disturbance volume.
 
-## Alert Saturation
+### Alert Saturation
 
 **Alert saturation** occurs when the volume or repetition of warnings
 exceeds operator attention.
@@ -14122,7 +14122,7 @@ Alert saturation is often evidence that the system needs:
 * automated correction;
 * retirement of obsolete warnings.
 
-## Regulator Failure
+### Regulator Failure
 
 A **regulator failure** occurs when the control structure cannot
 preserve its desired state.
@@ -14152,7 +14152,7 @@ Every component performs its local role.
 
 The control loop remains open.
 
-## Human-in-the-Loop Regulation
+### Human-in-the-Loop Regulation
 
 A **human-in-the-loop regulator** requires operator or maintainer
 judgment within the control process.
@@ -14182,7 +14182,7 @@ The human supplies judgment.
 
 The system supplies state.
 
-## Human-as-the-Loop Regulation
+### Human-as-the-Loop Regulation
 
 **Human-as-the-loop regulation** occurs when the operator supplies not
 only judgment but the missing sensing, interpretation, memory,
@@ -14206,7 +14206,7 @@ The human is the loop.
 > The software has an operator interface.  
 > The ecosystem has an operator-shaped control plane.
 
-## Operator Regulator
+### Operator Regulator
 
 An **operator regulator** is an operator functioning as the practical
 controller for unresolved system state.
@@ -14236,7 +14236,7 @@ It also makes structural defects difficult to see.
 The system appears coherent because the operator supplies the missing
 coherence continuously.
 
-## Regulatory Outsourcing
+### Regulatory Outsourcing
 
 **Regulatory outsourcing** occurs when a component or project shifts
 control-loop functions into operators, downstream tools, or local
@@ -14266,7 +14266,7 @@ The key questions are:
 > Delegation names the next owner.  
 > Outsourcing merely points away from the fire.
 
-## Missing Regulator
+### Missing Regulator
 
 A **missing regulator** exists when a property is expected but no
 component or participant clearly owns the full feedback loop needed to
@@ -14285,7 +14285,7 @@ The property exists doctrinally.
 
 Its regulator does not.
 
-## Shadow Regulator
+### Shadow Regulator
 
 A **shadow regulator** is an unofficial mechanism that practically
 preserves state where the declared system does not.
@@ -14303,7 +14303,7 @@ The shadow regulator may be more effective than the official path.
 It remains fragile because its authority, maintenance, and scope are
 often implicit.
 
-## Regulatory Capture by Folklore
+### Regulatory Capture by Folklore
 
 **Regulatory capture by folklore** occurs when socially transmitted
 rules become the primary control logic for system correctness.
@@ -14327,7 +14327,7 @@ The system retains commands.
 
 The ecology supplies regulation.
 
-## Adaptive Regulator
+### Adaptive Regulator
 
 An **adaptive regulator** changes its response based on observed
 conditions or historical outcomes.
@@ -14350,7 +14350,7 @@ instead of repairing its own boundaries.
 
 The adaptive regulator hides the fixed regulator's weakness.
 
-## Regulatory Selection Pressure
+### Regulatory Selection Pressure
 
 When a system repeatedly fails in predictable ways, it creates
 **selection pressure** for operators and tools adapted to those
@@ -14370,7 +14370,7 @@ regulatory gaps.
 
 This is where cybernetics becomes anthropology.
 
-## Field Symptom: Repository Audit Without Quarantine
+### Field Symptom: Repository Audit Without Quarantine
 
 A nightly job verifies repository metadata.
 
@@ -14412,7 +14412,7 @@ The audit remains useful.
 
 It should not be mistaken for repository integrity.
 
-## Field Symptom: Package Repair by Operator
+### Field Symptom: Package Repair by Operator
 
 A package installation fails after writing files but before recording
 the database state.
@@ -14440,7 +14440,7 @@ The package manager performed mutation.
 
 The operator performed regulation.
 
-## Field Symptom: Automatic Retry
+### Field Symptom: Automatic Retry
 
 A repository publication command times out after uploading an
 artifact.
@@ -14469,7 +14469,7 @@ Retry is not inherently safe.
 
 It is an actuator.
 
-## Field Symptom: Two Configuration Managers
+### Field Symptom: Two Configuration Managers
 
 A local script ensures:
 
@@ -14503,7 +14503,7 @@ The ecosystem needs an authority rule:
 
 Without that rule, correctness depends on which regulator ran last.
 
-## Field Symptom: Warning as Control System
+### Field Symptom: Warning as Control System
 
 A tool detects that lifecycle scripts may affect the host during
 alternate-root installation.
@@ -14527,7 +14527,7 @@ The loop exists only in interactive use.
 
 The claimed contract does not survive automation.
 
-## Field Symptom: Dashboard-Driven Repair
+### Field Symptom: Dashboard-Driven Repair
 
 A dashboard shows package database inconsistency.
 
@@ -14549,7 +14549,7 @@ The regulator successfully corrected its own sensor.
 > When the metric becomes the setpoint, the dashboard can heal while
 > the machine remains sick.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Observation** is not regulation.
 
@@ -14598,7 +14598,7 @@ They require explicit scope, priority, and composition.
 The correction must be verified and the failure class must have an
 owner.
 
-## The Control-Loop Test
+### The Control-Loop Test
 
 For any important invariant or desired property, ask:
 
@@ -14642,7 +14642,7 @@ that somebody notices, it has a sensor.
 
 It does not yet have a regulator.
 
-## Seventeenth House Law
+### Seventeenth House Law
 
 > A system that can observe failure but cannot alter the failing path
 > is not regulating.  
@@ -14661,7 +14661,7 @@ sound.
 
 ---
 
-# Operator Adaptation and Bastard Formation
+## Operator Adaptation and Bastard Formation
 
 The command reports success.
 
@@ -14690,7 +14690,7 @@ The operator records it in muscle memory.
 
 ---
 
-## Operator Adaptation
+### Operator Adaptation
 
 **Operator adaptation** is the process by which people change their
 behavior, expectations, tools, and reasoning to compensate for
@@ -14719,7 +14719,7 @@ The diagnostic question is:
 > Is the operator learning the system's legitimate model, or
 > compensating for the absence of one?
 
-## Adaptive Competence
+### Adaptive Competence
 
 **Adaptive competence** is skill developed in response to the actual
 behavior of an environment rather than its declared interface alone.
@@ -14744,7 +14744,7 @@ It does not prove the environment was well designed.
 > Rats learn mazes.  
 > The maze does not receive a usability award.
 
-## Bastard
+### Bastard
 
 A **bastard** is an operator shaped into a compensatory subsystem by
 repeated exposure to weak contracts, incomplete regulation, semantic
@@ -14773,7 +14773,7 @@ It names a causal product.
 > The bastard is what the ecosystem compiles when it cannot compile
 > the invariant.
 
-## Bastard Formation
+### Bastard Formation
 
 **Bastard formation** is the process through which operator adaptation
 becomes stable expertise, identity, and ecosystem function.
@@ -14809,7 +14809,7 @@ The twentieth produces doctrine.
 Eventually the operator becomes the person everyone asks before using
 the feature the interface claims is straightforward.
 
-## Regulatory Apprenticeship
+### Regulatory Apprenticeship
 
 **Regulatory apprenticeship** is the informal training through which
 an operator learns to perform missing control-loop functions.
@@ -14837,7 +14837,7 @@ Formal documentation may teach command syntax.
 
 Apprenticeship teaches system doubt.
 
-## Internal Control Model
+### Internal Control Model
 
 An **internal control model** is the operator's mental representation
 of how the system actually changes state.
@@ -14879,7 +14879,7 @@ The system carries several representations.
 
 Correctness depends on the match.
 
-## State Triangulation
+### State Triangulation
 
 **State triangulation** is the comparison of several imperfect
 representations to infer the most likely actual state.
@@ -14908,7 +14908,7 @@ chronically weak.
 > One source of truth is architecture.  
 > Five sources and an experienced operator are forensic work.
 
-## Suspicion Discipline
+### Suspicion Discipline
 
 **Suspicion discipline** is the learned refusal to accept interface
 claims without checking the evidence relevant to the operation.
@@ -14936,7 +14936,7 @@ But suspicion has a cost.
 
 Every operation becomes an autopsy performed in advance.
 
-## Defensive Interpretation
+### Defensive Interpretation
 
 **Defensive interpretation** is reading every interface through the
 possibility that its visible meaning is incomplete.
@@ -14966,7 +14966,7 @@ Defensive interpretation prevents damage.
 It also reveals that the public interface no longer carries enough
 trustworthy meaning by itself.
 
-## Operator Hardening
+### Operator Hardening
 
 **Operator hardening** is the development of protective habits after
 repeated exposure to failure.
@@ -14999,7 +14999,7 @@ The cost is transferred into:
 The operator becomes safer because the environment has become
 expensive to trust.
 
-## Adaptive Burden
+### Adaptive Burden
 
 **Adaptive burden** is the ongoing cost of remaining compatible with
 an incomplete or drifting system.
@@ -15022,7 +15022,7 @@ Learning cost may decline after mastery.
 Adaptive burden persists because the operator must continue
 compensating.
 
-## Adaptive Tax
+### Adaptive Tax
 
 The **adaptive tax** is the portion of operational effort spent not on
 the operator's intended work, but on remaining adapted to the
@@ -15043,7 +15043,7 @@ It appears as operator competence.
 
 > The system is cheap because the operator pays in attention.
 
-## Embodied Control Plane
+### Embodied Control Plane
 
 An **embodied control plane** exists when human knowledge and action
 provide the practical orchestration, validation, and recovery logic
@@ -15065,7 +15065,7 @@ They happen inside a person.
 The component boundary appears minimal because the orchestration layer
 has become biological.
 
-## Embodied Compatibility Layer
+### Embodied Compatibility Layer
 
 An **embodied compatibility layer** is an operator who translates
 between old and current semantics through remembered context.
@@ -15084,7 +15084,7 @@ The compatibility mechanism exists.
 
 It is not deployable.
 
-## Trauma-Shaped Expertise
+### Trauma-Shaped Expertise
 
 **Trauma-shaped expertise** is skill organized around avoiding
 failures the operator has previously experienced.
@@ -15117,7 +15117,7 @@ It may also preserve obsolete fear.
 > Scar tissue remembers the knife.  
 > It does not automatically know whether the knife is still present.
 
-## Skill and Scar
+### Skill and Scar
 
 A **skill** increases the operator's ability to understand and control
 the system.
@@ -15141,7 +15141,7 @@ Distinguishing skill from scar requires:
 * historical scope;
 * confidence that removal is observable and reversible.
 
-## Bastard Reflex
+### Bastard Reflex
 
 A **bastard reflex** is an immediate protective response formed
 through repeated exposure.
@@ -15161,7 +15161,7 @@ They are useful in familiar danger.
 They become doctrinal hazards when applied outside the conditions that
 formed them.
 
-## Generalized Distrust
+### Generalized Distrust
 
 **Generalized distrust** occurs when rational suspicion of specific
 weak boundaries expands into suspicion of every abstraction,
@@ -15188,7 +15188,7 @@ It is also broader than the evidence.
 A system can manufacture opposition to good structure by repeatedly
 shipping bad structure under the same names.
 
-## Abstraction Allergy
+### Abstraction Allergy
 
 **Abstraction allergy** is a learned rejection of abstraction caused
 by exposure to abstractions that projected coherence they did not
@@ -15210,7 +15210,7 @@ is treated as the beginning of another semantic counterfeit.
 > The operator does not hate abstraction.  
 > The operator hates being lied to through a function call.
 
-## Automation Allergy
+### Automation Allergy
 
 **Automation allergy** is reluctance to automate operations whose
 state, failure semantics, or recovery path cannot be trusted.
@@ -15236,7 +15236,7 @@ gains:
 
 The operator's model must be allowed to learn too.
 
-## Competence Inversion
+### Competence Inversion
 
 **Competence inversion** occurs when the system's missing structure is
 reclassified as an operator competence requirement.
@@ -15265,7 +15265,7 @@ The ecosystem judges the operator for failing to carry folklore.
 Competence inversion protects the interface from criticism by making
 adaptation a prerequisite for legitimacy.
 
-## Expertise Laundering
+### Expertise Laundering
 
 **Expertise laundering** is the presentation of operator compensation
 as evidence that the system itself is coherent.
@@ -15289,7 +15289,7 @@ explanation.
 
 > The system takes credit for the operator's scar tissue.
 
-## Operator-Blame Loop
+### Operator-Blame Loop
 
 An **operator-blame loop** is a regulatory pattern in which system
 failure produces operator adaptation rather than system correction.
@@ -15314,7 +15314,7 @@ The loop stabilizes the ecosystem.
 
 It does so by changing people instead of infrastructure.
 
-## Survivorship Filter
+### Survivorship Filter
 
 A **survivorship filter** is the loss of participants unable or
 unwilling to absorb the ecosystem's adaptive burden.
@@ -15337,7 +15337,7 @@ This matters when maintainers assess usability.
 > The people who did not understand it are, by definition, not still
 > here.
 
-## Survivor Validation
+### Survivor Validation
 
 **Survivor validation** is the claim that the system is usable because
 its remaining participants use it successfully.
@@ -15363,7 +15363,7 @@ The counterfeit claim is:
 > The system is simple; unsuitable operators merely failed to
 > understand it.
 
-## Selection Pressure
+### Selection Pressure
 
 **Selection pressure** is the tendency of an environment to retain
 participants and tools adapted to its recurring conditions.
@@ -15391,7 +15391,7 @@ Selection pressure does not require deliberate policy.
 
 The environment rewards what survives.
 
-## Initiation Cost
+### Initiation Cost
 
 **Initiation cost** is the burden a newcomer must absorb before using
 the system safely.
@@ -15417,7 +15417,7 @@ The diagnostic issue is whether the cost teaches:
 * meaningful control;
 * or accumulated compensation.
 
-## Onboarding Cliff
+### Onboarding Cliff
 
 An **onboarding cliff** occurs when the visible interface supports
 basic operation until one hidden boundary suddenly requires extensive
@@ -15436,7 +15436,7 @@ The interface provided a ramp.
 
 The contract ended at a cliff.
 
-## Apprenticeship Bottleneck
+### Apprenticeship Bottleneck
 
 An **apprenticeship bottleneck** occurs when safe operation requires
 direct training from a small number of experienced participants.
@@ -15459,7 +15459,7 @@ The bottleneck limits:
 * automation;
 * geographic and temporal reach.
 
-## Elder Bottleneck
+### Elder Bottleneck
 
 An **elder bottleneck** is dependence on one or a few operators whose
 internal models carry irreplaceable regulatory knowledge.
@@ -15479,7 +15479,7 @@ The elder may be extraordinarily competent.
 That competence is precisely why the structural dependence can remain
 hidden.
 
-## Bastard Bus Factor
+### Bastard Bus Factor
 
 The **bastard bus factor** is the number of compensatory operators
 whose disappearance would expose unresolved boundaries.
@@ -15498,7 +15498,7 @@ Its implementation bus factor is healthy.
 
 Its operational model remains one accident away from rediscovery.
 
-## Automation Substitution Failure
+### Automation Substitution Failure
 
 **Automation substitution failure** occurs when a workflow previously
 stabilized by an experienced operator is automated without
@@ -15527,7 +15527,7 @@ The automation executes the visible ritual and fails.
 > The script replaced the hands.  
 > Nobody replaced the doubt.
 
-## Field Symptom: Exit Zero
+### Field Symptom: Exit Zero
 
 A package installation exits zero.
 
@@ -15562,7 +15562,7 @@ The inspection habit may remain valuable.
 
 It should not be the only contract.
 
-## Field Symptom: The New Operator Uses the Manual
+### Field Symptom: The New Operator Uses the Manual
 
 A manual says:
 
@@ -15588,7 +15588,7 @@ The operator learns the rule through damage.
 
 The ecosystem has completed one unit of regulatory apprenticeship.
 
-## Field Symptom: The Private Wrapper
+### Field Symptom: The Private Wrapper
 
 An operator maintains:
 
@@ -15621,7 +15621,7 @@ If every experienced operator carries an equivalent wrapper, the
 project should inspect which responsibilities the official operation
 has outsourced.
 
-## Field Symptom: The Rewrite Rejected by Elders
+### Field Symptom: The Rewrite Rejected by Elders
 
 A new implementation offers:
 
@@ -15660,7 +15660,7 @@ The project must separate:
 * outdated adaptive reflex;
 * unresolved model defects.
 
-## Field Symptom: The System Works for Everyone Here
+### Field Symptom: The System Works for Everyone Here
 
 A project receives reports that installation is confusing.
 
@@ -15682,7 +15682,7 @@ It says little about the operators filtered out before joining.
 
 This is survivor validation.
 
-## Field Symptom: The Missing Maintainer
+### Field Symptom: The Missing Maintainer
 
 One maintainer understands the package database migration path.
 
@@ -15705,7 +15705,7 @@ The elder disappeared.
 
 The system inherited a haunted codepath and an apprenticeship vacancy.
 
-## Field Symptom: The Hostile Support Answer
+### Field Symptom: The Hostile Support Answer
 
 A newcomer asks why an apparently supported operation damaged state.
 
@@ -15718,13 +15718,13 @@ system.
 
 But the response can conceal two different contracts:
 
-### Legitimate transparency
+#### Legitimate transparency
 
 > The implementation is intentionally small, the relevant behavior is
 > explicit, and operators are expected to inspect it before extending
 > the system.
 
-### Competence inversion
+#### Competence inversion
 
 > The public interface projects one meaning, the implementation
 > performs another, and operators are responsible for discovering the
@@ -15732,7 +15732,7 @@ But the response can conceal two different contracts:
 
 The same phrase can defend sovereignty or launder a missing boundary.
 
-## Cruelty Transfer
+### Cruelty Transfer
 
 **Cruelty transfer** occurs when the sharpness of a technical boundary
 is moved into social interaction.
@@ -15756,7 +15756,7 @@ It has been attached to community behavior.
 > The parser could have said no.  
 > Instead, the mailing list does.
 
-## Scar Prestige
+### Scar Prestige
 
 **Scar prestige** is status acquired through visible survival of
 difficult infrastructure.
@@ -15778,7 +15778,7 @@ the status derived from mastering its defects.
 
 The ecosystem may then defend adaptive burden as culture.
 
-## Difficulty Capture
+### Difficulty Capture
 
 **Difficulty capture** occurs when avoidable operational difficulty
 becomes part of the ecosystem's identity and legitimacy.
@@ -15797,7 +15797,7 @@ Some merely injures and selects.
 
 The Fieldbook asks which.
 
-## Bastard Identity
+### Bastard Identity
 
 **Bastard identity** forms when compensatory skill becomes part of how
 operators understand themselves and their relationship to the system.
@@ -15825,7 +15825,7 @@ A coherent system need not abolish:
 It should abolish the requirement that operators be wounded before
 they can use those capabilities safely.
 
-## Adaptive Lock-In
+### Adaptive Lock-In
 
 **Adaptive lock-in** occurs when operator practices, identity,
 tooling, and doctrine make structural repair socially expensive even
@@ -15846,7 +15846,7 @@ itself around compensating for it.
 Repair must therefore migrate not only code and state, but human
 control.
 
-## De-Skilling Fear
+### De-Skilling Fear
 
 **De-skilling fear** is concern that stronger contracts or automation
 will make operators less capable of understanding and recovering the
@@ -15872,7 +15872,7 @@ It is to stop requiring ignorance repair as a core competency.
 
 > An invariant can remove the trap without confiscating the map.
 
-## Re-Skilling
+### Re-Skilling
 
 **Re-skilling** is the movement of operator expertise from
 compensating for missing structure toward exercising explicit control
@@ -15897,7 +15897,7 @@ Structural repair should not eliminate expertise.
 
 It should improve what expertise is spent on.
 
-## Operator Sovereignty
+### Operator Sovereignty
 
 **Operator sovereignty** is the ability of operators to understand,
 choose, and control policy affecting their installations.
@@ -15923,7 +15923,7 @@ It does not require:
 > Sovereignty is control over the machine.  
 > It is not responsibility for guessing what the machine meant.
 
-## Humane Explicitness
+### Humane Explicitness
 
 **Humane explicitness** is the design principle that important system
 boundaries should be visible before an operator crosses them.
@@ -15944,7 +15944,7 @@ Humane explicitness does not remove danger from systems work.
 
 It prevents the system from disguising danger as ordinary success.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Operator adaptation** is not automatically evidence of bad design.
 
@@ -15996,7 +15996,7 @@ people for undocumented semantics.
 
 It can move expertise toward higher-value judgment.
 
-## The Bastard Formation Test
+### The Bastard Formation Test
 
 When operator expertise appears essential, ask:
 
@@ -16043,7 +16043,7 @@ independent judgment.
 The goal is to stop using those operators as missing infrastructure
 while pretending their scars are a feature of the machine.
 
-## Eighteenth House Law
+### Eighteenth House Law
 
 > The system injures the operator.  
 > The scar is documented as expertise.
@@ -16061,7 +16061,7 @@ that created it.
 
 ---
 
-# Selection Pressure and Cultural Evolution
+## Selection Pressure and Cultural Evolution
 
 A project has weak upgrade semantics.
 
@@ -16092,7 +16092,7 @@ The ecosystem has spent years killing the others.
 
 ---
 
-## Selection Pressure
+### Selection Pressure
 
 **Selection pressure** is any recurring environmental condition that
 changes which operators, tools, practices, or beliefs are likely to
@@ -16131,7 +16131,7 @@ Their habits increasingly define what the project considers normal.
 > The environment does not vote.  
 > It filters.
 
-## Fitness
+### Fitness
 
 **Fitness** is the ability of an operator, tool, or practice to
 survive and remain useful under the ecosystem's actual conditions.
@@ -16156,7 +16156,7 @@ Fitness does not mean general superiority.
 
 It means successful adaptation to current conditions.
 
-## Local Fitness
+### Local Fitness
 
 **Local fitness** is effectiveness within one installation, workflow,
 or community.
@@ -16173,7 +16173,7 @@ Local fitness can be extremely high.
 It becomes misleading when treated as proof of ecosystem-wide
 suitability.
 
-## Ecosystem Fitness
+### Ecosystem Fitness
 
 **Ecosystem fitness** is the ability of a mechanism to survive across:
 
@@ -16194,7 +16194,7 @@ The distinction mirrors local survivability and system-level coherence.
 
 > A thing can be fit for one cave and still die in daylight.
 
-## Technical Selection
+### Technical Selection
 
 **Technical selection** rewards tools and practices that survive the
 system's machine-level conditions.
@@ -16221,7 +16221,7 @@ appropriate.
 
 It proves the environment repeatedly rewards compensation.
 
-## Social Selection
+### Social Selection
 
 **Social selection** rewards participants who fit the community's
 norms, communication style, and initiation process.
@@ -16242,7 +16242,7 @@ Social selection may be stronger than technical selection.
 A newcomer may possess enough technical skill but fail to gain access
 to the knowledge routes through which the system is actually operated.
 
-## Epistemic Selection
+### Epistemic Selection
 
 **Epistemic selection** rewards particular ways of knowing.
 
@@ -16263,7 +16263,7 @@ reading and elder knowledge may indeed produce better answers.
 Over time, the ecosystem may treat those epistemic habits as virtues
 independent of the conditions that made them useful.
 
-## Tool Selection
+### Tool Selection
 
 **Tool selection** occurs when the ecosystem's defects favor tools
 that can compensate for them.
@@ -16292,7 +16292,7 @@ The winning tool may be:
 Its success may result from absorbing more historical ambiguity than
 its competitors.
 
-## Scar Fitness
+### Scar Fitness
 
 **Scar fitness** is fitness derived from accumulated adaptations to
 historical failure.
@@ -16310,7 +16310,7 @@ scars.
 > The old tool is ugly because history kept writing patches on its
 > skin.
 
-## Cultural Evolution
+### Cultural Evolution
 
 **Cultural evolution** is the change in shared habits, values,
 vocabulary, rituals, and doctrines produced by repeated technical and
@@ -16353,7 +16353,7 @@ The culture is not separate from the infrastructure.
 
 It is one of the infrastructure's outputs.
 
-## Coevolution
+### Coevolution
 
 **Coevolution** occurs when technical and cultural structures adapt to
 one another recursively.
@@ -16373,7 +16373,7 @@ The technology selects for the culture.
 
 The culture preserves the technology.
 
-## Cultural Feedback Loop
+### Cultural Feedback Loop
 
 A **cultural feedback loop** occurs when an adaptation changes the
 social environment in ways that reinforce the original condition.
@@ -16396,7 +16396,7 @@ The loop can remain stable for decades.
 
 Each generation experiences the resulting culture as inherited fact.
 
-## Path Dependence
+### Path Dependence
 
 **Path dependence** means current structure depends strongly on the
 sequence of past adaptations, not only on present technical
@@ -16421,7 +16421,7 @@ Path dependence does not mean change is impossible.
 It means the present cannot be evaluated as though it were chosen from
 a blank state.
 
-## Historical Ratchet
+### Historical Ratchet
 
 A **historical ratchet** is a mechanism through which complexity,
 compatibility, or social burden accumulates more easily than it can be
@@ -16441,7 +16441,7 @@ Removal requires ecosystem proof.
 
 The ratchet turns easily in one direction.
 
-## Cultural Ratchet
+### Cultural Ratchet
 
 A **cultural ratchet** preserves adaptive norms after the technical
 conditions that produced them weaken or disappear.
@@ -16458,7 +16458,7 @@ For example:
 The culture remembers the old environment through continued
 restriction.
 
-## Founder Effect
+### Founder Effect
 
 A **founder effect** occurs when early participants shape norms that
 persist because later participants enter an already structured
@@ -16482,7 +16482,7 @@ was selected partly through compatibility with them.
 > The first operators choose the maze.  
 > Later operators are judged by how quickly they learn it.
 
-## Population Bottleneck
+### Population Bottleneck
 
 A **population bottleneck** occurs when the community shrinks, causing
 institutional knowledge and cultural variation to collapse into a
@@ -16500,7 +16500,7 @@ The surviving culture may appear unusually coherent.
 
 Some of that coherence is loss of population.
 
-## Cultural Monoculture
+### Cultural Monoculture
 
 A **cultural monoculture** exists when most active participants share
 similar skills, assumptions, workflows, and failure tolerances.
@@ -16525,7 +16525,7 @@ A monoculture of expert operators may fail to notice:
 * inaccessible support channels;
 * local assumptions presented as universal.
 
-## Newcomer as Mutation
+### Newcomer as Mutation
 
 A newcomer introduces variation.
 
@@ -16546,7 +16546,7 @@ sees.
 > The newcomer is not always noise.  
 > Sometimes the newcomer is a conformance test with questions.
 
-## Independent Implementation as Mutation
+### Independent Implementation as Mutation
 
 An independent implementation similarly introduces variation.
 
@@ -16566,7 +16566,7 @@ That may be correct.
 It may also mean the ecosystem's real contract was available only
 through cultural inheritance.
 
-## Variation
+### Variation
 
 **Variation** is the presence of different approaches,
 interpretations, tools, or operator practices.
@@ -16584,7 +16584,7 @@ An ecosystem that eliminates all variation may become stable.
 
 It may also become unable to distinguish contract from convention.
 
-## Selection Against Legibility
+### Selection Against Legibility
 
 **Selection against legibility** occurs when making hidden structure
 explicit threatens successful adaptations, authority, or identity.
@@ -16604,7 +16604,7 @@ Legibility helps newcomers and automation.
 
 It may reduce the advantage of those who already know the maze.
 
-## Selection Against Documentation
+### Selection Against Documentation
 
 Documentation may be selected against when:
 
@@ -16623,7 +16623,7 @@ Sometimes this diagnosis is accurate.
 Often it is an adaptation to a system that lacks stable contracts
 worth documenting.
 
-## Selection Against Tests
+### Selection Against Tests
 
 Tests may be selected against when:
 
@@ -16638,7 +16638,7 @@ The culture may describe tests as brittle.
 
 They may be brittle because the contract is brittle.
 
-## Selection Against Automation
+### Selection Against Automation
 
 Automation may be selected against when:
 
@@ -16657,7 +16657,7 @@ Automation proposals fail.
 The failure is remembered as evidence that automation itself is
 unsuitable.
 
-## Selection Against Abstraction
+### Selection Against Abstraction
 
 Abstraction may be selected against when previous abstractions:
 
@@ -16677,7 +16677,7 @@ This may be a sound local lesson.
 It becomes cultural overreach when every boundary, type, or structured
 result is treated as the beginning of semantic counterfeit.
 
-## Selection for Inspectability
+### Selection for Inspectability
 
 Some traits are selected because they genuinely improve survival under
 uncertainty.
@@ -16703,7 +16703,7 @@ Not every adaptation is scar tissue.
 
 Some become broadly valuable architecture.
 
-## Selection for Reversibility
+### Selection for Reversibility
 
 High failure cost selects for reversible practices:
 
@@ -16725,7 +16725,7 @@ The task is not to discard everything selected under pressure.
 It is to identify which traits remain valuable after the pressure
 changes.
 
-## Exaptation
+### Exaptation
 
 **Exaptation** occurs when a trait developed for one purpose becomes
 useful for another.
@@ -16745,7 +16745,7 @@ It later became legitimate design.
 > Scar tissue can become armor.  
 > It should still be inspected for infection.
 
-## Cultural Adaptation Versus Architectural Principle
+### Cultural Adaptation Versus Architectural Principle
 
 A **cultural adaptation** is a behavior that helped participants
 survive a specific environment.
@@ -16770,7 +16770,7 @@ The first preserves a property.
 
 The second preserves one historical reaction.
 
-## Moralization
+### Moralization
 
 **Moralization** occurs when an adaptive practice is recast as a
 judgment about good and bad operators, tools, or designs.
@@ -16793,7 +16793,7 @@ It also destroys scope.
 > A technical workaround says, “this avoids the bug”.  
 > A moral doctrine says, “good people do this”.
 
-## Constraint Moralization
+### Constraint Moralization
 
 **Constraint moralization** is the treatment of a historical
 limitation as a virtue.
@@ -16812,7 +16812,7 @@ The limitation may still be a limitation.
 
 A project should be able to defend the value without denying the cost.
 
-## Virtue Laundering
+### Virtue Laundering
 
 **Virtue laundering** presents adaptive burden as evidence of
 philosophical purity.
@@ -16845,7 +16845,7 @@ The operator control may be real.
 
 The causal account remains incomplete.
 
-## Doctrine Formation
+### Doctrine Formation
 
 **Doctrine formation** occurs when selected practices are compressed
 into shared statements about how systems should be built and operated.
@@ -16870,7 +16870,7 @@ Doctrine formation becomes dangerous when:
 * doctrine protects existing authority;
 * selected survivors are treated as the whole possible population.
 
-## Cultural Canonization
+### Cultural Canonization
 
 **Cultural canonization** is the process through which one adaptation
 becomes the accepted interpretation of project values.
@@ -16890,7 +16890,7 @@ usefulness.
 
 It is defended as identity.
 
-## Identity Defense
+### Identity Defense
 
 **Identity defense** occurs when technical change is resisted because
 it threatens the culture's account of itself.
@@ -16912,7 +16912,7 @@ The proposal and the fear may concern different levels.
 Identity defense converts architectural discussion into existential
 argument.
 
-## Cultural Antibody
+### Cultural Antibody
 
 A **cultural antibody** is a learned response that rejects changes
 resembling earlier harmful interventions.
@@ -16934,7 +16934,7 @@ superficial features with the old failure.
 > The antibody recognizes the logo.  
 > It has not yet read the contract.
 
-## Reform Resistance
+### Reform Resistance
 
 **Reform resistance** is opposition to structural repair arising from
 the ecosystem's accumulated adaptations, incentives, and identity.
@@ -16955,7 +16955,7 @@ Treating all resistance as irrational is itself a regulatory failure.
 The resistance contains information about what the current system,
 however badly, still provides.
 
-## Adaptation Capture
+### Adaptation Capture
 
 **Adaptation capture** occurs when participants who benefit from one
 coping structure gain enough influence to preserve the conditions
@@ -16974,7 +16974,7 @@ policy.
 
 Their adaptations have become interests.
 
-## Cultural Homeostasis
+### Cultural Homeostasis
 
 **Cultural homeostasis** is the tendency of an ecosystem to restore
 familiar practices after attempted change.
@@ -16995,7 +16995,7 @@ The technical structure changes.
 
 The culture restores the old control pattern.
 
-## Reform Absorption
+### Reform Absorption
 
 **Reform absorption** occurs when a structural improvement is
 incorporated in a way that preserves the previous adaptive ecology.
@@ -17012,7 +17012,7 @@ The reform exists.
 
 Its intended boundary effect is absorbed.
 
-## Superficial Modernization
+### Superficial Modernization
 
 **Superficial modernization** changes implementation style without
 changing the selection pressures shaping the ecosystem.
@@ -17030,7 +17030,7 @@ The project looks current.
 
 Operators still perform the same missing regulation.
 
-## Ecological Lock-In
+### Ecological Lock-In
 
 **Ecological lock-in** occurs when technical components, operator
 practices, institutional memory, and cultural identity mutually depend
@@ -17058,7 +17058,7 @@ The proposal touches one function.
 
 The ecosystem hears a threat to its whole adaptation network.
 
-## Cultural Fork
+### Cultural Fork
 
 A **cultural fork** occurs when groups adapt to the same technical
 ancestry in different ways and preserve different values, practices,
@@ -17081,7 +17081,7 @@ Both are legitimate evolutionary paths.
 Conflict arises when each treats its adaptations as the only faithful
 interpretation of shared ancestry.
 
-## Counter-Culture
+### Counter-Culture
 
 A **counter-culture** forms when participants define themselves
 against the dominant ecosystem's adaptations.
@@ -17109,7 +17109,7 @@ opposition.
 > Folklore fights folklore.  
 > Each side calls the other's scars ideology.
 
-## Niche Construction
+### Niche Construction
 
 **Niche construction** is the process by which participants modify the
 environment to favor their own successful adaptations.
@@ -17126,7 +17126,7 @@ The ecosystem selects participants.
 
 Participants then redesign the ecosystem.
 
-## Cultural Fitness Landscape
+### Cultural Fitness Landscape
 
 A **fitness landscape** describes which traits are rewarded or
 punished under the current environment.
@@ -17154,7 +17154,7 @@ Changing infrastructure changes the landscape.
 
 It also changes who can participate successfully.
 
-## Selection Blindness
+### Selection Blindness
 
 **Selection blindness** is failure to notice that the observed
 community is the result of filtering.
@@ -17174,7 +17174,7 @@ abandoned.
 Selection blindness mistakes the output of the filter for universal
 preference.
 
-## Exit as Signal
+### Exit as Signal
 
 Participant exit is a weak but important signal.
 
@@ -17194,7 +17194,7 @@ reporting.
 
 The ecosystem hears mostly from survivors.
 
-## Silence Bias
+### Silence Bias
 
 **Silence bias** is the overrepresentation of participants who remain
 engaged long enough to provide feedback.
@@ -17212,7 +17212,7 @@ Silence is easy to interpret as satisfaction or irrelevance.
 
 It may be selection.
 
-## Cultural Metrics
+### Cultural Metrics
 
 An ecosystem cannot measure culture fully, but useful signals include:
 
@@ -17231,7 +17231,7 @@ Metrics should not become another counterfeit authority.
 
 They are observations requiring interpretation.
 
-## Intentional Selection
+### Intentional Selection
 
 Not all selection is accidental.
 
@@ -17259,7 +17259,7 @@ defects.
 > It need not require knowing which part of the handle was repaired in
 > 2011.
 
-## Cultural Refactoring
+### Cultural Refactoring
 
 **Cultural refactoring** is deliberate change to the habits,
 incentives, and narratives surrounding infrastructure.
@@ -17280,7 +17280,7 @@ Technical repair without cultural refactoring may be absorbed.
 Cultural reform without technical repair becomes motivational
 literature.
 
-## Selection Pressure Audit
+### Selection Pressure Audit
 
 A **selection pressure audit** examines what the ecosystem rewards,
 discourages, and filters out.
@@ -17301,7 +17301,7 @@ The audit does not ask whether the culture is good or bad.
 
 It asks what environment produced it.
 
-## Field Symptom: Manual Upgrade Culture
+### Field Symptom: Manual Upgrade Culture
 
 The project has no reliable full-system transaction.
 
@@ -17333,7 +17333,7 @@ The counterfeit doctrine is:
 
 > Automation is inherently irresponsible.
 
-## Field Symptom: The Tool That Survived
+### Field Symptom: The Tool That Survived
 
 Three package frontends are written.
 
@@ -17364,7 +17364,7 @@ Selection favored the tool adapted to missing contracts.
 
 It did not prove missing contracts were desirable.
 
-## Field Symptom: Documentation Is for the Weak
+### Field Symptom: Documentation Is for the Weak
 
 A project has sparse documentation.
 
@@ -17393,7 +17393,7 @@ It would stop testing whether newcomers can locate the correct elder.
 
 The culture has moralized one memory substrate.
 
-## Field Symptom: The Failed Automation Project
+### Field Symptom: The Failed Automation Project
 
 A maintainer automates release publication.
 
@@ -17420,7 +17420,7 @@ Some judgment may remain human.
 The script failed because the workflow's semantics were incomplete,
 not because automation lacks moral fiber.
 
-## Field Symptom: The Rejected Transaction
+### Field Symptom: The Rejected Transaction
 
 A proposal introduces transactional package database updates.
 
@@ -17446,7 +17446,7 @@ Selection produced valuable antibodies.
 The same antibodies would become harmful if they rejected the revised
 contract merely because it used the word *transaction*.
 
-## Field Symptom: The Fork That Automates Everything
+### Field Symptom: The Fork That Automates Everything
 
 A downstream fork responds to manual burden by adding:
 
@@ -17478,7 +17478,7 @@ It is:
 
 Cultural conflict often contains an unresolved accounting problem.
 
-## Field Symptom: The Famous Bastard
+### Field Symptom: The Famous Bastard
 
 One operator can repair any broken installation.
 
@@ -17504,7 +17504,7 @@ stability.
 
 This is ecological lock-in around embodied regulation.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Selection pressure** is not deliberate exclusion.
 
@@ -17560,7 +17560,7 @@ Bad environments can select useful principles.
 
 Changing control changes authority, expertise, and participation.
 
-## The Selection Pressure Test
+### The Selection Pressure Test
 
 For any stable technical culture, ask:
 
@@ -17605,7 +17605,7 @@ An ecosystem cannot avoid selection.
 
 It can choose whether to understand what it is selecting for.
 
-## Nineteenth House Law
+### Nineteenth House Law
 
 > Every system trains its operators.  
 > The curriculum is whatever keeps them from dying.
@@ -17624,7 +17624,7 @@ persuasive.
 
 ---
 
-# Doctrine, Identity, and Institutional Self-Defense
+## Doctrine, Identity, and Institutional Self-Defense
 
 The project lacks dependency resolution.
 
@@ -17659,7 +17659,7 @@ Identity now protects the missing mechanism.
 
 ---
 
-## Doctrine
+### Doctrine
 
 **Doctrine** is a compressed set of principles used to guide judgment
 across recurring situations.
@@ -17694,7 +17694,7 @@ Compression removes:
 
 The optimization helps until the environment changes.
 
-## Design Principle
+### Design Principle
 
 A **design principle** is a reusable statement about a property the
 system intends to preserve.
@@ -17731,7 +17731,7 @@ It does not logically require:
 * undocumented state;
 * absence of orchestration.
 
-## Mechanism
+### Mechanism
 
 A **mechanism** is one concrete way of realizing a principle.
 
@@ -17756,7 +17756,7 @@ mechanism with the value it once served.
 > The value is not the scar.  
 > The scar is one record of defending the value.
 
-## Doctrinal Identity
+### Doctrinal Identity
 
 **Doctrinal identity** is the part of a project's self-conception
 built from shared principles, prohibitions, stories, and historical
@@ -17784,7 +17784,7 @@ This can produce coherence.
 
 It can also transform architectural questions into loyalty tests.
 
-## Contrast Identity
+### Contrast Identity
 
 A **contrast identity** defines the project partly through opposition
 to another system, culture, or design tendency.
@@ -17823,7 +17823,7 @@ shares the word *dependency*.
 The culture remembers the enemy's silhouette rather than the failure
 model.
 
-## Negative Doctrine
+### Negative Doctrine
 
 **Negative doctrine** states what the project must not become.
 
@@ -17854,7 +17854,7 @@ The first constrains authority.
 
 The second constrains implementation.
 
-## Sacred Constraint
+### Sacred Constraint
 
 A **sacred constraint** is a limitation or rule protected as part of
 project identity rather than evaluated primarily through its current
@@ -17876,7 +17876,7 @@ Its sacred status changes how it is defended.
 Evidence against it is interpreted as evidence against the project
 itself.
 
-## Identity-Bearing Mechanism
+### Identity-Bearing Mechanism
 
 An **identity-bearing mechanism** is an implementation choice whose
 continued presence symbolizes project values.
@@ -17896,7 +17896,7 @@ preserves the same functional outcome.
 The proposal must address symbolic and governance meaning, not only
 technical equivalence.
 
-## Identity-Bearing Defect
+### Identity-Bearing Defect
 
 An **identity-bearing defect** is a structural weakness that has
 become entangled with values the community wants to preserve.
@@ -17914,7 +17914,7 @@ attack the attached value.
 
 > The bug is wearing the project flag.
 
-## Retrospective Intentionality
+### Retrospective Intentionality
 
 **Retrospective intentionality** is the reinterpretation of inherited
 or accidental structure as deliberate design.
@@ -17954,7 +17954,7 @@ The historical and present claims should remain separate:
 * **historical claim:** why the structure originally appeared;
 * **current claim:** why the project now chooses to retain it.
 
-## Post Hoc Philosophy
+### Post Hoc Philosophy
 
 **Post hoc philosophy** is doctrine created after an adaptation has
 already stabilized the ecosystem.
@@ -17971,7 +17971,7 @@ This can produce genuine insight.
 It can also prevent the ecosystem from considering mechanisms that
 preserve the same value with lower operational burden.
 
-## Philosophy Laundering
+### Philosophy Laundering
 
 **Philosophy laundering** presents an unresolved cost as the necessary
 expression of a project value.
@@ -18005,7 +18005,7 @@ The mechanism may still be accidental.
 > A virtue can explain why a cost is tolerated.  
 > It does not prove the cost is required.
 
-## Moral Architecture
+### Moral Architecture
 
 **Moral architecture** is technical structure defended through
 judgments about character rather than only through operational
@@ -18034,7 +18034,7 @@ It also creates:
 * exclusion through folklore;
 * resistance to mechanical enforcement.
 
-## Moral Substitution
+### Moral Substitution
 
 **Moral substitution** replaces a technical control with a judgment
 about the person expected to supply it.
@@ -18067,7 +18067,7 @@ The moral rule may reduce incidents.
 
 It does not create a mechanical boundary.
 
-## Purity Test
+### Purity Test
 
 A **purity test** is a technical or cultural requirement used to
 determine whether a proposal or participant belongs to the project.
@@ -18087,7 +18087,7 @@ Purity tests simplify identity.
 They reduce the need to evaluate each proposal's actual authority,
 semantics, and cost.
 
-## Heresy
+### Heresy
 
 A **heresy** is a proposal framed as violating project identity before
 its technical contract is examined.
@@ -18113,7 +18113,7 @@ It should begin an autopsy, not end one.
 >
 > It is not a conformance test.
 
-## Institutional Self-Defense
+### Institutional Self-Defense
 
 **Institutional self-defense** is the set of processes through which a
 project protects its identity, authority structure, accumulated
@@ -18147,7 +18147,7 @@ Institutional self-defense becomes pathological when it protects
 unresolved defects from examination because those defects have become
 culturally familiar.
 
-## Institutional Immune System
+### Institutional Immune System
 
 The **institutional immune system** is the project's learned ability
 to recognize and resist changes resembling previous harmful
@@ -18167,7 +18167,7 @@ A strong immune system preserves institutional memory.
 An overactive immune system attacks harmless or beneficial change
 sharing only surface features with earlier harm.
 
-## Cultural Antibody
+### Cultural Antibody
 
 A **cultural antibody** is one specific reflex within the
 institutional immune system.
@@ -18197,7 +18197,7 @@ The antibody remembers the category.
 
 It may forget the violated property.
 
-## Autoimmune Doctrine
+### Autoimmune Doctrine
 
 **Autoimmune doctrine** is a protective principle that begins
 attacking mechanisms necessary to preserve the project's own stated
@@ -18220,7 +18220,7 @@ It damages the underlying value.
 
 > The immune system saved the flag and killed the organ.
 
-## Doctrine Capture
+### Doctrine Capture
 
 **Doctrine capture** occurs when a group or role gains authority to
 define project principles in ways that preserve its own adaptations,
@@ -18242,7 +18242,7 @@ Capture need not be cynical.
 People naturally perceive their own compensations as necessary
 structure.
 
-## Authority Preservation
+### Authority Preservation
 
 Technical change often redistributes authority.
 
@@ -18266,7 +18266,7 @@ A serious proposal should state:
 * who maintains the new mechanism;
 * who can inspect and reverse its decisions.
 
-## Identity Threat
+### Identity Threat
 
 An **identity threat** occurs when participants perceive a technical
 change as challenging the project's defining values or their own
@@ -18291,7 +18291,7 @@ The reaction contains information.
 
 The proposal may have failed to explain how the value survives.
 
-## Doctrine Panic
+### Doctrine Panic
 
 **Doctrine panic** is rapid rejection triggered by perceived identity
 threat before the proposal's actual semantic and authority boundaries
@@ -18312,7 +18312,7 @@ Doctrine panic is not proof that the proposal is good.
 It is evidence that evaluation has moved from contract analysis to
 identity defense.
 
-## Asymmetric Burden of Proof
+### Asymmetric Burden of Proof
 
 An **asymmetric burden of proof** occurs when new mechanisms must
 prove every future consequence while existing mechanisms are accepted
@@ -18344,7 +18344,7 @@ Unpriced status quo is not neutral.
 > The proposal arrives with a cost model.  
 > The incumbent arrives disguised as weather.
 
-## Status-Quo Naturalization
+### Status-Quo Naturalization
 
 **Status-quo naturalization** treats current structure as the natural
 baseline rather than one historically contingent arrangement.
@@ -18364,7 +18364,7 @@ For example:
 
 Naturalization hides the ecology's existing machinery.
 
-## Complexity Asymmetry
+### Complexity Asymmetry
 
 **Complexity asymmetry** occurs when complexity inside the preferred
 component is counted, while complexity exported into operators and
@@ -18387,7 +18387,7 @@ The ecology does not.
 This is operational burden accounting applied to institutional
 doctrine.
 
-## Maintenance Asymmetry
+### Maintenance Asymmetry
 
 **Maintenance asymmetry** occurs when the visible maintenance burden
 of a new shared mechanism is counted while the dispersed maintenance
@@ -18399,7 +18399,7 @@ Private adapters also require owners.
 
 Their maintenance is simply fragmented and often unpaid.
 
-## Proof by Survival
+### Proof by Survival
 
 **Proof by survival** is the claim that current design is justified
 because the project has persisted under it.
@@ -18422,7 +18422,7 @@ It does not prove:
 > Ancient ruins demonstrate durable stone.  
 > They do not demonstrate indoor plumbing.
 
-## Authenticity Claim
+### Authenticity Claim
 
 An **authenticity claim** argues that one practice is legitimate
 because it matches the project's historical or cultural essence.
@@ -18445,7 +18445,7 @@ It should still answer:
 * Has the environment changed?
 * Does the practice still serve the claimed value?
 
-## Myth of Original Purity
+### Myth of Original Purity
 
 The **myth of original purity** imagines an earlier project state in
 which design, practice, and philosophy were perfectly aligned before
@@ -18468,7 +18468,7 @@ judged.
 > The founding architecture was not delivered on stone tablets.  
 > Somebody needed the machine to build on Tuesday.
 
-## Founding Accident
+### Founding Accident
 
 A **founding accident** is an early contingent decision that later
 acquires constitutional significance.
@@ -18485,7 +18485,7 @@ The accident may become a good design through use and refinement.
 
 Its age alone does not make it essential.
 
-## Constitutional Mechanism
+### Constitutional Mechanism
 
 A **constitutional mechanism** is infrastructure that defines or
 strongly constrains authority within the ecosystem.
@@ -18505,7 +18505,7 @@ ordinary implementation changes.
 Many doctrinal conflicts are constitutional conflicts wearing
 technical clothing.
 
-## Institutional Constitution
+### Institutional Constitution
 
 An **institutional constitution** is the combination of explicit
 rules, technical authority surfaces, review practices, and cultural
@@ -18526,7 +18526,7 @@ A project has a constitution whether or not it writes one.
 The unwritten version is distributed through access control, habit,
 and elder memory.
 
-## Doctrine Drift
+### Doctrine Drift
 
 **Doctrine drift** occurs when a principle's practical interpretation
 changes without explicit reconsideration.
@@ -18567,7 +18567,7 @@ The words remain.
 
 Their semantic radius changes.
 
-## Doctrine Fossil
+### Doctrine Fossil
 
 A **doctrine fossil** is a principle retained as historical identity
 but no longer actively governing important decisions.
@@ -18584,7 +18584,7 @@ A doctrine fossil is mostly ceremonial.
 It becomes misleading if the project still claims it as current
 behavior.
 
-## Zombie Doctrine
+### Zombie Doctrine
 
 A **zombie doctrine** is a principle publicly maintained after the
 technical and institutional mechanisms supporting it have disappeared.
@@ -18604,7 +18604,7 @@ The doctrine remains alive in language.
 
 Its enforcement is dead.
 
-## Ghost Doctrine
+### Ghost Doctrine
 
 A **ghost doctrine** is an old principle whose explicit language has
 faded but whose historical shape still constrains decisions.
@@ -18621,7 +18621,7 @@ The doctrine disappeared.
 
 Its veto remains.
 
-## Doctrine as Regulator
+### Doctrine as Regulator
 
 Doctrine can function as a controller within the ecosystem.
 
@@ -18647,7 +18647,7 @@ Healthy doctrine must remain:
 * revisable;
 * connected to current system behavior.
 
-## Institutional Self-Defense as Regulator
+### Institutional Self-Defense as Regulator
 
 Institutional self-defense regulates project evolution.
 
@@ -18682,7 +18682,7 @@ Regulator failure can occur in either direction:
 * insufficient defense permits capture and incoherent growth;
 * excessive defense prevents correction of inherited defects.
 
-## Conservative Control
+### Conservative Control
 
 **Conservative control** changes infrastructure slowly because error
 costs, compatibility obligations, or maintenance capacity justify
@@ -18701,7 +18701,7 @@ It does not require the status quo to be ideal.
 
 It requires change to account for reality.
 
-## Doctrinal Closure
+### Doctrinal Closure
 
 **Doctrinal closure** occurs when the project's principles no longer
 permit evidence to revise their interpretation.
@@ -18719,7 +18719,7 @@ At closure, doctrine stops guiding inquiry.
 
 It replaces inquiry.
 
-## Self-Sealing Doctrine
+### Self-Sealing Doctrine
 
 A **self-sealing doctrine** interprets every failure of the doctrine
 as evidence that participants did not follow it purely enough.
@@ -18746,7 +18746,7 @@ When operators misunderstand behavior:
 
 The doctrine cannot lose because failure is assigned outside it.
 
-## Institutional Gaslighting
+### Institutional Gaslighting
 
 **Institutional gaslighting** is the repeated denial of a visible
 system contradiction by redefining the operator's reasonable
@@ -18765,7 +18765,7 @@ Direct disagreement and demanding standards are not gaslighting.
 
 The mechanism requires persistent contradiction plus denial.
 
-## Field Symptom: The Dependency Planner
+### Field Symptom: The Dependency Planner
 
 A proposal adds a command that:
 
@@ -18803,7 +18803,7 @@ The correct review asks:
 Rejecting it solely by category is a cultural antibody firing at a
 shared noun.
 
-## Field Symptom: Repository Validation as Centralization
+### Field Symptom: Repository Validation as Centralization
 
 A project proposes requiring identity validation before package
 publication.
@@ -18838,7 +18838,7 @@ The discussion should distinguish:
 Otherwise *centralization* becomes a doctrinal fog covering several
 separate questions.
 
-## Field Symptom: Documentation Threatens Authenticity
+### Field Symptom: Documentation Threatens Authenticity
 
 A contributor proposes documenting the package database format and
 recovery semantics.
@@ -18869,7 +18869,7 @@ Keeping the semantics undocumented does not remove the promise.
 
 It merely distributes it through folklore.
 
-## Field Symptom: The Text Database
+### Field Symptom: The Text Database
 
 A project stores package state in a text database.
 
@@ -18902,7 +18902,7 @@ The doctrinal value is inspectability.
 
 The mechanism is not necessarily one text file forever.
 
-## Field Symptom: The Trusted Maintainer
+### Field Symptom: The Trusted Maintainer
 
 Repository integrity depends on one experienced maintainer manually
 reviewing every package.
@@ -18935,7 +18935,7 @@ The choice is not trust or machinery.
 
 It is which work deserves human attention.
 
-## Field Symptom: The Rewrite Called Betrayal
+### Field Symptom: The Rewrite Called Betrayal
 
 A fork rewrites a tool while preserving:
 
@@ -18962,7 +18962,7 @@ Those claims require accounting.
 
 Calling it betrayal replaces the cost model with identity defense.
 
-## Field Symptom: The Rule Against Daemons
+### Field Symptom: The Rule Against Daemons
 
 A project rejects a daemon architecture because:
 
@@ -18993,7 +18993,7 @@ The architecture has acquired the costs without the noun.
 
 This is doctrinal drift and complexity asymmetry.
 
-## Field Symptom: Simplicity as a Veto
+### Field Symptom: Simplicity as a Veto
 
 A proposed result object contains:
 
@@ -19020,7 +19020,7 @@ The doctrinal question is:
 
 Simplicity that ignores exported burden is component vanity.
 
-## Revising Doctrine
+### Revising Doctrine
 
 Doctrine should be revised when:
 
@@ -19036,7 +19036,7 @@ Revision does not require rejecting the past.
 
 It requires recovering what the past was protecting.
 
-## Doctrine Autopsy
+### Doctrine Autopsy
 
 A **doctrine autopsy** examines a principle before changing or
 applying it.
@@ -19058,7 +19058,7 @@ The purpose is not to discredit doctrine.
 
 It is to prevent the slogan from outliving its organs.
 
-## Value–Mechanism Separation
+### Value–Mechanism Separation
 
 **Value–mechanism separation** states the principle independently of
 the historical implementation.
@@ -19086,7 +19086,7 @@ The value remains stable.
 
 The implementation space reopens.
 
-## Doctrine Versioning
+### Doctrine Versioning
 
 **Doctrine versioning** records how the project's principles are
 interpreted under current conditions.
@@ -19103,7 +19103,7 @@ This is stronger than:
 The first permits implementation evolution while retaining the
 constitutional property.
 
-## Bounded Experiment
+### Bounded Experiment
 
 A **bounded experiment** allows a potentially identity-threatening
 mechanism to be tested without immediately redefining project
@@ -19126,7 +19126,7 @@ observable behavior.
 They also prevent enthusiastic prototypes from silently becoming
 permanent infrastructure.
 
-## Constitutional Compatibility
+### Constitutional Compatibility
 
 **Constitutional compatibility** asks whether a change preserves the
 project's authority model and core values, not merely its current
@@ -19143,7 +19143,7 @@ A technically compatible replacement may still:
 Conversely, an interface-breaking change may preserve the constitution
 better by making authority explicit.
 
-## Reform Legibility
+### Reform Legibility
 
 **Reform legibility** is the degree to which participants can
 understand:
@@ -19164,7 +19164,7 @@ Legible reform lowers identity threat.
 > Read-only planner producing an inspectable dependency graph;
 > execution remains operator-controlled.
 
-## Scar Preservation
+### Scar Preservation
 
 Not every scar should be removed.
 
@@ -19189,7 +19189,7 @@ For example:
 * retain operator override;
 * add explicit planning.
 
-## Identity-Preserving Reform
+### Identity-Preserving Reform
 
 **Identity-preserving reform** changes mechanisms while preserving the
 values participants reasonably regard as constitutional.
@@ -19210,7 +19210,7 @@ The purpose is not to avoid all cultural change.
 It is to ensure that technical repair does not casually destroy what
 the ecology was protecting.
 
-## Identity Revision
+### Identity Revision
 
 Sometimes the identity itself must change.
 
@@ -19227,7 +19227,7 @@ A project may decide:
 Silent identity change produces cultural civil war conducted through
 code review.
 
-## Institutional Self-Criticism
+### Institutional Self-Criticism
 
 **Institutional self-criticism** is the ability to examine whether
 project values are being preserved by current mechanisms or merely
@@ -19246,7 +19246,7 @@ Self-criticism is not self-rejection.
 
 It is a control loop for doctrine.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Doctrine** is not automatically dogma.
 
@@ -19298,7 +19298,7 @@ Values may survive through changed mechanisms.
 Refusing to revisit doctrine may betray the value the doctrine
 originally protected.
 
-## The Doctrine Test
+### The Doctrine Test
 
 When a proposal collides with project philosophy, ask:
 
@@ -19349,7 +19349,7 @@ failure without performing every autopsy again.
 Doctrine is diseased when it forbids new evidence from changing the
 diagnosis.
 
-## Twentieth House Law
+### Twentieth House Law
 
 > Every workaround wants to become a tradition.  
 > Every tradition eventually claims it was architecture all along.
@@ -19369,7 +19369,7 @@ implementation automatically produces a healthier ecosystem.
 
 ---
 
-# Ecological Refactoring and Viable Change
+## Ecological Refactoring and Viable Change
 
 A maintainer rewrites the package builder.
 
@@ -19409,7 +19409,7 @@ The ecosystem had lost a subsystem.
 
 ---
 
-## Ecological Refactoring
+### Ecological Refactoring
 
 **Ecological refactoring** is the deliberate improvement of technical,
 operational, institutional, and cultural structure while preserving or
@@ -19439,7 +19439,7 @@ The unit of change is not only the component.
 It is the network of compensations, expectations, and control loops
 surrounding the component.
 
-## Viable Change
+### Viable Change
 
 A **viable change** improves one or more structural properties without
 destroying the ecosystem's ability to operate, recover, and continue
@@ -19474,7 +19474,7 @@ For example:
 > Correctness is necessary.  
 > Adoption is also part of reality.
 
-## Change Ecology
+### Change Ecology
 
 A **change ecology** is the set of components, participants,
 artifacts, state, practices, and authorities affected by a proposed
@@ -19498,7 +19498,7 @@ The apparent interface may contain five fields.
 
 Its ecology may contain ten years.
 
-## Coupled Change
+### Coupled Change
 
 A **coupled change** is a change whose correctness depends on
 coordinated movement across several surfaces.
@@ -19519,7 +19519,7 @@ Some changes are inherently cross-system.
 The mistake is pretending a coupled change can be completed by
 modifying one repository and announcing the new truth.
 
-## Migration Dimensions
+### Migration Dimensions
 
 Ecological change may involve several distinct migrations.
 
@@ -19549,7 +19549,7 @@ The semantic migration began.
 
 The ecology did not converge.
 
-## Compensation Inventory
+### Compensation Inventory
 
 A **compensation inventory** identifies the mechanisms currently
 preserving operation around the component being changed.
@@ -19586,7 +19586,7 @@ The inventory should happen before removal.
 > Do not delete the ugly wrapper until you know what it has been
 > eating.
 
-## Hidden Function
+### Hidden Function
 
 A **hidden function** is work performed by a component, operator, or
 convention that is not represented in its nominal interface or
@@ -19609,7 +19609,7 @@ They accumulate because the mechanism is already in the path.
 A proposed replacement may preserve the named function and lose the
 hidden ones.
 
-## Functional Extraction
+### Functional Extraction
 
 **Functional extraction** is the identification and relocation of
 necessary behavior from a compensating mechanism into explicit, owned
@@ -19640,7 +19640,7 @@ The goal is not to preserve the wrapper.
 
 It is to preserve the legitimate work.
 
-## Compensator
+### Compensator
 
 A **compensator** is any mechanism or participant offsetting
 unresolved structure elsewhere.
@@ -19668,7 +19668,7 @@ It must be decomposed before replacement.
 Treating the compensator as pure waste is how projects delete the only
 working copy of their execution model.
 
-## Compensator Deletion
+### Compensator Deletion
 
 **Compensator deletion** removes a coping mechanism without relocating
 the functions it supplied.
@@ -19692,7 +19692,7 @@ The operational result may be:
 > The rewrite eliminated technical debt by returning it to the
 > operators.
 
-## Regulatory Amputation
+### Regulatory Amputation
 
 **Regulatory amputation** is compensator deletion specifically
 affecting the ecosystem's sensing, decision, correction, or
@@ -19708,7 +19708,7 @@ The release process becomes shorter.
 
 The control loop becomes open.
 
-## Boundary Repair
+### Boundary Repair
 
 **Boundary repair** strengthens the place where meaning, state, or
 authority crosses between components.
@@ -19731,7 +19731,7 @@ A small result object can remove duplicated parsing from six callers.
 
 A complete rewrite can preserve every hidden coupling.
 
-## Rewrite Versus Refactoring
+### Rewrite Versus Refactoring
 
 A **rewrite** replaces implementation.
 
@@ -19766,7 +19766,7 @@ Can old compensations retire?
 If not, the ecosystem may have received implementation modernization
 without structural change.
 
-## Ecological Regression
+### Ecological Regression
 
 An **ecological regression** is a local technical improvement that
 worsens the larger ecosystem.
@@ -19787,7 +19787,7 @@ The implementation may genuinely be cleaner.
 
 The accounting boundary was too small.
 
-## Ecological Gain
+### Ecological Gain
 
 An **ecological gain** reduces total burden or increases coherence
 across the ecosystem, even if one component becomes larger.
@@ -19807,7 +19807,7 @@ The ecosystem becomes simpler.
 > Sometimes two hundred new lines are the cheapest way to delete five
 > humans from the runtime dependency graph.
 
-## Burden Relocation
+### Burden Relocation
 
 **Burden relocation** is the movement of work, complexity, risk, or
 authority from one part of the ecosystem to another.
@@ -19837,7 +19837,7 @@ It is:
 
 > Which burden moved, where, and under whose authority?
 
-## Burden Conservation
+### Burden Conservation
 
 There is no literal law of complexity conservation.
 
@@ -19860,7 +19860,7 @@ The House therefore uses a practical assumption:
 
 If no such transition exists, the burden probably changed owners.
 
-## Minimum Viable Coherence
+### Minimum Viable Coherence
 
 **Minimum viable coherence** is the smallest improved system state in
 which the new semantics are explicit enough to operate safely and
@@ -19887,7 +19887,7 @@ Further changes can build from it.
 This is preferable to an ambitious redesign that cannot become
 authoritative anywhere.
 
-## Transitional Contract
+### Transitional Contract
 
 A **transitional contract** defines behavior during migration between
 old and new semantics.
@@ -19921,7 +19921,7 @@ new production:
 This allows old state to survive without granting it perpetual
 citizenship.
 
-## Bridge
+### Bridge
 
 A **bridge** is a temporary mechanism connecting old and new
 contracts.
@@ -19945,7 +19945,7 @@ Then the project must decide whether to:
 * finish migration;
 * admit that the new side never became authoritative.
 
-## Scaffold
+### Scaffold
 
 A **scaffold** is temporary support allowing new structure to become
 load-bearing.
@@ -19964,7 +19964,7 @@ Scaffolds are useful.
 They become ecological sediment when nobody defines when the building
 can stand without them.
 
-## Dual Running
+### Dual Running
 
 **Dual running** executes old and new paths in parallel for
 comparison.
@@ -19994,7 +19994,7 @@ observational.
 Allowing both paths to mutate authoritative state independently
 creates two regulators and one future incident.
 
-## Shadow Mode
+### Shadow Mode
 
 **Shadow mode** allows a new mechanism to observe and compute results
 without controlling authoritative state.
@@ -20013,7 +20013,7 @@ It does not prove the mechanism can govern production safely.
 Eventually, authority must move or the new system remains structured
 hope.
 
-## Authority Cutover
+### Authority Cutover
 
 An **authority cutover** is the explicit moment when the new
 representation, component, or path becomes authoritative.
@@ -20033,7 +20033,7 @@ writing state.
 
 Every disagreement then becomes a local referendum.
 
-## State Migration
+### State Migration
 
 **State migration** converts existing stored state into the
 representation required by the new contract.
@@ -20053,7 +20053,7 @@ A migration should address:
 The cleanest new schema is not viable if the project cannot determine
 what old state means.
 
-## Semantic Migration
+### Semantic Migration
 
 **Semantic migration** changes what an operation or representation
 means.
@@ -20082,7 +20082,7 @@ A compatibility adapter can translate syntax.
 
 It cannot always make one semantic model equivalent to another.
 
-## Operator Migration
+### Operator Migration
 
 **Operator migration** changes what operators need to observe, decide,
 and do.
@@ -20104,7 +20104,7 @@ It may introduce responsibilities such as:
 Operator migration should be documented as a change in control, not
 merely a new command syntax.
 
-## Role Migration
+### Role Migration
 
 **Role migration** transfers one system function from one participant
 or component to another.
@@ -20128,7 +20128,7 @@ Role migration affects:
 Ignoring these effects creates cultural resistance that appears
 irrational only because the proposal omitted the human architecture.
 
-## Knowledge Migration
+### Knowledge Migration
 
 **Knowledge migration** moves rationale and operational understanding
 into the surfaces needed by the new system.
@@ -20146,7 +20146,7 @@ It may include:
 Deleting the old code before extracting its knowledge produces
 structural amnesia.
 
-## Expertise Extraction
+### Expertise Extraction
 
 **Expertise extraction** identifies the tacit comparisons and
 decisions experienced operators perform and represents them where
@@ -20170,7 +20170,7 @@ It is to distinguish:
 * historical habit;
 * genuine expert interpretation.
 
-## Operator Role Preservation
+### Operator Role Preservation
 
 A structural change should preserve meaningful operator authority even
 when it removes repeated compensation.
@@ -20190,7 +20190,7 @@ The operator loses clerical reconstruction.
 
 The operator retains policy.
 
-## Re-Skilling Plan
+### Re-Skilling Plan
 
 A **re-skilling plan** prepares operators for the new control model.
 
@@ -20211,7 +20211,7 @@ for defects that no longer exist.
 Their old wrappers can reintroduce the old semantics around the new
 system.
 
-## Compatibility Envelope
+### Compatibility Envelope
 
 A **compatibility envelope** defines which old callers, artifacts, and
 states the new system will support during and after migration.
@@ -20231,7 +20231,7 @@ A clear envelope prevents compatibility from expanding through fear.
 It also prevents new production from choosing old semantics merely
 because they remain accepted.
 
-## Compatibility Budget
+### Compatibility Budget
 
 A **compatibility budget** is the amount of old behavior the project
 can realistically preserve without overwhelming current contracts and
@@ -20253,7 +20253,7 @@ Rejecting all compatibility may also be nonviable.
 
 The budget forces explicit accounting.
 
-## Legacy Intake Boundary
+### Legacy Intake Boundary
 
 A **legacy intake boundary** is the single location where old state or
 artifacts enter the current model.
@@ -20272,7 +20272,7 @@ remaining current internally.
 
 The age enters once.
 
-## New-Production Rule
+### New-Production Rule
 
 A **new-production rule** prevents current components from creating
 legacy states accepted only for compatibility.
@@ -20292,7 +20292,7 @@ Without this rule, compatibility becomes reproduction.
 Migration cannot converge because the system keeps manufacturing the
 past.
 
-## Reversibility
+### Reversibility
 
 **Reversibility** is the ability to undo, contain, or recover from a
 change without losing authoritative state or operator control.
@@ -20314,7 +20314,7 @@ It can also preserve indecision indefinitely.
 
 A reversible transition still needs a direction.
 
-## Rollback Contract
+### Rollback Contract
 
 A **rollback contract** defines what restoration means.
 
@@ -20333,7 +20333,7 @@ A binary downgrade does not necessarily restore state semantics.
 > “We can reinstall the old executable” is not a rollback plan.  
 > It is access to an earlier accomplice.
 
-## Irreversible Change
+### Irreversible Change
 
 Some changes are inherently or practically irreversible:
 
@@ -20348,7 +20348,7 @@ Irreversibility does not forbid change.
 
 It raises the evidence, migration, and communication requirements.
 
-## Change Budget
+### Change Budget
 
 A **change budget** is the ecosystem's capacity to absorb migration
 work, temporary complexity, learning, and risk.
@@ -20369,7 +20369,7 @@ finance the transition.
 
 Viability includes maintenance economics.
 
-## Migration Saturation
+### Migration Saturation
 
 **Migration saturation** occurs when the ecosystem has more
 simultaneous transitions than operators and maintainers can understand
@@ -20387,7 +20387,7 @@ Symptoms include:
 A project should prefer several closed migrations over one permanent
 era of transition.
 
-## Change Sequencing
+### Change Sequencing
 
 **Change sequencing** orders migration steps so each stage has one
 clear authority and recoverable state.
@@ -20405,7 +20405,7 @@ A useful sequence may be:
 A poor sequence begins by deleting the old path and later discovers
 which facts callers needed.
 
-## Semantic Dependency Order
+### Semantic Dependency Order
 
 Changes have dependency order just like packages.
 
@@ -20428,7 +20428,7 @@ defined local policy
 Installing a guardrail before the needed truth exists produces
 enforcement theater or false rejection.
 
-## Pilot Boundary
+### Pilot Boundary
 
 A **pilot boundary** applies the new contract within one limited but
 real authority surface.
@@ -20453,7 +20453,7 @@ It tests not only code but:
 * doctrine;
 * ownership.
 
-## Viability Window
+### Viability Window
 
 A **viability window** is a transitional period during which both old
 and new mechanisms can be supported without excessive ambiguity.
@@ -20472,7 +20472,7 @@ It should be short enough to prevent:
 * indefinite documentation branching;
 * compatibility necrosis.
 
-## Ratchet Release
+### Ratchet Release
 
 **Ratchet release** removes one historical accumulation mechanism so
 the ecosystem can actually simplify.
@@ -20490,7 +20490,7 @@ continues growing.
 
 The project modernizes by accumulation.
 
-## Convergence
+### Convergence
 
 **Convergence** is the movement from several active semantic paths
 toward one current contract, with old state either translated,
@@ -20507,7 +20507,7 @@ Several operator policies may remain.
 The ecosystem converges when they compose through shared boundaries
 rather than private reconstruction.
 
-## Reform Absorption
+### Reform Absorption
 
 **Reform absorption** occurs when the ecology adopts the new mechanism
 while preserving the old control structure.
@@ -20525,7 +20525,7 @@ The reform exists.
 
 The selection pressure remains.
 
-## Reform Reversal
+### Reform Reversal
 
 **Reform reversal** occurs when operators or downstream tools recreate
 removed behavior around the new system.
@@ -20546,7 +20546,7 @@ This may reveal that:
 * operator authority was removed;
 * cultural homeostasis defeated boundary closure.
 
-## Reform Capture
+### Reform Capture
 
 **Reform capture** occurs when a new mechanism becomes subordinate to
 the old ecology's interests and adaptations.
@@ -20562,7 +20562,7 @@ The mechanism changes.
 
 The old burden distribution survives.
 
-## Big-Bang Coherence
+### Big-Bang Coherence
 
 **Big-bang coherence** is the attempt to replace a fragmented ecology
 with one complete new model in a single cutover.
@@ -20594,7 +20594,7 @@ Big-bang change may be justified when:
 It should not be chosen merely because migration code is aesthetically
 unpleasant.
 
-## Permanent Transition
+### Permanent Transition
 
 A **permanent transition** is a migration whose temporary duality
 becomes the normal system.
@@ -20613,7 +20613,7 @@ honestly.
 
 It combines both burdens and gains neither clarity.
 
-## Field Symptom: Removing the Canonical Wrapper
+### Field Symptom: Removing the Canonical Wrapper
 
 A wrapper around a package builder has become the practical ecosystem
 boundary.
@@ -20649,7 +20649,7 @@ A viable change would:
 5. migrate callers;
 6. then remove the wrapper.
 
-## Field Symptom: Mandatory Validation Meets Legacy State
+### Field Symptom: Mandatory Validation Meets Legacy State
 
 A repository begins rejecting packages whose manifests lack explicit
 architecture.
@@ -20675,7 +20675,7 @@ Possible transition:
 The rule becomes authoritative without declaring history corrupt by
 surprise.
 
-## Field Symptom: The Transactional Database
+### Field Symptom: The Transactional Database
 
 A new package database commits atomically.
 
@@ -20704,7 +20704,7 @@ Viability requires:
 Transactional safety should not be purchased by deleting operator
 sovereignty.
 
-## Field Symptom: The New Dependency Planner
+### Field Symptom: The New Dependency Planner
 
 A read-only dependency planner produces an inspectable plan.
 
@@ -20721,7 +20721,7 @@ The operator workflow was not migrated.
 
 The planner remains structured hope.
 
-## Field Symptom: The Optional Result Interface
+### Field Symptom: The Optional Result Interface
 
 A low-level tool adds:
 
@@ -20748,7 +20748,7 @@ Ecological refactoring requires caller migration and ratchet release:
 * permit narration to evolve;
 * eventually reject new integrations based on stdout parsing.
 
-## Field Symptom: The Lost Release Maintainer
+### Field Symptom: The Lost Release Maintainer
 
 A release process is automated after its maintainer leaves.
 
@@ -20773,7 +20773,7 @@ Some decisions may become mechanical.
 
 Others may remain explicit human review gates.
 
-## Field Symptom: The Cleaner Package Format
+### Field Symptom: The Cleaner Package Format
 
 A new package format carries:
 
@@ -20797,7 +20797,7 @@ The artifact change was locally correct.
 
 Authority migration was omitted.
 
-## Field Symptom: Recovery Removed as an Internal Detail
+### Field Symptom: Recovery Removed as an Internal Detail
 
 A rewrite hides database layout behind a clean API.
 
@@ -20825,7 +20825,7 @@ Encapsulation should remove accidental coupling.
 
 It should not criminalize survival.
 
-## Field Symptom: The Eternal Compatibility Flag
+### Field Symptom: The Eternal Compatibility Flag
 
 A new parser introduces explicit package identity.
 
@@ -20848,7 +20848,7 @@ The bridge has become a highway.
 
 The migration lacked a new-production rule and ratchet release.
 
-## Field Symptom: The Successful Pilot That Never Expands
+### Field Symptom: The Successful Pilot That Never Expands
 
 One repository collection uses authoritative validation successfully.
 
@@ -20871,7 +20871,7 @@ The technical experiment succeeded.
 
 Structural hope did not receive governance.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Ecological refactoring** is not preserving every existing behavior.
 
@@ -20930,7 +20930,7 @@ clerical work.
 It may be the mechanism that lets a new contract become real without
 destroying the ecology.
 
-## The Ecological Refactoring Test
+### The Ecological Refactoring Test
 
 Before changing a mature component or boundary, ask:
 
@@ -20986,7 +20986,7 @@ A viable change does not preserve every scar.
 
 It discovers what the scar has been doing before cutting it away.
 
-## Twenty-First House Law
+### Twenty-First House Law
 
 > Before you kill the workaround, find out what it has been keeping
 > alive.
@@ -21054,7 +21054,7 @@ Only one travels well.
 
 ---
 
-# How to Examine a Failure Without Worshipping the Corpse
+## How to Examine a Failure Without Worshipping the Corpse
 
 An **autopsy** is the disciplined reconstruction of how an incident
 became possible, which structures allowed it to persist, and where the
@@ -21084,7 +21084,7 @@ A field autopsy also asks:
 > Autopsy explains why the ecosystem had already prepared a chair for
 > the corpse.
 
-## Incident
+### Incident
 
 An **incident** is a bounded event in which observed behavior diverges
 from expected or desired behavior.
@@ -21113,7 +21113,7 @@ The incident is evidence.
 
 It is not yet the model.
 
-## Specimen
+### Specimen
 
 A **specimen** is the concrete incident, artifact, component, log, or
 workflow selected for examination.
@@ -21136,7 +21136,7 @@ incident as the entire failure class.
 > A specimen is where you enter the system.  
 > It is not where the system ends.
 
-## Corpse Worship
+### Corpse Worship
 
 **Corpse worship** is excessive attachment to one historical incident,
 component, or personality such that the resulting analysis no longer
@@ -21163,7 +21163,7 @@ A useful field term should remain recognizable when:
 * the original participants leave;
 * the same mechanism appears in another domain.
 
-## Symptom
+### Symptom
 
 A **symptom** is an observable indication that a system property may
 have failed.
@@ -21195,7 +21195,7 @@ For example, a missing package file may result from:
 > Symptoms are honest about what was seen.  
 > They are usually promiscuous about why.
 
-## Failure
+### Failure
 
 A **failure** is the inability of a component, operation, or control
 loop to satisfy its relevant contract.
@@ -21214,7 +21214,7 @@ The contract matters.
 Without one, the observer may know that behavior was undesirable but
 not which property was violated.
 
-## Defect
+### Defect
 
 A **defect** is an implementation or design condition capable of
 producing failure.
@@ -21233,7 +21233,7 @@ conditions.
 
 An incident may involve several defects.
 
-## Mechanism
+### Mechanism
 
 A **mechanism** is the causal structure through which conditions
 produce an outcome.
@@ -21269,7 +21269,7 @@ The second describes recurrence.
 
 The first explains production.
 
-## Root Cause
+### Root Cause
 
 A **root cause** is a causal condition selected as sufficiently
 upstream and actionable for the purpose of repair.
@@ -21301,7 +21301,7 @@ Use the term with scope:
 * retention cause;
 * ecological cause.
 
-## Proximate Cause
+### Proximate Cause
 
 A **proximate cause** is the immediate event producing the observed
 failure.
@@ -21320,7 +21320,7 @@ Proximate causes matter for reproduction and immediate repair.
 They do not necessarily explain why the system could not contain the
 event.
 
-## Structural Cause
+### Structural Cause
 
 A **structural cause** is a property of contracts, authority, state,
 or regulation that allows a class of proximate causes to produce
@@ -21336,7 +21336,7 @@ Examples include:
 
 Structural causes travel across implementations.
 
-## Ecological Cause
+### Ecological Cause
 
 An **ecological cause** is a relationship among technical and human
 mechanisms that allows the failure to persist, remain hidden, or
@@ -21355,7 +21355,7 @@ An ecological cause does not mean the operators caused the defect.
 
 It explains how the larger system adapted around it.
 
-## Cause Chain
+### Cause Chain
 
 A **cause chain** is an ordered sequence connecting conditions to
 effects.
@@ -21383,7 +21383,7 @@ They can also oversimplify.
 Many incidents involve branches, feedback, and multiple contributing
 paths.
 
-## Causal Graph
+### Causal Graph
 
 A **causal graph** represents several interacting causes, state
 transitions, and feedback paths.
@@ -21415,7 +21415,7 @@ A graph need not be mathematically formal.
 It should be explicit enough that another reader can challenge the
 claimed relationships.
 
-## Timeline
+### Timeline
 
 A **timeline** records the sequence of relevant events.
 
@@ -21440,7 +21440,7 @@ For example:
 * a database record created during repair was not authoritative during
   failure.
 
-## State-Transition Trace
+### State-Transition Trace
 
 A **state-transition trace** records how authoritative and derived
 state changed through the incident.
@@ -21478,7 +21478,7 @@ Without it, the incident may be compressed into:
 
 That sentence destroys most of the evidence.
 
-## State Inventory
+### State Inventory
 
 A **state inventory** lists every representation relevant to the
 operation.
@@ -21506,7 +21506,7 @@ For each representation, record:
 * possibility of staleness;
 * recovery role.
 
-## Authority Map
+### Authority Map
 
 An **authority map** identifies which component or surface owns each
 meaning or state decision.
@@ -21523,7 +21523,7 @@ Example:
 The difference between claimed and operational authority is often the
 incident.
 
-## Boundary Map
+### Boundary Map
 
 A **boundary map** identifies where facts and state cross between
 components.
@@ -21541,7 +21541,7 @@ For each boundary, ask:
 
 Boundary maps reveal why one local defect becomes ecosystem coupling.
 
-## Contract Map
+### Contract Map
 
 A **contract map** records the promises relevant to each boundary.
 
@@ -21571,7 +21571,7 @@ operator practice:
 
 The contradiction is evidence.
 
-## Compensation Map
+### Compensation Map
 
 A **compensation map** identifies every mechanism offsetting the
 failure.
@@ -21599,7 +21599,7 @@ For each compensator, record:
 The compensation map prevents a repair from deleting a hidden
 subsystem.
 
-## Regulator Map
+### Regulator Map
 
 A **regulator map** identifies:
 
@@ -21625,7 +21625,7 @@ Example:
 
 This reveals whether the system regulates or merely observes.
 
-## Evidence
+### Evidence
 
 **Evidence** is any observation that constrains plausible
 explanations.
@@ -21654,7 +21654,7 @@ Evidence has quality dimensions:
 * possible contamination;
 * version relevance.
 
-## Observation
+### Observation
 
 An **observation** is a statement limited to what was directly seen.
 
@@ -21671,7 +21671,7 @@ The second is an interpretation requiring more evidence.
 Separating observation from inference prevents the autopsy from
 quietly promoting assumptions into facts.
 
-## Inference
+### Inference
 
 An **inference** is a conclusion drawn from evidence.
 
@@ -21690,7 +21690,7 @@ They state:
 * alternative explanations;
 * what additional observation would distinguish them.
 
-## Hypothesis
+### Hypothesis
 
 A **hypothesis** is a proposed mechanism that could explain the
 evidence.
@@ -21711,7 +21711,7 @@ Predictions:
 
 A hypothesis that explains every possible outcome predicts nothing.
 
-## Rival Hypothesis
+### Rival Hypothesis
 
 A **rival hypothesis** is an alternate mechanism consistent with some
 of the same evidence.
@@ -21729,7 +21729,7 @@ Listing rivals reduces narrative lock-in.
 The first plausible story should not become doctrine merely because it
 was eloquent.
 
-## Disconfirming Evidence
+### Disconfirming Evidence
 
 **Disconfirming evidence** is evidence that would weaken or falsify
 the current hypothesis.
@@ -21743,7 +21743,7 @@ An autopsy should ask:
 
 Without disconfirming evidence, analysis becomes literary confidence.
 
-## Reproduction
+### Reproduction
 
 A **reproduction** is a controlled recreation of the failure
 conditions.
@@ -21763,7 +21763,7 @@ A reproduction proves that one path can produce the symptom.
 
 It does not prove that every historical incident used that path.
 
-## Minimal Reproduction
+### Minimal Reproduction
 
 A **minimal reproduction** removes irrelevant conditions while
 preserving the failure.
@@ -21781,7 +21781,7 @@ Use both:
 * minimal reproduction for mechanism;
 * ecological reproduction for operational context.
 
-## Negative Case
+### Negative Case
 
 A **negative case** is a similar operation in which the failure does
 not occur.
@@ -21799,7 +21799,7 @@ For example:
 The difference between positive and negative cases is often more
 useful than either case alone.
 
-## Comparative Autopsy
+### Comparative Autopsy
 
 A **comparative autopsy** examines several incidents sharing a
 suspected mechanism.
@@ -21816,7 +21816,7 @@ If several tools exhibit the same failure through different
 implementations, the shared boundary becomes a stronger candidate than
 any one codepath.
 
-## Counterfactual
+### Counterfactual
 
 A **counterfactual** asks what would have happened if one condition
 were different.
@@ -21835,7 +21835,7 @@ Counterfactuals help identify leverage.
 
 They should remain tied to plausible system changes.
 
-## Intervention Point
+### Intervention Point
 
 An **intervention point** is a location where changing one mechanism
 could alter the failure class.
@@ -21866,7 +21866,7 @@ Intervention should occur where:
 * scope matches;
 * recovery remains possible.
 
-## Leverage Point
+### Leverage Point
 
 A **leverage point** is an intervention point whose change affects
 several downstream compensations or failure paths.
@@ -21883,7 +21883,7 @@ A high-leverage change may be small.
 
 Its value comes from the number of reconstructions it eliminates.
 
-## Repair
+### Repair
 
 A **repair** restores local or shared operation after failure.
 
@@ -21903,7 +21903,7 @@ An autopsy should distinguish:
 * what reduces the failure class;
 * what preserves evidence.
 
-## Immediate Repair
+### Immediate Repair
 
 An **immediate repair** restores the affected state.
 
@@ -21918,7 +21918,7 @@ Immediate repair is incident response.
 
 It may be correct without changing the underlying mechanism.
 
-## Structural Repair
+### Structural Repair
 
 A **structural repair** changes a contract, invariant, authority
 surface, or regulator so the same failure class becomes less
@@ -21933,7 +21933,7 @@ Examples include:
 * locking;
 * migration boundary.
 
-## Ecological Repair
+### Ecological Repair
 
 An **ecological repair** changes both technical structure and
 compensatory relationships.
@@ -21947,7 +21947,7 @@ It may include:
 * closing bypass paths;
 * promoting institutional memory.
 
-## Patch
+### Patch
 
 A **patch** is a concrete implementation change.
 
@@ -21966,7 +21966,7 @@ incidents.
 
 Do not confuse diff size with causal depth.
 
-## Patch-Shaped Explanation
+### Patch-Shaped Explanation
 
 A **patch-shaped explanation** describes the failure only in terms of
 the code change used to fix it.
@@ -21984,7 +21984,7 @@ A field explanation might say:
 
 The second remains useful if locking later moves into another library.
 
-## Term Extraction
+### Term Extraction
 
 **Term extraction** names the reusable mechanism revealed by the
 autopsy.
@@ -22022,7 +22022,7 @@ The term should compress the model.
 
 It should not replace it.
 
-## Term Inflation
+### Term Inflation
 
 **Term inflation** occurs when every observed peculiarity receives a
 canonical name.
@@ -22040,7 +22040,7 @@ the mechanism without repeated explanation.
 
 > Not every corpse needs a species.
 
-## Decorative Term
+### Decorative Term
 
 A **decorative term** sounds memorable but contributes little
 diagnostic power.
@@ -22057,7 +22057,7 @@ Humor is welcome.
 
 Mechanism pays the rent.
 
-## Generalization
+### Generalization
 
 **Generalization** identifies the class of systems or incidents to
 which the mechanism applies.
@@ -22087,7 +22087,7 @@ It does not imply every text protocol is accidental.
 
 A deliberately specified text protocol may be an excellent contract.
 
-## Generalization Ladder
+### Generalization Ladder
 
 A **generalization ladder** moves through several levels:
 
@@ -22123,7 +22123,7 @@ Climbing too little produces anecdote.
 
 Climbing too far produces theology.
 
-## Travel Test
+### Travel Test
 
 The **travel test** asks whether a concept remains useful after
 changing the specimen.
@@ -22141,7 +22141,7 @@ Does the mechanism still make sense?
 If not, the term may describe local history rather than a field
 pattern.
 
-## Stranger Test
+### Stranger Test
 
 The **stranger test** asks whether a technically competent reader
 unfamiliar with the original project can understand and apply the
@@ -22160,7 +22160,7 @@ Examples may retain local flavor.
 
 Definitions must travel.
 
-## Counterexample Test
+### Counterexample Test
 
 The **counterexample test** asks for cases that resemble the term
 superficially but should not qualify.
@@ -22175,7 +22175,7 @@ For example:
 
 Counterexamples sharpen boundaries.
 
-## Mechanism Preservation Test
+### Mechanism Preservation Test
 
 The **mechanism preservation test** asks whether a proposed repair
 removes the causal structure or only alters its appearance.
@@ -22191,7 +22191,7 @@ Examples:
 If the same mechanism survives under new syntax, the repair is
 cosmetic.
 
-## Corpse Independence
+### Corpse Independence
 
 **Corpse independence** is the point at which the extracted concept no
 longer depends on the original specimen for intelligibility.
@@ -22208,7 +22208,7 @@ A section achieves corpse independence when a reader can:
 * propose relevant interventions;
 * return to the original specimen and see it more clearly.
 
-## Autopsy Record
+### Autopsy Record
 
 An **autopsy record** is the durable output of the investigation.
 
@@ -22234,7 +22234,7 @@ A useful record includes:
 
 The record should distinguish fact from inference.
 
-## Autopsy Summary
+### Autopsy Summary
 
 An **autopsy summary** is the concise conclusion future maintainers
 should be able to retrieve without replaying the entire investigation.
@@ -22256,7 +22256,7 @@ This preserves:
 * repair;
 * remaining limit.
 
-## Retained Lesson
+### Retained Lesson
 
 A **retained lesson** is the conclusion preserved in a form that can
 affect future work.
@@ -22278,7 +22278,7 @@ Not every lesson becomes a guardrail.
 
 Every important lesson should become recoverable.
 
-## Field Note
+### Field Note
 
 A **field note** is a concise observation or provisional
 interpretation recorded before the full autopsy is complete.
@@ -22296,7 +22296,7 @@ Field notes should preserve uncertainty.
 
 They are not miniature verdicts.
 
-## Autopsy Hygiene
+### Autopsy Hygiene
 
 **Autopsy hygiene** is the discipline of keeping evidence,
 interpretation, scope, and terminology clean enough for later review.
@@ -22313,7 +22313,7 @@ Good hygiene includes:
 * link repairs to observed mechanism;
 * state what remains unknown.
 
-## Evidence Destruction
+### Evidence Destruction
 
 **Evidence destruction** occurs when immediate repair removes the
 information needed to understand the failure.
@@ -22338,7 +22338,7 @@ When possible:
 
 > Before exorcising the ghost, photograph the furniture.
 
-## Narrative Lock-In
+### Narrative Lock-In
 
 **Narrative lock-in** occurs when one early explanation shapes all
 later evidence collection.
@@ -22357,7 +22357,7 @@ alternative mechanisms.
 Use provisional language until the causal model survives rival
 hypotheses.
 
-## Blame Substitution
+### Blame Substitution
 
 **Blame substitution** replaces causal analysis with assignment of
 fault.
@@ -22383,7 +22383,7 @@ But blame does not reveal:
 > Fault may identify who dropped the match.  
 > Autopsy asks why the building was storing petrol in the hallway.
 
-## Moral Compression
+### Moral Compression
 
 **Moral compression** reduces a complex failure to a character
 judgment.
@@ -22403,7 +22403,7 @@ Field analysis requires mechanisms.
 Moral compression is attractive because it produces closure without
 migration.
 
-## Historical Capture
+### Historical Capture
 
 **Historical capture** occurs when the original social conflict
 becomes more important than the mechanism.
@@ -22424,35 +22424,35 @@ The Fieldbook uses history to reveal mechanism.
 
 It does not recruit corpses into current factional war.
 
-## Autopsy Depth
+### Autopsy Depth
 
 An autopsy may stop at several depths.
 
-### Operational Depth
+#### Operational Depth
 
 What happened, and how do we repair this state?
 
-### Component Depth
+#### Component Depth
 
 Which implementation defect produced it?
 
-### Boundary Depth
+#### Boundary Depth
 
 Which contract or authority relationship allowed it?
 
-### Regulatory Depth
+#### Regulatory Depth
 
 Why was the failure not detected, prevented, or corrected?
 
-### Ecological Depth
+#### Ecological Depth
 
 Which compensators and adaptations kept the system viable?
 
-### Institutional Depth
+#### Institutional Depth
 
 Why did the lesson fail to bind or survive?
 
-### Cultural Depth
+#### Cultural Depth
 
 Which doctrine or selection pressure preserves the structure?
 
@@ -22460,7 +22460,7 @@ Not every incident requires every depth.
 
 The chosen depth should match the repair ambition.
 
-## Stop Condition
+### Stop Condition
 
 A **stop condition** defines when the autopsy has enough explanation
 for its purpose.
@@ -22481,11 +22481,11 @@ excavation.
 With too shallow a stop condition, the same corpse returns under
 another component name.
 
-## Field Method
+### Field Method
 
 A practical field autopsy can proceed through the following sequence.
 
-### 1. Preserve the Scene
+#### 1. Preserve the Scene
 
 Capture:
 
@@ -22500,7 +22500,7 @@ Capture:
 
 Do not begin by cleaning.
 
-### 2. State the Symptom Narrowly
+#### 2. State the Symptom Narrowly
 
 Write only what was observed.
 
@@ -22515,70 +22515,70 @@ Better:
 > After two concurrent installations, one package's database record
 > was absent while its files remained.
 
-### 3. Inventory Representations
+#### 3. Inventory Representations
 
 List every relevant state surface and its claimed authority.
 
-### 4. Trace State Transitions
+#### 4. Trace State Transitions
 
 Record the operation phase by phase.
 
 Identify the first divergence.
 
-### 5. Map Boundaries
+#### 5. Map Boundaries
 
 Show where facts crossed, disappeared, or were reconstructed.
 
-### 6. Map the Regulator
+#### 6. Map the Regulator
 
 Identify sensing, decision, correction, and verification.
 
 Mark missing or human-only functions.
 
-### 7. Inventory Compensation
+#### 7. Inventory Compensation
 
 Record wrappers, rituals, operator judgment, and local repairs.
 
-### 8. Form Rival Hypotheses
+#### 8. Form Rival Hypotheses
 
 Avoid one-story certainty.
 
 State what evidence would distinguish them.
 
-### 9. Reproduce
+#### 9. Reproduce
 
 Use minimal and ecological reproductions where possible.
 
-### 10. Identify the Structural Cause
+#### 10. Identify the Structural Cause
 
 Ask which contract, invariant, authority, or control-loop defect
 allowed the incident class.
 
-### 11. Select Intervention Points
+#### 11. Select Intervention Points
 
 Separate immediate repair from structural and ecological repair.
 
-### 12. Test Generalization
+#### 12. Test Generalization
 
 Compare another incident, implementation, or domain.
 
-### 13. Apply or Extract Field Terms
+#### 13. Apply or Extract Field Terms
 
 Use existing vocabulary where it fits.
 
 Add a term only when it improves distinction and diagnosis.
 
-### 14. Preserve the Conclusion
+#### 14. Preserve the Conclusion
 
 Create the decision trace, test, documentation, guardrail, or
 migration needed to retain the lesson.
 
-### 15. Revisit the Compensators
+#### 15. Revisit the Compensators
 
 Determine which may retire, which remain legitimate, and which need
 migration.
 
-## Field Autopsy Template
+### Field Autopsy Template
 
 ```text
 Incident:
@@ -22651,7 +22651,7 @@ Field terms:
     Which reusable concepts apply?
 ```
 
-## Field Symptom: The Broken Package Name
+### Field Symptom: The Broken Package Name
 
 A package archive is published as:
 
@@ -22667,7 +22667,7 @@ version=1.2
 release=1
 ```
 
-### Weak Autopsy
+#### Weak Autopsy
 
 > Maintainer named the file incorrectly.
 
@@ -22675,7 +22675,7 @@ Immediate repair:
 
 > Rename the archive.
 
-### Better Autopsy
+#### Better Autopsy
 
 Observations:
 
@@ -22713,15 +22713,15 @@ The corpse was one package.
 
 The mechanism was distributed identity.
 
-## Field Symptom: The Unsafe Root
+### Field Symptom: The Unsafe Root
 
 A package installed with `--root=/mnt` modifies the host.
 
-### Weak Autopsy
+#### Weak Autopsy
 
 > Lifecycle script is badly written.
 
-### Better Autopsy
+#### Better Autopsy
 
 State transition:
 
@@ -22758,17 +22758,17 @@ The script may still contain a bug.
 
 The interface made the bug part of the system.
 
-## Field Symptom: The Eternal Warning
+### Field Symptom: The Eternal Warning
 
 A validation tool reports malformed repository entries every night.
 
 The same entries remain.
 
-### Weak Autopsy
+#### Weak Autopsy
 
 > Maintainers ignore warnings.
 
-### Better Autopsy
+#### Better Autopsy
 
 Regulator map:
 
@@ -22802,15 +22802,15 @@ The maintainers may still be inattentive.
 
 The system is also designed to require indefinite attentiveness.
 
-## Field Symptom: The Rewrite Reintroduces the Bug
+### Field Symptom: The Rewrite Reintroduces the Bug
 
 A rewritten component loses a historical validation check.
 
-### Weak Autopsy
+#### Weak Autopsy
 
 > New maintainer failed to port all behavior.
 
-### Better Autopsy
+#### Better Autopsy
 
 Evidence:
 
@@ -22843,16 +22843,16 @@ The rewrite did not merely omit code.
 
 The project had failed to extract what the code knew.
 
-## Field Symptom: The Wrapper Everyone Needs
+### Field Symptom: The Wrapper Everyone Needs
 
 Every experienced operator invokes a wrapper around one low-level
 command.
 
-### Weak Autopsy
+#### Weak Autopsy
 
 > The low-level command has poor ergonomics.
 
-### Better Autopsy
+#### Better Autopsy
 
 Compensation inventory:
 
@@ -22886,7 +22886,7 @@ The wrapper may indeed improve ergonomics.
 
 That is not its only job.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Autopsy** is not the same as debugging.
 
@@ -22938,7 +22938,7 @@ Local state determines whether the mechanism actually applies.
 
 Evidence remains necessary to prevent doctrine from floating free.
 
-## The Autopsy Test
+### The Autopsy Test
 
 Before declaring an incident understood, ask:
 
@@ -22985,7 +22985,7 @@ An autopsy is complete enough when the ecosystem can change its future
 behavior without needing to preserve the original corpse as a runtime
 dependency.
 
-## Twenty-Second House Law
+### Twenty-Second House Law
 
 > The corpse is evidence.  
 > It is not the ontology.
@@ -22999,7 +22999,7 @@ components, and avoid mistaking shared symptoms for shared causes.
 
 ---
 
-# Failure Maps and Comparative Diagnosis
+## Failure Maps and Comparative Diagnosis
 
 Four installations report that a package disappeared.
 
@@ -23029,7 +23029,7 @@ The mechanisms did not.
 
 ---
 
-## Comparative Diagnosis
+### Comparative Diagnosis
 
 **Comparative diagnosis** is the examination of several incidents to
 determine:
@@ -23051,7 +23051,7 @@ Several autopsies show where that mechanism stops applying.
 > One corpse tells a story.  
 > Several corpses reveal whether the story has a species.
 
-## Failure Map
+### Failure Map
 
 A **failure map** is a structured representation of incidents,
 mechanisms, boundaries, authority, compensators, and interventions
@@ -23079,7 +23079,7 @@ A useful failure map makes visible:
 * intervention leverage;
 * uncertainty.
 
-## Comparison Set
+### Comparison Set
 
 A **comparison set** is the group of incidents selected for
 comparative analysis.
@@ -23108,7 +23108,7 @@ Include:
 * cases with similar symptoms but known different causes;
 * cases with different symptoms but suspected shared cause.
 
-## Case
+### Case
 
 A **case** is one incident represented in enough detail for
 comparison.
@@ -23136,7 +23136,7 @@ is not a case.
 
 It is a weather report from inside the building.
 
-## Comparison Axis
+### Comparison Axis
 
 A **comparison axis** is one dimension along which cases are examined.
 
@@ -23171,7 +23171,7 @@ For example:
 
 The shared symptom does not justify one repair.
 
-## Symptom Cluster
+### Symptom Cluster
 
 A **symptom cluster** is a group of incidents producing similar
 observable outcomes.
@@ -23193,7 +23193,7 @@ It is not yet a mechanism class.
 > Symptoms are how incidents queue.  
 > Mechanisms are how they should be repaired.
 
-## Mechanism Class
+### Mechanism Class
 
 A **mechanism class** is a group of incidents produced through the
 same relevant causal structure.
@@ -23215,7 +23215,7 @@ The mechanism class is **narrative coupling**.
 A useful mechanism class should suggest similar interventions across
 its cases.
 
-## Failure Signature
+### Failure Signature
 
 A **failure signature** is a set of properties indicating that a
 particular mechanism may be active.
@@ -23246,7 +23246,7 @@ For a zombie invariant:
 * maintainers preserve it socially;
 * violations are blamed on operator competence.
 
-## Causal Signature
+### Causal Signature
 
 A **causal signature** describes the sequence of events characteristic
 of a mechanism.
@@ -23269,7 +23269,7 @@ Different components may exhibit the same causal signature.
 
 This supports generalization.
 
-## Structural Signature
+### Structural Signature
 
 A **structural signature** identifies the recurring arrangement of
 authority, contracts, and boundaries behind incidents.
@@ -23297,7 +23297,7 @@ validation exists
 The structural signature often matters more than the immediate
 trigger.
 
-## Authority Signature
+### Authority Signature
 
 An **authority signature** describes how claimed and operational
 authority are distributed.
@@ -23320,7 +23320,7 @@ signature.
 
 That suggests a common structural repair.
 
-## Boundary Signature
+### Boundary Signature
 
 A **boundary signature** records which facts fail to cross, are
 reconstructed, or become ambiguous.
@@ -23346,13 +23346,13 @@ caller reconstructs:
 This signature can recur in builders, deployment tools, backup
 systems, and compilers.
 
-## Regulatory Signature
+### Regulatory Signature
 
 A **regulatory signature** describes the shape of the control loop.
 
 Examples include:
 
-### Detection without authority
+#### Detection without authority
 
 ```text
 sensor present
@@ -23361,7 +23361,7 @@ actuator manual
 authoritative path remains open
 ```
 
-### Human-as-the-loop
+#### Human-as-the-loop
 
 ```text
 system mutates
@@ -23371,7 +23371,7 @@ operator repairs
 operator verifies
 ```
 
-### Competing regulators
+#### Competing regulators
 
 ```text
 two controllers
@@ -23383,7 +23383,7 @@ repeated oscillation
 Regulatory signatures help distinguish technical defects from
 recurring control failures.
 
-## Ecological Signature
+### Ecological Signature
 
 An **ecological signature** describes the compensations and
 adaptations surrounding a failure.
@@ -23400,7 +23400,7 @@ Examples include:
 Ecological signatures reveal where the ecosystem has absorbed
 unresolved work.
 
-## Evidence Matrix
+### Evidence Matrix
 
 An **evidence matrix** compares cases against candidate mechanisms.
 
@@ -23423,7 +23423,7 @@ The matrix may suggest:
 This prevents one attractive term from swallowing every adjacent
 failure.
 
-## Shared Symptom, Different Cause
+### Shared Symptom, Different Cause
 
 The most common comparative error is assuming that shared symptoms
 imply shared mechanisms.
@@ -23444,7 +23444,7 @@ The symptom is one command returning nonzero.
 
 The interventions differ radically.
 
-## Different Symptom, Shared Cause
+### Different Symptom, Shared Cause
 
 The reverse is equally important.
 
@@ -23468,7 +23468,7 @@ Different incidents share one structural cause:
 A field concept often becomes visible only through this kind of
 comparison.
 
-## Mechanism Convergence
+### Mechanism Convergence
 
 **Mechanism convergence** occurs when different implementations or
 workflows produce similar failure through the same underlying
@@ -23489,7 +23489,7 @@ Their mechanism converges on narrative coupling.
 Mechanism convergence strengthens the case that the problem belongs to
 the boundary rather than one implementation.
 
-## Mechanism Divergence
+### Mechanism Divergence
 
 **Mechanism divergence** occurs when similar interfaces or symptoms
 arise from different causal structures.
@@ -23504,7 +23504,7 @@ The interface category is shared.
 
 The mechanism diverges.
 
-## Family Resemblance
+### Family Resemblance
 
 **Family resemblance** is partial similarity among incidents without
 one single mechanism explaining every case.
@@ -23522,7 +23522,7 @@ Family resemblance is useful for organizing inquiry.
 
 It should not be mistaken for one precise diagnosis.
 
-## Compound Failure
+### Compound Failure
 
 A **compound failure** contains several mechanisms contributing to one
 incident.
@@ -23550,7 +23550,7 @@ Vocabulary is compositional.
 
 The system is under no obligation to fail one concept at a time.
 
-## Failure Stack
+### Failure Stack
 
 A **failure stack** is an ordered set of mechanisms in which one
 failure creates conditions for another.
@@ -23578,7 +23578,7 @@ The stack should not be treated as inevitable.
 
 Each transition is an opportunity for containment.
 
-## Shared Substrate
+### Shared Substrate
 
 A **shared substrate** is a component, representation, or assumption
 used by several incidents or tools.
@@ -23600,7 +23600,7 @@ This does not prove the substrate itself is defective.
 It identifies a possible common cause and a high-leverage observation
 point.
 
-## Common-Mode Failure
+### Common-Mode Failure
 
 A **common-mode failure** occurs when one shared condition causes
 several otherwise independent components or safeguards to fail
@@ -23621,7 +23621,7 @@ same assumption.
 > Three witnesses reading the same forged document are not independent
 > confirmation.
 
-## Correlated Failure
+### Correlated Failure
 
 **Correlated failure** occurs when several incidents become more
 likely under the same conditions, without necessarily sharing one
@@ -23638,7 +23638,7 @@ The failures correlate through environment.
 
 Their immediate mechanisms remain distinct.
 
-## Hidden Common Cause
+### Hidden Common Cause
 
 A **hidden common cause** is an upstream condition not initially
 visible in the individual incidents.
@@ -23653,7 +23653,7 @@ Examples include:
 
 Comparative timelines often reveal hidden common causes.
 
-## Independent Recurrence
+### Independent Recurrence
 
 **Independent recurrence** occurs when the same mechanism appears
 separately without one shared triggering event.
@@ -23667,7 +23667,7 @@ They are independently generated by the same missing boundary.
 
 Independent recurrence is strong evidence of structural pressure.
 
-## Repetition
+### Repetition
 
 **Repetition** is the same incident or defect occurring again under
 similar conditions.
@@ -23676,7 +23676,7 @@ Example:
 
 * the same malformed artifact is repeatedly republished.
 
-## Recurrence
+### Recurrence
 
 **Recurrence** is the return of the same failure mechanism, possibly
 through a different component, implementation, or symptom.
@@ -23694,7 +23694,7 @@ The structural failure recurred.
 > Repetition is the same corpse returning.  
 > Recurrence is the same murderer changing clothes.
 
-## Recurrence Pattern
+### Recurrence Pattern
 
 A **recurrence pattern** identifies how a failure class reappears
 across time.
@@ -23712,20 +23712,20 @@ Useful patterns include:
 Recurrence patterns suggest where institutional memory or boundary
 extraction is failing.
 
-## Failure Topology
+### Failure Topology
 
 **Failure topology** describes the arrangement through which errors
 propagate across components and state surfaces.
 
 Examples include:
 
-### Chain
+#### Chain
 
 ```text
 builder → repository → installer → database
 ```
 
-### Fan-out
+#### Fan-out
 
 ```text
 one malformed artifact
@@ -23734,7 +23734,7 @@ one malformed artifact
     → repository tool
 ```
 
-### Feedback loop
+#### Feedback loop
 
 ```text
 repair script
@@ -23743,7 +23743,7 @@ repair script
     → invokes repair script
 ```
 
-### Split authority
+#### Split authority
 
 ```text
 filename authority ← artifact → metadata authority
@@ -23751,7 +23751,7 @@ filename authority ← artifact → metadata authority
 
 Topology indicates where containment and regulation may have leverage.
 
-## Propagation Path
+### Propagation Path
 
 A **propagation path** is the sequence through which one defect or
 ambiguity affects downstream state.
@@ -23765,7 +23765,7 @@ For each step, ask:
 * Was the effect reversible?
 * Did compensation hide the propagation?
 
-## Containment Point
+### Containment Point
 
 A **containment point** is a boundary where the failure could have
 been stopped before reaching further components.
@@ -23787,7 +23787,7 @@ The best point usually combines:
 * broad path coverage;
 * manageable compatibility cost.
 
-## Blast Radius
+### Blast Radius
 
 **Blast radius** is the scope of state, operators, or components
 affected by one failure.
@@ -23808,7 +23808,7 @@ Comparative diagnosis should distinguish:
 A rare high-radius failure may deserve stronger guardrails than a
 common local failure.
 
-## Failure Density
+### Failure Density
 
 **Failure density** is the concentration of incidents around one
 boundary, component, or operation.
@@ -23827,7 +23827,7 @@ Do not assume the component with the most reports owns the defect.
 Frontends often become the reporting surface for failures originating
 below them.
 
-## Incident Sink
+### Incident Sink
 
 An **incident sink** is a component or team where failures accumulate
 because it is the first visible or accessible surface, not necessarily
@@ -23843,7 +23843,7 @@ Examples include:
 Incident sinks distort diagnosis by concentrating reports away from
 structural causes.
 
-## Blame Topology
+### Blame Topology
 
 A **blame topology** describes where the ecosystem assigns
 responsibility relative to where failure is produced and regulated.
@@ -23864,7 +23864,7 @@ The incident enters through the frontend.
 
 The missing fact originated at the builder boundary.
 
-## Comparative Timeline
+### Comparative Timeline
 
 A **comparative timeline** aligns several cases by operation phase
 rather than calendar time.
@@ -23882,7 +23882,7 @@ Example:
 
 This reveals whether incidents diverge early or late.
 
-## State-Transition Overlay
+### State-Transition Overlay
 
 A **state-transition overlay** places several cases on one intended
 state model.
@@ -23917,7 +23917,7 @@ Case C:
 The overlay helps determine whether one richer state model could
 represent all cases honestly.
 
-## Repair Map
+### Repair Map
 
 A **repair map** links mechanisms to possible interventions.
 
@@ -23934,7 +23934,7 @@ Example:
 The repair map prevents one popular intervention from being applied
 indiscriminately.
 
-## Intervention Portability
+### Intervention Portability
 
 **Intervention portability** is the degree to which one repair can
 address the same mechanism across different cases.
@@ -23952,7 +23952,7 @@ Portable interventions often target:
 * state representation;
 * control loops.
 
-## Repair Specificity
+### Repair Specificity
 
 **Repair specificity** is how narrowly an intervention targets one
 symptom or mechanism.
@@ -23971,7 +23971,7 @@ A broader structural repair may be appropriate when:
 * one boundary causes many incidents;
 * compensation cost is high.
 
-## Leverage Ranking
+### Leverage Ranking
 
 **Leverage ranking** compares intervention points by expected
 ecological effect.
@@ -23994,7 +23994,7 @@ The largest redesign may have low viability.
 
 The best intervention often sits between them.
 
-## False Equivalence
+### False Equivalence
 
 **False equivalence** treats incidents as members of one failure class
 because they share language, component, or visible outcome.
@@ -24011,7 +24011,7 @@ Field terms lose value when used as atmospheric adjectives.
 
 Diagnosis requires the mechanism.
 
-## False Distinction
+### False Distinction
 
 A **false distinction** treats incidents as unrelated because they
 occur in different components, languages, or communities.
@@ -24028,7 +24028,7 @@ Examples include:
 Comparative diagnosis may reveal the same boundary or regulatory
 pattern beneath different local vocabulary.
 
-## Category Capture
+### Category Capture
 
 **Category capture** occurs when an existing term becomes so broad
 that every nearby incident is classified under it.
@@ -24050,7 +24050,7 @@ A fieldbook should increase resolution.
 
 Not replace every noun with one preferred metaphor.
 
-## Novelty Bias
+### Novelty Bias
 
 **Novelty bias** favors the newest incident, tool, or explanation over
 older cases.
@@ -24065,7 +24065,7 @@ A new backend failure may appear unprecedented because:
 Comparative diagnosis should search for structural recurrence before
 declaring a new species.
 
-## Familiarity Bias
+### Familiarity Bias
 
 **Familiarity bias** forces a new incident into an old explanation
 because the old mechanism is well understood.
@@ -24077,7 +24077,7 @@ The known mechanism becomes a narrative attractor.
 
 Rival hypotheses protect against it.
 
-## Survivor Comparison
+### Survivor Comparison
 
 **Survivor comparison** examines only successful installations or
 tools.
@@ -24096,11 +24096,11 @@ exists.
 The ecology's missing members may contain the strongest selection
 signal.
 
-## Comparative Field Method
+### Comparative Field Method
 
 A practical comparative diagnosis can proceed as follows.
 
-### 1. Define the Question
+#### 1. Define the Question
 
 Examples:
 
@@ -24109,7 +24109,7 @@ Examples:
 * Why do alternate-root operations fail differently?
 * Why does one invariant repeatedly disappear during rewrites?
 
-### 2. Build the Comparison Set
+#### 2. Build the Comparison Set
 
 Include:
 
@@ -24119,7 +24119,7 @@ Include:
 * historical recurrences;
 * successful compensations.
 
-### 3. Normalize Case Descriptions
+#### 3. Normalize Case Descriptions
 
 Use the same fields for every case:
 
@@ -24133,12 +24133,12 @@ Use the same fields for every case:
 
 Do not compare one detailed autopsy with three issue titles.
 
-### 4. Separate Symptom from Mechanism
+#### 4. Separate Symptom from Mechanism
 
 Create one list of shared observations and another of suspected causal
 structures.
 
-### 5. Build the Evidence Matrix
+#### 5. Build the Evidence Matrix
 
 Mark:
 
@@ -24149,7 +24149,7 @@ Mark:
 
 Unknown is not false.
 
-### 6. Compare State Transitions
+#### 6. Compare State Transitions
 
 Find:
 
@@ -24158,7 +24158,7 @@ Find:
 * shared unrepresentable state;
 * repeated partial outcome.
 
-### 7. Compare Authority
+#### 7. Compare Authority
 
 Determine whether cases share:
 
@@ -24167,11 +24167,11 @@ Determine whether cases share:
 * reconstructed truth;
 * recovery authority located in operators.
 
-### 8. Compare Boundaries
+#### 8. Compare Boundaries
 
 Identify which facts repeatedly fail to cross.
 
-### 9. Compare Regulators
+#### 9. Compare Regulators
 
 Look for:
 
@@ -24181,25 +24181,25 @@ Look for:
 * feedback delay;
 * saturation.
 
-### 10. Compare Compensators
+#### 10. Compare Compensators
 
 Determine whether the same wrapper, ritual, or expertise recurs.
 
-### 11. Form Mechanism Classes
+#### 11. Form Mechanism Classes
 
 Group only cases supported by shared causal signatures.
 
-### 12. Search for Counterexamples
+#### 12. Search for Counterexamples
 
 Find cases that look similar but should remain outside the class.
 
-### 13. Identify Failure Stacks
+#### 13. Identify Failure Stacks
 
 Some cases require several terms.
 
 Do not force exclusive classification.
 
-### 14. Rank Intervention Points
+#### 14. Rank Intervention Points
 
 Separate:
 
@@ -24207,16 +24207,16 @@ Separate:
 * high-leverage structural repair;
 * ecological migration.
 
-### 15. Test Portability
+#### 15. Test Portability
 
 Ask whether the repair applies to another case in the mechanism class.
 
-### 16. Preserve the Map
+#### 16. Preserve the Map
 
 Link incidents, conclusions, tests, and field terms so future
 recurrence can be recognized.
 
-## Comparative Diagnosis Matrix
+### Comparative Diagnosis Matrix
 
 ```text
 Case:
@@ -24262,9 +24262,9 @@ Uncertainty:
     Missing or disputed evidence.
 ```
 
-## Field Symptom: Four Missing Files
+### Field Symptom: Four Missing Files
 
-### Case A: Extraction Failure
+#### Case A: Extraction Failure
 
 The backend ignores one archive entry type.
 
@@ -24278,7 +24278,7 @@ Mechanism:
 
 * backend substitution without normalized semantics.
 
-### Case B: Lifecycle Deletion
+#### Case B: Lifecycle Deletion
 
 The file is extracted and later removed by a script.
 
@@ -24292,7 +24292,7 @@ Mechanism:
 
 * undeclared lifecycle effect and state drift.
 
-### Case C: Registration Failure
+#### Case C: Registration Failure
 
 The file remains, but package queries report it missing.
 
@@ -24306,7 +24306,7 @@ Mechanism:
 
 * partial success unrepresented across split commits.
 
-### Case D: Ownership Conflict
+#### Case D: Ownership Conflict
 
 Another package replaces the path.
 
@@ -24322,7 +24322,7 @@ Mechanism:
 
 The same symptom requires four diagnoses.
 
-## Field Symptom: Three Different Breakages
+### Field Symptom: Three Different Breakages
 
 Three incidents occur:
 
@@ -24344,7 +24344,7 @@ Different symptoms share one structural cause:
 One intervention --- bound artifact identity with normalized
 repository records --- has high portability.
 
-## Field Symptom: The Wrapper Family
+### Field Symptom: The Wrapper Family
 
 A build wrapper, deployment wrapper, and backup wrapper appear
 unrelated.
@@ -24371,7 +24371,7 @@ The mechanism class includes:
 The repair should target result contracts and completion semantics,
 not merely rewrite each wrapper.
 
-## Field Symptom: Repeated Rewrite Regression
+### Field Symptom: Repeated Rewrite Regression
 
 Three rewritten components reintroduce different bugs:
 
@@ -24396,7 +24396,7 @@ The intervention is not one additional code review.
 
 It is invariant extraction and decision tracing before rewrite.
 
-## Field Symptom: Every Tool Blames the Repository
+### Field Symptom: Every Tool Blames the Repository
 
 Several frontends report invalid package identity.
 
@@ -24420,7 +24420,7 @@ uncontained.
 
 Comparative diagnosis reveals the failure stack.
 
-## Field Symptom: Two Successful Validators
+### Field Symptom: Two Successful Validators
 
 Two validators both report repository consistency.
 
@@ -24439,7 +24439,7 @@ They share one common-mode assumption.
 
 Their agreement is not independent evidence.
 
-## Field Symptom: Automation and Human Review Disagree
+### Field Symptom: Automation and Human Review Disagree
 
 Human release review accepts an artifact.
 
@@ -24462,7 +24462,7 @@ Comparative diagnosis should map:
 
 “Human versus machine” is not the mechanism.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **A failure map** is not a list of issue links.
 
@@ -24517,7 +24517,7 @@ The same local defect may simply remain unfixed.
 **Independent validators** are not independent evidence if they share
 one authority source.
 
-## The Comparative Diagnosis Test
+### The Comparative Diagnosis Test
 
 When several incidents appear related, ask:
 
@@ -24567,7 +24567,7 @@ A comparison is useful when it narrows mechanism.
 It has failed when several unrelated corpses are arranged until they
 resemble a doctrine.
 
-## Twenty-Third House Law
+### Twenty-Third House Law
 
 > Similar wounds do not prove the same weapon.  
 > Different wounds do not prove different hands.
@@ -24585,7 +24585,7 @@ for the highest-leverage one.
 
 ---
 
-# Intervention Design and Repair Selection
+## Intervention Design and Repair Selection
 
 A package artifact carries the wrong identity.
 
@@ -24623,7 +24623,7 @@ ones.
 
 ---
 
-## Intervention
+### Intervention
 
 An **intervention** is a deliberate change intended to alter a causal
 path, state transition, authority relationship, or regulatory loop.
@@ -24649,7 +24649,7 @@ A code change that leaves the mechanism intact may be maintenance.
 
 It is not necessarily an effective intervention.
 
-## Repair
+### Repair
 
 A **repair** is an intervention intended to restore or improve
 correctness after a defect or failure has been identified.
@@ -24671,7 +24671,7 @@ A local repair can be completely correct within its intended scope.
 It becomes misleading only when credited with structural effects it
 does not possess.
 
-## Repair Selection
+### Repair Selection
 
 **Repair selection** is the process of choosing among possible
 interventions based on:
@@ -24696,7 +24696,7 @@ It asks:
 > Which change most honestly alters the mechanism at a boundary
 > capable of owning the result?
 
-## Repair Objective
+### Repair Objective
 
 A **repair objective** states the property the intervention should
 establish.
@@ -24720,7 +24720,7 @@ Otherwise the available patch tends to define the problem.
 > When the only tool is a warning, every invariant begins looking
 > advisory.
 
-## Repair Scope
+### Repair Scope
 
 **Repair scope** defines the states, operations, components, and
 participants the intervention is intended to affect.
@@ -24746,11 +24746,11 @@ It cannot satisfy:
 
 > Authoritative repositories reject malformed metadata.
 
-## Repair Depth
+### Repair Depth
 
 Repairs may operate at several depths.
 
-### Symptom Repair
+#### Symptom Repair
 
 Stops or hides one visible outcome.
 
@@ -24761,7 +24761,7 @@ Examples include:
 * recreate one missing directory;
 * retry one command.
 
-### Defect Repair
+#### Defect Repair
 
 Corrects one implementation defect.
 
@@ -24772,7 +24772,7 @@ Examples include:
 * propagate one error;
 * preserve one metadata field.
 
-### Boundary Repair
+#### Boundary Repair
 
 Changes how meaning or state crosses components.
 
@@ -24783,7 +24783,7 @@ Examples include:
 * normalization contract;
 * explicit context.
 
-### Regulatory Repair
+#### Regulatory Repair
 
 Changes sensing, decision, correction, or verification.
 
@@ -24794,11 +24794,11 @@ Examples include:
 * verify repair;
 * assign an owner.
 
-### Ecological Repair
+#### Ecological Repair
 
 Migrates compensators, operator roles, and local adaptations.
 
-### Institutional Repair
+#### Institutional Repair
 
 Preserves the lesson through tests, decisions, documentation, and
 doctrine.
@@ -24808,7 +24808,7 @@ Deeper is not automatically better.
 The repair depth should match the intended failure class and available
 change budget.
 
-## Causal Fit
+### Causal Fit
 
 **Causal fit** is the degree to which an intervention acts on the
 mechanism actually producing the failure.
@@ -24841,7 +24841,7 @@ The low-fit repair may restore operation.
 
 It preserves narrative coupling.
 
-## Intervention Surface
+### Intervention Surface
 
 An **intervention surface** is the location where the repair acts.
 
@@ -24867,7 +24867,7 @@ The correct surface usually has:
 * acceptable compatibility cost;
 * a reliable way to verify the result.
 
-## Fact–Authority Alignment
+### Fact–Authority Alignment
 
 **Fact–authority alignment** occurs when the intervention surface
 possesses both:
@@ -24892,7 +24892,7 @@ can be brought together with the least duplication.
 > Truth without authority writes reports.  
 > Authority without truth writes incident reports.
 
-## Earliest Valid Intervention
+### Earliest Valid Intervention
 
 The **earliest valid intervention** is the earliest point in the
 causal path where:
@@ -24916,7 +24916,7 @@ For example:
 
 Several guardrails may be appropriate at different scopes.
 
-## Last Responsible Intervention
+### Last Responsible Intervention
 
 The **last responsible intervention** is the final boundary at which
 the failure can be prevented before authoritative or destructive state
@@ -24935,7 +24935,7 @@ check.
 The last responsible intervention should not depend on optional
 memory.
 
-## Prevention
+### Prevention
 
 **Prevention** makes the failure state unreachable or rejects it
 before harmful mutation.
@@ -24959,7 +24959,7 @@ It is appropriate when:
 * compatibility can be migrated;
 * the system possesses required facts.
 
-## Rejection
+### Rejection
 
 **Rejection** refuses an input, state, or operation because its
 meaning is invalid, unsupported, or unsafe.
@@ -24978,7 +24978,7 @@ requested meaning.
 > An honest refusal is a stronger interface than a successful
 > ambiguity.
 
-## Normalization
+### Normalization
 
 **Normalization** converts several acceptable representations into one
 internal meaning.
@@ -25007,7 +25007,7 @@ may be safely normalized under one case-insensitive identity model.
 It must not be normalized if the repository treats them as distinct
 package identities.
 
-## Validation
+### Validation
 
 **Validation** determines whether state satisfies a contract.
 
@@ -25029,7 +25029,7 @@ Its regulatory strength depends on:
 * response;
 * postcondition.
 
-## Transformation
+### Transformation
 
 A **transformation** converts an input or state into another valid
 state.
@@ -25048,7 +25048,7 @@ Transformation is appropriate when:
 * authority for the conversion exists;
 * the result is marked honestly.
 
-## Containment
+### Containment
 
 **Containment** prevents a defect, ambiguity, or legacy semantic from
 propagating beyond one boundary.
@@ -25067,7 +25067,7 @@ Containment may be temporary or permanent.
 It is often the best repair when complete redesign is too expensive
 but propagation can be stopped.
 
-## Quarantine
+### Quarantine
 
 **Quarantine** isolates state that cannot yet be accepted, rejected,
 or repaired safely.
@@ -25094,7 +25094,7 @@ quarantine model.
 
 It is debris with aspirations.
 
-## Migration
+### Migration
 
 **Migration** moves existing state, callers, artifacts, or semantics
 into a new contract.
@@ -25116,7 +25116,7 @@ Migration should define:
 * rollback;
 * authority cutover.
 
-## Adoption
+### Adoption
 
 **Adoption** explicitly incorporates previously accidental or local
 behavior into the current contract.
@@ -25133,7 +25133,7 @@ Adoption is not surrender.
 
 It converts accidental authority into explicit responsibility.
 
-## Deprecation
+### Deprecation
 
 **Deprecation** marks behavior for retirement while preserving it
 temporarily.
@@ -25151,7 +25151,7 @@ Deprecation alone is not a repair.
 
 It is a transition declaration.
 
-## Retirement
+### Retirement
 
 **Retirement** removes behavior after legitimate dependence has been
 migrated, adopted elsewhere, or deliberately rejected.
@@ -25166,7 +25166,7 @@ Retirement should remove:
 
 Historical evidence may remain.
 
-## Recovery
+### Recovery
 
 **Recovery** restores useful state after failure.
 
@@ -25187,7 +25187,7 @@ It is nevertheless part of system correctness.
 A design with excellent prevention and no recovery assumes its own
 perfection.
 
-## Reconciliation
+### Reconciliation
 
 **Reconciliation** compares representations and brings them back into
 a defined relationship.
@@ -25203,7 +25203,7 @@ Reconciliation requires an authority rule.
 
 Without one, the tool merely chooses which disagreement to overwrite.
 
-## Regeneration
+### Regeneration
 
 **Regeneration** recreates derived state from an authoritative source.
 
@@ -25218,7 +25218,7 @@ Regeneration is strong when derivation is explicit and complete.
 It is dangerous when the allegedly derived state contains unique
 information.
 
-## Rollback
+### Rollback
 
 **Rollback** attempts to return state to a prior valid condition.
 
@@ -25242,7 +25242,7 @@ Database rollback does not undo:
 Calling a partial compensating action rollback may create another
 semantic counterfeit.
 
-## Forward Recovery
+### Forward Recovery
 
 **Forward recovery** moves damaged or partial state into a new valid
 state rather than restoring the exact previous state.
@@ -25257,7 +25257,7 @@ Examples include:
 Forward recovery is often safer than rollback when effects are
 irreversible or the prior state is unavailable.
 
-## Compensating Action
+### Compensating Action
 
 A **compensating action** offsets an effect that cannot be literally
 reversed.
@@ -25272,7 +25272,7 @@ Examples include:
 Compensation should not be described as atomic rollback unless the
 resulting contract truly supports that claim.
 
-## Policy
+### Policy
 
 **Policy** is a choice among several legitimate system states.
 
@@ -25287,7 +25287,7 @@ Examples include:
 Policy belongs to the authority designated to make the choice, often
 the operator or repository maintainer.
 
-## Invariant
+### Invariant
 
 An **invariant** is a property the system must preserve regardless of
 policy.
@@ -25304,7 +25304,7 @@ Confusing policy with invariant causes two opposite failures:
 * over-enforcement of legitimate operator choice;
 * under-enforcement of structural correctness.
 
-## Policy–Invariant Split
+### Policy–Invariant Split
 
 A **policy–invariant split** separates:
 
@@ -25324,7 +25324,7 @@ policy:
 A repair should enforce the invariant while preserving policy at the
 correct authority surface.
 
-## Operator Decision Point
+### Operator Decision Point
 
 An **operator decision point** is a boundary where human policy or
 judgment is intentionally required.
@@ -25350,7 +25350,7 @@ Human judgment should decide policy.
 It should not reconstruct missing facts before policy can even be
 understood.
 
-## Escape Hatch
+### Escape Hatch
 
 An **escape hatch** permits deliberate exception to a guardrail or
 normal path.
@@ -25371,7 +25371,7 @@ A good escape hatch is:
 * excluded from ordinary automation;
 * honest about weakened guarantees.
 
-## Repair Boundary
+### Repair Boundary
 
 A **repair boundary** is the scope within which the intervention can
 guarantee its result.
@@ -25393,7 +25393,7 @@ More accurate:
 > Repository intake now rejects artifacts whose bound identity
 > disagrees with publication metadata.
 
-## Postcondition
+### Postcondition
 
 A **postcondition** is the state that must hold after the
 intervention.
@@ -25409,7 +25409,7 @@ Examples include:
 Repairs should be designed around postconditions, not merely command
 success.
 
-## Repair Invariant
+### Repair Invariant
 
 A **repair invariant** is a property that must remain true while
 correction is being applied.
@@ -25426,7 +25426,7 @@ Examples include:
 A repair can fix the original problem and still be unsafe if its own
 transition is poorly modeled.
 
-## Idempotence
+### Idempotence
 
 An intervention is **idempotent** when repeating it does not produce
 additional unintended effects after the desired state has been
@@ -25444,7 +25444,7 @@ Not every repair can be perfectly idempotent.
 
 The system should know when repetition is safe.
 
-## Monotonic Repair
+### Monotonic Repair
 
 A **monotonic repair** moves state progressively toward a valid
 condition without reopening previously resolved parts.
@@ -25457,7 +25457,7 @@ Examples include:
 
 Monotonicity reduces restart complexity.
 
-## Repair Atomicity
+### Repair Atomicity
 
 **Repair atomicity** means the correction becomes visible as one
 committed state transition within its declared scope.
@@ -25471,7 +25471,7 @@ For example:
 Repair atomicity should not be claimed across effects outside the
 transaction.
 
-## Repair Observability
+### Repair Observability
 
 **Repair observability** is the ability to determine:
 
@@ -25487,7 +25487,7 @@ Opaque repair creates fear-based retention.
 Maintainers preserve old workarounds because they cannot prove the new
 mechanism actually covers the old failure.
 
-## Repair Provenance
+### Repair Provenance
 
 **Repair provenance** records:
 
@@ -25500,7 +25500,7 @@ mechanism actually covers the old failure.
 Provenance is especially important when repair reconstructs uncertain
 state.
 
-## Repair Verification
+### Repair Verification
 
 **Repair verification** confirms that:
 
@@ -25517,7 +25517,7 @@ It should still influence design from the beginning.
 A repair that cannot be verified is difficult to distinguish from a
 confident mutation.
 
-## Leverage
+### Leverage
 
 **Leverage** is the amount of failure reduction or burden removal
 produced by one intervention.
@@ -25538,7 +25538,7 @@ Leverage should be evaluated against:
 * compatibility risk;
 * operator sovereignty.
 
-## Narrow Repair
+### Narrow Repair
 
 A **narrow repair** changes the smallest surface capable of satisfying
 the repair objective.
@@ -25555,7 +25555,7 @@ A narrow repair is not the same as a shallow patch.
 A structured result added at one producer boundary may be narrow and
 structural.
 
-## Broad Repair
+### Broad Repair
 
 A **broad repair** changes several components, contracts, or
 authorities.
@@ -25570,7 +25570,7 @@ Broad repair may be necessary when:
 
 Broad repair requires stronger sequencing and viability planning.
 
-## Minimal Sufficient Repair
+### Minimal Sufficient Repair
 
 A **minimal sufficient repair** is the smallest intervention set that
 satisfies the stated objective and preserves necessary recovery and
@@ -25587,7 +25587,7 @@ Minimal sufficient does not mean minimal code.
 
 It means no unnecessary authority or semantic expansion.
 
-## Repair Stack
+### Repair Stack
 
 A **repair stack** combines several interventions at different depths.
 
@@ -25619,7 +25619,7 @@ The stack addresses:
 
 One intervention rarely performs every role well.
 
-## Defense in Depth
+### Defense in Depth
 
 **Defense in depth** uses several independent controls to protect one
 property.
@@ -25638,7 +25638,7 @@ Five checks derived from one filename are not defense in depth.
 
 They are repetition in formation.
 
-## Redundant Guardrail
+### Redundant Guardrail
 
 A **redundant guardrail** protects a property already enforced
 elsewhere.
@@ -25653,7 +25653,7 @@ Redundancy may be useful when:
 Redundancy becomes wasteful or contradictory when layers enforce
 different models.
 
-## Repair Sequencing
+### Repair Sequencing
 
 **Repair sequencing** orders interventions so each stage has:
 
@@ -25677,7 +25677,7 @@ Wrong order:
 2. discover old artifacts have no manifest;
 3. ask operators to reconstruct identity manually.
 
-## Dependency of Repairs
+### Dependency of Repairs
 
 Repairs may depend on one another.
 
@@ -25706,7 +25706,7 @@ caller inventory
 A guardrail installed before its truth source exists may enforce
 fiction.
 
-## Repair Window
+### Repair Window
 
 A **repair window** is the period during which intervention can occur
 with acceptable risk and disruption.
@@ -25729,7 +25729,7 @@ Delayed repair may allow:
 
 Immediate repair may act before the model is understood.
 
-## Containment First
+### Containment First
 
 **Containment first** is a strategy that stops propagation before
 completing the full structural repair.
@@ -25746,7 +25746,7 @@ Containment buys analytical and migration time.
 
 It should remain honest about what is unresolved.
 
-## Repair Later
+### Repair Later
 
 **Repair later** is acceptable when:
 
@@ -25759,7 +25759,7 @@ It should remain honest about what is unresolved.
 Without these conditions, “later” becomes folklore's preferred release
 date.
 
-## Risk
+### Risk
 
 Repair risk includes:
 
@@ -25778,7 +25778,7 @@ Risk should be compared with status-quo risk.
 Doing nothing is an intervention that preserves every current failure
 path.
 
-## Status-Quo Risk
+### Status-Quo Risk
 
 **Status-quo risk** is the expected cost of leaving the current
 mechanism active.
@@ -25796,7 +25796,7 @@ It includes:
 The status quo should not receive zero risk merely because it already
 exists.
 
-## Repair Blast Radius
+### Repair Blast Radius
 
 **Repair blast radius** is the scope of state and participants
 affected if the intervention behaves incorrectly.
@@ -25815,7 +25815,7 @@ High-radius repair requires:
 * rollback or forward recovery;
 * explicit ownership.
 
-## False Positive
+### False Positive
 
 A **false positive** occurs when a guardrail classifies legitimate
 state as invalid.
@@ -25831,7 +25831,7 @@ False positives matter because they:
 A theoretically correct invariant with poorly available facts may
 produce practical false positives.
 
-## False Negative
+### False Negative
 
 A **false negative** occurs when invalid state passes the
 intervention.
@@ -25847,7 +25847,7 @@ The acceptable balance depends on:
 * policy versus invariant;
 * migration stage.
 
-## Repair Confidence
+### Repair Confidence
 
 **Repair confidence** is justified belief that the intervention
 addresses the mechanism within its declared scope.
@@ -25866,7 +25866,7 @@ Confidence may derive from:
 
 Confidence should be proportional to evidence, not diff elegance.
 
-## Repair Theater
+### Repair Theater
 
 **Repair theater** is visible intervention that creates confidence
 without materially changing the relevant causal path.
@@ -25884,7 +25884,7 @@ The system appears responsive.
 
 The failure class remains employed.
 
-## Patch Theater
+### Patch Theater
 
 **Patch theater** is rapid code modification presented as resolution
 before the mechanism or scope is understood.
@@ -25907,7 +25907,7 @@ Speed may be appropriate for containment.
 
 The theater lies in claiming closure.
 
-## Repair Laundering
+### Repair Laundering
 
 **Repair laundering** presents local compensation as shared structural
 repair.
@@ -25923,7 +25923,7 @@ The repair is real.
 
 Its scope is misrepresented.
 
-## Cosmetic Repair
+### Cosmetic Repair
 
 A **cosmetic repair** changes presentation without changing semantic
 authority.
@@ -25939,7 +25939,7 @@ Cosmetic repair can still be valuable.
 
 It becomes misleading when credited with invariant strength.
 
-## Compensatory Repair
+### Compensatory Repair
 
 A **compensatory repair** adds another mechanism around the defect
 rather than changing it.
@@ -25962,7 +25962,7 @@ It should be treated as:
 * with known bypass;
 * with a future review point.
 
-## Over-Repair
+### Over-Repair
 
 **Over-repair** changes more authority, state, or behavior than
 required by the failure class.
@@ -25981,7 +25981,7 @@ Over-repair increases migration and cultural resistance.
 
 It may also destroy legitimate policy.
 
-## Under-Repair
+### Under-Repair
 
 **Under-repair** restores the specimen while leaving the structural
 mechanism available.
@@ -25998,7 +25998,7 @@ Under-repair may be appropriate incident response.
 
 It is not failure-class closure.
 
-## Ideological Repair
+### Ideological Repair
 
 An **ideological repair** chooses intervention based primarily on
 preferred architecture rather than demonstrated causal fit.
@@ -26015,7 +26015,7 @@ The preferred architecture may still be good.
 
 The autopsy should be able to explain why it fits this mechanism.
 
-## Architecture Smuggling
+### Architecture Smuggling
 
 **Architecture smuggling** uses a local incident as justification for
 a broader design change whose necessity has not been established.
@@ -26037,7 +26037,7 @@ It also changes:
 
 Those changes deserve their own argument.
 
-## Repair Capture
+### Repair Capture
 
 **Repair capture** occurs when the intervention is shaped to preserve
 the interests or adaptations of one component, role, or group rather
@@ -26055,7 +26055,7 @@ Capture may be unconscious.
 
 Explicit repair objectives and authority maps help expose it.
 
-## Policy Capture
+### Policy Capture
 
 **Policy capture** occurs when a structural invariant mechanism begins
 deciding legitimate policy outside its scope.
@@ -26074,7 +26074,7 @@ The first is structural integrity.
 
 The second is policy.
 
-## Recovery Capture
+### Recovery Capture
 
 **Recovery capture** occurs when a repair path becomes the normal
 operational path.
@@ -26090,7 +26090,7 @@ Recovery has become compensation.
 
 The normal model is no longer governing reality.
 
-## Field Symptom: Wrong Artifact Identity
+### Field Symptom: Wrong Artifact Identity
 
 Observed:
 
@@ -26104,7 +26104,7 @@ manifest:
 
 Possible interventions:
 
-### Rename the File
+#### Rename the File
 
 Scope:
 
@@ -26116,7 +26116,7 @@ Does not resolve:
 * whether repository state is already wrong;
 * whether consumers trust filename or manifest.
 
-### Installer Ignores Filename
+#### Installer Ignores Filename
 
 Scope:
 
@@ -26129,7 +26129,7 @@ Does not protect:
 * query tools;
 * signatures tied to external identity.
 
-### Repository Rejects Disagreement
+#### Repository Rejects Disagreement
 
 Scope:
 
@@ -26141,7 +26141,7 @@ Requires:
 * authority over intake;
 * compatibility plan for old artifacts.
 
-### Builder Emits Bound Identity
+#### Builder Emits Bound Identity
 
 Scope:
 
@@ -26152,7 +26152,7 @@ Does not alone guarantee:
 * repository enforcement;
 * caller migration.
 
-### Documentation Checklist
+#### Documentation Checklist
 
 Scope:
 
@@ -26172,7 +26172,7 @@ A likely repair stack:
 6. update installer and query tools;
 7. prohibit new filename-only production.
 
-## Field Symptom: Alternate-Root Script Damage
+### Field Symptom: Alternate-Root Script Damage
 
 Observed:
 
@@ -26181,7 +26181,7 @@ Observed:
 
 Possible interventions:
 
-### Warning
+#### Warning
 
 Appropriate when:
 
@@ -26189,7 +26189,7 @@ Appropriate when:
 * operator judgment may permit it;
 * compatibility prevents rejection temporarily.
 
-### Reject All Scripts
+#### Reject All Scripts
 
 Appropriate when:
 
@@ -26200,7 +26200,7 @@ Risk:
 
 * blocks legitimate explicit host-context scripts.
 
-### Explicit Script Context
+#### Explicit Script Context
 
 Possible model:
 
@@ -26216,7 +26216,7 @@ Requires:
 * capability checks;
 * honest isolation claims.
 
-### Full Isolation
+#### Full Isolation
 
 Strongest possible mechanism.
 
@@ -26233,7 +26233,7 @@ Do not choose isolation merely because it sounds complete.
 
 Do not choose warning merely because it is easy.
 
-## Field Symptom: Database Race
+### Field Symptom: Database Race
 
 Observed:
 
@@ -26241,7 +26241,7 @@ Observed:
 
 Possible interventions:
 
-### Documentation
+#### Documentation
 
 > Do not run package operations concurrently.
 
@@ -26249,13 +26249,13 @@ Soft invariant.
 
 May be viable for one local tool.
 
-### Wrapper Lock
+#### Wrapper Lock
 
 Contains concurrency if every path uses wrapper.
 
 Fails under bypass.
 
-### Shared Lock Primitive
+#### Shared Lock Primitive
 
 Protects all cooperating writers.
 
@@ -26265,13 +26265,13 @@ Requires:
 * defined stale-lock recovery;
 * reader semantics.
 
-### Transactional Database
+#### Transactional Database
 
 May solve broader state problems.
 
 Could be over-repair if introduced only for one lock defect.
 
-### Optimistic Generation Check
+#### Optimistic Generation Check
 
 Rejects stale writers before commit.
 
@@ -26285,35 +26285,35 @@ is different from:
 
 > Permit concurrent planning but reject stale commits.
 
-## Field Symptom: Repeated Malformed Repository Entries
+### Field Symptom: Repeated Malformed Repository Entries
 
 Possible interventions:
 
-### Nightly Audit
+#### Nightly Audit
 
 Detective guardrail.
 
 Useful for existing drift.
 
-### Intake Validation
+#### Intake Validation
 
 Preventive guardrail.
 
 Protects future publication.
 
-### Producer Validation
+#### Producer Validation
 
 Earlier feedback.
 
 Does not replace intake authority.
 
-### Schema Change
+#### Schema Change
 
 May make missing fields unrepresentable.
 
 Requires migration.
 
-### Human Review
+#### Human Review
 
 Useful for policy and exceptional cases.
 
@@ -26321,17 +26321,17 @@ Wasteful for deterministic structural checks.
 
 A strong repair stack may use all of them with distinct roles.
 
-## Field Symptom: Caller Parses stdout
+### Field Symptom: Caller Parses stdout
 
 Possible interventions:
 
-### Freeze Wording
+#### Freeze Wording
 
 Restores compatibility.
 
 Preserves accidental protocol.
 
-### Add More Distinct Marker
+#### Add More Distinct Marker
 
 Example:
 
@@ -26343,7 +26343,7 @@ Better than prose parsing.
 
 Still requires a specified protocol.
 
-### Machine-Readable Mode
+#### Machine-Readable Mode
 
 Good boundary if:
 
@@ -26352,13 +26352,13 @@ Good boundary if:
 * completion is explicit;
 * versioning exists.
 
-### Library API
+#### Library API
 
 May be appropriate for in-process integration.
 
 Not automatically superior.
 
-### Result File
+#### Result File
 
 Useful across process boundaries and long operations.
 
@@ -26368,7 +26368,7 @@ The repair objective is:
 
 > Publish structured authoritative result separately from narration.
 
-## Field Symptom: Optional Validation Already Works
+### Field Symptom: Optional Validation Already Works
 
 A local validator catches every known malformed package.
 
@@ -26387,34 +26387,34 @@ The script may need little change.
 
 The real intervention is authority migration.
 
-## Field Symptom: New Strict Parser Breaks Legacy State
+### Field Symptom: New Strict Parser Breaks Legacy State
 
 A parser begins rejecting old package names.
 
 Possible responses:
 
-### Disable Strictness
+#### Disable Strictness
 
 Preserves compatibility.
 
 Also preserves new malformed production.
 
-### Grandfather Existing Names
+#### Grandfather Existing Names
 
 Requires a reliable way to distinguish existing state.
 
-### Legacy Intake Adapter
+#### Legacy Intake Adapter
 
 Reads old form, produces current identity, prevents new old-form
 output.
 
-### Bulk Migration
+#### Bulk Migration
 
 Converts all supported state.
 
 May be expensive but produces clean cutover.
 
-### Explicit Unsupported Boundary
+#### Explicit Unsupported Boundary
 
 Rejects ancient state and documents scope.
 
@@ -26425,25 +26425,25 @@ Repair selection is not only technical.
 
 It includes the project's actual compatibility budget.
 
-## Field Symptom: Operator Performs Manual Reconciliation
+### Field Symptom: Operator Performs Manual Reconciliation
 
 An operator compares filesystem and database after every upgrade.
 
 Possible interventions:
 
-### Automate the Comparison
+#### Automate the Comparison
 
 Creates a detective guardrail.
 
-### Fix Transaction Ordering
+#### Fix Transaction Ordering
 
 May remove the recurring inconsistency.
 
-### Add Postcondition Verification
+#### Add Postcondition Verification
 
 Closes the operation loop.
 
-### Preserve Manual Audit
+#### Preserve Manual Audit
 
 Useful independent verification.
 
@@ -26455,7 +26455,7 @@ The operator's existing practice may contain:
 
 Extract before automating.
 
-## Repair Selection Matrix
+### Repair Selection Matrix
 
 A compact selection guide:
 
@@ -26479,7 +26479,7 @@ The matrix suggests inquiry.
 
 It is not a substitute for one.
 
-## Repair Decision Record
+### Repair Decision Record
 
 A **repair decision record** should state:
 
@@ -26530,7 +26530,7 @@ Remaining limits:
 This record prevents the chosen mechanism from later being remembered
 as inevitable.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Intervention** is not synonymous with code change.
 
@@ -26598,7 +26598,7 @@ It may preserve recovery and sovereignty.
 
 Controls should contribute independent assurance.
 
-## The Intervention Design Test
+### The Intervention Design Test
 
 Before selecting a repair, ask:
 
@@ -26667,7 +26667,7 @@ A repair is well selected when it acts where the system possesses
 enough truth, enough authority, and enough scope to alter the
 mechanism without annexing unrelated policy.
 
-## Twenty-Fourth House Law
+### Twenty-Fourth House Law
 
 > Fix the failure at the narrowest boundary that owns both the truth
 > and the right to say no.
@@ -26697,7 +26697,7 @@ and when the ecosystem may safely retire its old compensators.
 
 ---
 
-# Repair Verification and Closure
+## Repair Verification and Closure
 
 The package repository stops reporting malformed artifacts.
 
@@ -26721,7 +26721,7 @@ The sensor merely stopped seeing the path where the damage moved.
 
 ---
 
-## Verification
+### Verification
 
 **Verification** determines whether an intervention produced the state
 and mechanism change it claimed to produce.
@@ -26743,7 +26743,7 @@ Verification is not one successful test.
 It is evidence that the repair objective now holds within its declared
 scope.
 
-## Validation and Verification
+### Validation and Verification
 
 The words are often used interchangeably.
 
@@ -26766,7 +26766,7 @@ Validation examines the specimen.
 
 Verification examines the claim.
 
-## Closure
+### Closure
 
 **Closure** is the justified conclusion that an incident, defect, or
 failure class has been addressed sufficiently within an explicit
@@ -26792,7 +26792,7 @@ A closed incident does not necessarily mean:
 > “Closed” is a scope claim.  
 > Without scope, it is office furniture.
 
-## Closure Boundary
+### Closure Boundary
 
 A **closure boundary** defines where the project claims the repair now
 holds.
@@ -26822,34 +26822,34 @@ Precision is not weakness.
 
 It is protection against future institutional memory lying politely.
 
-## Closure Depth
+### Closure Depth
 
 Closure may occur at several depths.
 
-### Incident Closure
+#### Incident Closure
 
 The affected state is repaired.
 
-### Defect Closure
+#### Defect Closure
 
 The immediate implementation defect is corrected.
 
-### Structural Closure
+#### Structural Closure
 
 The contract, authority, or invariant preventing the failure class is
 repaired.
 
-### Regulatory Closure
+#### Regulatory Closure
 
 The control loop can now detect, reject, correct, and verify the
 relevant deviation.
 
-### Ecological Closure
+#### Ecological Closure
 
 Compensatory operator work and surrounding workarounds can safely
 retire or change role.
 
-### Institutional Closure
+#### Institutional Closure
 
 The lesson is retained in tests, documentation, decisions, and current
 doctrine.
@@ -26858,7 +26858,7 @@ A project may close one depth while leaving another open.
 
 That is legitimate if stated honestly.
 
-## Closure Claim
+### Closure Claim
 
 A **closure claim** is the precise assertion the verification process
 must support.
@@ -26888,7 +26888,7 @@ A closure claim should be:
 * falsifiable;
 * compatible with known limitations.
 
-## Proof Obligation
+### Proof Obligation
 
 A **proof obligation** is the evidence required to justify one closure
 claim.
@@ -26909,7 +26909,7 @@ The claim determines the proof obligations.
 
 The patch does not.
 
-## Repair Evidence
+### Repair Evidence
 
 **Repair evidence** is the collection of observations supporting
 closure.
@@ -26937,7 +26937,7 @@ Evidence should cover both:
 A repair that proves only the happy path has not verified the boundary
 that failed.
 
-## Positive Verification
+### Positive Verification
 
 **Positive verification** demonstrates that valid operations still
 succeed under the repaired model.
@@ -26952,7 +26952,7 @@ Examples include:
 
 Positive verification protects against over-repair.
 
-## Negative Verification
+### Negative Verification
 
 **Negative verification** demonstrates that invalid, incoherent, or
 unsupported states are rejected or contained as intended.
@@ -26973,7 +26973,7 @@ no.
 > The happy path proves the road exists.  
 > The rejection path proves the cliff has a fence.
 
-## Boundary Verification
+### Boundary Verification
 
 **Boundary verification** demonstrates that meaning crosses a
 component boundary without loss, reconstruction, or unauthorized
@@ -26992,7 +26992,7 @@ Boundary verification tests the relationship among components.
 
 It does not stop at one unit test inside the producer.
 
-## Authority Verification
+### Authority Verification
 
 **Authority verification** demonstrates that the repaired mechanism
 acts on the state the ecosystem actually treats as authoritative.
@@ -27008,7 +27008,7 @@ For repository intake, verify:
 A validator may be perfectly correct and still irrelevant if
 authoritative state can enter elsewhere.
 
-## Control-Loop Verification
+### Control-Loop Verification
 
 **Control-loop verification** demonstrates that sensing, decision,
 actuation, and feedback are connected around the intended state.
@@ -27028,7 +27028,7 @@ A green status after repair is not enough.
 The status must measure the invariant rather than merely the
 actuator's own output.
 
-## Mechanism Verification
+### Mechanism Verification
 
 **Mechanism verification** tests whether the causal structure
 identified by the autopsy has actually changed.
@@ -27058,7 +27058,7 @@ If callers continue parsing stdout, the mechanism survives.
 
 The new output is decoration.
 
-## Symptom Verification
+### Symptom Verification
 
 **Symptom verification** confirms that the visible failure no longer
 appears in the tested case.
@@ -27077,7 +27077,7 @@ The overloaded semantic model may remain.
 
 Symptom verification is one evidence layer, not closure by itself.
 
-## Regression
+### Regression
 
 A **regression** is the return of previously working behavior to a
 known broken state after change.
@@ -27090,7 +27090,7 @@ Example:
 
 Regression tests are well suited to regression.
 
-## Recurrence
+### Recurrence
 
 A **recurrence** is the reappearance of the same failure mechanism
 through a different implementation, state path, or symptom.
@@ -27106,7 +27106,7 @@ another reconstruction path.
 
 Structural verification should target the mechanism class.
 
-## Regression Test
+### Regression Test
 
 A **regression test** reproduces a previously observed failure and
 asserts the expected repaired behavior.
@@ -27139,7 +27139,7 @@ The first remembers wording.
 
 The second remembers state.
 
-## Structural Regression Test
+### Structural Regression Test
 
 A **structural regression test** asserts the contract or invariant
 rather than one historical implementation detail.
@@ -27158,7 +27158,7 @@ Structural regression tests may require:
 * multiple implementations;
 * authority-path tests.
 
-## Conformance Test
+### Conformance Test
 
 A **conformance test** determines whether an implementation satisfies
 one shared contract.
@@ -27185,7 +27185,7 @@ A conformance suite should test:
 The second implementation often reveals which expectations the first
 suite forgot to encode.
 
-## End-to-End Verification
+### End-to-End Verification
 
 **End-to-end verification** follows the operation across every
 relevant authority and state boundary.
@@ -27212,7 +27212,7 @@ End-to-end verification proves the composition.
 
 A locally correct ecosystem can still compose into nonsense.
 
-## Independent Verification
+### Independent Verification
 
 **Independent verification** uses another mechanism or representation
 to check the result without sharing the same critical assumption.
@@ -27229,7 +27229,7 @@ Two validators reading the same derived record are not independent.
 Independence concerns assumptions, not filenames or implementation
 languages.
 
-## Orthogonal Evidence
+### Orthogonal Evidence
 
 **Orthogonal evidence** constrains the claim through a different
 observational path.
@@ -27245,7 +27245,7 @@ Agreement among orthogonal surfaces increases confidence.
 
 Agreement among duplicated projections of one source may not.
 
-## Fault Injection
+### Fault Injection
 
 **Fault injection** deliberately introduces controlled failure to test
 containment and recovery.
@@ -27272,7 +27272,7 @@ It is especially valuable when the repair claims:
 * quarantine;
 * recovery.
 
-## Adversarial Case
+### Adversarial Case
 
 An **adversarial case** is an input or state designed to challenge the
 boundary rather than represent ordinary use.
@@ -27292,7 +27292,7 @@ They are not hostile users.
 
 They are contracts asking difficult questions.
 
-## Negative Space
+### Negative Space
 
 **Negative space** is the set of states and paths the repair claims
 should no longer be reachable.
@@ -27319,7 +27319,7 @@ It can be supported through:
 * removed interfaces;
 * production observation.
 
-## Bypass Verification
+### Bypass Verification
 
 **Bypass verification** inventories and tests every path capable of
 avoiding the new mechanism.
@@ -27346,7 +27346,7 @@ For each bypass, determine:
 
 A hidden bypass turns structural closure into etiquette.
 
-## Escape-Hatch Verification
+### Escape-Hatch Verification
 
 An escape hatch should be verified separately.
 
@@ -27363,7 +27363,7 @@ Test that it:
 A guardrail without a working recovery path may be safer on ordinary
 days and catastrophic on the day it matters.
 
-## Migration Verification
+### Migration Verification
 
 **Migration verification** demonstrates that old state moved into the
 new model without loss, ambiguity, or permanent dual authority.
@@ -27384,7 +27384,7 @@ A migration is not complete because the tool exited zero.
 
 It is complete when the old authority can stop writing.
 
-## Compatibility Verification
+### Compatibility Verification
 
 **Compatibility verification** confirms that supported old callers or
 artifacts continue functioning through the declared compatibility
@@ -27400,7 +27400,7 @@ It should also confirm that:
 
 Compatibility verification protects both history and convergence.
 
-## Cutover Verification
+### Cutover Verification
 
 **Cutover verification** demonstrates that authority moved exactly
 once and that every relevant writer agrees.
@@ -27417,7 +27417,7 @@ Verify:
 A cutover without cutover verification creates two truths and a
 calendar event.
 
-## Postcondition Verification
+### Postcondition Verification
 
 **Postcondition verification** checks that the promised final state
 actually holds after the operation.
@@ -27435,7 +27435,7 @@ where possible.
 
 Do not infer final state solely from the repair command's exit status.
 
-## Repair-Invariant Verification
+### Repair-Invariant Verification
 
 Repairs have their own invariants.
 
@@ -27452,7 +27452,7 @@ Verify during intervention that:
 A repair can remove the original defect while corrupting the
 migration.
 
-## Idempotence Verification
+### Idempotence Verification
 
 To verify idempotence:
 
@@ -27466,7 +27466,7 @@ A command returning success twice is not enough.
 
 The state transition must remain stable.
 
-## Recovery Verification
+### Recovery Verification
 
 **Recovery verification** demonstrates that the system can return from
 failure without requiring undocumented reconstruction.
@@ -27488,7 +27488,7 @@ Recovery should be tested before the emergency.
 > procedure.  
 > It is live research with damaged state.
 
-## Rollback Verification
+### Rollback Verification
 
 Rollback verification must identify what is and is not restored.
 
@@ -27511,7 +27511,7 @@ changed.
 
 Rollback claims should confess their boundary.
 
-## Forward-Recovery Verification
+### Forward-Recovery Verification
 
 Forward recovery should prove that partial or damaged state can move
 to one valid current condition.
@@ -27525,7 +27525,7 @@ Verify:
 * postconditions are explicit;
 * old partial state does not remain authoritative.
 
-## Production Verification
+### Production Verification
 
 **Production verification** observes the repaired mechanism under real
 workload and authority.
@@ -27554,7 +27554,7 @@ Production verification should not replace pre-deployment tests.
 
 It complements them.
 
-## Shadow Verification
+### Shadow Verification
 
 **Shadow verification** runs the new mechanism observationally beside
 the old authority.
@@ -27576,7 +27576,7 @@ Its limitations include:
 * no proof that participants will accept the decision;
 * no proof that authority integration works.
 
-## Pilot Verification
+### Pilot Verification
 
 A **pilot** applies the repair to a bounded real authority surface.
 
@@ -27595,7 +27595,7 @@ A successful pilot proves bounded viability.
 
 Expansion remains another intervention.
 
-## Canary
+### Canary
 
 A **canary** is a deliberately limited early deployment used to detect
 failure before broader exposure.
@@ -27611,7 +27611,7 @@ A canary should have:
 A canary that excludes every difficult legacy case may prove only that
 clean state remains clean.
 
-## Observation Window
+### Observation Window
 
 An **observation window** is the period during which the project
 watches for recurrence, ecological regression, or unanticipated burden
@@ -27630,7 +27630,7 @@ One week may be enough for a command run hourly.
 
 One release may be insufficient for a migration performed annually.
 
-## Quiet Period
+### Quiet Period
 
 A **quiet period** is time without reported incidents.
 
@@ -27649,7 +27649,7 @@ It is weak when:
 >
 > It is not automatically a miracle.
 
-## Incident-Rate Verification
+### Incident-Rate Verification
 
 Incident frequency before and after repair may provide useful
 evidence.
@@ -27671,7 +27671,7 @@ A lower incident rate may mean:
 * users abandoned the operation;
 * the symptom changed.
 
-## Operator-Burden Verification
+### Operator-Burden Verification
 
 A structural repair should often reduce repeated operator work.
 
@@ -27688,7 +27688,7 @@ Measure whether operators still need to:
 If the technical patch lands and operator work remains unchanged, the
 ecology may not have moved.
 
-## Compensator Retirement
+### Compensator Retirement
 
 **Compensator retirement** removes or demotes a workaround after the
 system has acquired the function it carried.
@@ -27713,7 +27713,7 @@ Retirement should occur only after:
 * observation;
 * rollback or restoration plan.
 
-## Retirement Test
+### Retirement Test
 
 A **retirement test** asks whether the ecosystem remains coherent when
 the old compensator is absent.
@@ -27731,7 +27731,7 @@ The compensator's absence is itself a test condition.
 > You do not know that the crutch is obsolete until the patient walks
 > without it.
 
-## Staged Retirement
+### Staged Retirement
 
 **Staged retirement** reduces compensator authority gradually.
 
@@ -27754,7 +27754,7 @@ Staging helps reveal hidden dependence before deletion.
 It also prevents old mechanisms from remaining authoritative merely
 because removal feels risky.
 
-## Compensator Demotion
+### Compensator Demotion
 
 **Compensator demotion** keeps an old tool or practice for:
 
@@ -27772,7 +27772,7 @@ The tool survives.
 
 Its job improves.
 
-## Compensator Persistence
+### Compensator Persistence
 
 A compensator may remain necessary after repair because:
 
@@ -27787,7 +27787,7 @@ Do not delete a compensator merely to prove the reform was complete.
 Do not preserve it as ordinary infrastructure merely because history
 once needed it.
 
-## Compensation Reappearance
+### Compensation Reappearance
 
 **Compensation reappearance** occurs when operators recreate the old
 workaround after formal retirement.
@@ -27806,7 +27806,7 @@ Reappearance should trigger investigation.
 
 It should not be dismissed automatically as resistance.
 
-## Ecological Regression
+### Ecological Regression
 
 An **ecological regression** is a repaired local mechanism accompanied
 by worse total operation elsewhere.
@@ -27825,7 +27825,7 @@ Verification must include the surrounding ecology.
 Otherwise the component may pass every test while the system becomes
 harder to operate.
 
-## Burden-Shift Verification
+### Burden-Shift Verification
 
 **Burden-shift verification** checks where work moved after repair.
 
@@ -27844,7 +27844,7 @@ A burden may move appropriately.
 
 The move should be visible and intentional.
 
-## Authority-Shift Verification
+### Authority-Shift Verification
 
 When repair moves authority, verify that:
 
@@ -27858,7 +27858,7 @@ When repair moves authority, verify that:
 Technical cutover without governance cutover produces institutional
 split brain.
 
-## Doctrine Verification
+### Doctrine Verification
 
 A repair may require doctrinal change.
 
@@ -27873,7 +27873,7 @@ Verify whether current project language now reflects:
 If the implementation changes but doctrine still teaches the old
 compensation, culture may reintroduce it.
 
-## Documentation Verification
+### Documentation Verification
 
 Documentation should be checked against the repaired contract.
 
@@ -27894,7 +27894,7 @@ Do not merely append a note saying:
 
 Replace the old execution model.
 
-## Institutional Verification
+### Institutional Verification
 
 **Institutional verification** asks whether future maintainers can
 recover:
@@ -27918,7 +27918,7 @@ The repair should survive:
 A fix remembered only by its author is still running in volatile
 memory.
 
-## Closure Artifact
+### Closure Artifact
 
 A **closure artifact** is the durable record demonstrating why closure
 was claimed.
@@ -27937,7 +27937,7 @@ It may include:
 The closure artifact should be concise enough to retrieve and detailed
 enough to challenge.
 
-## Closure Report
+### Closure Report
 
 A closure report may use the following structure:
 
@@ -27985,7 +27985,7 @@ Reopening conditions:
     What evidence invalidates this closure?
 ```
 
-## Reopening Condition
+### Reopening Condition
 
 A **reopening condition** is an observation that should invalidate or
 narrow the closure claim.
@@ -28003,7 +28003,7 @@ Reopening conditions make closure falsifiable.
 
 They prevent “fixed” from becoming a doctrine immune to evidence.
 
-## Residual Risk
+### Residual Risk
 
 **Residual risk** is the known possibility of failure remaining after
 repair.
@@ -28027,7 +28027,7 @@ Confessing residual risk strengthens closure.
 
 It does not weaken it.
 
-## Remaining Limitation
+### Remaining Limitation
 
 A **remaining limitation** is a known boundary the repair does not
 claim to cross.
@@ -28045,7 +28045,7 @@ Examples:
 A limitation prevents future maintainers from extending the closure
 claim by folklore.
 
-## Partial Closure
+### Partial Closure
 
 **Partial closure** is honest closure over part of the mechanism or
 ecology.
@@ -28066,7 +28066,7 @@ Partial closure should identify:
 
 Partial closure is superior to false totality.
 
-## False Closure
+### False Closure
 
 **False closure** is the claim that a failure is resolved when
 evidence supports only symptom suppression, local repair, or narrower
@@ -28083,7 +28083,7 @@ Common forms include:
 
 False closure turns current uncertainty into future rediscovery.
 
-## Premature Closure
+### Premature Closure
 
 **Premature closure** occurs when the project stops investigating or
 verifying after the first plausible repair.
@@ -28100,7 +28100,7 @@ It is encouraged by:
 Premature closure is a reasoning failure before it is a tracking
 failure.
 
-## Administrative Closure
+### Administrative Closure
 
 **Administrative closure** ends a ticket or discussion without
 claiming full technical resolution.
@@ -28118,7 +28118,7 @@ Administrative closure should say so.
 
 A closed issue does not need to impersonate a repaired system.
 
-## Closure Theater
+### Closure Theater
 
 **Closure theater** is the production of artifacts and status signals
 that suggest completion without evidence that the mechanism changed.
@@ -28137,7 +28137,7 @@ These surfaces may all be useful.
 The theater occurs when they substitute for authority-path
 verification.
 
-## Green-State Counterfeit
+### Green-State Counterfeit
 
 A **green-state counterfeit** occurs when the indicator reports
 success because it observes a representation the repair itself
@@ -28154,7 +28154,7 @@ The regulator corrected the metric.
 
 Not the invariant.
 
-## Metric Capture
+### Metric Capture
 
 **Metric capture** occurs when the measured indicator becomes the
 practical repair objective, displacing the underlying system property.
@@ -28172,7 +28172,7 @@ Metrics help.
 They become dangerous when participants optimize the indicator while
 changing what it means.
 
-## Test Capture
+### Test Capture
 
 **Test capture** occurs when implementation is shaped to satisfy the
 existing test rather than the contract the test was intended to
@@ -28188,7 +28188,7 @@ Examples include:
 
 A passing test suite may then preserve the appearance of closure.
 
-## Verification Bias
+### Verification Bias
 
 **Verification bias** is the tendency to seek evidence confirming the
 chosen repair while ignoring paths that would challenge it.
@@ -28203,7 +28203,7 @@ Countermeasures include:
 * operator observation;
 * bypass audit.
 
-## Author Verification
+### Author Verification
 
 The repair author possesses valuable context.
 
@@ -28218,7 +28218,7 @@ Independent review should ask:
 * What would falsify closure?
 * Which compensator still exists?
 
-## Review Verification
+### Review Verification
 
 Reviewers should verify more than code quality.
 
@@ -28237,7 +28237,7 @@ Code review can confirm that the patch does what it says.
 
 Field verification asks whether what it says is enough.
 
-## Verification Debt
+### Verification Debt
 
 **Verification debt** is uncertainty accumulated when repairs land
 without adequate proof of scope, mechanism change, or ecological
@@ -28256,7 +28256,7 @@ Debt appears later as:
 Verification debt makes old code expensive to trust and expensive to
 delete.
 
-## Closure Debt
+### Closure Debt
 
 **Closure debt** is unresolved work hidden behind a completed status.
 
@@ -28272,7 +28272,7 @@ Examples include:
 Closure debt is especially dangerous because ordinary tracking no
 longer shows it.
 
-## Proof-Carrying Repair
+### Proof-Carrying Repair
 
 A **proof-carrying repair** arrives with the evidence necessary to
 evaluate its closure claim.
@@ -28293,7 +28293,7 @@ The phrase is metaphorical.
 The point is that the patch should not force every reviewer to
 reconstruct why it closes the mechanism.
 
-## Closure Ladder
+### Closure Ladder
 
 A repair may advance through several closure states:
 
@@ -28318,7 +28318,7 @@ lesson retained
 The ladder helps prevent the first successful step from being credited
 as the last.
 
-## Closure Gate
+### Closure Gate
 
 A **closure gate** is a required condition before the project declares
 one depth of repair complete.
@@ -28339,7 +28339,7 @@ Closure gates should match project capacity.
 They should not become ceremonial checkboxes detached from the
 mechanism.
 
-## Closure Budget
+### Closure Budget
 
 Verification and closure consume:
 
@@ -28362,29 +28362,29 @@ The verification budget should scale with:
 
 High-radius structural changes deserve deeper closure evidence.
 
-## Confidence Level
+### Confidence Level
 
 A project may state confidence explicitly.
 
 For example:
 
-### Confirmed Locally
+#### Confirmed Locally
 
 Reproduction no longer fails in one environment.
 
-### Verified Structurally
+#### Verified Structurally
 
 Contract-level tests show the mechanism changed.
 
-### Verified Across Implementations
+#### Verified Across Implementations
 
 Conformance holds across supported backends.
 
-### Verified Operationally
+#### Verified Operationally
 
 Pilot or production evidence confirms the authority path.
 
-### Ecologically Closed
+#### Ecologically Closed
 
 Compensators retired and operator burden changed as intended.
 
@@ -28392,7 +28392,7 @@ These labels need not become bureaucracy.
 
 They prevent one test from being remembered as universal proof.
 
-## Closure and Time
+### Closure and Time
 
 Some closure claims can be verified immediately.
 
@@ -28417,7 +28417,7 @@ Do not wait indefinitely for perfect certainty.
 Do not confuse immediate technical evidence with completed ecological
 migration.
 
-## Field Symptom: The Green Repository
+### Field Symptom: The Green Repository
 
 A repository dashboard reports:
 
@@ -28445,7 +28445,7 @@ The repair did not fail.
 
 The closure claim was larger than the observed path.
 
-## Field Symptom: The Race Test Passes
+### Field Symptom: The Race Test Passes
 
 A regression test runs two database writers.
 
@@ -28471,7 +28471,7 @@ The test verified local serialization.
 
 The closure claim required global writer serialization.
 
-## Field Symptom: The Structured Result Nobody Uses
+### Field Symptom: The Structured Result Nobody Uses
 
 The builder adds a structured result.
 
@@ -28497,7 +28497,7 @@ False status:
 
 > Narrative coupling fixed.
 
-## Field Symptom: The Retired Wrapper Returns
+### Field Symptom: The Retired Wrapper Returns
 
 A wrapper is removed after a new orchestrator lands.
 
@@ -28517,7 +28517,7 @@ The new wrapper is not necessarily nostalgia.
 
 It is evidence of incomplete role migration.
 
-## Field Symptom: The Migration Reaches One Hundred Percent
+### Field Symptom: The Migration Reaches One Hundred Percent
 
 Migration tooling reports:
 
@@ -28542,7 +28542,7 @@ Authority convergence did not.
 
 The migration is numerically complete and structurally ongoing.
 
-## Field Symptom: The Warning Disappears
+### Field Symptom: The Warning Disappears
 
 A noisy warning is removed after maintainers conclude it is harmless.
 
@@ -28564,7 +28564,7 @@ Correct repair would have:
 
 Silence verified nothing.
 
-## Field Symptom: The Manual Audit Is Removed
+### Field Symptom: The Manual Audit Is Removed
 
 Installation gains transactional database registration.
 
@@ -28584,7 +28584,7 @@ The correct retirement may be:
 
 Compensator scope must be compared with repair scope.
 
-## Field Symptom: The New Validator Rejects Everything Strange
+### Field Symptom: The New Validator Rejects Everything Strange
 
 A repository validator correctly rejects:
 
@@ -28614,7 +28614,7 @@ The guardrail works.
 
 The ecosystem routes around it.
 
-## Field Symptom: The Recovery Test Uses Clean State
+### Field Symptom: The Recovery Test Uses Clean State
 
 A recovery tool is tested by creating a synthetic damaged database.
 
@@ -28634,7 +28634,7 @@ It does not verify real recovery ecology.
 Recovery tests should include historical specimens and fault-injected
 state.
 
-## Field Symptom: No One Reports the Bug
+### Field Symptom: No One Reports the Bug
 
 A project concludes a repair succeeded because no new issue appears.
 
@@ -28649,7 +28649,7 @@ The quiet period reflects selection and avoidance.
 
 Not necessarily closure.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **Verification** is not the same as validation.
 
@@ -28712,7 +28712,7 @@ It is a defined remaining boundary.
 
 New evidence may narrow or invalidate the closure claim.
 
-## The Repair Verification Test
+### The Repair Verification Test
 
 Before declaring a repair closed, ask:
 
@@ -28778,7 +28778,7 @@ A repair is closed when the evidence supports the claimed boundary,
 the old causal path no longer governs ordinary operation, and the
 ecosystem can explain what remains open.
 
-## Twenty-Fifth House Law
+### Twenty-Fifth House Law
 
 > A failure is not closed when the symptom disappears.  
 > It is closed when the old mechanism can no longer produce it inside
@@ -28803,7 +28803,7 @@ participants, components, and vocabulary have changed.
 
 ---
 
-# Field Reports and Durable Findings
+## Field Reports and Durable Findings
 
 The incident is diagnosed.
 
@@ -28836,7 +28836,7 @@ It failed to publish a finding.
 
 ---
 
-## Field Report
+### Field Report
 
 A **field report** is a structured account of an observed system
 condition, incident, failure mechanism, intervention, or recurring
@@ -28864,7 +28864,7 @@ It should help another investigator answer:
 * Which lesson travels?
 * What remains unresolved?
 
-## Durable Finding
+### Durable Finding
 
 A **durable finding** is a conclusion preserved with enough evidence,
 scope, rationale, and present-tense linkage to remain useful after:
@@ -28889,7 +28889,7 @@ A durable finding remains:
 
 > A durable finding survives long enough to be proven wrong properly.
 
-## Finding
+### Finding
 
 A **finding** is a supported conclusion produced by investigation.
 
@@ -28921,21 +28921,21 @@ into:
 all package formats are fundamentally incoherent
 ```
 
-## Observation, Finding, and Doctrine
+### Observation, Finding, and Doctrine
 
 These three layers should remain distinct.
 
-### Observation
+#### Observation
 
 > The artifact filename declared `foo`, while internal metadata
 > declared `bar`.
 
-### Finding
+#### Finding
 
 > Artifact identity had two active authority surfaces, and consumers
 > selected different ones.
 
-### Doctrine
+#### Doctrine
 
 > Truth should be published by the layer capable of enforcing it.
 
@@ -28947,7 +28947,7 @@ Doctrine is compressed guidance.
 
 A strong report preserves the chain among them.
 
-## Incident Report
+### Incident Report
 
 An **incident report** records what happened during one operational
 event.
@@ -28965,7 +28965,7 @@ Incident reports are necessary for operational accountability.
 
 They may stop before structural or ecological analysis.
 
-## Autopsy Report
+### Autopsy Report
 
 An **autopsy report** explains the mechanism through which the
 incident became possible and persisted.
@@ -28981,7 +28981,7 @@ It emphasizes:
 * causal depth;
 * intervention points.
 
-## Decision Record
+### Decision Record
 
 A **decision record** explains what was chosen, why, under which
 conditions, and with which rejected alternatives.
@@ -28997,7 +28997,7 @@ It emphasizes:
 * consequences;
 * revision conditions.
 
-## Closure Report
+### Closure Report
 
 A **closure report** states why the project believes a repair claim is
 now supported.
@@ -29012,7 +29012,7 @@ It emphasizes:
 * residual risk;
 * reopening conditions.
 
-## Field Entry
+### Field Entry
 
 A **field entry** extracts one reusable mechanism from one or more
 reports.
@@ -29033,7 +29033,7 @@ They serve different purposes.
 
 > One document should not be forced to perform every kind of memory.
 
-## Report Surface
+### Report Surface
 
 A **report surface** is the location where a report or finding is
 published and maintained.
@@ -29063,7 +29063,7 @@ Each surface has different strengths.
 
 Durable memory usually requires linkage among several surfaces.
 
-## Conclusion Surface
+### Conclusion Surface
 
 A **conclusion surface** is the place where the final supported
 interpretation is stated clearly enough to retrieve without
@@ -29082,7 +29082,7 @@ A conclusion surface should answer:
 An issue containing one hundred comments but no conclusion surface
 preserves discussion, not institutional memory.
 
-## Evidence Surface
+### Evidence Surface
 
 An **evidence surface** preserves raw or minimally interpreted
 material.
@@ -29101,7 +29101,7 @@ Evidence surfaces should be linked from conclusions.
 
 Conclusions should not replace evidence when later review may matter.
 
-## Binding Surface
+### Binding Surface
 
 A **binding surface** gives a conclusion operational force.
 
@@ -29120,7 +29120,7 @@ A report may explain the lesson.
 A binding surface determines whether the system learned it
 mechanically.
 
-## Surface Chain
+### Surface Chain
 
 A healthy retention path may look like:
 
@@ -29147,7 +29147,7 @@ Not every incident needs every surface.
 The important property is that the chain from evidence to current
 behavior remains recoverable.
 
-## Report Spine
+### Report Spine
 
 A **report spine** is the minimal sequence of statements allowing a
 reader to understand the investigation without following every
@@ -29169,7 +29169,7 @@ The spine is not a summary of every discussion.
 
 It is the load-bearing reasoning.
 
-## Report Body
+### Report Body
 
 The **report body** contains supporting detail:
 
@@ -29185,7 +29185,7 @@ The **report body** contains supporting detail:
 A reader should be able to understand the finding from the spine and
 audit it through the body.
 
-## Finding Statement
+### Finding Statement
 
 A **finding statement** should be:
 
@@ -29214,7 +29214,7 @@ The strongest statement is not the broadest.
 
 It is the most precise statement supported by the evidence.
 
-## Scope Statement
+### Scope Statement
 
 A **scope statement** identifies where the finding applies.
 
@@ -29238,7 +29238,7 @@ Example:
 
 Scope protects the finding from both underuse and overgeneralization.
 
-## Applicability Condition
+### Applicability Condition
 
 An **applicability condition** is a property that must hold before the
 finding can be transferred to another case.
@@ -29254,7 +29254,7 @@ merely because it is text.
 
 Applicability conditions keep field terms diagnostic.
 
-## Exclusion Condition
+### Exclusion Condition
 
 An **exclusion condition** states when the finding should not be
 applied.
@@ -29270,7 +29270,7 @@ Examples:
 
 Exclusions prevent category capture.
 
-## Confidence Statement
+### Confidence Statement
 
 A **confidence statement** records how strongly the evidence supports
 the finding.
@@ -29288,7 +29288,7 @@ Confidence should match evidence.
 
 Avoid replacing uncertainty with confident grammar.
 
-## Uncertainty Register
+### Uncertainty Register
 
 An **uncertainty register** records unresolved questions relevant to
 the finding.
@@ -29305,7 +29305,7 @@ Uncertainty belongs in the report.
 
 Hiding it does not improve the finding.
 
-## Evidence Chain
+### Evidence Chain
 
 An **evidence chain** connects each important conclusion to
 observations capable of supporting it.
@@ -29332,7 +29332,7 @@ authority:
 An evidence chain prevents retrospective certainty from floating free
 of the incident.
 
-## Decision Chain
+### Decision Chain
 
 A **decision chain** connects:
 
@@ -29347,7 +29347,7 @@ A **decision chain** connects:
 Future maintainers should be able to determine why one repair was
 chosen over another.
 
-## Contradiction Record
+### Contradiction Record
 
 A **contradiction record** preserves disagreements among:
 
@@ -29378,7 +29378,7 @@ The contradiction itself may be the finding.
 Do not “clean up” reports by selecting one story before authority is
 resolved.
 
-## Supersession
+### Supersession
 
 **Supersession** occurs when a newer finding, contract, or decision
 replaces an older one.
@@ -29396,7 +29396,7 @@ the future.
 
 History should remain legible.
 
-## Supersession Link
+### Supersession Link
 
 A **supersession link** connects an old conclusion to the current one.
 
@@ -29408,7 +29408,7 @@ Example:
 
 The old finding survives with narrowed scope.
 
-## Tombstone
+### Tombstone
 
 A **tombstone** is a concise record marking a retired behavior,
 authority surface, or document.
@@ -29428,7 +29428,7 @@ must be rediscovered later.
 > Delete the code.  
 > Leave the grave marker.
 
-## Semantic Tombstone
+### Semantic Tombstone
 
 A **semantic tombstone** records the retirement of one meaning, not
 merely one implementation.
@@ -29442,7 +29442,7 @@ Example:
 This prevents the old semantic from surviving in operator expectation
 after the code changes.
 
-## Record Versioning
+### Record Versioning
 
 **Record versioning** preserves how findings change over time.
 
@@ -29463,7 +29463,7 @@ The important property is that readers can distinguish:
 * old claim;
 * reason for change.
 
-## Present-Tense Linkage
+### Present-Tense Linkage
 
 **Present-tense linkage** connects a historical finding to current
 code, documentation, tests, and authority.
@@ -29480,7 +29480,7 @@ Present-tense linkage may include:
 * migration notes;
 * code comments at compatibility boundaries.
 
-## Retrieval Path
+### Retrieval Path
 
 A **retrieval path** is the route by which a future maintainer is
 expected to find the relevant conclusion.
@@ -29501,7 +29501,7 @@ A report should not assume future maintainers know:
 * the maintainer nickname;
 * the historical vocabulary.
 
-## Addressability
+### Addressability
 
 **Addressability** is the ability to refer reliably to a finding or
 report.
@@ -29519,7 +29519,7 @@ A screenshot pasted into chat is evidence.
 
 It is weakly addressable.
 
-## Discoverability
+### Discoverability
 
 **Discoverability** is the likelihood that a relevant report will be
 found before the same reasoning is repeated.
@@ -29535,7 +29535,7 @@ Discoverability improves through:
 * concise conclusion surfaces;
 * references from current code.
 
-## Semantic Discoverability
+### Semantic Discoverability
 
 **Semantic discoverability** means findings can be retrieved by
 mechanism, not only by original component name or symptom.
@@ -29553,7 +29553,7 @@ should become discoverable under:
 
 This is one purpose of field vocabulary.
 
-## Alias Record
+### Alias Record
 
 An **alias record** maps old and local terminology to current field
 concepts.
@@ -29577,7 +29577,7 @@ Examples:
 Aliases prevent terminology improvement from making history harder to
 search.
 
-## Index
+### Index
 
 An **index** organizes findings by:
 
@@ -29594,7 +29594,7 @@ A fieldbook index should allow both entry paths:
 * “I know the term.”
 * “I know the symptom.”
 
-## Finding Graph
+### Finding Graph
 
 A **finding graph** connects reports and concepts through
 relationships such as:
@@ -29612,7 +29612,7 @@ A simple set of links may be enough.
 
 The graph need not become a knowledge platform nobody maintains.
 
-## Report Decay
+### Report Decay
 
 **Report decay** is the gradual loss of usefulness even when the
 report remains available.
@@ -29630,7 +29630,7 @@ Decay may occur through:
 
 A report can remain textually intact and operationally dead.
 
-## Link Rot
+### Link Rot
 
 **Link rot** is the loss of referenced material because locations
 disappear.
@@ -29643,7 +29643,7 @@ Mitigation may include:
 * content-addressed artifacts;
 * local references.
 
-## Pointer Rot
+### Pointer Rot
 
 **Pointer rot** occurs when a link still resolves but no longer
 identifies the relevant conclusion.
@@ -29659,7 +29659,7 @@ The pointer exists.
 
 The target meaning drifted.
 
-## Context Rot
+### Context Rot
 
 **Context rot** is the loss of surrounding assumptions needed to
 understand a report.
@@ -29674,7 +29674,7 @@ Examples include:
 
 Context rot is reduced by explicit scope and semantic indexing.
 
-## Authority Rot
+### Authority Rot
 
 **Authority rot** occurs when a report describes an authority
 structure that no longer exists.
@@ -29690,7 +29690,7 @@ The old report may remain correct for legacy artifacts only.
 Without supersession, readers may apply historical authority to
 current state.
 
-## Schema Rot
+### Schema Rot
 
 **Schema rot** occurs when a report's conceptual categories no longer
 match the system.
@@ -29711,7 +29711,7 @@ The evidence may still matter.
 
 The old schema compresses it incorrectly.
 
-## Terminology Rot
+### Terminology Rot
 
 **Terminology rot** occurs when a term continues being used after its
 meaning changes.
@@ -29724,7 +29724,7 @@ For example:
 
 Reports should define critical terms under their historical scope.
 
-## Report Fossil
+### Report Fossil
 
 A **report fossil** is a preserved document whose findings remain
 historically interesting but are no longer connected to current
@@ -29737,7 +29737,7 @@ They should be marked historical.
 The danger is a fossil appearing in search results as current
 doctrine.
 
-## Zombie Report
+### Zombie Report
 
 A **zombie report** is an obsolete report still used as current
 operational guidance.
@@ -29749,7 +29749,7 @@ Examples include:
 * old authority map still cited in support;
 * test description referring to semantics no longer enforced.
 
-## Ghost Report
+### Ghost Report
 
 A **ghost report** is a lost or inaccessible conclusion whose effects
 remain in code, process, or doctrine.
@@ -29758,7 +29758,7 @@ Nobody can find the report.
 
 The system still behaves as though everyone remembers it.
 
-## Report Maintenance
+### Report Maintenance
 
 **Report maintenance** keeps durable findings connected to current
 reality.
@@ -29778,7 +29778,7 @@ Report maintenance should focus on high-value findings.
 
 Not every old incident needs continuous editorial care.
 
-## Maintenance Trigger
+### Maintenance Trigger
 
 A **maintenance trigger** is an event requiring report review.
 
@@ -29796,7 +29796,7 @@ Examples include:
 High-risk structural changes should include memory review as part of
 migration.
 
-## Finding Promotion
+### Finding Promotion
 
 **Finding promotion** moves a conclusion into stronger or more
 discoverable institutional surfaces.
@@ -29821,7 +29821,7 @@ Promotion should not duplicate the same prose everywhere.
 
 Each surface should carry the part appropriate to its function.
 
-## Finding Demotion
+### Finding Demotion
 
 **Finding demotion** moves a conclusion into a weaker surface.
 
@@ -29837,7 +29837,7 @@ Demotion may be justified.
 It should be explicit because it changes how the ecosystem preserves
 the rule.
 
-## Finding Adoption
+### Finding Adoption
 
 **Finding adoption** occurs when one project's local conclusion
 becomes a shared ecosystem principle, test, or interface contract.
@@ -29854,7 +29854,7 @@ A field term may travel.
 
 The repair may not.
 
-## Finding Portability
+### Finding Portability
 
 **Finding portability** is the ability of a conclusion to guide
 analysis in another component or ecosystem.
@@ -29876,7 +29876,7 @@ Portability decreases when it depends on:
 * one historical argument;
 * one exact patch.
 
-## Finding Compression
+### Finding Compression
 
 **Finding compression** produces a shorter statement that preserves
 the causal core.
@@ -29904,7 +29904,7 @@ Each level serves a different reading speed.
 
 The chain should remain recoverable.
 
-## Lossy Finding Compression
+### Lossy Finding Compression
 
 **Lossy finding compression** removes qualifications necessary for
 correct application.
@@ -29924,7 +29924,7 @@ The shorter statement is memorable.
 
 It is wrong.
 
-## Report Voice
+### Report Voice
 
 A field report should distinguish:
 
@@ -29945,7 +29945,7 @@ Useful phrasing includes:
 
 Avoid using certainty as a substitute for structure.
 
-## Report Tone
+### Report Tone
 
 A report may be sharp.
 
@@ -29971,7 +29971,7 @@ A mechanism without memorable compression may not survive.
 
 Use both.
 
-## Naming Reports
+### Naming Reports
 
 Report titles should include:
 
@@ -29993,7 +29993,7 @@ Better still, after field classification:
 
 Historical symptoms can remain as aliases.
 
-## Report Identity
+### Report Identity
 
 A report should carry:
 
@@ -30010,7 +30010,7 @@ The report itself is an artifact.
 
 It should not require archaeology to determine whether it is current.
 
-## Report Provenance
+### Report Provenance
 
 **Report provenance** records where the evidence and conclusions came
 from.
@@ -30031,7 +30031,7 @@ Provenance helps later readers distinguish:
 * inherited claim;
 * reconstructed history.
 
-## Authorial Authority
+### Authorial Authority
 
 The report author has authority to describe the evidence and reasoning
 they performed.
@@ -30049,7 +30049,7 @@ Reports should distinguish:
 * decision;
 * implementation authority.
 
-## Multi-Author Report
+### Multi-Author Report
 
 A multi-author report may contain disagreement.
 
@@ -30065,7 +30065,7 @@ Record:
 
 Consensus is not required for evidence to remain useful.
 
-## Minority Finding
+### Minority Finding
 
 A **minority finding** is a supported interpretation not adopted as
 project decision.
@@ -30082,7 +30082,7 @@ Record why it was not adopted.
 Otherwise future maintainers may rediscover it and assume nobody
 considered it.
 
-## Rejected Alternative
+### Rejected Alternative
 
 A **rejected alternative** should be preserved when future maintainers
 are likely to propose it again.
@@ -30098,7 +30098,7 @@ Record:
 
 Specify where complexity appeared and which budget it exceeded.
 
-## Failed Repair Record
+### Failed Repair Record
 
 A **failed repair record** preserves interventions that did not alter
 the mechanism or produced unacceptable side effects.
@@ -30114,7 +30114,7 @@ Failed repairs are valuable evidence.
 
 Do not erase them from history because the final patch differs.
 
-## Negative Knowledge
+### Negative Knowledge
 
 **Negative knowledge** is retained understanding of what does not work
 and why.
@@ -30132,7 +30132,7 @@ Examples include:
 
 Negative knowledge is part of institutional memory.
 
-## Counterexample Record
+### Counterexample Record
 
 A **counterexample record** preserves a case that limits or falsifies
 a field concept or proposed repair.
@@ -30144,7 +30144,7 @@ For example:
 
 Counterexamples keep the vocabulary from becoming theology.
 
-## Finding Bundle
+### Finding Bundle
 
 A **finding bundle** groups related reports, decisions, tests, and
 field entries around one failure class.
@@ -30163,7 +30163,7 @@ artifact truth bundle:
 
 Bundles improve retrieval across time and repository boundaries.
 
-## Field Dossier
+### Field Dossier
 
 A **field dossier** is a broader collection tracking one recurring
 mechanism across several incidents or projects.
@@ -30185,7 +30185,7 @@ A dossier is useful for high-value recurring mechanisms such as:
 * human-as-the-loop;
 * compatibility necrosis.
 
-## Report Granularity
+### Report Granularity
 
 A report should be neither:
 
@@ -30203,7 +30203,7 @@ Possible granularity:
 
 Use links rather than forcing every level into one document.
 
-## Report Saturation
+### Report Saturation
 
 **Report saturation** occurs when the volume of records exceeds the
 ecosystem's ability to maintain, retrieve, or distinguish them.
@@ -30220,7 +30220,7 @@ More records do not automatically produce more memory.
 
 The retention system needs its own scope and maintenance budget.
 
-## Documentation Bureaucracy
+### Documentation Bureaucracy
 
 **Documentation bureaucracy** is report production disconnected from
 actual retrieval, decisions, or binding surfaces.
@@ -30237,7 +30237,7 @@ The answer is not to abandon records.
 
 It is to preserve fewer, stronger conclusion surfaces.
 
-## Report Minimalism
+### Report Minimalism
 
 **Report minimalism** preserves the smallest record capable of
 carrying the lesson durably.
@@ -30257,7 +30257,7 @@ For a structural failure, it may require:
 
 Minimalism is proportional to causal and ecological depth.
 
-## Durable Compression
+### Durable Compression
 
 **Durable compression** is concise enough for retrieval but connected
 strongly enough to evidence and authority that future readers can
@@ -30272,7 +30272,7 @@ A good house law is durable compression when:
 
 Without expansion paths, compressed doctrine becomes slogan storage.
 
-## Report Lifecycle
+### Report Lifecycle
 
 A report may pass through:
 
@@ -30295,7 +30295,7 @@ The lifecycle should be visible.
 A draft hypothesis should not appear beside current doctrine without
 status.
 
-## Report Ownership
+### Report Ownership
 
 Every high-value current report should have an owner or ownership
 surface.
@@ -30317,7 +30317,7 @@ Ownership includes:
 
 Unowned current documentation drifts into counterfeit authority.
 
-## Finding Review
+### Finding Review
 
 A **finding review** examines whether the conclusion follows from
 evidence and whether its scope is accurate.
@@ -30332,7 +30332,7 @@ Review questions include:
 * Does the intervention actually follow?
 * Does current implementation match the report?
 
-## Periodic Review
+### Periodic Review
 
 Not every report requires scheduled review.
 
@@ -30346,7 +30346,7 @@ Periodic review is useful for:
 
 Review may be triggered by change rather than calendar.
 
-## Field Report Template
+### Field Report Template
 
 ```text
 Report ID:
@@ -30431,7 +30431,7 @@ Reopening conditions:
     What evidence would require review.
 ```
 
-## Compact Finding Template
+### Compact Finding Template
 
 ```text
 Finding:
@@ -30462,7 +30462,7 @@ Field concept:
     Which reusable term applies?
 ```
 
-## Field Entry Template
+### Field Entry Template
 
 ```text
 Term:
@@ -30505,7 +30505,7 @@ House compression:
     Memorable statement preserving the mechanism.
 ```
 
-## Field Symptom: The Closed Issue Without a Finding
+### Field Symptom: The Closed Issue Without a Finding
 
 An issue contains:
 
@@ -30532,7 +30532,7 @@ The correct repair is not another archive.
 
 It is a conclusion surface.
 
-## Field Symptom: The Excellent Commit Message
+### Field Symptom: The Excellent Commit Message
 
 A commit message explains the entire database race.
 
@@ -30550,7 +30550,7 @@ The decision trace was not portable.
 A current test or design record should carry the conclusion across
 repository movement.
 
-## Field Symptom: The Test With No Name
+### Field Symptom: The Test With No Name
 
 A test creates two concurrent writers and checks final database state.
 
@@ -30582,7 +30582,7 @@ test_concurrent_writers_cannot_commit_stale_generation
 
 with a short reference to the autopsy.
 
-## Field Symptom: The Manual Updated in Place
+### Field Symptom: The Manual Updated in Place
 
 A manual once said package identity came from filenames.
 
@@ -30603,7 +30603,7 @@ The current manual should describe current truth.
 A migration note or superseded decision should preserve historical
 scope.
 
-## Field Symptom: The House Law Escapes
+### Field Symptom: The House Law Escapes
 
 A maintainer quotes:
 
@@ -30624,7 +30624,7 @@ The report system should link doctrine back to the mechanism.
 
 Otherwise the Fieldbook manufactures its own ghosts.
 
-## Field Symptom: The Historical IRC Autopsy
+### Field Symptom: The Historical IRC Autopsy
 
 An IRC log contains the first correct explanation of a package
 identity defect.
@@ -30650,7 +30650,7 @@ The log is evidence.
 
 The finding is institutional memory.
 
-## Field Symptom: The Report That Became Wrong
+### Field Symptom: The Report That Became Wrong
 
 A report concludes that database serialization is sufficient.
 
@@ -30670,7 +30670,7 @@ The report became narrower.
 
 Institutional memory improved.
 
-## Field Symptom: The Rejected Alternative Returns
+### Field Symptom: The Rejected Alternative Returns
 
 A proposal to add a universal context object was rejected because it
 compressed host, target, build, and script authority into one
@@ -30693,7 +30693,7 @@ A semantic alias such as:
 
 would make the prior reasoning discoverable.
 
-## Field Symptom: The Report Nobody Owns
+### Field Symptom: The Report Nobody Owns
 
 A recovery guide is correct when written.
 
@@ -30714,7 +30714,7 @@ This is authority rot.
 
 A historical marker is safer than an unowned living guide.
 
-## Field Symptom: The Perfect Archive
+### Field Symptom: The Perfect Archive
 
 The project preserves:
 
@@ -30740,7 +30740,7 @@ The archive is complete.
 
 The retrieval path is broken.
 
-## Do Not Confuse
+### Do Not Confuse
 
 **A field report** is not the same as an issue transcript.
 
@@ -30803,7 +30803,7 @@ main branch.
 
 Its authority and ownership must remain active.
 
-## The Durable Finding Test
+### The Durable Finding Test
 
 Before publishing or retaining a finding, ask:
 
@@ -30871,7 +30871,7 @@ A finding is durable when another competent person can recover its
 mechanism, scope, evidence, and current relevance before reproducing
 the same failure.
 
-## Twenty-Sixth House Law
+### Twenty-Sixth House Law
 
 > A repository remembers bytes.  
 > An institution remembers conclusions.
@@ -30900,7 +30900,7 @@ leaving behind a finding rather than another story.
 
 ---
 
-# The Field Operator's Checklist
+## The Field Operator's Checklist
 
 You arrive after the failure.
 
@@ -30939,7 +30939,7 @@ Your task is to determine:
 
 ---
 
-## Field Operator
+### Field Operator
 
 A **field operator** is a person examining a live or historical system
 to identify its actual contracts, authority, control loops,
@@ -30967,7 +30967,7 @@ A field operator does not begin by assuming:
 
 The field operator begins with evidence and follows authority.
 
-## Field Posture
+### Field Posture
 
 **Field posture** is the disciplined attitude used when entering an
 unfamiliar system.
@@ -30995,7 +30995,7 @@ It is delayed commitment.
 > Suspicion with no evidence is merely folklore wearing safety
 > glasses.
 
-## Entry Condition
+### Entry Condition
 
 An **entry condition** is the state in which the field operator begins
 the investigation.
@@ -31025,7 +31025,7 @@ Before analysis, it may be necessary to:
 Investigation is difficult when the corpse continues receiving
 commits.
 
-## First Rule: Preserve Before Explaining
+### First Rule: Preserve Before Explaining
 
 Before forming the narrative, preserve:
 
@@ -31059,11 +31059,11 @@ operation was partial.
 > Failed systems are rarely polite enough to remain evidentiary after
 > cleanup.
 
-## The Field Passes
+### The Field Passes
 
 A field examination can proceed at three depths.
 
-### Triage Pass
+#### Triage Pass
 
 Purpose:
 
@@ -31072,7 +31072,7 @@ Purpose:
 * preserve evidence;
 * decide whether operation may continue.
 
-### Diagnostic Pass
+#### Diagnostic Pass
 
 Purpose:
 
@@ -31081,7 +31081,7 @@ Purpose:
 * map regulator and compensators;
 * choose immediate and structural interventions.
 
-### Retention Pass
+#### Retention Pass
 
 Purpose:
 
@@ -31097,9 +31097,9 @@ becoming the entire explanation.
 
 ---
 
-# The Triage Pass
+### The Triage Pass
 
-## 1. State the Symptom Narrowly
+#### 1. State the Symptom Narrowly
 
 Begin with one sentence containing only direct observation.
 
@@ -31125,7 +31125,7 @@ Better:
 The narrow symptom prevents early blame from choosing the rest of the
 evidence.
 
-## 2. Define the Unit of Analysis
+#### 2. Define the Unit of Analysis
 
 The **unit of analysis** is the operation, artifact, state transition,
 boundary, or incident being examined.
@@ -31151,7 +31151,7 @@ That may be true.
 
 It does not identify the operation whose semantics failed.
 
-## 3. Bound Time
+#### 3. Bound Time
 
 Record:
 
@@ -31170,7 +31170,7 @@ consumers saw before repair.
 A log written after retry may describe the second operation, not the
 first.
 
-## 4. Stop Destructive Motion
+#### 4. Stop Destructive Motion
 
 Determine whether any process continues to:
 
@@ -31191,7 +31191,7 @@ If the state continues moving, either:
 Do not perform a static autopsy on a regulator still kicking the
 table.
 
-## 5. Identify Immediate Authority
+#### 5. Identify Immediate Authority
 
 Ask:
 
@@ -31218,7 +31218,7 @@ For example:
 * the database may still decide removal;
 * the operator may need both to recover.
 
-## 6. Preserve the Authority Generation
+#### 6. Preserve the Authority Generation
 
 Where state is versioned, record:
 
@@ -31232,7 +31232,7 @@ Where state is versioned, record:
 A repair applied against stale generation can create a second incident
 while solving the first.
 
-## 7. Classify Immediate Risk
+#### 7. Classify Immediate Risk
 
 Ask whether the current state risks:
 
@@ -31261,9 +31261,9 @@ It should remain explicit about uncertainty.
 
 ---
 
-# The Diagnostic Pass
+### The Diagnostic Pass
 
-## 8. Establish the Claimed Contract
+#### 8. Establish the Claimed Contract
 
 Collect what each relevant surface says should happen.
 
@@ -31301,7 +31301,7 @@ Do not combine them into one compromise statement.
 
 The disagreement is the evidence.
 
-## 9. Freeze Critical Vocabulary
+#### 9. Freeze Critical Vocabulary
 
 Identify terms whose meaning may differ among participants.
 
@@ -31335,7 +31335,7 @@ Vocabulary drift can create imaginary agreement.
 Two maintainers may both say the operation is atomic while referring
 to different effect sets.
 
-## 10. Inventory State Surfaces
+#### 10. Inventory State Surfaces
 
 List every state representation relevant to the unit of analysis.
 
@@ -31375,7 +31375,7 @@ cache.
 
 A cache that has become unique truth is no longer merely a cache.
 
-## 11. Build the Authority Map
+#### 11. Build the Authority Map
 
 For each important meaning, record:
 
@@ -31394,7 +31394,7 @@ Example:
 
 The gaps are often more important than the names.
 
-## 12. Perform the Authority Probe
+#### 12. Perform the Authority Probe
 
 An **authority probe** asks what happens when representations
 disagree.
@@ -31413,7 +31413,7 @@ Authority is revealed by conflict.
 > Agreement hides hierarchy.  
 > Contradiction introduces everyone by rank.
 
-## 13. Trace the State Transition
+#### 13. Trace the State Transition
 
 Write the operation phase by phase.
 
@@ -31446,7 +31446,7 @@ Do not compress `S2` through `S5` into:
 The intermediate states determine recovery and partial-success
 semantics.
 
-## 14. Find the First Divergence
+#### 14. Find the First Divergence
 
 The **first divergence** is the earliest state at which actual
 behavior departs from the claimed contract.
@@ -31467,7 +31467,7 @@ The first divergence is not always the correct intervention point.
 It is the earliest location where the expected model stopped matching
 reality.
 
-## 15. Perform the Boundary Probe
+#### 15. Perform the Boundary Probe
 
 A **boundary probe** asks what one component knew and what it
 published to the next.
@@ -31503,7 +31503,7 @@ frontend reconstructs:
 
 This is a candidate supplier-duty failure and narrative coupling.
 
-## 16. Perform the Normalization Probe
+#### 16. Perform the Normalization Probe
 
 Ask:
 
@@ -31519,7 +31519,7 @@ have one normalization boundary.
 
 It has a federation of guesses.
 
-## 17. Perform the Artifact Probe
+#### 17. Perform the Artifact Probe
 
 For each important artifact, ask:
 
@@ -31541,7 +31541,7 @@ If the answer requires:
 
 the artifact is not carrying enough truth.
 
-## 18. Perform the Success Probe
+#### 18. Perform the Success Probe
 
 Ask what each result state actually means.
 
@@ -31573,7 +31573,7 @@ Binary result is not necessarily wrong.
 It becomes wrong when callers require distinctions the producer
 already knows.
 
-## 19. Perform the Regulator Probe
+#### 19. Perform the Regulator Probe
 
 Map the control loop.
 
@@ -31595,7 +31595,7 @@ Then ask:
 * Does correction verify the invariant?
 * Is the operator in the loop or the whole loop?
 
-## 20. Perform the Compensator Probe
+#### 20. Perform the Compensator Probe
 
 Inventory every mechanism making the system appear more coherent than
 its formal contract.
@@ -31627,7 +31627,7 @@ A widely required compensator is not noise around the system.
 
 It is part of the current system.
 
-## 21. Perform the Operator Probe
+#### 21. Perform the Operator Probe
 
 Ask what experienced operators know that the technical system does not
 represent.
@@ -31655,7 +31655,7 @@ The goal is not automatic extraction of every thought.
 
 It is to discover hidden regulatory work.
 
-## 22. Perform the Folklore Probe
+#### 22. Perform the Folklore Probe
 
 Ask how the rule is transmitted.
 
@@ -31683,7 +31683,7 @@ Then ask:
 A rule known by everyone present may still be institutionally
 unavailable.
 
-## 23. Perform the Doctrine Probe
+#### 23. Perform the Doctrine Probe
 
 Ask what project principle is invoked when the mechanism is defended.
 
@@ -31716,7 +31716,7 @@ Ask:
 * Is the proposed repair moving constitutional authority?
 * Is resistance carrying real evidence?
 
-## 24. Identify Candidate Field Concepts
+#### 24. Identify Candidate Field Concepts
 
 Only after mapping the mechanism should you classify it.
 
@@ -31748,7 +31748,7 @@ Begin with:
 
 Then decide whether the ghost terminology fits.
 
-## 25. Test the Candidate Concept
+#### 25. Test the Candidate Concept
 
 For every candidate term, ask:
 
@@ -31764,7 +31764,7 @@ If the answer to these questions is weak, retain ordinary language.
 
 A precise paragraph is better than an ornamental diagnosis.
 
-## 26. Form Rival Hypotheses
+#### 26. Form Rival Hypotheses
 
 For each preferred mechanism, state at least one plausible
 alternative.
@@ -31789,7 +31789,7 @@ Identify what evidence distinguishes them.
 Field confidence should come from eliminated alternatives, not from
 how well the first explanation fits the house style.
 
-## 27. Compare a Negative Case
+#### 27. Compare a Negative Case
 
 Find a similar operation that succeeds.
 
@@ -31812,33 +31812,33 @@ Compare:
 The difference often isolates the mechanism faster than another
 failure log.
 
-## 28. Decide the Analytical Depth
+#### 28. Decide the Analytical Depth
 
 Choose how far the investigation must go.
 
 Possible stop points:
 
-### Operational
+##### Operational
 
 Restore current state.
 
-### Component
+##### Component
 
 Fix implementation defect.
 
-### Structural
+##### Structural
 
 Repair contract or authority.
 
-### Regulatory
+##### Regulatory
 
 Close control loop.
 
-### Ecological
+##### Ecological
 
 Migrate compensators and operator work.
 
-### Institutional
+##### Institutional
 
 Retain lesson and revise doctrine.
 
@@ -31849,9 +31849,9 @@ local patch.
 
 ---
 
-# The Intervention Pass
+### The Intervention Pass
 
-## 29. State the Repair Objective
+#### 29. State the Repair Objective
 
 Write the desired property without naming the implementation.
 
@@ -31876,7 +31876,7 @@ Better:
 
 The objective lets several mechanisms compete honestly.
 
-## 30. Separate Invariant from Policy
+#### 30. Separate Invariant from Policy
 
 Ask:
 
@@ -31898,7 +31898,7 @@ Do not centralize policy to enforce integrity.
 
 Do not leave integrity optional to preserve policy.
 
-## 31. Align Fact and Authority
+#### 31. Align Fact and Authority
 
 Choose an intervention surface possessing:
 
@@ -31919,7 +31919,7 @@ lacks authority over final policy.
 Do not make the authority act blindly because the producer kept the
 facts private.
 
-## 32. Choose Intervention Type
+#### 32. Choose Intervention Type
 
 A compact guide:
 
@@ -31942,7 +31942,7 @@ This is a starting map.
 
 The actual intervention must still fit authority and compatibility.
 
-## 33. Inventory Hidden Functions Before Removal
+#### 33. Inventory Hidden Functions Before Removal
 
 Before replacing or deleting a wrapper, script, checklist, or elder
 role, ask:
@@ -31960,7 +31960,7 @@ Name every function.
 
 Then relocate or reject each deliberately.
 
-## 34. Define the Migration Dimensions
+#### 34. Define the Migration Dimensions
 
 List every kind of migration involved:
 
@@ -31978,7 +31978,7 @@ List every kind of migration involved:
 A patch touching one codebase may require movement in several
 dimensions.
 
-## 35. Define the Compatibility Envelope
+#### 35. Define the Compatibility Envelope
 
 State:
 
@@ -32001,7 +32001,7 @@ write old:
 
 Compatibility without a new-production rule breeds.
 
-## 36. Preserve Recovery
+#### 36. Preserve Recovery
 
 Ask:
 
@@ -32017,7 +32017,7 @@ Ask:
 Do not improve ordinary correctness by making exceptional failure
 unrecoverable.
 
-## 37. Sequence the Change
+#### 37. Sequence the Change
 
 Order interventions by semantic dependency.
 
@@ -32048,7 +32048,7 @@ Each stage should have:
 * observable result;
 * next step.
 
-## 38. Define the Closure Claim Before Implementation
+#### 38. Define the Closure Claim Before Implementation
 
 State what evidence will justify saying the repair is complete.
 
@@ -32070,9 +32070,9 @@ If the claim cannot be tested, narrow it.
 
 ---
 
-# The Verification Pass
+### The Verification Pass
 
-## 39. Test the Happy Path
+#### 39. Test the Happy Path
 
 Verify that valid operations continue to work.
 
@@ -32086,7 +32086,7 @@ Include:
 * alternate backend;
 * legacy state within envelope.
 
-## 40. Test the Rejection Path
+#### 40. Test the Rejection Path
 
 Verify that invalid state is:
 
@@ -32102,7 +32102,7 @@ Check that rejection occurs:
 * without changing authoritative state;
 * with preserved evidence.
 
-## 41. Test Partial Failure
+#### 41. Test Partial Failure
 
 Inject or simulate failure between phases.
 
@@ -32118,7 +32118,7 @@ Ask:
 An operation that works only when uninterrupted has not proven its
 transaction story.
 
-## 42. Test Bypass Paths
+#### 42. Test Bypass Paths
 
 Inventory:
 
@@ -32140,7 +32140,7 @@ For each path, decide:
 
 Unknown bypass is unowned authority.
 
-## 43. Test Compensator Absence
+#### 43. Test Compensator Absence
 
 Remove or disable the old workaround in a controlled scope.
 
@@ -32155,7 +32155,7 @@ Observe whether:
 This is how compensator retirement becomes evidence rather than
 optimism.
 
-## 44. Test Operator Burden
+#### 44. Test Operator Burden
 
 Ask experienced and less experienced operators to perform the repaired
 workflow.
@@ -32171,7 +32171,7 @@ Observe whether they still need to:
 
 A structural repair should change work, not only code.
 
-## 45. Test Doctrine Against Reality
+#### 45. Test Doctrine Against Reality
 
 Update the project statement to match the repaired model.
 
@@ -32192,7 +32192,7 @@ Verify:
 
 Doctrine should describe a mechanism capable of carrying it.
 
-## 46. State Residual Risk
+#### 46. State Residual Risk
 
 Record what remains outside the repair boundary.
 
@@ -32209,9 +32209,9 @@ It is the edge of the claimed model.
 
 ---
 
-# The Retention Pass
+### The Retention Pass
 
-## 47. Write the Finding Before Memory Cools
+#### 47. Write the Finding Before Memory Cools
 
 Record:
 
@@ -32227,7 +32227,7 @@ Record:
 
 Do this before the investigation dissolves back into chat history.
 
-## 48. Publish the Conclusion Surface
+#### 48. Publish the Conclusion Surface
 
 Ensure a future maintainer can answer:
 
@@ -32240,7 +32240,7 @@ Ensure a future maintainer can answer:
 
 Do not leave the final conclusion distributed across replies.
 
-## 49. Link Evidence, Decision, Test, and Manual
+#### 49. Link Evidence, Decision, Test, and Manual
 
 The durable chain should connect:
 
@@ -32262,7 +32262,7 @@ No one surface needs to contain everything.
 
 The chain must remain traversable.
 
-## 50. Name the Mechanism Carefully
+#### 50. Name the Mechanism Carefully
 
 Use an existing field concept where it fits.
 
@@ -32276,7 +32276,7 @@ Propose a new term only when:
 
 Do not canonicalize the joke before confirming the body.
 
-## 51. Preserve Historical Aliases
+#### 51. Preserve Historical Aliases
 
 Record old terms and symptoms.
 
@@ -32295,7 +32295,7 @@ For example:
 
 This keeps improved vocabulary from hiding older evidence.
 
-## 52. Add the Binding Surface
+#### 52. Add the Binding Surface
 
 Depending on the finding, bind it through:
 
@@ -32312,7 +32312,7 @@ A report alone preserves understanding.
 
 It does not enforce runtime state.
 
-## 53. Mark Supersession and Tombstones
+#### 53. Mark Supersession and Tombstones
 
 When old semantics are retired, record:
 
@@ -32324,7 +32324,7 @@ When old semantics are retired, record:
 Do not let deleted meaning continue operating through undocumented
 expectation.
 
-## 54. Assign Ownership
+#### 54. Assign Ownership
 
 Identify who owns:
 
@@ -32337,7 +32337,7 @@ Identify who owns:
 
 An unowned repair begins decaying immediately.
 
-## 55. Define Reopening Conditions
+#### 55. Define Reopening Conditions
 
 Examples:
 
@@ -32354,7 +32354,7 @@ It is feedback.
 
 ---
 
-# The Ten-Minute Field Scan
+### The Ten-Minute Field Scan
 
 When time is limited, ask these ten questions.
 
@@ -32375,7 +32375,7 @@ It usually reveals whether the problem is local or structural.
 
 ---
 
-# The One-Hour Field Survey
+### The One-Hour Field Survey
 
 A one-hour survey should produce:
 
@@ -32399,7 +32399,7 @@ It is replacing fog with a map.
 
 ---
 
-# The Deep Field Autopsy
+### The Deep Field Autopsy
 
 A deep autopsy should additionally produce:
 
@@ -32430,9 +32430,9 @@ Deep autopsy is justified when the failure:
 
 ---
 
-# Rapid Symptom Cards
+### Rapid Symptom Cards
 
-## Command Succeeds, Operation Does Not
+#### Command Succeeds, Operation Does Not
 
 Check:
 
@@ -32450,7 +32450,7 @@ Candidate concepts:
 * open-loop operation;
 * human-as-the-loop.
 
-## Command Fails, Useful State Exists
+#### Command Fails, Useful State Exists
 
 Check:
 
@@ -32468,7 +32468,7 @@ Candidate concepts:
 * ambiguous completion;
 * recovery-model absence.
 
-## Wrapper Is Required
+#### Wrapper Is Required
 
 Check:
 
@@ -32487,7 +32487,7 @@ Candidate concepts:
 * boundary-extraction candidate;
 * metastasis layer.
 
-## Documentation and Implementation Disagree
+#### Documentation and Implementation Disagree
 
 Check:
 
@@ -32505,7 +32505,7 @@ Candidate concepts:
 * authority fracture;
 * documentation from tomorrow.
 
-## Same Failure Returns After Rewrite
+#### Same Failure Returns After Rewrite
 
 Check:
 
@@ -32522,7 +32522,7 @@ Candidate concepts:
 * clean rewrite syndrome;
 * ghost invariant.
 
-## Newcomers Fail, Elders Do Not
+#### Newcomers Fail, Elders Do Not
 
 Check:
 
@@ -32540,7 +32540,7 @@ Candidate concepts:
 * regulatory apprenticeship;
 * distributed local truth.
 
-## Automation Recreates Damage
+#### Automation Recreates Damage
 
 Check:
 
@@ -32558,7 +32558,7 @@ Candidate concepts:
 * open regulatory loop;
 * high-gain correction against weak truth.
 
-## Several Components Disagree About Identity
+#### Several Components Disagree About Identity
 
 Check:
 
@@ -32575,7 +32575,7 @@ Candidate concepts:
 * witness proliferation;
 * semantic drift.
 
-## Validation Exists, Invalid State Persists
+#### Validation Exists, Invalid State Persists
 
 Check:
 
@@ -32593,7 +32593,7 @@ Candidate concepts:
 * symbolic guardrail;
 * open regulatory loop.
 
-## Old Restriction Nobody Can Explain
+#### Old Restriction Nobody Can Explain
 
 Check:
 
@@ -32611,7 +32611,7 @@ Candidate concepts:
 * fossilized guardrail;
 * semantic revenant.
 
-## Two Tools Repeatedly Undo Each Other
+#### Two Tools Repeatedly Undo Each Other
 
 Check:
 
@@ -32629,7 +32629,7 @@ Candidate concepts:
 * oscillation;
 * split authority.
 
-## Everyone Uses the Escape Hatch
+#### Everyone Uses the Escape Hatch
 
 Check:
 
@@ -32646,7 +32646,7 @@ Candidate concepts:
 * invalid abstraction;
 * front-door failure.
 
-## Issue Is Closed, Workaround Remains
+#### Issue Is Closed, Workaround Remains
 
 Check:
 
@@ -32666,11 +32666,11 @@ Candidate concepts:
 
 ---
 
-# Three Distances
+### Three Distances
 
 A rapid field diagnosis can often be organized around three distances.
 
-## Truth Distance
+#### Truth Distance
 
 The distance between:
 
@@ -32685,7 +32685,7 @@ Large truth distance produces:
 * stale caches;
 * witness proliferation.
 
-## Authority Distance
+#### Authority Distance
 
 The distance between:
 
@@ -32700,7 +32700,7 @@ Large authority distance produces:
 * delayed correction;
 * symbolic guardrails.
 
-## Cleanup Distance
+#### Cleanup Distance
 
 The distance between:
 
@@ -32725,12 +32725,12 @@ They are diagnostic geometry.
 
 ---
 
-# The Field Notebook
+### The Field Notebook
 
 A field operator should maintain a notebook containing four
 categories.
 
-## Observed
+#### Observed
 
 Direct facts:
 
@@ -32740,15 +32740,15 @@ Direct facts:
 * artifacts;
 * commands.
 
-## Inferred
+#### Inferred
 
 Proposed explanation with evidence and confidence.
 
-## Unknown
+#### Unknown
 
 Missing facts and unresolved alternatives.
 
-## Decided
+#### Decided
 
 Operational actions and project decisions.
 
@@ -32759,7 +32759,7 @@ policy.
 
 ---
 
-# Questions to Ask Operators
+### Questions to Ask Operators
 
 Experienced operators often carry the missing model.
 
@@ -32788,7 +32788,7 @@ Ask:
 
 ---
 
-# Questions to Ask Maintainers
+### Questions to Ask Maintainers
 
 Useful maintainer questions include:
 
@@ -32816,7 +32816,7 @@ All are part of the field.
 
 ---
 
-# Questions to Ask the Code
+### Questions to Ask the Code
 
 The code does not answer in prose.
 
@@ -32849,7 +32849,7 @@ Ask:
 
 ---
 
-# Questions to Ask the Artifact
+### Questions to Ask the Artifact
 
 An artifact should be able to answer:
 
@@ -32872,7 +32872,7 @@ the boundary is underdeveloped.
 
 ---
 
-# Questions to Ask the Failure
+### Questions to Ask the Failure
 
 Treat the failure as a path, not a personality.
 
@@ -32893,9 +32893,9 @@ The failure usually has more to say than the issue title.
 
 ---
 
-# Field Discipline
+### Field Discipline
 
-## Do Not Diagnose by Vibe
+#### Do Not Diagnose by Vibe
 
 Terms such as:
 
@@ -32911,7 +32911,7 @@ They should follow mechanism.
 
 They should not replace it.
 
-## Do Not Reward Complexity with Mysticism
+#### Do Not Reward Complexity with Mysticism
 
 A difficult incident may involve:
 
@@ -32922,7 +32922,7 @@ A difficult incident may involve:
 
 Name these precisely before declaring the system haunted.
 
-## Do Not Reward Simplicity with Innocence
+#### Do Not Reward Simplicity with Innocence
 
 A small tool may export:
 
@@ -32934,7 +32934,7 @@ A small tool may export:
 
 Small code does not imply small system function.
 
-## Do Not Confuse Visibility with Authority
+#### Do Not Confuse Visibility with Authority
 
 A component may display the state and still be unable to change it.
 
@@ -32942,7 +32942,7 @@ A human may understand the failure and still lack repository access.
 
 A validator may be correct and bypassable.
 
-## Do Not Confuse Age with Scope
+#### Do Not Confuse Age with Scope
 
 Old behavior may be:
 
@@ -32954,13 +32954,13 @@ Old behavior may be:
 
 Age alone answers none of these.
 
-## Do Not Confuse Operator Skill with System Contract
+#### Do Not Confuse Operator Skill with System Contract
 
 An expert can recover from ambiguity.
 
 The interface remains ambiguous.
 
-## Do Not Confuse Repair with Closure
+#### Do Not Confuse Repair with Closure
 
 A patch may land.
 
@@ -32970,7 +32970,7 @@ Compensators may remain.
 
 The mechanism may remain.
 
-## Do Not Confuse the Fieldbook with Runtime
+#### Do Not Confuse the Fieldbook with Runtime
 
 A correct term does not fix a system.
 
@@ -32980,7 +32980,7 @@ Authority and implementation still need to move.
 
 ---
 
-# When to Stop
+### When to Stop
 
 Stop the field examination when the chosen objective has been
 satisfied and remaining uncertainty is explicit.
@@ -32998,7 +32998,7 @@ Do not continue indefinitely merely because more history exists.
 
 Do not stop merely because the current symptom disappeared.
 
-## Escalation Triggers
+### Escalation Triggers
 
 Escalate from local repair to structural analysis when:
 
@@ -33024,7 +33024,7 @@ Escalate from structural analysis to ecological analysis when:
 
 ---
 
-# The Compact Field Checklist
+### The Compact Field Checklist
 
 ```text
 PRESERVE
@@ -33090,7 +33090,7 @@ RETAIN
 
 ---
 
-# The Field Operator's Pocket Test
+### The Field Operator's Pocket Test
 
 When the system is unfamiliar and time is short, ask:
 
@@ -33109,7 +33109,7 @@ These ten questions will not solve every incident.
 
 They usually identify where the real architecture lives.
 
-## Twenty-Seventh House Law
+### Twenty-Seventh House Law
 
 > Find who knew, who could say no, and who cleaned up.  
 > The distance between them is the system's real architecture.
@@ -33136,7 +33136,7 @@ operational signatures.
 
 ---
 
-# Diagnostic Cards for Common Failure Shapes
+## Diagnostic Cards for Common Failure Shapes
 
 A command produces the wrong artifact.
 
@@ -33169,34 +33169,34 @@ It is to identify the first mechanism worth testing.
 
 ---
 
-## How to Use the Cards
+### How to Use the Cards
 
 Each card contains six elements.
 
-### Operational Signature
+#### Operational Signature
 
 What the failure commonly looks like from outside.
 
-### Mechanism
+#### Mechanism
 
 The causal structure named by the term.
 
-### Confirmation Probes
+#### Confirmation Probes
 
 Questions or observations that distinguish the mechanism from nearby
 cases.
 
-### Do Not Confuse
+#### Do Not Confuse
 
 Similar-looking conditions that should remain separate.
 
-### First Intervention Direction
+#### First Intervention Direction
 
 The first boundary or control function worth examining.
 
 This is not a universal repair prescription.
 
-### House Compression
+#### House Compression
 
 A memorable statement carrying the causal core.
 
@@ -33220,9 +33220,9 @@ institutional and cultural persistence
 
 ---
 
-# Card 1: Authority Fracture
+### Card 1: Authority Fracture
 
-## Operational Signature
+#### Operational Signature
 
 You observe several representations of one fact:
 
@@ -33238,7 +33238,7 @@ Different components choose different winners.
 
 The system has no single place where disagreement stops.
 
-## Mechanism
+#### Mechanism
 
 **Authority fracture** occurs when several surfaces exercise practical
 authority over one meaning without an explicit hierarchy or derivation
@@ -33260,7 +33260,7 @@ The system claims one concept.
 
 The infrastructure operates several.
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33279,7 +33279,7 @@ Strong evidence includes:
 * documentation naming one authority while runtime uses another;
 * repairs that modify several records separately.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Do not confuse authority fracture with harmless redundancy.
 
@@ -33291,7 +33291,7 @@ Several representations are coherent when:
 * disagreement is detected;
 * derived state cannot silently win.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Identify:
 
@@ -33300,16 +33300,16 @@ Identify:
 3. the authoritative path capable of enforcing it;
 4. the translation or regeneration contract for derived forms.
 
-## House Compression
+#### House Compression
 
 > Two sources of truth are usually one source of truth and one future
 > incident report.
 
 ---
 
-# Card 2: Semantic Counterfeit
+### Card 2: Semantic Counterfeit
 
-## Operational Signature
+#### Operational Signature
 
 An interface uses a strong word:
 
@@ -33329,7 +33329,7 @@ Experienced operators know the narrower meaning.
 
 Newcomers discover it through damage.
 
-## Mechanism
+#### Mechanism
 
 A **semantic counterfeit** is an interface meaning that appears
 sufficiently credible to circulate but lacks the invariants required
@@ -33347,7 +33347,7 @@ partial implementation
 failure outside implemented subset
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33365,7 +33365,7 @@ Strong evidence includes:
 * “root” relocating files but not execution context;
 * “verified” checking one derived representation only.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A deliberately narrow term is not counterfeit when its boundary is
 explicit.
@@ -33379,7 +33379,7 @@ The limitation is visible.
 
 No counterfeit confidence is minted.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Either:
 
@@ -33387,15 +33387,15 @@ Either:
 * or narrow the interface and documentation until they confess the
   actual contract.
 
-## House Compression
+#### House Compression
 
 > If an interface can lie, it will eventually acquire believers.
 
 ---
 
-# Card 3: Narrative Coupling
+### Card 3: Narrative Coupling
 
-## Operational Signature
+#### Operational Signature
 
 A caller parses:
 
@@ -33410,7 +33410,7 @@ A wording or formatting change breaks automation.
 
 The producer already knew the required fact structurally.
 
-## Mechanism
+#### Mechanism
 
 **Narrative coupling** occurs when machine control depends on output
 intended primarily for human narration.
@@ -33427,7 +33427,7 @@ caller parses narration
 presentation becomes protocol
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33446,7 +33446,7 @@ Strong evidence includes:
 * tests freezing sentence wording for integrations;
 * maintainers afraid to improve diagnostics.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A stable, specified text protocol is not narrative coupling merely
 because it is human-readable.
@@ -33455,7 +33455,7 @@ The issue is not text.
 
 The issue is accidental dependence on narration.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Publish machine truth separately through:
 
@@ -33467,15 +33467,15 @@ Publish machine truth separately through:
 
 Keep narration free to serve operators.
 
-## House Compression
+#### House Compression
 
 > When stdout becomes protocol, every regex is a tiny priest.
 
 ---
 
-# Card 4: Artifact-Truth Failure
+### Card 4: Artifact-Truth Failure
 
-## Operational Signature
+#### Operational Signature
 
 Consumers cannot determine reliably:
 
@@ -33494,7 +33494,7 @@ They infer truth from:
 * producer conventions;
 * timing.
 
-## Mechanism
+#### Mechanism
 
 An **artifact-truth failure** occurs when an artifact does not carry
 or bind the facts required for safe consumption across its boundary.
@@ -33509,7 +33509,7 @@ artifact carries incomplete truth
 consumer reconstructs identity or completion
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask the artifact:
 
@@ -33529,7 +33529,7 @@ Strong evidence includes:
 * partial files indistinguishable from completed output;
 * several consumers reconstructing different identities.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 An artifact need not contain every possible fact internally.
 
@@ -33538,7 +33538,7 @@ Truth may travel through a bound manifest or transaction result.
 The requirement is reliable relationship, not one preferred storage
 format.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Define:
 
@@ -33549,7 +33549,7 @@ Define:
 * format version;
 * consumer verification.
 
-## House Compression
+#### House Compression
 
 > Truth may travel beside the artifact.  
 > It may not wander nearby hoping consumers understand the
@@ -33557,9 +33557,9 @@ Define:
 
 ---
 
-# Card 5: Partial-Outcome Compression
+### Card 5: Partial-Outcome Compression
 
-## Operational Signature
+#### Operational Signature
 
 An operation reports only:
 
@@ -33576,7 +33576,7 @@ But several meaningful intermediate states exist:
 
 Callers guess whether retry or repair is safe.
 
-## Mechanism
+#### Mechanism
 
 **Partial-outcome compression** occurs when a result model collapses
 several distinct state transitions into one generic status.
@@ -33591,7 +33591,7 @@ binary result
 caller cannot distinguish residue, completion, or retry safety
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33609,7 +33609,7 @@ Strong evidence includes:
 * automatic retries causing duplicates;
 * recovery scripts inferring which phase completed.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A binary result is adequate when:
 
@@ -33617,7 +33617,7 @@ A binary result is adequate when:
 * failure leaves no meaningful residue;
 * or another explicit result surface carries the detail.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Represent:
 
@@ -33628,15 +33628,15 @@ Represent:
 * recovery action;
 * final postcondition.
 
-## House Compression
+#### House Compression
 
 > “Success” is not a bucket for everything that failed politely.
 
 ---
 
-# Card 6: Normalization Failure
+### Card 6: Normalization Failure
 
-## Operational Signature
+#### Operational Signature
 
 Several accepted representations enter the system.
 
@@ -33653,7 +33653,7 @@ Examples include:
 * configuration layers;
 * backend output.
 
-## Mechanism
+#### Mechanism
 
 A **normalization failure** occurs when representation variance is not
 converted into one governed internal meaning before the system depends
@@ -33671,7 +33671,7 @@ each component interprets independently
 semantic drift
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33689,7 +33689,7 @@ Strong evidence includes:
 * configuration values are evaluated separately by several tools;
 * old and new formats propagate throughout the system.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Do not normalize differences that carry real policy or identity.
 
@@ -33697,7 +33697,7 @@ Normalization should unify equivalent representation.
 
 It should not erase legitimate semantics.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Create one intake boundary that:
 
@@ -33707,16 +33707,16 @@ Create one intake boundary that:
 * records information loss;
 * rejects unrepresentable states.
 
-## House Compression
+#### House Compression
 
 > Variation at the entrance is flexibility.  
 > Variation inside the state model is usually a future argument.
 
 ---
 
-# Card 7: Open Regulatory Loop
+### Card 7: Open Regulatory Loop
 
-## Operational Signature
+#### Operational Signature
 
 The system detects a violation.
 
@@ -33732,7 +33732,7 @@ The invalid state remains reachable or continues operating.
 
 Correction depends on somebody noticing and acting.
 
-## Mechanism
+#### Mechanism
 
 An **open regulatory loop** has some control functions but lacks a
 complete path from deviation to verified correction.
@@ -33757,7 +33757,7 @@ human repair
 no postcondition verification
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33777,7 +33777,7 @@ Strong evidence includes:
 * manual repair with no revalidation;
 * dashboards that observe only derived state.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Human judgment inside a complete loop is not open regulation.
 
@@ -33788,7 +33788,7 @@ A human-in-the-loop system may be coherent when:
 * actions are safe;
 * postconditions are verified.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Connect:
 
@@ -33801,16 +33801,16 @@ Connect:
 Decide whether correction should be automatic, procedural, or
 explicitly human.
 
-## House Compression
+#### House Compression
 
 > A system that can observe failure but cannot alter the failing path
 > is documenting its own defeat.
 
 ---
 
-# Card 8: Human-as-the-Loop
+### Card 8: Human-as-the-Loop
 
-## Operational Signature
+#### Operational Signature
 
 The operator must:
 
@@ -33826,7 +33826,7 @@ The technical system performs mutation.
 
 The operator performs regulation.
 
-## Mechanism
+#### Mechanism
 
 **Human-as-the-loop** occurs when a person supplies most or all
 missing control functions rather than merely contributing judgment at
@@ -33844,7 +33844,7 @@ operator reconstructs truth
 operator repairs and verifies
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33863,7 +33863,7 @@ Strong evidence includes:
 * automation failing where experts succeed;
 * support channels acting as operational controllers.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Human-in-the-loop is legitimate when the system supplies:
 
@@ -33877,7 +33877,7 @@ The human then decides policy.
 
 They do not reconstruct the machine.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Extract:
 
@@ -33889,7 +33889,7 @@ Extract:
 
 Retain genuine human judgment.
 
-## House Compression
+#### House Compression
 
 > The software has an operator interface.
 >
@@ -33897,9 +33897,9 @@ Retain genuine human judgment.
 
 ---
 
-# Card 9: Regulatory Conflict
+### Card 9: Regulatory Conflict
 
-## Operational Signature
+#### Operational Signature
 
 Two tools repeatedly undo one another.
 
@@ -33916,7 +33916,7 @@ Both tools succeed locally.
 
 State oscillates globally.
 
-## Mechanism
+#### Mechanism
 
 **Regulatory conflict** occurs when several controllers govern the
 same state under incompatible setpoints or authority models.
@@ -33929,7 +33929,7 @@ controller B → state Y
 controller A → state X
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -33947,7 +33947,7 @@ Strong evidence includes:
 * repeated reconciliation;
 * operator scheduling one controller after another intentionally.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Several regulators are coherent when their scopes compose explicitly.
 
@@ -33958,7 +33958,7 @@ Example:
 
 Conflict begins when that priority is absent or violated.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Define:
 
@@ -33969,15 +33969,15 @@ Define:
 * composition contract;
 * deadband where appropriate.
 
-## House Compression
+#### House Compression
 
 > When two regulators disagree, the filesystem becomes their argument.
 
 ---
 
-# Card 10: Coping Infrastructure
+### Card 10: Coping Infrastructure
 
-## Operational Signature
+#### Operational Signature
 
 Ordinary operation depends on:
 
@@ -33994,7 +33994,7 @@ The official component appears small and stable.
 
 The surrounding ecology performs the missing work.
 
-## Mechanism
+#### Mechanism
 
 **Coping infrastructure** is technical or human machinery built to
 preserve operation around unresolved shared defects or weak
@@ -34012,7 +34012,7 @@ stable local operation
 compensation becomes required infrastructure
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34030,7 +34030,7 @@ Strong evidence includes:
 * personal patches required across upgrades;
 * nightly reconciliation after every ordinary operation.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Not every wrapper or local policy layer is coping infrastructure.
 
@@ -34044,7 +34044,7 @@ A wrapper may legitimately provide:
 The term applies when the surrounding mechanism compensates for
 unresolved structure the shared system is still expected to provide.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Inventory hidden functions before attempting removal.
 
@@ -34056,16 +34056,16 @@ Then decide which belong in:
 * recovery interface;
 * local policy.
 
-## House Compression
+#### House Compression
 
 > The infrastructure did not solve the contradiction.  
 > It hired the ecosystem to carry it.
 
 ---
 
-# Card 11: Shadow Regulator
+### Card 11: Shadow Regulator
 
-## Operational Signature
+#### Operational Signature
 
 An unofficial tool or participant preserves the property the official
 system claims or expects.
@@ -34078,7 +34078,7 @@ Examples include:
 * downstream patch enforcing upstream rule;
 * IRC channel directing recovery.
 
-## Mechanism
+#### Mechanism
 
 A **shadow regulator** is an unofficial control loop that practically
 preserves desired state outside the declared authority structure.
@@ -34093,7 +34093,7 @@ shadow path:
     observes, decides, repairs, verifies
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34104,7 +34104,7 @@ Ask:
 * Can alternate paths bypass the shadow mechanism?
 * Is the shadow regulator maintained and succession-safe?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A formally delegated external regulator is not shadow regulation.
 
@@ -34113,7 +34113,7 @@ Delegation is explicit.
 Shadow regulation is discovered through dependency rather than
 declared contract.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Choose deliberately:
 
@@ -34122,16 +34122,16 @@ Choose deliberately:
 * narrow the system's guarantee;
 * or remove the expected property.
 
-## House Compression
+#### House Compression
 
 > Delegation names the next owner.  
 > Outsourcing merely points away from the fire.
 
 ---
 
-# Card 12: Zombie Invariant
+### Card 12: Zombie Invariant
 
-## Operational Signature
+#### Operational Signature
 
 A rule remains operationally required.
 
@@ -34147,7 +34147,7 @@ Experienced participants still apply the rule through:
 
 Violations are treated as operator error.
 
-## Mechanism
+#### Mechanism
 
 A **zombie invariant** is a dead mechanical property still kept active
 through human enforcement.
@@ -34164,7 +34164,7 @@ rule still required
 operators keep feeding it
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34181,7 +34181,7 @@ Strong evidence includes:
 * deprecated unsafe state accepted but socially forbidden;
 * test deleted while maintainers still insist on behavior.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A legitimate human policy is not a zombie invariant.
 
@@ -34190,7 +34190,7 @@ The distinction is whether the rule is:
 * a local choice;
 * or a structural property the system still expects universally.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Decide whether to:
 
@@ -34200,15 +34200,15 @@ Decide whether to:
 * retire the requirement;
 * or mark the state unsupported explicitly.
 
-## House Compression
+#### House Compression
 
 > A zombie invariant is a dead rule still reporting for work.
 
 ---
 
-# Card 13: Ghost Invariant and Semantic Revenant
+### Card 13: Ghost Invariant and Semantic Revenant
 
-## Operational Signature
+#### Operational Signature
 
 A behavior, restriction, or expectation influences current decisions
 even though:
@@ -34218,7 +34218,7 @@ even though:
 * the feature or code was removed;
 * participants remain afraid to violate it.
 
-## Mechanism
+#### Mechanism
 
 A **ghost invariant** is an old property whose causal imprint remains
 after both its mechanism and active social enforcement have weakened.
@@ -34236,7 +34236,7 @@ expectation or compatibility survives
 current behavior shaped by absent contract
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34247,7 +34247,7 @@ Ask:
 * Was deletion accompanied by a semantic tombstone?
 * Does the old term still influence interface interpretation?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Old code is not automatically haunted.
 
@@ -34263,7 +34263,7 @@ is ordinary engineering.
 Haunting begins when old meaning persists without accountable
 ownership.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Perform archaeology once.
 
@@ -34276,16 +34276,16 @@ Then choose:
 * retirement;
 * restored invariant.
 
-## House Compression
+#### House Compression
 
 > A ghost is not old code.  
 > It is old meaning still collecting rent.
 
 ---
 
-# Card 14: Structural Amnesia
+### Card 14: Structural Amnesia
 
-## Operational Signature
+#### Operational Signature
 
 A rewrite or reorganization reintroduces a previously solved failure.
 
@@ -34299,7 +34299,7 @@ The old code contained:
 
 The rationale did not survive.
 
-## Mechanism
+#### Mechanism
 
 **Structural amnesia** occurs when the ecosystem loses the contracts
 or invariants previously embedded in implementation, process, or
@@ -34317,7 +34317,7 @@ lesson disappears
 failure returns
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34328,14 +34328,14 @@ Ask:
 * Has an equivalent patch appeared before?
 * Did the project retain evidence but lose the conclusion?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 A rewrite discovering genuinely obsolete behavior is not amnesia.
 
 Amnesia means the project could not determine what the old behavior
 knew before discarding it.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Recover:
 
@@ -34347,16 +34347,16 @@ Recover:
 
 Then audit neighboring unexplained behavior.
 
-## House Compression
+#### House Compression
 
 > The code was deleted.  
 > The ecosystem did not receive the obituary.
 
 ---
 
-# Card 15: Compatibility Necrosis
+### Card 15: Compatibility Necrosis
 
-## Operational Signature
+#### Operational Signature
 
 Compatibility code:
 
@@ -34371,7 +34371,7 @@ Old semantics no longer merely survive.
 
 They govern.
 
-## Mechanism
+#### Mechanism
 
 **Compatibility necrosis** occurs when compatibility stops containing
 the past and begins preventing the current system from establishing
@@ -34389,7 +34389,7 @@ new code learns legacy
 legacy becomes permanent active state
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34407,7 +34407,7 @@ Strong evidence includes:
 * every component understanding every historical variant;
 * migration percentage reaching 100 while old writers remain.
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Long-lived compatibility is not necrotic when:
 
@@ -34416,7 +34416,7 @@ Long-lived compatibility is not necrotic when:
 * new production uses current semantics;
 * ownership and tests remain clear.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Establish:
 
@@ -34426,16 +34426,16 @@ Establish:
 * compatibility telemetry;
 * removal or adoption decision.
 
-## House Compression
+#### House Compression
 
 > Compatibility preserves the past.  
 > Haunted compatibility lets the past keep committing.
 
 ---
 
-# Card 16: Bastard Formation
+### Card 16: Bastard Formation
 
-## Operational Signature
+#### Operational Signature
 
 Experienced operators:
 
@@ -34449,7 +34449,7 @@ Experienced operators:
 
 Their expertise is essential to ordinary operation.
 
-## Mechanism
+#### Mechanism
 
 **Bastard formation** is the process through which repeated system
 ambiguity and regulatory failure become stable operator skill,
@@ -34471,7 +34471,7 @@ expert status
 ecosystem dependence
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34483,14 +34483,14 @@ Ask:
 * Can a newcomer succeed from the explicit contract alone?
 * Is expert compensation credited to system design?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Deep expertise is not automatically bastard formation.
 
 The term applies when expertise supplies missing infrastructure rather
 than mastering legitimate domain complexity alone.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Separate:
 
@@ -34502,16 +34502,16 @@ Separate:
 
 Re-skill rather than merely de-skill.
 
-## House Compression
+#### House Compression
 
 > The bastard is what the ecosystem compiles when it cannot compile
 > the invariant.
 
 ---
 
-# Card 17: Competence Inversion
+### Card 17: Competence Inversion
 
-## Operational Signature
+#### Operational Signature
 
 The system accepts an incoherent state.
 
@@ -34521,7 +34521,7 @@ A newcomer enters it.
 
 The newcomer is blamed for lacking competence.
 
-## Mechanism
+#### Mechanism
 
 **Competence inversion** reclassifies missing system structure as an
 operator qualification requirement.
@@ -34538,7 +34538,7 @@ newcomer fails
 failure attributed to newcomer
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34549,7 +34549,7 @@ Ask:
 * Would an explicit contract have prevented the failure?
 * Is “read the source” being used to explain or excuse contradiction?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Operators remain responsible for understanding explicit risks and
 contracts.
@@ -34557,7 +34557,7 @@ contracts.
 Competence inversion applies when the boundary was not visible or
 enforceable but the operator is judged as though it were.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Move the rule into:
 
@@ -34567,16 +34567,16 @@ Move the rule into:
 * manual;
 * explicit operator decision.
 
-## House Compression
+#### House Compression
 
 > The trap was documented socially.  
 > Therefore the foot is at fault.
 
 ---
 
-# Card 18: Doctrine Capture
+### Card 18: Doctrine Capture
 
-## Operational Signature
+#### Operational Signature
 
 A project principle repeatedly selects outcomes that preserve one
 role, workaround, tool, or authority structure.
@@ -34588,7 +34588,7 @@ Examples include:
 * operator control always rejecting structured planning;
 * simplicity counting only one component's code.
 
-## Mechanism
+#### Mechanism
 
 **Doctrine capture** occurs when a principle is interpreted in ways
 that protect existing adaptations, authority, or status rather than
@@ -34606,7 +34606,7 @@ doctrine defined around adaptation
 alternatives excluded
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34618,7 +34618,7 @@ Ask:
 * Is the status quo paying the same burden of proof?
 * Does evidence revise doctrine?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Strong project values and conservative review are not doctrine
 capture.
@@ -34626,7 +34626,7 @@ capture.
 Capture appears when the interpretation becomes self-sealing or
 consistently protects one adaptation against relevant evidence.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Separate:
 
@@ -34639,16 +34639,16 @@ Separate:
 Use bounded experiments where symbolic fear exceeds available
 evidence.
 
-## House Compression
+#### House Compression
 
 > Every workaround wants to become a tradition.  
 > Every tradition eventually claims it was architecture all along.
 
 ---
 
-# Card 19: False Closure
+### Card 19: False Closure
 
-## Operational Signature
+#### Operational Signature
 
 The issue is closed.
 
@@ -34663,7 +34663,7 @@ But:
 * structural test is absent;
 * closure scope is undefined.
 
-## Mechanism
+#### Mechanism
 
 **False closure** occurs when local repair, symptom suppression, or
 incomplete migration is presented as structural completion.
@@ -34680,7 +34680,7 @@ old mechanism remains
 recurrence under another path
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34692,7 +34692,7 @@ Ask:
 * What reopening conditions exist?
 * Is silence caused by avoidance or reduced observation?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Partial closure is legitimate when stated precisely.
 
@@ -34703,7 +34703,7 @@ The defect is not incompleteness.
 
 The defect is claiming a larger boundary than the evidence supports.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Write:
 
@@ -34714,7 +34714,7 @@ Write:
 * compensator status;
 * reopening conditions.
 
-## House Compression
+#### House Compression
 
 > A failure is not closed when the symptom disappears.  
 > It is closed when the old mechanism can no longer produce it inside
@@ -34722,9 +34722,9 @@ Write:
 
 ---
 
-# Card 20: Symbolic Guardrail
+### Card 20: Symbolic Guardrail
 
-## Operational Signature
+#### Operational Signature
 
 A rule appears formal:
 
@@ -34738,7 +34738,7 @@ A rule appears formal:
 
 Yet authoritative state can bypass it.
 
-## Mechanism
+#### Mechanism
 
 A **symbolic guardrail** expresses desired control without binding the
 path that creates the relevant state.
@@ -34753,7 +34753,7 @@ rule looks authoritative
 authoritative path does not cross it
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34765,7 +34765,7 @@ Ask:
 * Can producers ignore the schema?
 * Is use of the rule observable?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 An advisory or experimental mechanism is not defective when described
 honestly.
@@ -34773,23 +34773,23 @@ honestly.
 It becomes symbolic authority when the ecosystem credits it with
 guarantees it cannot provide.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Either:
 
 * move it onto the authoritative path;
 * or describe it as advisory, local, or experimental.
 
-## House Compression
+#### House Compression
 
 > The invariant has been rendered beautifully in Markdown.  
 > Runtime remains unconvinced.
 
 ---
 
-# Card 21: Observability Theater
+### Card 21: Observability Theater
 
-## Operational Signature
+#### Operational Signature
 
 The ecosystem has:
 
@@ -34804,7 +34804,7 @@ The same failure persists.
 No controller possesses both the model and authority required to
 change the path.
 
-## Mechanism
+#### Mechanism
 
 **Observability theater** is the accumulation of evidence surfaces
 without corresponding regulatory closure.
@@ -34819,7 +34819,7 @@ more reports
 same authority gap
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34831,13 +34831,13 @@ Ask:
 * Has alert volume exceeded operator capacity?
 * Does green status mean the system or only the monitor is healthy?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Rich observability is valuable even when correction remains manual.
 
 The theater begins when awareness is presented as control.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 For each high-value signal, define:
 
@@ -34848,16 +34848,16 @@ For each high-value signal, define:
 * verification;
 * acceptable latency.
 
-## House Compression
+#### House Compression
 
 > The dashboard knows exactly how the building burns.  
 > The sprinkler remains on the roadmap.
 
 ---
 
-# Card 22: Ecological Regression
+### Card 22: Ecological Regression
 
-## Operational Signature
+#### Operational Signature
 
 A local component becomes:
 
@@ -34878,7 +34878,7 @@ Examples include:
 * private wrappers return;
 * authority centralizes unintentionally.
 
-## Mechanism
+#### Mechanism
 
 An **ecological regression** is a local technical improvement that
 worsens the larger system of contracts, operators, state, and
@@ -34894,7 +34894,7 @@ hidden function removed or burden exported
 ecosystem burden rises
 ```
 
-## Confirmation Probes
+#### Confirmation Probes
 
 Ask:
 
@@ -34906,14 +34906,14 @@ Ask:
 * Did one authority become a bottleneck?
 * Was compatibility or policy omitted from the local model?
 
-## Do Not Confuse
+#### Do Not Confuse
 
 Any migration may temporarily increase burden.
 
 Ecological regression means the new steady state is worse or the
 migration lacks a viable path toward improvement.
 
-## First Intervention Direction
+#### First Intervention Direction
 
 Expand the accounting boundary.
 
@@ -34927,18 +34927,18 @@ Inventory:
 * authority;
 * hidden compensator functions.
 
-## House Compression
+#### House Compression
 
 > The rewrite eliminated technical debt by returning it to the
 > operators.
 
 ---
 
-# Symptom Index
+### Symptom Index
 
 Use this index when you know what happened but not what to call it.
 
-## Command Returns Zero, State Is Wrong
+#### Command Returns Zero, State Is Wrong
 
 Check:
 
@@ -34948,7 +34948,7 @@ Check:
 * artifact-truth failure;
 * human-as-the-loop.
 
-## Command Returns Nonzero, Useful Output Exists
+#### Command Returns Nonzero, Useful Output Exists
 
 Check:
 
@@ -34957,7 +34957,7 @@ Check:
 * ambiguous completion;
 * recovery-model absence.
 
-## Different Tools Give Different Identity
+#### Different Tools Give Different Identity
 
 Check:
 
@@ -34966,7 +34966,7 @@ Check:
 * artifact-truth failure;
 * semantic drift.
 
-## Wording Change Breaks Automation
+#### Wording Change Breaks Automation
 
 Check:
 
@@ -34974,7 +34974,7 @@ Check:
 * accidental protocol;
 * supplier-duty failure.
 
-## Every Expert Uses a Wrapper
+#### Every Expert Uses a Wrapper
 
 Check:
 
@@ -34984,7 +34984,7 @@ Check:
 * bastard formation;
 * boundary-extraction candidate.
 
-## Every Newcomer Hits the Same Trap
+#### Every Newcomer Hits the Same Trap
 
 Check:
 
@@ -34994,7 +34994,7 @@ Check:
 * semantic counterfeit;
 * zombie invariant.
 
-## Validator Finds Problems Forever
+#### Validator Finds Problems Forever
 
 Check:
 
@@ -35004,7 +35004,7 @@ Check:
 * alert saturation;
 * symbolic guardrail.
 
-## Two Tools Keep Undoing Each Other
+#### Two Tools Keep Undoing Each Other
 
 Check:
 
@@ -35013,7 +35013,7 @@ Check:
 * split authority;
 * missing local-policy boundary.
 
-## Rewrite Reintroduces Old Failure
+#### Rewrite Reintroduces Old Failure
 
 Check:
 
@@ -35022,7 +35022,7 @@ Check:
 * ghost invariant;
 * missing contract-level test.
 
-## Deprecated Path Keeps Growing
+#### Deprecated Path Keeps Growing
 
 Check:
 
@@ -35031,7 +35031,7 @@ Check:
 * permanent transition;
 * missing new-production rule.
 
-## Nobody Knows Why Rule Exists
+#### Nobody Knows Why Rule Exists
 
 Check:
 
@@ -35040,7 +35040,7 @@ Check:
 * semantic revenant;
 * fear-based retention.
 
-## Rule Exists Only in Review or Folklore
+#### Rule Exists Only in Review or Folklore
 
 Check:
 
@@ -35049,7 +35049,7 @@ Check:
 * symbolic guardrail;
 * competence inversion.
 
-## Dashboard Is Green, Operators Still Repair State
+#### Dashboard Is Green, Operators Still Repair State
 
 Check:
 
@@ -35058,7 +35058,7 @@ Check:
 * sensor capture;
 * human-as-the-loop.
 
-## New Guardrail Causes Everyone to Use `--force`
+#### New Guardrail Causes Everyone to Use `--force`
 
 Check:
 
@@ -35068,7 +35068,7 @@ Check:
 * recovery capture;
 * missing policy surface.
 
-## Cleaner Component Creates More Scripts Around It
+#### Cleaner Component Creates More Scripts Around It
 
 Check:
 
@@ -35077,7 +35077,7 @@ Check:
 * coping infrastructure;
 * hidden-function deletion.
 
-## Project Defends Missing Mechanism as Philosophy
+#### Project Defends Missing Mechanism as Philosophy
 
 Check:
 
@@ -35087,7 +35087,7 @@ Check:
 * identity-bearing defect;
 * status-quo naturalization.
 
-## Issue Closed, Workaround Still Required
+#### Issue Closed, Workaround Still Required
 
 Check:
 
@@ -35099,11 +35099,11 @@ Check:
 
 ---
 
-# Distinction Index
+### Distinction Index
 
 Use this index when two concepts appear to overlap.
 
-## Authority Fracture Versus Semantic Drift
+#### Authority Fracture Versus Semantic Drift
 
 **Authority fracture** concerns several surfaces exercising authority
 over one meaning.
@@ -35115,7 +35115,7 @@ Fractured authority often produces drift.
 
 Drift may also occur under one weakly maintained authority.
 
-## Zombie Invariant Versus Ghost Invariant
+#### Zombie Invariant Versus Ghost Invariant
 
 A **zombie invariant** is still actively fed through human
 enforcement.
@@ -35127,7 +35127,7 @@ The zombie reports for work.
 
 The ghost moves the furniture.
 
-## Coping Infrastructure Versus Legitimate Composition
+#### Coping Infrastructure Versus Legitimate Composition
 
 **Coping infrastructure** compensates for unresolved expected
 structure.
@@ -35140,7 +35140,7 @@ The difference is not whether a wrapper exists.
 It is whether the wrapper owns a declared function or repairs an
 undeclared absence.
 
-## Human-in-the-Loop Versus Human-as-the-Loop
+#### Human-in-the-Loop Versus Human-as-the-Loop
 
 **Human-in-the-loop** supplies bounded judgment inside a represented
 control system.
@@ -35148,61 +35148,61 @@ control system.
 **Human-as-the-loop** supplies sensing, interpretation, decision,
 repair, and verification because the control system is incomplete.
 
-## Warning Versus Symbolic Guardrail
+#### Warning Versus Symbolic Guardrail
 
 A warning is an honest advisory surface.
 
 A symbolic guardrail is an advisory surface credited with enforcement
 it does not possess.
 
-## Compatibility Versus Compatibility Necrosis
+#### Compatibility Versus Compatibility Necrosis
 
 Compatibility contains old meaning at a boundary.
 
 Compatibility necrosis lets old meaning continue reproducing and
 governing the current system.
 
-## Doctrine Versus Doctrine Capture
+#### Doctrine Versus Doctrine Capture
 
 Doctrine compresses lessons.
 
 Doctrine capture interprets those lessons to preserve one adaptation
 or authority structure despite contrary evidence.
 
-## Partial Closure Versus False Closure
+#### Partial Closure Versus False Closure
 
 Partial closure states its limited boundary.
 
 False closure presents the limited result as complete.
 
-## Local Repair Versus Repair Laundering
+#### Local Repair Versus Repair Laundering
 
 A local repair is valid within local scope.
 
 Repair laundering claims that local scope represents shared system
 behavior.
 
-## Structural Test Versus Historical Fixture
+#### Structural Test Versus Historical Fixture
 
 A structural test preserves a contract or invariant.
 
 A historical fixture may preserve one specimen without naming why it
 matters.
 
-## Artifact Truth Versus Self-Contained Artifact
+#### Artifact Truth Versus Self-Contained Artifact
 
 Artifact truth requires a reliable bound relationship between
 identity, metadata, content, and completion.
 
 It does not require every fact to be stored in one file.
 
-## Normalization Versus Policy
+#### Normalization Versus Policy
 
 Normalization converts equivalent representations into one meaning.
 
 Policy chooses among legitimately different meanings.
 
-## Recovery Path Versus Normal Path
+#### Recovery Path Versus Normal Path
 
 Recovery handles exceptional damaged or uncertain state.
 
@@ -35211,11 +35211,11 @@ authority.
 
 ---
 
-# Compound Diagnoses
+### Compound Diagnoses
 
 Many serious incidents contain a stack rather than one card.
 
-## The Lying Build
+#### The Lying Build
 
 Symptoms:
 
@@ -35244,7 +35244,7 @@ Likely intervention direction:
 * explicit completion state;
 * repository intake validation.
 
-## The Safe Wrapper
+#### The Safe Wrapper
 
 Symptoms:
 
@@ -35274,7 +35274,7 @@ Likely intervention direction:
 * preserve legitimate local policy;
 * migrate operators.
 
-## The Eternal Legacy Mode
+#### The Eternal Legacy Mode
 
 Symptoms:
 
@@ -35303,7 +35303,7 @@ Likely intervention direction:
 * authority cutover;
 * retirement criteria.
 
-## The Green Dashboard
+#### The Green Dashboard
 
 Symptoms:
 
@@ -35333,7 +35333,7 @@ Likely intervention direction:
 * connect detection to quarantine;
 * verify postcondition.
 
-## The Clean Rewrite
+#### The Clean Rewrite
 
 Symptoms:
 
@@ -35362,7 +35362,7 @@ Likely intervention direction:
 * add structural tests;
 * perform ecological migration.
 
-## The Expert-Only System
+#### The Expert-Only System
 
 Symptoms:
 
@@ -35396,14 +35396,14 @@ Likely intervention direction:
 
 ---
 
-# The Two-Probe Rule
+### The Two-Probe Rule
 
 Before applying a field term, obtain at least two independent kinds of
 evidence.
 
 For example:
 
-## Suspected Narrative Coupling
+#### Suspected Narrative Coupling
 
 Evidence type 1:
 
@@ -35413,7 +35413,7 @@ Evidence type 2:
 
 * wording change breaks integration.
 
-## Suspected Zombie Invariant
+#### Suspected Zombie Invariant
 
 Evidence type 1:
 
@@ -35423,7 +35423,7 @@ Evidence type 2:
 
 * enforcement occurs through review or operator ritual.
 
-## Suspected Open Regulatory Loop
+#### Suspected Open Regulatory Loop
 
 Evidence type 1:
 
@@ -35433,7 +35433,7 @@ Evidence type 2:
 
 * no authoritative actuator or verified correction exists.
 
-## Suspected Bastard Formation
+#### Suspected Bastard Formation
 
 Evidence type 1:
 
@@ -35449,7 +35449,7 @@ It prevents classification by atmosphere.
 
 ---
 
-# The Mechanism-First Rule
+### The Mechanism-First Rule
 
 When several cards appear plausible, prefer the term closest to the
 causal mechanism.
@@ -35484,7 +35484,7 @@ They occupy different depths.
 
 ---
 
-# The Depth Ladder
+### The Depth Ladder
 
 Use this ladder to place the diagnosis.
 
@@ -35536,7 +35536,7 @@ years of operator ritual.
 
 ---
 
-# The Card Selection Test
+### The Card Selection Test
 
 Before naming a failure shape, ask:
 
@@ -35568,7 +35568,7 @@ Before naming a failure shape, ask:
 A field term earns its place when it reduces repeated explanation
 without reducing causal precision.
 
-## Twenty-Eighth House Law
+### Twenty-Eighth House Law
 
 > Name the mechanism closest to the wound.  
 > Add the ghosts only after they start moving the furniture.
@@ -35602,7 +35602,7 @@ which a system should be judged after the jokes are gone.
 
 ---
 
-# Leaving the House
+## Leaving the House
 
 The system has been repaired.
 
@@ -35637,7 +35637,7 @@ The ecosystem has not yet accepted that it may stop surviving.
 
 ---
 
-## The House
+### The House
 
 The **House** is the combined technical and human structure through
 which an ecosystem carries:
@@ -35673,7 +35673,7 @@ The codebase is one room.
 The operator who knows which door jams in winter is also part of the
 current architecture.
 
-## The House Model
+### The House Model
 
 The Fieldbook began with this causal sequence:
 
@@ -35702,33 +35702,33 @@ A failure may begin anywhere.
 
 But mature failures often travel through these stages.
 
-### Authority
+#### Authority
 
 Some layer must own the meaning.
 
-### Boundary
+#### Boundary
 
 That meaning must cross into the next component without being lost,
 counterfeited, or reconstructed privately.
 
-### Drift
+#### Drift
 
 When representations and implementations evolve independently, their
 meanings separate.
 
-### Folklore
+#### Folklore
 
 Operators carry the rule the system no longer carries.
 
-### Regulation
+#### Regulation
 
 Someone must still detect, decide, correct, and verify.
 
-### Operator Adaptation
+#### Operator Adaptation
 
 People become skilled at supplying the missing loop.
 
-### Doctrine
+#### Doctrine
 
 Successful adaptations become values, prohibitions, and project
 identity.
@@ -35737,7 +35737,7 @@ The technical failure has now acquired social defenses.
 
 > That is how a bug becomes a religion.
 
-## The Reverse Path
+### The Reverse Path
 
 Repair travels in the opposite direction.
 
@@ -35771,7 +35771,7 @@ The repair then gives that function:
 * a recovery path;
 * an honest scope.
 
-## Leaving
+### Leaving
 
 **Leaving** is the point at which correctness no longer depends on
 preserving the entire adaptive ecology that formed around the old
@@ -35794,7 +35794,7 @@ Leaving does not mean abandoning the system.
 It means the operator may stop standing in the doorway to keep the
 building upright.
 
-## Exit Condition
+### Exit Condition
 
 An **exit condition** is evidence that a compensating role,
 workaround, or historical rule can safely leave the ordinary control
@@ -35818,9 +35818,9 @@ ghosts receive maintenance releases.
 
 ---
 
-# What the System Must Carry
+### What the System Must Carry
 
-## It Must Carry Meaning
+#### It Must Carry Meaning
 
 A component should publish the facts its consumers need.
 
@@ -35840,7 +35840,7 @@ It requires supplier duty.
 The layer possessing the truth should carry enough of it across the
 boundary for the next layer to act without archaeology.
 
-## It Must Carry Authority
+#### It Must Carry Authority
 
 A fact without an owner becomes an argument.
 
@@ -35860,7 +35860,7 @@ A system may have several authorities.
 It should not have several authorities over the same meaning without a
 defined hierarchy or composition contract.
 
-## It Must Carry Failure
+#### It Must Carry Failure
 
 Failure is state.
 
@@ -35878,7 +35878,7 @@ An operation need not expose every internal phase.
 
 It must expose every distinction its consumers require to act safely.
 
-## It Must Carry Recovery
+#### It Must Carry Recovery
 
 A correct system is not one that merely prevents every anticipated
 mistake.
@@ -35899,7 +35899,7 @@ Encapsulation should prevent accidental mutation.
 It should not make exceptional repair dependent on unsupported
 surgery.
 
-## It Must Carry Memory
+#### It Must Carry Memory
 
 A project should retain conclusions, not only events.
 
@@ -35915,7 +35915,7 @@ The archive stores what happened.
 
 Institutional memory stores what the project learned.
 
-## It Must Carry Policy Honestly
+#### It Must Carry Policy Honestly
 
 Policy belongs to the authority entitled to choose among legitimate
 states.
@@ -35934,7 +35934,7 @@ Mechanism should not silently annex policy.
 
 Policy should not be used to excuse missing invariants.
 
-## It Must Carry Its Own Limits
+#### It Must Carry Its Own Limits
 
 A system should state:
 
@@ -35953,7 +35953,7 @@ A narrow honest contract is stronger than a broad theatrical one.
 
 ---
 
-# What the Operator Should Carry
+### What the Operator Should Carry
 
 The Fieldbook does not propose an operator with no knowledge,
 judgment, or responsibility.
@@ -35978,7 +35978,7 @@ The operator should not be required to carry:
 * historical warnings with no current scope;
 * the only copy of the recovery model.
 
-## Operator Sovereignty
+#### Operator Sovereignty
 
 **Operator sovereignty** is control over local policy and the ability
 to inspect, refuse, recover, and override within an explicit authority
@@ -36005,7 +36005,7 @@ Manual ambiguity does not automatically increase sovereignty.
 
 It may merely assign liability.
 
-## Operator Skill
+#### Operator Skill
 
 Operator skill should rise above the missing boundary.
 
@@ -36024,7 +36024,7 @@ discarding them.
 > Expertise should solve difficult problems.  
 > It should not be the serialization primitive.
 
-## Operator Freedom
+#### Operator Freedom
 
 Freedom includes the freedom to:
 
@@ -36042,9 +36042,9 @@ A system does not become free merely because it refuses to help.
 
 ---
 
-# What Simplicity Must Mean
+### What Simplicity Must Mean
 
-## Local Simplicity
+#### Local Simplicity
 
 A component may be locally simple because it:
 
@@ -36064,7 +36064,7 @@ Local simplicity becomes counterfeit when omitted work reappears as:
 * state repair;
 * undocumented compatibility.
 
-## Ecosystem Simplicity
+#### Ecosystem Simplicity
 
 **Ecosystem simplicity** is low total burden across:
 
@@ -36083,7 +36083,7 @@ They require honest boundaries.
 
 > Small tools are not a substitute for small semantics.
 
-## Simplicity Accounting
+#### Simplicity Accounting
 
 When evaluating simplicity, ask:
 
@@ -36099,7 +36099,7 @@ Code size is one cost.
 
 It is not the ecosystem's entire tax return.
 
-## Essential Complexity
+#### Essential Complexity
 
 Some complexity cannot be removed.
 
@@ -36119,7 +36119,7 @@ KISS does not mean pretending these do not exist.
 It means representing them without manufacturing unnecessary machinery
 around them.
 
-## Accidental Complexity
+#### Accidental Complexity
 
 Accidental complexity appears when the system forces repeated work
 because:
@@ -36137,9 +36137,9 @@ component larger while making the ecosystem simpler.
 
 ---
 
-# What Transparency Must Mean
+### What Transparency Must Mean
 
-## Source Transparency
+#### Source Transparency
 
 Source availability allows inspection of implementation.
 
@@ -36163,7 +36163,7 @@ It does not automatically reveal:
 * operator policy;
 * which accidental behavior may change.
 
-## State Transparency
+#### State Transparency
 
 State transparency means operators can determine:
 
@@ -36180,7 +36180,7 @@ and recovery.
 A text file may be opaque if its fields have undocumented authority
 and several writers reinterpret it.
 
-## Semantic Transparency
+#### Semantic Transparency
 
 Semantic transparency means interfaces state what their operations and
 results actually mean.
@@ -36194,7 +36194,7 @@ This includes:
 * retry safety;
 * lifecycle boundaries.
 
-## Operational Transparency
+#### Operational Transparency
 
 Operational transparency means the operator can observe:
 
@@ -36211,9 +36211,9 @@ distinction.
 
 ---
 
-# What Trust Must Mean
+### What Trust Must Mean
 
-## Trust in Operators
+#### Trust in Operators
 
 Trusting operators does not require accepting structurally invalid
 state.
@@ -36230,7 +36230,7 @@ These do not replace judgment.
 They prevent the system from wasting judgment on deterministic
 contradictions.
 
-## Trust in Maintainers
+#### Trust in Maintainers
 
 Trusting maintainers does not require storing invariants only in
 review custom.
@@ -36245,7 +36245,7 @@ Mechanical enforcement is not an accusation.
 
 It is preservation of their own decision.
 
-## Trust in Components
+#### Trust in Components
 
 Components should be trusted within defined contracts.
 
@@ -36261,7 +36261,7 @@ Trust should be proportional to:
 
 It is a social instruction about uncertainty.
 
-## Verifiable Trust
+#### Verifiable Trust
 
 **Verifiable trust** allows confidence without requiring complete
 reinspection of every implementation detail.
@@ -36282,9 +36282,9 @@ It is trust with state.
 
 ---
 
-# What Tradition Must Mean
+### What Tradition Must Mean
 
-## Tradition as Memory
+#### Tradition as Memory
 
 Tradition can preserve:
 
@@ -36298,7 +36298,7 @@ Tradition can preserve:
 
 This is legitimate institutional memory.
 
-## Tradition as Compensation
+#### Tradition as Compensation
 
 Tradition becomes compensation when the project continues a practice
 only because the system still lacks the structure that made the
@@ -36316,7 +36316,7 @@ The practice may remain useful.
 
 Its reason should be current.
 
-## Tradition as Identity
+#### Tradition as Identity
 
 Identity gives continuity.
 
@@ -36331,7 +36331,7 @@ It helps a project reject changes that would destroy:
 Identity becomes self-defense against reality when every current cost
 is reclassified as essence.
 
-## Tradition Revision
+#### Tradition Revision
 
 Revision should preserve the value while reopening the mechanism.
 
@@ -36354,9 +36354,9 @@ It became more precise.
 
 ---
 
-# What Pluralism Must Mean
+### What Pluralism Must Mean
 
-## Implementation Pluralism
+#### Implementation Pluralism
 
 Several implementations can strengthen a system.
 
@@ -36375,7 +36375,7 @@ Pluralism is real when implementations share:
 * error model;
 * authority contract.
 
-## Counterfeit Pluralism
+#### Counterfeit Pluralism
 
 Pluralism is counterfeit when every implementation requires:
 
@@ -36388,7 +36388,7 @@ Pluralism is counterfeit when every implementation requires:
 The ecosystem may possess several codebases and one undocumented
 implementation.
 
-## Policy Pluralism
+#### Policy Pluralism
 
 Different operators and repositories may choose different policy.
 
@@ -36407,7 +36407,7 @@ transaction completion.
 
 ---
 
-# What Maturity Must Mean
+### What Maturity Must Mean
 
 A mature system is not one without failure.
 
@@ -36440,7 +36440,7 @@ It is one that knows:
 * which judgment should remain human;
 * where authority sits.
 
-## Maturity Signals
+#### Maturity Signals
 
 Useful signals include:
 
@@ -36459,7 +36459,7 @@ Useful signals include:
 * compensators capable of retirement;
 * findings discoverable before recurrence.
 
-## Immaturity Signals
+#### Immaturity Signals
 
 Common signals include:
 
@@ -36484,12 +36484,12 @@ because the current population has adapted.
 
 ---
 
-# A Standard for the System
+### A Standard for the System
 
 After the metaphors, jokes, ghosts, bastards, and corpses are removed,
 the system should be judged by a simple standard.
 
-## Can It Tell the Truth?
+#### Can It Tell the Truth?
 
 Does the system publish:
 
@@ -36502,7 +36502,7 @@ Does the system publish:
 
 without requiring downstream reconstruction?
 
-## Can It Say No?
+#### Can It Say No?
 
 Can the authoritative path reject:
 
@@ -36514,7 +36514,7 @@ Can the authoritative path reject:
 
 before damage?
 
-## Can It Admit Partial Failure?
+#### Can It Admit Partial Failure?
 
 Can it distinguish:
 
@@ -36524,7 +36524,7 @@ Can it distinguish:
 * recovery is required;
 * retry is unsafe?
 
-## Can It Recover?
+#### Can It Recover?
 
 Can an operator:
 
@@ -36535,17 +36535,17 @@ Can an operator:
 * roll back within honest scope;
 * verify the result?
 
-## Can It Preserve Policy?
+#### Can It Preserve Policy?
 
 Can operators retain legitimate local choice without weakening shared
 integrity?
 
-## Can It Replace Components?
+#### Can It Replace Components?
 
 Can another implementation satisfy the contract without inheriting
 private archaeology?
 
-## Can It Retain Lessons?
+#### Can It Retain Lessons?
 
 Can future maintainers find:
 
@@ -36556,7 +36556,7 @@ Can future maintainers find:
 
 before recurrence?
 
-## Can It Release Its Compensators?
+#### Can It Release Its Compensators?
 
 Can the wrapper, checklist, elder, private patch, or ritual leave the
 ordinary control path without correctness leaving with it?
@@ -36565,33 +36565,33 @@ This final question is the ecological proof.
 
 ---
 
-# The Departure Audit
+### The Departure Audit
 
 Before declaring a structural reform complete, perform a departure
 audit.
 
-## Authority
+#### Authority
 
 * Is one authority defined for each important meaning?
 * Are derived forms subordinate and regenerable?
 * Does governance match technical control?
 * Can exceptional authority be identified?
 
-## Boundaries
+#### Boundaries
 
 * Do producers publish the facts consumers require?
 * Are machine results separate from narration?
 * Are failure states expressive enough?
 * Are capabilities explicit?
 
-## State
+#### State
 
 * Can state transitions be traced?
 * Are partial states representable?
 * Are generations or identities available?
 * Can damaged state be inspected?
 
-## Regulation
+#### Regulation
 
 * Does every important invariant have a closed loop?
 * Does the sensor observe authoritative state?
@@ -36599,14 +36599,14 @@ audit.
 * Is correction verified?
 * Is human judgment bounded and explicit?
 
-## Compatibility
+#### Compatibility
 
 * Does legacy enter through one boundary?
 * Can new production recreate old state?
 * Is compatibility directional?
 * Are removal or adoption criteria explicit?
 
-## Operators
+#### Operators
 
 * Which work remains manual?
 * Is it policy, judgment, recovery, or compensation?
@@ -36614,14 +36614,14 @@ audit.
 * Are private tools still required?
 * Has re-skilling occurred?
 
-## Memory
+#### Memory
 
 * Is the conclusion discoverable?
 * Is current doctrine linked to current mechanisms?
 * Are superseded meanings marked?
 * Can rewrites recover the invariant?
 
-## Ecology
+#### Ecology
 
 * Did total burden fall?
 * Did recovery remain possible?
@@ -36635,7 +36635,7 @@ The ecosystem has not yet left.
 
 ---
 
-# The Last Workaround
+### The Last Workaround
 
 The final workaround is often the hardest to remove.
 
@@ -36674,7 +36674,7 @@ The last workaround does not merely protect the system.
 
 It protects the ecosystem from having to believe the system changed.
 
-## Workaround Retirement
+#### Workaround Retirement
 
 Retire a workaround only after determining:
 
@@ -36693,7 +36693,7 @@ The workaround may then become:
 * local policy layer;
 * deleted code with tombstone.
 
-## Workaround Adoption
+#### Workaround Adoption
 
 Sometimes the workaround is the best available design.
 
@@ -36715,7 +36715,7 @@ The shame lies in requiring it while pretending it does not exist.
 
 ---
 
-# Leaving the Bastard Behind
+### Leaving the Bastard Behind
 
 The bastard formed because the ecosystem required:
 
@@ -36742,7 +36742,7 @@ The operator may remain:
 But ordinary correctness should no longer depend on the operator being
 personally traumatized by every previous release.
 
-## Re-Skilled Bastard
+#### Re-Skilled Bastard
 
 A **re-skilled bastard** uses hard-earned experience to:
 
@@ -36761,7 +36761,7 @@ The injury stops being an onboarding requirement.
 > The project should inherit the bastard's knowledge.  
 > It does not need to reproduce the childhood.
 
-## Elder Exit
+#### Elder Exit
 
 An elder should be able to leave without taking:
 
@@ -36780,7 +36780,7 @@ A successful succession test is architectural evidence.
 
 ---
 
-# Leaving Folklore Behind
+### Leaving Folklore Behind
 
 Not all folklore should disappear.
 
@@ -36810,7 +36810,7 @@ The story may remain.
 
 The runtime dependency should not.
 
-## Folklore Promotion
+#### Folklore Promotion
 
 Promote folklore when it contains a current operational rule.
 
@@ -36822,7 +36822,7 @@ Ask:
 * Should it be documented?
 * Is its historical reason still relevant?
 
-## Folklore Retirement
+#### Folklore Retirement
 
 Retire folklore when:
 
@@ -36844,7 +36844,7 @@ It releases operator behavior.
 
 ---
 
-# Leaving Doctrine Open
+### Leaving Doctrine Open
 
 Doctrine should survive the repair.
 
@@ -36859,7 +36859,7 @@ Healthy doctrine remains capable of saying:
 * the burden changed;
 * the project learned.
 
-## Revisable Doctrine
+#### Revisable Doctrine
 
 A revisable doctrine has:
 
@@ -36879,7 +36879,7 @@ This doctrine can evaluate many mechanisms.
 
 It does not freeze one historical workaround.
 
-## Closed Doctrine
+#### Closed Doctrine
 
 Closed doctrine says:
 
@@ -36899,7 +36899,7 @@ It lost the anatomy.
 
 ---
 
-# Leaving the Fieldbook Behind
+### Leaving the Fieldbook Behind
 
 The Fieldbook itself can become folklore.
 
@@ -36914,7 +36914,7 @@ Its terms may be:
 
 This book therefore requires its own caution.
 
-## Do Not Worship the Vocabulary
+#### Do Not Worship the Vocabulary
 
 A term is useful only while it improves:
 
@@ -36928,7 +36928,7 @@ If ordinary technical language is clearer, use it.
 
 If a term no longer matches current mechanisms, revise or retire it.
 
-## Do Not Turn the House Laws into Lint
+#### Do Not Turn the House Laws into Lint
 
 House Laws are compressed conclusions.
 
@@ -36943,7 +36943,7 @@ Every one requires:
 A project capable of mechanically rejecting every violation of a joke
 has probably misunderstood both humor and architecture.
 
-## Do Not Replace Local Folklore with Canonical Folklore
+#### Do Not Replace Local Folklore with Canonical Folklore
 
 The purpose of common vocabulary is to make mechanisms portable.
 
@@ -36953,7 +36953,7 @@ Terms should improve inquiry.
 
 They should not pre-answer it.
 
-## Do Not Use Diagnosis as Status
+#### Do Not Use Diagnosis as Status
 
 Knowing the word **narrative coupling** does not make one more
 competent than the maintainer currently debugging the parser.
@@ -36966,7 +36966,7 @@ It is useless if it merely upgrades the insult.
 
 ---
 
-# Do Not Confuse
+### Do Not Confuse
 
 **Leaving the house** does not mean eliminating manual operation.
 
@@ -37031,7 +37031,7 @@ It means the reader now owns the method.
 
 ---
 
-# The Final House Test
+### The Final House Test
 
 When examining any system, ask:
 
@@ -37078,7 +37078,7 @@ It is architectural.
 
 ---
 
-## Twenty-Ninth House Law
+### Twenty-Ninth House Law
 
 > A system is mature when its operators can leave the room without
 > taking correctness with them.
