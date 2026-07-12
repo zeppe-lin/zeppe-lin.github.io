@@ -15,7 +15,7 @@ revision: 1
 ## Applied Cybernetic Necromancy in Haunted Infrastructure {.unnumbered}
 
 > “The system remembers nothing.  
-> The bastards remember everything.“
+> The bastards remember everything.”
 
 ---
 
@@ -54,7 +54,7 @@ functioning as missing subsystems.
 
 The House calls those operators **bastards**.
 
-This book is an inventory of the mechanisms that manufactures them.
+This book is an inventory of the mechanisms that manufacture them.
 
 Not because the words are funny.
 
@@ -149,6 +149,19 @@ You do not need to memorize the ghosts.
 
 Learn where they enter the building.
 
+## Contents {.unnumbered}
+
+1. [Part I. The Foundational Tension](#part-i-the-foundational-tension)
+2. [Part II. Semantic Authority and Boundaries](#part-ii-semantic-authority-and-boundaries)
+3. [Part III. Drift, Ghosts, and Counterfeit Semantics](#part-iii-drift-ghosts-and-counterfeit-semantics)
+4. [Part IV. Folklore Ecology and Institutional Memory](#part-iv-folklore-ecology-and-institutional-memory)
+5. [Part V. Cybernetic Regulation and Ecosystem Evolution](#part-v-cybernetic-regulation-and-ecosystem-evolution)
+6. [Part VI. Autopsy and Field Method](#part-vi-autopsy-and-field-method)
+7. [Leaving the House](#leaving-the-house)
+
+The Parts provide the causal route. Part VI also works as a field reference:
+enter through an incident, a repair problem, or a familiar failure shape.
+
 ---
 
 # Working Vocabulary {.unnumbered}
@@ -171,6 +184,11 @@ It is only a small set of coordinates used throughout the book.
 | **semantics** | What an operation, interface, state, or artifact means. |
 | **invariant** | A property mechanically preserved by the system. |
 | **folklore** | Operational knowledge transmitted socially rather than mechanically. |
+
+In this book, the unmodified term **invariant** always means a
+mechanically preserved property. Modified forms such as **soft
+invariant**, **zombie invariant**, and **ghost invariant** name degraded,
+socially preserved, or residual relationships to an invariant.
 
 These distinctions matter.
 
