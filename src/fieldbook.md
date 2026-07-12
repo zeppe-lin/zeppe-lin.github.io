@@ -1,5 +1,11 @@
 ---
 title: The Fieldbook
+subtitle: Applied Cybernetic Necromancy in Haunted Infrastructure
+series: Zeppe-Lin House Books
+author: Alexandr Savca
+lang: en
+year: 2026
+revision: 1
 ---
 
 [Back to Index](index.html)
