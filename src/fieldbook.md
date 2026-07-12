@@ -3,6 +3,8 @@ title: The Fieldbook
 subtitle: Applied Cybernetic Necromancy in Haunted Infrastructure
 series: Zeppe-Lin House Books
 author: Alexandr Savca
+copyright: "Copyright (C) 2022–2026 Alexandr Savca and Zeppe-Lin contributors"
+license: CC-BY-SA-3.0
 lang: en
 year: 2026
 revision: 1
@@ -37162,3 +37164,34 @@ Leave the recovery path open.
 Leave the doctrine revisable.
 
 Then let the bastard shut down the terminal and go home.
+
+---
+
+# Copyright and License {.unnumbered}
+
+Copyright (C) 2026 Alexandr Savca and Zeppe-Lin contributors.
+
+Unless otherwise noted, *The Fieldbook*, including its original text,
+tables, diagrams, and illustrations, is licensed under the Creative
+Commons Attribution-ShareAlike 3.0 Unported License (CC-BY-SA-3.0).
+
+You may copy, redistribute, remix, transform, and build upon this
+material, including for commercial purposes, provided that you:
+
+* give appropriate credit;
+* provide a reference to the license;
+* indicate whether changes were made; and
+* distribute adapted material under the same or a compatible license.
+
+This license applies only to original documentation and visual
+material produced for the Zeppe-Lin project.
+Quoted material, third-party trademarks, upstream project names, and
+externally sourced material remain subject to their respective rights
+and licenses.
+
+The canonical source of this document is maintained in the
+[Zeppe-Lin website repository](https://github.com/zeppe-lin/zeppe-lin.github.io/).
+
+This work is provided without warranty of any kind.
+Use of the information and procedures described here is at your own
+risk.
