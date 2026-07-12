@@ -30840,7 +30840,7 @@ Before publishing or retaining a finding, ask:
 54. Can the conclusion survive repository movement or rewrite?
 55. Can the ecosystem apply the lesson without preserving the original
     participants?
-56. Has the investigation produced a finding—or merely another
+56. Has the investigation produced a finding --- or merely another
     archive?
 
 A finding is durable when another competent person can recover its
@@ -30873,6 +30873,2242 @@ The next section is **The Field Operator's Checklist**: a compact
 working method for entering an unfamiliar system, locating authority,
 recognizing compensation, testing a suspected field concept, and
 leaving behind a finding rather than another story.
+
+---
+
+# The Field Operator's Checklist
+
+You arrive after the failure.
+
+The command has already been rerun twice.
+
+The logs have been cleaned.
+
+One operator says the database is authoritative.
+
+Another says the filesystem is authoritative.
+
+The documentation says the operation is atomic.
+
+The recovery script contains a comment saying:
+
+```text
+# do not run twice
+```
+
+Nobody remembers why.
+
+Your task is not to admire the wreckage.
+
+Your task is to determine:
+
+* what state exists;
+* which meaning was expected;
+* who actually owned that meaning;
+* where the first divergence occurred;
+* what kept the system usable afterward;
+* which intervention can change the mechanism;
+* what must be recorded before everyone forgets again.
+
+> Enter through the symptom.  
+> Leave through the authority map.
+
+---
+
+## Field Operator
+
+A **field operator** is a person examining a live or historical system
+to identify its actual contracts, authority, control loops,
+compensations, and failure mechanisms.
+
+The role may be performed by:
+
+* operator;
+* maintainer;
+* incident responder;
+* reviewer;
+* release engineer;
+* downstream integrator;
+* documentation author;
+* curious bastard with shell access and a notebook.
+
+A field operator does not begin by assuming:
+
+* documentation is correct;
+* implementation is authoritative;
+* operator memory is folklore;
+* old behavior is accidental;
+* new behavior is intentional;
+* the most visible component owns the failure.
+
+The field operator begins with evidence and follows authority.
+
+## Field Posture
+
+**Field posture** is the disciplined attitude used when entering an
+unfamiliar system.
+
+It includes several refusals.
+
+Do not assume that:
+
+* success means completion;
+* failure means no mutation;
+* one representation means one authority;
+* a wrapper is merely convenience;
+* a warning is merely informational;
+* a manual step is merely primitive;
+* an old restriction is obsolete;
+* a new abstraction owns the semantics it names.
+
+Do not assume the opposite either.
+
+The purpose is not generalized distrust.
+
+It is delayed commitment.
+
+> Skepticism is useful.  
+> Suspicion with no evidence is merely folklore wearing safety
+> glasses.
+
+## Entry Condition
+
+An **entry condition** is the state in which the field operator begins
+the investigation.
+
+Record:
+
+* what has already changed;
+* which repair actions were attempted;
+* which evidence may have been destroyed;
+* whether authoritative state is still moving;
+* who currently possesses access;
+* which operations must stop.
+
+The first operational decision may be containment.
+
+Before analysis, it may be necessary to:
+
+* stop writers;
+* prevent publication;
+* preserve artifacts;
+* isolate damaged state;
+* disable automation;
+* snapshot databases;
+* copy logs;
+* record process state.
+
+Investigation is difficult when the corpse continues receiving
+commits.
+
+## First Rule: Preserve Before Explaining
+
+Before forming the narrative, preserve:
+
+* exact command line;
+* environment;
+* versions;
+* configuration;
+* state files;
+* artifacts;
+* logs;
+* timestamps;
+* process identifiers;
+* relevant shell history;
+* operator sequence;
+* current and previous authority generations.
+
+Do not immediately:
+
+* rerun the operation;
+* clean temporary files;
+* repair records in place;
+* regenerate indexes;
+* rename artifacts;
+* restart every service;
+* simplify the scene for easier reasoning.
+
+The ugly intermediate state may contain the only evidence that the
+operation was partial.
+
+> Clean systems are pleasant to inspect.  
+> Failed systems are rarely polite enough to remain evidentiary after
+> cleanup.
+
+## The Field Passes
+
+A field examination can proceed at three depths.
+
+### Triage Pass
+
+Purpose:
+
+* contain damage;
+* identify authoritative state;
+* preserve evidence;
+* decide whether operation may continue.
+
+### Diagnostic Pass
+
+Purpose:
+
+* reconstruct state transitions;
+* identify mechanism;
+* map regulator and compensators;
+* choose immediate and structural interventions.
+
+### Retention Pass
+
+Purpose:
+
+* verify repair;
+* migrate state and operator work;
+* preserve durable finding;
+* retire obsolete compensation.
+
+These passes may occur in one session.
+
+Keeping them conceptually separate prevents emergency repair from
+becoming the entire explanation.
+
+---
+
+# The Triage Pass
+
+## 1. State the Symptom Narrowly
+
+Begin with one sentence containing only direct observation.
+
+Bad:
+
+> The package manager corrupted the database.
+
+Better:
+
+> After the command returned nonzero, files from package `foo` existed
+> on disk, but no package record named `foo` existed in the database.
+
+Bad:
+
+> The repository validator failed.
+
+Better:
+
+> An artifact with mismatched filename and manifest identity appeared
+> in the authoritative repository without a corresponding validation
+> event.
+
+The narrow symptom prevents early blame from choosing the rest of the
+evidence.
+
+## 2. Define the Unit of Analysis
+
+The **unit of analysis** is the operation, artifact, state transition,
+boundary, or incident being examined.
+
+Possible units include:
+
+* one command invocation;
+* one package artifact;
+* one repository publication;
+* one database transaction;
+* one upgrade;
+* one compatibility migration;
+* one wrapper workflow;
+* one repeated support procedure.
+
+State the unit explicitly.
+
+Without a defined unit, the investigation expands rapidly into:
+
+> The package system is complicated.
+
+That may be true.
+
+It does not identify the operation whose semantics failed.
+
+## 3. Bound Time
+
+Record:
+
+* last known valid state;
+* operation start;
+* first observed divergence;
+* detection;
+* operator intervention;
+* current state.
+
+Time matters because authority may have changed during the incident.
+
+A repository index generated after manual repair cannot prove what
+consumers saw before repair.
+
+A log written after retry may describe the second operation, not the
+first.
+
+## 4. Stop Destructive Motion
+
+Determine whether any process continues to:
+
+* write database state;
+* publish artifacts;
+* regenerate indexes;
+* reconcile configuration;
+* retry operations;
+* delete temporary evidence;
+* execute lifecycle actions.
+
+If the state continues moving, either:
+
+* stop it;
+* isolate it;
+* or record the motion precisely.
+
+Do not perform a static autopsy on a regulator still kicking the
+table.
+
+## 5. Identify Immediate Authority
+
+Ask:
+
+> Which representation currently decides what happens next?
+
+This may be:
+
+* package database;
+* filesystem;
+* artifact manifest;
+* repository index;
+* lock owner;
+* transaction generation;
+* operator decision;
+* service state.
+
+This is not necessarily the intended authority.
+
+It is the authority that controls the next action.
+
+For example:
+
+* the filesystem may contain partial files;
+* the database may still decide removal;
+* the operator may need both to recover.
+
+## 6. Preserve the Authority Generation
+
+Where state is versioned, record:
+
+* database generation;
+* repository revision;
+* artifact digest;
+* transaction identifier;
+* configuration revision;
+* index timestamp.
+
+A repair applied against stale generation can create a second incident
+while solving the first.
+
+## 7. Classify Immediate Risk
+
+Ask whether the current state risks:
+
+* further corruption;
+* propagation;
+* irreversible mutation;
+* security exposure;
+* loss of evidence;
+* operator lockout;
+* compatibility contamination.
+
+Possible triage responses:
+
+* continue;
+* pause;
+* quarantine;
+* snapshot;
+* roll forward;
+* roll back;
+* isolate;
+* escalate.
+
+Triage is allowed to be conservative.
+
+It should remain explicit about uncertainty.
+
+---
+
+# The Diagnostic Pass
+
+## 8. Establish the Claimed Contract
+
+Collect what each relevant surface says should happen.
+
+Sources may include:
+
+* command help;
+* manual page;
+* API documentation;
+* tests;
+* artifact schema;
+* issue discussion;
+* release note;
+* operator expectation;
+* implementation comment.
+
+Write the claims separately.
+
+Example:
+
+```text
+manual:
+    successful installation completes all package actions
+
+implementation:
+    exit zero reflects primary process completion
+
+test:
+    verifies extracted files only
+
+operator practice:
+    inspect lifecycle log separately
+```
+
+Do not combine them into one compromise statement.
+
+The disagreement is the evidence.
+
+## 9. Freeze Critical Vocabulary
+
+Identify terms whose meaning may differ among participants.
+
+Examples include:
+
+* install;
+* success;
+* root;
+* package identity;
+* transaction;
+* verified;
+* authoritative;
+* atomic;
+* dependency;
+* local;
+* supported.
+
+Write operational definitions for this investigation.
+
+For example:
+
+```text
+“installation committed”:
+    files extracted,
+    database registered,
+    declared lifecycle phases completed or reported separately
+```
+
+Vocabulary drift can create imaginary agreement.
+
+Two maintainers may both say the operation is atomic while referring
+to different effect sets.
+
+## 10. Inventory State Surfaces
+
+List every state representation relevant to the unit of analysis.
+
+Typical package-system surfaces include:
+
+* source recipe;
+* evaluated configuration;
+* build directory;
+* artifact filename;
+* artifact metadata;
+* manifest;
+* checksum;
+* repository index;
+* package database;
+* filesystem;
+* rejected files;
+* lifecycle state;
+* service state;
+* logs;
+* caches.
+
+For each surface, record:
+
+| Question                      | Meaning                   |
+| ----------------------------- | ------------------------- |
+| Who writes it?                | producer                  |
+| Who reads it?                 | consumers                 |
+| What does it claim?           | semantic content          |
+| Is it authoritative?          | decision power            |
+| Is it derived?                | regeneration relationship |
+| Can it be stale?              | timing risk               |
+| Can it be rebuilt?            | recovery property         |
+| Does it contain unique truth? | loss risk                 |
+
+A state surface with unique truth should not be casually treated as a
+cache.
+
+A cache that has become unique truth is no longer merely a cache.
+
+## 11. Build the Authority Map
+
+For each important meaning, record:
+
+* claimed authority;
+* operational authority;
+* recovery authority.
+
+Example:
+
+| Meaning              | Claimed    | Operational              | Recovery           |
+| -------------------- | ---------- | ------------------------ | ------------------ |
+| package identity     | manifest   | filename                 | operator judgment  |
+| installed state      | database   | database plus filesystem | repair tool        |
+| publication validity | policy     | release maintainer       | repository admin   |
+| script context       | CLI option | process environment      | operator avoidance |
+
+The gaps are often more important than the names.
+
+## 12. Perform the Authority Probe
+
+An **authority probe** asks what happens when representations
+disagree.
+
+Examples:
+
+* filename says `foo`, manifest says `bar`;
+* database says installed, filesystem says missing;
+* documentation says target, process state says host;
+* validator says reject, repository contains artifact.
+
+Observe which representation wins.
+
+Authority is revealed by conflict.
+
+> Agreement hides hierarchy.  
+> Contradiction introduces everyone by rank.
+
+## 13. Trace the State Transition
+
+Write the operation phase by phase.
+
+Example:
+
+```text
+S0:
+    package absent
+
+S1:
+    dependencies resolved
+
+S2:
+    files extracted
+
+S3:
+    lifecycle script changes service state
+
+S4:
+    database write fails
+
+S5:
+    generic failure returned
+```
+
+Do not compress `S2` through `S5` into:
+
+> Installation failed.
+
+The intermediate states determine recovery and partial-success
+semantics.
+
+## 14. Find the First Divergence
+
+The **first divergence** is the earliest state at which actual
+behavior departs from the claimed contract.
+
+Later symptoms may be louder.
+
+The first divergence often offers greater causal leverage.
+
+Examples:
+
+* invalid identity accepted during artifact finalization;
+* context became ambiguous during plan construction;
+* stale writer permitted before database commit;
+* exact artifact path lost at producer boundary.
+
+The first divergence is not always the correct intervention point.
+
+It is the earliest location where the expected model stopped matching
+reality.
+
+## 15. Perform the Boundary Probe
+
+A **boundary probe** asks what one component knew and what it
+published to the next.
+
+For each boundary, record:
+
+* facts available before crossing;
+* representation sent;
+* facts lost;
+* facts reconstructed downstream;
+* failures expressible;
+* failures collapsed;
+* validation performed;
+* authority over rejection.
+
+Example:
+
+```text
+builder knows:
+    exact artifact path
+    package identity
+    completion phase
+
+builder publishes:
+    exit status
+    human message
+
+frontend reconstructs:
+    artifact path
+    identity
+    completion
+```
+
+This is a candidate supplier-duty failure and narrative coupling.
+
+## 16. Perform the Normalization Probe
+
+Ask:
+
+* Which representations are accepted?
+* Where do they become one meaning?
+* Does normalization occur before mutation?
+* Is the conversion lossless?
+* Do different backends produce equivalent semantics?
+* Is validation confused with normalization?
+
+If every consumer performs its own conversion, the system does not
+have one normalization boundary.
+
+It has a federation of guesses.
+
+## 17. Perform the Artifact Probe
+
+For each important artifact, ask:
+
+* What is it?
+* How is identity carried?
+* What proves completion?
+* What binds metadata to content?
+* What records provenance?
+* Can it be renamed without changing meaning?
+* Can consumers determine whether it is partial?
+* Which representation is authoritative?
+
+If the answer requires:
+
+* directory scanning;
+* parsing stdout;
+* reading producer configuration;
+* asking the maintainer;
+
+the artifact is not carrying enough truth.
+
+## 18. Perform the Success Probe
+
+Ask what each result state actually means.
+
+Possible states include:
+
+* no operation begun;
+* planned;
+* mutation started;
+* primary output produced;
+* partially committed;
+* committed;
+* committed with warnings;
+* failed with recoverable state;
+* quarantined;
+* rolled back;
+* compensated.
+
+If the interface provides only:
+
+```text
+success
+failure
+```
+
+determine which states are being compressed.
+
+Binary result is not necessarily wrong.
+
+It becomes wrong when callers require distinctions the producer
+already knows.
+
+## 19. Perform the Regulator Probe
+
+Map the control loop.
+
+| Function      | Question                             |
+| ------------- | ------------------------------------ |
+| Desired state | What condition should hold?          |
+| Sensor        | Who observes deviation?              |
+| Controller    | Who decides what it means?           |
+| Actuator      | Who can change state?                |
+| Feedback      | Who verifies correction?             |
+| Latency       | How long before response?            |
+| Capacity      | How much disturbance can be handled? |
+
+Then ask:
+
+* Is the loop closed?
+* Does authority sit with the controller?
+* Does the sensor observe authoritative state?
+* Does correction verify the invariant?
+* Is the operator in the loop or the whole loop?
+
+## 20. Perform the Compensator Probe
+
+Inventory every mechanism making the system appear more coherent than
+its formal contract.
+
+Possible compensators include:
+
+* wrapper;
+* checklist;
+* manual audit;
+* local patch;
+* package hold;
+* special upgrade order;
+* support-channel instruction;
+* elder judgment;
+* retry script;
+* nightly reconciliation.
+
+For each, ask:
+
+* Which failure does it prevent?
+* Which fact does it reconstruct?
+* Which policy does it choose?
+* Which state does it repair?
+* Can it be bypassed?
+* Does the system claim the guarantee it supplies?
+* What happens without it?
+
+A widely required compensator is not noise around the system.
+
+It is part of the current system.
+
+## 21. Perform the Operator Probe
+
+Ask what experienced operators know that the technical system does not
+represent.
+
+Examples:
+
+* which warnings are dangerous;
+* which operations are only partly atomic;
+* which order is safe;
+* which database representation is stale;
+* which backend is trustworthy;
+* which recovery path preserves evidence;
+* when not to retry.
+
+Then ask:
+
+* Is this legitimate judgment?
+* Is it local policy?
+* Is it historical scar?
+* Is it repeatable validation?
+* Can it be made explicit?
+* Should it remain human?
+
+The goal is not automatic extraction of every thought.
+
+It is to discover hidden regulatory work.
+
+## 22. Perform the Folklore Probe
+
+Ask how the rule is transmitted.
+
+Possible substrates:
+
+* manual;
+* source comment;
+* IRC;
+* mailing list;
+* private note;
+* oral explanation;
+* wrapper;
+* commit message;
+* test.
+
+Then ask:
+
+* Is the rule current?
+* Is scope preserved?
+* Can a newcomer find it before failure?
+* Is there a binding surface?
+* Are several versions of the rule circulating?
+* Has terminology changed?
+
+A rule known by everyone present may still be institutionally
+unavailable.
+
+## 23. Perform the Doctrine Probe
+
+Ask what project principle is invoked when the mechanism is defended.
+
+Examples:
+
+* simplicity;
+* operator control;
+* trust;
+* transparency;
+* UNIX composition;
+* minimalism;
+* compatibility;
+* local autonomy.
+
+Then separate:
+
+```text
+value
+    from
+historical mechanism
+    from
+current burden
+```
+
+Ask:
+
+* Does the mechanism still preserve the value?
+* Could another mechanism preserve it with lower burden?
+* Is an inherited limitation being moralized?
+* Is the proposed repair moving constitutional authority?
+* Is resistance carrying real evidence?
+
+## 24. Identify Candidate Field Concepts
+
+Only after mapping the mechanism should you classify it.
+
+Possible candidates include:
+
+* authority fracture;
+* semantic drift;
+* narrative coupling;
+* artifact-truth failure;
+* soft invariant;
+* zombie invariant;
+* open regulatory loop;
+* human-as-the-loop;
+* coping infrastructure;
+* structural amnesia;
+* semantic counterfeit;
+* compatibility necrosis;
+* doctrine capture.
+
+Do not begin with:
+
+> This feels haunted.
+
+Begin with:
+
+* what meaning survived;
+* which body lost it;
+* which participant still enforces it.
+
+Then decide whether the ghost terminology fits.
+
+## 25. Test the Candidate Concept
+
+For every candidate term, ask:
+
+1. What precise mechanism does it name?
+2. Which evidence demonstrates that mechanism?
+3. Which adjacent term might fit better?
+4. What similar case should be excluded?
+5. Does the term suggest a useful intervention?
+6. Does it travel beyond this component?
+7. Can a stranger understand it without the local history?
+
+If the answer to these questions is weak, retain ordinary language.
+
+A precise paragraph is better than an ornamental diagnosis.
+
+## 26. Form Rival Hypotheses
+
+For each preferred mechanism, state at least one plausible
+alternative.
+
+Example:
+
+Observed:
+
+* files exist;
+* database record absent.
+
+Hypotheses:
+
+* database write failed after extraction;
+* files came from previous partial attempt;
+* lifecycle script created the files;
+* another package owns the files;
+* recovery restored files but not record.
+
+Identify what evidence distinguishes them.
+
+Field confidence should come from eliminated alternatives, not from
+how well the first explanation fits the house style.
+
+## 27. Compare a Negative Case
+
+Find a similar operation that succeeds.
+
+Examples:
+
+* same package without lifecycle script;
+* same operation through wrapper;
+* same artifact under another backend;
+* same database with serialized writer;
+* same root option without dependency resolution.
+
+Compare:
+
+* state;
+* boundary;
+* authority;
+* timing;
+* compensator.
+
+The difference often isolates the mechanism faster than another
+failure log.
+
+## 28. Decide the Analytical Depth
+
+Choose how far the investigation must go.
+
+Possible stop points:
+
+### Operational
+
+Restore current state.
+
+### Component
+
+Fix implementation defect.
+
+### Structural
+
+Repair contract or authority.
+
+### Regulatory
+
+Close control loop.
+
+### Ecological
+
+Migrate compensators and operator work.
+
+### Institutional
+
+Retain lesson and revise doctrine.
+
+Not every minor defect needs a cultural autopsy.
+
+Not every recurring structural failure should be closed after one
+local patch.
+
+---
+
+# The Intervention Pass
+
+## 29. State the Repair Objective
+
+Write the desired property without naming the implementation.
+
+Bad:
+
+> Add JSON output.
+
+Better:
+
+> Callers receive exact artifact identity, path, and completion state
+> through a specified machine interface independent of human
+> narration.
+
+Bad:
+
+> Add a database lock.
+
+Better:
+
+> No stale package-database writer can overwrite a committed
+> generation.
+
+The objective lets several mechanisms compete honestly.
+
+## 30. Separate Invariant from Policy
+
+Ask:
+
+* What must always be true?
+* What may be chosen locally?
+* Who owns the choice?
+
+Example:
+
+```text
+invariant:
+    artifact identity is internally coherent
+
+policy:
+    which valid repository may publish it
+```
+
+Do not centralize policy to enforce integrity.
+
+Do not leave integrity optional to preserve policy.
+
+## 31. Align Fact and Authority
+
+Choose an intervention surface possessing:
+
+* the relevant truth;
+* the right to reject or transform;
+* coverage over authoritative paths.
+
+If no one surface has both, the repair may require:
+
+* publishing missing truth;
+* moving validation;
+* changing authority;
+* adding an adapter.
+
+Do not make downstream consumers guess merely because the producer
+lacks authority over final policy.
+
+Do not make the authority act blindly because the producer kept the
+facts private.
+
+## 32. Choose Intervention Type
+
+A compact guide:
+
+| Condition                             | Likely direction           |
+| ------------------------------------- | -------------------------- |
+| meaning incoherent                    | reject                     |
+| representation differs, meaning same  | normalize                  |
+| old meaning recoverable               | translate                  |
+| state uncertain                       | quarantine                 |
+| derived state stale                   | regenerate                 |
+| representations disagree              | reconcile                  |
+| useful accidental behavior widespread | adopt                      |
+| old path replaceable                  | migrate and retire         |
+| failure already propagated            | contain and recover        |
+| fact missing downstream               | publish structured truth   |
+| validation bypassable                 | move to authoritative path |
+| human policy legitimate               | expose decision point      |
+
+This is a starting map.
+
+The actual intervention must still fit authority and compatibility.
+
+## 33. Inventory Hidden Functions Before Removal
+
+Before replacing or deleting a wrapper, script, checklist, or elder
+role, ask:
+
+* What does it validate?
+* What does it normalize?
+* What does it serialize?
+* What does it log?
+* What policy does it apply?
+* What recovery does it permit?
+* What warning does it interpret?
+* What artifact does it preserve?
+
+Name every function.
+
+Then relocate or reject each deliberately.
+
+## 34. Define the Migration Dimensions
+
+List every kind of migration involved:
+
+* semantic;
+* state;
+* artifact;
+* authority;
+* control;
+* operator;
+* knowledge;
+* compatibility;
+* cultural;
+* governance.
+
+A patch touching one codebase may require movement in several
+dimensions.
+
+## 35. Define the Compatibility Envelope
+
+State:
+
+* which old state is supported;
+* which old callers are supported;
+* where translation occurs;
+* what information may be lost;
+* whether new production may create old state;
+* when compatibility ends.
+
+A useful rule:
+
+```text
+read old:
+    possibly
+
+write old:
+    preferably not
+```
+
+Compatibility without a new-production rule breeds.
+
+## 36. Preserve Recovery
+
+Ask:
+
+* What if the repair itself fails?
+* Can state be inspected?
+* Can the operation resume?
+* Can authority revert?
+* Which effects are irreversible?
+* Is forward recovery safer?
+* Does an escape hatch remain?
+* Can the operator still obtain evidence?
+
+Do not improve ordinary correctness by making exceptional failure
+unrecoverable.
+
+## 37. Sequence the Change
+
+Order interventions by semantic dependency.
+
+Examples:
+
+```text
+publish structured identity
+    before
+enforce identity at repository
+```
+
+```text
+represent partial completion
+    before
+automatic retry
+```
+
+```text
+inventory callers
+    before
+retire compatibility
+```
+
+Each stage should have:
+
+* one authority;
+* valid state;
+* observable result;
+* next step.
+
+## 38. Define the Closure Claim Before Implementation
+
+State what evidence will justify saying the repair is complete.
+
+Example:
+
+> Every supported publication path rejects bound-identity disagreement
+> before repository generation changes.
+
+This produces proof obligations:
+
+* normal publication;
+* imports;
+* direct API;
+* privileged bypass;
+* repository generation;
+* valid legacy translation.
+
+If the claim cannot be tested, narrow it.
+
+---
+
+# The Verification Pass
+
+## 39. Test the Happy Path
+
+Verify that valid operations continue to work.
+
+This protects against over-repair.
+
+Include:
+
+* normal state;
+* supported variation;
+* local policy;
+* alternate backend;
+* legacy state within envelope.
+
+## 40. Test the Rejection Path
+
+Verify that invalid state is:
+
+* rejected;
+* quarantined;
+* transformed;
+* or escalated as designed.
+
+Check that rejection occurs:
+
+* before harmful mutation;
+* with precise reason;
+* without changing authoritative state;
+* with preserved evidence.
+
+## 41. Test Partial Failure
+
+Inject or simulate failure between phases.
+
+Ask:
+
+* Which state remains?
+* How is it represented?
+* Can the caller distinguish it?
+* Is retry safe?
+* Is recovery available?
+* Is the postcondition honest?
+
+An operation that works only when uninterrupted has not proven its
+transaction story.
+
+## 42. Test Bypass Paths
+
+Inventory:
+
+* direct invocation;
+* imports;
+* old frontends;
+* recovery mode;
+* privileged override;
+* manual state mutation;
+* disabled validation.
+
+For each path, decide:
+
+* supported;
+* exceptional;
+* forbidden;
+* legacy;
+* unknown.
+
+Unknown bypass is unowned authority.
+
+## 43. Test Compensator Absence
+
+Remove or disable the old workaround in a controlled scope.
+
+Observe whether:
+
+* failure returns;
+* operator loses policy;
+* recovery weakens;
+* hidden function disappears;
+* no difference occurs.
+
+This is how compensator retirement becomes evidence rather than
+optimism.
+
+## 44. Test Operator Burden
+
+Ask experienced and less experienced operators to perform the repaired
+workflow.
+
+Observe whether they still need to:
+
+* inspect hidden state;
+* use private wrapper;
+* ask an elder;
+* sequence commands manually;
+* interpret ambiguous warnings;
+* repair output.
+
+A structural repair should change work, not only code.
+
+## 45. Test Doctrine Against Reality
+
+Update the project statement to match the repaired model.
+
+Then test whether it remains true.
+
+Example:
+
+> Operators retain dependency policy; the planner supplies an
+> inspectable plan and never mutates state without explicit execution.
+
+Verify:
+
+* plan visibility;
+* override;
+* no hidden mutation;
+* local policy;
+* recovery.
+
+Doctrine should describe a mechanism capable of carrying it.
+
+## 46. State Residual Risk
+
+Record what remains outside the repair boundary.
+
+Examples:
+
+* legacy artifacts still use lossy identity translation;
+* lifecycle effects remain nontransactional;
+* privileged recovery can bypass validation;
+* one unsupported backend remains unverified.
+
+Residual risk is not embarrassment.
+
+It is the edge of the claimed model.
+
+---
+
+# The Retention Pass
+
+## 47. Write the Finding Before Memory Cools
+
+Record:
+
+* symptom;
+* scope;
+* first divergence;
+* authority;
+* mechanism;
+* compensator;
+* repair;
+* verification;
+* remaining limitation.
+
+Do this before the investigation dissolves back into chat history.
+
+## 48. Publish the Conclusion Surface
+
+Ensure a future maintainer can answer:
+
+* What was concluded?
+* Why?
+* What changed?
+* Where is authority now?
+* What remains open?
+* What would reopen the issue?
+
+Do not leave the final conclusion distributed across replies.
+
+## 49. Link Evidence, Decision, Test, and Manual
+
+The durable chain should connect:
+
+```text
+evidence
+    ↓
+finding
+    ↓
+decision
+    ↓
+implementation
+    ↓
+verification
+    ↓
+current contract
+```
+
+No one surface needs to contain everything.
+
+The chain must remain traversable.
+
+## 50. Name the Mechanism Carefully
+
+Use an existing field concept where it fits.
+
+Propose a new term only when:
+
+* the mechanism is distinct;
+* ordinary language repeatedly fails;
+* the term improves diagnosis;
+* counterexamples can be stated;
+* the concept travels.
+
+Do not canonicalize the joke before confirming the body.
+
+## 51. Preserve Historical Aliases
+
+Record old terms and symptoms.
+
+For example:
+
+```text
+“pkgmk output parsing”
+    → narrative coupling
+
+“safe update wrapper”
+    → coping infrastructure / shadow regulator
+
+“old package-name rule”
+    → zombie invariant
+```
+
+This keeps improved vocabulary from hiding older evidence.
+
+## 52. Add the Binding Surface
+
+Depending on the finding, bind it through:
+
+* test;
+* parser;
+* schema;
+* result type;
+* repository gate;
+* migration;
+* documentation;
+* review procedure.
+
+A report alone preserves understanding.
+
+It does not enforce runtime state.
+
+## 53. Mark Supersession and Tombstones
+
+When old semantics are retired, record:
+
+* what ended;
+* what replaced it;
+* where compatibility remains;
+* where historical evidence lives.
+
+Do not let deleted meaning continue operating through undocumented
+expectation.
+
+## 54. Assign Ownership
+
+Identify who owns:
+
+* current contract;
+* validation;
+* migration;
+* recovery;
+* documentation;
+* residual risk.
+
+An unowned repair begins decaying immediately.
+
+## 55. Define Reopening Conditions
+
+Examples:
+
+* a supported path bypasses the guardrail;
+* operator wrapper remains required;
+* legacy production reappears;
+* conformance fails under another backend;
+* recovery cannot handle real partial state;
+* authority remains split.
+
+Reopening is not embarrassment.
+
+It is feedback.
+
+---
+
+# The Ten-Minute Field Scan
+
+When time is limited, ask these ten questions.
+
+1. What was directly observed?
+2. Which state representations exist?
+3. Which one currently decides what happens?
+4. What did the operation claim to mean?
+5. Where did actual state first diverge?
+6. Which component first knew the missing fact?
+7. Who possessed authority to stop the failure?
+8. Who actually repaired the result?
+9. Which wrapper, ritual, or expert made the system appear stable?
+10. What evidence must be preserved before touching anything else?
+
+This scan will not complete an autopsy.
+
+It usually reveals whether the problem is local or structural.
+
+---
+
+# The One-Hour Field Survey
+
+A one-hour survey should produce:
+
+* narrow symptom statement;
+* scope and versions;
+* state inventory;
+* authority map;
+* state-transition trace;
+* first divergence;
+* boundary probe;
+* regulator map;
+* compensator inventory;
+* two rival hypotheses;
+* immediate containment;
+* candidate repair objective;
+* list of missing evidence.
+
+The goal is not final certainty.
+
+It is replacing fog with a map.
+
+---
+
+# The Deep Field Autopsy
+
+A deep autopsy should additionally produce:
+
+* comparative cases;
+* negative case;
+* structural signature;
+* ecological signature;
+* intervention alternatives;
+* authority and policy analysis;
+* migration dimensions;
+* compatibility envelope;
+* verification plan;
+* compensator-retirement plan;
+* durable finding;
+* binding surface;
+* reopening conditions.
+
+Deep autopsy is justified when the failure:
+
+* recurs;
+* crosses components;
+* affects authoritative state;
+* requires expert repair;
+* survives rewrites;
+* produces doctrine;
+* carries high blast radius;
+* threatens migration.
+
+---
+
+# Rapid Symptom Cards
+
+## Command Succeeds, Operation Does Not
+
+Check:
+
+* result-state compression;
+* lifecycle outcome;
+* postcondition;
+* partial success;
+* authority changed after primary process;
+* compensating operator verification.
+
+Candidate concepts:
+
+* semantic counterfeit;
+* partial correctness;
+* open-loop operation;
+* human-as-the-loop.
+
+## Command Fails, Useful State Exists
+
+Check:
+
+* phase ordering;
+* artifact completeness;
+* database commit;
+* rollback boundary;
+* retry safety;
+* quarantine.
+
+Candidate concepts:
+
+* partial outcome;
+* supplier-duty failure;
+* ambiguous completion;
+* recovery-model absence.
+
+## Wrapper Is Required
+
+Check:
+
+* validation;
+* normalization;
+* serialization;
+* artifact discovery;
+* local policy;
+* recovery;
+* logging.
+
+Candidate concepts:
+
+* coping infrastructure;
+* shadow regulator;
+* boundary-extraction candidate;
+* metastasis layer.
+
+## Documentation and Implementation Disagree
+
+Check:
+
+* current authority;
+* version scope;
+* tests;
+* operator practice;
+* migration stage;
+* dead documentation.
+
+Candidate concepts:
+
+* semantic drift;
+* counterfeit authority;
+* authority fracture;
+* documentation from tomorrow.
+
+## Same Failure Returns After Rewrite
+
+Check:
+
+* hidden invariant;
+* missing decision trace;
+* implementation-only memory;
+* deleted test;
+* unchanged boundary.
+
+Candidate concepts:
+
+* structural amnesia;
+* rediscovery loop;
+* clean rewrite syndrome;
+* ghost invariant.
+
+## Newcomers Fail, Elders Do Not
+
+Check:
+
+* folklore;
+* hidden ordering;
+* private tools;
+* ambiguous interface;
+* competence inversion;
+* survivorship filter.
+
+Candidate concepts:
+
+* bastard formation;
+* onboarding cliff;
+* regulatory apprenticeship;
+* distributed local truth.
+
+## Automation Recreates Damage
+
+Check:
+
+* hidden human judgment;
+* stopping conditions;
+* partial outcomes;
+* idempotence;
+* stale feedback;
+* operator policy.
+
+Candidate concepts:
+
+* automation substitution failure;
+* human-as-the-loop;
+* open regulatory loop;
+* high-gain correction against weak truth.
+
+## Several Components Disagree About Identity
+
+Check:
+
+* bound metadata;
+* filename parsing;
+* repository records;
+* artifact authority;
+* consumer reconstruction.
+
+Candidate concepts:
+
+* authority fracture;
+* artifact-truth failure;
+* witness proliferation;
+* semantic drift.
+
+## Validation Exists, Invalid State Persists
+
+Check:
+
+* authoritative path;
+* bypass;
+* controller;
+* actuator;
+* feedback;
+* alert saturation.
+
+Candidate concepts:
+
+* detection without authority;
+* observability theater;
+* symbolic guardrail;
+* open regulatory loop.
+
+## Old Restriction Nobody Can Explain
+
+Check:
+
+* historical backend;
+* compatibility;
+* test;
+* current callers;
+* social enforcement;
+* fear-based retention.
+
+Candidate concepts:
+
+* zombie invariant;
+* ghost invariant;
+* fossilized guardrail;
+* semantic revenant.
+
+## Two Tools Repeatedly Undo Each Other
+
+Check:
+
+* setpoints;
+* authority;
+* local policy;
+* timing;
+* reconciliation;
+* idempotence.
+
+Candidate concepts:
+
+* regulatory conflict;
+* competing setpoints;
+* oscillation;
+* split authority.
+
+## Everyone Uses the Escape Hatch
+
+Check:
+
+* false positives;
+* legitimate excluded state;
+* migration;
+* missing policy surface;
+* recovery path becoming normal.
+
+Candidate concepts:
+
+* recovery capture;
+* guardrail overreach;
+* invalid abstraction;
+* front-door failure.
+
+## Issue Is Closed, Workaround Remains
+
+Check:
+
+* closure depth;
+* repair scope;
+* compensator function;
+* caller migration;
+* residual risk;
+* false closure.
+
+Candidate concepts:
+
+* closure debt;
+* repair laundering;
+* partial closure;
+* mechanism persistence.
+
+---
+
+# Three Distances
+
+A rapid field diagnosis can often be organized around three distances.
+
+## Truth Distance
+
+The distance between:
+
+* where a fact becomes known;
+* and where it becomes available to the component needing it.
+
+Large truth distance produces:
+
+* parsing;
+* scanning;
+* reconstruction;
+* stale caches;
+* witness proliferation.
+
+## Authority Distance
+
+The distance between:
+
+* where a violation is detected;
+* and where the operation can be rejected or changed.
+
+Large authority distance produces:
+
+* warnings;
+* issues;
+* manual review;
+* delayed correction;
+* symbolic guardrails.
+
+## Cleanup Distance
+
+The distance between:
+
+* where the failure is produced;
+* and who must repair its consequences.
+
+Large cleanup distance produces:
+
+* support burden;
+* operator adaptation;
+* downstream patches;
+* local wrappers;
+* cruelty transfer.
+
+These are not literal metrics.
+
+They are diagnostic geometry.
+
+> The component that knows may not decide.  
+> The component that decides may not clean.  
+> The operator usually receives the invoice.
+
+---
+
+# The Field Notebook
+
+A field operator should maintain a notebook containing four
+categories.
+
+## Observed
+
+Direct facts:
+
+* state;
+* output;
+* time;
+* artifacts;
+* commands.
+
+## Inferred
+
+Proposed explanation with evidence and confidence.
+
+## Unknown
+
+Missing facts and unresolved alternatives.
+
+## Decided
+
+Operational actions and project decisions.
+
+Mixing these categories produces false memory.
+
+A sentence copied later should reveal whether it was fact, theory, or
+policy.
+
+---
+
+# Questions to Ask Operators
+
+Experienced operators often carry the missing model.
+
+Useful questions include:
+
+* What do you check even when the command succeeds?
+* Which warning makes you stop?
+* Which warning do you ignore?
+* Which command do you never run directly?
+* Which order matters?
+* What do you back up first?
+* Which state do you trust after failure?
+* How do you know recovery succeeded?
+* Which option means less than it appears to mean?
+* Which old behavior are you afraid to remove?
+* Which wrapper would break your workflow if deleted?
+* Which incident taught you that?
+
+Do not ask only:
+
+> What should the system do?
+
+Ask:
+
+> What do you actually do when you cannot trust what it says?
+
+---
+
+# Questions to Ask Maintainers
+
+Useful maintainer questions include:
+
+* Which layer owns this meaning?
+* Which callers depend on current behavior?
+* What invalid states are accepted for compatibility?
+* Which tests preserve historical incidents?
+* Which checks are advisory versus authoritative?
+* Which component first knows the required fact?
+* Which failure cannot be represented currently?
+* Which workaround is expected to disappear?
+* Which migration never completed?
+* What would you rewrite differently?
+* Which code cannot be removed because nobody remembers why it exists?
+* Which principle would a repair threaten?
+
+The answer may reveal:
+
+* authority;
+* memory;
+* doctrine;
+* or fear.
+
+All are part of the field.
+
+---
+
+# Questions to Ask the Code
+
+The code does not answer in prose.
+
+Probe it through:
+
+* call graph;
+* state writes;
+* error propagation;
+* result types;
+* locking;
+* validation order;
+* configuration reads;
+* environment use;
+* filesystem effects;
+* fallback paths;
+* feature flags;
+* compatibility branches.
+
+Ask:
+
+* Where is the first irreversible mutation?
+* What facts exist before it?
+* Which errors are collapsed?
+* Which functions return only status?
+* Which code scans for output?
+* Which code parses messages?
+* Which path bypasses validation?
+* Which branch says “legacy” but still handles current production?
+* Which comment contains fear instead of contract?
+
+---
+
+# Questions to Ask the Artifact
+
+An artifact should be able to answer:
+
+* What are you?
+* Who created you?
+* Which operation created you?
+* Are you complete?
+* What is your identity?
+* Which content belongs to you?
+* Which format version do you use?
+* Which dependencies or inputs shaped you?
+* Can your metadata be verified?
+* Can you be moved without changing meaning?
+
+If the artifact answers:
+
+> Ask the directory name.
+
+the boundary is underdeveloped.
+
+---
+
+# Questions to Ask the Failure
+
+Treat the failure as a path, not a personality.
+
+Ask:
+
+* What state made this possible?
+* Which boundary admitted it?
+* Which authority failed to reject it?
+* Which sensor observed it?
+* Which controller acted?
+* Which compensator hid recurrence?
+* Which selected operators survived it?
+* Which doctrine now protects the adaptation?
+* Which repair would change the mechanism?
+* Which evidence would prove that repair worked?
+
+The failure usually has more to say than the issue title.
+
+---
+
+# Field Discipline
+
+## Do Not Diagnose by Vibe
+
+Terms such as:
+
+* ghost;
+* folklore;
+* counterfeit;
+* bastard;
+* necromancy;
+
+are compressions.
+
+They should follow mechanism.
+
+They should not replace it.
+
+## Do Not Reward Complexity with Mysticism
+
+A difficult incident may involve:
+
+* stale state;
+* wrong order;
+* missing lock;
+* two authorities.
+
+Name these precisely before declaring the system haunted.
+
+## Do Not Reward Simplicity with Innocence
+
+A small tool may export:
+
+* parsing;
+* validation;
+* orchestration;
+* recovery;
+* policy.
+
+Small code does not imply small system function.
+
+## Do Not Confuse Visibility with Authority
+
+A component may display the state and still be unable to change it.
+
+A human may understand the failure and still lack repository access.
+
+A validator may be correct and bypassable.
+
+## Do Not Confuse Age with Scope
+
+Old behavior may be:
+
+* current;
+* legacy;
+* obsolete;
+* fossilized;
+* still depended upon.
+
+Age alone answers none of these.
+
+## Do Not Confuse Operator Skill with System Contract
+
+An expert can recover from ambiguity.
+
+The interface remains ambiguous.
+
+## Do Not Confuse Repair with Closure
+
+A patch may land.
+
+Migration may remain.
+
+Compensators may remain.
+
+The mechanism may remain.
+
+## Do Not Confuse the Fieldbook with Runtime
+
+A correct term does not fix a system.
+
+The vocabulary improves diagnosis.
+
+Authority and implementation still need to move.
+
+---
+
+# When to Stop
+
+Stop the field examination when the chosen objective has been
+satisfied and remaining uncertainty is explicit.
+
+Possible stopping conditions:
+
+* immediate state is safe;
+* incident mechanism is established;
+* structural repair is selected;
+* migration is designed;
+* closure claim is verified;
+* durable finding is published.
+
+Do not continue indefinitely merely because more history exists.
+
+Do not stop merely because the current symptom disappeared.
+
+## Escalation Triggers
+
+Escalate from local repair to structural analysis when:
+
+* the incident recurs;
+* several callers reconstruct the same fact;
+* authoritative state disagrees;
+* operator repair is routine;
+* one workaround is widely required;
+* a rewrite reintroduces the defect;
+* automation fails where humans succeed;
+* doctrine is invoked to defend ambiguity;
+* blast radius is high;
+* recovery is unclear.
+
+Escalate from structural analysis to ecological analysis when:
+
+* operator roles change;
+* compatibility spans several releases;
+* authority moves;
+* compensators cannot retire;
+* cultural resistance is disproportionate;
+* one elder carries unique state knowledge.
+
+---
+
+# The Compact Field Checklist
+
+```text
+PRESERVE
+
+[ ] Exact symptom stated without cause language.
+[ ] Versions, configuration, artifacts, and timestamps captured.
+[ ] Active writers or destructive automation contained.
+[ ] Current authority generation recorded.
+
+MAP
+
+[ ] State surfaces inventoried.
+[ ] Claimed and operational authority separated.
+[ ] Operation traced phase by phase.
+[ ] First divergence identified.
+[ ] Boundary losses and reconstructions recorded.
+[ ] Regulator mapped.
+[ ] Compensators inventoried.
+[ ] Operator-only knowledge identified.
+
+DIAGNOSE
+
+[ ] Rival hypotheses stated.
+[ ] Negative case compared.
+[ ] Structural mechanism identified.
+[ ] Candidate field terms tested.
+[ ] Scope and counterexamples stated.
+[ ] Analytical depth chosen.
+
+INTERVENE
+
+[ ] Repair objective stated independently of mechanism.
+[ ] Policy separated from invariant.
+[ ] Fact and authority aligned.
+[ ] Hidden compensator functions inventoried.
+[ ] Migration dimensions listed.
+[ ] Compatibility envelope defined.
+[ ] Recovery preserved.
+[ ] Closure claim written before implementation.
+
+VERIFY
+
+[ ] Positive path tested.
+[ ] Rejection path tested.
+[ ] Partial failure tested.
+[ ] Bypass paths tested.
+[ ] Compensator absence tested.
+[ ] Operator burden observed.
+[ ] Residual risk stated.
+[ ] Reopening conditions defined.
+
+RETAIN
+
+[ ] Conclusion surface published.
+[ ] Evidence linked.
+[ ] Decision linked.
+[ ] Test or guardrail linked.
+[ ] Current documentation updated.
+[ ] Historical aliases recorded.
+[ ] Supersession or tombstone added.
+[ ] Ownership assigned.
+```
+
+---
+
+# The Field Operator's Pocket Test
+
+When the system is unfamiliar and time is short, ask:
+
+1. What does the interface claim?
+2. What state actually changed?
+3. Which representation wins when they disagree?
+4. Which component first knew the relevant truth?
+5. Which component could have said no?
+6. Which component or person cleaned up afterward?
+7. What hidden mechanism made ordinary operation succeed?
+8. What would fail if that mechanism disappeared?
+9. Which proposed repair changes the cause rather than the symptom?
+10. What conclusion must remain after the participants leave?
+
+These ten questions will not solve every incident.
+
+They usually identify where the real architecture lives.
+
+## Twenty-Seventh House Law
+
+> Find who knew, who could say no, and who cleaned up.  
+> The distance between them is the system's real architecture.
+
+The field operator enters through concrete failure.
+
+They leave behind:
+
+* an authority map;
+* a causal model;
+* a bounded diagnosis;
+* a viable intervention;
+* a verified closure claim;
+* a durable finding.
+
+Without that final step, even excellent investigation becomes another
+oral compatibility layer.
+
+The next section is **Diagnostic Cards for Common Failure Shapes**: a
+compact field reference for recognizing authority fracture, semantic
+counterfeit, narrative coupling, open regulatory loops, ghost
+invariants, coping infrastructure, and related mechanisms from their
+operational signatures.
 
 ---
 
