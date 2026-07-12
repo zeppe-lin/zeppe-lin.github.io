@@ -31061,14 +31061,14 @@ operation was partial.
 
 ### The Field Passes
 
-A field examination can proceed at three depths.
+A field examination can proceed in five passes.
 
 #### Triage Pass
 
 Purpose:
 
 * contain damage;
-* identify authoritative state;
+* identify immediate authority;
 * preserve evidence;
 * decide whether operation may continue.
 
@@ -31077,23 +31077,45 @@ Purpose:
 Purpose:
 
 * reconstruct state transitions;
-* identify mechanism;
-* map regulator and compensators;
-* choose immediate and structural interventions.
+* identify the failure mechanism;
+* map boundaries, regulators, and compensators;
+* distinguish structural cause from visible symptom.
+
+#### Intervention Pass
+
+Purpose:
+
+* state the repair objective;
+* align relevant facts with authority;
+* select the narrowest valid intervention surface;
+* plan migration, compatibility, and recovery;
+* define the closure claim before implementation.
+
+#### Verification Pass
+
+Purpose:
+
+* test valid, rejected, and partial-failure paths;
+* exercise bypasses, overrides, and recovery;
+* verify authority, postconditions, and control-loop closure;
+* observe whether operator burden actually changed;
+* state residual risk and reopening conditions.
 
 #### Retention Pass
 
 Purpose:
 
-* verify repair;
-* migrate state and operator work;
-* preserve durable finding;
-* retire obsolete compensation.
+* publish the conclusion surface;
+* preserve the evidence and decision chain;
+* bind the lesson through tests, contracts, or guardrails;
+* record supersession and historical aliases;
+* retire obsolete compensators and folklore.
 
-These passes may occur in one session.
+These passes may overlap or occur during one session.
 
-Keeping them conceptually separate prevents emergency repair from
-becoming the entire explanation.
+Keeping them conceptually separate prevents emergency containment from
+becoming the diagnosis, the patch from becoming the proof, and the
+closed issue from becoming the institution's entire memory.
 
 ---
 
