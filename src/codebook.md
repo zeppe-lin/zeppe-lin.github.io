@@ -50,15 +50,48 @@ ritual.
 
 # INTRODUCTION
 
-Zeppe-Lin is a source-based Linux distribution developed through a
-deliberate, rule-driven workflow.
-This Codebook documents the models and procedures that govern how the
-system evolves over time.
+A maintainer may experiment on their own machine.
 
-The document is intentionally normative.  
-Where it describes rules, they are mandatory.  
-Where it describes procedures, they reflect the expected operational
-practice.
+The moment that work enters a shared branch, becomes a package update,
+or appears in a release artifact, it stops being private technique.
+
+It becomes system state.
+
+Zeppe-Lin is a source-based Linux distribution.
+Its packages, toolchain, branches, root filesystems, and releases are
+maintained through an explicit workflow because changes in one part of
+the system do not remain there.
+
+A toolchain update changes what can be built.  
+A branch decides which history is authoritative.  
+A package removal changes what users may depend upon.  
+A rootfs records the state from which installation beings.  
+A release turns all of these decisions into a public promise.
+
+This Codebook governs those transitions.
+
+It defines the development, update, and release model shared by
+Zeppe-Lin repositories.
+It records the order in which work is performed, the checks that must
+succeed, and the evidence that must remain after the work is complete.
+
+The document is normative.
+
+When it says that something **must** be done, the requirements is part
+of the project's operating model.
+
+When it describes a procedure, that procedure is the established path.
+A departure may be necessary, but it must be deliberate, justified,
+and recorded.
+An undocumented exception is not a new procedure.
+It is missing history.
+
+The Codebook does not remove maintainer judgement.
+
+It defines where judgement ends and shared responsibility begins.
+
+> Private work may depend on memory.  
+> Shared state must explain itself.
 
 ---
 
