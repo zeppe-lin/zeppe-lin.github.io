@@ -35578,6 +35578,1547 @@ which a system should be judged after the jokes are gone.
 
 ---
 
+# Leaving the House
+
+The system has been repaired.
+
+The builder publishes exact artifact truth.
+
+The repository enforces identity at intake.
+
+The installer represents partial outcomes.
+
+The database serializes writers.
+
+The recovery path is documented and tested.
+
+The old wrapper remains installed.
+
+Nobody dares remove it.
+
+The senior operator still watches every upgrade.
+
+The release maintainer still performs the old checklist.
+
+The documentation still warns about failures the new contracts no
+longer permit.
+
+The code changed.
+
+The ecosystem has not yet accepted that it may stop surviving.
+
+> Repair removes the wound.  
+> Leaving the house requires teaching everyone that the floor is no
+> longer hungry.
+
+---
+
+## The House
+
+The **House** is the combined technical and human structure through
+which an ecosystem carries:
+
+* truth;
+* authority;
+* state;
+* policy;
+* correction;
+* recovery;
+* memory;
+* adaptation.
+
+It includes:
+
+* components;
+* artifacts;
+* interfaces;
+* databases;
+* repositories;
+* operators;
+* maintainers;
+* wrappers;
+* tests;
+* documentation;
+* rituals;
+* doctrine.
+
+The House is not merely the codebase.
+
+The codebase is one room.
+
+The operator who knows which door jams in winter is also part of the
+current architecture.
+
+## The House Model
+
+The Fieldbook began with this causal sequence:
+
+```text
+authority
+    ↓
+boundary
+    ↓
+drift
+    ↓
+folklore
+    ↓
+regulation
+    ↓
+operator adaptation
+    ↓
+doctrine
+```
+
+This is not a universal pipeline through which every defect must pass.
+
+It is a field model for tracing how a local technical weakness can
+become an ecosystem property.
+
+A failure may begin anywhere.
+
+But mature failures often travel through these stages.
+
+### Authority
+
+Some layer must own the meaning.
+
+### Boundary
+
+That meaning must cross into the next component without being lost,
+counterfeited, or reconstructed privately.
+
+### Drift
+
+When representations and implementations evolve independently, their
+meanings separate.
+
+### Folklore
+
+Operators carry the rule the system no longer carries.
+
+### Regulation
+
+Someone must still detect, decide, correct, and verify.
+
+### Operator Adaptation
+
+People become skilled at supplying the missing loop.
+
+### Doctrine
+
+Successful adaptations become values, prohibitions, and project
+identity.
+
+The technical failure has now acquired social defenses.
+
+> That is how a bug becomes a religion.
+
+## The Reverse Path
+
+Repair travels in the opposite direction.
+
+```text
+doctrine examined
+    ↓
+operator adaptation decomposed
+    ↓
+regulation made explicit
+    ↓
+folklore promoted or retired
+    ↓
+drift contained
+    ↓
+boundary repaired
+    ↓
+authority aligned
+```
+
+This reverse path does not mean doctrine must be destroyed or operator
+expertise discarded.
+
+It means every layer must be asked what legitimate function it has
+been carrying.
+
+The repair then gives that function:
+
+* an explicit owner;
+* a suitable boundary;
+* a testable contract;
+* a recovery path;
+* an honest scope.
+
+## Leaving
+
+**Leaving** is the point at which correctness no longer depends on
+preserving the entire adaptive ecology that formed around the old
+failure.
+
+The ecosystem may still retain:
+
+* expert operators;
+* manual tools;
+* inspection;
+* historical records;
+* recovery access;
+* local policy;
+* cultural identity.
+
+But these no longer compensate invisibly for missing shared structure.
+
+Leaving does not mean abandoning the system.
+
+It means the operator may stop standing in the doorway to keep the
+building upright.
+
+## Exit Condition
+
+An **exit condition** is evidence that a compensating role,
+workaround, or historical rule can safely leave the ordinary control
+path.
+
+Examples include:
+
+* callers no longer parse narration;
+* repository validation covers every authoritative path;
+* new artifacts cannot reproduce legacy state;
+* recovery works without elder intervention;
+* another operator can perform release from current documentation;
+* private wrappers contain only local policy;
+* old warnings no longer describe reachable state;
+* doctrine matches current authority.
+
+The exit condition should be tested.
+
+Assurance that the old mechanism is “probably unnecessary now” is how
+ghosts receive maintenance releases.
+
+---
+
+# What the System Must Carry
+
+## It Must Carry Meaning
+
+A component should publish the facts its consumers need.
+
+The producer should not force callers to reconstruct:
+
+* identity;
+* completion;
+* phase;
+* provenance;
+* capability;
+* partial result.
+
+This does not require one universal metadata object.
+
+It requires supplier duty.
+
+The layer possessing the truth should carry enough of it across the
+boundary for the next layer to act without archaeology.
+
+## It Must Carry Authority
+
+A fact without an owner becomes an argument.
+
+An owner without enforcement becomes documentation.
+
+Authority should be:
+
+* explicit;
+* scoped;
+* observable;
+* connected to the state it governs;
+* recoverable;
+* consistent with governance.
+
+A system may have several authorities.
+
+It should not have several authorities over the same meaning without a
+defined hierarchy or composition contract.
+
+## It Must Carry Failure
+
+Failure is state.
+
+It should not be compressed until callers lose the distinctions
+required for:
+
+* retry;
+* rollback;
+* forward recovery;
+* quarantine;
+* operator decision;
+* postcondition verification.
+
+An operation need not expose every internal phase.
+
+It must expose every distinction its consumers require to act safely.
+
+## It Must Carry Recovery
+
+A correct system is not one that merely prevents every anticipated
+mistake.
+
+It is one that can explain what happened when prevention fails.
+
+Recovery requires:
+
+* evidence;
+* state identity;
+* authority;
+* bounded repair;
+* verification;
+* operator access.
+
+Encapsulation should prevent accidental mutation.
+
+It should not make exceptional repair dependent on unsupported
+surgery.
+
+## It Must Carry Memory
+
+A project should retain conclusions, not only events.
+
+Memory should survive:
+
+* personnel change;
+* rewrite;
+* repository movement;
+* term change;
+* implementation replacement.
+
+The archive stores what happened.
+
+Institutional memory stores what the project learned.
+
+## It Must Carry Policy Honestly
+
+Policy belongs to the authority entitled to choose among legitimate
+states.
+
+Often that authority is the operator.
+
+Sometimes it is:
+
+* repository maintainer;
+* site administrator;
+* release process;
+* local configuration;
+* shared project governance.
+
+Mechanism should not silently annex policy.
+
+Policy should not be used to excuse missing invariants.
+
+## It Must Carry Its Own Limits
+
+A system should state:
+
+* which effects are transactional;
+* which backends are conformant;
+* which contexts are supported;
+* which legacy states are translated;
+* which decisions remain human;
+* which recovery remains manual.
+
+A narrow honest contract is stronger than a broad theatrical one.
+
+> “Unsupported” may be inconvenient.  
+> “Supported, except in the places where it matters” is architecture
+> by ambush.
+
+---
+
+# What the Operator Should Carry
+
+The Fieldbook does not propose an operator with no knowledge,
+judgment, or responsibility.
+
+A capable operator should carry:
+
+* local policy;
+* risk tolerance;
+* deployment timing;
+* desired state;
+* contextual judgment;
+* authority to inspect and override;
+* knowledge of the system's explicit limits.
+
+The operator should not be required to carry:
+
+* duplicated identity parsers;
+* undocumented phase ordering;
+* missing transaction state;
+* repository invariants;
+* private completion detection;
+* historical warnings with no current scope;
+* the only copy of the recovery model.
+
+## Operator Sovereignty
+
+**Operator sovereignty** is control over local policy and the ability
+to inspect, refuse, recover, and override within an explicit authority
+model.
+
+It is not responsibility for guessing what the system meant.
+
+Sovereignty may be preserved through:
+
+* inspectable plans;
+* explicit confirmation;
+* local override;
+* text configuration;
+* manual operation;
+* safe escape hatches;
+* reproducible state;
+* direct recovery tools.
+
+Automation does not automatically reduce sovereignty.
+
+Opaque automation does.
+
+Manual ambiguity does not automatically increase sovereignty.
+
+It may merely assign liability.
+
+## Operator Skill
+
+Operator skill should rise above the missing boundary.
+
+An expert operator should spend attention on:
+
+* policy;
+* unusual failure;
+* system design;
+* risk;
+* recovery strategy;
+* local integration.
+
+Not on reconstructing facts every component already possessed before
+discarding them.
+
+> Expertise should solve difficult problems.  
+> It should not be the serialization primitive.
+
+## Operator Freedom
+
+Freedom includes the freedom to:
+
+* inspect;
+* compose;
+* replace;
+* reject;
+* recover;
+* choose policy.
+
+It also includes freedom from compulsory archaeology where the system
+could have published a contract.
+
+A system does not become free merely because it refuses to help.
+
+---
+
+# What Simplicity Must Mean
+
+## Local Simplicity
+
+A component may be locally simple because it:
+
+* performs one operation;
+* exposes little state;
+* delegates policy;
+* uses a small implementation.
+
+This is valuable.
+
+Local simplicity becomes counterfeit when omitted work reappears as:
+
+* caller parsing;
+* operator ritual;
+* support burden;
+* wrapper proliferation;
+* state repair;
+* undocumented compatibility.
+
+## Ecosystem Simplicity
+
+**Ecosystem simplicity** is low total burden across:
+
+* implementation;
+* integration;
+* operation;
+* recovery;
+* migration;
+* memory.
+
+Ecosystem simplicity does not require a large integrated system.
+
+Small components can compose coherently.
+
+They require honest boundaries.
+
+> Small tools are not a substitute for small semantics.
+
+## Simplicity Accounting
+
+When evaluating simplicity, ask:
+
+* How many times is the same fact reconstructed?
+* How many operators must remember the same rule?
+* How many callers parse the same narration?
+* How many paths bypass the invariant?
+* How much recovery depends on one elder?
+* How many compatibility forms remain active?
+* How many state surfaces require manual reconciliation?
+
+Code size is one cost.
+
+It is not the ecosystem's entire tax return.
+
+## Essential Complexity
+
+Some complexity cannot be removed.
+
+Package systems genuinely contain:
+
+* identity;
+* versions;
+* dependencies;
+* filesystem mutation;
+* lifecycle effects;
+* compatibility;
+* recovery;
+* local policy.
+
+KISS does not mean pretending these do not exist.
+
+It means representing them without manufacturing unnecessary machinery
+around them.
+
+## Accidental Complexity
+
+Accidental complexity appears when the system forces repeated work
+because:
+
+* authority is unclear;
+* state is unrepresented;
+* boundaries leak;
+* semantics drift;
+* compensation becomes permanent.
+
+Removing accidental complexity may require adding explicit structure.
+
+A type, manifest, transaction result, or validator can make one
+component larger while making the ecosystem simpler.
+
+---
+
+# What Transparency Must Mean
+
+## Source Transparency
+
+Source availability allows inspection of implementation.
+
+This is valuable.
+
+It does not replace:
+
+* contract;
+* state model;
+* authority;
+* recovery;
+* current documentation.
+
+Reading source can reveal what one version does.
+
+It does not automatically reveal:
+
+* supported meaning;
+* intended compatibility;
+* governance;
+* operator policy;
+* which accidental behavior may change.
+
+## State Transparency
+
+State transparency means operators can determine:
+
+* what exists;
+* who owns it;
+* which generation is current;
+* how it was produced;
+* what changed;
+* how to recover.
+
+A binary store may be transparent if it provides complete inspection
+and recovery.
+
+A text file may be opaque if its fields have undocumented authority
+and several writers reinterpret it.
+
+## Semantic Transparency
+
+Semantic transparency means interfaces state what their operations and
+results actually mean.
+
+This includes:
+
+* effect scope;
+* partial outcomes;
+* unsupported combinations;
+* authority;
+* retry safety;
+* lifecycle boundaries.
+
+## Operational Transparency
+
+Operational transparency means the operator can observe:
+
+* plan;
+* mutation;
+* result;
+* failure;
+* recovery.
+
+Transparency is not merely verbose logging.
+
+A thousand lines of narration may conceal one missing state
+distinction.
+
+---
+
+# What Trust Must Mean
+
+## Trust in Operators
+
+Trusting operators does not require accepting structurally invalid
+state.
+
+A trusted operator may still benefit from:
+
+* path safety;
+* identity validation;
+* stale-write rejection;
+* explicit partial results.
+
+These do not replace judgment.
+
+They prevent the system from wasting judgment on deterministic
+contradictions.
+
+## Trust in Maintainers
+
+Trusting maintainers does not require storing invariants only in
+review custom.
+
+Maintainers leave.
+
+They forget.
+
+They become tired.
+
+Mechanical enforcement is not an accusation.
+
+It is preservation of their own decision.
+
+## Trust in Components
+
+Components should be trusted within defined contracts.
+
+Trust should be proportional to:
+
+* explicit semantics;
+* conformance;
+* observability;
+* recovery;
+* independent verification.
+
+“Trust the tool” is not an architecture.
+
+It is a social instruction about uncertainty.
+
+## Verifiable Trust
+
+**Verifiable trust** allows confidence without requiring complete
+reinspection of every implementation detail.
+
+It comes from:
+
+* bounded contracts;
+* tests;
+* manifests;
+* transaction results;
+* capability declarations;
+* authority maps;
+* recovery procedures.
+
+Verifiable trust is not distrust.
+
+It is trust with state.
+
+---
+
+# What Tradition Must Mean
+
+## Tradition as Memory
+
+Tradition can preserve:
+
+* values;
+* caution;
+* failure knowledge;
+* operator sovereignty;
+* inspectability;
+* local autonomy;
+* scope discipline.
+
+This is legitimate institutional memory.
+
+## Tradition as Compensation
+
+Tradition becomes compensation when the project continues a practice
+only because the system still lacks the structure that made the
+practice necessary.
+
+Examples include:
+
+* manual artifact checking;
+* ritual command order;
+* permanent avoidance of one supported option;
+* elder-only release;
+* distrust of all automation.
+
+The practice may remain useful.
+
+Its reason should be current.
+
+## Tradition as Identity
+
+Identity gives continuity.
+
+It helps a project reject changes that would destroy:
+
+* maintenance capacity;
+* local policy;
+* inspectability;
+* intended audience;
+* authority model.
+
+Identity becomes self-defense against reality when every current cost
+is reclassified as essence.
+
+## Tradition Revision
+
+Revision should preserve the value while reopening the mechanism.
+
+For example:
+
+```text
+historical practice:
+    manually resolve every dependency
+
+protected value:
+    operator owns dependency policy
+
+current mechanism:
+    inspectable read-only plan with explicit operator execution
+```
+
+The tradition did not disappear.
+
+It became more precise.
+
+---
+
+# What Pluralism Must Mean
+
+## Implementation Pluralism
+
+Several implementations can strengthen a system.
+
+They reveal:
+
+* hidden assumptions;
+* incomplete contracts;
+* accidental coupling;
+* capability differences.
+
+Pluralism is real when implementations share:
+
+* defined boundary;
+* conformance;
+* capability declaration;
+* error model;
+* authority contract.
+
+## Counterfeit Pluralism
+
+Pluralism is counterfeit when every implementation requires:
+
+* private adapters;
+* shared hidden substrate;
+* copied internal configuration;
+* operator-specific repair;
+* behavioral folklore.
+
+The ecosystem may possess several codebases and one undocumented
+implementation.
+
+## Policy Pluralism
+
+Different operators and repositories may choose different policy.
+
+This is compatible with coherent shared invariants.
+
+The system can permit:
+
+* different repository preferences;
+* local package holds;
+* alternate backends;
+* different release cadence;
+* local configuration.
+
+Pluralism does not require different meanings for package identity or
+transaction completion.
+
+---
+
+# What Maturity Must Mean
+
+A mature system is not one without failure.
+
+It is one in which failure remains:
+
+* representable;
+* bounded;
+* observable;
+* recoverable;
+* diagnosable;
+* retainable.
+
+A mature ecosystem is not one without folklore.
+
+It is one that knows which folklore is:
+
+* local culture;
+* useful doctrine;
+* historical memory;
+* unbound invariant;
+* active compensation.
+
+A mature project is not one that automates everything.
+
+It is one that knows:
+
+* which decisions are policy;
+* which checks are invariant;
+* which work is mechanical;
+* which judgment should remain human;
+* where authority sits.
+
+## Maturity Signals
+
+Useful signals include:
+
+* one authoritative meaning per concept;
+* clear derivation for duplicate representations;
+* structured results at machine boundaries;
+* honest partial-outcome semantics;
+* explicit unsupported states;
+* conformance across implementations;
+* recovery tested before emergency;
+* compatibility contained at intake;
+* new production using current semantics;
+* operator policy separated from integrity;
+* guardrails bound to authoritative paths;
+* doctrine linked to current mechanisms;
+* compensators capable of retirement;
+* findings discoverable before recurrence.
+
+## Immaturity Signals
+
+Common signals include:
+
+* success requiring post hoc inspection;
+* failure requiring state archaeology;
+* wrappers required but unofficial;
+* warnings treated as enforcement;
+* multiple active identity parsers;
+* one elder carrying release truth;
+* rewrites rediscovering old invariants;
+* compatibility paths receiving new features;
+* documentation describing intentions rather than state;
+* philosophy invoked where authority is unclear;
+* closed issues with active workarounds.
+
+Immaturity is not moral failure.
+
+It is unfinished structure.
+
+The problem begins when unfinished structure is defended as complete
+because the current population has adapted.
+
+---
+
+# A Standard for the System
+
+After the metaphors, jokes, ghosts, bastards, and corpses are removed,
+the system should be judged by a simple standard.
+
+## Can It Tell the Truth?
+
+Does the system publish:
+
+* identity;
+* state;
+* completion;
+* provenance;
+* capability;
+* failure;
+
+without requiring downstream reconstruction?
+
+## Can It Say No?
+
+Can the authoritative path reject:
+
+* incoherent state;
+* unsupported meaning;
+* unsafe mutation;
+* stale authority;
+* malformed artifact;
+
+before damage?
+
+## Can It Admit Partial Failure?
+
+Can it distinguish:
+
+* nothing happened;
+* something happened;
+* some effects committed;
+* recovery is required;
+* retry is unsafe?
+
+## Can It Recover?
+
+Can an operator:
+
+* inspect;
+* preserve evidence;
+* reconcile;
+* roll forward;
+* roll back within honest scope;
+* verify the result?
+
+## Can It Preserve Policy?
+
+Can operators retain legitimate local choice without weakening shared
+integrity?
+
+## Can It Replace Components?
+
+Can another implementation satisfy the contract without inheriting
+private archaeology?
+
+## Can It Retain Lessons?
+
+Can future maintainers find:
+
+* the mechanism;
+* the decision;
+* the test;
+* the remaining limitation;
+
+before recurrence?
+
+## Can It Release Its Compensators?
+
+Can the wrapper, checklist, elder, private patch, or ritual leave the
+ordinary control path without correctness leaving with it?
+
+This final question is the ecological proof.
+
+---
+
+# The Departure Audit
+
+Before declaring a structural reform complete, perform a departure
+audit.
+
+## Authority
+
+* Is one authority defined for each important meaning?
+* Are derived forms subordinate and regenerable?
+* Does governance match technical control?
+* Can exceptional authority be identified?
+
+## Boundaries
+
+* Do producers publish the facts consumers require?
+* Are machine results separate from narration?
+* Are failure states expressive enough?
+* Are capabilities explicit?
+
+## State
+
+* Can state transitions be traced?
+* Are partial states representable?
+* Are generations or identities available?
+* Can damaged state be inspected?
+
+## Regulation
+
+* Does every important invariant have a closed loop?
+* Does the sensor observe authoritative state?
+* Can the controller act?
+* Is correction verified?
+* Is human judgment bounded and explicit?
+
+## Compatibility
+
+* Does legacy enter through one boundary?
+* Can new production recreate old state?
+* Is compatibility directional?
+* Are removal or adoption criteria explicit?
+
+## Operators
+
+* Which work remains manual?
+* Is it policy, judgment, recovery, or compensation?
+* Can another operator perform it from current surfaces?
+* Are private tools still required?
+* Has re-skilling occurred?
+
+## Memory
+
+* Is the conclusion discoverable?
+* Is current doctrine linked to current mechanisms?
+* Are superseded meanings marked?
+* Can rewrites recover the invariant?
+
+## Ecology
+
+* Did total burden fall?
+* Did recovery remain possible?
+* Did a new bottleneck form?
+* Did compensators retire or change role?
+* Did old behavior reappear around the reform?
+
+If the audit fails, the code may still be improved.
+
+The ecosystem has not yet left.
+
+---
+
+# The Last Workaround
+
+The final workaround is often the hardest to remove.
+
+It may be:
+
+* senior maintainer approval;
+* one manual audit;
+* one private wrapper;
+* one compatibility option;
+* one ritual backup;
+* one warning nobody trusts.
+
+The mechanism may have been repaired.
+
+The workaround remains because it also carries:
+
+* confidence;
+* memory;
+* identity;
+* recovery;
+* status;
+* independence.
+
+Removal therefore requires more than proving the new code works.
+
+It may require:
+
+* independent verification;
+* explicit recovery;
+* doctrinal revision;
+* operator re-skilling;
+* staged demotion;
+* successful absence.
+
+The last workaround does not merely protect the system.
+
+It protects the ecosystem from having to believe the system changed.
+
+## Workaround Retirement
+
+Retire a workaround only after determining:
+
+1. what function it performed;
+2. where that function moved;
+3. how the replacement was verified;
+4. what policy remains;
+5. what recovery remains;
+6. what evidence proves absence is safe.
+
+The workaround may then become:
+
+* optional audit;
+* recovery tool;
+* historical specimen;
+* local policy layer;
+* deleted code with tombstone.
+
+## Workaround Adoption
+
+Sometimes the workaround is the best available design.
+
+Then adopt it.
+
+Give it:
+
+* name;
+* contract;
+* owner;
+* test;
+* documentation;
+* authority;
+* migration.
+
+The shame lies neither in keeping nor removing it.
+
+The shame lies in requiring it while pretending it does not exist.
+
+---
+
+# Leaving the Bastard Behind
+
+The bastard formed because the ecosystem required:
+
+* suspicion;
+* improvisation;
+* archaeology;
+* recovery;
+* memory;
+* local control.
+
+A repaired system should not demand that the operator forget these
+skills.
+
+It should free them for higher-value work.
+
+The operator may remain:
+
+* skeptical;
+* capable;
+* sovereign;
+* technically literate;
+* prepared for failure.
+
+But ordinary correctness should no longer depend on the operator being
+personally traumatized by every previous release.
+
+## Re-Skilled Bastard
+
+A **re-skilled bastard** uses hard-earned experience to:
+
+* design stronger boundaries;
+* test recovery;
+* challenge counterfeit semantics;
+* preserve operator authority;
+* identify hidden work;
+* mentor without gatekeeping;
+* turn scars into contracts.
+
+The skill survives.
+
+The injury stops being an onboarding requirement.
+
+> The project should inherit the bastard's knowledge.  
+> It does not need to reproduce the childhood.
+
+## Elder Exit
+
+An elder should be able to leave without taking:
+
+* release procedure;
+* recovery model;
+* package identity rules;
+* migration state;
+* authority map;
+* historical rationale.
+
+The elder may remain valuable.
+
+They should not remain load-bearing by accident.
+
+A successful succession test is architectural evidence.
+
+---
+
+# Leaving Folklore Behind
+
+Not all folklore should disappear.
+
+Communities retain:
+
+* stories;
+* style;
+* caution;
+* preferred tools;
+* shared jokes;
+* historical examples.
+
+This gives the ecosystem character.
+
+What should leave folklore are rules required for correctness.
+
+A rule should leave folklore through:
+
+* contract;
+* validation;
+* test;
+* current documentation;
+* explicit policy;
+* recovery procedure.
+
+The story may remain.
+
+The runtime dependency should not.
+
+## Folklore Promotion
+
+Promote folklore when it contains a current operational rule.
+
+Ask:
+
+* Is it universal or local?
+* Is it invariant or policy?
+* Can it be enforced?
+* Should it be documented?
+* Is its historical reason still relevant?
+
+## Folklore Retirement
+
+Retire folklore when:
+
+* the failure is no longer reachable;
+* the rule is obsolete;
+* the mechanism changed;
+* the warning now misleads;
+* the ritual reproduces old burden.
+
+Retirement may require a tombstone:
+
+> Prior to version 6.2, database writers required external
+> serialization.  Current writers use generation-aware commit.
+> External locking is no longer part of the supported path.
+
+This does more than delete an old sentence.
+
+It releases operator behavior.
+
+---
+
+# Leaving Doctrine Open
+
+Doctrine should survive the repair.
+
+Dogma should not.
+
+Healthy doctrine remains capable of saying:
+
+* the original lesson was correct;
+* the old mechanism was one implementation;
+* current evidence supports another;
+* the value remains;
+* the burden changed;
+* the project learned.
+
+## Revisable Doctrine
+
+A revisable doctrine has:
+
+* explicit value;
+* historical evidence;
+* current interpretation;
+* defined scope;
+* counterexamples;
+* revision path.
+
+For example:
+
+> Preserve operator control by exposing plans, effects, and recovery.
+> Automation must not conceal policy or remove local override.
+
+This doctrine can evaluate many mechanisms.
+
+It does not freeze one historical workaround.
+
+## Closed Doctrine
+
+Closed doctrine says:
+
+> We do not automate.
+
+It cannot distinguish:
+
+* opaque mutation;
+* inspectable planning;
+* deterministic validation;
+* operator-confirmed execution;
+* recovery assistance.
+
+The slogan retained the scar.
+
+It lost the anatomy.
+
+---
+
+# Leaving the Fieldbook Behind
+
+The Fieldbook itself can become folklore.
+
+Its terms may be:
+
+* quoted without mechanism;
+* applied too broadly;
+* used as factional weapons;
+* moralized;
+* detached from evidence;
+* preserved after the system changes.
+
+This book therefore requires its own caution.
+
+## Do Not Worship the Vocabulary
+
+A term is useful only while it improves:
+
+* observation;
+* distinction;
+* diagnosis;
+* intervention;
+* retention.
+
+If ordinary technical language is clearer, use it.
+
+If a term no longer matches current mechanisms, revise or retire it.
+
+## Do Not Turn the House Laws into Lint
+
+House Laws are compressed conclusions.
+
+They are not universal parser rules.
+
+Every one requires:
+
+* scope;
+* mechanism;
+* judgment.
+
+A project capable of mechanically rejecting every violation of a joke
+has probably misunderstood both humor and architecture.
+
+## Do Not Replace Local Folklore with Canonical Folklore
+
+The purpose of common vocabulary is to make mechanisms portable.
+
+It is not to enforce one grand interpretation over every ecosystem.
+
+Terms should improve inquiry.
+
+They should not pre-answer it.
+
+## Do Not Use Diagnosis as Status
+
+Knowing the word **narrative coupling** does not make one more
+competent than the maintainer currently debugging the parser.
+
+The term is useful if it helps remove duplicated parsing.
+
+It is useless if it merely upgrades the insult.
+
+> A diagnosis is not a rank.
+
+---
+
+# Do Not Confuse
+
+**Leaving the house** does not mean eliminating manual operation.
+
+Manual operation may be explicit policy.
+
+**Removing compensation** does not mean removing recovery.
+
+Recovery should usually become stronger and more explicit.
+
+**Automating an invariant** does not mean automating policy.
+
+The distinction should remain visible.
+
+**Adding structure** does not automatically mean adding unnecessary
+complexity.
+
+A small contract may remove large ecological burden.
+
+**Preserving operator sovereignty** does not mean preserving operator
+guesswork.
+
+Control requires state.
+
+**Maturity** does not mean absence of incidents.
+
+It means incidents remain bounded and interpretable.
+
+**Tradition** does not mean pathology.
+
+Tradition becomes pathological when it protects a mechanism after
+abandoning the value.
+
+**Expertise** does not mean scar tissue.
+
+Expertise may remain deep after accidental burden is removed.
+
+**Inspectability** does not require one storage format.
+
+It requires understandable and recoverable state.
+
+**Pluralism** does not require semantic disagreement.
+
+Several implementations may share one contract.
+
+**A healthy culture** does not eliminate disagreement.
+
+It makes disagreement about explicit models rather than private
+memories.
+
+**A completed repair** does not require every historical tool to be
+deleted.
+
+Some may remain useful in audit or recovery.
+
+**A field concept** does not make every example equivalent.
+
+The specimen still matters.
+
+**A final chapter** does not mean the ecosystem is finished.
+
+It means the reader now owns the method.
+
+---
+
+# The Final House Test
+
+When examining any system, ask:
+
+1. Where does each important meaning originate?
+2. Which layer owns it?
+3. How does it cross the boundary?
+4. Which facts are lost or reconstructed?
+5. Which state transitions can occur?
+6. Which partial states are representable?
+7. Which invalid states remain reachable?
+8. Which authoritative path can reject them?
+9. Which representations may drift?
+10. Who detects disagreement?
+11. Who decides what it means?
+12. Who can correct it?
+13. Who verifies the correction?
+14. Which work remains with operators?
+15. Is that work policy, judgment, recovery, or compensation?
+16. Which wrappers and rituals are required?
+17. What fails when they disappear?
+18. Which rules survive only through folklore?
+19. Which lessons are bound mechanically?
+20. Which findings are discoverable?
+21. Which historical semantics remain active?
+22. Can new production recreate them?
+23. Which doctrine protects the current arrangement?
+24. What value does that doctrine preserve?
+25. Is the current mechanism still necessary?
+26. What burden has been naturalized?
+27. Can another implementation satisfy the boundary?
+28. Can another operator recover the system?
+29. Can the elder leave?
+30. Can the workaround retire?
+31. Can the system tell the truth without a translator?
+32. Can it say no without a committee?
+33. Can it fail without lying?
+34. Can it recover without séance?
+35. Can it remember without preserving the corpse?
+36. Can the operator go home?
+
+The final question is not sentimental.
+
+It is architectural.
+
+---
+
+## Twenty-Ninth House Law
+
+> A system is mature when its operators can leave the room without
+> taking correctness with them.
+
+The House will never be empty.
+
+There will always be:
+
+* operators;
+* maintainers;
+* policy;
+* judgment;
+* history;
+* failure;
+* repair.
+
+The goal is not a system without people.
+
+The goal is a system that does not spend people invisibly.
+
+The goal is not perfect automation.
+
+The goal is explicit regulation.
+
+The goal is not the elimination of folklore.
+
+The goal is to stop storing invariants exclusively inside it.
+
+The goal is not to erase tradition.
+
+The goal is to know which value the tradition still serves.
+
+The goal is not to prevent every ghost.
+
+The goal is to stop giving dead semantics write access.
+
+A good component carries its truth.
+
+A good boundary carries its meaning.
+
+A good regulator carries its correction.
+
+A good artifact carries its identity.
+
+A good institution carries its conclusions.
+
+A good operator carries policy and judgment.
+
+The rest should stop climbing into their pockets.
+
+Leave the evidence.
+
+Leave the finding.
+
+Leave the guardrail where it owns the state.
+
+Leave the recovery path open.
+
+Leave the doctrine revisable.
+
+Then let the bastard shut down the terminal and go home.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
