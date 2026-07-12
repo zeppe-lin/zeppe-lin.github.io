@@ -3460,7 +3460,7 @@ by the Zeppe-Lin project.
 - © 2000-2021 [Per Lidén](mailto:per@fukt.bth.se)
   and the [CRUX Team](https://crux.nu)
 - © 2022-2026 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://github.com/zeppe-lin)
+  and [Zeppe-Lin contributors](https://github.com/zeppe-lin)
 
 These scripts are licensed under the
 [GNU General Public License version 3 or later (GPLv3+)](https://gnu.org/licenses/gpl.html).
@@ -3472,7 +3472,7 @@ branding, and release artwork, are maintained by the Zeppe-Lin
 project.
 
 - © 2022-2026 [Alexandr Savca](mailto:alexandr.savca89@gmail.com)
-  and [Zeppe-Lin Team](https://github.com/zeppe-lin)
+  and [Zeppe-Lin contributors](https://github.com/zeppe-lin)
 
 This material is licensed under the
 [Creative Commons Attribution-ShareAlike 3.0 Unported License (CC-BY-SA 3.0)](https://creativecommons.org/licenses/by-sa/3.0/).
