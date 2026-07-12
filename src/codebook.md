@@ -6,18 +6,45 @@ title: Zeppe-Lin Codebook
 
 # PREFACE {.unnumbered}
 
-Zeppe-Lin Codebook.  
-*Because even pirates need a map to find the treasure  
-(and avoid the kraken).*
+A release is built.
 
-This Codebook defines the development, update, and release model of
-Zeppe-Lin.
-It is a reference document for maintainers and contributors
-responsible for building, maintaining, and publishing the system.
+The packages compile.  
+The root filesystem boots.  
+The artifacts are uploaded.  
+The signatures verify.
 
-Its goals are to reduce the bus factor, preserve institutional
-knowledge, and ensure that all releases remain reproducible,
-traceable, and predictable.
+Six months later, another maintainer tries to repeat the work.
+
+Nobody can say precisely why the toolchain was rebuilt in that order,
+which branch was authoritative, whether the root filesystem was
+assembled from clean packages, or which steps existed only in the
+previous maintainer's shell history.
+
+The release survived.
+
+The process did not.
+
+This Codebook exists for that gap.
+
+Zeppe-Lin is maintained by people, but its development and release
+model must not depend on one person's memory.
+Branches, packages updates, rebuild order, rootfs construction,
+signing, and publication must remain inspectable after the maintainer
+who performed them has left the IRC, forgotten the sequence, or become
+the historical authority everyone else is forced to summon.
+
+The Codebook is the maintainer's operating doctrine.
+
+It records how shared code may change, how a release becomes
+authoritative, and which shortcuts must not be allowed to impersonate
+a reproducible process.
+
+It is not a substitute for judgement.
+It exists so judgement begins from shared facts rather than inherited
+ritual.
+
+> A release procedure that exists only in memory is not a procedure.  
+> It is a witness.
 
 ---
 
