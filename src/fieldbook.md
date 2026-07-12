@@ -33112,6 +33112,2472 @@ operational signatures.
 
 ---
 
+# Diagnostic Cards for Common Failure Shapes
+
+A command produces the wrong artifact.
+
+A wrapper fixes it.
+
+A maintainer says the wrapper is optional.
+
+Every experienced operator uses it.
+
+A newcomer does not.
+
+The newcomer receives the incident.
+
+Several field concepts may apply:
+
+* artifact-truth failure;
+* narrative coupling;
+* coping infrastructure;
+* shadow regulation;
+* competence inversion;
+* bastard formation.
+
+The purpose of a diagnostic card is not to choose the most dramatic
+noun.
+
+It is to identify the first mechanism worth testing.
+
+> One incident may contain several cards.  
+> The system is not required to fail alphabetically.
+
+---
+
+## How to Use the Cards
+
+Each card contains six elements.
+
+### Operational Signature
+
+What the failure commonly looks like from outside.
+
+### Mechanism
+
+The causal structure named by the term.
+
+### Confirmation Probes
+
+Questions or observations that distinguish the mechanism from nearby
+cases.
+
+### Do Not Confuse
+
+Similar-looking conditions that should remain separate.
+
+### First Intervention Direction
+
+The first boundary or control function worth examining.
+
+This is not a universal repair prescription.
+
+### House Compression
+
+A memorable statement carrying the causal core.
+
+The cards are arranged roughly along the Fieldbook's causal sequence:
+
+```text
+authority
+    ↓
+boundary
+    ↓
+state and semantic failure
+    ↓
+regulatory failure
+    ↓
+compensation
+    ↓
+operator adaptation
+    ↓
+institutional and cultural persistence
+```
+
+---
+
+# Card 1: Authority Fracture
+
+## Operational Signature
+
+You observe several representations of one fact:
+
+* artifact filename;
+* internal metadata;
+* repository record;
+* package database;
+* operator interpretation.
+
+They disagree.
+
+Different components choose different winners.
+
+The system has no single place where disagreement stops.
+
+## Mechanism
+
+**Authority fracture** occurs when several surfaces exercise practical
+authority over one meaning without an explicit hierarchy or derivation
+contract.
+
+Typical shape:
+
+```text
+representation A
+        ↘
+         consumer 1
+
+representation B
+        ↗
+         consumer 2
+```
+
+The system claims one concept.
+
+The infrastructure operates several.
+
+## Confirmation Probes
+
+Ask:
+
+* Which representation wins when they disagree?
+* Is one surface formally derived from another?
+* Can derived state override its source?
+* Do different consumers choose differently?
+* Who has authority during recovery?
+* Can the same object acquire different identities by moving or
+  renaming?
+
+Strong evidence includes:
+
+* independent parsers producing different results;
+* manual reconciliation after disagreement;
+* documentation naming one authority while runtime uses another;
+* repairs that modify several records separately.
+
+## Do Not Confuse
+
+Do not confuse authority fracture with harmless redundancy.
+
+Several representations are coherent when:
+
+* one is authoritative;
+* others are explicitly derived;
+* derivation is reproducible;
+* disagreement is detected;
+* derived state cannot silently win.
+
+## First Intervention Direction
+
+Identify:
+
+1. the meaning requiring authority;
+2. the layer possessing enough truth to define it;
+3. the authoritative path capable of enforcing it;
+4. the translation or regeneration contract for derived forms.
+
+## House Compression
+
+> Two sources of truth are usually one source of truth and one future
+> incident report.
+
+---
+
+# Card 2: Semantic Counterfeit
+
+## Operational Signature
+
+An interface uses a strong word:
+
+* success;
+* atomic;
+* safe;
+* verified;
+* root;
+* transaction;
+* supported;
+* portable.
+
+The implementation satisfies only part of the expectation the word
+reasonably creates.
+
+Experienced operators know the narrower meaning.
+
+Newcomers discover it through damage.
+
+## Mechanism
+
+A **semantic counterfeit** is an interface meaning that appears
+sufficiently credible to circulate but lacks the invariants required
+to own the advertised semantics.
+
+Typical shape:
+
+```text
+strong interface name
+        ↓
+reasonable operator expectation
+        ↓
+partial implementation
+        ↓
+failure outside implemented subset
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which effects are included in the claim?
+* Which effects remain outside it?
+* Can the interface represent partial completion?
+* What does the operator reasonably infer?
+* Do experts apply a narrower private definition?
+* Does documentation explain the missing boundary before use?
+
+Strong evidence includes:
+
+* “success” despite unreported failed phases;
+* “atomic” database update around nontransactional external effects;
+* “root” relocating files but not execution context;
+* “verified” checking one derived representation only.
+
+## Do Not Confuse
+
+A deliberately narrow term is not counterfeit when its boundary is
+explicit.
+
+For example:
+
+> Database commit is atomic; lifecycle and filesystem effects are
+> outside the transaction.
+
+The limitation is visible.
+
+No counterfeit confidence is minted.
+
+## First Intervention Direction
+
+Either:
+
+* strengthen implementation until the advertised meaning becomes true;
+* or narrow the interface and documentation until they confess the
+  actual contract.
+
+## House Compression
+
+> If an interface can lie, it will eventually acquire believers.
+
+---
+
+# Card 3: Narrative Coupling
+
+## Operational Signature
+
+A caller parses:
+
+* stdout;
+* stderr;
+* logs;
+* warning text;
+* progress messages;
+* human-formatted tables.
+
+A wording or formatting change breaks automation.
+
+The producer already knew the required fact structurally.
+
+## Mechanism
+
+**Narrative coupling** occurs when machine control depends on output
+intended primarily for human narration.
+
+Typical shape:
+
+```text
+producer knows structured fact
+        ↓
+producer narrates fact
+        ↓
+caller parses narration
+        ↓
+presentation becomes protocol
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Is the parsed output formally specified?
+* Can diagnostics change independently?
+* Does the producer already possess the value structurally?
+* Do several callers maintain separate parsers?
+* Are locale, spacing, order, or punctuation operationally
+  significant?
+* Is there a result object, result file, or protocol mode?
+
+Strong evidence includes:
+
+* regular expressions over success messages;
+* callers scanning output directories after a narrated build;
+* tests freezing sentence wording for integrations;
+* maintainers afraid to improve diagnostics.
+
+## Do Not Confuse
+
+A stable, specified text protocol is not narrative coupling merely
+because it is human-readable.
+
+The issue is not text.
+
+The issue is accidental dependence on narration.
+
+## First Intervention Direction
+
+Publish machine truth separately through:
+
+* structured result;
+* specified line protocol;
+* result file;
+* library API;
+* manifest.
+
+Keep narration free to serve operators.
+
+## House Compression
+
+> When stdout becomes protocol, every regex is a tiny priest.
+
+---
+
+# Card 4: Artifact-Truth Failure
+
+## Operational Signature
+
+Consumers cannot determine reliably:
+
+* what an artifact is;
+* whether it is complete;
+* which identity it carries;
+* what operation produced it;
+* whether metadata belongs to its content.
+
+They infer truth from:
+
+* filenames;
+* directories;
+* configuration;
+* logs;
+* producer conventions;
+* timing.
+
+## Mechanism
+
+An **artifact-truth failure** occurs when an artifact does not carry
+or bind the facts required for safe consumption across its boundary.
+
+Typical shape:
+
+```text
+producer knows artifact truth
+        ↓
+artifact carries incomplete truth
+        ↓
+consumer reconstructs identity or completion
+```
+
+## Confirmation Probes
+
+Ask the artifact:
+
+* What are you?
+* Are you complete?
+* What is your identity?
+* Which content belongs to you?
+* Who produced you?
+* Can metadata be verified against content?
+* Can you be renamed without changing meaning?
+
+Strong evidence includes:
+
+* scanning for newest file;
+* deriving package identity from filename;
+* sidecar metadata not bound to artifact content;
+* partial files indistinguishable from completed output;
+* several consumers reconstructing different identities.
+
+## Do Not Confuse
+
+An artifact need not contain every possible fact internally.
+
+Truth may travel through a bound manifest or transaction result.
+
+The requirement is reliable relationship, not one preferred storage
+format.
+
+## First Intervention Direction
+
+Define:
+
+* authoritative identity;
+* completion marker;
+* bound metadata;
+* provenance;
+* format version;
+* consumer verification.
+
+## House Compression
+
+> Truth may travel beside the artifact.  
+> It may not wander nearby hoping consumers understand the
+> relationship.
+
+---
+
+# Card 5: Partial-Outcome Compression
+
+## Operational Signature
+
+An operation reports only:
+
+* success;
+* failure.
+
+But several meaningful intermediate states exist:
+
+* artifact produced, publication failed;
+* files extracted, database update failed;
+* database committed, lifecycle script failed;
+* request timed out, remote action completed;
+* rollback partially succeeded.
+
+Callers guess whether retry or repair is safe.
+
+## Mechanism
+
+**Partial-outcome compression** occurs when a result model collapses
+several distinct state transitions into one generic status.
+
+Typical shape:
+
+```text
+several committed effects
+        ↓
+binary result
+        ↓
+caller cannot distinguish residue, completion, or retry safety
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which phases may commit independently?
+* Which effects survive failure?
+* Can the result identify completed phases?
+* Can retry duplicate work?
+* Does recovery depend on inspecting external state?
+* Does exit zero include every declared effect?
+
+Strong evidence includes:
+
+* operators checking files after failure;
+* generic errors after useful artifacts exist;
+* automatic retries causing duplicates;
+* recovery scripts inferring which phase completed.
+
+## Do Not Confuse
+
+A binary result is adequate when:
+
+* the operation truly commits one bounded effect;
+* failure leaves no meaningful residue;
+* or another explicit result surface carries the detail.
+
+## First Intervention Direction
+
+Represent:
+
+* phase;
+* committed effects;
+* partial state;
+* retry safety;
+* recovery action;
+* final postcondition.
+
+## House Compression
+
+> “Success” is not a bucket for everything that failed politely.
+
+---
+
+# Card 6: Normalization Failure
+
+## Operational Signature
+
+Several accepted representations enter the system.
+
+Different components interpret them differently.
+
+Variation survives into mutation and stored state.
+
+Examples include:
+
+* path forms;
+* package names;
+* version strings;
+* archive semantics;
+* configuration layers;
+* backend output.
+
+## Mechanism
+
+A **normalization failure** occurs when representation variance is not
+converted into one governed internal meaning before the system depends
+on it.
+
+Typical shape:
+
+```text
+several input forms
+        ↓
+no shared normal form
+        ↓
+each component interprets independently
+        ↓
+semantic drift
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Where does normalization occur?
+* Is there one normal form?
+* Is conversion lossless?
+* Do all backends satisfy equivalent semantics?
+* Does validation happen before or after mutation?
+* Do consumers preserve raw input distinctions unintentionally?
+
+Strong evidence includes:
+
+* package identity differs only under one parser;
+* backend substitution changes filesystem semantics;
+* configuration values are evaluated separately by several tools;
+* old and new formats propagate throughout the system.
+
+## Do Not Confuse
+
+Do not normalize differences that carry real policy or identity.
+
+Normalization should unify equivalent representation.
+
+It should not erase legitimate semantics.
+
+## First Intervention Direction
+
+Create one intake boundary that:
+
+* parses;
+* normalizes;
+* validates;
+* records information loss;
+* rejects unrepresentable states.
+
+## House Compression
+
+> Variation at the entrance is flexibility.  
+> Variation inside the state model is usually a future argument.
+
+---
+
+# Card 7: Open Regulatory Loop
+
+## Operational Signature
+
+The system detects a violation.
+
+It may:
+
+* log it;
+* warn;
+* create an issue;
+* display a dashboard;
+* email maintainers.
+
+The invalid state remains reachable or continues operating.
+
+Correction depends on somebody noticing and acting.
+
+## Mechanism
+
+An **open regulatory loop** has some control functions but lacks a
+complete path from deviation to verified correction.
+
+Typical shape:
+
+```text
+observe
+    ↓
+report
+    ↓
+hope
+```
+
+or:
+
+```text
+observe
+    ↓
+human repair
+    ↓
+no postcondition verification
+```
+
+## Confirmation Probes
+
+Ask:
+
+* What desired state is being preserved?
+* Who senses deviation?
+* Who decides?
+* Who can alter authoritative state?
+* What verifies correction?
+* How long may invalid state persist?
+* Can publication or mutation continue after detection?
+
+Strong evidence includes:
+
+* recurring audit findings;
+* warnings without rejection;
+* issue creation without path closure;
+* manual repair with no revalidation;
+* dashboards that observe only derived state.
+
+## Do Not Confuse
+
+Human judgment inside a complete loop is not open regulation.
+
+A human-in-the-loop system may be coherent when:
+
+* observations are complete;
+* authority is explicit;
+* actions are safe;
+* postconditions are verified.
+
+## First Intervention Direction
+
+Connect:
+
+* sensor;
+* controller;
+* actuator;
+* authoritative state;
+* feedback.
+
+Decide whether correction should be automatic, procedural, or
+explicitly human.
+
+## House Compression
+
+> A system that can observe failure but cannot alter the failing path
+> is documenting its own defeat.
+
+---
+
+# Card 8: Human-as-the-Loop
+
+## Operational Signature
+
+The operator must:
+
+1. notice failure;
+2. reconstruct state;
+3. infer intended semantics;
+4. choose repair;
+5. execute it;
+6. verify it;
+7. remember the lesson.
+
+The technical system performs mutation.
+
+The operator performs regulation.
+
+## Mechanism
+
+**Human-as-the-loop** occurs when a person supplies most or all
+missing control functions rather than merely contributing judgment at
+one explicit decision point.
+
+Typical shape:
+
+```text
+system mutates
+        ↓
+operator observes several surfaces
+        ↓
+operator reconstructs truth
+        ↓
+operator repairs and verifies
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which facts are visible only after manual inspection?
+* Does the operator identify partial success?
+* Who selects the authoritative representation?
+* Who knows whether retry is safe?
+* Who verifies recovery?
+* Can automation reproduce the workflow without losing hidden
+  judgment?
+
+Strong evidence includes:
+
+* private recovery notes;
+* repeated manual reconciliation;
+* automation failing where experts succeed;
+* support channels acting as operational controllers.
+
+## Do Not Confuse
+
+Human-in-the-loop is legitimate when the system supplies:
+
+* structured facts;
+* bounded choices;
+* explicit authority;
+* safe actuators;
+* verified results.
+
+The human then decides policy.
+
+They do not reconstruct the machine.
+
+## First Intervention Direction
+
+Extract:
+
+* repeatable sensing;
+* state representation;
+* deterministic validation;
+* recovery primitives;
+* explicit policy choices.
+
+Retain genuine human judgment.
+
+## House Compression
+
+> The software has an operator interface.
+>
+> The ecosystem has an operator-shaped control plane.
+
+---
+
+# Card 9: Regulatory Conflict
+
+## Operational Signature
+
+Two tools repeatedly undo one another.
+
+Examples include:
+
+* package script enables service;
+* local configuration disables it;
+* synchronizer restores generated state;
+* operator restores local edit;
+* resolver upgrades package;
+* hold mechanism downgrades or blocks it.
+
+Both tools succeed locally.
+
+State oscillates globally.
+
+## Mechanism
+
+**Regulatory conflict** occurs when several controllers govern the
+same state under incompatible setpoints or authority models.
+
+Typical shape:
+
+```text
+controller A → state X
+controller B → state Y
+controller A → state X
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which controllers write the state?
+* What setpoint does each pursue?
+* Which policy should dominate?
+* Is priority explicit?
+* Does one controller interpret the other's correction as disturbance?
+* Are operations idempotent under composition?
+
+Strong evidence includes:
+
+* recurring state flips;
+* “last writer wins” semantics;
+* repeated reconciliation;
+* operator scheduling one controller after another intentionally.
+
+## Do Not Confuse
+
+Several regulators are coherent when their scopes compose explicitly.
+
+Example:
+
+* package establishes default;
+* local configuration owns final state.
+
+Conflict begins when that priority is absent or violated.
+
+## First Intervention Direction
+
+Define:
+
+* authority;
+* priority;
+* ownership;
+* local-policy boundary;
+* composition contract;
+* deadband where appropriate.
+
+## House Compression
+
+> When two regulators disagree, the filesystem becomes their argument.
+
+---
+
+# Card 10: Coping Infrastructure
+
+## Operational Signature
+
+Ordinary operation depends on:
+
+* wrappers;
+* checklists;
+* local patches;
+* nightly repair;
+* manual sequencing;
+* support-channel guidance;
+* personal notes;
+* avoidance rules.
+
+The official component appears small and stable.
+
+The surrounding ecology performs the missing work.
+
+## Mechanism
+
+**Coping infrastructure** is technical or human machinery built to
+preserve operation around unresolved shared defects or weak
+boundaries.
+
+Typical shape:
+
+```text
+shared defect
+        ↓
+local compensation
+        ↓
+stable local operation
+        ↓
+compensation becomes required infrastructure
+```
+
+## Confirmation Probes
+
+Ask:
+
+* What fails without the compensator?
+* Which facts does it reconstruct?
+* Which validation does it add?
+* Which policy does it choose?
+* How many operators maintain equivalents?
+* Is the shared component credited with the resulting stability?
+
+Strong evidence includes:
+
+* canonical “safe” wrappers;
+* release checklists containing invariant enforcement;
+* personal patches required across upgrades;
+* nightly reconciliation after every ordinary operation.
+
+## Do Not Confuse
+
+Not every wrapper or local policy layer is coping infrastructure.
+
+A wrapper may legitimately provide:
+
+* operator-specific policy;
+* higher-level composition;
+* alternative presentation;
+* convenience.
+
+The term applies when the surrounding mechanism compensates for
+unresolved structure the shared system is still expected to provide.
+
+## First Intervention Direction
+
+Inventory hidden functions before attempting removal.
+
+Then decide which belong in:
+
+* producer;
+* orchestrator;
+* repository;
+* recovery interface;
+* local policy.
+
+## House Compression
+
+> The infrastructure did not solve the contradiction.  
+> It hired the ecosystem to carry it.
+
+---
+
+# Card 11: Shadow Regulator
+
+## Operational Signature
+
+An unofficial tool or participant preserves the property the official
+system claims or expects.
+
+Examples include:
+
+* release maintainer manually rejecting malformed artifacts;
+* wrapper serializing operations;
+* nightly script repairing database state;
+* downstream patch enforcing upstream rule;
+* IRC channel directing recovery.
+
+## Mechanism
+
+A **shadow regulator** is an unofficial control loop that practically
+preserves desired state outside the declared authority structure.
+
+Typical shape:
+
+```text
+official path:
+    mutates but does not regulate
+
+shadow path:
+    observes, decides, repairs, verifies
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Who actually prevents recurrence?
+* Is their authority documented?
+* What happens when they are absent?
+* Does the official system claim the guarantee?
+* Can alternate paths bypass the shadow mechanism?
+* Is the shadow regulator maintained and succession-safe?
+
+## Do Not Confuse
+
+A formally delegated external regulator is not shadow regulation.
+
+Delegation is explicit.
+
+Shadow regulation is discovered through dependency rather than
+declared contract.
+
+## First Intervention Direction
+
+Choose deliberately:
+
+* formalize the regulator;
+* move its functions onto the authoritative path;
+* narrow the system's guarantee;
+* or remove the expected property.
+
+## House Compression
+
+> Delegation names the next owner.  
+> Outsourcing merely points away from the fire.
+
+---
+
+# Card 12: Zombie Invariant
+
+## Operational Signature
+
+A rule remains operationally required.
+
+Mechanical enforcement has disappeared.
+
+Experienced participants still apply the rule through:
+
+* review;
+* ritual;
+* warnings;
+* documentation;
+* social correction.
+
+Violations are treated as operator error.
+
+## Mechanism
+
+A **zombie invariant** is a dead mechanical property still kept active
+through human enforcement.
+
+Typical shape:
+
+```text
+former invariant
+        ↓
+enforcement removed
+        ↓
+rule still required
+        ↓
+operators keep feeding it
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Was the property once enforced mechanically?
+* Does current state still depend on it?
+* What happens when a newcomer violates it?
+* Is the rule stated as “never do this”?
+* Which component should reject it?
+* Is the prohibition still justified under current architecture?
+
+Strong evidence includes:
+
+* removed parser check preserved in review convention;
+* deprecated unsafe state accepted but socially forbidden;
+* test deleted while maintainers still insist on behavior.
+
+## Do Not Confuse
+
+A legitimate human policy is not a zombie invariant.
+
+The distinction is whether the rule is:
+
+* a local choice;
+* or a structural property the system still expects universally.
+
+## First Intervention Direction
+
+Decide whether to:
+
+* restore enforcement;
+* redesign the contract;
+* narrow the rule to policy;
+* retire the requirement;
+* or mark the state unsupported explicitly.
+
+## House Compression
+
+> A zombie invariant is a dead rule still reporting for work.
+
+---
+
+# Card 13: Ghost Invariant and Semantic Revenant
+
+## Operational Signature
+
+A behavior, restriction, or expectation influences current decisions
+even though:
+
+* no current component clearly enforces it;
+* nobody can identify the original reason;
+* the feature or code was removed;
+* participants remain afraid to violate it.
+
+## Mechanism
+
+A **ghost invariant** is an old property whose causal imprint remains
+after both its mechanism and active social enforcement have weakened.
+
+A **semantic revenant** is retired meaning that actively returns
+through compatibility, expectation, or copied implementation.
+
+Typical shape:
+
+```text
+old meaning removed
+        ↓
+expectation or compatibility survives
+        ↓
+current behavior shaped by absent contract
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which current state depends on the old rule?
+* Does any supported caller still require it?
+* Is fear the primary reason for retention?
+* Does compatibility translate the old meaning or reproduce it?
+* Was deletion accompanied by a semantic tombstone?
+* Does the old term still influence interface interpretation?
+
+## Do Not Confuse
+
+Old code is not automatically haunted.
+
+A compatibility path with:
+
+* explicit scope;
+* current owner;
+* translation boundary;
+* removal criteria;
+
+is ordinary engineering.
+
+Haunting begins when old meaning persists without accountable
+ownership.
+
+## First Intervention Direction
+
+Perform archaeology once.
+
+Then choose:
+
+* adoption;
+* explicit compatibility;
+* quarantine;
+* semantic tombstone;
+* retirement;
+* restored invariant.
+
+## House Compression
+
+> A ghost is not old code.  
+> It is old meaning still collecting rent.
+
+---
+
+# Card 14: Structural Amnesia
+
+## Operational Signature
+
+A rewrite or reorganization reintroduces a previously solved failure.
+
+The old code contained:
+
+* validation;
+* ordering;
+* locking;
+* compatibility handling;
+* rejection.
+
+The rationale did not survive.
+
+## Mechanism
+
+**Structural amnesia** occurs when the ecosystem loses the contracts
+or invariants previously embedded in implementation, process, or
+operator memory.
+
+Typical shape:
+
+```text
+lesson encoded only in old structure
+        ↓
+structure replaced
+        ↓
+lesson disappears
+        ↓
+failure returns
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Was the old behavior covered by a contract-level test?
+* Did a decision record explain it?
+* Was rationale copied during repository movement?
+* Did the rewrite preserve syntax but not rejection semantics?
+* Has an equivalent patch appeared before?
+* Did the project retain evidence but lose the conclusion?
+
+## Do Not Confuse
+
+A rewrite discovering genuinely obsolete behavior is not amnesia.
+
+Amnesia means the project could not determine what the old behavior
+knew before discarding it.
+
+## First Intervention Direction
+
+Recover:
+
+* violated invariant;
+* historical scope;
+* decision trace;
+* structural test;
+* migration requirement.
+
+Then audit neighboring unexplained behavior.
+
+## House Compression
+
+> The code was deleted.  
+> The ecosystem did not receive the obituary.
+
+---
+
+# Card 15: Compatibility Necrosis
+
+## Operational Signature
+
+Compatibility code:
+
+* grows continuously;
+* lacks removal criteria;
+* handles current production;
+* acquires new features;
+* spreads into ordinary codepaths;
+* cannot be tested from one authority model.
+
+Old semantics no longer merely survive.
+
+They govern.
+
+## Mechanism
+
+**Compatibility necrosis** occurs when compatibility stops containing
+the past and begins preventing the current system from establishing
+coherent authority.
+
+Typical shape:
+
+```text
+legacy accepted
+        ↓
+legacy produced again
+        ↓
+new code learns legacy
+        ↓
+legacy becomes permanent active state
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Can new components still produce the old form?
+* Is there one legacy intake boundary?
+* Which representation is authoritative internally?
+* Is translation directional?
+* Are compatibility branches receiving new features?
+* What measurable condition permits removal?
+
+Strong evidence includes:
+
+* “temporary” flags used by new tools;
+* both formats written indefinitely;
+* every component understanding every historical variant;
+* migration percentage reaching 100 while old writers remain.
+
+## Do Not Confuse
+
+Long-lived compatibility is not necrotic when:
+
+* legacy enters through one controlled boundary;
+* current state remains normalized;
+* new production uses current semantics;
+* ownership and tests remain clear.
+
+## First Intervention Direction
+
+Establish:
+
+* one intake boundary;
+* new-production prohibition;
+* internal normal form;
+* compatibility telemetry;
+* removal or adoption decision.
+
+## House Compression
+
+> Compatibility preserves the past.  
+> Haunted compatibility lets the past keep committing.
+
+---
+
+# Card 16: Bastard Formation
+
+## Operational Signature
+
+Experienced operators:
+
+* distrust nominal success;
+* inspect several state surfaces;
+* use private wrappers;
+* know undocumented order;
+* repair partial state;
+* resist automation;
+* teach newcomers which documented paths are unsafe.
+
+Their expertise is essential to ordinary operation.
+
+## Mechanism
+
+**Bastard formation** is the process through which repeated system
+ambiguity and regulatory failure become stable operator skill,
+suspicion, identity, and ecosystem function.
+
+Typical shape:
+
+```text
+system defect
+        ↓
+operator injury
+        ↓
+adaptation
+        ↓
+successful survival
+        ↓
+expert status
+        ↓
+ecosystem dependence
+```
+
+## Confirmation Probes
+
+Ask:
+
+* What do experts know that the system does not represent?
+* What do they check after success?
+* Which wrapper would they refuse to operate without?
+* Which failure taught the habit?
+* Does the habit remain necessary?
+* Can a newcomer succeed from the explicit contract alone?
+* Is expert compensation credited to system design?
+
+## Do Not Confuse
+
+Deep expertise is not automatically bastard formation.
+
+The term applies when expertise supplies missing infrastructure rather
+than mastering legitimate domain complexity alone.
+
+## First Intervention Direction
+
+Separate:
+
+* valuable judgment;
+* local policy;
+* repeatable validation;
+* obsolete scar;
+* missing state representation.
+
+Re-skill rather than merely de-skill.
+
+## House Compression
+
+> The bastard is what the ecosystem compiles when it cannot compile
+> the invariant.
+
+---
+
+# Card 17: Competence Inversion
+
+## Operational Signature
+
+The system accepts an incoherent state.
+
+Experienced operators avoid it through folklore.
+
+A newcomer enters it.
+
+The newcomer is blamed for lacking competence.
+
+## Mechanism
+
+**Competence inversion** reclassifies missing system structure as an
+operator qualification requirement.
+
+Typical shape:
+
+```text
+reachable ambiguous state
+        ↓
+experts learn avoidance
+        ↓
+newcomer fails
+        ↓
+failure attributed to newcomer
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Was the invalid state rejected?
+* Was the restriction documented before use?
+* Does the interface reasonably imply safety?
+* Do experts rely on unpublished knowledge?
+* Would an explicit contract have prevented the failure?
+* Is “read the source” being used to explain or excuse contradiction?
+
+## Do Not Confuse
+
+Operators remain responsible for understanding explicit risks and
+contracts.
+
+Competence inversion applies when the boundary was not visible or
+enforceable but the operator is judged as though it were.
+
+## First Intervention Direction
+
+Move the rule into:
+
+* interface;
+* rejection;
+* capability declaration;
+* manual;
+* explicit operator decision.
+
+## House Compression
+
+> The trap was documented socially.  
+> Therefore the foot is at fault.
+
+---
+
+# Card 18: Doctrine Capture
+
+## Operational Signature
+
+A project principle repeatedly selects outcomes that preserve one
+role, workaround, tool, or authority structure.
+
+Examples include:
+
+* minimalism always preserving low-level ambiguity;
+* trust always preserving manual gatekeeping;
+* operator control always rejecting structured planning;
+* simplicity counting only one component's code.
+
+## Mechanism
+
+**Doctrine capture** occurs when a principle is interpreted in ways
+that protect existing adaptations, authority, or status rather than
+the value the doctrine claims to serve.
+
+Typical shape:
+
+```text
+historical adaptation
+        ↓
+adaptation gains authority
+        ↓
+doctrine defined around adaptation
+        ↓
+alternatives excluded
+```
+
+## Confirmation Probes
+
+Ask:
+
+* What value is being protected?
+* Which historical mechanism carried it?
+* Who benefits from retaining that mechanism?
+* Are exported operator and caller costs counted?
+* Does another mechanism preserve the value?
+* Is the status quo paying the same burden of proof?
+* Does evidence revise doctrine?
+
+## Do Not Confuse
+
+Strong project values and conservative review are not doctrine
+capture.
+
+Capture appears when the interpretation becomes self-sealing or
+consistently protects one adaptation against relevant evidence.
+
+## First Intervention Direction
+
+Separate:
+
+* value;
+* mechanism;
+* historical injury;
+* current burden;
+* constitutional authority.
+
+Use bounded experiments where symbolic fear exceeds available
+evidence.
+
+## House Compression
+
+> Every workaround wants to become a tradition.  
+> Every tradition eventually claims it was architecture all along.
+
+---
+
+# Card 19: False Closure
+
+## Operational Signature
+
+The issue is closed.
+
+The symptom may have disappeared.
+
+But:
+
+* workaround remains mandatory;
+* alternate paths bypass the repair;
+* legacy production continues;
+* operator burden is unchanged;
+* structural test is absent;
+* closure scope is undefined.
+
+## Mechanism
+
+**False closure** occurs when local repair, symptom suppression, or
+incomplete migration is presented as structural completion.
+
+Typical shape:
+
+```text
+visible symptom patched
+        ↓
+administrative closure
+        ↓
+old mechanism remains
+        ↓
+recurrence under another path
+```
+
+## Confirmation Probes
+
+Ask:
+
+* What exact closure claim was made?
+* Which authority paths were verified?
+* Did the repair alter the causal mechanism?
+* Which compensators remain?
+* Can new state reproduce the old condition?
+* What reopening conditions exist?
+* Is silence caused by avoidance or reduced observation?
+
+## Do Not Confuse
+
+Partial closure is legitimate when stated precisely.
+
+Administrative closure is legitimate when the project accepts a
+limitation.
+
+The defect is not incompleteness.
+
+The defect is claiming a larger boundary than the evidence supports.
+
+## First Intervention Direction
+
+Write:
+
+* closure boundary;
+* closure depth;
+* proof obligations;
+* residual risk;
+* compensator status;
+* reopening conditions.
+
+## House Compression
+
+> A failure is not closed when the symptom disappears.  
+> It is closed when the old mechanism can no longer produce it inside
+> the boundary you claim to own.
+
+---
+
+# Card 20: Symbolic Guardrail
+
+## Operational Signature
+
+A rule appears formal:
+
+* policy document;
+* schema;
+* validator;
+* hook;
+* test;
+* warning;
+* approval checkbox.
+
+Yet authoritative state can bypass it.
+
+## Mechanism
+
+A **symbolic guardrail** expresses desired control without binding the
+path that creates the relevant state.
+
+Typical shape:
+
+```text
+rule exists
+        ↓
+rule looks authoritative
+        ↓
+authoritative path does not cross it
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Is the check mandatory?
+* Does every writer cross it?
+* Can imports bypass it?
+* Does failure prevent commit?
+* Is the test connected to integration?
+* Can producers ignore the schema?
+* Is use of the rule observable?
+
+## Do Not Confuse
+
+An advisory or experimental mechanism is not defective when described
+honestly.
+
+It becomes symbolic authority when the ecosystem credits it with
+guarantees it cannot provide.
+
+## First Intervention Direction
+
+Either:
+
+* move it onto the authoritative path;
+* or describe it as advisory, local, or experimental.
+
+## House Compression
+
+> The invariant has been rendered beautifully in Markdown.  
+> Runtime remains unconvinced.
+
+---
+
+# Card 21: Observability Theater
+
+## Operational Signature
+
+The ecosystem has:
+
+* extensive logs;
+* dashboards;
+* metrics;
+* alerts;
+* reports.
+
+The same failure persists.
+
+No controller possesses both the model and authority required to
+change the path.
+
+## Mechanism
+
+**Observability theater** is the accumulation of evidence surfaces
+without corresponding regulatory closure.
+
+Typical shape:
+
+```text
+more sensors
+        ↓
+more reports
+        ↓
+same authority gap
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which metric maps to an invariant?
+* Who owns response?
+* What actuator exists?
+* Is correction automatic, procedural, or undefined?
+* Does the dashboard observe authoritative state?
+* Has alert volume exceeded operator capacity?
+* Does green status mean the system or only the monitor is healthy?
+
+## Do Not Confuse
+
+Rich observability is valuable even when correction remains manual.
+
+The theater begins when awareness is presented as control.
+
+## First Intervention Direction
+
+For each high-value signal, define:
+
+* desired state;
+* owner;
+* decision;
+* actuator;
+* verification;
+* acceptable latency.
+
+## House Compression
+
+> The dashboard knows exactly how the building burns.  
+> The sprinkler remains on the roadmap.
+
+---
+
+# Card 22: Ecological Regression
+
+## Operational Signature
+
+A local component becomes:
+
+* cleaner;
+* smaller;
+* more abstract;
+* more secure;
+* more automated.
+
+The surrounding ecosystem becomes harder to operate.
+
+Examples include:
+
+* caller duplication increases;
+* recovery disappears;
+* operator policy is lost;
+* support burden rises;
+* private wrappers return;
+* authority centralizes unintentionally.
+
+## Mechanism
+
+An **ecological regression** is a local technical improvement that
+worsens the larger system of contracts, operators, state, and
+compensators.
+
+Typical shape:
+
+```text
+local improvement
+        ↓
+hidden function removed or burden exported
+        ↓
+ecosystem burden rises
+```
+
+## Confirmation Probes
+
+Ask:
+
+* Which hidden function disappeared?
+* Where did burden move?
+* Did callers become more complex?
+* Did recovery weaken?
+* Did operators recreate old wrappers?
+* Did one authority become a bottleneck?
+* Was compatibility or policy omitted from the local model?
+
+## Do Not Confuse
+
+Any migration may temporarily increase burden.
+
+Ecological regression means the new steady state is worse or the
+migration lacks a viable path toward improvement.
+
+## First Intervention Direction
+
+Expand the accounting boundary.
+
+Inventory:
+
+* callers;
+* operators;
+* compatibility;
+* recovery;
+* support;
+* authority;
+* hidden compensator functions.
+
+## House Compression
+
+> The rewrite eliminated technical debt by returning it to the
+> operators.
+
+---
+
+# Symptom Index
+
+Use this index when you know what happened but not what to call it.
+
+## Command Returns Zero, State Is Wrong
+
+Check:
+
+* semantic counterfeit;
+* partial-outcome compression;
+* open-loop operation;
+* artifact-truth failure;
+* human-as-the-loop.
+
+## Command Returns Nonzero, Useful Output Exists
+
+Check:
+
+* partial-outcome compression;
+* supplier-duty failure;
+* ambiguous completion;
+* recovery-model absence.
+
+## Different Tools Give Different Identity
+
+Check:
+
+* authority fracture;
+* normalization failure;
+* artifact-truth failure;
+* semantic drift.
+
+## Wording Change Breaks Automation
+
+Check:
+
+* narrative coupling;
+* accidental protocol;
+* supplier-duty failure.
+
+## Every Expert Uses a Wrapper
+
+Check:
+
+* coping infrastructure;
+* shadow regulator;
+* hidden function;
+* bastard formation;
+* boundary-extraction candidate.
+
+## Every Newcomer Hits the Same Trap
+
+Check:
+
+* competence inversion;
+* folklore;
+* onboarding cliff;
+* semantic counterfeit;
+* zombie invariant.
+
+## Validator Finds Problems Forever
+
+Check:
+
+* open regulatory loop;
+* detection without authority;
+* observability theater;
+* alert saturation;
+* symbolic guardrail.
+
+## Two Tools Keep Undoing Each Other
+
+Check:
+
+* regulatory conflict;
+* competing setpoints;
+* split authority;
+* missing local-policy boundary.
+
+## Rewrite Reintroduces Old Failure
+
+Check:
+
+* structural amnesia;
+* rediscovery loop;
+* ghost invariant;
+* missing contract-level test.
+
+## Deprecated Path Keeps Growing
+
+Check:
+
+* compatibility necrosis;
+* semantic revenant;
+* permanent transition;
+* missing new-production rule.
+
+## Nobody Knows Why Rule Exists
+
+Check:
+
+* ghost invariant;
+* fossilized guardrail;
+* semantic revenant;
+* fear-based retention.
+
+## Rule Exists Only in Review or Folklore
+
+Check:
+
+* zombie invariant;
+* soft invariant;
+* symbolic guardrail;
+* competence inversion.
+
+## Dashboard Is Green, Operators Still Repair State
+
+Check:
+
+* green-state counterfeit;
+* observability theater;
+* sensor capture;
+* human-as-the-loop.
+
+## New Guardrail Causes Everyone to Use `--force`
+
+Check:
+
+* false positives;
+* guardrail overreach;
+* invalid abstraction;
+* recovery capture;
+* missing policy surface.
+
+## Cleaner Component Creates More Scripts Around It
+
+Check:
+
+* ecological regression;
+* entropy export;
+* coping infrastructure;
+* hidden-function deletion.
+
+## Project Defends Missing Mechanism as Philosophy
+
+Check:
+
+* virtue laundering;
+* retrospective intentionality;
+* doctrine capture;
+* identity-bearing defect;
+* status-quo naturalization.
+
+## Issue Closed, Workaround Still Required
+
+Check:
+
+* false closure;
+* closure debt;
+* repair laundering;
+* incomplete caller migration;
+* mechanism persistence.
+
+---
+
+# Distinction Index
+
+Use this index when two concepts appear to overlap.
+
+## Authority Fracture Versus Semantic Drift
+
+**Authority fracture** concerns several surfaces exercising authority
+over one meaning.
+
+**Semantic drift** concerns meanings separating over time or across
+layers.
+
+Fractured authority often produces drift.
+
+Drift may also occur under one weakly maintained authority.
+
+## Zombie Invariant Versus Ghost Invariant
+
+A **zombie invariant** is still actively fed through human
+enforcement.
+
+A **ghost invariant** shapes behavior mainly through residue, fear, or
+inherited expectation.
+
+The zombie reports for work.
+
+The ghost moves the furniture.
+
+## Coping Infrastructure Versus Legitimate Composition
+
+**Coping infrastructure** compensates for unresolved expected
+structure.
+
+**Legitimate composition** combines explicit mechanisms and policy by
+design.
+
+The difference is not whether a wrapper exists.
+
+It is whether the wrapper owns a declared function or repairs an
+undeclared absence.
+
+## Human-in-the-Loop Versus Human-as-the-Loop
+
+**Human-in-the-loop** supplies bounded judgment inside a represented
+control system.
+
+**Human-as-the-loop** supplies sensing, interpretation, decision,
+repair, and verification because the control system is incomplete.
+
+## Warning Versus Symbolic Guardrail
+
+A warning is an honest advisory surface.
+
+A symbolic guardrail is an advisory surface credited with enforcement
+it does not possess.
+
+## Compatibility Versus Compatibility Necrosis
+
+Compatibility contains old meaning at a boundary.
+
+Compatibility necrosis lets old meaning continue reproducing and
+governing the current system.
+
+## Doctrine Versus Doctrine Capture
+
+Doctrine compresses lessons.
+
+Doctrine capture interprets those lessons to preserve one adaptation
+or authority structure despite contrary evidence.
+
+## Partial Closure Versus False Closure
+
+Partial closure states its limited boundary.
+
+False closure presents the limited result as complete.
+
+## Local Repair Versus Repair Laundering
+
+A local repair is valid within local scope.
+
+Repair laundering claims that local scope represents shared system
+behavior.
+
+## Structural Test Versus Historical Fixture
+
+A structural test preserves a contract or invariant.
+
+A historical fixture may preserve one specimen without naming why it
+matters.
+
+## Artifact Truth Versus Self-Contained Artifact
+
+Artifact truth requires a reliable bound relationship between
+identity, metadata, content, and completion.
+
+It does not require every fact to be stored in one file.
+
+## Normalization Versus Policy
+
+Normalization converts equivalent representations into one meaning.
+
+Policy chooses among legitimately different meanings.
+
+## Recovery Path Versus Normal Path
+
+Recovery handles exceptional damaged or uncertain state.
+
+When recovery becomes ordinary workflow, the normal contract has lost
+authority.
+
+---
+
+# Compound Diagnoses
+
+Many serious incidents contain a stack rather than one card.
+
+## The Lying Build
+
+Symptoms:
+
+* build exits zero;
+* caller parses stdout;
+* scans directory;
+* chooses newest archive;
+* wrong package published.
+
+Likely stack:
+
+```text
+partial-outcome compression
+        +
+narrative coupling
+        +
+artifact-truth failure
+        +
+authority fracture
+```
+
+Likely intervention direction:
+
+* structured build result;
+* bound artifact identity;
+* explicit completion state;
+* repository intake validation.
+
+## The Safe Wrapper
+
+Symptoms:
+
+* direct command is accepted;
+* experienced operators use wrapper;
+* wrapper locks database and validates options;
+* newcomers bypass it and corrupt state.
+
+Likely stack:
+
+```text
+coping infrastructure
+        +
+shadow regulator
+        +
+zombie invariant
+        +
+competence inversion
+        +
+bastard formation
+```
+
+Likely intervention direction:
+
+* inventory wrapper functions;
+* move structural invariants onto authoritative path;
+* preserve legitimate local policy;
+* migrate operators.
+
+## The Eternal Legacy Mode
+
+Symptoms:
+
+* legacy option remains documented;
+* new scripts use it;
+* every component contains compatibility branches;
+* removal repeatedly postponed.
+
+Likely stack:
+
+```text
+semantic revenant
+        +
+compatibility necrosis
+        +
+historical ratchet
+        +
+doctrine capture
+```
+
+Likely intervention direction:
+
+* legacy intake boundary;
+* new-production prohibition;
+* usage inventory;
+* authority cutover;
+* retirement criteria.
+
+## The Green Dashboard
+
+Symptoms:
+
+* audit reports healthy state;
+* operators still repair installations;
+* imported artifacts bypass validator;
+* dashboard reads validator database only.
+
+Likely stack:
+
+```text
+observability theater
+        +
+symbolic guardrail
+        +
+open regulatory loop
+        +
+green-state counterfeit
+        +
+human-as-the-loop
+```
+
+Likely intervention direction:
+
+* observe authoritative state;
+* cover imports;
+* connect detection to quarantine;
+* verify postcondition.
+
+## The Clean Rewrite
+
+Symptoms:
+
+* code is smaller;
+* historical checks disappear;
+* wrappers return;
+* old failures recur;
+* maintainers call new incidents edge cases.
+
+Likely stack:
+
+```text
+structural amnesia
+        +
+hidden-function deletion
+        +
+ecological regression
+        +
+false closure
+```
+
+Likely intervention direction:
+
+* recover old invariants;
+* inventory compensators;
+* add structural tests;
+* perform ecological migration.
+
+## The Expert-Only System
+
+Symptoms:
+
+* documentation appears sufficient;
+* elders operate safely;
+* newcomers fail;
+* support answers rely on source history;
+* project cites surviving users as proof of simplicity.
+
+Likely stack:
+
+```text
+folklore
+        +
+competence inversion
+        +
+bastard formation
+        +
+survivor validation
+        +
+doctrine capture
+```
+
+Likely intervention direction:
+
+* identify hidden model;
+* separate essential knowledge from compensation;
+* expose boundaries;
+* preserve sovereignty;
+* revise onboarding and doctrine.
+
+---
+
+# The Two-Probe Rule
+
+Before applying a field term, obtain at least two independent kinds of
+evidence.
+
+For example:
+
+## Suspected Narrative Coupling
+
+Evidence type 1:
+
+* caller source parses human output.
+
+Evidence type 2:
+
+* wording change breaks integration.
+
+## Suspected Zombie Invariant
+
+Evidence type 1:
+
+* structural property remains required.
+
+Evidence type 2:
+
+* enforcement occurs through review or operator ritual.
+
+## Suspected Open Regulatory Loop
+
+Evidence type 1:
+
+* sensor detects violation.
+
+Evidence type 2:
+
+* no authoritative actuator or verified correction exists.
+
+## Suspected Bastard Formation
+
+Evidence type 1:
+
+* expert operators perform hidden regulatory work.
+
+Evidence type 2:
+
+* newcomer failure or automation exposes dependence on that work.
+
+The two-probe rule is not formal proof.
+
+It prevents classification by atmosphere.
+
+---
+
+# The Mechanism-First Rule
+
+When several cards appear plausible, prefer the term closest to the
+causal mechanism.
+
+Example:
+
+Observed:
+
+> Experienced operator uses wrapper.
+
+Possible labels:
+
+* bastard formation;
+* coping infrastructure;
+* shadow regulator;
+* narrative coupling.
+
+Inspect the wrapper.
+
+If it parses stdout, the immediate mechanism is narrative coupling.
+
+If it also validates and repairs state, it is coping infrastructure.
+
+If it alone preserves an invariant, it is a shadow regulator.
+
+If operator identity forms around maintaining it, bastard formation
+appears at a later ecological layer.
+
+The terms are not competitors.
+
+They occupy different depths.
+
+---
+
+# The Depth Ladder
+
+Use this ladder to place the diagnosis.
+
+```text
+interface symptom
+        ↓
+boundary mechanism
+        ↓
+state and authority structure
+        ↓
+regulatory failure
+        ↓
+compensating infrastructure
+        ↓
+operator adaptation
+        ↓
+institutional retention
+        ↓
+doctrine and identity
+```
+
+Example:
+
+```text
+“wrapper broke after output changed”
+        ↓
+narrative coupling
+        ↓
+supplier-duty failure
+        ↓
+open regulatory loop
+        ↓
+coping infrastructure
+        ↓
+bastard formation
+        ↓
+folklore
+        ↓
+doctrine against structured interfaces
+```
+
+Not every incident reaches every layer.
+
+Do not diagnose cultural pathology when one parser bug explains the
+case.
+
+Do not stop at the parser when the same boundary has manufactured ten
+years of operator ritual.
+
+---
+
+# The Card Selection Test
+
+Before naming a failure shape, ask:
+
+1. What was directly observed?
+2. Which state or meaning is involved?
+3. Which surface claims authority?
+4. Which surface exercises authority?
+5. Which fact failed to cross a boundary?
+6. Which component reconstructed it?
+7. Which result state was unrepresentable?
+8. Which regulator should have acted?
+9. Which regulator actually acted?
+10. Which compensator preserved operation?
+11. What happens without that compensator?
+12. Which operator adaptation formed?
+13. Which historical meaning remains active?
+14. Which doctrine protects the current arrangement?
+15. Which card names the nearest causal mechanism?
+16. Which cards describe downstream ecological consequences?
+17. What evidence confirms each term?
+18. What counterexample excludes it?
+19. Does the term improve intervention selection?
+20. Can a stranger apply it without the original history?
+21. Does the diagnosis survive a change of component name?
+22. Is ordinary language more precise?
+23. Is the humor carrying a mechanism?
+24. Or is the vocabulary merely decorating the corpse?
+
+A field term earns its place when it reduces repeated explanation
+without reducing causal precision.
+
+## Twenty-Eighth House Law
+
+> Name the mechanism closest to the wound.  
+> Add the ghosts only after they start moving the furniture.
+
+The diagnostic cards are not a replacement for autopsy.
+
+They are entry points.
+
+They help the field operator move from:
+
+* symptom;
+* to candidate mechanism;
+* to confirmation probe;
+* to intervention boundary.
+
+Used carelessly, the cards become another folklore deck:
+
+* every old behavior is a ghost;
+* every wrapper is coping infrastructure;
+* every expert is a bastard;
+* every disagreement is authority fracture.
+
+Used carefully, they provide a shared language for recognizing
+recurring structures before the ecosystem pays for another full
+rediscovery.
+
+The next section is **Leaving the House**: a final synthesis of
+authority, boundaries, drift, folklore, regulation, operator
+adaptation, doctrine, and repair --- and the practical standard by
+which a system should be judged after the jokes are gone.
+
+---
+
 # I. Ontology of Haunted Systems
 
 ## ghost
