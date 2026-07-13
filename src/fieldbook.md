@@ -153,12 +153,12 @@ Learn where they enter the building.
 
 ## Contents {.unnumbered .unlisted}
 
-1. [Part I. The Foundational Tension](#part-i-the-foundational-tension)
-2. [Part II. Semantic Authority and Boundaries](#part-ii-semantic-authority-and-boundaries)
-3. [Part III. Drift, Ghosts, and Counterfeit Semantics](#part-iii-drift-ghosts-and-counterfeit-semantics)
-4. [Part IV. Folklore Ecology and Institutional Memory](#part-iv-folklore-ecology-and-institutional-memory)
-5. [Part V. Cybernetic Regulation and Ecosystem Evolution](#part-v-cybernetic-regulation-and-ecosystem-evolution)
-6. [Part VI. Autopsy and Field Method](#part-vi-autopsy-and-field-method)
+1. [Part I. The Foundational Tension](#part-i.-the-foundational-tension)
+2. [Part II. Semantic Authority and Boundaries](#part-ii.-semantic-authority-and-boundaries)
+3. [Part III. Drift, Ghosts, and Counterfeit Semantics](#part-iii.-drift-ghosts-and-counterfeit-semantics)
+4. [Part IV. Folklore Ecology and Institutional Memory](#part-iv.-folklore-ecology-and-institutional-memory)
+5. [Part V. Cybernetic Regulation and Ecosystem Evolution](#part-v.-cybernetic-regulation-and-ecosystem-evolution)
+6. [Part VI. Autopsy and Field Method](#part-vi.-autopsy-and-field-method)
 7. [Leaving the House](#leaving-the-house)
 
 The Parts provide the causal route. Part VI also works as a field reference:
