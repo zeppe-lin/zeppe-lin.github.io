@@ -35627,7 +35627,7 @@ which a system should be judged after the jokes are gone.
 
 ---
 
-## Leaving the House
+# Leaving the House {.epilogue}
 
 The system has been repaired.
 
@@ -35662,7 +35662,7 @@ The ecosystem has not yet accepted that it may stop surviving.
 
 ---
 
-### The House
+## The House
 
 The **House** is the combined technical and human structure through
 which an ecosystem carries:
@@ -35698,7 +35698,7 @@ The codebase is one room.
 The operator who knows which door jams in winter is also part of the
 current architecture.
 
-### The House Model
+## The House Model
 
 The Fieldbook began with this causal sequence:
 
@@ -35727,33 +35727,33 @@ A failure may begin anywhere.
 
 But mature failures often travel through these stages.
 
-#### Authority
+### Authority
 
 Some layer must own the meaning.
 
-#### Boundary
+### Boundary
 
 That meaning must cross into the next component without being lost,
 counterfeited, or reconstructed privately.
 
-#### Drift
+### Drift
 
 When representations and implementations evolve independently, their
 meanings separate.
 
-#### Folklore
+### Folklore
 
 Operators carry the rule the system no longer carries.
 
-#### Regulation
+### Regulation
 
 Someone must still detect, decide, correct, and verify.
 
-#### Operator Adaptation
+### Operator Adaptation
 
 People become skilled at supplying the missing loop.
 
-#### Doctrine
+### Doctrine
 
 Successful adaptations become values, prohibitions, and project
 identity.
@@ -35762,7 +35762,7 @@ The technical failure has now acquired social defenses.
 
 > That is how a bug becomes a religion.
 
-### The Reverse Path
+## The Reverse Path
 
 Repair travels in the opposite direction.
 
@@ -35796,7 +35796,7 @@ The repair then gives that function:
 * a recovery path;
 * an honest scope.
 
-### Leaving
+## Leaving
 
 **Leaving** is the point at which correctness no longer depends on
 preserving the entire adaptive ecology that formed around the old
@@ -35819,7 +35819,7 @@ Leaving does not mean abandoning the system.
 It means the operator may stop standing in the doorway to keep the
 building upright.
 
-### Exit Condition
+## Exit Condition
 
 An **exit condition** is evidence that a compensating role,
 workaround, or historical rule can safely leave the ordinary control
@@ -35843,9 +35843,9 @@ ghosts receive maintenance releases.
 
 ---
 
-### What the System Must Carry
+## What the System Must Carry
 
-#### It Must Carry Meaning
+### It Must Carry Meaning
 
 A component should publish the facts its consumers need.
 
@@ -35865,7 +35865,7 @@ It requires supplier duty.
 The layer possessing the truth should carry enough of it across the
 boundary for the next layer to act without archaeology.
 
-#### It Must Carry Authority
+### It Must Carry Authority
 
 A fact without an owner becomes an argument.
 
@@ -35885,7 +35885,7 @@ A system may have several authorities.
 It should not have several authorities over the same meaning without a
 defined hierarchy or composition contract.
 
-#### It Must Carry Failure
+### It Must Carry Failure
 
 Failure is state.
 
@@ -35903,7 +35903,7 @@ An operation need not expose every internal phase.
 
 It must expose every distinction its consumers require to act safely.
 
-#### It Must Carry Recovery
+### It Must Carry Recovery
 
 A correct system is not one that merely prevents every anticipated
 mistake.
@@ -35924,7 +35924,7 @@ Encapsulation should prevent accidental mutation.
 It should not make exceptional repair dependent on unsupported
 surgery.
 
-#### It Must Carry Memory
+### It Must Carry Memory
 
 A project should retain conclusions, not only events.
 
@@ -35940,7 +35940,7 @@ The archive stores what happened.
 
 Institutional memory stores what the project learned.
 
-#### It Must Carry Policy Honestly
+### It Must Carry Policy Honestly
 
 Policy belongs to the authority entitled to choose among legitimate
 states.
@@ -35959,7 +35959,7 @@ Mechanism should not silently annex policy.
 
 Policy should not be used to excuse missing invariants.
 
-#### It Must Carry Its Own Limits
+### It Must Carry Its Own Limits
 
 A system should state:
 
@@ -35978,7 +35978,7 @@ A narrow honest contract is stronger than a broad theatrical one.
 
 ---
 
-### What the Operator Should Carry
+## What the Operator Should Carry
 
 The Fieldbook does not propose an operator with no knowledge,
 judgment, or responsibility.
@@ -36003,7 +36003,7 @@ The operator should not be required to carry:
 * historical warnings with no current scope;
 * the only copy of the recovery model.
 
-#### Operator Sovereignty
+### Operator Sovereignty
 
 **Operator sovereignty** is control over local policy and the ability
 to inspect, refuse, recover, and override within an explicit authority
@@ -36030,7 +36030,7 @@ Manual ambiguity does not automatically increase sovereignty.
 
 It may merely assign liability.
 
-#### Operator Skill
+### Operator Skill
 
 Operator skill should rise above the missing boundary.
 
@@ -36049,7 +36049,7 @@ discarding them.
 > Expertise should solve difficult problems.  
 > It should not be the serialization primitive.
 
-#### Operator Freedom
+### Operator Freedom
 
 Freedom includes the freedom to:
 
@@ -36067,9 +36067,9 @@ A system does not become free merely because it refuses to help.
 
 ---
 
-### What Simplicity Must Mean
+## What Simplicity Must Mean
 
-#### Local Simplicity
+### Local Simplicity
 
 A component may be locally simple because it:
 
@@ -36089,7 +36089,7 @@ Local simplicity becomes counterfeit when omitted work reappears as:
 * state repair;
 * undocumented compatibility.
 
-#### Ecosystem Simplicity
+### Ecosystem Simplicity
 
 **Ecosystem simplicity** is low total burden across:
 
@@ -36108,7 +36108,7 @@ They require honest boundaries.
 
 > Small tools are not a substitute for small semantics.
 
-#### Simplicity Accounting
+### Simplicity Accounting
 
 When evaluating simplicity, ask:
 
@@ -36124,7 +36124,7 @@ Code size is one cost.
 
 It is not the ecosystem's entire tax return.
 
-#### Essential Complexity
+### Essential Complexity
 
 Some complexity cannot be removed.
 
@@ -36144,7 +36144,7 @@ KISS does not mean pretending these do not exist.
 It means representing them without manufacturing unnecessary machinery
 around them.
 
-#### Accidental Complexity
+### Accidental Complexity
 
 Accidental complexity appears when the system forces repeated work
 because:
@@ -36162,9 +36162,9 @@ component larger while making the ecosystem simpler.
 
 ---
 
-### What Transparency Must Mean
+## What Transparency Must Mean
 
-#### Source Transparency
+### Source Transparency
 
 Source availability allows inspection of implementation.
 
@@ -36188,7 +36188,7 @@ It does not automatically reveal:
 * operator policy;
 * which accidental behavior may change.
 
-#### State Transparency
+### State Transparency
 
 State transparency means operators can determine:
 
@@ -36205,7 +36205,7 @@ and recovery.
 A text file may be opaque if its fields have undocumented authority
 and several writers reinterpret it.
 
-#### Semantic Transparency
+### Semantic Transparency
 
 Semantic transparency means interfaces state what their operations and
 results actually mean.
@@ -36219,7 +36219,7 @@ This includes:
 * retry safety;
 * lifecycle boundaries.
 
-#### Operational Transparency
+### Operational Transparency
 
 Operational transparency means the operator can observe:
 
@@ -36236,9 +36236,9 @@ distinction.
 
 ---
 
-### What Trust Must Mean
+## What Trust Must Mean
 
-#### Trust in Operators
+### Trust in Operators
 
 Trusting operators does not require accepting structurally invalid
 state.
@@ -36255,7 +36255,7 @@ These do not replace judgment.
 They prevent the system from wasting judgment on deterministic
 contradictions.
 
-#### Trust in Maintainers
+### Trust in Maintainers
 
 Trusting maintainers does not require storing invariants only in
 review custom.
@@ -36270,7 +36270,7 @@ Mechanical enforcement is not an accusation.
 
 It is preservation of their own decision.
 
-#### Trust in Components
+### Trust in Components
 
 Components should be trusted within defined contracts.
 
@@ -36286,7 +36286,7 @@ Trust should be proportional to:
 
 It is a social instruction about uncertainty.
 
-#### Verifiable Trust
+### Verifiable Trust
 
 **Verifiable trust** allows confidence without requiring complete
 reinspection of every implementation detail.
@@ -36307,9 +36307,9 @@ It is trust with state.
 
 ---
 
-### What Tradition Must Mean
+## What Tradition Must Mean
 
-#### Tradition as Memory
+### Tradition as Memory
 
 Tradition can preserve:
 
@@ -36323,7 +36323,7 @@ Tradition can preserve:
 
 This is legitimate institutional memory.
 
-#### Tradition as Compensation
+### Tradition as Compensation
 
 Tradition becomes compensation when the project continues a practice
 only because the system still lacks the structure that made the
@@ -36341,7 +36341,7 @@ The practice may remain useful.
 
 Its reason should be current.
 
-#### Tradition as Identity
+### Tradition as Identity
 
 Identity gives continuity.
 
@@ -36356,7 +36356,7 @@ It helps a project reject changes that would destroy:
 Identity becomes self-defense against reality when every current cost
 is reclassified as essence.
 
-#### Tradition Revision
+### Tradition Revision
 
 Revision should preserve the value while reopening the mechanism.
 
@@ -36379,9 +36379,9 @@ It became more precise.
 
 ---
 
-### What Pluralism Must Mean
+## What Pluralism Must Mean
 
-#### Implementation Pluralism
+### Implementation Pluralism
 
 Several implementations can strengthen a system.
 
@@ -36400,7 +36400,7 @@ Pluralism is real when implementations share:
 * error model;
 * authority contract.
 
-#### Counterfeit Pluralism
+### Counterfeit Pluralism
 
 Pluralism is counterfeit when every implementation requires:
 
@@ -36413,7 +36413,7 @@ Pluralism is counterfeit when every implementation requires:
 The ecosystem may possess several codebases and one undocumented
 implementation.
 
-#### Policy Pluralism
+### Policy Pluralism
 
 Different operators and repositories may choose different policy.
 
@@ -36432,7 +36432,7 @@ transaction completion.
 
 ---
 
-### What Maturity Must Mean
+## What Maturity Must Mean
 
 A mature system is not one without failure.
 
@@ -36465,7 +36465,7 @@ It is one that knows:
 * which judgment should remain human;
 * where authority sits.
 
-#### Maturity Signals
+### Maturity Signals
 
 Useful signals include:
 
@@ -36484,7 +36484,7 @@ Useful signals include:
 * compensators capable of retirement;
 * findings discoverable before recurrence.
 
-#### Immaturity Signals
+### Immaturity Signals
 
 Common signals include:
 
@@ -36509,12 +36509,12 @@ because the current population has adapted.
 
 ---
 
-### A Standard for the System
+## A Standard for the System
 
 After the metaphors, jokes, ghosts, bastards, and corpses are removed,
 the system should be judged by a simple standard.
 
-#### Can It Tell the Truth?
+### Can It Tell the Truth?
 
 Does the system publish:
 
@@ -36527,7 +36527,7 @@ Does the system publish:
 
 without requiring downstream reconstruction?
 
-#### Can It Say No?
+### Can It Say No?
 
 Can the authoritative path reject:
 
@@ -36539,7 +36539,7 @@ Can the authoritative path reject:
 
 before damage?
 
-#### Can It Admit Partial Failure?
+### Can It Admit Partial Failure?
 
 Can it distinguish:
 
@@ -36549,7 +36549,7 @@ Can it distinguish:
 * recovery is required;
 * retry is unsafe?
 
-#### Can It Recover?
+### Can It Recover?
 
 Can an operator:
 
@@ -36560,17 +36560,17 @@ Can an operator:
 * roll back within honest scope;
 * verify the result?
 
-#### Can It Preserve Policy?
+### Can It Preserve Policy?
 
 Can operators retain legitimate local choice without weakening shared
 integrity?
 
-#### Can It Replace Components?
+### Can It Replace Components?
 
 Can another implementation satisfy the contract without inheriting
 private archaeology?
 
-#### Can It Retain Lessons?
+### Can It Retain Lessons?
 
 Can future maintainers find:
 
@@ -36581,7 +36581,7 @@ Can future maintainers find:
 
 before recurrence?
 
-#### Can It Release Its Compensators?
+### Can It Release Its Compensators?
 
 Can the wrapper, checklist, elder, private patch, or ritual leave the
 ordinary control path without correctness leaving with it?
@@ -36590,33 +36590,33 @@ This final question is the ecological proof.
 
 ---
 
-### The Departure Audit
+## The Departure Audit
 
 Before declaring a structural reform complete, perform a departure
 audit.
 
-#### Authority
+### Authority
 
 * Is one authority defined for each important meaning?
 * Are derived forms subordinate and regenerable?
 * Does governance match technical control?
 * Can exceptional authority be identified?
 
-#### Boundaries
+### Boundaries
 
 * Do producers publish the facts consumers require?
 * Are machine results separate from narration?
 * Are failure states expressive enough?
 * Are capabilities explicit?
 
-#### State
+### State
 
 * Can state transitions be traced?
 * Are partial states representable?
 * Are generations or identities available?
 * Can damaged state be inspected?
 
-#### Regulation
+### Regulation
 
 * Does every important invariant have a closed loop?
 * Does the sensor observe authoritative state?
@@ -36624,14 +36624,14 @@ audit.
 * Is correction verified?
 * Is human judgment bounded and explicit?
 
-#### Compatibility
+### Compatibility
 
 * Does legacy enter through one boundary?
 * Can new production recreate old state?
 * Is compatibility directional?
 * Are removal or adoption criteria explicit?
 
-#### Operators
+### Operators
 
 * Which work remains manual?
 * Is it policy, judgment, recovery, or compensation?
@@ -36639,14 +36639,14 @@ audit.
 * Are private tools still required?
 * Has re-skilling occurred?
 
-#### Memory
+### Memory
 
 * Is the conclusion discoverable?
 * Is current doctrine linked to current mechanisms?
 * Are superseded meanings marked?
 * Can rewrites recover the invariant?
 
-#### Ecology
+### Ecology
 
 * Did total burden fall?
 * Did recovery remain possible?
@@ -36660,7 +36660,7 @@ The ecosystem has not yet left.
 
 ---
 
-### The Last Workaround
+## The Last Workaround
 
 The final workaround is often the hardest to remove.
 
@@ -36699,7 +36699,7 @@ The last workaround does not merely protect the system.
 
 It protects the ecosystem from having to believe the system changed.
 
-#### Workaround Retirement
+### Workaround Retirement
 
 Retire a workaround only after determining:
 
@@ -36718,7 +36718,7 @@ The workaround may then become:
 * local policy layer;
 * deleted code with tombstone.
 
-#### Workaround Adoption
+### Workaround Adoption
 
 Sometimes the workaround is the best available design.
 
@@ -36740,7 +36740,7 @@ The shame lies in requiring it while pretending it does not exist.
 
 ---
 
-### Leaving the Bastard Behind
+## Leaving the Bastard Behind
 
 The bastard formed because the ecosystem required:
 
@@ -36767,7 +36767,7 @@ The operator may remain:
 But ordinary correctness should no longer depend on the operator being
 personally traumatized by every previous release.
 
-#### Re-Skilled Bastard
+### Re-Skilled Bastard
 
 A **re-skilled bastard** uses hard-earned experience to:
 
@@ -36786,7 +36786,7 @@ The injury stops being an onboarding requirement.
 > The project should inherit the bastard's knowledge.  
 > It does not need to reproduce the childhood.
 
-#### Elder Exit
+### Elder Exit
 
 An elder should be able to leave without taking:
 
@@ -36805,7 +36805,7 @@ A successful succession test is architectural evidence.
 
 ---
 
-### Leaving Folklore Behind
+## Leaving Folklore Behind
 
 Not all folklore should disappear.
 
@@ -36835,7 +36835,7 @@ The story may remain.
 
 The runtime dependency should not.
 
-#### Folklore Promotion
+### Folklore Promotion
 
 Promote folklore when it contains a current operational rule.
 
@@ -36847,7 +36847,7 @@ Ask:
 * Should it be documented?
 * Is its historical reason still relevant?
 
-#### Folklore Retirement
+### Folklore Retirement
 
 Retire folklore when:
 
@@ -36869,7 +36869,7 @@ It releases operator behavior.
 
 ---
 
-### Leaving Doctrine Open
+## Leaving Doctrine Open
 
 Doctrine should survive the repair.
 
@@ -36884,7 +36884,7 @@ Healthy doctrine remains capable of saying:
 * the burden changed;
 * the project learned.
 
-#### Revisable Doctrine
+### Revisable Doctrine
 
 A revisable doctrine has:
 
@@ -36904,7 +36904,7 @@ This doctrine can evaluate many mechanisms.
 
 It does not freeze one historical workaround.
 
-#### Closed Doctrine
+### Closed Doctrine
 
 Closed doctrine says:
 
@@ -36924,7 +36924,7 @@ It lost the anatomy.
 
 ---
 
-### Leaving the Fieldbook Behind
+## Leaving the Fieldbook Behind
 
 The Fieldbook itself can become folklore.
 
@@ -36939,7 +36939,7 @@ Its terms may be:
 
 This book therefore requires its own caution.
 
-#### Do Not Worship the Vocabulary
+### Do Not Worship the Vocabulary
 
 A term is useful only while it improves:
 
@@ -36953,7 +36953,7 @@ If ordinary technical language is clearer, use it.
 
 If a term no longer matches current mechanisms, revise or retire it.
 
-#### Do Not Turn the House Laws into Lint
+### Do Not Turn the House Laws into Lint
 
 House Laws are compressed conclusions.
 
@@ -36968,7 +36968,7 @@ Every one requires:
 A project capable of mechanically rejecting every violation of a joke
 has probably misunderstood both humor and architecture.
 
-#### Do Not Replace Local Folklore with Canonical Folklore
+### Do Not Replace Local Folklore with Canonical Folklore
 
 The purpose of common vocabulary is to make mechanisms portable.
 
@@ -36978,7 +36978,7 @@ Terms should improve inquiry.
 
 They should not pre-answer it.
 
-#### Do Not Use Diagnosis as Status
+### Do Not Use Diagnosis as Status
 
 Knowing the word **narrative coupling** does not make one more
 competent than the maintainer currently debugging the parser.
@@ -36991,7 +36991,7 @@ It is useless if it merely upgrades the insult.
 
 ---
 
-### Do Not Confuse
+## Do Not Confuse
 
 **Leaving the house** does not mean eliminating manual operation.
 
@@ -37056,7 +37056,7 @@ It means the reader now owns the method.
 
 ---
 
-### The Final House Test
+## The Final House Test
 
 When examining any system, ask:
 
@@ -37103,7 +37103,7 @@ It is architectural.
 
 ---
 
-### Twenty-Ninth House Law
+## Twenty-Ninth House Law
 
 > A system is mature when its operators can leave the room without
 > taking correctness with them.
