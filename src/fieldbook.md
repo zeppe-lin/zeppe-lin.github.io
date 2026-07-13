@@ -151,6 +151,8 @@ You do not need to memorize the ghosts.
 
 Learn where they enter the building.
 
+---
+
 ## Contents {.unnumbered .unlisted}
 
 1. [Part I. The Foundational Tension](#part-i.-the-foundational-tension)
@@ -35698,6 +35700,8 @@ The codebase is one room.
 The operator who knows which door jams in winter is also part of the
 current architecture.
 
+---
+
 ## The House Model
 
 The Fieldbook began with this causal sequence:
@@ -35762,6 +35766,8 @@ The technical failure has now acquired social defenses.
 
 > That is how a bug becomes a religion.
 
+---
+
 ## The Reverse Path
 
 Repair travels in the opposite direction.
@@ -35796,6 +35802,8 @@ The repair then gives that function:
 * a recovery path;
 * an honest scope.
 
+---
+
 ## Leaving
 
 **Leaving** is the point at which correctness no longer depends on
@@ -35818,6 +35826,8 @@ Leaving does not mean abandoning the system.
 
 It means the operator may stop standing in the doorway to keep the
 building upright.
+
+---
 
 ## Exit Condition
 
