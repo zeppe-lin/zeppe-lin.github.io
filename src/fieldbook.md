@@ -5995,7 +5995,8 @@ Eventually the original statement remains only as introductory prose.
 The real contract becomes:
 
 > Most files are recorded, except those produced through paths whose
-> history you are expected to know.  
+> history you are expected to know.
+
 > Contract erosion does not delete the boundary.  
 > It makes the boundary negotiable after every incident.
 
