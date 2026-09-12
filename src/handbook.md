@@ -724,14 +724,24 @@ Support for other bootloaders may be added later.
 Create `/etc/default/grub` with:
 
 ```sh
-# Set the delay before booting:
-GRUB_TIMEOUT=3
+#
+# /etc/default/grub: Main configuration file for the GRUB bootloader
+#
 
-# Show ZPLN in the GRUB menu:
-GRUB_DISTRIBUTOR=ZPLN
+# Set the delay before booting
+GRUB_TIMEOUT="3"
 
-# Set kernel parameters (quiet boot, swap for hibernation):
+# Show ZPLN in the GRUB menu
+GRUB_DISTRIBUTOR="ZPLN"
+
+# Set kernel parameters (quiet boot, swap for hibernation)
 GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+
+# Disable automated scanning for other operating systems
+GRUB_DISABLE_OS_PROBER="true"
+
+# vim: ft=sh
+# End of file.
 ```
 
 > **Important:**
