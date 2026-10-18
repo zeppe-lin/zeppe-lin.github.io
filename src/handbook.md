@@ -665,7 +665,12 @@ initramfs image.
 Here's an example for [UEFI and LVM on LUKS](#uefi-and-lvm-on-luks):
 
 ```sh
-# /etc/mkinitramfs/config
+#
+# /etc/mkinitramfs/config: mkinitramfs(8) configuration
+#
+# See mkinitramfs.config(5) for more information.
+#
+
 hostonly=1 # optional, creates smaller initramfs
 compress="gzip --fast"
 hooks="eudev luks lvm resume"
@@ -674,6 +679,8 @@ root_type=ext4
 resume=/dev/zpln/swap
 luks_name=crypt
 luks_root=/dev/sda2
+
+# vim: ft=sh
 # End of file.
 ```
 
