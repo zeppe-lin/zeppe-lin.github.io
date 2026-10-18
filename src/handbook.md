@@ -316,12 +316,13 @@ Enter the chroot:
 chroot /mnt /bin/bash
 ```
 
-Set the `SHELL` variable to `/bin/bash` to ensure tools like `vim`
-work properly:
+Set the `SHELL` variable and source `bash-completion` to ensure
+interactive features and tools work properly:
 
 ```sh
 # chrooted, as root
 export SHELL=/bin/bash
+. /etc/bash_completion
 ```
 
 ## Configure Base System
